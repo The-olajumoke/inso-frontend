@@ -1,0 +1,246 @@
+ .ldsEllipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.ldsEllipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #07A098;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.ldsEllipsis div:nth-child(1) {
+    left: 8px;
+    animation: ldsEllipsis1 0.6s infinite;
+}
+
+.ldsEllipsis div:nth-child(2) {
+    left: 8px;
+    animation: ldsEllipsis2 0.6s infinite;
+}
+
+.ldsEllipsis div:nth-child(3) {
+    left: 32px;
+    animation: ldsEllipsis2 0.6s infinite;
+}
+
+.ldsEllipsis div:nth-child(4) {
+    left: 56px;
+    animation: ldsEllipsis3 0.6s infinite;
+}
+
+@keyframes ldsEllipsis1 {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes ldsEllipsis3 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes ldsEllipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+/*
+.ldsRing {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.ldsRing div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    animation: ldsRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.ldsRing div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.ldsRing div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.ldsRing div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes ldsRing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ldSpinner {
+    color: official;
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.ldSpinner div {
+    transform-origin: 40px 40px;
+    animation: ldSpinner 1.2s linear infinite;
+}
+
+.ldSpinner div:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 37px;
+    width: 6px;
+    height: 18px;
+    border-radius: 20%;
+    background: #07A098;
+}
+
+.ldSpinner div:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -1.1s;
+}
+
+.ldSpinner div:nth-child(2) {
+    transform: rotate(30deg);
+    animation-delay: -1s;
+}
+
+.ldSpinner div:nth-child(3) {
+    transform: rotate(60deg);
+    animation-delay: -0.9s;
+}
+
+.ldSpinner div:nth-child(4) {
+    transform: rotate(90deg);
+    animation-delay: -0.8s;
+}
+
+.ldSpinner div:nth-child(5) {
+    transform: rotate(120deg);
+    animation-delay: -0.7s;
+}
+
+.ldSpinner div:nth-child(6) {
+    transform: rotate(150deg);
+    animation-delay: -0.6s;
+}
+
+.ldSpinner div:nth-child(7) {
+    transform: rotate(180deg);
+    animation-delay: -0.5s;
+}
+
+.ldSpinner div:nth-child(8) {
+    transform: rotate(210deg);
+    animation-delay: -0.4s;
+}
+
+.ldSpinner div:nth-child(9) {
+    transform: rotate(240deg);
+    animation-delay: -0.3s;
+}
+
+.ldSpinner div:nth-child(10) {
+    transform: rotate(270deg);
+    animation-delay: -0.2s;
+}
+
+.ldSpinner div:nth-child(11) {
+    transform: rotate(300deg);
+    animation-delay: -0.1s;
+}
+
+.ldSpinner div:nth-child(12) {
+    transform: rotate(330deg);
+    animation-delay: 0s;
+}
+
+@keyframes ldSpinner {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+} */
+
+
+
+.ldsLargeRing {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.ldsLargeRing div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #07A098;
+    border-radius: 50%;
+    animation: ldsLargeRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #07A098 transparent transparent transparent;
+}
+
+.ldsLargeRing div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.ldsLargeRing div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.ldsLargeRing div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes ldsLargeRing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
