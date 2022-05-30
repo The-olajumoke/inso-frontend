@@ -11,8 +11,6 @@ jobs:
     steps:
     - name: Install dependencies
       run: yarn install
-    - name: Run Lint
-      run: yarn run lint
     - name: Build
       run: yarn run build
     - uses: actions/checkout@master
