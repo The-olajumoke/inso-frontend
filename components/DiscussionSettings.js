@@ -10,8 +10,8 @@ const DiscussionSettings = ({ setActiveSection }) => {
   const [settingsDisabled, setSettingsDisabled] = useState(true);
   return (
     <div
-      style={{ minHeight: "293px" }}
-      className=" order bg-gray-createDisc py-50 px-50  pt-38"
+      // style={{ minHeight: "293px" }}
+      className=" flex-grow bg-gray-createDisc  px-50  pt-23 pb-33"
     >
       {/* STARTER PROMPT */}
       <div className="w-full  mb-23">
@@ -91,6 +91,39 @@ const DiscussionSettings = ({ setActiveSection }) => {
             </label>
 
             <button onClick={() => setActiveSection("ScoreSettings")}>
+              <Image
+                src={
+                  postInspiration
+                    ? "/icons/arrow_up.svg"
+                    : "/icons/arrow_down.svg"
+                }
+                alt="arrows"
+                layout="fixed"
+                width="15"
+                height="15"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* Calendar*/}
+      <div className="w-full">
+        <div className={`flex justify-between items-center `}>
+          <h5 className=" text-gray-text">Calendar</h5>
+          <div className="flex items-center">
+            <label className={`${styles.switch} mr-45`}>
+              <input
+                type="checkbox"
+                name="reports"
+                id="postInspiration"
+                // className={`${styles.switch}`}
+              />
+              <span
+                className={`${styles.slider} ${styles.round} "slider round"`}
+              ></span>
+            </label>
+
+            <button onClick={() => setActiveSection("Calendar")}>
               <Image
                 src={
                   postInspiration

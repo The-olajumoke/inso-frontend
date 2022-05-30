@@ -45,7 +45,7 @@ const index = () => {
   const discussions = [];
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [createDiscussion, setCreateDiscussion] = useState(true);
+  const [createDiscussion, setCreateDiscussion] = useState(false);
 
   const filterOptions = ["All", "Discussions created", "Discussion joined"];
 

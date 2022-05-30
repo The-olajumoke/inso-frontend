@@ -40,7 +40,11 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         <div className="flex flex-grow   ">
           <Sidebar navSize={navSize} />
           <div className={`w-full flex  `}>
-            <div className={`${navSize === "small" ? "w-109" : "w-333"}`}></div>
+            <div
+              className={`${
+                navSize === "small" ? "w-109" : "w-333"
+              }  vp-980:hidden`}
+            ></div>
             <div className={`${bgColor} flex-grow  overflow-y-auto`}>
               {children}
             </div>

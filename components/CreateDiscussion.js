@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Calendar from "./Calendar";
 import CheckBox from "./CheckBox";
 import Connections from "./Connections";
 import CreateDiscInput from "./CreateDiscInput";
@@ -24,10 +25,11 @@ const CreateDiscussion = ({
   setOpenModal,
 }) => {
   const [data, setData] = useState(null);
-  const [discussionName, setDiscussionName] = useState([]);
+  const [discussionName, setDiscussionName] = useState("");
   const [createNewDisc, setCreateNewDisc] = useState(false);
+  const [showInput, setShowInput] = useState("true");
   const [allDiscussionNames, setAllDiscussionNames] = useState([]);
-  // const [activeSection, setActiveSection] = useState("ScoreSettings");
+
   const [activeSection, setActiveSection] = useState("discussions");
 
   const [discussionSettings, setDiscussionSettings] = useState(false);
@@ -41,22 +43,29 @@ const CreateDiscussion = ({
   const handleAddDiscussion = (e) => {
     e.preventDefault();
     console.log(discussionName);
-    setAllDiscussionNames([...allDiscussionNames, discussionName]);
+    if (discussionName === "") {
+    } else {
+      setAllDiscussionNames([...allDiscussionNames, discussionName]);
+      setShowInput(false);
+    }
     setDiscussionName("");
   };
   return (
-    <div className="fixed grid place-items-center w-full h-full top-0 left-0 z-9999 animate-fade-in vp-600:px-20  bg-other-overlay">
+    <div className="fixed grid place-items-center w-full h-full top-0 left-0 z-9999 animate-fade-in vp-600:px-20  ">
       <div
-        style={{ minHeight: "430px" }}
-        className={`w-556  bg-white-white  rounded-md  shadow- createDiscussion border border-gray-faintGray  overflow-hidden relative`}
+        // style={{ minHeight: "420px" }}
+        className={`w-556  border  border-other-disabled  bg-white-white  rounded-md  shadow-lg relative overflow-hidden`}
       >
         {activeSection === "discussions" && (
-          <div className="h-76 flex px-45 pt-25 w-full items-center justify-between">
-            <button className=" bg-primary-blue h-34 w-93 text-white-white rounded text-sm">
+          <div className="h-76 flex px-45  w-full items-center justify-between">
+            <button disabled={true} className=" btn h-34 w-93  rounded text-sm">
               Create
             </button>
 
-            <button onClick={() => setOpenModal(false)}>
+            <button
+              className="flex justify-center items-center"
+              onClick={() => setOpenModal(false)}
+            >
               <Image
                 src="/icons/cancel.svg"
                 alt="cancel"
@@ -70,8 +79,8 @@ const CreateDiscussion = ({
 
         {activeSection === "discussions" && (
           <div className="">
-            <div className=" px-45 py-17 flex flex-col items-center border  bg-gray-createDisc ">
-              <div className="flex w-full items-center justify-between ">
+            <div className=" px-45  flex flex-col items-center   bg-gray-createDisc ">
+              <div className="flex h-55 w-full items-center justify-between ">
                 <h3 className=" font-medium text-primary-darkGreen">
                   Discussions
                 </h3>
@@ -106,7 +115,7 @@ const CreateDiscussion = ({
                       <h5 className="ml-20">{disc}</h5>
                     </div>
                   ))}
-                  {allDiscussionNames.length < 1 && (
+                  {showInput && (
                     <div className="">
                       <form action="" onSubmit={handleAddDiscussion}>
                         <CreateDiscInput
@@ -120,7 +129,10 @@ const CreateDiscussion = ({
                   )}
 
                   {allDiscussionNames.length > 0 && (
-                    <div className="w-full flex justify-end">
+                    <div
+                      className=" mt-10 w-full flex justify-end"
+                      onClick={() => setShowInput("true")}
+                    >
                       <Image
                         src="/icons/add_icon_blue.svg"
                         alt="arrows"
@@ -133,7 +145,13 @@ const CreateDiscussion = ({
                 </div>
               )}
             </div>
-            <div className="h-55 flex justify-between items-center px-45 py-15 bg-gray-createDisc mt-9">
+            <div
+              className="h-55 flex justify-between items-center px-45 py-15 bg-gray-createDisc mt-9"
+              onClick={() => {
+                setDiscussionSettings(!discussionSettings);
+                setShowDiscussions(!showDiscussions);
+              }}
+            >
               <div className="flex items-center">
                 <div className="mr-17 flex items-center justify-center">
                   <Image
@@ -146,12 +164,7 @@ const CreateDiscussion = ({
                 </div>
                 <h4 className=" text-gray-text">Discussion settings</h4>
               </div>
-              <button
-                onClick={() => {
-                  setDiscussionSettings(!discussionSettings);
-                  setShowDiscussions(!showDiscussions);
-                }}
-              >
+              <button>
                 <Image
                   src={
                     discussionSettings
@@ -190,6 +203,9 @@ const CreateDiscussion = ({
         )}
         {activeSection === "ScoreSettings" && (
           <ScoreSettings setActiveSection={setActiveSection} />
+        )}
+        {activeSection === "Calendar" && (
+          <Calendar setActiveSection={setActiveSection} />
         )}
       </div>
     </div>

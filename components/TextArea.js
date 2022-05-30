@@ -37,7 +37,7 @@ const TextArea = ({ value, setValue, placeholder, required, disabled }) => {
   return (
     <div className="flex flex-col flex-grow relative w-300 ">
       {showPicker && (
-        <div className="absolute  -top-96  -right-96 w-333">
+        <div className="absolute  -top-96  -right-28 w-333">
           <Picker pickerStyle={{ width: "100%" }} onEmojiClick={onEmojiClick} />
         </div>
       )}
@@ -47,6 +47,7 @@ const TextArea = ({ value, setValue, placeholder, required, disabled }) => {
         value={value}
         onChange={(evt) => setValue(evt.target.value)}
         name=""
+        className=" border-none"
       ></textarea>
 
       <div className="h-24 flex items-center  gap-10">
