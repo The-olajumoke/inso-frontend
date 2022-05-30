@@ -17,7 +17,7 @@ const Contact = () => {
           <h6 className=" w-182  text-gray-text">Name:</h6>
           <input
             type="text"
-            className="h-40 px-15 border border-blue-lightBlue w-414"
+            className="h-40 px-15 border  border-blue-inputBlue w-414"
             placeholder="Input  your name"
           />
         </div>
@@ -25,7 +25,7 @@ const Contact = () => {
           <h6 className=" w-182  text-gray-text">Email address:</h6>
           <input
             type="text"
-            className="h-40 px-15 border border-blue-lightBlue w-414"
+            className="h-40 px-15 border  border-blue-inputBlue w-414"
             placeholder="Input email address"
           />
         </div>
@@ -34,7 +34,7 @@ const Contact = () => {
           <textarea
             type="text"
             placeholder="What would you like to tell?"
-            className="w-414 border border-blue-lightBlue py-12 px-15 h-158 "
+            className="w-414 border  border-blue-inputBlue py-12 px-15 h-158 "
           ></textarea>
         </div>
         <div className="w-600 flex justify-end ">

@@ -10,15 +10,8 @@ const Input = ({
   required,
   disabled,
   errorOnRequired,
-  isRequired,
   handleKeyUp,
 }) => {
-  const [activeInput, setActiveInput] = useState(false);
-
-  const handleInputFocus = () => {
-    setActiveInput(true);
-  };
-
   return (
     <div className="flex flex-col mb-20 relative" disabled={disabled}>
       {value.length ? (

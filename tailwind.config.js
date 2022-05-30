@@ -62,7 +62,7 @@ module.exports = {
         darkPretzl: "#001E2F",
       },
       other: {
-        danger: "#FE2712",
+        danger: " #E84949",
         overlay: "rgba(255, 255, 255,0.2)",
         disabled: "#F0F0F0",
         disabledText: "#C1C1C1",
@@ -311,6 +311,7 @@ module.exports = {
       198: "19.8rem",
       199: "19.9rem",
       200: "20rem",
+      255: "25.5rem",
     },
     padding: {
       0: "0px",

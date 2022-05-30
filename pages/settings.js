@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import Profile from "@/components/Profile";
+import Security from "@/components/Security";
+import Plan from "@/components/Plan";
 
 const Settings = () => {
   const [activeSetting, setActiveSetting] = useState("profile");
@@ -24,7 +26,10 @@ const Settings = () => {
             <p className=" text-white-white ml-20 mr-138">
               Your profile is incomplete. Complete it access all Inso features.
             </p>
-            <button className="border-2 border-other-overlay w-120 h-34 text-white-white  text-xs rounded">
+            <button
+              className="border-2 border-other-overlay w-120 h-34 text-white-white  text-xs rounded"
+              onClick={() => setEditProfile(true)}
+            >
               Edit profile
             </button>
           </div>
@@ -61,7 +66,14 @@ const Settings = () => {
             </button>
           </div>
 
-          {activeSetting === "profile" && <Profile />}
+          {activeSetting === "profile" && (
+            <Profile
+              editProfile={editProfile}
+              setEditProfile={setEditProfile}
+            />
+          )}
+          {activeSetting === "security" && <Security editProfile={true} />}
+          {activeSetting === "plan" && <Plan />}
         </div>
       </>
     </Layout>
