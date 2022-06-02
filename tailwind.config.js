@@ -27,12 +27,7 @@ module.exports = {
       sm: "10px",
       xs: "6px",
       lg: "8px",
-      //   sm: "2px",
-      //   md: "4px",
-      //   DEFAULT: "8px",
-      //   lg: "16px",
-      //   xl: "24px",
-      //   "4xl": "124px",
+      xl: "15px",
       full: "100%",
     },
     colors: {
@@ -57,9 +52,11 @@ module.exports = {
         footerGrey: "#FCFCFC",
         labelGrey: " #8692A6",
         createDisc: "#F9F9F9",
+        analyticsGray: "#BBBBBB",
       },
       black: {
         darkPretzl: "#001E2F",
+        analText: "#2E2E2E",
       },
       other: {
         danger: " #E84949",
@@ -981,6 +978,7 @@ module.exports = {
         350: "35rem",
         400: "39rem",
         439: "43.9rem",
+        445: "44.5rem",
         460: "46rem",
         548: "54.8rem",
         660: "66rem",

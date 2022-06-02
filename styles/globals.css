@@ -94,5 +94,20 @@ input::-ms-input-placeholder {
 .btn-nonActive{
     @apply bg-blue-lightBlue   text-gray-text font-normal rounded text-center flex items-center justify-center outline-none
 }
+.btn-analNonActive{
+    @apply  bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none
+}
+
+::-webkit-progress-bar {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
+
+::-webkit-progress-value {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #0EB4F6;
+}
 }
 

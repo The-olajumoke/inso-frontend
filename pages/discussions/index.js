@@ -58,7 +58,7 @@ const index = () => {
       <div className=" h-full py-50 px-50">
         <div className="flex justify-between w-full mb-33">
           <button
-            className="btn text-sm w-259 px-25 flex justify-start items-center h-48"
+            className="btn text-sm w-259 px-25 flex justify-start items-center h-48 "
             onClick={() => setCreateDiscussion(true)}
           >
             <div className="flex justify-center items-center mr-15">

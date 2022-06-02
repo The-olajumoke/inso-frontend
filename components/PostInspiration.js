@@ -52,7 +52,7 @@ const PostInspiration = ({ setActiveSection }) => {
           >
             Synthesizing
           </button>
-        </div>{" "}
+        </div>
         {activeInspiration === "posting" && (
           <div>
             <div className=" h-250 overflow-auto">
