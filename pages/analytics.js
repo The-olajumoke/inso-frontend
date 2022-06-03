@@ -67,7 +67,7 @@ const Analytics = () => {
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
                 <p className=" text-primary-darkGreen ">Discussion B</p>
                 <Image
-                  src="/icons/arrow_down_blue.svg"
+                  src="/icons/arrow_down_green.svg"
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -96,7 +96,19 @@ const Analytics = () => {
         </div>
         <div className="grid  grid-cols-5">
           <div className="col-span-3  mr-18 flex flex-col">
-            <div className="h-445  mb-18 bg-white-white rounded-xl"></div>
+            <div className="h-445  mb-18 bg-white-white rounded-xl py-16 px-27">
+              <div className="flex items-center">
+                <h6 className=" text-primary-darkGreen mr-18">Active Users </h6>
+                <Image
+                  src="/icons/arrow_down_green.svg"
+                  alt=" Discussion dropdown "
+                  draggable="false"
+                  layout="fixed"
+                  width="10"
+                  height="5"
+                />
+              </div>
+            </div>
             <div>
               <div className="h-45 mb-4  flex  items-center justify-center bg-white-white rounded-t-xl">
                 <button
@@ -146,9 +158,10 @@ const Analytics = () => {
                               {data.value}%
                             </span>
                           </div>
-                          <ProgressBar
-                            className="progressBarBlue"
+                          <progress
+                            className={`${styles.progressBarBlue} w-full`}
                             value={data.value}
+                            max={100}
                           />
                         </div>
                       ))}
@@ -170,15 +183,12 @@ const Analytics = () => {
                               {data.value}%
                             </span>
                           </div>
-                          <ProgressBar
-                            className="progressBarGreen"
-                            value={data.value}
-                          />
-                          {/* <progress
+
+                          <progress
                             className={`${styles.progressBarGreen} w-full`}
-                            value={value}
+                            value={data.value}
                             max={100}
-                          /> */}
+                          />
                         </div>
                       ))}
                     </div>
@@ -188,8 +198,181 @@ const Analytics = () => {
             </div>
           </div>
           <div className="col-span-2 grid grid-cols-5  bg-white-white rounded-xl">
-            <div className="border col-span-3"></div>
-            <div className="border col-span-2"></div>
+            <div className=" col-span-3 flex flex-col">
+              <p className=" text-primary-darkGreen h-49 px-29 flex items-center justify-start">
+                Engagement Metrics
+              </p>
+              <div className="  flex-grow w-full border-t-2  border-r-2 border-blue-inputBlue px-29 py-11 ">
+                <p className=" text-black-analText mb-20 ">Participants:</p>
+                <p className=" text-black-analText mb-20">Total Posts:</p>
+                <p className=" text-black-analText mb-20">
+                  Total session Time:
+                </p>
+                <p className=" text-black-analText mb-20">
+                  Average session Time:
+                </p>
+                <p className=" text-black-analText mb-20">Total word count:</p>
+                <p className=" text-black-analText mb-20">
+                  Average word count:
+                </p>
+                <p className=" text-black-analText mb-20">Longest thread:</p>
+                <p className=" text-black-analText mb-20">Average thread:</p>
+                <p className=" text-black-analText mb-20">Total Upvotes:</p>
+                <p className=" text-black-analText mb-20">
+                  Percent of posts upvoted:
+                </p>
+                <p className=" text-black-analText mb-20">
+                  Percent of perfect scores:
+                </p>
+                <p className=" text-black-analText mb-20">
+                  Post inspirations used:
+                </p>
+                <p className=" text-black-analText mb-20">Total emojis:</p>
+              </div>
+            </div>
+            <div className="col-span-2">
+              <div className="grid grid-cols-2  h-49">
+                <p className="  text-gray-analyticsGray   flex items-center justify-center">
+                  A
+                </p>
+                <p className="  text-gray-analyticsGray  flex items-center justify-center">
+                  B
+                </p>
+              </div>
+              <div className=" w-full border-t-2  border-blue-inputBlue py-11  ">
+                {/* Participant */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* Total Post*/}
+
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* Total session Time */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* Avg session time */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* Total word count */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* Averagge word count */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* Longest thread */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* Avg thread */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* total upvotes */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* % of posts upvoted */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* % of perfect scores */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* %of post insp used */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+                {/* emojis used */}
+                <div className=" flex w-full mb-20">
+                  <p className="flex flex-grow justify-center items-center text-black-analText ">
+                    12
+                  </p>
+
+                  <p className="flex flex-grow justify-center items-center  text-primary-blue ">
+                    12
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
