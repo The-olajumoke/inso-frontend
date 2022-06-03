@@ -1,6 +1,6 @@
 import Head from "next/head";
-import React, { useState, useContext } from "react";
-import Header from ".@/components/Header";
+import React, { useState } from "react";
+import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 // import { GlobalContext } from "@/context/Provider";
 
