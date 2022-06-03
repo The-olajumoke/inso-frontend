@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import Image from "next/image";
-import ProgressBar from "@/components/ProgressBar";
 import styles from "@/styles/progressbar.module.css";
 
 const Analytics = () => {

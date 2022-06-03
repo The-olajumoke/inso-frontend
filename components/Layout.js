@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React, { useState, useContext } from "react";
-import Header from "./Header";
-import Sidebar from "./sidebar";
-import { GlobalContext } from "@/context/Provider";
+import Header from ".@/components/Header";
+import Sidebar from "@/components/Sidebar";
+// import { GlobalContext } from "@/context/Provider";
 
 const Layout = ({ title, children, searchBar, bgColor }) => {
   const [navSize, setNavSize] = useState("small");

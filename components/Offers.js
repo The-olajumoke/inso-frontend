@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import styles from "@/styles/home.module.css";
+import styles from "@/styles/Home.module.css";
 const Offers = () => {
   return (
     <div className="pl-163 pr-139 py-70">
