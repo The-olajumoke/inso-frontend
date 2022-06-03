@@ -1,0 +1,22 @@
+.progressBarBlue::-webkit-progress-bar {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
+
+.progressBarBlue::-webkit-progress-value {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #0EB4F6;
+}
+.progressBarGreen::-webkit-progress-bar {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
+
+.progressBarGreen::-webkit-progress-value {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #0EB4F6;
+}

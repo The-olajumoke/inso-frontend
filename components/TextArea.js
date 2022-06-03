@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 // import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import "react-quill/dist/quill.bubble.css";
+// import "react-quill/dist/quill.snow.css";
+// import "react-quill/dist/quill.bubble.css";
 
 const TextArea = ({ value, setValue, placeholder, required, disabled }) => {
   const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
   // const ReactQuill = dynamic(() => import("react-quill"), {
   //   ssr: false,
   // });
-  const ReactQuill = dynamic(import("react-quill"), {
-    ssr: false,
-  });
+  // const ReactQuill = dynamic(import("react-quill"), {
+  //   ssr: false,
+  // });
 
   const [showPicker, setShowPicker] = useState(false);
 

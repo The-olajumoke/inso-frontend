@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import ProgressBar from "@/components/ProgressBar";
+import styles from "@/styles/progressbar.module.css";
+
 const Analytics = () => {
   const [activeInspiration, setActiveInspiration] = useState("posting");
 
@@ -144,7 +146,10 @@ const Analytics = () => {
                               {data.value}%
                             </span>
                           </div>
-                          <ProgressBar value={data.value} />
+                          <ProgressBar
+                            className="progressBarBlue"
+                            value={data.value}
+                          />
                         </div>
                       ))}
                     </div>
@@ -165,7 +170,15 @@ const Analytics = () => {
                               {data.value}%
                             </span>
                           </div>
-                          <ProgressBar value={data.value} />
+                          <ProgressBar
+                            className="progressBarGreen"
+                            value={data.value}
+                          />
+                          {/* <progress
+                            className={`${styles.progressBarGreen} w-full`}
+                            value={value}
+                            max={100}
+                          /> */}
                         </div>
                       ))}
                     </div>
@@ -174,7 +187,10 @@ const Analytics = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2  bg-white-white rounded-xl"></div>
+          <div className="col-span-2 grid grid-cols-5  bg-white-white rounded-xl">
+            <div className="border col-span-3"></div>
+            <div className="border col-span-2"></div>
+          </div>
         </div>
       </div>
     </Layout>
