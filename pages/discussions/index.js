@@ -6,7 +6,7 @@ import Layout from "@/components/Layout";
 import Image from "next/image";
 import CreateDiscussion from "@/components/CreateDiscussion";
 
-const index = () => {
+const Index = () => {
   let loading = false;
   // const discussions = [
   //   {
@@ -136,4 +136,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

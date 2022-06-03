@@ -100,7 +100,7 @@ const LoginPage = () => {
               </button>
             </form>
             <h5 className="mb-24">
-              If you don't have an account,{" "}
+              If you don&#39;t have an account,{" "}
               <Link passHref href="/auth/signup">
                 <button className=" text-primary-darkGreen font-medium">
                   Sign up
