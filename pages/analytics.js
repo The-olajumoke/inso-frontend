@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import styles from "@/styles/progressbar.module.css";
+import LineChart from "chart/LineChart";
 
 const Analytics = () => {
   const [activeInspiration, setActiveInspiration] = useState("posting");
@@ -95,8 +96,8 @@ const Analytics = () => {
         </div>
         <div className="grid  grid-cols-5">
           <div className="col-span-3  mr-18 flex flex-col">
-            <div className="h-445  mb-18 bg-white-white rounded-xl py-16 px-27">
-              <div className="flex items-center">
+            <div className="h-445  mb-18 bg-white-white rounded-xl py-16 px-27  flex flex-col">
+              <div className="flex items-center mb-40">
                 <h6 className=" text-primary-darkGreen mr-18">Active Users </h6>
                 <Image
                   src="/icons/arrow_down_green.svg"
@@ -106,6 +107,25 @@ const Analytics = () => {
                   width="10"
                   height="5"
                 />
+              </div>
+              <div className="flex-grow">
+                <LineChart
+                  lineData1={[18, 14, 25, 18, 16, 22, 15, 28, 5, 5, 46]}
+                  lineData2={[25, 16, 23, 20, 19, 20, 12, 32, 25, 15, 46]}
+                  labels={["", "", "", "", "", "", "", ""]}
+                />
+              </div>
+              <div className="w-full  h-45 pl-8">
+                <div className="flex items-center gap-4">
+                  <p className=" text-primary-blue">Apr 1</p>
+                  <div className="flex-grow border border-blue-inputBlue"></div>
+                  <p className=" text-primary-blue">Apr 28</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <p className=" text-primary-darkGreen">May 1</p>
+                  <div className="flex-grow border border-blue-inputBlue"></div>
+                  <p className=" text-primary-darkGreen">May 28</p>
+                </div>
               </div>
             </div>
             <div>

@@ -8,41 +8,41 @@ import CreateDiscussion from "@/components/CreateDiscussion";
 
 const Index = () => {
   let loading = false;
-  // const discussions = [
-  //   {
-  //     id: 1,
-  //     userName: "Patrick Dempsey",
-  //     users: 5,
-  //     title: "Price Action in Foreign Exchange",
-  //     date: "Mar 21",
-  //     code: "51RP70F",
-  //   },
-  //   {
-  //     id: 2,
-  //     userName: "Patrick Dempsey",
-  //     users: 5,
-  //     title: "Price Action in Foreign Exchange",
-  //     date: "Mar 21",
-  //     code: "51RP70F",
-  //   },
-  //   {
-  //     id: 3,
-  //     userName: "Patrick Dempsey",
-  //     users: 5,
-  //     title: "Price Action in Foreign Exchange",
-  //     date: "Mar 21",
-  //     code: "51RP70F",
-  //   },
-  //   {
-  //     id: 4,
-  //     userName: "Patrick Dempsey",
-  //     users: 5,
-  //     title: "Price Action in Foreign Exchange",
-  //     date: "Mar 21",
-  //     code: "51RP70F",
-  //   },
-  // ];
-  const discussions = [];
+  const discussions = [
+    {
+      id: 1,
+      userName: "Patrick Dempsey",
+      users: 5,
+      title: "Price Action in Foreign Exchange",
+      date: "Mar 21",
+      code: "51RP70F",
+    },
+    {
+      id: 2,
+      userName: "Patrick Dempsey",
+      users: 5,
+      title: "Price Action in Foreign Exchange",
+      date: "Mar 21",
+      code: "51RP70F",
+    },
+    {
+      id: 3,
+      userName: "Patrick Dempsey",
+      users: 5,
+      title: "Price Action in Foreign Exchange",
+      date: "Mar 21",
+      code: "51RP70F",
+    },
+    {
+      id: 4,
+      userName: "Patrick Dempsey",
+      users: 5,
+      title: "Price Action in Foreign Exchange",
+      date: "Mar 21",
+      code: "51RP70F",
+    },
+  ];
+  // const discussions = [];
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
   const [createDiscussion, setCreateDiscussion] = useState(false);

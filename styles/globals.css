@@ -12,7 +12,7 @@
     }
 
        h1 {
-        @apply text-5xl  text-gray-text font-medium;
+        @apply text-5xl text-gray-text font-medium;
     }
     
     h2 {
@@ -24,7 +24,7 @@
     }
     
     h4 {
-        @apply text-xl  ;
+        @apply text-xl vp-768:text-lg  vp-600:text-sm  ;
     }
     
     h5 {
@@ -32,7 +32,7 @@
     }
     
     h6 {
-        @apply text-md;
+        @apply text-md vp-600:text-sm;
     }
 
     

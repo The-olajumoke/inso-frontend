@@ -13,6 +13,7 @@
         border-radius: 100px;
         height: 8px;
         width: 260px;
+
 }
 
 .planButton{
@@ -26,4 +27,32 @@
         line-height: 27px;
         color: #07A098;
         margin-top: 65px;
+}
+@media (max-width: 768px) {
+.heading {
+font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    /* Pretzl Black */
+
+    color: #2E2E2E;
+}
+}
+@media (max-width: 600px) {
+.heading {
+font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    /* Pretzl Black */
+
+    color: #2E2E2E;
+}
 }

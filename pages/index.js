@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="pt-32">
+    <div className="pt-32  vp-600:pt-21 w-full">
       <Head>
         <title>Home | Inso</title>
       </Head>

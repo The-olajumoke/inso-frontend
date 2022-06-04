@@ -92,12 +92,14 @@ const LoginPage = () => {
                 </div>
                 <span>Sign in with Google</span>
               </button>
-              <button
-                className="text-xl btn h-64 w-full mb-20"
-                disabled={isDisabled}
-              >
-                Log in
-              </button>
+              <Link passHref href="/discussions">
+                <button
+                  className="text-xl btn h-64 w-full mb-20"
+                  // disabled={isDisabled}
+                >
+                  Log in
+                </button>
+              </Link>
             </form>
             <h5 className="mb-24">
               If you don&#39;t have an account,{" "}
