@@ -20,3 +20,14 @@
     border-radius: 17.741px;
     background-color: #07A098;
 }
+.progressBarBadge::-webkit-progress-bar {
+    height: 2px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
+
+.progressBarBadge::-webkit-progress-value {
+    height: 2px;
+    border-radius: 17.741px;
+    background-color: #07A098;
+}

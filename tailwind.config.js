@@ -44,6 +44,10 @@ module.exports = {
       blue: {
         lightBlue: "#ECF4F4",
         inputBlue: " #F2FAFF",
+        progressBlue: " #E9EFF7",
+      },
+      green: {
+        lightGreen: "#F3FAFA",
       },
       gray: {
         text: "#686868",
@@ -54,6 +58,7 @@ module.exports = {
         labelGrey: " #8692A6",
         createDisc: "#F9F9F9",
         analyticsGray: "#BBBBBB",
+        notificationBg: "#CBCBCB",
       },
       black: {
         darkPretzl: "#001E2F",
@@ -66,9 +71,10 @@ module.exports = {
         disabledText: "#C1C1C1",
         faintBlue: " #DAF2FF",
         success: " #04BE00",
+        lightRed: "#FFF5F5",
       },
       border: {
-        green: "rgba(144, 215, 255, 0.3)",
+        green: "rgba(144, 215, 255, 0.1)",
         line: "#0EB4F6",
         dropdownLine: "#C5C5C5",
         settingsLine: "rgba(7, 160, 152, 0.05)",
@@ -739,6 +745,7 @@ module.exports = {
         198: "19.8rem",
         199: "19.9rem",
         200: "20rem",
+        203: "20.3rem",
         210: "21rem",
         230: "23rem",
         259: "25.9rem",
@@ -760,6 +767,7 @@ module.exports = {
         556: "55.6rem",
         561: "56.1rem",
         600: "60rem",
+        613: "61.3rem",
         634: "63.4rem",
         639: "63.9rem",
         660: "66rem",
@@ -975,8 +983,10 @@ module.exports = {
         220: "22rem",
         250: "25rem",
         259: "25.9rem",
+        272: "27.2rem",
         295: "29.5rem",
         300: "30rem",
+        317: "31.7rem",
         350: "35rem",
         400: "39rem",
         439: "43.9rem",

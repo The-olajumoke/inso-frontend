@@ -11,7 +11,7 @@ const Settings = () => {
   const [editProfile, setEditProfile] = useState(false);
 
   return (
-    <Layout>
+    <Layout title="Inso | Settings" >
       <>
         {incompleteProfile && (
           <div className="h-80 bg-primary-darkGreen pl-50  flex items-center">

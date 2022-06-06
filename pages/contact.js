@@ -6,7 +6,7 @@ const Contact = () => {
   const [Email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   return (
-    <Layout>
+    <Layout title="Inso | Contact">
       <div className="p-40">
         <h4 className=" text-primary-darkGreen mb-18">Contact Us</h4>
         <h5 className="w-528 mb-49    text-gray-text">
