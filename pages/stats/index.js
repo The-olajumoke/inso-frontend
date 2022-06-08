@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/progressbar.module.css";
+import Barchart from "chart/Barchart";
 const zIndex = () => {
   return (
     <Layout title="Inso | Stats" bgColor="bg-gray-background">
@@ -36,13 +37,14 @@ const zIndex = () => {
         </div>
         <div className=" grid grid-cols-7 gap-14 mb-41">
           <div className=" col-span-4">
+            {" "}
             <h4 className=" text-primary-darkGreen mb-15">Achievements</h4>
             <div className=" px-30 py-13 h-auto rounded-xl bg-white-white shadow-lg">
               <div className="flex justify-between mb-14">
                 <p className=" text-primary-darkGreen">
                   Badges <span className=" text-other-disabledText">(2)</span>{" "}
                 </p>
-                <Link passHref href="/stats/badges">
+                <Link passHref href="/badges">
                   <h6 className="  cursor-pointer text-primary-blue">
                     View all{" "}
                   </h6>
@@ -225,14 +227,72 @@ const zIndex = () => {
               </div>
             </div>
           </div>
-          <div className=" col-span-3 flex flex-col  border">
+          <div className=" col-span-3 flex flex-col">
             {" "}
             <h4 className=" text-primary-darkGreen mb-15">Active days</h4>
-            <div className=" h-272 rounded-xl bg-white-white shadow-lg flex-grow py-14 px-22">
-              <div className="border h-34  bg-border-green ">
-                <h6 className=" text-black-analText">
-                  Discussion set / Discussions
-                </h6>
+            <div className=" h-272 rounded-xl bg-white-white shadow-lg flex-grow flex justify-between flex-col  py-14 px-22">
+              <div className="mb-40 flex items-center gap-4">
+                <div className=" flex-grow h-34 px-21   bg-border-green  rounded-xl  flex items-center ">
+                  <h6 className=" text-black-analText mr-14">
+                    Discussion set / Discussions
+                  </h6>
+                  <Image
+                    src="/icons/arrow_down_green.svg"
+                    alt=" Discussion dropdown "
+                    draggable="false"
+                    layout="fixed"
+                    width="10"
+                    height="5"
+                  />
+                </div>
+                <div className=" h-34  bg-other-lightRed  rounded-xl px-15  flex items-center ">
+                  <Image
+                    src="/icons/clock.svg"
+                    alt=" Discussion dropdown "
+                    draggable="false"
+                    layout="fixed"
+                    width="14"
+                    height="14"
+                  />
+                  <h6 className=" text-black-analText  ml-15">
+                    <span className=" text-other-danger">14</span> days to close
+                    date
+                  </h6>
+                </div>
+              </div>
+              <Barchart
+                title="Product Sales"
+                thick={9}
+                labels={[
+                  "Jan",
+                  "Feb",
+                  "Mar",
+                  "Apr",
+                  "May",
+                  "Jun",
+                  "Jul",
+                  "Aug",
+                  "Sep",
+                  "Oct",
+                  "Nov",
+                  "May",
+                  "Jun",
+                  "Jul",
+                  "Jul",
+                  "Aug",
+                  "Sep",
+                  "Oct",
+                  "Nov",
+                  "Dec",
+                ]}
+                barData={[
+                  12, 19, 3, 5, 2, 12, 19, 3, 12, 19, 3, 10, 19, 3, 19, 3, 12,
+                  19, 3, 19, 3, 12, 19, 3,
+                ]}
+              />
+              <div className="flex justify-between w-full items-center">
+                <p className="text-black-analText">Mar 1 </p>
+                <p className="text-black-analText">Mar 28 </p>
               </div>
             </div>
           </div>

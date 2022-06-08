@@ -48,7 +48,7 @@ const LineChart = ({ labels, lineData1, lineData2 }) => {
       {
         data: lineData2,
         backgroundColor: "rgb(255, 0, 0)",
-        borderColor: " #07A098",
+        borderColor: "#07A098",
         borderWidth: 2,
         lineTension: 0.5,
         borderCapStyle: "butt",

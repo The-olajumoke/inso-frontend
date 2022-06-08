@@ -7,10 +7,15 @@ const Sidebar = ({ navSize, userPicture }) => {
   const router = useRouter();
 
   return (
+    // <div
+    //   className={`${styles.sidebarContainer} ${
+    //     navSize === "small" ? "w-109" : "w-333"
+    //   }   fixed flex flex-col justify-between  vp-980:hidden  overflow-y-auto`}
+    // >
     <div
       className={`${styles.sidebarContainer} ${
         navSize === "small" ? "w-109" : "w-333"
-      }   fixed flex flex-col justify-between  vp-980:hidden `}
+      }   flex flex-col justify-between  vp-980:hidden  overflow-y-auto`}
     >
       <div className=" flex  pl-50">
         {userPicture ? (
@@ -30,8 +35,10 @@ const Sidebar = ({ navSize, userPicture }) => {
         <div className="">
           <Link href="/discussions" passHref>
             <div
-              className={`${router.pathname.startsWith("/discussions") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/discussions") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -52,8 +59,10 @@ const Sidebar = ({ navSize, userPicture }) => {
           </Link>
           <Link href="/notifications" passHref>
             <div
-              className={`${router.pathname.startsWith("/notifications") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/notifications") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -74,8 +83,10 @@ const Sidebar = ({ navSize, userPicture }) => {
           </Link>
           <Link href="/stats" passHref>
             <div
-              className={`${router.pathname.startsWith("/stats") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/stats") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -94,8 +105,10 @@ const Sidebar = ({ navSize, userPicture }) => {
           </Link>
           <Link href="/analytics" passHref>
             <div
-              className={`${router.pathname.startsWith("/analytics") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/analytics") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -116,8 +129,10 @@ const Sidebar = ({ navSize, userPicture }) => {
           </Link>
           <Link href="/charts" passHref>
             <div
-              className={`${router.pathname.startsWith("/charts") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/charts") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -136,8 +151,10 @@ const Sidebar = ({ navSize, userPicture }) => {
           </Link>
           <Link href="/calendar" passHref>
             <div
-              className={`${router.pathname.startsWith("/calendar") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/calendar") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -156,8 +173,10 @@ const Sidebar = ({ navSize, userPicture }) => {
           </Link>
           <Link href="/contact" passHref>
             <div
-              className={`${router.pathname.startsWith("/contact") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/contact") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -178,8 +197,10 @@ const Sidebar = ({ navSize, userPicture }) => {
           </Link>
           <Link href="/settings" passHref>
             <div
-              className={`${router.pathname.startsWith("/settings") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+              className={`${
+                router.pathname.startsWith("/settings") &&
+                "bg-primary-darkGreen  justify-start text-white-white "
+              } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
             >
               <Image
                 src={
@@ -199,12 +220,14 @@ const Sidebar = ({ navSize, userPicture }) => {
         </div>
       </div>
       <div
-        className={`${navSize === "small" &&
-          "pr-0 pl-50"} w-full px-50 mt-60  `}
+        className={`${
+          navSize === "small" && "pr-0 pl-50"
+        } w-full px-50 mt-60  `}
       >
         <div
-          className={`${navSize === "small" &&
-            " rounded-full w-40 "} w-full h-40 border border-border-line rounded flex items-center  justify-center  `}
+          className={`${
+            navSize === "small" && " rounded-full w-40 "
+          } w-full h-40 border border-border-line rounded flex items-center  justify-center  `}
         >
           <Image
             src="/icons/download.svg"
@@ -215,8 +238,9 @@ const Sidebar = ({ navSize, userPicture }) => {
             width="24"
           />
           <p
-            className={` ${navSize === "small" &&
-              " hidden"}  ml-17 text-primary-darkGreen border  bg-primary-darkGreen`}
+            className={` ${
+              navSize === "small" && " hidden"
+            }  ml-17 text-primary-darkGreen border  bg-primary-darkGreen`}
           >
             Upgrade
           </p>

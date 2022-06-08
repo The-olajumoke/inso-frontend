@@ -33,14 +33,14 @@ const Index = () => {
       date: "Mar 21",
       code: "51RP70F",
     },
-    {
-      id: 4,
-      userName: "Patrick Dempsey",
-      users: 5,
-      title: "Price Action in Foreign Exchange",
-      date: "Mar 21",
-      code: "51RP70F",
-    },
+    // {
+    //   id: 4,
+    //   userName: "Patrick Dempsey",
+    //   users: 5,
+    //   title: "Price Action in Foreign Exchange",
+    //   date: "Mar 21",
+    //   code: "51RP70F",
+    // },
   ];
   // const discussions = [];
   const [filter, setFilter] = useState("");

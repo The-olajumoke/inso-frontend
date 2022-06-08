@@ -27,3 +27,25 @@
 
     font-size: 1.3rem;
 }
+/* @media (min-width: 980px){
+    .searchInput{
+        width:2px;
+         background-color: red;
+    }
+}*/
+@media (min-width: 600px){
+    .searchInput{
+        width: 400px;
+        flex-grow: 1;
+    }
+} 
+/* @media (max-width: 980px){
+    .searchInput{
+        width:2px
+    }
+}
+@media (max-width: 600px){
+    .searchInput{
+        width:2px
+    }
+} */

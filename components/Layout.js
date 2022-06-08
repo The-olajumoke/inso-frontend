@@ -31,7 +31,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         <title>{title || "Custigrow"}</title>
       </Head>
 
-      <div className="  h-screen flex flex-col">
+      <div className=" border-2 flex flex-col">
         <Header
           navSize={navSize}
           handleNavSize={handleNavSize}
@@ -40,11 +40,11 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         <div className="flex flex-grow   ">
           <Sidebar navSize={navSize} />
           <div className={`w-full flex  `}>
-            <div
+            {/* <div
               className={`${
                 navSize === "small" ? "w-109" : "w-333"
               }  vp-980:hidden`}
-            ></div>
+            ></div> */}
             <div className={`${bgColor} flex-grow  overflow-y-auto`}>
               {children}
             </div>

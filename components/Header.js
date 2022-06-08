@@ -30,7 +30,7 @@ const Header = ({ navSize, handleNavSize, searchBar }) => {
         />
       </div>
       {searchBar && (
-        <div className="ml-176">
+        <div className="ml-176  ">
           <input
             type="text"
             className={`${styles.searchInput}  border-none`}
