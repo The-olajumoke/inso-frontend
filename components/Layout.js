@@ -31,7 +31,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         <title>{title || "Custigrow"}</title>
       </Head>
 
-      <div className=" border-2 flex flex-col">
+      <div className=" flex flex-col">
         <Header
           navSize={navSize}
           handleNavSize={handleNavSize}

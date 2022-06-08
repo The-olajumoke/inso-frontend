@@ -31,28 +31,28 @@ const Analytics = () => {
         <div className=" grid grid-cols-5 h-81 justify-between mb-29">
           <div className=" col-span-2 px-32 h-full  bg-white-white rounded-sm  shadow-xs flex items-center justify-between mr-30">
             <div className="flex flex-col  items-start">
-              <p className=" text-black-analText">Sets</p>
+              <p className=" text-black-analText text-xs">Sets</p>
               <h3 className=" text-primary-darkGreen">14</h3>
             </div>
             <div className="flex flex-col  items-start">
-              <p className=" text-black-analText">Discussions</p>
+              <p className=" text-black-analText text-xs">Discussions</p>
               <h3 className=" text-primary-darkGreen">38</h3>
             </div>
             <div className="flex flex-col  items-start">
-              <p className=" text-black-analText">Users</p>
+              <p className=" text-black-analText text-xs">Users</p>
               <h3 className=" text-primary-darkGreen">100</h3>
             </div>
             <div className="flex flex-col  items-start">
-              <p className=" text-black-analText">Posts</p>
+              <p className=" text-black-analText text-xs">Posts</p>
               <h3 className=" text-primary-darkGreen">1250</h3>
             </div>
           </div>
           <div className=" col-span-3 px-32 h-full bg-white-white rounded-sm  shadow-xs flex   flex-col items-center  justify-center">
             <div className=" flex items-center justify-between w-full">
-              <p className=" w-135  text-gray-text mr-48">
+              <span className=" text-xs w-135  text-gray-text mr-48">
                 {" "}
-                Compare discussion :
-              </p>
+                Compare discussion:
+              </span>
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between mr-12">
                 <p className=" text-border-line ">Discussion A</p>
                 <Image
@@ -77,7 +77,10 @@ const Analytics = () => {
               </div>
             </div>
             <div className=" flex items-center justify-between w-full">
-              <p className="w-135 text-gray-text mr-48"> Timeframe :</p>
+              <span className="w-135 text-xs text-gray-text mr-48">
+                {" "}
+                Timeframe :
+              </span>
               <div className="w-230 h-34 px-20 flex items-center justify-between mr-12">
                 <p className="  text-gray-analyticsGray ">
                   Jan 1 - Jan 12, 2022

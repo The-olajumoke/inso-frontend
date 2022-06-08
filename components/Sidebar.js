@@ -7,11 +7,6 @@ const Sidebar = ({ navSize, userPicture }) => {
   const router = useRouter();
 
   return (
-    // <div
-    //   className={`${styles.sidebarContainer} ${
-    //     navSize === "small" ? "w-109" : "w-333"
-    //   }   fixed flex flex-col justify-between  vp-980:hidden  overflow-y-auto`}
-    // >
     <div
       className={`${styles.sidebarContainer} ${
         navSize === "small" ? "w-109" : "w-333"
