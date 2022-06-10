@@ -6,6 +6,8 @@ import Layout from "@/components/Layout";
 import Image from "next/image";
 import CreateDiscussion from "@/components/CreateDiscussion";
 
+import styles from "@/styles/discussion.module.css";
+
 const Index = () => {
   let loading = false;
   const discussions = [
@@ -33,14 +35,14 @@ const Index = () => {
       date: "Mar 21",
       code: "51RP70F",
     },
-    // {
-    //   id: 4,
-    //   userName: "Patrick Dempsey",
-    //   users: 5,
-    //   title: "Price Action in Foreign Exchange",
-    //   date: "Mar 21",
-    //   code: "51RP70F",
-    // },
+    {
+      id: 4,
+      userName: "Patrick Dempsey",
+      users: 5,
+      title: "Price Action in Foreign Exchange",
+      date: "Mar 21",
+      code: "51RP70F",
+    },
   ];
   // const discussions = [];
   const [filter, setFilter] = useState("");
@@ -55,8 +57,8 @@ const Index = () => {
       searchBar={true}
       bgColor="bg-gray-background"
     >
-      <div className=" h-full py-50 px-50">
-        <div className="flex justify-between w-full mb-33">
+      <div className=" h-auto relative p-50 vp-600:p-23 vp-980:p-46">
+        <div className="flex justify-between w-full mb-33 vp-980:hidden">
           <button
             className="btn text-sm w-259 px-25 flex justify-start items-center h-48 "
             onClick={() => setCreateDiscussion(true)}
@@ -100,6 +102,22 @@ const Index = () => {
             </button>
           </div>
         </div>
+        <div className=" hidden vp-980:flex mb-40">
+          <input
+            type="text"
+            className={`${styles.searchInput} border-none flex-grow `}
+            placeholder="Search"
+          />
+          <div className="flex items-center justify-center ml-20">
+            <Image
+              src="/icons/more_icon.svg"
+              alt="more"
+              layout="fixed"
+              width="20"
+              height="20"
+            />
+          </div>
+        </div>
 
         <div className="relative">
           {loading ? (
@@ -108,7 +126,7 @@ const Index = () => {
             </div>
           ) : discussions.length ? (
             // <div className=" grid vp-600:grid-cols-1  vp-980:grid-cols-2 vp-1024:grid-cols-3 grid-cols-4  justify-between w-full gap-x-8 gap-y-10 ">
-            <div className="flex justify-start flex-wrap gap-8">
+            <div className="flex justify-start flex-wrap gap-8 gap-y-10">
               {discussions.map((disc, index) => (
                 <DiscussionBox discussion={disc} key={index} />
               ))}
@@ -131,6 +149,18 @@ const Index = () => {
         {createDiscussion && (
           <CreateDiscussion setOpenModal={setCreateDiscussion} />
         )}
+
+        <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">
+          <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
+            <Image
+              src="/icons/add_icon_white.svg"
+              alt="no discussion"
+              layout="fixed"
+              width="14"
+              height="14"
+            />
+          </div>
+        </div>
       </div>
     </Layout>
   );

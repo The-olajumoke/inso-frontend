@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 // import { GlobalContext } from "@/context/Provider";
-
+import Image from "next/image";
 const Layout = ({ title, children, searchBar, bgColor }) => {
   const [navSize, setNavSize] = useState("small");
 
@@ -31,7 +31,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         <title>{title || "Custigrow"}</title>
       </Head>
 
-      <div className=" flex flex-col">
+      <div className=" flex flex-col vp-980:hidden">
         <Header
           navSize={navSize}
           handleNavSize={handleNavSize}
@@ -45,10 +45,47 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
                 navSize === "small" ? "w-109" : "w-333"
               }  vp-980:hidden`}
             ></div> */}
-            <div className={`${bgColor} flex-grow  overflow-y-auto`}>
+            <div className={`${bgColor}  flex-grow  overflow-y-auto`}>
               {children}
             </div>
           </div>
+        </div>
+      </div>
+      <div className="bg-gray-background py-10 hidden vp-980:flex border flex-col  h-screen ">
+        <div className=" flex h-55 w-full bg-white-white justify-between items-center  vp-600:px-23 vp-980:px-46 shadow-sm  ">
+          <div className="flex justify-center items-center">
+            <Image
+              src="/icons/hamburger_black.svg"
+              alt=" Discussion dropdown "
+              draggable="false"
+              layout="fixed"
+              width="25"
+              height="15"
+            />
+          </div>
+          <div className="flex justify-center items-center">
+            <Image
+              src="/images/inso_logo.svg"
+              alt=" Discussion dropdown "
+              draggable="false"
+              layout="fixed"
+              width="87"
+              height="41"
+            />
+          </div>
+          <div className="flex justify-center items-center ">
+            <Image
+              src="/icons/bell_black.svg"
+              alt="notifications"
+              draggable="false"
+              layout="fixed"
+              width="30"
+              height="30"
+            />
+          </div>
+        </div>
+        <div className={`${bgColor} flex-grow overflow-y-auto relative`}>
+          {children}
         </div>
       </div>
     </div>

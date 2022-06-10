@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 const RecentPost = () => {
   return (
-    <div className=" flex pt-25 items-start">
+    <div className=" flex pt-25 items-start ">
       <div className="mr-25 flex items-start  pt-5">
         <Image
           src="/icons/discussion_green.svg"
@@ -19,13 +19,11 @@ const RecentPost = () => {
           <span className=" text-primary-darkGreen">@dante</span> in{" "}
           <span className=" text-primary-blue">Price action</span>
         </h6>
-        <p className=" text-black-analText w-613 mb-7">
+        <p className=" text-gray-text w-613  mb-7 vp-768:w-auto ">
           Currently, Government agencies are discussing the dangers of dumping
           nuclear water into the ocean.
         </p>
-        <span className=" text-xs text-gray-analyticsGray">
-          posted 3 mins ago
-        </span>
+        <span className=" text-xs text-gray-analyticsGray">3 mins ago</span>
       </div>
     </div>
   );

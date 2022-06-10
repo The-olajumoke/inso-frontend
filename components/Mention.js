@@ -19,12 +19,10 @@ const Mention = () => {
           <span className=" text-primary-darkGreen">@patrick</span> mentioned
           you in <span className=" text-primary-blue">Price action</span>
         </h6>
-        <p className=" text-gray-text  w-613 mb-7">
+        <p className=" text-gray-text  w-613 vp-768:w-auto mb-7">
           I’m more concerned about the opinions of environmentalists.
         </p>
-        <span className=" text-xs text-gray-analyticsGray">
-          posted 3 mins ago
-        </span>
+        <span className=" text-xs text-gray-analyticsGray">3 mins ago</span>
       </div>
     </div>
   );

@@ -30,13 +30,11 @@ const Replied = () => {
           and 5 others replied to your post in {}
           <span className=" text-primary-blue">Price action</span>
         </h6>
-        <p className="  text-gray-text w-613 mb-7">
+        <p className="  text-gray-text w-613 vp-768:w-auto mb-7">
           Currently, Government agencies are discussing the dangers of dumping
           nuclear water into the ocean.
         </p>
-        <span className=" text-xs text-gray-analyticsGray">
-          posted 3 mins ago
-        </span>
+        <span className=" text-xs text-gray-analyticsGray">3 mins ago</span>
       </div>
     </div>
   );

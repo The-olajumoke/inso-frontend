@@ -6,8 +6,8 @@ const DiscussionBox = ({ discussion }) => {
   const [dropdown, setOpenDropdown] = useState(false);
   return (
     <div
-      style={{ width: "320px" }}
-      className="  bg-white-white rounded-sm shadow-xs py-13 px-15  flex flex-col relative   "
+      // style={{ width: "320px" }}
+      className=" vp-600:w-full vp-600:h-160  w-320 vp-980:flex-grow bg-white-white rounded-sm shadow-xs py-13 px-15  flex flex-col relative justify-between"
     >
       <div className="border-b border-border-green flex items-center justify-between pb-10 mb-12">
         <div className="flex items-center">

@@ -2,23 +2,26 @@ import Layout from "@/components/Layout";
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/progressbar.module.css";
+import Link from "next/link";
 
 const Badges = () => {
   return (
     <Layout title="Inso | Badges" bgColor="bg-white-white">
       <div className="py-25 px-40">
         <div className="flex item-center mb-22">
-          <div className="flex items-center justify-center">
-            {" "}
-            <Image
-              src="/icons/arrow_back_green.svg"
-              alt="back"
-              draggable="false"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
-          </div>
+          <Link passHref href="/stats">
+            <div className="flex items-center justify-center">
+              {" "}
+              <Image
+                src="/icons/arrow_back_green.svg"
+                alt="back"
+                draggable="false"
+                layout="fixed"
+                width="20"
+                height="20"
+              />
+            </div>
+          </Link>
           <h4 className="ml-22 text-primary-darkGreen">Badges</h4>
         </div>
 
