@@ -20,13 +20,11 @@ const Upvotes = () => {
           your post in {}
           <span className=" text-primary-blue">Price action</span>
         </h6>
-        <p className="  text-gray-text w-613 mb-7">
+        <p className="  text-gray-text w-613 vp-768:w-auto mb-7">
           This reply is a reply made by the user to the main post and is
           possibly now a thread.
         </p>
-        <span className=" text-xs text-gray-analyticsGray">
-          posted 3 mins ago
-        </span>
+        <span className=" text-xs text-gray-analyticsGray">3 mins ago</span>
       </div>
     </div>
   );

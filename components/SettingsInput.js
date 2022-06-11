@@ -11,7 +11,7 @@ const SettingsInput = ({
   const [showPassword, setShowPassword] = useState(true);
   const [currentType, setCurrentType] = useState(type);
   return (
-    <div className=" relative" disabled={disabled}>
+    <div className=" w-full relative" disabled={disabled}>
       <input
         type={currentType}
         placeholder={placeholder || "Enter"}
@@ -20,7 +20,7 @@ const SettingsInput = ({
         disabled={disabled}
         className={`${
           editProfile ? "border-2 border-blue-inputBlue" : "border-none"
-        } h-36 px-15   w-414  text-sm text-gray-text`}
+        } h-36 px-15   w-414 vp-600:w-full  text-sm text-gray-text`}
       />
       {type === "password" && (
         <div

@@ -7,9 +7,13 @@ const Security = ({ editProfile }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   return (
     <div className="mt-34">
-      <h3 className=" text-primary-darkGreen font-medium mb-47">Security</h3>
-      <div className="flex items-center mb-12">
-        <h6 className=" w-182  text-gray-text">Current Password :</h6>
+      <h3 className=" vp-600:hidden text-primary-darkGreen font-medium mb-47">
+        Security
+      </h3>
+      <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+        <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+          Current Password :
+        </h6>
 
         <SettingsInput
           type="password"
@@ -18,8 +22,10 @@ const Security = ({ editProfile }) => {
           editProfile={editProfile}
         />
       </div>
-      <div className="flex items-center mb-12">
-        <h6 className=" w-182  text-gray-text">New Password :</h6>
+      <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+        <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+          New Password :
+        </h6>
 
         <SettingsInput
           type="password"
@@ -29,8 +35,10 @@ const Security = ({ editProfile }) => {
           editProfile={editProfile}
         />
       </div>
-      <div className="flex items-center mb-29">
-        <h6 className=" w-182  text-gray-text">Confirm Password :</h6>
+      <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+        <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+          Confirm Password :
+        </h6>
 
         <SettingsInput
           type="password"

@@ -13,9 +13,11 @@ const Profile = ({ editProfile, setEditProfile }) => {
   const [level, setLevel] = useState("");
   return (
     <div className="mt-34">
-      <h3 className=" text-primary-darkGreen font-medium mb-36">Profile</h3>
+      <h3 className=" vp-600:hidden text-primary-darkGreen font-medium mb-36">
+        Profile
+      </h3>
       <div className="flex items-center mb-51">
-        <div className=" flex mr-255 items-center">
+        <div className=" flex mr-255 vp-600:mr-0 items-center">
           {userPicture ? (
             <div className=" rounded-full">
               <Image
@@ -32,12 +34,12 @@ const Profile = ({ editProfile, setEditProfile }) => {
               PD
             </div>
           )}
-          <div className="pl-25">
+          <div className="pl-25 ">
             <h6 className="text-gray-text">Patrick Dempsey</h6>
             <p className=" text-primary-darkGreen">@patrick</p>
           </div>
         </div>
-        <div>
+        <div className="vp-600:hidden">
           {editProfile ? (
             <button className="w-146 h-34 bg-primary-blue text-white-white rounded text-sm">
               Save Changes
@@ -62,8 +64,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
         </div>
       </div>
       <div className="mb-90">
-        <div className="flex items-center mb-12">
-          <h6 className=" w-182  text-gray-text">Username :</h6>
+        <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+          <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+            Username :
+          </h6>
 
           <SettingsInput
             type="text"
@@ -74,8 +78,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
           />
         </div>
 
-        <div className="flex items-center mb-12">
-          <h6 className=" w-182  text-gray-text">First Name :</h6>
+        <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+          <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+            First Name :
+          </h6>
           <SettingsInput
             type="text"
             value={firstName}
@@ -84,8 +90,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
             editProfile={editProfile}
           />
         </div>
-        <div className="flex items-center mb-12">
-          <h6 className=" w-182  text-gray-text">Last Name :</h6>
+        <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+          <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+            Last Name :
+          </h6>
           <SettingsInput
             type="text"
             value={lastName}
@@ -94,8 +102,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
             editProfile={editProfile}
           />
         </div>
-        <div className="flex items-center mb-12">
-          <h6 className=" w-182  text-gray-text">Email :</h6>
+        <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+          <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+            Email :
+          </h6>
           <SettingsInput
             type="text"
             value={email}
@@ -104,8 +114,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
             editProfile={editProfile}
           />
         </div>
-        <div className="flex items-center mb-12">
-          <h6 className=" w-182  text-gray-text">Alternative Mail :</h6>
+        <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+          <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+            Alternative Mail :
+          </h6>
           <SettingsInput
             type="text"
             value={alternativeMail}
@@ -114,8 +126,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
             editProfile={editProfile}
           />
         </div>
-        <div className="flex items-center mb-12">
-          <h6 className=" w-182  text-gray-text">Primary role :</h6>
+        <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+          <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+            Primary role :
+          </h6>
           <SettingsInput
             type="text"
             value={role}
@@ -124,8 +138,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
             editProfile={editProfile}
           />
         </div>
-        <div className="flex items-center ">
-          <h6 className=" w-182  text-gray-text">Level :</h6>
+        <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
+          <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
+            Level :
+          </h6>
           <SettingsInput
             type="text"
             value={level}

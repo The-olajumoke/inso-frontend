@@ -30,6 +30,7 @@ module.exports = {
       lg: "8px",
       xl: "15px",
       full: "100%",
+      none: "0px",
     },
     colors: {
       transparent: "transparent",
@@ -752,6 +753,7 @@ module.exports = {
         262: "26.2rem",
         260: "26rem",
         280: "28rem",
+        300: "30rem",
         311: "31.1rem",
         319: "31.9rem",
         320: "32rem",

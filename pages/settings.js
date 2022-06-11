@@ -7,11 +7,11 @@ import Plan from "@/components/Plan";
 
 const Settings = () => {
   const [activeSetting, setActiveSetting] = useState("profile");
-  const [incompleteProfile, setIncompleteProfile] = useState(true);
+  const [incompleteProfile, setIncompleteProfile] = useState(false);
   const [editProfile, setEditProfile] = useState(false);
 
   return (
-    <Layout title="Inso | Settings" >
+    <Layout title="Inso | Settings">
       <>
         {incompleteProfile && (
           <div className="h-80 bg-primary-darkGreen pl-50  flex items-center">
@@ -34,7 +34,21 @@ const Settings = () => {
             </button>
           </div>
         )}
-        <div className="p-40">
+
+        <div className="p-40  vp-600:p-23 vp-980:p-46">
+          <div className="items-center  h-50 mb-20 hidden vp-980:flex">
+            <div className="flex justify-center items-center mr-23">
+              <Image
+                src="/icons/arrow_left_green.svg"
+                alt=" Discussion dropdown "
+                draggable="false"
+                layout="fixed"
+                width="18"
+                height="18"
+              />
+            </div>
+            <h4 className=" text-black-analText">Settings</h4>
+          </div>
           <div className="flex items-center">
             <button
               className={` ${

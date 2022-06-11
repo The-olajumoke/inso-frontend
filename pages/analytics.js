@@ -27,9 +27,35 @@ const Analytics = () => {
   ];
   return (
     <Layout title="Inso | Analytics" bgColor="bg-gray-background">
-      <div className="py-25 px-40 pb-53">
-        <div className=" grid grid-cols-5 h-81 justify-between mb-29">
-          <div className=" col-span-2 px-32 h-full  bg-white-white rounded-sm  shadow-xs flex items-center justify-between mr-30">
+      <div className="py-25 px-40 vp-980:px-0">
+        <div className="items-center w-full justify-between  h-50 mb-12 hidden vp-980:flex px-20">
+          <div className="items-center flex  ">
+            <div className="flex justify-center items-center mr-23">
+              <Image
+                src="/icons/arrow_left_green.svg"
+                alt="back "
+                draggable="false"
+                layout="fixed"
+                width="14"
+                height="16"
+              />
+            </div>
+            <h4 className=" text-black-analText">Analytics</h4>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <Image
+              src="/icons/more_icon_black.svg"
+              alt=" more "
+              draggable="false"
+              layout="fixed"
+              width="18"
+              height="18"
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-5 vp-980:flex flex-col h-81 vp-980:h-auto justify-between mb-29 vp-980:gap-20">
+          <div className="col-span-2  px-32 vp-980:px-20 h-full vp-980:py-15 bg-white-white rounded-sm   shadow-xs flex items-center justify-between mr-30  vp-980:mr-0  vp-980:w-full vp-980:rounded-none ">
             <div className="flex flex-col  items-start">
               <p className=" text-black-analText text-xs">Sets</p>
               <h3 className=" text-primary-darkGreen">14</h3>
@@ -47,7 +73,7 @@ const Analytics = () => {
               <h3 className=" text-primary-darkGreen">1250</h3>
             </div>
           </div>
-          <div className=" col-span-3 px-32 h-full bg-white-white rounded-sm  shadow-xs flex   flex-col items-center  justify-center">
+          <div className="vp-980:hidden col-span-3 px-32 h-full bg-white-white rounded-sm  shadow-xs flex   flex-col items-center  justify-center">
             <div className=" flex items-center justify-between w-full">
               <span className=" text-xs w-135  text-gray-text mr-48">
                 {" "}
@@ -93,10 +119,41 @@ const Analytics = () => {
               </div>
             </div>
           </div>
+          <div className="hidden vp-980:flex flex-col bg-white-white py-26 px-20">
+            <h6 className=" text-gray-text mb-20">Compare discussion:</h6>
+            <div className="flex items-center gap-10 mb-15">
+              <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
+                <p className=" text-border-line ">Discussion A</p>
+                <Image
+                  src="/icons/arrow_down_blue.svg"
+                  alt=" Discussion dropdown "
+                  draggable="false"
+                  layout="fixed"
+                  width="10"
+                  height="5"
+                />
+              </div>
+              <span className=" text-gray-text">Jan 1 - Jan 12, 2022</span>
+            </div>
+            <div className="flex items-center gap-10">
+              <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
+                <p className=" text-primary-darkGreen ">Discussion B</p>
+                <Image
+                  src="/icons/arrow_down_green.svg"
+                  alt=" Discussion dropdown "
+                  draggable="false"
+                  layout="fixed"
+                  width="10"
+                  height="5"
+                />
+              </div>
+              <span className=" text-gray-text">May 1 - May 28, 2021</span>
+            </div>
+          </div>
         </div>
-        <div className="grid  grid-cols-5">
-          <div className="col-span-3  mr-18 flex flex-col">
-            <div className="h-445  mb-18 bg-white-white rounded-xl py-16 px-27  flex flex-col">
+        <div className="grid-cols-5 vp-980:flex flex-col grid">
+          <div className="col-span-3  mr-18 vp-980:mr-0 flex flex-col vp-980:gap-20">
+            <div className="h-445  mb-18 vp-980:mb-0 bg-white-white rounded-xl py-16 px-27  flex flex-col  vp-980:rounded-none">
               <div className="flex items-center mb-40">
                 <h6 className=" text-primary-darkGreen mr-18">Active Users </h6>
                 <Image
@@ -129,7 +186,7 @@ const Analytics = () => {
               </div>
             </div>
             <div>
-              <div className="h-45 mb-4  flex  items-center justify-center bg-white-white rounded-t-xl">
+              <div className="h-45 mb-4  flex  items-center justify-center bg-white-white rounded-t-xl vp-980:px-20">
                 <button
                   className={`${
                     activeInspiration === "posting"
@@ -161,18 +218,18 @@ const Analytics = () => {
                   Synthesizing
                 </button>
               </div>
-              <div className=" h-250  bg-white-white rounded-b-xl grid grid-cols-2">
+              <div className=" h-250 vp-980:px-20  bg-white-white rounded-b-xl grid grid-cols-2">
                 <div className="flex  flex-col">
                   {" "}
                   <div className="h-34 text-gray-analyticsGray text-sm flex justify-center items-center">
                     A (20)
                   </div>
                   <div className="border-t-2  border-r-2 border-blue-inputBlue  flex-grow pt-16 flex justify-center">
-                    <div className="w-210">
+                    <div className="w-210 vp-980:pr-20">
                       {comparisonData.map((data, index) => (
                         <div key={index} className="  mb-8">
                           <div className="flex justify-between items-center mb-5 ">
-                            <p className="w-177">{data.name}</p>
+                            <p className="w-177 vp-980:w-auto">{data.name}</p>
                             <span className=" text-black-analText text-xs">
                               {data.value}%
                             </span>
@@ -193,11 +250,11 @@ const Analytics = () => {
                     B (35)
                   </div>
                   <div className="border-t-2  border-blue-inputBlue  flex-grow pt-16 flex justify-center">
-                    <div className="w-210">
+                    <div className="w-210 vp-980:pl-20">
                       {comparisonData.map((data, index) => (
                         <div key={index} className="  mb-8">
                           <div className="flex justify-between items-center mb-5 ">
-                            <p className="w-177">{data.name}</p>
+                            <p className="w-177 vp-980:w-auto">{data.name}</p>
                             <span className=" text-black-analText text-xs">
                               {data.value}%
                             </span>
@@ -216,7 +273,7 @@ const Analytics = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2 grid grid-cols-5  bg-white-white rounded-xl">
+          <div className=" vp-980:mt-50 col-span-2 grid grid-cols-5  bg-white-white rounded-xl">
             <div className=" col-span-3 flex flex-col">
               <p className=" text-primary-darkGreen h-49 px-29 flex items-center justify-start">
                 Engagement Metrics

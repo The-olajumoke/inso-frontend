@@ -77,7 +77,7 @@ const zIndex = () => {
             <div className=" px-30 vp-min-601:px-15 py-13 h-auto rounded-xl bg-white-white shadow-lg">
               <div className="flex justify-between mb-14">
                 <p className=" text-primary-darkGreen">
-                  Badges <span className=" text-other-disabledText">(2)</span>{" "}
+                  Badges <span className="text-other-disabledText">(2)</span>{" "}
                 </p>
                 <Link passHref href="/badges">
                   <h6 className="  cursor-pointer text-primary-blue">

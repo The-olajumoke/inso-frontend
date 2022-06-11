@@ -14,7 +14,7 @@ const Notifications = () => {
   return (
     <Layout title="Inso | Notifications" bgColor="bg-gray-background">
       <div className="py-25 px-40 vp-600:p-23 vp-980:p-46">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between vp-980:hidden">
           <h4 className=" text-primary-darkGreen mb-35">Notifications</h4>
           <Image
             src="/icons/more_icon_grey.svg"
@@ -25,10 +25,23 @@ const Notifications = () => {
             height="20"
           />
         </div>
+        <div className="items-center  h-50 mb-12 hidden vp-980:flex">
+          <div className="flex justify-center items-center mr-23">
+            <Image
+              src="/icons/arrow_left_green.svg"
+              alt=" Discussion dropdown "
+              draggable="false"
+              layout="fixed"
+              width="18"
+              height="18"
+            />
+          </div>
+          <h4 className=" text-black-analText">Notifications</h4>
+        </div>
 
-        {/* <ActionNotiTemp /> */}
-        {/* <PerfectScoreNotiTemp /> */}
-        {/* <BadgeNotiTemp /> */}
+        <ActionNotiTemp />
+        <PerfectScoreNotiTemp />
+        <BadgeNotiTemp />
 
         <RecentPost />
         <Replied />

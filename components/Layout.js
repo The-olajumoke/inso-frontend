@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Layout = ({ title, children, searchBar, bgColor }) => {
   const [navSize, setNavSize] = useState("small");
+  const [openSideBar, setOpenSideBar] = useState(false);
 
   // const {
   //   layoutDispatch,
@@ -15,7 +16,6 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
   //   },
   // } = useContext(GlobalContext);
 
-  console.log(navSize);
   const handleNavSize = () => {
     if (navSize === "small") {
       console.log(navSize);
@@ -52,11 +52,19 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
           </div>
         </div>
       </div>
+
       <div className="bg-gray-background py-10 hidden vp-980:flex  flex-col  h-screen ">
-        <div className=" flex h-55 w-full bg-white-white justify-between items-center  vp-600:px-23 vp-980:px-46 shadow-sm  ">
-          <div className="flex justify-center items-center">
+        <div className="flex h-55 w-full bg-white-white justify-between items-center  vp-600:px-23 vp-980:px-46 shadow-sm fixed left-0 right-0 top-3 z-99999 ">
+          <div
+            className="flex justify-center items-center"
+            onClick={() => setOpenSideBar(!openSideBar)}
+          >
             <Image
-              src="/icons/hamburger_black.svg"
+              src={
+                openSideBar
+                  ? "/icons/hamburger_open.svg"
+                  : "/icons/hamburger_black.svg"
+              }
               alt=" Discussion dropdown "
               draggable="false"
               layout="fixed"
@@ -87,7 +95,8 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
             </div>
           </Link>
         </div>
-        <div className={`${bgColor} flex-grow overflow-y-auto relative`}>
+        {openSideBar && <Sidebar />}
+        <div className={`${bgColor} pt-35 flex-grow overflow-y-auto relative`}>
           {children}
         </div>
       </div>
