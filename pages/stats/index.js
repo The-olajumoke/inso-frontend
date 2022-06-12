@@ -364,9 +364,9 @@ const zIndex = () => {
             </h4>
             <div className="overflow-scroll">
               <div className=" rounded-xl bg-white-white shadow-lg py-12 px-21  vp-600:px-23 vp-980:px-46 vp-600:w-680">
-                <div className="border-b h-40 grid grid-cols-10 gap-4 border-blue-inputBlue pb-6">
+                <div className="border-b h-40 grid grid-cols-10 vp-600:grid-cols-11 gap-4 border-blue-inputBlue pb-6">
                   {" "}
-                  <div className="col-span-4 flex items-center">
+                  <div className="col-span-4 vp-600:col-span-5 flex items-center">
                     <p className=" text-primary-darkGreen ">My Posts</p>
                   </div>
                   <div className="col-span-2 flex justify-center items-center">

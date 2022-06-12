@@ -4,11 +4,11 @@ const StatsTableRow = ({ stat }) => {
   const { post, set, time, views, upvotes, reply, emojis } = stat;
 
   return (
-    <div className=" h-40 grid grid-cols-10 gap-4 mt-15 ">
+    <div className=" h-40 grid grid-cols-10 vp-600:grid-cols-11 gap-4 mt-15 ">
       {" "}
-      <div className=" col-span-4 flex  items-center ">
+      <div className=" col-span-4 vp-600:col-span-5 flex  items-center ">
         {post ? (
-          <p className=" text-gray-text overflow-x-auto">{post}</p>
+          <p className=" text-gray-text overflow-x-auto ">{post}</p>
         ) : (
           <div className=" flex items-center border text-black-analText border-other-disabled rounded-xs h-30 px-8 bg-gray-background  ">
             <p className="mr-10">{set}</p>
