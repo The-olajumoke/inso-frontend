@@ -27,7 +27,7 @@ const Contact = () => {
         </div>
         <h5 className="w-528 vp-980:w-auto mb-49  text-black-analText">
           We’re happy to answer any questions or requests you may have about
-          Pretzl.
+          Inso.
         </h5>
         <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
           <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
@@ -55,7 +55,7 @@ const Contact = () => {
           </h6>
           <textarea
             type="text"
-            placeholder="What would you like to tell?"
+            placeholder="Tell us how we can help?"
             className="w-414 vp-980:w-full border  border-blue-inputBlue py-12 px-15 h-158 "
           ></textarea>
         </div>
