@@ -20,7 +20,7 @@ const SettingsInput = ({
         disabled={disabled}
         className={`${
           editProfile ? "border-2 border-blue-inputBlue" : "border-none"
-        } h-36 px-15   w-414 vp-600:w-full  text-sm text-gray-text`}
+        } h-36 vp-980:h-45 px-15   w-414 vp-600:w-full  text-sm text-gray-text`}
       />
       {type === "password" && (
         <div
