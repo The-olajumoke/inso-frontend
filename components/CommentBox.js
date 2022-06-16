@@ -18,7 +18,7 @@ const CommentBox = ({ setActiveCommentBox }) => {
   ];
   const SynthesizingInspirations = ["Threads", "Popular tags", "Connections"];
   return (
-    <div className="h-122 my-32 px-50">
+    <div className="h-122 my-32">
       <div className="h-full border  rounded-lg border-primary-darkGreen py-12 px-20 flex items-end">
         <ShowInspirations setActiveCommentBox={setActiveCommentBox} />
       </div>

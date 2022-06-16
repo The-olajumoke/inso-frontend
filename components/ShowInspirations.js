@@ -99,7 +99,7 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
                       {PostingInspirations.map((insp, index) => (
                         <div
                           key={index}
-                          className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center 
+                          className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center cursor-pointer 
                             }`}
                           onClick={() => {
                             if (insp === "Polls") {
@@ -130,7 +130,7 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
                       {PostingInspirations.map((insp, index) => (
                         <div
                           key={index}
-                          className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center 
+                          className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center  cursor-pointer
                             }`}
                           onMouseOver={() => {
                             if (insp === "Polls") {
@@ -152,7 +152,7 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
                     {SynthesizingInspirations.map((insp, index) => (
                       <div
                         key={index}
-                        className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center 
+                        className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex  cursor-pointer items-center 
                             }`}
                         onMouseOver={() => {
                           if (insp === "Popular tags") {
