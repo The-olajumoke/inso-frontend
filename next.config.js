@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   images: {
-    loader: 'akamai',
-    path: '',
+    loader: "akamai",
+    path: "",
   },
 };
 

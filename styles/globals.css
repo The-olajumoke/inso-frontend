@@ -20,11 +20,11 @@
     }
     
     h3 {
-        @apply text-2xl text-gray-text  ;
+        @apply text-2xl text-gray-text vp-768:text-xl vp-600:text-lg  ;
     }
     
     h4 {
-        @apply text-xl vp-768:text-lg  vp-600:text-sm  ;
+        @apply text-xl vp-768:text-lg  vp-600:text-md  ;
     }
     
     h5 {

@@ -14,8 +14,8 @@ export default function Home() {
       <HeroPage />
       <About />
       <Offers />
-      <Subscription />
-      <Footer />
+         <Subscription />
+      {/* <Footer /> */}
     </div>
   );
 }

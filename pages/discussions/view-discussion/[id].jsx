@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import styles from "@/styles/discussion.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import CommentBox from "@/components/CommentBox";
+import ResourceCommentBox from "@/components/ResourceCommentBox";
 
-const ViewDiscussion = ({}) => {
+const ViewDiscussion = () => {
   const router = useRouter();
   const id = router.query.id;
+  const [activeCommentBox, setActiveCommentBox] = useState("noInspiration");
 
   return (
     <Layout
-      title={`Inso | Discussions | ${id} `}
+      title={`Inso | Discussion`}
       searchBar={false}
       bgColor="bg-white-white"
     >
@@ -21,7 +24,7 @@ const ViewDiscussion = ({}) => {
             <Link href="/discussions" passHref>
               <div className="flex items-center justify-center">
                 <Image
-                  src="/icons/arrow_back.svg"
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655331724/InsoImages/arrow_back_tqezov.svg"
                   alt="back"
                   layout="fixed"
                   width="20"
@@ -35,7 +38,7 @@ const ViewDiscussion = ({}) => {
             <div className={`${styles.searchInput}  `}>
               <div className="flex items-center justify-center ">
                 <Image
-                  src="/icons/search.svg"
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655331753/InsoImages/search_nhky7k.svg"
                   alt="more"
                   layout="fixed"
                   width="13"
@@ -52,7 +55,7 @@ const ViewDiscussion = ({}) => {
           <div className="flex  items-center gap-6">
             <div className="flex items-center justify-center cursor-pointer">
               <Image
-                src="/icons/more_icon.svg"
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331782/InsoImages/more_icon_desucz.svg"
                 alt="more"
                 layout="fixed"
                 width="20"
@@ -61,7 +64,7 @@ const ViewDiscussion = ({}) => {
             </div>
             <div className="flex items-center justify-center ">
               <Image
-                src="/icons/divider.svg"
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331824/InsoImages/divider_er0cbs.svg"
                 alt="divider"
                 layout="fixed"
                 width="20"
@@ -70,7 +73,7 @@ const ViewDiscussion = ({}) => {
             </div>
             <div className="flex items-center justify-center cursor-pointer">
               <Image
-                src="/icons/help_icon.svg"
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331849/InsoImages/help_icon_ccclpk.svg"
                 alt="help"
                 layout="fixed"
                 width="23"
@@ -84,7 +87,7 @@ const ViewDiscussion = ({}) => {
             <div className="flex  items-center">
               <div className="flex items-center justify-center">
                 <Image
-                  src="/icons/avatar.svg"
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655331879/InsoImages/avatar_bdtbd1.svg"
                   alt="back"
                   layout="fixed"
                   width="40"
@@ -106,7 +109,7 @@ const ViewDiscussion = ({}) => {
 
             <div className="flex items-center justify-center">
               <Image
-                src="/icons/more_icon_grey.svg"
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
                 alt="back"
                 layout="fixed"
                 width="7"
@@ -131,60 +134,13 @@ const ViewDiscussion = ({}) => {
             /> */}
           </div>
           {/* COMMENT BOX */}
-          <div className="h-122 my-32 px-50">
-            <div className="h-full border  rounded-lg border-primary-darkGreen py-12 px-20 flex items-end">
-              <div className="flex w-full items-center justify-between">
-                <div className="flex items-center">
-                  <div className="mr-42">
-                    <Image
-                      src="/illustrations/post_inspiration_button.svg"
-                      alt="post inspirations"
-                      layout="fixed"
-                      width="90"
-                      height="34"
-                    />
-                  </div>
-                  <div className="flex items-center gap-12">
-                    <Image
-                      src="/icons/font_icon.svg"
-                      alt="font"
-                      layout="fixed"
-                      width="20"
-                      height="20"
-                      className=" cursor-pointer"
-                    />
-                    <Image
-                      src="/icons/emoji_icon.svg"
-                      alt="emoji"
-                      layout="fixed"
-                      width="22"
-                      height="22"
-                      className=" cursor-pointer"
-                    />
-                    <Image
-                      src="/icons/attach_icon.svg"
-                      alt="attach"
-                      layout="fixed"
-                      width="20"
-                      height="20"
-                      className=" cursor-pointer"
-                    />
-                    <Image
-                      src="/icons/image_icon.svg"
-                      alt="image"
-                      layout="fixed"
-                      width="18"
-                      height="18"
-                      className=" cursor-pointer"
-                    />
-                  </div>
-                </div>
-
-                <button disabled={true} className="w-93 h-34 text-sm  btn">
-                  Send
-                </button>
-              </div>
-            </div>
+          <div className="px-50">
+            {activeCommentBox === "noInspiration" && (
+              <CommentBox setActiveCommentBox={setActiveCommentBox} />
+            )}
+            {activeCommentBox === "Resources" && (
+              <ResourceCommentBox setActiveCommentBox={setActiveCommentBox} />
+            )}
           </div>
         </div>
       </div>

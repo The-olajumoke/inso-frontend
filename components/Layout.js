@@ -2,19 +2,11 @@ import Head from "next/head";
 import React, { useState } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
-// import { GlobalContext } from "@/context/Provider";
 import Image from "next/image";
 import Link from "next/link";
 const Layout = ({ title, children, searchBar, bgColor }) => {
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
-
-  // const {
-  //   layoutDispatch,
-  //   layoutState: {
-  //     layout: { navSize },
-  //   },
-  // } = useContext(GlobalContext);
 
   const handleNavSize = () => {
     if (navSize === "small") {
@@ -41,11 +33,6 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         <div className="flex flex-grow   ">
           <Sidebar navSize={navSize} />
           <div className={`w-full flex  `}>
-            {/* <div
-              className={`${
-                navSize === "small" ? "w-109" : "w-333"
-              }  vp-980:hidden`}
-            ></div> */}
             <div className={`${bgColor}  flex-grow  overflow-y-auto`}>
               {children}
             </div>

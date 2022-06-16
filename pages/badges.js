@@ -10,7 +10,7 @@ const Badges = () => {
       <div className="py-25 px-40">
         <div className="flex item-center mb-22">
           <Link passHref href="/stats">
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center ">
               {" "}
               <Image
                 src="/icons/arrow_back_green.svg"

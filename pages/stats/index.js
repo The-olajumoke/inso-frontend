@@ -289,7 +289,7 @@ const zIndex = () => {
               Active days
             </h4>
             <div className="overflow-scroll">
-              <div className="  py-14   px-22 vp-600:px-23 vp-980:px-46  h-272 vp-980:h-auto rounded-xl bg-white-white shadow-lg flex-grow flex justify-between flex-col vp-600:w-528">
+              <div className="py-14 px-22 vp-600:px-23 vp-980:px-46  h-272 vp-980:h-auto rounded-xl bg-white-white shadow-lg flex-grow flex justify-between flex-col vp-600:w-528">
                 <div className="mb-40 flex items-center gap-4">
                   <div className=" flex-grow vp-1024:flex-grow-0 h-34 px-21   bg-border-green  rounded-xl  flex items-center ">
                     <p className=" text-black-analText mr-14">

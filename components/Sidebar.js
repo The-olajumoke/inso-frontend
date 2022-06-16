@@ -29,8 +29,8 @@ const Sidebar = ({ navSize, userPicture }) => {
         </div>
         <div className="mt-12">
           <div className="">
-            <Link href="/discussions" passHref>
-              <div
+            <Link href="/discussions">
+              <a
                 className={`${
                   router.pathname.startsWith("/discussions") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
@@ -39,21 +39,22 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/discussions")
-                      ? "/icons/dashboard_active.svg"
-                      : "/icons/dashboard.svg"
+                      ? "https://res.cloudinary.com/launch-bridge/image/upload/v1655324841/InsoImages/dashboard_active_rafawm.svg"
+                      : "https://res.cloudinary.com/launch-bridge/image/upload/v1655324853/InsoImages/dashboard_u86oj5.svg"
                   }
-                  alt="dashboard"
+                  alt="discussion"
                   draggable="false"
                   width="24"
                   height="24"
                   layout="fixed"
                 />
+
                 <h4 className={`${navSize === "small" && "hidden"}  `}>
                   Discussions
                 </h4>
-              </div>
+              </a>
             </Link>
-            <Link href="/notifications" passHref>
+            <Link passHref href="/notifications">
               <div
                 className={`${
                   router.pathname.startsWith("/notifications") &&
@@ -63,8 +64,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/notifications")
-                      ? "/icons/notification_active.svg"
-                      : "/icons/notification.svg"
+                      ? "https://res.cloudinary.com/launch-bridge/image/upload/v1655325247/InsoImages/notification_active_jlhbuf.svg"
+                      : "https://res.cloudinary.com/launch-bridge/image/upload/v1655325243/InsoImages/notification_b9hfpr.svg"
                   }
                   alt="notifications"
                   draggable="false"
@@ -87,8 +88,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/stats")
-                      ? "/icons/stats.svg"
-                      : "/icons/stats_active.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325351/InsoImages/stats_zjldog.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325354/InsoImages/stats_active_loxtf9.svg"
                   }
                   alt="stats"
                   draggable="false"
@@ -109,8 +110,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/analytics")
-                      ? "/icons/analytics_active.svg"
-                      : "/icons/analytics.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325640/InsoImages/analytics_active_isunzk.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325638/InsoImages/analytics_kff72r.svg"
                   }
                   alt="analytics"
                   draggable="false"
@@ -133,8 +134,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/charts")
-                      ? "/icons/charts.svg"
-                      : "/icons/charts.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
                   }
                   alt="charts"
                   draggable="false"
@@ -155,8 +156,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/calendar")
-                      ? "/icons/calendar_active.svg"
-                      : "/icons/calendar.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_active_ixszvw.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_ix65zg.svg"
                   }
                   alt="calendar"
                   draggable="false"
@@ -179,8 +180,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/contact")
-                      ? "/icons/contact_active.svg"
-                      : "/icons/contact.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_active_e9ipb6.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_hz2oeq.svg"
                   }
                   alt="contact"
                   draggable="false"
@@ -203,8 +204,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/settings")
-                      ? "/icons/settings_active.svg"
-                      : "/icons/settings.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_active_efkgp4.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_zspo9l.svg"
                   }
                   alt="settings"
                   draggable="false"
@@ -230,7 +231,7 @@ const Sidebar = ({ navSize, userPicture }) => {
             } w-full h-40 border border-border-line rounded flex items-center  justify-center  `}
           >
             <Image
-              src="/icons/download.svg"
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1655326491/InsoImages/download_mbd2hu.svg"
               alt="download"
               draggable="false"
               layout="fixed"
@@ -278,10 +279,10 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/discussions")
-                      ? "/icons/dashboard_active.svg"
-                      : "/icons/dashboard.svg"
+                      ? "https://res.cloudinary.com/launch-bridge/image/upload/v1655324841/InsoImages/dashboard_active_rafawm.svg"
+                      : "https://res.cloudinary.com/launch-bridge/image/upload/v1655324853/InsoImages/dashboard_u86oj5.svg"
                   }
-                  alt="dashboard"
+                  alt="discussion"
                   draggable="false"
                   width="24"
                   height="24"
@@ -300,8 +301,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/notifications")
-                      ? "/icons/notification_active.svg"
-                      : "/icons/notification.svg"
+                      ? "https://res.cloudinary.com/launch-bridge/image/upload/v1655325247/InsoImages/notification_active_jlhbuf.svg"
+                      : "https://res.cloudinary.com/launch-bridge/image/upload/v1655325243/InsoImages/notification_b9hfpr.svg"
                   }
                   alt="notifications"
                   draggable="false"
@@ -322,8 +323,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/stats")
-                      ? "/icons/stats.svg"
-                      : "/icons/stats_active.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325351/InsoImages/stats_zjldog.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325354/InsoImages/stats_active_loxtf9.svg"
                   }
                   alt="stats"
                   draggable="false"
@@ -344,8 +345,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/analytics")
-                      ? "/icons/analytics_active.svg"
-                      : "/icons/analytics.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325640/InsoImages/analytics_active_isunzk.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325638/InsoImages/analytics_kff72r.svg"
                   }
                   alt="analytics"
                   draggable="false"
@@ -366,8 +367,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/charts")
-                      ? "/icons/charts.svg"
-                      : "/icons/charts.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
                   }
                   alt="charts"
                   draggable="false"
@@ -388,8 +389,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/calendar")
-                      ? "/icons/calendar_active.svg"
-                      : "/icons/calendar.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_active_ixszvw.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_ix65zg.svg"
                   }
                   alt="calendar"
                   draggable="false"
@@ -410,8 +411,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/contact")
-                      ? "/icons/contact_active.svg"
-                      : "/icons/contact.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_active_e9ipb6.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_hz2oeq.svg"
                   }
                   alt="contact"
                   draggable="false"
@@ -432,8 +433,8 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/settings")
-                      ? "/icons/settings_active.svg"
-                      : "/icons/settings.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_active_efkgp4.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_zspo9l.svg"
                   }
                   alt="settings"
                   draggable="false"
@@ -451,7 +452,7 @@ const Sidebar = ({ navSize, userPicture }) => {
             className={`w-full h-40 border border-border-line rounded flex items-center  justify-center  `}
           >
             <Image
-              src="/icons/download.svg"
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1655326491/InsoImages/download_mbd2hu.svg"
               alt="download"
               draggable="false"
               layout="fixed"

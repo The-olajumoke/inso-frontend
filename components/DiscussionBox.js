@@ -160,7 +160,7 @@ const DiscussionBox = ({ discussion }) => {
             height="20"
           />
         </div>
-        <Link passHref href={`/discussions/view-discussion/${id}`}>
+        <Link href={`/discussions/view-discussion/${id}`}>
           <a className="h-34 bg-other-disabled py-7 px-25 rounded text-primary-darkGreen text-sm text-center">
             Open
           </a>

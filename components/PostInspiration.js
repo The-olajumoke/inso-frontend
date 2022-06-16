@@ -132,6 +132,7 @@ const PostInspiration = ({ setActiveSection }) => {
           </div>
         )}
       </div>
+      
     </div>
   );
 };
