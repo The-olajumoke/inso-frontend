@@ -11,7 +11,7 @@ const Sidebar = ({ navSize, userPicture }) => {
       <div
         className={`${styles.sidebarContainer} ${
           navSize === "small" ? "w-109" : "w-333"
-        }   flex flex-col justify-between  vp-980:hidden  overflow-y-auto`}
+        }   flex flex-col justify-between  vp-980:hidden h-full`}
       >
         <div className=" flex  pl-50">
           {userPicture ? (

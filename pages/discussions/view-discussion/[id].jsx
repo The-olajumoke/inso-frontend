@@ -21,7 +21,7 @@ const ViewDiscussion = () => {
       bgColor="bg-white-white"
     >
       <div className=" h-full flex flex-col  ">
-        <div className="h-89 bg-gray-background mb-10 px-50 flex items-center justify-between">
+        <div className="h-70 bg-gray-background mb-10 px-50 flex items-center justify-between">
           <div className=" flex items-center">
             <Link href="/discussions" passHref>
               <div className="flex items-center justify-center">

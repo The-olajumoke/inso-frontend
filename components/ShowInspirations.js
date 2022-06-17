@@ -25,7 +25,7 @@ const ShowInspirations = ({ setActiveCommentBox, title }) => {
       <div className="flex items-center">
         <div className="relative ">
           <div
-            className="mr-15  w-auto bg-primary-darkGreen h-34 flex justify-between items-center px-13 rounded gap-3"
+            className="mr-15  w-auto bg-primary-darkGreen h-34 flex justify-between items-center px-13 rounded gap-3 cursor-pointer"
             onClick={() =>
               setOpenPostInspirationsDropDown(!openPostInspirationsDropDown)
             }
