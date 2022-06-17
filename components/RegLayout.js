@@ -7,7 +7,7 @@ function RegLayout({ children }) {
       <div className="h-61 flex justify-between">
         <div>
           <Image
-            src="/images/inso_logo.svg"
+            src="https://res.cloudinary.com/insomaryland/image/upload/v1655327110/InsoImages/inso_logo_yi1rgz.svg"
             alt="Inso Logo"
             draggable="false"
             layout="fixed"

@@ -43,7 +43,7 @@ const LoginPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/icons/cancel_white.svg"
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655469179/InsoImages/cancel_white_g248xm.svg"
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -82,7 +82,7 @@ const LoginPage = () => {
               <button className="h-60 text-primary-darkGreen text-xl  w-full mb-20  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
                 <div>
                   <Image
-                    src="/icons/google.svg"
+                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
                     alt="google Icon"
                     draggable="false"
                     layout="fixed"
