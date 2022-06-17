@@ -21,7 +21,7 @@ const PopularTags = () => {
             <p>Tag 1</p>
             <p>Trending Up</p>
             <div className="flex items-center justify-center">
-              <p className=" text-primary-darkGreen">Charts</p>
+              
 
               <Image
                 src="https://res.cloudinary.com/insomaryland/image/upload/v1655328351/InsoImages/trendingUp_bab0vs.svg"

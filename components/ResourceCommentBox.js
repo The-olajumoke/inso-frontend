@@ -5,8 +5,8 @@ import ShowInspirations from "./ShowInspirations";
 const ResourceCommentBox = ({ setActiveCommentBox }) => {
   const { title, setTitle } = useState("");
   return (
-    <div className="border border-primary-darkGreen rounded-lg overflow-hidden mb-32 ">
-      <div className=" bg-gray-createDisc  py-24 px-29">
+    <div className="border border-primary-darkGreen rounded-lg  mb-32 ">
+      <div className=" bg-gray-createDisc  py-24 px-29 rounded-t-lg">
         <div className="  flex items-center mb-12">
           <div className="flex items-center justify-center">
             <Image

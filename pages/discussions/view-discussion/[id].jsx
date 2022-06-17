@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import CommentBox from "@/components/CommentBox";
 import ResourceCommentBox from "@/components/ResourceCommentBox";
+import PopularTagsComment from "@/components/PopularTagsComment";
+import ThreadCommentBox from "@/components/ThreadCommentBox";
 
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -47,7 +49,7 @@ const ViewDiscussion = () => {
               </div>
               <input
                 type="text"
-                className={`border-none h-auto focus:ring-0 bg-transparent`}
+                className={`border-none h-auto focus:ring-0 bg-transparent w-400`}
                 placeholder="Input keyword to search or filter "
               />
             </div>
@@ -140,6 +142,12 @@ const ViewDiscussion = () => {
             )}
             {activeCommentBox === "Resources" && (
               <ResourceCommentBox setActiveCommentBox={setActiveCommentBox} />
+            )}
+            {activeCommentBox === "Popular tags" && (
+              <PopularTagsComment setActiveCommentBox={setActiveCommentBox} />
+            )}
+            {activeCommentBox === "Threads" && (
+              <ThreadCommentBox setActiveCommentBox={setActiveCommentBox} />
             )}
           </div>
         </div>

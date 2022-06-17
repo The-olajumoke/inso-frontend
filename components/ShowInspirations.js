@@ -154,6 +154,14 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
                         key={index}
                         className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex  cursor-pointer items-center 
                             }`}
+                        onClick={() => {
+                          if (insp === "Popular tags") {
+                            setActiveCommentBox("Popular tags");
+                          }
+                          if (insp === "Threads") {
+                            setActiveCommentBox("Threads");
+                          }
+                        }}
                         onMouseOver={() => {
                           if (insp === "Popular tags") {
                             setActivePreview("Popular tags");
