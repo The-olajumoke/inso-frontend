@@ -7,21 +7,40 @@ const ResourceCommentBox = ({ setActiveCommentBox }) => {
   return (
     <div className="border border-primary-darkGreen rounded-lg  mb-32 ">
       <div className=" bg-gray-createDisc  py-24 px-29 rounded-t-lg">
-        <div className="  flex items-center mb-12">
-          <div className="flex items-center justify-center">
-            <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1655333490/info_outline_exdgeh.svg"
-              alt="back"
-              layout="fixed"
-              width="24"
-              height="24"
-              className=" cursor-pointer"
-            />
+        <div className="flex items-center justify-between">
+          <div className="  flex items-center mb-12">
+            <div className="flex items-center justify-center">
+              <Image
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1655333490/info_outline_exdgeh.svg"
+                alt="back"
+                layout="fixed"
+                width="24"
+                height="24"
+                className=" cursor-pointer"
+              />
+            </div>
+            <h6 className=" text-primary-darkGreen ml-14">
+              Create a poll that encourages further discussion about a specific
+              concept related to this topic{" "}
+            </h6>
           </div>
-          <h6 className=" text-primary-darkGreen ml-14">
-            Create a poll that encourages further discussion about a specific
-            concept related to this topic{" "}
-          </h6>
+          <div className=" flex items-center">
+            <button className=" text-sm text-primary-darkGreen">
+              Save to drafts
+            </button>
+            <button
+              className="ml-47 flex justify-center items-center"
+              onClick={() => setActiveCommentBox("noInspiration")}
+            >
+              <Image
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                alt="cancel"
+                layout="fixed"
+                width="16"
+                height="16"
+              />
+            </button>
+          </div>
         </div>
         <input
           type="text"
@@ -61,7 +80,10 @@ const ResourceCommentBox = ({ setActiveCommentBox }) => {
           placeholder="Say something different"
         ></textarea>
       </div>
-      <ShowInspirations setActiveCommentBox={setActiveCommentBox} />
+      <ShowInspirations
+        setActiveCommentBox={setActiveCommentBox}
+        title="Resources"
+      />
     </div>
   );
 };

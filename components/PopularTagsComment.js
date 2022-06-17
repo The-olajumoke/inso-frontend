@@ -92,7 +92,10 @@ const PopularTagsComment = ({ setActiveCommentBox }) => {
           />
         </div>
       </div>
-      <ShowInspirations setActiveCommentBox={setActiveCommentBox} />
+      <ShowInspirations
+        setActiveCommentBox={setActiveCommentBox}
+        title="Popular Tags"
+      />
     </div>
   );
 };

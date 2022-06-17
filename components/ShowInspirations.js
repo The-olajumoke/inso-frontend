@@ -6,7 +6,7 @@ import PopularTags from "./PopularTags";
 import ResourcesTemp from "./ResourcesTemp";
 import ThreadsTemp from "./ThreadsTemp";
 import ConnectionTemp from "./ConnectionTemp";
-const ShowInspirations = ({ setActiveCommentBox }) => {
+const ShowInspirations = ({ setActiveCommentBox, title }) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
     useState(false);
   const [activeInspiration, setActiveInspiration] = useState("posting");
@@ -25,7 +25,7 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
       <div className="flex items-center">
         <div className="relative ">
           <div
-            className="mr-15  w-72 bg-primary-darkGreen h-34 flex justify-between items-center px-13 rounded"
+            className="mr-15  w-auto bg-primary-darkGreen h-34 flex justify-between items-center px-13 rounded gap-3"
             onClick={() =>
               setOpenPostInspirationsDropDown(!openPostInspirationsDropDown)
             }
@@ -40,6 +40,7 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
                 className=" cursor-pointer"
               />
             </div>
+            <h6 className=" text-white-white">{title}</h6>
             <div className="flex items-center justify-center">
               <Image
                 src=" https://res.cloudinary.com/insomaryland/image/upload/v1655332180/InsoImages/dropdown_white_phtac2.svg"
@@ -103,7 +104,7 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
                             }`}
                           onClick={() => {
                             if (insp === "Polls") {
-                              setActiveCommentBox("Polls");
+                              setActiveCommentBox("noInspiration");
                             }
                             if (insp === "Resources") {
                               setActiveCommentBox("Resources");
@@ -132,6 +133,14 @@ const ShowInspirations = ({ setActiveCommentBox }) => {
                           key={index}
                           className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center  cursor-pointer
                             }`}
+                          onClick={() => {
+                            if (insp === "Polls") {
+                              setActiveCommentBox("noInspiration");
+                            }
+                            if (insp === "Resources") {
+                              setActiveCommentBox("Resources");
+                            }
+                          }}
                           onMouseOver={() => {
                             if (insp === "Polls") {
                               setActivePreview("Polls");

@@ -49,6 +49,7 @@ module.exports = {
       },
       green: {
         lightGreen: "#F3FAFA",
+        lighterGreen: "rgba(243, 250, 250, 1)",
       },
       gray: {
         text: "#686868",
@@ -94,7 +95,7 @@ module.exports = {
       md: "0px 8px 12px 0px rgba(46, 41, 78, 0.08)",
       lg: "0px 7px 15px 0px rgba(169, 169, 169, 0.12)",
       "plan-Shadow": "0px 2.48511px 100px 20px rgba(62, 54, 54, 0.13)",
-      " createDiscussion": "0px 4px 21px rgba(182, 182, 182, 0.26)",
+      createDiscussion: "0px 4px 21px rgba(182, 182, 182, 0.26)",
       none: "0 0 #0000",
     },
     screens: {
@@ -776,6 +777,7 @@ module.exports = {
         660: "66rem",
         680: "68rem",
         736: "73.6rem",
+        1112: "111.2rem",
         full: "100%",
         "12%": "12%",
       },
@@ -987,6 +989,7 @@ module.exports = {
         220: "22rem",
         250: "25rem",
         259: "25.9rem",
+        270: "27rem",
         272: "27.2rem",
         295: "29.5rem",
         300: "30rem",
@@ -998,6 +1001,7 @@ module.exports = {
         450: "45rem",
         460: "46rem",
         548: "54.8rem",
+        579: "57.9rem",
         660: "66rem",
         748: "74.8rem",
         900: "90rem",

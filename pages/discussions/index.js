@@ -4,9 +4,10 @@ import Dropdown from "@/components/Dropdown";
 import LargeSpinner from "@/components/LargeSpinner";
 import Layout from "@/components/Layout";
 import Image from "next/image";
-import CreateDiscussion from "@/components/CreateDiscussion";
+import CreateDiscussion from "@/components/CreateDisc";
 
 import styles from "@/styles/discussion.module.css";
+import CreateDiscussions from "@/components/CreateDiscussions";
 
 const Index = () => {
   let loading = false;
@@ -60,7 +61,7 @@ const Index = () => {
       <div className=" h-auto relative p-50 vp-600:p-23 vp-980:p-46">
         <div className="flex justify-between w-full mb-33 vp-980:hidden">
           <button
-            className="btn text-sm w-259 px-25 flex justify-start items-center h-48 "
+            className="btn text-sm w-259 px-25 flex justify-start items-center h-48 font-medium "
             onClick={() => setCreateDiscussion(true)}
           >
             <div className="flex justify-center items-center mr-15">
@@ -147,7 +148,7 @@ const Index = () => {
           )}
         </div>
         {createDiscussion && (
-          <CreateDiscussion setOpenModal={setCreateDiscussion} />
+          <CreateDiscussions setOpenModal={setCreateDiscussion} />
         )}
 
         <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">

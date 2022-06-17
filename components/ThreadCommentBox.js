@@ -42,7 +42,10 @@ const ThreadCommentBox = ({ setActiveCommentBox }) => {
           </div>
         </div>
       </div>
-      <ShowInspirations setActiveCommentBox={setActiveCommentBox} />
+      <ShowInspirations
+        setActiveCommentBox={setActiveCommentBox}
+        title="Threads"
+      />
     </div>
   );
 };

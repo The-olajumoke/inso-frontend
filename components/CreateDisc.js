@@ -2,9 +2,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Calendar from "./Calendar";
 import CheckBox from "./CheckBox";
-import Connections from "./Connections";
 import CreateDiscInput from "./CreateDiscInput";
-import DiscussionSettings from "./DiscussionSettings";
+import Connections from "./Connections";
+import DiscussionSettings from "./DiscussionSetting";
 import Polls from "./Polls";
 import PostInspiration from "./PostInspiration";
 import Resources from "./Resources";
@@ -13,8 +13,6 @@ import Tags from "./Tags";
 import Threads from "./Threads";
 
 const CreateDiscussion = ({
-  title,
-  description,
   deleteItem,
   setDeleteItem,
   icon,
@@ -50,13 +48,14 @@ const CreateDiscussion = ({
     }
     setDiscussionName("");
   };
+
   return (
     <div className="fixed grid place-items-center w-full h-full top-0 left-0 z-9999 animate-fade-in vp-600:px-20  ">
       <div
         // style={{ minHeight: "420px" }}
         className={`w-556  border  border-other-disabled  bg-white-white  rounded-md  shadow-lg relative overflow-hidden`}
       >
-        {activeSection === "discussions" && (
+        {/*{activeSection === "discussions" && (
           <div className="h-76 flex px-45  w-full items-center justify-between">
             <button disabled={true} className=" btn h-34 w-93  rounded text-sm">
               Create
@@ -75,7 +74,7 @@ const CreateDiscussion = ({
               />
             </button>
           </div>
-        )}
+        )} */}
 
         {activeSection === "discussions" && (
           <div className="">
