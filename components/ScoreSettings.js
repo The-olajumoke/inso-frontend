@@ -2,81 +2,35 @@ import React, { useState } from "react";
 import Image from "next/image";
 import SavedSettings from "./SavedSettings";
 import NewSettings from "./NewSettings";
+import styles from "@/styles/postInspiration.module.css";
 
-export const ScoreSettings = ({ setActiveSection }) => {
-  const [showSavedSettings, setShowSavedSettings] = useState(true);
+export const ScoreSettings = ({
+  setViewInspirations,
+  setActiveViewInspiration,
+}) => {
+  const [showSavedSettings, setShowSavedSettings] = useState(false);
   const settings = ["Setting 1", "Setting 2", "Setting 3"];
 
   return (
-    <div className="py-18">
-      <div className=" bg-white-white h-55 flex items-center px-45 justify-between">
-        <div className="flex items-center">
-          <button
-            className="flex items-center justify-center"
-            onClick={() => setActiveSection("discussions")}
-          >
-            <Image
-              src="/icons/arrow_left_green.svg"
-              alt="back"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
-          </button>
-          <h3 className="ml-30  font-medium">Score Settings</h3>
-        </div>
+    <div className=" flex flex-col justify-between  flex-grow">
+      <div className="px-45 mb-20 flex items-center justify-between ">
+        <h6 className="">Scores</h6>
+        <label className={`${styles.switch}`}>
+          <input
+            type="checkbox"
+            name="reports"
+            id="postInspiration"
+            // className={`${styles.switch}`}
+          />
+          <span
+            className={`${styles.slider} ${styles.round} "slider round"`}
+          ></span>
+        </label>
       </div>
-
-      <div className="  bg-white-white">
-        <div
-          className=" flex justify-between bg-gray-createDisc items-center h-55 px-45"
-          onClick={() => {
-            setShowSavedSettings(!showSavedSettings);
-          }}
-        >
-          <div className="flex items-center">
-            <div className="mr-17 flex items-center justify-center">
-              <Image
-                src="/icons/saved_settings.svg"
-                alt="settings"
-                layout="fixed"
-                width="18"
-                height="18"
-              />
-            </div>
-            <h4 className=" text-gray-text">Saved settings</h4>
-          </div>
-
-          <button>
-            <Image
-              src={
-                showSavedSettings
-                  ? "/icons/arrow_up.svg"
-                  : "/icons/arrow_down.svg"
-              }
-              alt="arrow down"
-              layout="fixed"
-              width="15"
-              height="15"
-            />
-          </button>
-        </div>
-        {showSavedSettings && (
-          <div className="pb-35  bg-gray-createDisc">
-            {settings.map((setting, index) => (
-              <SavedSettings key={index} title={setting} />
-            ))}
-          </div>
-        )}
-
-        <div
-          className=" flex justify-between items-center mt-21 h-55  px-45 bg-gray-createDisc"
-          onClick={() => {
-            setShowSavedSettings(false);
-          }}
-        >
-          <div className="flex items-center">
-            <div className="mr-17 flex items-center justify-center">
+      <div className="flex-grow">
+        <div className="h-55 bg-gray-background w-full flex items-center justify-between px-45 mb-10 cursor-pointer ">
+          <div className="flex">
+            <div className="flex items-center justify-center mr-16">
               <Image
                 src="/icons/settings_icon.svg"
                 alt="settings"
@@ -85,23 +39,96 @@ export const ScoreSettings = ({ setActiveSection }) => {
                 height="18"
               />
             </div>
-            <h4 className=" text-gray-text">Add new settings</h4>
+            <h4 className=" text-black-analText">Create settings</h4>
           </div>
-          <button>
+
+          <div>
+            <Image
+              src="/icons/arrow_right_grey.svg"
+              alt="back"
+              layout="fixed"
+              width="16"
+              height="16"
+            />
+          </div>
+        </div>
+        <div
+          className="h-55 bg-gray-background w-full flex items-center justify-between px-45"
+          onClick={() => setShowSavedSettings(!showSavedSettings)}
+        >
+          <div className="flex cursor-pointer">
+            <div className="flex items-center justify-center mr-16">
+              <Image
+                src="/icons/saved_settings.svg"
+                alt="settings"
+                layout="fixed"
+                width="18"
+                height="18"
+              />
+            </div>
+            <h4
+              className={` ${
+                showSavedSettings
+                  ? "text-primary-darkGreen"
+                  : " text-black-analText"
+              }`}
+            >
+              Saved settings
+            </h4>
+          </div>
+
+          <div>
             <Image
               src={
                 showSavedSettings
-                  ? "/icons/arrow_down.svg"
-                  : "/icons/arrow_up.svg"
+                  ? "/icons/arrow_up.svg"
+                  : "/icons/arrow_down.svg"
               }
-              alt="arrow down"
+              alt="back"
               layout="fixed"
-              width="15"
-              height="15"
+              width="16"
+              height="16"
             />
-          </button>
+          </div>
         </div>
-        {showSavedSettings === false && <NewSettings title="setting 1" />}
+        {showSavedSettings && (
+          <div className="bg-gray-createDisc flex flex-col flex-grow pb-20">
+            {settings.map((setting, index) => (
+              <SavedSettings
+                key={index}
+                title={setting}
+                setViewInspirations={setViewInspirations}
+                setActiveViewInspiration={setActiveViewInspiration}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="h-54 flex justify-between items-center w-full px-45">
+        <div className="flex items-center">
+          <div className="flex justify-center items-center mr-75">
+            <Image
+              src="/icons/arrow_left_blue.svg"
+              alt="back"
+              layout="fixed"
+              width="16"
+              height="16"
+            />
+          </div>
+          <div className="flex justify-center items-center">
+            <Image
+              src="/icons/arrow_right_blue.svg"
+              alt="back"
+              layout="fixed"
+              width="16"
+              height="16"
+            />
+          </div>
+        </div>
+        <button className="btn bg-border-line text-white-white w-94 h-38 text-md">
+          Save
+        </button>
       </div>
     </div>
   );

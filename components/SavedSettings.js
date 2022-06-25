@@ -3,23 +3,34 @@ import Image from "next/image";
 import RubricInput from "./RubricInput";
 import CheckBox from "./CheckBox";
 
-const SavedSettings = ({ title }) => {
+const SavedSettings = ({
+  title,
+  setViewInspirations,
+  setActiveViewInspiration,
+}) => {
   const [activeSetting, setActiveSetting] = useState("Automatic");
   const [openSettings, setOpenSettings] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
+
   const handleAddCriteria = (e) => {
     e.preventDefault();
     console.log(e);
   };
   return (
-    <div className="mb-7 ">
+    <div
+      className="mb-7  cursor-pointer"
+      onClick={() => {
+        setViewInspirations(true);
+        setActiveViewInspiration("SavedSettings");
+      }}
+    >
       <div
-        className=" bg-gray-createDisc px-45 pb-11"
+        className=" bg-gray-createDisc px-45"
         onClick={() => setOpenSettings(!openSettings)}
       >
         <div
-          className=" flex items-center h-45 w-full  bg-blue-lightBlue rounded-lg text-lg justify-between
-      text-gray-text outline-none px-20"
+          className=" flex items-center h-45 w-full  bg-blue-lightBlue rounded-lg text-lg justify-between text-black-analText
+     outline-none px-20"
         >
           <h6>{title}</h6>
           <Image

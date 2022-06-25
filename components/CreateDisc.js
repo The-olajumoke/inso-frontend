@@ -182,6 +182,7 @@ const CreateDiscussion = ({
             )}
           </div>
         )}
+        
         {activeSection === "postInspiration" && (
           <PostInspiration setActiveSection={setActiveSection} />
         )}

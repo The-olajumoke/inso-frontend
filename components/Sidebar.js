@@ -134,7 +134,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/charts")
-                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655827744/InsoImages/chart_active_cxtrna.svg"
                       : "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
                   }
                   alt="charts"

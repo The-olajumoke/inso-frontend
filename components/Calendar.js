@@ -4,25 +4,17 @@ import styles from "@/styles/switch.module.css";
 const Calendar = ({ setActiveSection }) => {
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   return (
-    <div className="pt-18 pb-40">
-      <div className=" bg-white-white h-55 flex items-center px-45 justify-between">
-        <div className="flex items-center">
-          <button
-            className="flex items-center justify-center"
-            onClick={() => setActiveSection("discussions")}
-          >
-            <Image
-              src="/icons/arrow_left_green.svg"
-              alt="back"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
-          </button>
-          <h3 className="ml-30  font-medium">Calendar</h3>
-        </div>
+    <div className=" border flex-grow flex flex-col">
+      <div className="px-45 mb-20 flex items-center justify-between bg-white ">
+        <h6 className="">Calendar</h6>
+        <label className={`${styles.switch}`}>
+          <input type="checkbox" name="reports" id="postInspiration" />
+          <span
+            className={`${styles.slider} ${styles.round} "slider round"`}
+          ></span>
+        </label>
       </div>
-      <div className="px-45 py-32 bg-gray-createDisc">
+      <div className="px-45 py-10 h-300 overflow-y-scroll bg-gray-createDisc">
         <div className="mb-15">
           <p className=" text-primary-darkGreen  mb-8">Open</p>
           <div className="flex items-center justify-between">
@@ -36,10 +28,10 @@ const Calendar = ({ setActiveSection }) => {
                   height="20"
                 />
               </div>
-              <p className=" text-gray-text">8:00 AM</p>
+              <p className="  text-black-analText">8:00 AM</p>
             </div>
-            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-              <p>Fri 1st, January 2021</p>
+            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
+              <p className="text-black-analText">Fri 1st, January 2021</p>
             </div>
           </div>
         </div>
@@ -56,10 +48,10 @@ const Calendar = ({ setActiveSection }) => {
                   height="20"
                 />
               </div>
-              <p className=" text-gray-text">8:00 AM</p>
+              <p className="  text-black-analText">8:00 AM</p>
             </div>
-            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-              <p>Fri 1st, January 2021</p>
+            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
+              <p className="text-black-analText">Fri 1st, January 2021</p>
             </div>
           </div>
         </div>
@@ -115,10 +107,10 @@ const Calendar = ({ setActiveSection }) => {
                       height="20"
                     />
                   </div>
-                  <p className=" text-gray-text">8:00 AM</p>
+                  <p className="  text-black-analText">8:00 AM</p>
                 </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-                  <p>Fri 1st, January 2021</p>
+                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
+                  <p className="text-black-analText">Fri 1st, January 2021</p>
                 </div>
               </div>
             </div>
@@ -135,10 +127,10 @@ const Calendar = ({ setActiveSection }) => {
                       height="20"
                     />
                   </div>
-                  <p className=" text-gray-text">8:00 AM</p>
+                  <p className="  text-black-analText">8:00 AM</p>
                 </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-                  <p>Fri 1st, January 2021</p>
+                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
+                  <p className="text-black-analText">Fri 1st, January 2021</p>
                 </div>
               </div>
             </div>
@@ -155,15 +147,40 @@ const Calendar = ({ setActiveSection }) => {
                       height="20"
                     />
                   </div>
-                  <p className=" text-gray-text">8:00 AM</p>
+                  <p className="text-black-analText">8:00 AM</p>
                 </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-                  <p>Fri 1st, January 2021</p>
+                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
+                  <p className="text-black-analText">Fri 1st, January 2021</p>
                 </div>
               </div>
             </div>
           </>
         )}
+      </div>
+      <div className="h-54 flex justify-between items-center w-full px-45 border">
+        <div className="flex items-center">
+          <div className="flex justify-center items-center mr-75">
+            <Image
+              src="/icons/arrow_left_blue.svg"
+              alt="back"
+              layout="fixed"
+              width="16"
+              height="16"
+            />
+          </div>
+          <div className="flex justify-center items-center">
+            <Image
+              src="/icons/arrow_right_blue.svg"
+              alt="back"
+              layout="fixed"
+              width="16"
+              height="16"
+            />
+          </div>
+        </div>
+        <button className="btn bg-border-line text-white-white w-94 h-38 text-md">
+          Save
+        </button>
       </div>
     </div>
   );
