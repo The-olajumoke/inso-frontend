@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Inspiration from "./Inspiration";
-import SynthInspiration from "./SynthInspiration";
 import styles from "@/styles/postInspiration.module.css";
 import PostInspCategory from "./PostInspCategory";
 
@@ -28,7 +27,7 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
     (insp) => insp.category === "Explore your thinking"
   );
   const considerSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Consider complications"
+    (insp) => insp.category === "Consider implications"
   );
   return (
     <div className=" flex-grow flex flex-col">
@@ -43,7 +42,7 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
       </div>
 
       {showDetailedInsp ? (
-        <div className="py-21 bg-gray-background">
+        <div className="py-21 bg-gray-background flex-grow">
           {activeDetailedInsp === "Share something" && (
             <PostInspCategory
               inspiration={shareSomethingInsp[0]}
@@ -71,6 +70,15 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
               setShowDetailedInsp={setShowDetailedInsp}
             />
           )}
+          {activeDetailedInsp === "Make a connection" && (
+            <PostInspCategory
+              inspiration={connectionSomethingInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
           {activeDetailedInsp === "Explore your thinking" && (
             <PostInspCategory
               inspiration={exploreSomethingInsp[0]}
@@ -80,7 +88,7 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
               setShowDetailedInsp={setShowDetailedInsp}
             />
           )}
-          {activeDetailedInsp === "Consider complications" && (
+          {activeDetailedInsp === "Consider implications" && (
             <PostInspCategory
               inspiration={considerSomethingInsp[0]}
               setActiveInspiration={setActiveInspiration}
@@ -92,26 +100,46 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
         </div>
       ) : (
         <div className=" px-45 py-10   flex-grow bg-gray-background  ">
-          <div className="grid  grid-cols-2 text-sm gap-8 mb-20">
+          <div className="grid  grid-cols-3 text-sm gap-8 mb-20">
             <button
               className={`${
                 activeInspiration === "posting" ? "btn" : "btn-nonActive"
               }   h-30`}
               onClick={() => setActiveInspiration("posting")}
             >
-              Post/Respond with
+              Post
+            </button>
+            <button
+              className={`${
+                activeInspiration === "responding" ? "btn" : "btn-nonActive"
+              }   h-30`}
+              onClick={() => setActiveInspiration("responding")}
+            >
+              Respond
             </button>
 
             <button
               className={`${
                 activeInspiration === "synthesizing" ? "btn" : "btn-nonActive"
-              }   h-30`}
+              }   h-30 `}
               onClick={() => setActiveInspiration("synthesizing")}
             >
               Synthesise
             </button>
           </div>
           {activeInspiration === "posting" && (
+            <div className="">
+              {PostingInspirations.map((insp, index) => (
+                <Inspiration
+                  key={index}
+                  insp={insp}
+                  setActiveDetailedInsp={setActiveDetailedInsp}
+                  setShowDetailedInsp={setShowDetailedInsp}
+                />
+              ))}
+            </div>
+          )}
+          {activeInspiration === "responding" && (
             <div className="">
               {PostingInspirations.map((insp, index) => (
                 <Inspiration

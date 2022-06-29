@@ -1,45 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+.rdw-editor-main{
+    overflow: hidden !important;
+}
+.public-DraftStyleDefault-block{
+    font-size: 20px !important;
+}
 /* input,button, */
 @layer base {
     html {
         font-size: 62.5%;
-        
-        
+            
     }
 
        h1 {
-        @apply text-5xl text-gray-text font-medium;
+        @apply text-5xl text-gray-text font-medium font-poppins;
     }
     
     h2 {
-        @apply text-3xl  text-gray-text;
+        @apply text-3xl  text-gray-text font-poppins;
     }
     
     h3 {
-        @apply text-2xl text-gray-text vp-768:text-xl vp-600:text-lg  ;
+        @apply text-2xl text-gray-text vp-768:text-xl vp-600:text-lg font-poppins  ;
     }
     
     h4 {
-        @apply text-xl vp-768:text-lg  vp-600:text-md  ;
+        @apply text-xl vp-768:text-lg  vp-600:text-md font-poppins  ;
     }
     
     h5 {
-        @apply text-lg;
+        @apply text-lg font-poppins;
     }
     
     h6 {
-        @apply text-md vp-600:text-sm;
+        @apply text-md vp-600:text-sm font-poppins;
     }
 
     
     p {
-        @apply text-sm text-gray-text;
+        @apply text-sm text-gray-text font-poppins;
     }
-    
+    button{
+@apply font-poppins
+    }
 [type='text'],
 [type='email'],
 [type='url'],
@@ -53,16 +61,16 @@
 [type='time'],
 [type='week'],
 [multiple]{
-    @apply text-sm w-full rounded-xs  border-primary-blue h-54 px-20  text-gray-text  focus:ring-primary-darkGreen focus:ring-2 focus:border-0
+    @apply text-sm w-full rounded-xs  border-primary-blue h-54 px-20  text-gray-text  focus:ring-primary-darkGreen focus:ring-2 focus:border-0 font-poppins
 }
 
 textarea {
     @apply  w-full text-gray-text h-full  resize-none outline-none  focus:ring-0  
-     text-lg  leading-10
+     text-lg  leading-10 font-poppins
 }
 
 input:disabled{
-    @apply  text-other-disabledText bg-other-disabled 
+    @apply  text-other-disabledText bg-other-disabled font-poppins
 }
 input::placeholder{
     color:#8692A6;
@@ -140,22 +148,109 @@ input::-ms-input-placeholder {
 
 /* ////////// */
 .btn{
-        @apply bg-primary-darkGreen text-white-white  font-normal rounded  text-center items-center flex justify-center outline-none
+        @apply bg-primary-darkGreen text-white-white  font-normal rounded  text-center items-center flex justify-center outline-none font-poppins
     }
 
     .btn-outline{
-        @apply  border-2 border-primary-blue text-primary-darkGreen bg-white-white rounded text-center items-center flex justify-center outline-none
+        @apply  border-2 border-primary-blue text-primary-darkGreen bg-white-white rounded text-center items-center flex justify-center outline-none font-poppins
     }
 .btn:disabled {
-    @apply bg-other-disabled text-gray-faintGray font-normal rounded cursor-not-allowed;
+    @apply bg-other-disabled text-gray-faintGray font-normal rounded cursor-not-allowed font-poppins;
 }
 .btn-nonActive{
-    @apply bg-blue-lightBlue text-black-analText font-normal rounded text-center flex items-center justify-center outline-none
+    @apply bg-blue-lightBlue text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins
 }
 .btn-analNonActive{
-    @apply  bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none
+    @apply  bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins
 }
 
 
 }
 
+
+
+/* ///////////////////////////////////////////////// */
+
+
+.react-calendar {
+    width: 550px !important;
+    height: auto !important;
+    /* background: #ffffff; */
+    background: #FAFAFA !important;
+    padding: 20px 45px !important;
+    border: none !important;
+ 
+}
+
+.react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rebeccapurple; */
+    margin-bottom: 30px !important;
+    background-color:transparent;
+    font-size: 20px !important;
+    transform: translateY(20px);
+    color:#2E2E2E !important;
+}
+
+.react-calendar__navigation__prev-button {
+    order: 1;
+}
+
+.react-calendar__navigation__prev-button:hover,
+.react-calendar__navigation__next-button:hover {
+    background-color: none !important;
+}
+
+.react-calendar__navigation__next-button {
+    order: 1;
+}
+
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+    display: none;
+}
+
+.react-calendar__navigation__label {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: #2E2E2E;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: black !important;
+}
+
+.react-calendar__tile--active {
+    background: rgb(7, 160, 152, 0.45) !important;
+
+    color: white !important;
+}
+
+.react-calendar__tile--rangeEnd,
+.react-calendar__tile--rangeStart {
+    background: #07a098 !important;
+    color: white !important;
+}
+
+
+.react-calendar__month-view__days__day{
+    color:#2E2E2E !important;
+    font-size: 20px !important;
+        margin-bottom: 20px !important;
+}
+.react-calendar__month-view__weekdays {
+    color: #2E2E2E!important;
+        font-size: 20px !important;
+        margin-bottom: 25px;
+}
+.react-calendar__viewContainer{
+    color: #2E2E2E !important;
+        font-size: 16px !important;
+}
+abbr{
+    text-decoration: none !important;
+    text-transform: capitalize;
+    font-weight: normal;
+}

@@ -6,20 +6,17 @@ import PopularTags from "./PopularTags";
 import ResourcesTemp from "./ResourcesTemp";
 import ThreadsTemp from "./ThreadsTemp";
 import ConnectionTemp from "./ConnectionTemp";
+import { PostingInspirations } from "@/utils/sampleData";
+import { SynthesizingInspirations } from "@/utils/sampleData";
+import Inspiration from "./Inspiration";
+import PostingInspTemp from "./PostingInspTemp";
+
 const ShowInspirations = ({ setActiveCommentBox, title }) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
     useState(false);
   const [activeInspiration, setActiveInspiration] = useState("posting");
   const [activePreview, setActivePreview] = useState("");
-  const PostingInspirations = [
-    "Resources",
-    "Polls",
-    "Resources",
-    "Resources",
-    "Polls",
-    "Resources",
-  ];
-  const SynthesizingInspirations = ["Threads", "Popular tags", "Connections"];
+
   return (
     <div className="flex w-full items-center justify-between px-29 mb-16">
       <div className="flex items-center">
@@ -71,7 +68,7 @@ const ShowInspirations = ({ setActiveCommentBox, title }) => {
                     }   h-30`}
                     onClick={() => setActiveInspiration("posting")}
                   >
-                    Posting
+                    Post
                   </button>
                   <button
                     className={`${
@@ -81,8 +78,9 @@ const ShowInspirations = ({ setActiveCommentBox, title }) => {
                     }   h-30`}
                     onClick={() => setActiveInspiration("responding")}
                   >
-                    Responding
+                    Respond
                   </button>
+
                   <button
                     className={`${
                       activeInspiration === "synthesizing"
@@ -91,67 +89,24 @@ const ShowInspirations = ({ setActiveCommentBox, title }) => {
                     }   h-30`}
                     onClick={() => setActiveInspiration("synthesizing")}
                   >
-                    Synthesizing
+                    Synthesise
                   </button>
                 </div>
+
                 {activeInspiration === "posting" && (
                   <div className="">
-                    <div className="overflow-auto flex flex-col gap-3">
+                    <div className="overflow-auto flex flex-col">
                       {PostingInspirations.map((insp, index) => (
-                        <div
-                          key={index}
-                          className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center cursor-pointer 
-                            }`}
-                          onClick={() => {
-                            if (insp === "Polls") {
-                              setActiveCommentBox("noInspiration");
-                            }
-                            if (insp === "Resources") {
-                              setActiveCommentBox("Resources");
-                            }
-                          }}
-                          onMouseOver={() => {
-                            if (insp === "Polls") {
-                              setActivePreview("Polls");
-                            }
-                            if (insp === "Resources") {
-                              setActivePreview("Resources");
-                            }
-                          }}
-                        >
-                          {insp}
-                        </div>
+                        <Inspiration key={index} insp={insp} />
                       ))}
                     </div>
                   </div>
                 )}
                 {activeInspiration === "responding" && (
                   <div className="">
-                    <div className="overflow-auto flex flex-col gap-3">
+                    <div className="overflow-auto flex flex-col">
                       {PostingInspirations.map((insp, index) => (
-                        <div
-                          key={index}
-                          className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex items-center  cursor-pointer
-                            }`}
-                          onClick={() => {
-                            if (insp === "Polls") {
-                              setActiveCommentBox("noInspiration");
-                            }
-                            if (insp === "Resources") {
-                              setActiveCommentBox("Resources");
-                            }
-                          }}
-                          onMouseOver={() => {
-                            if (insp === "Polls") {
-                              setActivePreview("Polls");
-                            }
-                            if (insp === "Resources") {
-                              setActivePreview("Resources");
-                            }
-                          }}
-                        >
-                          {insp}
-                        </div>
+                        <Inspiration key={index} insp={insp} />
                       ))}
                     </div>
                   </div>
@@ -159,32 +114,12 @@ const ShowInspirations = ({ setActiveCommentBox, title }) => {
                 {activeInspiration === "synthesizing" && (
                   <div className="overflow-auto flex flex-col gap-3">
                     {SynthesizingInspirations.map((insp, index) => (
-                      <div
+                      <PostingInspTemp
+                        title={insp.title}
                         key={index}
-                        className={`h-45 bg-blue-lightBlue rounded-lg text-md text-black-analText px-20 flex  cursor-pointer items-center 
-                            }`}
-                        onClick={() => {
-                          if (insp === "Popular tags") {
-                            setActiveCommentBox("Popular tags");
-                          }
-                          if (insp === "Threads") {
-                            setActiveCommentBox("Threads");
-                          }
-                        }}
-                        onMouseOver={() => {
-                          if (insp === "Popular tags") {
-                            setActivePreview("Popular tags");
-                          }
-                          if (insp === "Threads") {
-                            setActivePreview("Threads");
-                          }
-                          if (insp === "Connections") {
-                            setActivePreview("Connections");
-                          }
-                        }}
-                      >
-                        {insp}
-                      </div>
+                        checked={true}
+                        icon={insp.icon}
+                      />
                     ))}
                   </div>
                 )}

@@ -12,6 +12,7 @@ import { ScoreSettings } from "./ScoreSettings";
 import Connections from "./Connections";
 import SavedSettingsTemplate from "./SavedSettingsTemplate";
 import Calendar from "./Calendar";
+import CalendarTemp from "./CalendarTemp";
 const CreateDiscussions = ({ setOpenModal }) => {
   const [allDiscussionNames, setAllDiscussionNames] = useState([]);
   const [showInput, setShowInput] = useState("true");
@@ -22,6 +23,12 @@ const CreateDiscussions = ({ setOpenModal }) => {
   const [viewInspirations, setViewInspirations] = useState(false);
   const [activeViewInspiration, setActiveViewInspiration] = useState("");
   const [checkedDiscussions, setCheckedDiscussion] = useState([]);
+  const today = new Date();
+  let tommorrow = new Date();
+  tommorrow.setDate(today.getDate() + 1);
+  console.log(tommorrow);
+
+  const [date, setDate] = useState([today, tommorrow]);
 
   const handleAddDiscussion = (e) => {
     e.preventDefault();
@@ -191,6 +198,16 @@ const CreateDiscussions = ({ setOpenModal }) => {
                       setActiveViewInspiration={setActiveViewInspiration}
                     />
                   )}
+                  {activeViewInspiration === "Calendar" && (
+                    <CalendarTemp
+                      date={date}
+                      setDate={setDate}
+                      setViewInspirations={setViewInspirations}
+                      setActiveViewInspiration={setActiveViewInspiration}
+                      setActiveSettings={setActiveSettings}
+                    />
+                  )}
+
                   {activeViewInspiration === "Threads" && (
                     <Threads
                       setViewInspirations={setViewInspirations}
@@ -246,7 +263,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                           activeSetting === "StarterPrompt"
                             ? " text-primary-darkGreen  font-medium"
                             : " text-gray-faintGray"
-                        } text-sm`}
+                        }  text-xs`}
                         onClick={() => {
                           setActiveSettings("StarterPrompt");
                         }}
@@ -259,7 +276,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                           activeSetting === "postInspiration"
                             ? " text-primary-darkGreen  font-medium"
                             : " text-gray-faintGray"
-                        } text-sm`}
+                        }  text-xs`}
                         onClick={() => {
                           setActiveSettings("postInspiration");
                         }}
@@ -272,7 +289,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                           activeSetting === "Scores"
                             ? " text-primary-darkGreen  font-medium"
                             : " text-gray-faintGray"
-                        } text-sm`}
+                        }  text-xs`}
                         onClick={() => {
                           setActiveSettings("Scores");
                         }}
@@ -285,7 +302,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                           activeSetting === "Calendar"
                             ? " text-primary-darkGreen  font-medium"
                             : " text-gray-faintGray"
-                        } text-sm`}
+                        }  text-xs`}
                         onClick={() => {
                           setActiveSettings("Calendar");
                         }}
@@ -312,7 +329,13 @@ const CreateDiscussions = ({ setOpenModal }) => {
                       setActiveViewInspiration={setActiveViewInspiration}
                     />
                   )}
-                  {activeSetting === "Calendar" && <Calendar />}
+                  {activeSetting === "Calendar" && (
+                    <Calendar
+                      date={date}
+                      setViewInspirations={setViewInspirations}
+                      setActiveViewInspiration={setActiveViewInspiration}
+                    />
+                  )}
                 </div>
               )}
             </div>

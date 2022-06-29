@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/switch.module.css";
-const Calendar = ({ setActiveSection }) => {
+const Calendar = ({ setViewInspirations, setActiveViewInspiration, date }) => {
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   return (
-    <div className=" border flex-grow flex flex-col">
+    <div className=" flex-grow flex flex-col">
       <div className="px-45 mb-20 flex items-center justify-between bg-white ">
         <h6 className="">Calendar</h6>
         <label className={`${styles.switch}`}>
@@ -14,7 +14,7 @@ const Calendar = ({ setActiveSection }) => {
           ></span>
         </label>
       </div>
-      <div className="px-45 py-10 h-300 overflow-y-scroll bg-gray-createDisc">
+      <div className="px-45 py-10 h-300 flex-grow overflow-y-auto bg-gray-createDisc">
         <div className="mb-15">
           <p className=" text-primary-darkGreen  mb-8">Open</p>
           <div className="flex items-center justify-between">
@@ -30,8 +30,22 @@ const Calendar = ({ setActiveSection }) => {
               </div>
               <p className="  text-black-analText">8:00 AM</p>
             </div>
-            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-              <p className="text-black-analText">Fri 1st, January 2021</p>
+            <div
+              className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText cursor-pointer"
+              onClick={() => {
+                setViewInspirations(true);
+                setActiveViewInspiration("Calendar");
+              }}
+            >
+              <p className="text-black-analText">
+                {" "}
+                {date[0].toLocaleString("en-US", {
+                  weekday: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  month: "long",
+                })}
+              </p>
             </div>
           </div>
         </div>
@@ -51,7 +65,15 @@ const Calendar = ({ setActiveSection }) => {
               <p className="  text-black-analText">8:00 AM</p>
             </div>
             <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-              <p className="text-black-analText">Fri 1st, January 2021</p>
+              <p className="text-black-analText">
+                {" "}
+                {date[1].toLocaleString("en-US", {
+                  weekday: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  month: "long",
+                })}
+              </p>
             </div>
           </div>
         </div>
@@ -157,7 +179,7 @@ const Calendar = ({ setActiveSection }) => {
           </>
         )}
       </div>
-      <div className="h-54 flex justify-between items-center w-full px-45 border">
+      <div className="h-54 flex justify-between items-center w-full px-45">
         <div className="flex items-center">
           <div className="flex justify-center items-center mr-75">
             <Image

@@ -1,109 +1,61 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-// import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css";
-// import "react-quill/dist/quill.bubble.css";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+
+const Editor = dynamic(
+  import("react-draft-wysiwyg").then((mod) => mod.Editor),
+  {
+    ssr: false,
+  }
+);
 
 const TextArea = ({ value, setValue, placeholder, required, disabled }) => {
-  const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
-  // const ReactQuill = dynamic(() => import("react-quill"), {
-  //   ssr: false,
-  // });
-  // const ReactQuill = dynamic(import("react-quill"), {
-  //   ssr: false,
-  // });
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-  const [showPicker, setShowPicker] = useState(false);
-
-  const onEmojiClick = (event, emojiObject) => {
-    setValue((prevInput) => prevInput + emojiObject.emoji);
-    setShowPicker(false);
+  const onEditorStateChange = (editorState) => {
+    setEditorState(editorState);
+    const textValue = draftToHtml(
+      convertToRaw(editorState.getCurrentContent())
+    );
+    setValue(textValue);
   };
-  // const handleBody = (e) => {
-  //   console.log(e);
-  //   setValue(e.target.value);
-  // };
-  const modules = {
-    toolbar: [
-      ["bold", "italic", "underline"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ align: [] }],
-      ["link", "image", "video"],
-      ["clean"],
-    ],
-  };
-  const formats = ["bold", "italic", "underline", "list", "bullet", "align"];
+  console.log(value);
+  const uploadFile = () => {};
   return (
     <div className="flex flex-col flex-grow relative w-full ">
-      {showPicker && (
-        <div className="absolute  -top-96  -right-28 w-333">
-          <Picker pickerStyle={{ width: "100%" }} onEmojiClick={onEmojiClick} />
-        </div>
-      )}
+      <div className=" h-full flex">
+        <Editor
+          editorState={editorState}
+          onEditorStateChange={onEditorStateChange}
+          toolbarClassName="flex absolute top-0 right-0 z-50"
+          editorClassName="!overflow-none   w-400 pt-20"
+          toolbar={{
+            options: [, "emoji", "inline", "image"],
 
-      <textarea
-        placeholder={placeholder || "Enter"}
-        value={value}
-        onChange={(evt) => setValue(evt.target.value)}
-        name=""
-        className=" border-none w-full text-black-analText"
-      ></textarea>
+            inline: {
+              options: ["bold", "italic", "underline"],
+              bold: {
+                className: "bordered-option-classname",
+              },
+              italic: { className: "bordered-option-classname" },
+              underline: { className: "bordered-option-classname" },
+            },
 
-      <div className="h-24 flex items-center  gap-10">
-        <button>
-          <Image
-            src="/icons/font_icon.svg"
-            alt="font"
-            layout="fixed"
-            width="20"
-            height="20"
-            className=" cursor-pointer"
-          />
-        </button>
-        <button onClick={() => setShowPicker((val) => !val)}>
-          <Image
-            src="/icons/emoji_icon.svg"
-            alt="emoji"
-            layout="fixed"
-            width="22"
-            height="22"
-            className=" cursor-pointer"
-          />
-        </button>
-        <button>
-          <Image
-            src="/icons/attach_icon.svg"
-            alt="attach"
-            layout="fixed"
-            width="20"
-            height="20"
-            className=" cursor-pointer"
-          />
-        </button>
-        <button>
-          <Image
-            src="/icons/image_icon.svg"
-            alt="image"
-            layout="fixed"
-            width="18"
-            height="18"
-            className=" cursor-pointer"
-          />
-        </button>
+            image: {
+              uploadCallback: uploadFile,
+              urlEnabled: true,
+              alt: { present: true, mandatory: false },
+              previewImage: true,
+              inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
+            },
+          }}
+        />
       </div>
     </div>
   );
 };
 
 export default TextArea;
-{
-  /* //<ReactQuill
-      // theme="snow"
-      // placeholder="Write Something"
-      // value={value}
-      // modules={modules}
-      // formats={formats}
-      // onChange={handleBody}
-     // /> */
-}

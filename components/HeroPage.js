@@ -40,7 +40,7 @@ const HeroPage = () => {
           </h4>
 
           <div className="mt-70 vp-768:mt-48 flex vp-768:flex-col items-center vp-768:items-start">
-            <button className="btn text-xl vp-768:text-lg vp-600:text-sm mr-20 px-42 w-262 h-60 vp-768:h-50  vp-768:mb-20">
+            <button className="btn text-xl vp-768:text-lg vp-600:text-sm mr-20  w-262 h-60 vp-768:h-50  vp-768:mb-20">
               Get started for free
             </button>
             <input

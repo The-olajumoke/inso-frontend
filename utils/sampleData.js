@@ -1,7 +1,8 @@
 export const PostingInspirations = [
   {
     category: "Share something",
-    categoryIcon: "/icons/shareSomething.svg",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656194823/InsoImages/shareSomething_tvg5qn.svg",
     inspirations: [
       {
         title: "Resources",
@@ -23,7 +24,8 @@ export const PostingInspirations = [
   },
   {
     category: "Create something",
-    categoryIcon: "/icons/createSomething.svg",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656194912/InsoImages/createSomething_tsjf0a.svg",
     inspirations: [
       {
         title: "Meme ",
@@ -41,7 +43,8 @@ export const PostingInspirations = [
   },
   {
     category: "Start something",
-    categoryIcon: "/icons/startSomething.svg",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656194955/InsoImages/startSomething_fnfshn.svg",
     inspirations: [
       {
         title: "Debate ",
@@ -55,7 +58,8 @@ export const PostingInspirations = [
   },
   {
     category: "Make a connection",
-    categoryIcon: "/icons/makeConnections.svg",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195014/InsoImages/makeConnections_kustrj.svg",
     inspirations: [
       {
         title: "Between course concepts",
@@ -77,7 +81,8 @@ export const PostingInspirations = [
   },
   {
     category: "Explore your thinking",
-    categoryIcon: "/icons/exploreThinking.svg",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195040/InsoImages/exploreThinking_md9iw9.svg",
     inspirations: [
       {
         title: "Ask for clarity",
@@ -98,8 +103,9 @@ export const PostingInspirations = [
     ],
   },
   {
-    category: "Consider complications",
-    categoryIcon: "/icons/considerComplications.svg",
+    category: "Consider implications",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195083/InsoImages/considerComplications_eipjwk.svg",
     inspirations: [
       {
         title: "Legal",
@@ -117,7 +123,16 @@ export const PostingInspirations = [
   },
 ];
 export const SynthesizingInspirations = [
-  { title: "Threads", icon: "/icons/Threads_icon.svg" },
-  { title: "Tags", icon: "/icons/Tags_icon.svg" },
-  { title: "Connections", icon: "/icons/Connections_icon.svg" },
+  {
+    title: "Threads",
+    icon: "https://res.cloudinary.com/insomaryland/image/upload/v1656195254/InsoImages/Threads_icon_yfgoac.svg",
+  },
+  {
+    title: "Tags",
+    icon: "https://res.cloudinary.com/insomaryland/image/upload/v1656195277/InsoImages/Tags_icon_brwqrp.svg",
+  },
+  {
+    title: "Connections",
+    icon: "https://res.cloudinary.com/insomaryland/image/upload/v1656195291/InsoImages/Connections_icon_lwfwyv.svg",
+  },
 ];

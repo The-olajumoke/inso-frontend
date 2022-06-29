@@ -6,6 +6,10 @@ const Inspiration = ({ insp, setActiveDetailedInsp, setShowDetailedInsp }) => {
     <div
       className="mb-7 flex items-center justify-between h-45 w-full px-20 py-9 bg-blue-lightBlue rounded-lg text-lg
       text-gray-text outline-none cursor-pointer"
+      onClick={() => {
+        setShowDetailedInsp(true);
+        setActiveDetailedInsp(`${category}`);
+      }}
     >
       <div className="flex items-center">
         <div className=" flex items-center justify-center">
@@ -29,7 +33,7 @@ const Inspiration = ({ insp, setActiveDetailedInsp, setShowDetailedInsp }) => {
       </div>
       <div className="flex justify-center items-center">
         <Image
-          src="/icons/arrow_forward.svg"
+          src="https://res.cloudinary.com/insomaryland/image/upload/v1656195114/InsoImages/arrow_forward_winp6p.svg"
           alt="arrow-right"
           layout="fixed"
           width="16"

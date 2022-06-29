@@ -4,7 +4,6 @@ import Dropdown from "@/components/Dropdown";
 import LargeSpinner from "@/components/LargeSpinner";
 import Layout from "@/components/Layout";
 import Image from "next/image";
-import CreateDiscussion from "@/components/CreateDisc";
 
 import styles from "@/styles/discussion.module.css";
 import CreateDiscussions from "@/components/CreateDiscussions";

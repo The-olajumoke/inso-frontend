@@ -4,7 +4,7 @@ import TextArea from "./TextArea";
 
 const StarterPrompt = ({ starterPromptValue, setStarterPromptValue }) => {
   return (
-    <div className="w-full  bg-gray-background px-42 py-24 ">
+    <div className="w-full  bg-gray-background px-42 py-24 flex-grow">
       <div className="mb-17 p-12 border bg-white-white rounded-xs  h-270 flex flex-col border-border-dropdownLine ">
         <TextArea
           placeholder="For this discussion, we are going to explore ______"

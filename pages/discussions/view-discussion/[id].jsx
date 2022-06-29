@@ -20,7 +20,7 @@ const ViewDiscussion = () => {
       searchBar={false}
       bgColor="bg-white-white"
     >
-      <div className=" h-full flex flex-col  ">
+      <div className=" h-full border flex flex-col relative">
         <div className="h-70 bg-gray-background mb-10 px-50 flex items-center justify-between">
           <div className=" flex items-center">
             <Link href="/discussions" passHref>
@@ -125,8 +125,41 @@ const ViewDiscussion = () => {
             2011 and how does it relate with current occurences now in 2021?
           </h6>
         </div>
-        <div className=" flex-grow  flex flex-col  justify-between mt-32">
-          <div style={{ maxHeight: "400px" }} className="px-50 overflow-y-auto">
+        <div className="   flex flex-col  bg-other-danger mt-32">
+          <div
+            // style={{ maxHeight: "200px" }}
+            className="px-50 overflow-y-auto bg-primary-darkGreen  h-200"
+          >
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
+            <h2>hello</h2>
             {/* <Image
               src="/icons/comments.svg"
               alt="no discussion"
@@ -136,7 +169,7 @@ const ViewDiscussion = () => {
             /> */}
           </div>
           {/* COMMENT BOX */}
-          <div className="px-50">
+          <div className="px-50 border w-full bg-white-white">
             {activeCommentBox === "noInspiration" && (
               <CommentBox setActiveCommentBox={setActiveCommentBox} />
             )}
