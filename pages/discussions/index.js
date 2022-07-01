@@ -7,44 +7,9 @@ import Image from "next/image";
 
 import styles from "@/styles/discussion.module.css";
 import CreateDiscussions from "@/components/CreateDiscussions";
-
+import { discussions } from "@/utils/sampleData";
 const Index = () => {
   let loading = false;
-  const discussions = [
-    {
-      id: 1,
-      userName: "Patrick Dempsey",
-      users: 5,
-      title: "Price Action in Foreign Exchange",
-      date: "Mar 21",
-      code: "51RP70F",
-    },
-    {
-      id: 2,
-      userName: "Patrick Dempsey",
-      users: 5,
-      title: "Price Action in Foreign Exchange",
-      date: "Mar 21",
-      code: "51RP70F",
-    },
-    {
-      id: 3,
-      userName: "Patrick Dempsey",
-      users: 5,
-      title: "Price Action in Foreign Exchange",
-      date: "Mar 21",
-      code: "51RP70F",
-    },
-    {
-      id: 4,
-      userName: "Patrick Dempsey",
-      users: 5,
-      title: "Price Action in Foreign Exchange",
-      date: "Mar 21",
-      code: "51RP70F",
-    },
-  ];
-  // const discussions = [];
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
   const [createDiscussion, setCreateDiscussion] = useState(false);
@@ -57,7 +22,9 @@ const Index = () => {
       searchBar={true}
       bgColor="bg-gray-background"
     >
-      <div className=" h-auto relative p-50 vp-600:p-23 vp-980:p-46">
+      <div
+        className={`${styles.hiddenScrollbar} h-full relative p-50 vp-600:p-23 vp-980:p-46 w-full`}
+      >
         <div className="flex justify-between w-full mb-33 vp-980:hidden">
           <button
             className="btn text-sm w-259 px-25 flex justify-start items-center h-48 font-medium "

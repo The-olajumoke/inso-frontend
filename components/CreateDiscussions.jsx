@@ -4,15 +4,15 @@ import CheckBox from "./CheckBox";
 import CreateDiscInput from "./CreateDiscInput";
 import StarterPrompt from "./StarterPrompt";
 import PostInspiration from "./PostInspiration";
-import Resources from "./Resources";
 import Threads from "./Threads";
 import Tags from "./Tags";
-import Polls from "./Polls";
 import { ScoreSettings } from "./ScoreSettings";
 import Connections from "./Connections";
 import SavedSettingsTemplate from "./SavedSettingsTemplate";
 import Calendar from "./Calendar";
 import CalendarTemp from "./CalendarTemp";
+import AllPostInspirations from "./AllPostInspirations";
+import { AllSynthInspirations } from "./AllSynthInspirations";
 const CreateDiscussions = ({ setOpenModal }) => {
   const [allDiscussionNames, setAllDiscussionNames] = useState([]);
   const [showInput, setShowInput] = useState("true");
@@ -175,7 +175,11 @@ const CreateDiscussions = ({ setOpenModal }) => {
                   </h4>
                 </div>
                 <button
-                  className="btn text-primary-blue text-lg"
+                  className={`${
+                    checkedDiscussions.length == 0
+                      ? "text-gray-text"
+                      : "text-primary-blue"
+                  }  text-lg`}
                   disabled={checkedDiscussions.length == 0 ? true : false}
                   onClick={() => setPreviewSettings(false)}
                 >
@@ -192,12 +196,11 @@ const CreateDiscussions = ({ setOpenModal }) => {
             <div className="flex flex-col h-full  flex-grow ">
               {viewInspirations ? (
                 <div className="flex-grow flex flex-col">
-                  {activeViewInspiration === "Resources" && (
-                    <Resources
-                      setViewInspirations={setViewInspirations}
-                      setActiveViewInspiration={setActiveViewInspiration}
-                    />
-                  )}
+                  <AllPostInspirations
+                    activeViewInspiration={activeViewInspiration}
+                    setViewInspirations={setViewInspirations}
+                    setActiveViewInspiration={setActiveViewInspiration}
+                  />
                   {activeViewInspiration === "Calendar" && (
                     <CalendarTemp
                       date={date}
@@ -208,30 +211,12 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     />
                   )}
 
-                  {activeViewInspiration === "Threads" && (
-                    <Threads
-                      setViewInspirations={setViewInspirations}
-                      setActiveViewInspiration={setActiveViewInspiration}
-                    />
-                  )}
-                  {activeViewInspiration === "Tags" && (
-                    <Tags
-                      setViewInspirations={setViewInspirations}
-                      setActiveViewInspiration={setActiveViewInspiration}
-                    />
-                  )}
-                  {activeViewInspiration === "Connections" && (
-                    <Connections
-                      setViewInspirations={setViewInspirations}
-                      setActiveViewInspiration={setActiveViewInspiration}
-                    />
-                  )}
-                  {activeViewInspiration === "Polls" && (
-                    <Polls
-                      setViewInspirations={setViewInspirations}
-                      setActiveViewInspiration={setActiveViewInspiration}
-                    />
-                  )}
+                  <AllSynthInspirations
+                    activeViewInspiration={activeViewInspiration}
+                    setViewInspirations={setViewInspirations}
+                    setActiveViewInspiration={setActiveViewInspiration}
+                  />
+
                   {activeViewInspiration === "SavedSettings" && (
                     <SavedSettingsTemplate
                       setViewInspirations={setViewInspirations}

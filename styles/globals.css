@@ -254,3 +254,6 @@ abbr{
     text-transform: capitalize;
     font-weight: normal;
 }
+.react-calendar__tile:disabled{
+    color: rgba(128, 128, 128,0.5) !important;
+} 

@@ -40,6 +40,7 @@ const CalendarTemp = ({
           className="react-calendar"
           onChange={setDate}
           value={date}
+          minDate={new Date()}
           selectRange={true}
           nextLabel={<BsArrowDown />}
           prevLabel={<BsArrowUp />}

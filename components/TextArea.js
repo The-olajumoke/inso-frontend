@@ -30,7 +30,7 @@ const TextArea = ({ value, setValue, placeholder, required, disabled }) => {
         <Editor
           editorState={editorState}
           onEditorStateChange={onEditorStateChange}
-          toolbarClassName="flex absolute top-0 right-0 z-50"
+          toolbarClassName="flex absolute top-0 left-0 z-50"
           editorClassName="!overflow-none   w-400 pt-20"
           toolbar={{
             options: [, "emoji", "inline", "image"],

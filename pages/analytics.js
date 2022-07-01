@@ -27,7 +27,9 @@ const Analytics = () => {
   ];
   return (
     <Layout title="Inso | Analytics" bgColor="bg-gray-background">
-      <div className="py-25 px-40 vp-980:px-0">
+      <div
+        className={`${styles.hiddenScrollbar} h-full py-25 px-40 vp-980:px-0`}
+      >
         <div className="items-center w-full justify-between  h-50 mb-12 hidden vp-980:flex px-20">
           <div className="items-center flex  ">
             <div className="flex justify-center items-center mr-23">

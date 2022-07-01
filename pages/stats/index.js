@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "@/styles/progressbar.module.css";
 import Barchart from "chart/Barchart";
 import StatsTableRow from "@/components/StatsTableRow";
-const zIndex = () => {
+const Index = () => {
   const statsData = [
     {
       post: "Currently, Government agencies are ...",
@@ -42,7 +42,9 @@ const zIndex = () => {
   ];
   return (
     <Layout title="Inso | Stats" bgColor="bg-gray-background">
-      <div className="py-25 px-40 vp-980:px-0">
+      <div
+        className={`${styles.hiddenScrollbar} h-full py-25 px-40 vp-980:px-0 `}
+      >
         {" "}
         <div className="items-center  h-50 mb-12 hidden vp-980:flex vp-600:px-23 px-46 ">
           <div className="flex justify-center items-center mr-23">
@@ -543,4 +545,4 @@ const zIndex = () => {
   );
 };
 
-export default zIndex;
+export default Index;

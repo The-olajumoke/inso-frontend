@@ -64,7 +64,13 @@ const Calendar = ({ setViewInspirations, setActiveViewInspiration, date }) => {
               </div>
               <p className="  text-black-analText">8:00 AM</p>
             </div>
-            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
+            <div
+              className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText"
+              onClick={() => {
+                setViewInspirations(true);
+                setActiveViewInspiration("Calendar");
+              }}
+            >
               <p className="text-black-analText">
                 {" "}
                 {date[1].toLocaleString("en-US", {

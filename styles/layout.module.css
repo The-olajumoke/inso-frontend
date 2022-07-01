@@ -1,3 +1,10 @@
+.hiddenScrollbar{
+    overflow-y: scroll;
+
+}
+.hiddenScrollbar::-webkit-scrollbar {
+    display: none;
+}
 .searchInput{
     width: 634px;
     background: rgba(7, 160, 152, 0.05);

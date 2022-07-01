@@ -5,7 +5,7 @@ import CheckBox from "./CheckBox";
 import CreateDiscInput from "./CreateDiscInput";
 import Connections from "./Connections";
 import DiscussionSettings from "./DiscussionSetting";
-import Polls from "./Polls";
+import Polls from "./ImageInspiration";
 import PostInspiration from "./PostInspiration";
 import Resources from "./Resources";
 import { ScoreSettings } from "./ScoreSettings";

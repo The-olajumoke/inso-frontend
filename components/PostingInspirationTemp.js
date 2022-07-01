@@ -1,7 +1,17 @@
 import React from "react";
 import Image from "next/image";
 
-const Resources = ({ setViewInspirations }) => {
+const PostingInspirationTemp = ({
+  setViewInspirations,
+  instruction,
+  title,
+  firstHeading,
+  firstValue,
+  secondHeading,
+  secondValue,
+  ThirdHeading,
+  ThirdValue,
+}) => {
   return (
     <div className="">
       <div
@@ -19,31 +29,22 @@ const Resources = ({ setViewInspirations }) => {
         </div>
         <h6 className="ml-16 text-gray-faintGray">Back</h6>
       </div>
-      <h5 className="px-45 my-17 text-black-analText">Resources</h5>
+      <h5 className="px-45 my-17 text-black-analText">{title}</h5>
       <div className=" bg-white-white flex items-center px-45 justify-between"></div>
       <div className=" bg-gray-createDisc py-10 px-45">
         <p className=" text-primary-darkGreen mb-7">Instruction</p>
-        <h5 className="  text-black-analText  mb-28">
-          Share at least one web-based resource related to specific concepts
-          from this topic.
-        </h5>
+        <h5 className="  text-black-analText  mb-28">{instruction}</h5>
 
         <p className=" text-primary-darkGreen mb-7">Headers and prompts</p>
-        <h5 className="  text-black-analText ">Resource name</h5>
-        <p className="mb-40 text-gray-analyticsGray">
-          Paste a link to the resource
-        </p>
-        <h5 className="  text-black-analText  ">Summary</h5>
-        <p className="mb-40 text-gray-analyticsGray">
-          Summarize the content of the the resource
-        </p>
-        <h5 className="  text-black-analText  ">Connections</h5>
-        <p className="mb-40 text-gray-analyticsGray">
-          Identify specific course concept in the resource
-        </p>
+        <h5 className="  text-black-analText ">{firstHeading}</h5>
+        <p className="mb-40 text-gray-analyticsGray">{firstValue}</p>
+        <h5 className="  text-black-analText  ">{secondHeading}</h5>
+        <p className="mb-40 text-gray-analyticsGray">{secondValue}</p>
+        <h5 className="  text-black-analText  ">{ThirdHeading}</h5>
+        <p className="mb-40 text-gray-analyticsGray">{ThirdValue}</p>
       </div>
     </div>
   );
 };
 
-export default Resources;
+export default PostingInspirationTemp;

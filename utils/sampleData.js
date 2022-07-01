@@ -28,7 +28,7 @@ export const PostingInspirations = [
       "https://res.cloudinary.com/insomaryland/image/upload/v1656194912/InsoImages/createSomething_tsjf0a.svg",
     inspirations: [
       {
-        title: "Meme ",
+        title: "Meme",
         icon: "/icons/resources_icon.svg",
       },
       {
@@ -47,7 +47,7 @@ export const PostingInspirations = [
       "https://res.cloudinary.com/insomaryland/image/upload/v1656194955/InsoImages/startSomething_fnfshn.svg",
     inspirations: [
       {
-        title: "Debate ",
+        title: "Debate",
         icon: "/icons/resources_icon.svg",
       },
       {
@@ -135,4 +135,47 @@ export const SynthesizingInspirations = [
     title: "Connections",
     icon: "https://res.cloudinary.com/insomaryland/image/upload/v1656195291/InsoImages/Connections_icon_lwfwyv.svg",
   },
+];
+export const discussions = [
+  {
+    id: 1,
+    userName: "Patrick Dempsey",
+    users: 5,
+    title: "Price Action in Foreign Exchange",
+    date: "Mar 21",
+    code: "51RP70F",
+  },
+  {
+    id: 2,
+    userName: "Patrick Dempsey",
+    users: 5,
+    title: "Price Action in Foreign Exchange",
+    date: "Mar 21",
+    code: "51RP70F",
+  },
+  {
+    id: 3,
+    userName: "Patrick Dempsey",
+    users: 5,
+    title: "Price Action in Foreign Exchange",
+    date: "Mar 21",
+    code: "51RP70F",
+  },
+  {
+    id: 4,
+    userName: "Patrick Dempsey",
+    users: 5,
+    title: "Price Action in Foreign Exchange",
+    date: "Mar 21",
+    code: "51RP70F",
+  },
+];
+
+export const tags = [
+  { tagName: "Electricity", used: 14 },
+  { tagName: "Electricity", used: 14 },
+  { tagName: "NuclearPower", used: 12 },
+  { tagName: "NuclearPower", used: 12 },
+  { tagName: "Electricity", used: 14 },
+  { tagName: "NuclearPower", used: 12 },
 ];

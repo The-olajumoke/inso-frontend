@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "@/styles/layout.module.css";
 const Layout = ({ title, children, searchBar, bgColor }) => {
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -24,19 +25,22 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         <title>{title || "Custigrow"}</title>
       </Head>
 
-      <div className=" flex flex-col vp-980:hidden">
+      <div className=" flex flex-col vp-980:hidden  h-screen">
         <Header
           navSize={navSize}
           handleNavSize={handleNavSize}
           searchBar={searchBar}
         />
-        <div className="flex flex-grow   ">
-          <Sidebar navSize={navSize} />
-          <div className={`w-full flex  `}>
-            <div className={`${bgColor}  flex-grow  overflow-y-auto`}>
-              {children}
-            </div>
+        <div
+          className={` ${styles.hiddenScrollbar}   justify-between flex h-full`}
+        >
+          <div
+            style={{ minHeight: "109px" }}
+            className={`${styles.hiddenScrollbar} `}
+          >
+            <Sidebar navSize={navSize} />
           </div>
+          <div className={`${bgColor} w-full`}>{children}</div>
         </div>
       </div>
 
