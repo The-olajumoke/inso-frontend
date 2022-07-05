@@ -166,25 +166,25 @@ const ViewDiscussion = () => {
                 className={`overflow-hidden py-10  px-50  flex flex-col`}
               >
                 <div className={` h-full`}>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
-                  <h4>Comments & Responces</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
+                  <h4>Comments & Responses</h4>
                   {/* <h2>hello</h2>
                 <h2>hello</h2>
                 <h2>hello</h2>

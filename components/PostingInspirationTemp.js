@@ -11,12 +11,14 @@ const PostingInspirationTemp = ({
   secondValue,
   ThirdHeading,
   ThirdValue,
+  moveBack,
 }) => {
   return (
     <div className="">
       <div
         className="px-45 flex items-center cursor-pointer  "
-        onClick={() => setViewInspirations(false)}
+        // onClick={() => setViewInspirations(false)}
+        onClick={moveBack}
       >
         <div className="flex justify-center items-center">
           <Image

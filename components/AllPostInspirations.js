@@ -5,517 +5,326 @@ const AllPostInspirations = ({
   activeViewInspiration,
   setViewInspirations,
   setActiveViewInspiration,
+  setActiveInspiration,
+  activeDetailedInsp,
+  setShowDetailedInsp,
+  setActiveDetailedInsp,
 }) => {
   return (
     <div>
-      {activeViewInspiration === "Resources" && (
+      {activeViewInspiration === "Ask questions" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Ask Something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Resources"
-          instruction="Share at least one web-based resource related to some concept(s) from this topic.
-"
-          firstHeading="Resource"
-          firstValue="Paste a link to the resource(s)."
-          secondHeading="Summary
-"
-          secondValue="Summarize the resource(s)
-"
-          ThirdHeading="Connections
-"
-          ThirdValue="Identify the concept(s) in the resource(s) and explain how those concepts relate to the main ideas conveyed by the resource.
-"
-        />
-      )}
-      {activeViewInspiration === "Image" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Image"
-          instruction="Share an image that you believe conveys important ideas related to some concept(s) about this topic.
-"
-          firstHeading="Ideas"
-          firstValue="Identify the ideas you believe are conveyed by the image you selected."
-          secondHeading="Connections
-"
-          secondValue="Explain why you believe the image effectively conveys some concept(s) related to this topoc.
-"
-          ThirdHeading="Image
-"
-          ThirdValue="Insert a copy of or link to the image you selected.
-"
-        />
-      )}
-      {activeViewInspiration === "News story" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="News story"
-          instruction="Identify a recent web-based news story that is connected to some concept(s) from this topic.
-"
-          firstHeading="News story"
-          firstValue="Paste a link to a news story that you believe is connected to some concept(s) from this topic."
-          secondHeading="Summary
-"
-          secondValue="Summarize the news story.
-"
-          ThirdHeading="Connections
-"
-          ThirdValue="Explain how the web-based news story is connected to the concept(s) from this topic.
-"
-        />
-      )}
-      {activeViewInspiration === "Quote" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Quotes"
-          instruction="Identify a quote from an assigned reading or resource or a resource you identified that captures important information about some concept(s) from this topic
-"
-          firstHeading="Quote"
-          firstValue="Paste a quote from an assigned resource or a resource you identified that captures important information about some concept(s) from this topic."
-          secondHeading="Explanation
-"
-          secondValue="Explain why you believe the quote is meaningful, specifically as it relates to some concept(s) from this topic..
-"
-          ThirdHeading="Question
-"
-          ThirdValue="Ask one question that this quote has made you think about or that you believe others should consider..
-"
-        />
-      )}
-      {activeViewInspiration === "Between course concepts" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Connections"
-          instruction="Explain how some concept(s) from this topic relate to some other concept(s) from this course.
-"
-          firstHeading="Concepts"
-          firstValue="Identify some concept(s) from this topic that you believe connect with a concept or concepts from other lessons."
-          secondHeading="Connections
-"
-          secondValue="Describe the relationship between the concept(s) you identified.
-"
-          ThirdHeading="Implications
-"
-          ThirdValue="Explain how this relationship can help you and others better understand the concept(s).
-"
-        />
-      )}
-
-      {activeViewInspiration === "With concepts from another course" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Interdiscipline"
-          instruction="Describe connections you are seeing between concepts from this topic and concepts you have learned about an entirely different topic.
-"
-          firstHeading="Connections"
-          firstValue="Identify connections you are seeing between concepts from this topic and concepts from an entirely different topic."
-          secondHeading="Explanation
-"
-          secondValue="Explain how the concept(s) from this topic inform or are informed by the concept(s) from the other topic(s).
-"
-          ThirdHeading="New Ideas
-"
-          ThirdValue="Describe new ideas you are having because of the connections you identified.
-"
-        />
-      )}
-      {activeViewInspiration === "To a personal experience you had" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Experience"
-          instruction="Share a personal experience you have had with some concept(s) from this topic."
-          firstHeading="Idea"
-          firstValue="Identify the concept(s) with which you have had a personal experience
-"
-          secondHeading="Experience
-"
-          secondValue="Describe the experience you have had with the concept(s).
-"
-          ThirdHeading="Understanding
-"
-          ThirdValue="Explain how this experience has informed your understanding of the concept(s).
-"
-        />
-      )}
-      {activeViewInspiration === "To applications in the real world" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Application
-"
-          instruction="Explain how some concept(s) about this topic could apply to real-world situations.
-"
-          firstHeading="Concepts
-"
-          firstValue="Identify the concept(s) from this topic that are interesting or relevant to you.
-
-"
-          secondHeading="Real-world
-
-"
-          secondValue="Identify a specific real-world scenario that could be informed by, or could inform, the concept(s) you identified.
-"
-          ThirdHeading="Application"
-          ThirdValue="Explain how the concept(s) relates to the real-world scenario you identified.
-.
-"
-        />
-      )}
-      {activeViewInspiration === "Legal" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Legal
-
-"
-          instruction="Identify some concept(s) from this topic that could have legal implications.
-
-"
-          firstHeading="Concepts
-"
-          firstValue="Identify the concept(s) from this topic that you believe could have legal implications.
-
-
-"
-          secondHeading="Legal Implications
-
-
-"
-          secondValue="Describe the legal issue(s) that you believe the concept(s) could have.
-
-"
-          ThirdHeading="Navigating
-"
-          ThirdValue="Explain the ways you could navigate the concept(s) to ensure adherence to legal principles.
-
-.
-"
-        />
-      )}
-      {activeViewInspiration === "Ethical" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Ethical
-
-"
-          instruction="Identify some concept(s) from this topic that could have ethical implications.
-
-
-"
-          firstHeading="Concepts
-"
-          firstValue="Identify the concept(s) from this topic that you believe could have ethical implications.
-.
-
-
-"
-          secondHeading="Ethical Implications
-
-
-
-"
-          secondValue="Describe the ethical issue(s) that you believe the concept(s) could have.
-.
-
-"
-          ThirdHeading="Navigating
-"
-          ThirdValue="Explain the ways you could navigate the concept(s) to ensure adherence to ethical priorities.
-.
-
-.
-"
-        />
-      )}
-      {activeViewInspiration === "Other real-world" && (
-        <PostingInspirationTemp
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-          title="Real-world
-
-
-"
-          instruction="Identify some concept(s) from this topic that could have implications in real-world situations.
-
-
-
-"
-          firstHeading="Concepts
-"
-          firstValue="Identify the concept(s) from this topic that you believe could have real-world implications.
-
-.
-
-
-"
-          secondHeading="Real World Implications
-
-
-
-
-"
-          secondValue="Describe the real world implication(s) that you believe the concept(s) could have.
-
-.
-
-"
-          ThirdHeading="Navigating
-"
-          ThirdValue="Explain the ways you could navigate the concept(s) in the real world.
-
-.
-
-.
-"
+          title="Ask questions"
+          instruction="Pose questions to encourage discussion about the topic.
+"
+          firstHeading="Questions"
+          firstValue="Pose three questions about the topic that would encourage further discussion."
+          secondHeading="Understanding"
+          secondValue="Explain your current understanding of the topic."
+          ThirdHeading="Outcomes"
+          ThirdValue="Recommend three outcomes you would hope to see from discussion about your questions."
         />
       )}
       {activeViewInspiration === "Ask for clarity" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Ask Something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Clarity
-
-
-
-"
-          instruction="Identify the concept(s) from this topic about which you would like further clarity.
-
-
-
-
-"
-          firstHeading="Concepts
-"
-          firstValue="Identify the concept(s) from this topic about which you would like further clarity.
-
-
-.
-
-
-"
-          secondHeading="Explanation
-
-
-
-
-
-"
-          secondValue="Explain where you believe you are having trouble fully grasping these ideas
-.
-
-.
-
-"
-          ThirdHeading="Questions
-
-"
-          ThirdValue="Pose at least three questions related to the ideas or questions shared in the post that would encourage further explanation and discussion.
-
-
-.
-
-.
-"
+          title="Ask for clarity"
+          instruction="Pose questions about the topic that would help you gain a better understanding of important concepts."
+          firstHeading="Questions"
+          firstValue="Pose three questions about specific aspects of the topic that would help you gain a better understanding of important concepts."
+          secondHeading="Understanding"
+          secondValue="Explain your current understanding of the topic in general and the specific aspects about which you would like further explanation."
+          ThirdHeading="Insights"
+          ThirdValue="Describe the insights you would hope to gain through a discussion about the questions you posed."
         />
       )}
-      {activeViewInspiration === "Share study strategies" && (
+
+      {activeViewInspiration === "Course concepts" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Connect something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Strategies"
-          instruction="Describe the strategies you are using to make sense of and remember concepts related to this topic"
-          firstHeading="Concepts"
-          firstValue="Identify the concept(s) related to this topic on which you could apply some study strategies.
-"
-          secondHeading="Strategies
-"
-          secondValue="Share the strategies you are using to make sense and/or remember the concept(s) (e.g., explain your thinking; or share a diagram you drew, an acrostic you created, a rhyme you wrote, an image you think about, etc.)
-"
-          ThirdHeading="Benefit
-"
-          ThirdValue="Explain how others could benefit from your strategies.
-"
+          title="Course concepts"
+          instruction="Explain how specific concepts from the topic relate to other concepts in this course or concepts from another course or area."
+          firstHeading="Connections"
+          firstValue="Describe the relationship(s) you identified between specific concepts from this topic relate to other concepts in this course or concepts from another course or area.."
+          secondHeading="Understanding"
+          secondValue="Explain how the relationship(s) can help you and others better understand the topic."
+          ThirdHeading="New Ideas"
+          ThirdValue="List three new ideas you are having because of the concepts and the connections you identified between them."
         />
       )}
-      {activeViewInspiration === "Compare your perspective" && (
+
+      {activeViewInspiration === "Personal experience" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Connect something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Perspectives
-"
-          instruction="Compare your perspective with perspectives someone else might have about some concept(s) from this topic."
-          firstHeading="Your Perspective"
-          firstValue="Summarize the perspective you have about some concept(s) from this topic.
-"
-          secondHeading="A Different Perspective
-"
-          secondValue="Summarize a different perspective someone might have about the concept(s).
-"
-          ThirdHeading="Commonality
-"
-          ThirdValue="Explain how both perspectives could be merged to find commonality between them.
-"
+          title="Personal experience"
+          instruction="Share a personal experience you have had with concepts related to the topic."
+          firstHeading="Experience"
+          firstValue="Describe the experience(s) you have had with specific concepts related to the topic."
+          secondHeading="Understanding"
+          secondValue="Explain how this experience has informed your understanding of the concepts related to the topic."
+          ThirdHeading="Reflection"
+          ThirdValue="Generalize lessons you learned about the concepts during this experience to other expeirences you might have in the future."
         />
       )}
-      {activeViewInspiration === "Reflect" && (
+      {activeViewInspiration === "Real-world applications" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Connect something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Reflection
-
-"
-          instruction="Explain how some concept(s) from this topic are informing the way you think about this topic or other ideas that are important to you.
-"
-          firstHeading="Concepts
-"
-          firstValue="Identify the concept(s) from this topic that are informing your thinking about other ideas.
-
-"
-          secondHeading="Exploration
-
-"
-          secondValue="Explain how the concept(s) are informing the way you think about other ideas that are important to you.
-
-"
-          ThirdHeading="Action
-"
-          ThirdValue="Describe one practical outcome for you that has resulted from this new way of thinking
-"
+          title="Real-world applications"
+          instruction="Explain how concepts about the topic could apply to real-world situations."
+          firstHeading="Real-world"
+          firstValue="Identify a specific real-world scenario that could be informed by, or could inform, concepts related to the topic."
+          secondHeading="Understanding"
+          secondValue="Explain how application of concepts to this real-world scenario can inform our understanding of the topic."
+          ThirdHeading="Application"
+          ThirdValue="Recommend ways someone could effectively interact with the concepts you identified in the context of other real-world scenarios."
         />
       )}
-      {activeViewInspiration === "Meme" && (
+      {activeViewInspiration === "Legal or ethical concerns" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Connect something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Meme
-
-"
-          instruction="Create a meme that you believe conveys important ideas related to some concept(s) about this topic.
-"
-          firstHeading="Connections
-
-"
-          firstValue="Explain how the meme connects to some concept(s) related to this topic.
-
-"
-          secondHeading="Meme Caption
-
-"
-          secondValue="Create a caption for the meme image.
-"
-          ThirdHeading="Meme Image
-"
-          ThirdValue="Insert the meme image.
-"
+          title="Legal or ethical concerns"
+          instruction="Identify concepts related to the topic that could have legal or ethical implications."
+          firstHeading="Concerns"
+          firstValue="Identify a concept from the topic and explain the legal or ethical implications of the concept."
+          secondHeading="Understanding"
+          secondValue="Explain the importance of understanding the legal or ethical implications of the concept."
+          ThirdHeading="Implications"
+          ThirdValue="Suggest at least one positive and one negative legal or ethical implication related to the concepts and concerns you identified."
         />
       )}
-      {activeViewInspiration === "Graphic organiser" && (
+      {activeViewInspiration === "Alternative perspectives" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Connect something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Graphic Organizer
-
-"
-          instruction="Share a graphic organizer you created that helps you remember some concept(s) related to this topic.
-"
-          firstHeading="Elements
-
-"
-          firstValue="Identify the concept(s) you included in the graphic organizer.
-
-"
-          secondHeading="Remember
-
-"
-          secondValue="Explain how the graphic organizer helps you remember the concept(s).
-"
-          ThirdHeading="Image
-"
-          ThirdValue="Insert an image of or a link to the graphic organizer you created.
-"
+          title="Alternative perspectives"
+          instruction="Compare alternative perspectives about concepts related to the topic."
+          firstHeading="Perspectives"
+          firstValue="Identify a specific concept related to the topic about which there are at least two alternative perspectives."
+          secondHeading="Understanding"
+          secondValue="Explain how each perspective understands the concept."
+          ThirdHeading="Commonality"
+          ThirdValue="Recommend ways that each perspective can benefit from the ideas of the other."
         />
       )}
-      {activeViewInspiration === "piece of media" && (
+
+      {activeViewInspiration === "A meme" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Create something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Created Media
-
-"
-          instruction="Create some form of media (e.g., podcast, poem, webpage, video, song, graphic, etc.) that conveys your ideas about some concept(s) related to this topic.
-"
-          firstHeading="Overview
-
-"
-          firstValue="Explain what you created and how you believe your creation conveys important ideas about some concept(s) related to this topic.
-
-"
-          secondHeading="Elements
-
-"
-          secondValue="Identify the concept(s) you included in the media creation.
-"
-          ThirdHeading="Media Creation
-"
-          ThirdValue="Insert a copy or or link to the media you created.
-"
+          title="A meme"
+          instruction="Create a meme that you believe conveys important ideas about concepts related to the topic."
+          firstHeading="Meme"
+          firstValue="Insert the meme image you created and include a short caption about the meme."
+          secondHeading="Understanding"
+          secondValue="Explain how you believe the meme enhances understanding of the topic."
+          ThirdHeading="Question"
+          ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
         />
       )}
-      {activeViewInspiration === "Debate" && (
+      {activeViewInspiration === "A graphic organizer" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Create something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="Debate
-
-
+          title="A graphic organizer"
+          instruction="Create a graphic organizer that helps you undestand concepts related to the topic."
+          firstHeading="Graphic Organizer"
+          firstValue="Insert an image of or a link to the graphic organizer you created."
+          secondHeading="Understanding"
+          secondValue="Explain how the graphic organizer helps you understand specific concepts related to the topic."
+          ThirdHeading="Question"
+          ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
+        />
+      )}
+      {activeViewInspiration === "A media" && (
+        <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Create something");
+            setViewInspirations(false);
+          }}
+          setViewInspirations={setViewInspirations}
+          setActiveViewInspiration={setActiveViewInspiration}
+          title="Media"
+          instruction="Create some form of media, such as a podcast, poem, webpage, video, song, graphic, etc. that conveys your ideas about concepts related to the topic."
+          firstHeading="Media"
+          firstValue="Insert a copy of or a link to the media you created."
+          secondHeading="Understanding"
+          secondValue="Explain what you created and how you believe your creation conveys important ideas about concepts related to the topic."
+          ThirdHeading="Question"
+          ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
+        />
+      )}
+      {activeViewInspiration === "Media" && (
+        <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Share something");
+            setViewInspirations(false);
+          }}
+          setViewInspirations={setViewInspirations}
+          setActiveViewInspiration={setActiveViewInspiration}
+          title="Media"
+          instruction="Identify a media element, such as a web-based resource, an image, a recent newstory, etc. that you believe connects to concepts related to the topic."
+          firstHeading="Media"
+          firstValue="Insert a copy of or a link to the media you identified."
+          secondHeading="Understanding"
+          secondValue="Explain how the media you identified informs your understanding of concepts related to the topic."
+          ThirdHeading="Question"
+          ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in the media."
+        />
+      )}
+      {activeViewInspiration === "A Quote" && (
+        <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Share something");
+            setViewInspirations(false);
+          }}
+          setViewInspirations={setViewInspirations}
+          setActiveViewInspiration={setActiveViewInspiration}
+          title="A Quote"
+          instruction="Identify a quote from an assigned reading or resource or a resource you identified that captures important information about concepts related to the topic."
+          firstHeading="Quote"
+          firstValue="Paste (or retype) a quote from an assigned resource or a resource you identified that captures important information about concepts related to the topic."
+          secondHeading="Understanding"
+          secondValue="Explain how the quote you identified informs your understanding of concepts related to the topic."
+          ThirdHeading="Question
 "
-          instruction="Start a debate about some concept(s) related this topic.
-"
+          ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in the quote."
+        />
+      )}
+      {activeViewInspiration === "Study strategies" && (
+        <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Share something");
+            setViewInspirations(false);
+          }}
+          setViewInspirations={setViewInspirations}
+          setActiveViewInspiration={setActiveViewInspiration}
+          title="Study strategies"
+          instruction="Describe the strategies you are using to make sense of and remember concepts related to the topic."
+          firstHeading="Strategies"
+          firstValue="Share the strategies you are using to make sense of and remember concepts related to the topic, such as an acrostic you created, a song you wrote to remember key ideas, a framework identifying main points, etc."
+          secondHeading="Understanding"
+          secondValue="Explain how the strategy you are using is helping you think about and remember concepts related to the topic."
+          ThirdHeading="Questions"
+          ThirdValue="Pose at least three questions about concepts related to the topic you feel confident answering."
+        />
+      )}
+      {activeViewInspiration === "A debate" && (
+        <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Start something");
+            setViewInspirations(false);
+          }}
+          setViewInspirations={setViewInspirations}
+          setActiveViewInspiration={setActiveViewInspiration}
+          title="A debate"
+          instruction="Start a debate about some concept(s) related this topic."
           firstHeading="Debate Topic
 
 "
-          firstValue="Create a statement about some concept(s) from this topic that would inspire healthy controversy and conversation (e.g., Socialism is better than capitalism)
-
-"
-          secondHeading="Outcome
-
-"
-          secondValue="Describe the outcome you hope to achieve from the debate you are starting.
-"
+          firstValue="Create a statement about concepts related to the topic that would inspire informative and healthy discussion (e.g., Socialism is better than capitalism)."
+          secondHeading="Understanding"
+          secondValue="Explain your understanding of at least two of the perspectives on the debate topic you chose."
           ThirdHeading="Questions
 "
-          ThirdValue="Pose at least three questions related to the concept(s) you identified that would encourage further discussion.
-"
+          ThirdValue="Pose at least three questions related to the concept you identified that would encourage further debate."
         />
       )}
-      {activeViewInspiration === "AMA Thread" && (
+
+      {activeViewInspiration === "An AMA thread" && (
         <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Start something");
+            setViewInspirations(false);
+          }}
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
-          title="AMA"
-          instruction="Start an AMA thread about some concept(s) related this topic about which you are prepared to lead a conversation.
-"
-          firstHeading="AMA Topic
-
-"
-          firstValue="Identify some concept(s) from this topic that you believe you have advanced knowledge on and can answer questions about.
-
-"
-          secondHeading="Expertise
-
-"
-          secondValue="Explain why you believe you are able to address questions related to the concept(s).
-"
+          title="An AMA thread"
+          instruction="Start an AMA thread about some concept(s) related this topic about which you are prepared to lead a conversation."
+          firstHeading="Ask Me"
+          firstValue="Create a statement about concepts related to the topic that you feel confident addressing."
+          secondHeading="Understanding"
+          secondValue="Explain why you believe you are able to address questions related to the concept."
           ThirdHeading="Questions
 "
-          ThirdValue="Pose at least three questions related to the concept(s) you identified that would encourage further discussion.
-"
+          ThirdValue="Pose at least three questions about concepts related to the topic that you feel confident addressing."
+        />
+      )}
+
+      {activeViewInspiration === "A search tree" && (
+        <PostingInspirationTemp
+          moveBack={() => {
+            setShowDetailedInsp(true);
+            setActiveDetailedInsp("Start something");
+            setViewInspirations(false);
+          }}
+          setViewInspirations={setViewInspirations}
+          setActiveViewInspiration={setActiveViewInspiration}
+          title="A search tree"
+          instruction="Select three concepts related to the topic and share web-based resources connected to each."
+          firstHeading="Search"
+          firstValue="List three concepts related to the topic and include a link to at least one web-based resource related to each concept."
+          secondHeading="Understanding"
+          secondValue="Explain how the resources you identified inform your understanding of the concepts related to the topic."
+          ThirdHeading="Addition"
+          ThirdValue="Recommend three other concepts or aspects of the concepts you identified about which you would like others to investigate and share resources."
         />
       )}
     </div>

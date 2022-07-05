@@ -4,31 +4,66 @@ import Inspiration from "./Inspiration";
 import styles from "@/styles/postInspiration.module.css";
 import PostInspCategory from "./PostInspCategory";
 
-import { PostingInspirations } from "@/utils/sampleData";
+import {
+  PostingInspirations,
+  RespondingInspirations,
+} from "@/utils/sampleData";
 import { SynthesizingInspirations } from "@/utils/sampleData";
-import PostingInspTemp from "./PostingInspTemp";
-const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
-  const [activeInspiration, setActiveInspiration] = useState("posting");
-  const [showDetailedInsp, setShowDetailedInsp] = useState(false);
-  const [activeDetailedInsp, setActiveDetailedInsp] = useState("");
-  const shareSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Share something"
+const PostInspiration = ({
+  setViewInspirations,
+  setActiveViewInspiration,
+  activeInspiration,
+  setActiveInspiration,
+  activeDetailedInsp,
+  setActiveDetailedInsp,
+  showDetailedInsp,
+  setShowDetailedInsp,
+}) => {
+
+  // POSTING
+  const askSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Ask Something"
+  );
+  const connectSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Connect something"
   );
   const createSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Create something"
   );
+  const shareSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Share something"
+  );
   const startSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Start something"
   );
-  const connectionSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Make a connection"
+  //RESPONDING
+  const addInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Add"
   );
-  const exploreSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Explore your thinking"
+  const answerInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Answer"
   );
-  const considerSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Consider implications"
+  const askInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Ask"
   );
+  const evaluateInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Evaluate"
+  );
+  const reactInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "React"
+  );
+  // SYNTHESIZING
+
+  const connectionsInsp = SynthesizingInspirations.filter(
+    (insp) => insp.category === "Connections"
+  );
+  const tagsInsp = SynthesizingInspirations.filter(
+    (insp) => insp.category === "Tags"
+  );
+  const threadsInsp = SynthesizingInspirations.filter(
+    (insp) => insp.category === "Thread"
+  );
+
   return (
     <div className=" flex-grow flex flex-col">
       <div className="px-45 flex items-center justify-between pb-18 bg-white-white">
@@ -43,9 +78,18 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
 
       {showDetailedInsp ? (
         <div className="py-21 bg-gray-background flex-grow">
-          {activeDetailedInsp === "Share something" && (
+          {activeDetailedInsp === "Ask Something" && (
             <PostInspCategory
-              inspiration={shareSomethingInsp[0]}
+              inspiration={askSomethingInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
+          {activeDetailedInsp === "Connect something" && (
+            <PostInspCategory
+              inspiration={connectSomethingInsp[0]}
               setActiveInspiration={setActiveInspiration}
               setActiveViewInspiration={setActiveViewInspiration}
               setViewInspirations={setViewInspirations}
@@ -61,6 +105,16 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
               setShowDetailedInsp={setShowDetailedInsp}
             />
           )}
+          {activeDetailedInsp === "Share something" && (
+            <PostInspCategory
+              inspiration={shareSomethingInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
+
           {activeDetailedInsp === "Start something" && (
             <PostInspCategory
               inspiration={startSomethingInsp[0]}
@@ -70,27 +124,73 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
               setShowDetailedInsp={setShowDetailedInsp}
             />
           )}
-          {activeDetailedInsp === "Make a connection" && (
+
+          {activeDetailedInsp === "Add" && (
             <PostInspCategory
-              inspiration={connectionSomethingInsp[0]}
+              inspiration={addInsp[0]}
               setActiveInspiration={setActiveInspiration}
               setActiveViewInspiration={setActiveViewInspiration}
               setViewInspirations={setViewInspirations}
               setShowDetailedInsp={setShowDetailedInsp}
             />
           )}
-          {activeDetailedInsp === "Explore your thinking" && (
+          {activeDetailedInsp === "Answer" && (
             <PostInspCategory
-              inspiration={exploreSomethingInsp[0]}
+              inspiration={answerInsp[0]}
               setActiveInspiration={setActiveInspiration}
               setActiveViewInspiration={setActiveViewInspiration}
               setViewInspirations={setViewInspirations}
               setShowDetailedInsp={setShowDetailedInsp}
             />
           )}
-          {activeDetailedInsp === "Consider implications" && (
+          {activeDetailedInsp === "Ask" && (
             <PostInspCategory
-              inspiration={considerSomethingInsp[0]}
+              inspiration={askInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
+          {activeDetailedInsp === "Evaluate" && (
+            <PostInspCategory
+              inspiration={evaluateInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
+          {activeDetailedInsp === "React" && (
+            <PostInspCategory
+              inspiration={reactInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
+          {activeDetailedInsp === "Connections" && (
+            <PostInspCategory
+              inspiration={connectionsInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
+          {activeDetailedInsp === "Tags" && (
+            <PostInspCategory
+              inspiration={tagsInsp[0]}
+              setActiveInspiration={setActiveInspiration}
+              setActiveViewInspiration={setActiveViewInspiration}
+              setViewInspirations={setViewInspirations}
+              setShowDetailedInsp={setShowDetailedInsp}
+            />
+          )}
+          {activeDetailedInsp === "Thread" && (
+            <PostInspCategory
+              inspiration={threadsInsp[0]}
               setActiveInspiration={setActiveInspiration}
               setActiveViewInspiration={setActiveViewInspiration}
               setViewInspirations={setViewInspirations}
@@ -141,7 +241,7 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
           )}
           {activeInspiration === "responding" && (
             <div className="">
-              {PostingInspirations.map((insp, index) => (
+              {RespondingInspirations.map((insp, index) => (
                 <Inspiration
                   key={index}
                   insp={insp}
@@ -156,13 +256,11 @@ const PostInspiration = ({ setViewInspirations, setActiveViewInspiration }) => {
             <div className=" h-auto">
               <div className="">
                 {SynthesizingInspirations.map((insp, index) => (
-                  <PostingInspTemp
-                    title={insp.title}
+                  <Inspiration
                     key={index}
-                    checked={true}
-                    icon={insp.icon}
-                    setActiveViewInspiration={setActiveViewInspiration}
-                    setViewInspirations={setViewInspirations}
+                    insp={insp}
+                    setActiveDetailedInsp={setActiveDetailedInsp}
+                    setShowDetailedInsp={setShowDetailedInsp}
                   />
                 ))}
               </div>

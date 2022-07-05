@@ -4,25 +4,27 @@ import CheckBox from "./CheckBox";
 import CreateDiscInput from "./CreateDiscInput";
 import StarterPrompt from "./StarterPrompt";
 import PostInspiration from "./PostInspiration";
-import Threads from "./Threads";
-import Tags from "./Tags";
 import { ScoreSettings } from "./ScoreSettings";
-import Connections from "./Connections";
 import SavedSettingsTemplate from "./SavedSettingsTemplate";
 import Calendar from "./Calendar";
 import CalendarTemp from "./CalendarTemp";
 import AllPostInspirations from "./AllPostInspirations";
 import { AllSynthInspirations } from "./AllSynthInspirations";
+import AllRespondingInspiration from "./AllRespondingInspiration";
 const CreateDiscussions = ({ setOpenModal }) => {
   const [allDiscussionNames, setAllDiscussionNames] = useState([]);
   const [showInput, setShowInput] = useState("true");
   const [discussionName, setDiscussionName] = useState("");
-  const [previewSettings, setPreviewSettings] = useState(true);
-  const [activeSetting, setActiveSettings] = useState("StarterPrompt");
+  const [activeInspiration, setActiveInspiration] = useState("posting");
+  const [previewSettings, setPreviewSettings] = useState(false);
+  const [activeSetting, setActiveSettings] = useState("postInspiration");
   const [starterPromptValue, setStarterPromptValue] = useState("");
   const [viewInspirations, setViewInspirations] = useState(false);
   const [activeViewInspiration, setActiveViewInspiration] = useState("");
   const [checkedDiscussions, setCheckedDiscussion] = useState([]);
+  const [activeDetailedInsp, setActiveDetailedInsp] = useState("");
+  const [showDetailedInsp, setShowDetailedInsp] = useState(false);
+
   const today = new Date();
   let tommorrow = new Date();
   tommorrow.setDate(today.getDate() + 1);
@@ -200,6 +202,21 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     activeViewInspiration={activeViewInspiration}
                     setViewInspirations={setViewInspirations}
                     setActiveViewInspiration={setActiveViewInspiration}
+                    setActiveInspiration={setActiveInspiration}
+                    activeDetailedInsp={activeDetailedInsp}
+                    setActiveDetailedInsp={setActiveDetailedInsp}
+                    showDetailedInsp={showDetailedInsp}
+                    setShowDetailedInsp={setShowDetailedInsp}
+                  />
+                  <AllRespondingInspiration
+                    activeViewInspiration={activeViewInspiration}
+                    setViewInspirations={setViewInspirations}
+                    setActiveViewInspiration={setActiveViewInspiration}
+                    setActiveInspiration={setActiveInspiration}
+                    activeDetailedInsp={activeDetailedInsp}
+                    setActiveDetailedInsp={setActiveDetailedInsp}
+                    showDetailedInsp={showDetailedInsp}
+                    setShowDetailedInsp={setShowDetailedInsp}
                   />
                   {activeViewInspiration === "Calendar" && (
                     <CalendarTemp
@@ -306,6 +323,12 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     <PostInspiration
                       setViewInspirations={setViewInspirations}
                       setActiveViewInspiration={setActiveViewInspiration}
+                      activeInspiration={activeInspiration}
+                      setActiveInspiration={setActiveInspiration}
+                      activeDetailedInsp={activeDetailedInsp}
+                      setActiveDetailedInsp={setActiveDetailedInsp}
+                      showDetailedInsp={showDetailedInsp}
+                      setShowDetailedInsp={setShowDetailedInsp}
                     />
                   )}
                   {activeSetting === "Scores" && (

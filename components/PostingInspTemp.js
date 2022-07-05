@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const PostingInspTemp = ({
   title,
-  icon,
   setActiveViewInspiration,
   setViewInspirations,
 }) => {
@@ -13,17 +12,8 @@ const PostingInspTemp = ({
       text-gray-text outline-none cursor-pointer"
     >
       <div className="flex items-center">
-        <div className=" flex items-center justify-center">
-          <Image
-            src={`${icon}`}
-            alt={title}
-            layout="fixed"
-            width="16"
-            height="16"
-          />
-        </div>
         <h6
-          className="ml-16 text-black-analText"
+          className="text-black-analText"
           onClick={() => {
             setViewInspirations(true);
             setActiveViewInspiration(`${title}`);

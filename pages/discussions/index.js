@@ -12,7 +12,7 @@ const Index = () => {
   let loading = false;
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [createDiscussion, setCreateDiscussion] = useState(false);
+  const [createDiscussion, setCreateDiscussion] = useState(true);
 
   const filterOptions = ["All", "Discussions created", "Discussion joined"];
 

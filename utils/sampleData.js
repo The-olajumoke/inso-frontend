@@ -1,139 +1,226 @@
 export const PostingInspirations = [
   {
-    category: "Share something",
+    category: "Ask Something",
     categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656194823/InsoImages/shareSomething_tvg5qn.svg",
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195040/InsoImages/exploreThinking_md9iw9.svg",
     inspirations: [
       {
-        title: "Resources",
-        icon: "/icons/resources_icon.svg",
+        title: "Ask questions",
       },
       {
-        title: "News story",
-        icon: "/icons/poll_icon.svg",
-      },
-      {
-        title: "Image",
-        icon: "/icons/gallery_icon.svg",
-      },
-      {
-        title: "Quote",
-        icon: "/icons/gallery_icon.svg",
+        title: "Ask for clarity",
       },
     ],
   },
+
+  {
+    category: "Connect something",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195014/InsoImages/makeConnections_kustrj.svg",
+    inspirations: [
+      {
+        title: "Course concepts",
+      },
+      {
+        title: "Personal experience",
+      },
+      {
+        title: "Real-world applications",
+      },
+      {
+        title: "Legal or ethical concerns",
+      },
+      {
+        title: "Alternative perspectives",
+      },
+    ],
+  },
+
   {
     category: "Create something",
     categoryIcon:
       "https://res.cloudinary.com/insomaryland/image/upload/v1656194912/InsoImages/createSomething_tsjf0a.svg",
     inspirations: [
       {
-        title: "Meme",
-        icon: "/icons/resources_icon.svg",
+        title: "A meme",
       },
       {
-        title: "Graphic organiser",
-        icon: "/icons/poll_icon.svg",
+        title: "A graphic organizer",
       },
       {
-        title: "piece of media",
-        icon: "/icons/gallery_icon.svg",
+        title: "A media",
       },
     ],
   },
+
+  {
+    category: "Share something",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656194823/InsoImages/shareSomething_tvg5qn.svg",
+    inspirations: [
+      {
+        title: "Media",
+      },
+      {
+        title: "A Quote",
+      },
+      {
+        title: "Study strategies",
+      },
+    ],
+  },
+
   {
     category: "Start something",
     categoryIcon:
       "https://res.cloudinary.com/insomaryland/image/upload/v1656194955/InsoImages/startSomething_fnfshn.svg",
     inspirations: [
       {
-        title: "Debate",
-        icon: "/icons/resources_icon.svg",
+        title: "A debate",
       },
       {
-        title: "AMA Thread",
-        icon: "/icons/poll_icon.svg",
+        title: "An AMA thread",
+      },
+      {
+        title: "A search tree",
       },
     ],
   },
+];
+export const RespondingInspirations = [
   {
-    category: "Make a connection",
-    categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656195014/InsoImages/makeConnections_kustrj.svg",
-    inspirations: [
-      {
-        title: "Between course concepts",
-        icon: "/icons/resources_icon.svg",
-      },
-      {
-        title: "With concepts from another course",
-        icon: "/icons/poll_icon.svg",
-      },
-      {
-        title: "To a personal experience you had",
-        icon: "/icons/poll_icon.svg",
-      },
-      {
-        title: "To applications in the real world",
-        icon: "/icons/poll_icon.svg",
-      },
-    ],
-  },
-  {
-    category: "Explore your thinking",
+    category: "Add",
     categoryIcon:
       "https://res.cloudinary.com/insomaryland/image/upload/v1656195040/InsoImages/exploreThinking_md9iw9.svg",
     inspirations: [
       {
-        title: "Ask for clarity",
-        icon: "/icons/resources_icon.svg",
+        title: "Alternatives",
       },
       {
-        title: "Share study strategies",
-        icon: "/icons/poll_icon.svg",
+        title: "Illustrations",
       },
       {
-        title: "Compare your perspective",
-        icon: "/icons/poll_icon.svg",
+        title: "Insights",
       },
       {
-        title: "Reflect",
-        icon: "/icons/poll_icon.svg",
+        title: "Resources",
       },
     ],
   },
+
   {
-    category: "Consider implications",
+    category: "Answer",
     categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656195083/InsoImages/considerComplications_eipjwk.svg",
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195014/InsoImages/makeConnections_kustrj.svg",
     inspirations: [
       {
-        title: "Legal",
-        icon: "/icons/resources_icon.svg",
+        title: "Directly",
       },
       {
-        title: "Ethical",
-        icon: "/icons/poll_icon.svg",
+        title: "For clarification",
       },
       {
-        title: "Other real-world",
-        icon: "/icons/poll_icon.svg",
+        title: "More questions",
+      },
+    ],
+  },
+
+  {
+    category: "Ask",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656194912/InsoImages/createSomething_tsjf0a.svg",
+    inspirations: [
+      {
+        title: "Questions",
+      },
+      {
+        title: "For clarification",
+      },
+    ],
+  },
+
+  {
+    category: "Evaluate",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656194823/InsoImages/shareSomething_tvg5qn.svg",
+    inspirations: [
+      {
+        title: "1 Star 5 Stars",
+      },
+      {
+        title: "Critical Review",
+      },
+      {
+        title: "Loved, Learned",
+      },
+    ],
+  },
+
+  {
+    category: "React",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656194955/InsoImages/startSomething_fnfshn.svg",
+    inspirations: [
+      {
+        title: "Heart",
+      },
+      {
+        title: "Mad",
+      },
+      {
+        title: "Mindblown",
       },
     ],
   },
 ];
 export const SynthesizingInspirations = [
   {
-    title: "Threads",
-    icon: "https://res.cloudinary.com/insomaryland/image/upload/v1656195254/InsoImages/Threads_icon_yfgoac.svg",
+    category: "Connections",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195291/InsoImages/Connections_icon_lwfwyv.svg",
+    inspirations: [
+      {
+        title: "Interesting Connections",
+      },
+      {
+        title: "Missing Connections",
+      },
+      {
+        title: "Popular Connections",
+      },
+    ],
   },
   {
-    title: "Tags",
-    icon: "https://res.cloudinary.com/insomaryland/image/upload/v1656195277/InsoImages/Tags_icon_brwqrp.svg",
+    category: "Tags",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195277/InsoImages/Tags_icon_brwqrp.svg",
+    inspirations: [
+      {
+        title: "Interesting Tags",
+      },
+      {
+        title: "Missing Tags",
+      },
+      {
+        title: "Popular Tags",
+      },
+    ],
   },
   {
-    title: "Connections",
-    icon: "https://res.cloudinary.com/insomaryland/image/upload/v1656195291/InsoImages/Connections_icon_lwfwyv.svg",
+    category: "Thread",
+    categoryIcon:
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195254/InsoImages/Threads_icon_yfgoac.svg",
+    inspirations: [
+      {
+        title: "Interesting Thread",
+      },
+      {
+        title: "Missing Thread",
+      },
+      {
+        title: "Popular Thread",
+      },
+    ],
   },
 ];
 export const discussions = [
