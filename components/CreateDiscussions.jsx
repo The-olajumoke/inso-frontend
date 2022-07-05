@@ -16,8 +16,8 @@ const CreateDiscussions = ({ setOpenModal }) => {
   const [showInput, setShowInput] = useState("true");
   const [discussionName, setDiscussionName] = useState("");
   const [activeInspiration, setActiveInspiration] = useState("posting");
-  const [previewSettings, setPreviewSettings] = useState(false);
-  const [activeSetting, setActiveSettings] = useState("postInspiration");
+  const [previewSettings, setPreviewSettings] = useState(true);
+  const [activeSetting, setActiveSettings] = useState("StarterPrompt");
   const [starterPromptValue, setStarterPromptValue] = useState("");
   const [viewInspirations, setViewInspirations] = useState(false);
   const [activeViewInspiration, setActiveViewInspiration] = useState("");
@@ -232,6 +232,11 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     activeViewInspiration={activeViewInspiration}
                     setViewInspirations={setViewInspirations}
                     setActiveViewInspiration={setActiveViewInspiration}
+                    setActiveInspiration={setActiveInspiration}
+                    activeDetailedInsp={activeDetailedInsp}
+                    setActiveDetailedInsp={setActiveDetailedInsp}
+                    showDetailedInsp={showDetailedInsp}
+                    setShowDetailedInsp={setShowDetailedInsp}
                   />
 
                   {activeViewInspiration === "SavedSettings" && (

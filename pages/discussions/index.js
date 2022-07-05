@@ -12,7 +12,7 @@ const Index = () => {
   let loading = false;
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [createDiscussion, setCreateDiscussion] = useState(true);
+  const [createDiscussion, setCreateDiscussion] = useState(false);
 
   const filterOptions = ["All", "Discussions created", "Discussion joined"];
 
@@ -23,7 +23,7 @@ const Index = () => {
       bgColor="bg-gray-background"
     >
       <div
-        className={`${styles.hiddenScrollbar} h-full relative p-50 vp-600:p-23 vp-980:p-46 w-full`}
+        className={`${styles.hiddenScrollbar} relative h-full p-50 vp-600:p-23 vp-980:p-46 w-full`}
       >
         <div className="flex justify-between w-full mb-33 vp-980:hidden">
           <button
@@ -118,7 +118,10 @@ const Index = () => {
         )}
 
         <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">
-          <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
+          <div
+            className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center"
+            onClick={() => setCreateDiscussion(true)}
+          >
             <Image
               src="/icons/add_icon_white.svg"
               alt="no discussion"
