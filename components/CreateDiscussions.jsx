@@ -24,7 +24,8 @@ const CreateDiscussions = ({ setOpenModal }) => {
   const [checkedDiscussions, setCheckedDiscussion] = useState([]);
   const [activeDetailedInsp, setActiveDetailedInsp] = useState("");
   const [showDetailedInsp, setShowDetailedInsp] = useState(false);
-
+  const [addInspirationToSettings, setAddInspirationToSettings] =
+    useState(false);
   const today = new Date();
   let tommorrow = new Date();
   tommorrow.setDate(today.getDate() + 1);
@@ -334,6 +335,8 @@ const CreateDiscussions = ({ setOpenModal }) => {
                       setActiveDetailedInsp={setActiveDetailedInsp}
                       showDetailedInsp={showDetailedInsp}
                       setShowDetailedInsp={setShowDetailedInsp}
+                      addInspirationToSettings={addInspirationToSettings}
+                      setAddInspirationToSettings={setAddInspirationToSettings}
                     />
                   )}
                   {activeSetting === "Scores" && (

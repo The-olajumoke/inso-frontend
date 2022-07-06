@@ -15,6 +15,10 @@ const ViewDiscussion = () => {
   const id = router.query.id;
   const [activeCommentBox, setActiveCommentBox] = useState("noInspiration");
   const [viewAllTags, setViewAllTags] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openEditDropdown, setOpenEditDropdown] = useState(false);
+
+  const [showScoresSheet, setShowScoresSheet] = useState(false);
 
   return (
     <Layout
@@ -61,14 +65,118 @@ const ViewDiscussion = () => {
             </div>
           </form>
           <div className="flex  items-center gap-6">
-            <div className="flex items-center justify-center cursor-pointer">
-              <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331782/InsoImages/more_icon_desucz.svg"
-                alt="more"
-                layout="fixed"
-                width="20"
-                height="20"
-              />
+            <div className="flex items-center justify-center cursor-pointer relative">
+              <div
+                className="flex items-center justify-center"
+                onClick={() => setOpenDropdown(true)}
+              >
+                <Image
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655331782/InsoImages/more_icon_desucz.svg"
+                  alt="more"
+                  layout="fixed"
+                  width="20"
+                  height="20"
+                />
+              </div>
+              {openDropdown && (
+                <>
+                  <div
+                    className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
+                    onClick={() => setOpenDropdown(false)}
+                  ></div>
+                  <div
+                    className={`w-176   top-6  -right-6 bg-white-white absolute p-0 z-60  rounded-lg shadow-xs `}
+                  >
+                    <div className="w-full ">
+                      <div
+                        className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8  last:border-none cursor-pointer flex justify-start bg-other-disabled px-20"
+                        onClick={() => {
+                          setOpenDropdown(false);
+                        }}
+                      >
+                        <div
+                          className=" mr-12
+                               flex justify-center items-center"
+                        >
+                          <Image
+                            src="https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_cf2xom.svg"
+                            alt="edit"
+                            layout="fixed"
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p className="text-black-analText ">Drafts</p>
+                      </div>
+                      <div
+                        className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start px-20"
+                        onClick={() => {
+                          setOpenDropdown(false);
+                        }}
+                      >
+                        <div
+                          className=" mr-12
+                               flex justify-center items-center"
+                        >
+                          <Image
+                            src="https://res.cloudinary.com/insomaryland/image/upload/v1657101638/InsoImages/gradesheet_green_raitxv.svg"
+                            alt="edit"
+                            layout="fixed"
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p className=" text-black-analText">Gradesheet</p>
+                      </div>
+                      <div
+                        className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start  px-20"
+                        onClick={() => {
+                          setOpenDropdown(false);
+                        }}
+                      >
+                        <div
+                          className=" mr-12
+                               flex justify-center items-center"
+                        >
+                          <Image
+                            src="https://res.cloudinary.com/insomaryland/image/upload/v1657101638/InsoImages/chart_green_jwsxvj.svg"
+                            alt="edit"
+                            layout="fixed"
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p className=" text-black-analText">Charts</p>
+                      </div>
+                      <div
+                        className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start  px-20"
+                        onClick={() => {
+                          setOpenDropdown(false);
+                          setShowScoresSheet(true);
+                        }}
+                      >
+                        <div
+                          className=" mr-12
+                               flex justify-center items-center"
+                        >
+                          <Image
+                            src="https://res.cloudinary.com/insomaryland/image/upload/v1657101638/InsoImages/scores_green_tn8iuj.svg"
+                            alt="edit"
+                            layout="fixed"
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p className=" text-black-analText">Scores</p>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
             <div className="flex items-center justify-center ">
               <Image
@@ -90,8 +198,10 @@ const ViewDiscussion = () => {
             </div>
           </div>
         </div>
-        <div className=" flex h-full ">
-          <div className="h-full flex flex-col w-full justify-between ">
+        <div className=" flex h-full  ">
+          <div
+            className={`h-full flex flex-col flex-grow  w-1/2 justify-between `}
+          >
             <div>
               <div className="px-50 py-10 bg-gray-background ">
                 <div className=" flex justify-between items-center">
@@ -118,15 +228,78 @@ const ViewDiscussion = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-center">
-                    <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
-                      alt="back"
-                      layout="fixed"
-                      width="7"
-                      height="26"
-                      className=" cursor-pointer"
-                    />
+                  <div className="flex items-center justify-center relative">
+                    <div
+                      className="flex items-center justify-center "
+                      onClick={() => setOpenEditDropdown(true)}
+                    >
+                      <Image
+                        src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
+                        alt="back"
+                        layout="fixed"
+                        width="7"
+                        height="26"
+                        className=" cursor-pointer"
+                      />
+                    </div>
+                    {openEditDropdown && (
+                      <>
+                        <div
+                          className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
+                          onClick={() => setOpenEditDropdown(false)}
+                        ></div>
+                        <div
+                          className={`w-176   top-6  -right-6 bg-white-white absolute px-16 py-7 z-60  rounded-lg shadow-xs `}
+                        >
+                          <div className="w-full ">
+                            <div
+                              className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start "
+                              // onClick={}
+                            >
+                              <div
+                                className=" mr-12
+                               flex justify-center items-center"
+                              >
+                                <Image
+                                  src="https://res.cloudinary.com/insomaryland/image/upload/v1657099297/InsoImages/edit_green_ijlfht.svg"
+                                  alt="edit"
+                                  layout="fixed"
+                                  width="12"
+                                  height="12"
+                                />
+                              </div>
+                              <p className="text-black-analText ">
+                                Edit discussion
+                              </p>
+                            </div>
+                            <div
+                              className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray  cursor-pointer flex justify-start"
+                              // onClick={() => {
+                              //   setOpenDropdown(false);
+                              // }}
+                            >
+                              <div
+                                className=" mr-12
+                               flex justify-center items-center"
+                              >
+                                <Image
+                                  src="https://res.cloudinary.com/insomaryland/image/upload/v1657099304/InsoImages/close_green_kjr4pd.svg"
+                                  alt="edit"
+                                  layout="fixed"
+                                  width="12"
+                                  height="12"
+                                />
+                              </div>
+                              <p className=" text-black-analText">
+                                Close discussion
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
                 <h6 className="mt-10 text-gray-text break-words">
@@ -135,35 +308,37 @@ const ViewDiscussion = () => {
                   occurences now in 2021?
                 </h6>
               </div>
-              <div
-                className={` ${
-                  viewAllTags ? "hidden" : "flex"
-                } px-50 mt-7 justify-between`}
-              >
-                <div className="flex items-center">
-                  {tags.map((tag, index) => (
-                    <div
-                      className="h-32 bg-blue-inputBlue flex mr-10 gap-8 items-center px-15 rounded-xs"
-                      key={index}
-                    >
-                      <h6 className=" text-gray-text">#{tag.tagName}</h6>
-                      <h6 className=" text-primary-blue">{tag.used}</h6>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  className="text-primary-darkGreen text-sm"
-                  onClick={() => setViewAllTags(true)}
+              {showScoresSheet !== true && (
+                <div
+                  className={` ${
+                    viewAllTags ? "hidden" : "flex"
+                  } px-50 mt-7 justify-between`}
                 >
-                  View all
-                </button>
-              </div>
+                  <div className="flex items-center flex-wrap gap-4">
+                    {tags.map((tag, index) => (
+                      <div
+                        className="h-32 bg-blue-inputBlue flex gap-8 items-center px-15 rounded-xs"
+                        key={index}
+                      >
+                        <h6 className=" text-gray-text">#{tag.tagName}</h6>
+                        <h6 className=" text-primary-blue">{tag.used}</h6>
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    className="text-primary-darkGreen text-sm"
+                    onClick={() => setViewAllTags(true)}
+                  >
+                    View all
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="flex-grow flex flex-col justify-between">
               <div
                 style={{ maxHeight: "200px" }}
-                className={`overflow-hidden py-10  px-50  flex flex-col`}
+                className={`overflow-hidden py-20 px-50  flex flex-col`}
               >
                 <div className={` h-full`}>
                   <h4>Comments & Responses</h4>
@@ -193,24 +368,28 @@ const ViewDiscussion = () => {
                 </div>
               </div>
               {/* COMMENT BOX */}
-              <div className="px-50   w-full bg-white-white py-10">
-                {activeCommentBox === "noInspiration" && (
-                  <CommentBox setActiveCommentBox={setActiveCommentBox} />
-                )}
-                {activeCommentBox === "Resources" && (
-                  <ResourceCommentBox
-                    setActiveCommentBox={setActiveCommentBox}
-                  />
-                )}
-                {activeCommentBox === "Popular tags" && (
-                  <PopularTagsComment
-                    setActiveCommentBox={setActiveCommentBox}
-                  />
-                )}
-                {activeCommentBox === "Threads" && (
-                  <ThreadCommentBox setActiveCommentBox={setActiveCommentBox} />
-                )}
-              </div>
+              {showScoresSheet !== true && (
+                <div className="px-50   w-full bg-white-white py-10">
+                  {activeCommentBox === "noInspiration" && (
+                    <CommentBox setActiveCommentBox={setActiveCommentBox} />
+                  )}
+                  {activeCommentBox === "Resources" && (
+                    <ResourceCommentBox
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Popular tags" && (
+                    <PopularTagsComment
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Threads" && (
+                    <ThreadCommentBox
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
           {viewAllTags && (
@@ -240,6 +419,72 @@ const ViewDiscussion = () => {
                     <h6 className=" text-primary-blue">{tag.used}</h6>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+          {showScoresSheet && (
+            <div className=" w-1/2 py-38 px-20">
+              <div className=" rounded-lg  h-full shadow-lg p-20 ">
+                <div className=" flex justify-between items-center">
+                  <h6 className=" text-primary-darkGreen ">
+                    Automatic scoring
+                  </h6>
+                  <div
+                    className="flex justify-center items-center"
+                    onClick={() => setShowScoresSheet(false)}
+                  >
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                      alt="cancel"
+                      layout="fixed"
+                      width="14"
+                      height="14"
+                    />
+                  </div>
+                </div>
+
+                <div className={`${styles.tableHeader}`}>
+                  <div className=" flex  items-center justify-start">
+                    <div className="w-20 opacity-0 mr-10">S</div>
+                    <div className="">
+                      <p>User(30)</p>
+                    </div>
+                  </div>
+                  <div className="">
+                    <p>Instru... (20)</p>
+                  </div>
+                  <div className="">
+                    <p>Intera... (28)</p>
+                  </div>
+                  <div className="">
+                    <p>Impact (28)</p>
+                  </div>
+                  <div className="">
+                    <p>Total score</p>
+                  </div>
+                </div>
+                <div className={`${styles.tableRow}`}>
+                  <div className="flex  items-center justify-start">
+                    <div className="w-20 text-other-disabledText flex justify-center items-center  h-20 mr-10 bg-other-disabled">
+                      N/R
+                    </div>
+                    <div className="">
+                      <h6 className=" font-medium">Beth Keen</h6>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <div className="w-52 rounded h-24 bg-other-disabled"></div>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <div className="w-52 rounded h-24 bg-other-disabled"></div>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <div className="w-52 rounded h-24 bg-other-disabled"></div>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <div className="w-52 rounded h-24 bg-other-disabled"></div>
+                  </div>
+                </div>
               </div>
             </div>
           )}

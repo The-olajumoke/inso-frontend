@@ -18,8 +18,9 @@ const PostInspiration = ({
   setActiveDetailedInsp,
   showDetailedInsp,
   setShowDetailedInsp,
+  addInspirationToSettings,
+  setAddInspirationToSettings,
 }) => {
-
   // POSTING
   const askSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Ask Something"
@@ -69,7 +70,15 @@ const PostInspiration = ({
       <div className="px-45 flex items-center justify-between pb-18 bg-white-white">
         <h6 className="">Post inspiration</h6>
         <label className={`${styles.switch}`}>
-          <input type="checkbox" name="reports" id="postInspiration" />
+          <input
+            type="checkbox"
+            name="reports"
+            id="postInspiration"
+            checked={addInspirationToSettings}
+            onChange={() =>
+              setAddInspirationToSettings(!addInspirationToSettings)
+            }
+          />
           <span
             className={`${styles.slider} ${styles.round} "slider round"`}
           ></span>
@@ -289,7 +298,10 @@ const PostInspiration = ({
             />
           </div>
         </div>
-        <button className="btn bg-border-line text-white-white w-94 h-38 text-md">
+        <button
+          className="btn bg-border-line text-white-white w-94 h-38 text-md"
+          disabled={addInspirationToSettings ? false : true}
+        >
           Save
         </button>
       </div>
