@@ -4,7 +4,7 @@ const StatsTableRow = ({ stat }) => {
   const { post, set, time, views, upvotes, reply, emojis } = stat;
 
   return (
-    <div className=" h-40 grid grid-cols-10 vp-600:grid-cols-11 gap-4 mt-15 ">
+    <div className=" h-40 grid grid-cols-9 vp-600:grid-cols-11 gap-4 mt-15 ">
       {" "}
       <div className=" col-span-4 vp-600:col-span-5 flex  items-center ">
         {post ? (
@@ -29,13 +29,10 @@ const StatsTableRow = ({ stat }) => {
         <span className="  text-gray-faintGray">{time}</span>
       </div>
       <div className="flex justify-center items-center">
-        <p className=" text-primary-darkGreen">{views}</p>
+        <p className=" text-primary-darkGreen">{reply}</p>
       </div>
       <div className="flex justify-center items-center">
         <p className=" text-primary-darkGreen">{upvotes}</p>
-      </div>
-      <div className="flex justify-center items-center">
-        <p className=" text-primary-darkGreen">{reply}</p>
       </div>
       <div className="flex justify-center items-center">
         <p className=" text-primary-darkGreen">{emojis}</p>

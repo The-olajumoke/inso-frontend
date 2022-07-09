@@ -30,8 +30,8 @@ const HeroPage = () => {
           </Link>
         </div>
       </div>
-      <div className="flex vp-768:flex-col justify-between  items-center overflow-hidden pl-50 vp-768:px-14 vp-768:mt-50">
-        <div className=" w-561 vp-768:w-full ">
+      <div className="flex vp-768:flex-col justify-between  items-center overflow-hidden pl-50 vp-768:px-14 vp-768:mt-50 ">
+        <div className="  w-561 vp-768:w-full ">
           <h1 className={`${styles.heading}`}>Share ideas,</h1>
           <h1 className={`${styles.heading} mb-7`}> discover meaning</h1>
           <h4 className="text-gray-text vp-768:w-8/12 vp-600:w-9/12">
@@ -51,7 +51,7 @@ const HeroPage = () => {
           </div>
         </div>
 
-        <div className=" w-660 vp-768:w-full h-660 vp-600:h-450 relative ">
+        <div className=" w-660 vp-768:w-full h-600 vp-600:h-450 relative ">
           <div className=" w-full absolute top-0 bottom-0  flex justify-center items-center vp-600:hidden  mt-60">
             <Image
               src="/images/hero_image_resp.svg"

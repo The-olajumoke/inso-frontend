@@ -1,14 +1,27 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/switch.module.css";
-const Calendar = ({ setViewInspirations, setActiveViewInspiration, date }) => {
+const Calendar = ({
+  setActiveSettings,
+  setViewInspirations,
+  setActiveViewInspiration,
+  date,
+  addCalendarToSettings,
+  setAddCalendarToSettings,
+}) => {
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   return (
     <div className=" flex-grow flex flex-col">
       <div className="px-45 mb-20 flex items-center justify-between bg-white ">
         <h6 className="">Calendar</h6>
         <label className={`${styles.switch}`}>
-          <input type="checkbox" name="reports" id="postInspiration" />
+          <input
+            type="checkbox"
+            name="reports"
+            id="postInspiration"
+            checked={addCalendarToSettings}
+            onChange={() => setAddCalendarToSettings(!addCalendarToSettings)}
+          />
           <span
             className={`${styles.slider} ${styles.round} "slider round"`}
           ></span>
@@ -112,7 +125,8 @@ const Calendar = ({ setViewInspirations, setActiveViewInspiration, date }) => {
                 type="checkbox"
                 name="reports"
                 id="postInspiration"
-                // className={`${styles.switch}`}
+                checked={showAdvancedSettings}
+                onChange={() => setShowAdvancedSettings(!showAdvancedSettings)}
               />
               <span
                 className={`${styles.slider} ${styles.round} "slider round"`}
@@ -196,7 +210,7 @@ const Calendar = ({ setViewInspirations, setActiveViewInspiration, date }) => {
               height="16"
             />
           </div>
-          <div className="flex justify-center items-center">
+          <div className="justify-center items-center hidden">
             <Image
               src="/icons/arrow_right_blue.svg"
               alt="back"
@@ -206,8 +220,11 @@ const Calendar = ({ setViewInspirations, setActiveViewInspiration, date }) => {
             />
           </div>
         </div>
-        <button className="btn bg-border-line text-white-white w-94 h-38 text-md">
-          Save
+        <button
+          className="btn bg-border-line text-white-white w-94 h-38 text-md"
+          disabled={addCalendarToSettings ? false : true}
+        >
+          {addCalendarToSettings ? "Continue" : "Save & Continue"}
         </button>
       </div>
     </div>

@@ -21,7 +21,7 @@ const BadgeNotiTemp = () => {
           </h6>
         </div>
         <div className=" border-l-2 border-green-lightGreen flex items-center justify-center">
-          <div className=" w-203 bg-blue-inputBlue h-34 rounded px-14 flex items-center justify-center">
+          <div className=" w-205 bg-blue-inputBlue h-34 rounded px-14 flex items-center justify-center">
             <p className="ml-14">
               <span className=" text-primary-darkGreen font-medium"> 4 </span>
               {}

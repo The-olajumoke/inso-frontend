@@ -25,7 +25,9 @@ const CreateDiscussions = ({ setOpenModal }) => {
   const [activeDetailedInsp, setActiveDetailedInsp] = useState("");
   const [showDetailedInsp, setShowDetailedInsp] = useState(false);
   const [addInspirationToSettings, setAddInspirationToSettings] =
-    useState(false);
+    useState(true);
+  const [addScoresToSettings, setAddScoresToSettings] = useState(true);
+  const [addCalendarToSettings, setAddCalendarToSettings] = useState(true);
   const today = new Date();
   let tommorrow = new Date();
   tommorrow.setDate(today.getDate() + 1);
@@ -162,8 +164,8 @@ const CreateDiscussions = ({ setOpenModal }) => {
         >
           {previewSettings ? (
             <div className="flex flex-col px-42 flex-grow">
-              <div className=" mb-27 flex justify-between items-center ">
-                <div className="flex items-center">
+              <div className=" mb-27 flex  justify-between items-center ">
+                <div className="flex items-center ">
                   <div className="mr-17 flex items-center justify-center">
                     <Image
                       src="/icons/settings_icon.svg"
@@ -178,11 +180,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                   </h4>
                 </div>
                 <button
-                  className={`${
-                    checkedDiscussions.length == 0
-                      ? "text-gray-text"
-                      : "text-primary-blue"
-                  }  text-lg`}
+                  className={`btn px-16 py-8 text-lg`}
                   disabled={checkedDiscussions.length == 0 ? true : false}
                   onClick={() => setPreviewSettings(false)}
                 >
@@ -323,10 +321,12 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     <StarterPrompt
                       starterPromptValue={starterPromptValue}
                       setStarterPromptValue={setStarterPromptValue}
+                      setActiveSettings={setActiveSettings}
                     />
                   )}
                   {activeSetting === "postInspiration" && (
                     <PostInspiration
+                      setActiveSettings={setActiveSettings}
                       setViewInspirations={setViewInspirations}
                       setActiveViewInspiration={setActiveViewInspiration}
                       activeInspiration={activeInspiration}
@@ -341,15 +341,21 @@ const CreateDiscussions = ({ setOpenModal }) => {
                   )}
                   {activeSetting === "Scores" && (
                     <ScoreSettings
+                      setActiveSettings={setActiveSettings}
                       setViewInspirations={setViewInspirations}
                       setActiveViewInspiration={setActiveViewInspiration}
+                      addScoresToSettings={addScoresToSettings}
+                      setAddScoresToSettings={setAddScoresToSettings}
                     />
                   )}
                   {activeSetting === "Calendar" && (
                     <Calendar
                       date={date}
+                      setActiveSettings={setActiveSettings}
                       setViewInspirations={setViewInspirations}
                       setActiveViewInspiration={setActiveViewInspiration}
+                      addCalendarToSettings={addCalendarToSettings}
+                      setAddCalendarToSettings={setAddCalendarToSettings}
                     />
                   )}
                 </div>

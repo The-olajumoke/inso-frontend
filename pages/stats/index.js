@@ -61,17 +61,14 @@ const Index = () => {
         </div>
         <div className=" rounded-sm  px-32 vp-600:px-23 vp-980:px-46 h-81 vp-980:h-auto bg-white-white w-full flex vp-980:py-13 items-center justify-start  gap-40 vp-980:gap-3 vp-min-601:gap-6 vp-980:grid vp-980:grid-cols-3 vp-600:grid-cols-2 vp-980:rounded-none vp-min-601:justify-between shadow-xs mb-61">
           <div className="flex flex-col  items-start">
-            <p className="  text-black-analText text-xs">Discussions created</p>
-            <h3 className=" text-primary-darkGreen">4</h3>
+            <p className="  text-black-analText text-xs">Discussions joined</p>
+            <h3 className=" text-primary-darkGreen">132</h3>
           </div>
           <div className="flex flex-col  items-start">
             <p className="  text-black-analText text-xs">Posts made</p>
             <h3 className=" text-primary-darkGreen">114</h3>
           </div>
-          <div className="flex flex-col  items-start">
-            <p className="  text-black-analText text-xs">Posts read</p>
-            <h3 className=" text-primary-darkGreen">132</h3>
-          </div>
+
           <div className="flex flex-col  items-start">
             <p className="  text-black-analText text-xs">Comments received</p>
             <h3 className=" text-primary-darkGreen">100</h3>
@@ -81,8 +78,8 @@ const Index = () => {
             <h3 className=" text-primary-darkGreen">38</h3>
           </div>
           <div className="flex flex-col  items-start">
-            <p className="  text-black-analText text-xs">Reactions made</p>
-            <h3 className=" text-primary-darkGreen">14</h3>
+            <p className="  text-black-analText text-xs">Discussions created</p>
+            <h3 className=" text-primary-darkGreen">4</h3>
           </div>
         </div>
         <div className=" grid grid-cols-7  vp-1024:flex flex-col gap-14 mb-41 ">
@@ -217,7 +214,7 @@ const Index = () => {
                     <div className="pr-25">
                       <div className=" flex items-center mb-7">
                         <div className=" bg-green-lightGreen w-150 h-30 rounded px-14 flex-grow  text-xs flex items-center mr-10">
-                          Make exactly 10 posts
+                          Make 10 posts
                         </div>
                         <div className="w-100  bg-blue-progressBlue h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
                           <progress
@@ -294,9 +291,9 @@ const Index = () => {
               <div className="py-14 px-22 vp-600:px-23 vp-980:px-46  h-full vp-980:h-auto rounded-xl bg-white-white shadow-lg flex-grow flex justify-between flex-col vp-600:w-528">
                 <div className="mb-40 flex items-center gap-4">
                   <div className=" flex-grow vp-1024:flex-grow-0 h-34 px-21   bg-border-green  rounded-xl  flex items-center ">
-                    <p className=" text-black-analText mr-14">
+                    <span className=" text-xs text-black-analText mr-14">
                       Discussion set / Discussions
-                    </p>
+                    </span>
                     <Image
                       src="/icons/arrow_down_green.svg"
                       alt=" Discussion dropdown "
@@ -366,7 +363,7 @@ const Index = () => {
             </h4>
             <div className="vp-600:overflow-scroll">
               <div className=" rounded-xl bg-white-white shadow-lg py-12 px-21  vp-600:px-23 vp-980:px-46 vp-600:w-680">
-                <div className="border-b h-40 grid grid-cols-10 vp-600:grid-cols-11 gap-4 border-blue-inputBlue pb-6">
+                <div className="border-b h-40 grid grid-cols-9 vp-600:grid-cols-11 gap-4 border-blue-inputBlue pb-6">
                   {" "}
                   <div className="col-span-4 vp-600:col-span-5 flex items-center">
                     <p className=" text-primary-darkGreen ">My Posts</p>
@@ -384,16 +381,6 @@ const Index = () => {
                         className="ml-5"
                       />
                     </div>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <Image
-                      src="/icons/eye_grey.svg"
-                      alt="views"
-                      draggable="false"
-                      layout="fixed"
-                      width="24"
-                      height="24"
-                    />
                   </div>
                   <div className="flex items-center justify-center">
                     <Image

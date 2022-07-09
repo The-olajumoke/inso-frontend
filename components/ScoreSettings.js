@@ -5,7 +5,10 @@ import NewSettings from "./NewSettings";
 import styles from "@/styles/postInspiration.module.css";
 
 export const ScoreSettings = ({
+  setActiveSettings,
   setViewInspirations,
+  addScoresToSettings,
+  setAddScoresToSettings,
   setActiveViewInspiration,
 }) => {
   const [showSavedSettings, setShowSavedSettings] = useState(false);
@@ -20,7 +23,8 @@ export const ScoreSettings = ({
             type="checkbox"
             name="reports"
             id="postInspiration"
-            // className={`${styles.switch}`}
+            checked={addScoresToSettings}
+            onChange={() => setAddScoresToSettings(!addScoresToSettings)}
           />
           <span
             className={`${styles.slider} ${styles.round} "slider round"`}
@@ -107,7 +111,12 @@ export const ScoreSettings = ({
 
       <div className="h-54 flex justify-between items-center w-full px-45">
         <div className="flex items-center">
-          <div className="flex justify-center items-center mr-75">
+          <div
+            className="flex justify-center items-center mr-75"
+            onClick={() => {
+              setActiveSettings("Scores");
+            }}
+          >
             <Image
               src="/icons/arrow_left_blue.svg"
               alt="back"
@@ -116,7 +125,12 @@ export const ScoreSettings = ({
               height="16"
             />
           </div>
-          <div className="flex justify-center items-center">
+          <div
+            className="flex justify-center items-center"
+            onClick={() => {
+              setActiveSettings("Calendar");
+            }}
+          >
             <Image
               src="/icons/arrow_right_blue.svg"
               alt="back"
@@ -126,8 +140,14 @@ export const ScoreSettings = ({
             />
           </div>
         </div>
-        <button className="btn bg-border-line text-white-white w-94 h-38 text-md">
-          Save
+        <button
+          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-md"
+          disabled={addScoresToSettings ? false : true}
+          onClick={() => {
+            setActiveSettings("Calendar");
+          }}
+        >
+          {addScoresToSettings ? "Continue" : "Save & Continue"}
         </button>
       </div>
     </div>

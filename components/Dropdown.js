@@ -36,7 +36,7 @@ const Dropdown = ({
             onClick={() => setOpenDropdown(false)}
           ></div>
           <div
-            className={`${styles.dropdown} absolute  top-10 bg-white-white w-199  px-20 py-7 z-60  rounded-lg shadow-xs`}
+            className={`${styles.dropdown} absolute  top-10 bg-white-white w-210  px-20 py-7 z-60  rounded-lg shadow-xs`}
           >
             <div className="w-full ">
               {items.map((item, index) => (

@@ -23,7 +23,7 @@ const ActionNotiTemp = () => {
           </h6>
         </div>
         <div className=" border-l-2 border-green-lightGreen flex items-center justify-center">
-          <div className=" w-203 bg-other-lightRed h-34 rounded px-14 flex items-center justify-center">
+          <div className=" w-205 bg-other-lightRed h-34 rounded px-14 flex items-center justify-center">
             <Image
               src="/icons/clock.svg"
               alt=" Discussion dropdown "

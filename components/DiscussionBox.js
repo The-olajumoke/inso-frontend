@@ -64,7 +64,7 @@ const DiscussionBox = ({ discussion }) => {
                   <div className="w-full ">
                     <div
                       className="text-gray-text
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                       onClick={() => {
                         setOpenDropdown(false);
                       }}
@@ -82,7 +82,7 @@ const DiscussionBox = ({ discussion }) => {
                     </div>
                     <div
                       className="text-gray-text
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                       onClick={() => {
                         setOpenDropdown(false);
                       }}
@@ -100,7 +100,7 @@ const DiscussionBox = ({ discussion }) => {
                     </div>
                     <div
                       className="text-gray-text
-                  :hover: bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                       onClick={() => {
                         setOpenDropdown(false);
                       }}
@@ -118,7 +118,7 @@ const DiscussionBox = ({ discussion }) => {
                     </div>
                     <div
                       className="text-gray-text
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                       onClick={() => {
                         setOpenDropdown(false);
                       }}

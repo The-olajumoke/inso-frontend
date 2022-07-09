@@ -10,6 +10,7 @@ import {
 } from "@/utils/sampleData";
 import { SynthesizingInspirations } from "@/utils/sampleData";
 const PostInspiration = ({
+  setActiveSettings,
   setViewInspirations,
   setActiveViewInspiration,
   activeInspiration,
@@ -208,7 +209,11 @@ const PostInspiration = ({
           )}
         </div>
       ) : (
-        <div className=" px-45 py-10   flex-grow bg-gray-background  ">
+        <div
+          className={`${
+            !addInspirationToSettings && " opacity-20"
+          } px-45 py-10   flex-grow bg-gray-background  `}
+        >
           <div className="grid  grid-cols-3 text-sm gap-8 mb-20">
             <button
               className={`${
@@ -279,7 +284,12 @@ const PostInspiration = ({
       )}
       <div className="h-54 flex justify-between items-center w-full px-45">
         <div className="flex items-center">
-          <div className="flex justify-center items-center mr-75">
+          <div
+            className="flex justify-center items-center mr-75"
+            onClick={() => {
+              setActiveSettings("StarterPrompt");
+            }}
+          >
             <Image
               src="/icons/arrow_left_blue.svg"
               alt="back"
@@ -288,7 +298,12 @@ const PostInspiration = ({
               height="16"
             />
           </div>
-          <div className="flex justify-center items-center">
+          <div
+            className="flex justify-center items-center"
+            onClick={() => {
+              setActiveSettings("Scores");
+            }}
+          >
             <Image
               src="/icons/arrow_right_blue.svg"
               alt="back"
@@ -299,10 +314,13 @@ const PostInspiration = ({
           </div>
         </div>
         <button
-          className="btn bg-border-line text-white-white w-94 h-38 text-md"
+          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-md"
           disabled={addInspirationToSettings ? false : true}
+          onClick={() => {
+            setActiveSettings("Scores");
+          }}
         >
-          Save
+          {addInspirationToSettings ? "Continue" : "Save & Continue"}
         </button>
       </div>
     </div>
