@@ -60,24 +60,24 @@ const Index = () => {
           <h4 className=" text-black-analText">Stats</h4>
         </div>
         <div className=" rounded-sm  px-32 vp-600:px-23 vp-980:px-46 h-81 vp-980:h-auto bg-white-white w-full flex vp-980:py-13 items-center justify-start  gap-40 vp-980:gap-3 vp-min-601:gap-6 vp-980:grid vp-980:grid-cols-3 vp-600:grid-cols-2 vp-980:rounded-none vp-min-601:justify-between shadow-xs mb-61">
-          <div className="flex flex-col  items-start">
+          <div className="flex flex-col items-center">
             <p className="  text-black-analText text-xs">Discussions joined</p>
             <h3 className=" text-primary-darkGreen">132</h3>
           </div>
-          <div className="flex flex-col  items-start">
+          <div className="flex flex-col items-center">
             <p className="  text-black-analText text-xs">Posts made</p>
             <h3 className=" text-primary-darkGreen">114</h3>
           </div>
 
-          <div className="flex flex-col  items-start">
+          <div className="flex flex-col items-center">
             <p className="  text-black-analText text-xs">Comments received</p>
             <h3 className=" text-primary-darkGreen">100</h3>
           </div>
-          <div className="flex flex-col  items-start">
+          <div className="flex flex-col items-center">
             <p className="  text-black-analText text-xs">Upvotes received</p>
             <h3 className=" text-primary-darkGreen">38</h3>
           </div>
-          <div className="flex flex-col  items-start">
+          <div className="flex flex-col items-center">
             <p className="  text-black-analText text-xs">Discussions created</p>
             <h3 className=" text-primary-darkGreen">4</h3>
           </div>

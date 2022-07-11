@@ -47,7 +47,8 @@
     p {
         @apply text-sm text-gray-text font-poppins;
     }
-    button{
+
+    button,span,div{
 @apply font-poppins
     }
 [type='text'],

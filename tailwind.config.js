@@ -50,6 +50,7 @@ module.exports = {
       green: {
         lightGreen: "#F3FAFA",
         lighterGreen: "rgba(243, 250, 250, 1)",
+        doneBg: "#EDFBED",
       },
       gray: {
         text: "#686868",

@@ -58,26 +58,22 @@ const Analytics = () => {
         </div>
         <div className="grid grid-cols-5 vp-980:flex flex-col h-81 vp-980:h-auto justify-between mb-29 vp-980:gap-20">
           <div className="col-span-2  px-32 vp-980:px-20 h-full vp-980:py-15 bg-white-white rounded-sm   shadow-xs flex items-center justify-between mr-30  vp-980:mr-0  vp-980:w-full vp-980:rounded-none ">
-            <div className="flex flex-col  items-start">
-              <p className=" text-black-analText text-xs">Sets</p>
-              <h3 className=" text-primary-darkGreen">14</h3>
-            </div>
-            <div className="flex flex-col  items-start">
+            <div className="flex flex-col  items-center">
               <p className=" text-black-analText text-xs">Discussions</p>
               <h3 className=" text-primary-darkGreen">38</h3>
             </div>
-            <div className="flex flex-col  items-start">
+            <div className="flex flex-col  items-center">
               <p className=" text-black-analText text-xs">Users</p>
               <h3 className=" text-primary-darkGreen">100</h3>
             </div>
-            <div className="flex flex-col  items-start">
+            <div className="flex flex-col  items-center">
               <p className=" text-black-analText text-xs">Posts</p>
               <h3 className=" text-primary-darkGreen">1250</h3>
             </div>
           </div>
           <div className="vp-980:hidden col-span-3 px-32 h-full bg-white-white rounded-sm  shadow-xs flex   flex-col items-center  justify-center">
             <div className=" flex items-center justify-between w-full">
-              <span className=" text-xs w-135  text-gray-text mr-48">
+              <span className=" text-xs w-140  text-gray-text mr-48">
                 {" "}
                 Compare discussion:
               </span>

@@ -1,5 +1,4 @@
-.hiddenScrollbar {
-
+.hiddenScrollbar{
     overflow-y: scroll;
 }
 
@@ -44,16 +43,18 @@
 
 .tableHeader {
     border-bottom: 0.5px solid #caceca;
-    height: 5.2rem;
+    height: 5rem;
+    margin-bottom: 1rem;
 }
-.tableRow {
+/* .tableRow {
     height: 7.8rem;
-}
+} */
 .tableHeader,
 .tableRow {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 14rem repeat(4, minmax(0, 10rem)) ;
+    /* grid-template-columns: 14rem repeat(4, minmax(0, 10rem)) ; */
     align-items: center;
     /* padding: 0 1.6rem; */
+    font-size: 12px;
 }
