@@ -3,19 +3,69 @@ import Image from "next/image";
 import styles from "@/styles/viewDiscussion.module.css";
 import PollTemplate from "./PollTemplate";
 import PopularTags from "./PopularTags";
-import ResourcesTemp from "./ResourcesTemp";
-import ThreadsTemp from "./ThreadsTemp";
-import ConnectionTemp from "./ConnectionTemp";
-import { PostingInspirations } from "@/utils/sampleData";
-import { SynthesizingInspirations } from "@/utils/sampleData";
+import {
+  PostingInspirations,
+  RespondingInspirations,
+  SynthesizingInspirations,
+} from "@/utils/sampleData";
 import Inspiration from "./Inspiration";
-import PostingInspTemp from "./PostingInspTemp";
+import PostInspCategory from "./PostInspCategory";
+import ViewPostInspCategory from "./ViewPostInspCategory";
+import ViewInspirations from "./ViewInspirations";
 
 const ShowInspirations = ({ setActiveCommentBox, title }) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
-    useState(false);
+    useState(true);
   const [activeInspiration, setActiveInspiration] = useState("posting");
   const [activePreview, setActivePreview] = useState("");
+  const [viewInspirations, setViewInspirations] = useState(false);
+  const [activeViewInspiration, setActiveViewInspiration] = useState("");
+  const [currentDetailedInsp, setCurrentDetailedInsp] =
+    useState("Ask Something");
+
+  // POSTING
+  const askSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Ask Something"
+  );
+  const connectSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Connect something"
+  );
+  const createSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Create something"
+  );
+  const shareSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Share something"
+  );
+  const startSomethingInsp = PostingInspirations.filter(
+    (insp) => insp.category === "Start something"
+  );
+  //RESPONDING
+  const addInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Add"
+  );
+  const answerInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Answer"
+  );
+  const askInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Ask"
+  );
+  const evaluateInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "Evaluate"
+  );
+  const reactInsp = RespondingInspirations.filter(
+    (insp) => insp.category === "React"
+  );
+  // SYNTHESIZING
+
+  const connectionsInsp = SynthesizingInspirations.filter(
+    (insp) => insp.category === "Connections"
+  );
+  const tagsInsp = SynthesizingInspirations.filter(
+    (insp) => insp.category === "Tags"
+  );
+  const threadsInsp = SynthesizingInspirations.filter(
+    (insp) => insp.category === "Thread"
+  );
 
   return (
     <div className="flex w-full items-center justify-between px-29 mb-16">
@@ -53,77 +103,170 @@ const ShowInspirations = ({ setActiveCommentBox, title }) => {
             <div
               className={`${styles.dropdown}  absolute px-37 py-22 bg-white-white  shadow-lg`}
             >
-              <div className="relative">
-                {activePreview === "Polls" && <PollTemplate />}
-                {activePreview === "Popular tags" && <PopularTags />}
-                {activePreview === "Resources" && <ResourcesTemp />}
-                {activePreview === "Resources" && <ResourcesTemp />}
-                {activePreview === "Threads" && <ThreadsTemp />}
-                {activePreview === "Connections" && <ConnectionTemp />}
+              {viewInspirations ? (
+                <div className="">
+                  {currentDetailedInsp === "Ask Something" && (
+                    <ViewPostInspCategory
+                      inspiration={askSomethingInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Connect something" && (
+                    <ViewPostInspCategory
+                      inspiration={connectSomethingInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Create something" && (
+                    <ViewPostInspCategory
+                      inspiration={createSomethingInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Share something" && (
+                    <ViewPostInspCategory
+                      inspiration={shareSomethingInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
 
-                <div className="grid  grid-cols-3 text-sm gap-8 mb-20">
-                  <button
-                    className={`${
-                      activeInspiration === "posting" ? "btn" : "btn-nonActive"
-                    }   h-30`}
-                    onClick={() => setActiveInspiration("posting")}
-                  >
-                    Post
-                  </button>
-                  <button
-                    className={`${
-                      activeInspiration === "responding"
-                        ? "btn"
-                        : "btn-nonActive"
-                    }   h-30`}
-                    onClick={() => setActiveInspiration("responding")}
-                  >
-                    Respond
-                  </button>
+                  {currentDetailedInsp === "Start something" && (
+                    <ViewPostInspCategory
+                      inspiration={startSomethingInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
 
-                  <button
-                    className={`${
-                      activeInspiration === "synthesizing"
-                        ? "btn"
-                        : "btn-nonActive"
-                    }   h-30`}
-                    onClick={() => setActiveInspiration("synthesizing")}
-                  >
-                    Synthesise
-                  </button>
+                  {currentDetailedInsp === "Add" && (
+                    <ViewPostInspCategory
+                      inspiration={addInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Answer" && (
+                    <ViewPostInspCategory
+                      inspiration={answerInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Ask" && (
+                    <ViewPostInspCategory
+                      inspiration={askInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Evaluate" && (
+                    <ViewPostInspCategory
+                      inspiration={evaluateInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "React" && (
+                    <ViewPostInspCategory
+                      inspiration={reactInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Connections" && (
+                    <ViewPostInspCategory
+                      inspiration={connectionsInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Tags" && (
+                    <ViewPostInspCategory
+                      inspiration={tagsInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
+                  {currentDetailedInsp === "Thread" && (
+                    <ViewPostInspCategory
+                      inspiration={threadsInsp[0]}
+                      setViewInspirations={setViewInspirations}
+                    />
+                  )}
                 </div>
+              ) : (
+                <div className="relative">
+                  {activePreview === "Polls" && <PollTemplate />}
+                  {activePreview === "Popular tags" && <PopularTags />}
 
-                {activeInspiration === "posting" && (
-                  <div className="">
-                    <div className="overflow-auto flex flex-col">
-                      {PostingInspirations.map((insp, index) => (
-                        <Inspiration key={index} insp={insp} />
+                  <div className="grid  grid-cols-3 text-sm gap-8 mb-20">
+                    <button
+                      className={`${
+                        activeInspiration === "posting"
+                          ? "btn"
+                          : "btn-nonActive"
+                      }   h-30`}
+                      onClick={() => setActiveInspiration("posting")}
+                    >
+                      Post with
+                    </button>
+                    <button
+                      className={`${
+                        activeInspiration === "responding"
+                          ? "btn"
+                          : "btn-nonActive"
+                      }   h-30`}
+                      onClick={() => setActiveInspiration("responding")}
+                    >
+                      Respond with
+                    </button>
+
+                    <button
+                      className={`${
+                        activeInspiration === "synthesizing"
+                          ? "btn"
+                          : "btn-nonActive"
+                      }   h-30`}
+                      onClick={() => setActiveInspiration("synthesizing")}
+                    >
+                      Synthesize
+                    </button>
+                  </div>
+
+                  {activeInspiration === "posting" && (
+                    <div className="">
+                      <div className="overflow-auto flex flex-col">
+                        {PostingInspirations.map((insp, index) => (
+                          <ViewInspirations
+                            key={index}
+                            insp={insp}
+                            setViewInspirations={setViewInspirations}
+                            setCurrentDetailedInsp={setCurrentDetailedInsp}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {activeInspiration === "responding" && (
+                    <div className="">
+                      <div className="overflow-auto flex flex-col">
+                        {RespondingInspirations.map((insp, index) => (
+                          <ViewInspirations
+                            key={index}
+                            insp={insp}
+                            setViewInspirations={setViewInspirations}
+                            setCurrentDetailedInsp={setCurrentDetailedInsp}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {activeInspiration === "synthesizing" && (
+                    <div className="overflow-auto flex flex-col gap-3">
+                      {SynthesizingInspirations.map((insp, index) => (
+                        <ViewInspirations
+                          key={index}
+                          insp={insp}
+                          setViewInspirations={setViewInspirations}
+                          setCurrentDetailedInsp={setCurrentDetailedInsp}
+                        />
                       ))}
                     </div>
-                  </div>
-                )}
-                {activeInspiration === "responding" && (
-                  <div className="">
-                    <div className="overflow-auto flex flex-col">
-                      {PostingInspirations.map((insp, index) => (
-                        <Inspiration key={index} insp={insp} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {activeInspiration === "synthesizing" && (
-                  <div className="overflow-auto flex flex-col gap-3">
-                    {SynthesizingInspirations.map((insp, index) => (
-                      <PostingInspTemp
-                        title={insp.title}
-                        key={index}
-                        checked={true}
-                        icon={insp.icon}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

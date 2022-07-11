@@ -46,6 +46,7 @@ module.exports = {
         lightBlue: "#ECF4F4",
         inputBlue: " #F2FAFF",
         progressBlue: " #E9EFF7",
+        postInsp: "rgba(231, 247, 254, 1)",
       },
       green: {
         lightGreen: "#F3FAFA",
@@ -66,6 +67,7 @@ module.exports = {
       black: {
         darkPretzl: "#001E2F",
         analText: "#2E2E2E",
+        postInsp: "#001312",
       },
       other: {
         danger: " #E84949",

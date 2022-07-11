@@ -5,8 +5,6 @@ const AllPostInspirations = ({
   activeViewInspiration,
   setViewInspirations,
   setActiveViewInspiration,
-  setActiveInspiration,
-  activeDetailedInsp,
   setShowDetailedInsp,
   setActiveDetailedInsp,
 }) => {
