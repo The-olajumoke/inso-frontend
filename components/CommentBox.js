@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/viewDiscussion.module.css";
 import ShowInspirations from "./ShowInspirations";
 
-const CommentBox = ({ setActiveCommentBox }) => {
+const CommentBox = ({ setActiveCommentBox, togglePostInsp }) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
     useState(false);
   const [activeInspiration, setActiveInspiration] = useState("posting");
@@ -18,9 +18,12 @@ const CommentBox = ({ setActiveCommentBox }) => {
   ];
   const SynthesizingInspirations = ["Threads", "Popular tags", "Connections"];
   return (
-    <div className="h-122">
+    <div className="h-122 relative">
       <div className="h-full border  rounded-lg border-primary-darkGreen py-12 px-20 flex items-end">
-        <ShowInspirations setActiveCommentBox={setActiveCommentBox} />
+        <ShowInspirations
+          setActiveCommentBox={setActiveCommentBox}
+          togglePostInsp={togglePostInsp}
+        />
       </div>
     </div>
   );

@@ -42,11 +42,11 @@ const AllPostInspirations = ({
           title="Ask for clarity"
           instruction="Pose questions about the topic that would help you gain a better understanding of important concepts."
           firstHeading="Questions"
-          firstValue="Pose three questions about specific aspects of the topic that would help you gain a better understanding of important concepts."
+          firstValue="Pose three questions about specific aspects of the topic that would help you gain a better understanding."
           secondHeading="Understanding"
-          secondValue="Explain your current understanding of the topic in general and the specific aspects about which you would like further explanation."
+          secondValue="Explain your current understanding of the topic and the specific aspects about which you would like further explanation."
           ThirdHeading="Insights"
-          ThirdValue="Describe the insights you would hope to gain through a discussion about the questions you posed."
+          ThirdValue="Describe the insights you would hope to gain through a discussion about your questions."
         />
       )}
 

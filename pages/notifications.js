@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "next/image";
-import style from "@/styles/layout.module.css";
+import styles from "@/styles/layout.module.css";
 
 import Layout from "@/components/Layout";
 import RecentPost from "@/components/RecentPost";
@@ -15,7 +15,7 @@ const Notifications = () => {
   return (
     <Layout title="Inso | Notifications" bgColor="bg-gray-background">
       <div
-        className={`${style.hiddenScrollbar} py-25 px-40 vp-600:p-23 vp-980:p-46 h-full`}
+        className={`${styles.hiddenScrollbar} py-25 px-40 vp-600:p-23 vp-980:p-46 h-full`}
       >
         <div className="flex items-center justify-between vp-980:hidden">
           <h4 className=" text-primary-darkGreen mb-35">Notifications</h4>

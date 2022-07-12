@@ -10,7 +10,7 @@
     overflow: hidden !important;
 }
 .public-DraftStyleDefault-block{
-    font-size: 20px !important;
+    /* font-size: 20px !important; */
 }
 /* input,button, */
 @layer base {
@@ -163,10 +163,19 @@ input::-ms-input-placeholder {
 .btn-nonActive{
     @apply bg-blue-lightBlue text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins
 }
+.btnPostInspNonActive{
+    @apply bg-blue-postInsp text-black-postInsp font-normal rounded text-center flex items-center justify-center outline-none font-poppins
+}
 .btn-analNonActive{
     @apply  bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins
 }
 
+.btn-currentSection{
+    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-primary-darkGreen
+}
+.btn-notCurrentSection{
+    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-other-disabled
+}
 
 }
 

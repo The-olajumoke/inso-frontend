@@ -35,7 +35,7 @@ module.exports = {
     colors: {
       transparent: "transparent",
       primary: {
-        darkGreen: "#07A098",
+        darkGreen: "#01C1B7",
         blue: "#0EB4F6",
       },
 
@@ -992,6 +992,7 @@ module.exports = {
         199: "19.9rem",
         200: "20rem",
         220: "22rem",
+        236: "23.6rem",
         250: "25rem",
         259: "25.9rem",
         270: "27rem",

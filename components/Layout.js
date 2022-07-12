@@ -36,7 +36,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
         >
           <div
             style={{ minHeight: "109px" }}
-            className={`${styles.hiddenScrollbar} `}
+            className={`${styles.hiddenScrollbar} border-r  border-other-disabled `}
           >
             <Sidebar navSize={navSize} />
           </div>

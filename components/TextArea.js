@@ -25,13 +25,13 @@ const TextArea = ({ value, setValue, placeholder, required, disabled }) => {
   console.log(value);
   const uploadFile = () => {};
   return (
-    <div className="flex flex-col flex-grow relative w-full ">
-      <div className=" h-full flex">
+    <div className="flex  flex-col flex-grow relative w-full ">
+      <div className=" h-full flex ">
         <Editor
           editorState={editorState}
           onEditorStateChange={onEditorStateChange}
           toolbarClassName="flex absolute top-0 left-0 z-50"
-          editorClassName="!overflow-none   w-400 pt-20"
+          editorClassName="!overflow-none !text-xl w-400 pt-20"
           toolbar={{
             options: [, "emoji", "inline", "image"],
 

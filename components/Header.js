@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/layout.module.css";
 const Header = ({ navSize, handleNavSize, searchBar }) => {
   return (
-    <div className="h-75 flex sticky top-0 bg-white-white z-50 w-full px-50 items-center shadow-sm">
+    <div className="h-60 flex sticky top-0 bg-white-white z-50 w-full px-50 items-center shadow-sm">
       <div className="mr-64" onClick={handleNavSize}>
         <Image
           src={`${
@@ -14,8 +14,8 @@ const Header = ({ navSize, handleNavSize, searchBar }) => {
           alt="hamburger"
           draggable="false"
           layout="fixed"
-          width="33"
-          height="20"
+          width="25"
+          height="15"
         />
       </div>
 
@@ -25,8 +25,8 @@ const Header = ({ navSize, handleNavSize, searchBar }) => {
           alt="Inso Logo"
           draggable="false"
           layout="fixed"
-          width="129"
-          height="60"
+          width="98"
+          height="46"
         />
       </div>
       {searchBar && (

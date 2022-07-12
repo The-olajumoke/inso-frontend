@@ -9,7 +9,7 @@ const ViewInspirations = ({
   const { category, categoryIcon } = insp;
   return (
     <div
-      className="mb-7 flex items-center justify-between h-40 w-full px-20  bg-blue-postInsp text-black-postInsp rounded-lg text-lg  outline-none cursor-pointer"
+      className="mb-7 flex items-center justify-between h-32 w-full px-15  bg-blue-postInsp text-black-postInsp rounded-lg outline-none cursor-pointer"
       onClick={() => {
         setViewInspirations(true);
         setCurrentDetailedInsp(`${category}`);
@@ -21,27 +21,27 @@ const ViewInspirations = ({
             src={`${categoryIcon}`}
             alt={category}
             layout="fixed"
-            width="20"
-            height="20"
+            width="17"
+            height="17"
           />
         </div>
-        <h6
-          className="ml-16 text-black-analText"
+        <p
+          className="ml-9 text-sm text-black-analText"
           onClick={() => {
             setViewInspirations(true);
             setCurrentDetailedInsp(`${category}`);
           }}
         >
           {category}
-        </h6>
+        </p>
       </div>
       <div className="flex justify-center items-center">
         <Image
           src="https://res.cloudinary.com/insomaryland/image/upload/v1656195114/InsoImages/arrow_forward_winp6p.svg"
           alt="arrow-right"
           layout="fixed"
-          width="16"
-          height="16"
+          width="12"
+          height="12"
         />
       </div>
     </div>

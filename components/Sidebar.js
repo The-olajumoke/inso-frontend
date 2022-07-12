@@ -11,14 +11,16 @@ const Sidebar = ({ navSize, userPicture }) => {
       <div
         className={`${styles.sidebarContainer} ${
           navSize === "small" ? "w-109" : "w-333"
-        }   flex flex-col justify-between  vp-980:hidden `}
+        }   flex flex-col justify-between p-9  vp-980:hidden`}
       >
         <div className=" flex  pl-50">
           {userPicture ? (
             <div>picture</div>
           ) : (
-            <div className="  h-45 w-45 text-primary-blue bg-other-faintBlue rounded-full text-md flex justify-center items-center font-semibold mr-15">
-              PD
+            <div className="h-37 w-37 text-xs flex justify-center items-center font-semibold mr-15 border overflow-hidden p-0 rounded-full bg-primary-darkGreen">
+              <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 ">
+                PD
+              </span>
             </div>
           )}
           <div className={`${navSize === "small" && "hidden"}`}>
@@ -34,7 +36,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/discussions") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
@@ -59,7 +61,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/notifications") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
@@ -83,7 +85,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/stats") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
@@ -105,7 +107,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/analytics") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
@@ -129,7 +131,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/charts") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
@@ -151,7 +153,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/calendar") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
@@ -175,7 +177,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/contact") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
@@ -199,7 +201,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                 className={`${
                   router.pathname.startsWith("/settings") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
