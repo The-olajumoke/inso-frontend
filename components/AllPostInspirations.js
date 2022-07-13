@@ -62,11 +62,11 @@ const AllPostInspirations = ({
           title="Course concepts"
           instruction="Explain how specific concepts from the topic relate to other concepts in this course or concepts from another course or area."
           firstHeading="Connections"
-          firstValue="Describe the relationship(s) you identified between specific concepts from this topic relate to other concepts in this course or concepts from another course or area.."
+          firstValue="Describe the relationship(s) you identified between specific concepts."
           secondHeading="Understanding"
-          secondValue="Explain how the relationship(s) can help you and others better understand the topic."
+          secondValue="Explain how the relationship(s) can help increase understanding of the topic."
           ThirdHeading="New Ideas"
-          ThirdValue="List three new ideas you are having because of the concepts and the connections you identified between them."
+          ThirdValue="List three new ideas you are having because of the concepts and connections you identified."
         />
       )}
 
@@ -84,9 +84,9 @@ const AllPostInspirations = ({
           firstHeading="Experience"
           firstValue="Describe the experience(s) you have had with specific concepts related to the topic."
           secondHeading="Understanding"
-          secondValue="Explain how this experience has informed your understanding of the concepts related to the topic."
+          secondValue="Explain how this experience has informed your understanding of the concepts."
           ThirdHeading="Reflection"
-          ThirdValue="Generalize lessons you learned about the concepts during this experience to other expeirences you might have in the future."
+          ThirdValue="Generalize lessons you learned during this experience to other expeirences you might have."
         />
       )}
       {activeViewInspiration === "Real-world applications" && (
@@ -103,9 +103,9 @@ const AllPostInspirations = ({
           firstHeading="Real-world"
           firstValue="Identify a specific real-world scenario that could be informed by, or could inform, concepts related to the topic."
           secondHeading="Understanding"
-          secondValue="Explain how application of concepts to this real-world scenario can inform our understanding of the topic."
+          secondValue="Explain how application of concepts to this real-world scenario can increase understanding of the topic."
           ThirdHeading="Application"
-          ThirdValue="Recommend ways someone could effectively interact with the concepts you identified in the context of other real-world scenarios."
+          ThirdValue="Recommend ways you could effectively interact with the concepts you identified in the context of other real-world scenarios."
         />
       )}
       {activeViewInspiration === "Legal or ethical concerns" && (
@@ -120,7 +120,7 @@ const AllPostInspirations = ({
           title="Legal or ethical concerns"
           instruction="Identify concepts related to the topic that could have legal or ethical implications."
           firstHeading="Concerns"
-          firstValue="Identify a concept from the topic and explain the legal or ethical implications of the concept."
+          firstValue="Identify a concept from the topic and explain the legal or ethical implications of it."
           secondHeading="Understanding"
           secondValue="Explain the importance of understanding the legal or ethical implications of the concept."
           ThirdHeading="Implications"
@@ -199,7 +199,7 @@ const AllPostInspirations = ({
           firstHeading="Media"
           firstValue="Insert a copy of or a link to the media you created."
           secondHeading="Understanding"
-          secondValue="Explain what you created and how you believe your creation conveys important ideas about concepts related to the topic."
+          secondValue="Explain what you created and how your creation conveys important ideas about concepts related to the topic."
           ThirdHeading="Question"
           ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
         />
@@ -253,15 +253,16 @@ const AllPostInspirations = ({
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
           title="Study strategies"
-          instruction="Describe the strategies you are using to make sense of and remember concepts related to the topic."
+          instruction="Describe the strategies you are using to make sense of and remember concepts related to the topic, such as an acrostic you created, a song you wrote to remember key ideas, a framework identifying main points, etc."
           firstHeading="Strategies"
-          firstValue="Share the strategies you are using to make sense of and remember concepts related to the topic, such as an acrostic you created, a song you wrote to remember key ideas, a framework identifying main points, etc."
+          firstValue="Share the strategies you are using to learn about the topic."
           secondHeading="Understanding"
-          secondValue="Explain how the strategy you are using is helping you think about and remember concepts related to the topic."
+          secondValue="Explain how the strategies you are using help you learn about concepts related to the topic."
           ThirdHeading="Questions"
           ThirdValue="Pose at least three questions about concepts related to the topic you feel confident answering."
         />
       )}
+
       {activeViewInspiration === "A debate" && (
         <PostingInspirationTemp
           moveBack={() => {
@@ -272,11 +273,9 @@ const AllPostInspirations = ({
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
           title="A debate"
-          instruction="Start a debate about some concept(s) related this topic."
-          firstHeading="Debate Topic
-
-"
-          firstValue="Create a statement about concepts related to the topic that would inspire informative and healthy discussion (e.g., Socialism is better than capitalism)."
+          instruction="Start a debate about some concept(s) related this topic (e.g., Socialism is better than capitalism)."
+          firstHeading="Debate Topic"
+          firstValue="Create a statement about concepts related to the topic that would inspire informative and healthy discussion."
           secondHeading="Understanding"
           secondValue="Explain your understanding of at least two of the perspectives on the debate topic you chose."
           ThirdHeading="Questions
@@ -322,7 +321,7 @@ const AllPostInspirations = ({
           secondHeading="Understanding"
           secondValue="Explain how the resources you identified inform your understanding of the concepts related to the topic."
           ThirdHeading="Addition"
-          ThirdValue="Recommend three other concepts or aspects of the concepts you identified about which you would like others to investigate and share resources."
+          ThirdValue="Recommend three other concepts about which you would like others to investigate and share resources."
         />
       )}
     </div>

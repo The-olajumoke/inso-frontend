@@ -13,10 +13,7 @@ const Editor = dynamic(
   }
 );
 
-const AskForClarity = ({
-  setActiveCommentBox,
-  togglePostInsp,
-}) => {
+const AskForClarity = ({ setActiveCommentBox, togglePostInsp }) => {
   const [editorStateQuest, setEditorStateQuest] = useState(
     EditorState.createEmpty()
   );
@@ -95,7 +92,7 @@ const AskForClarity = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-3 ">
+        <div className="grid grid-cols-5 ">
           <button
             className={`${
               currentSection === "Questions"
@@ -106,6 +103,7 @@ const AskForClarity = ({
           >
             Questions
           </button>
+          <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
               currentSection === "Understanding"
@@ -116,6 +114,7 @@ const AskForClarity = ({
           >
             Understanding
           </button>
+          <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
               currentSection === "Insights"

@@ -372,7 +372,7 @@ const ViewDiscussion = () => {
 
               {/* COMMENT BOX */}
               {showScoresSheet !== true && (
-                <div className="px-50  w-full  py-10 absolute bottom-0 bg-white-white border">
+                <div className="px-50  w-full  py-10 absolute bottom-0 bg-white-white ">
                   {activeCommentBox === "Ask questions" && (
                     <AskQuestionsComment
                       togglePostInsp={togglePostInsp}

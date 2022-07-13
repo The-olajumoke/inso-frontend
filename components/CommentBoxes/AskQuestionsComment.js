@@ -85,7 +85,7 @@ const AskQuestionsComment = ({ setActiveCommentBox }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 ">
+        <div className="grid grid-cols-5 ">
           <button
             className={`${
               currentSection === "Questions"
@@ -96,6 +96,7 @@ const AskQuestionsComment = ({ setActiveCommentBox }) => {
           >
             Questions
           </button>
+          <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
               currentSection === "Understanding"
@@ -106,6 +107,7 @@ const AskQuestionsComment = ({ setActiveCommentBox }) => {
           >
             Understanding
           </button>
+          <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
               currentSection === "Outcomes"

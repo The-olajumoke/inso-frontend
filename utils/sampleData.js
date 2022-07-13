@@ -6,9 +6,14 @@ export const PostingInspirations = [
     inspirations: [
       {
         title: "Ask questions",
+        instruction: "Pose questions to encourage discussion about the topic.",
+        subtitles: ["Questions", "Understanding", "Outcomes"],
       },
       {
         title: "Ask for clarity",
+        instruction:
+          "Pose questions about the topic that would help you gain a better understanding of important concepts.",
+        subtitles: ["Questions", "Understanding", "Insights"],
       },
     ],
   },
@@ -20,18 +25,33 @@ export const PostingInspirations = [
     inspirations: [
       {
         title: "Course concepts",
+        instruction:
+          "Explain how specific concepts from the topic relate to other concepts in this course or concepts from another course or area.",
+        subtitles: ["Connections", "Understanding", "New Ideas"],
       },
       {
         title: "Personal experience",
+        instruction:
+          "Share a personal experience you have had with concepts related to the topic.",
+        subtitles: ["Experience", "Understanding", "Reflection"],
       },
       {
         title: "Real-world applications",
+        instruction:
+          "Explain how concepts about the topic could apply to real-world situations.",
+        subtitles: ["Real-world", "Understanding", "Application"],
       },
       {
         title: "Legal or ethical concerns",
+        instruction:
+          "Identify concepts related to the topic that could have legal or ethical implications.",
+        subtitles: ["Concerns", "Understanding", "Implications"],
       },
       {
         title: "Alternative perspectives",
+        instruction:
+          "Compare alternative perspectives about concepts related to the topic.",
+        subtitles: ["Perspectives", "Understanding", "Commonality"],
       },
     ],
   },
@@ -43,12 +63,21 @@ export const PostingInspirations = [
     inspirations: [
       {
         title: "A meme",
+        instruction:
+          "Create a meme that you believe conveys important ideas about concepts related to the topic.",
+        subtitles: ["Meme", "Understanding", "Question"],
       },
       {
         title: "A graphic organizer",
+        instruction:
+          "Create a graphic organizer that helps you undestand concepts related to the topic.",
+        subtitles: ["Graphic Organizer", "Understanding", "Question"],
       },
       {
         title: "A media",
+        instruction:
+          "Create some form of media, such as a podcast, poem, webpage, video, song, graphic, etc. that conveys your ideas about concepts related to the topic.",
+        subtitles: ["Media", "Understanding", "Question"],
       },
     ],
   },
@@ -60,12 +89,21 @@ export const PostingInspirations = [
     inspirations: [
       {
         title: "Media",
+        instruction:
+          "Identify a media element, such as a web-based resource, an image, a recent newstory, etc. that you believe connects to concepts related to the topic.",
+        subtitles: ["Media", "Understanding", "Question"],
       },
       {
         title: "A Quote",
+        instruction:
+          "Identify a quote from an assigned reading or resource or a resource you identified that captures important information about concepts related to the topic.",
+        subtitles: ["Quote", "Understanding", "Question"],
       },
       {
         title: "Study strategies",
+        instruction:
+          "Describe the strategies you are using to make sense of and remember concepts related to the topic, such as uch as an acrostic you created, a song you wrote to remember key ideas, a framework identifying main points, etc.",
+        subtitles: ["Strategies", "Understanding", "Questions"],
       },
     ],
   },
@@ -77,12 +115,21 @@ export const PostingInspirations = [
     inspirations: [
       {
         title: "A debate",
+        instruction:
+          "Start a debate about some concept(s) related this topic (e.g., Socialism is better than capitalism).",
+        subtitles: ["Debate Topic", "Understanding", "Questions"],
       },
       {
         title: "An AMA thread",
+        instruction:
+          "Start an AMA thread about some concept(s) related this topic about which you are prepared to lead a conversation.",
+        subtitles: ["Ask Me", "Understanding", "Questions"],
       },
       {
         title: "A search tree",
+        instruction:
+          "Select three concepts related to the topic and share web-based resources connected to each.",
+        subtitles: ["Search", "Understanding", "Addition"],
       },
     ],
   },
@@ -91,7 +138,7 @@ export const RespondingInspirations = [
   {
     category: "Add",
     categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656195040/InsoImages/exploreThinking_md9iw9.svg",
+      "https://res.cloudinary.com/insomaryland/image/upload/v1657667976/add_postInsp_g1bq1n.svg",
     inspirations: [
       {
         title: "Alternatives",
@@ -111,7 +158,7 @@ export const RespondingInspirations = [
   {
     category: "Answer",
     categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656195014/InsoImages/makeConnections_kustrj.svg",
+      "https://res.cloudinary.com/insomaryland/image/upload/v1657667976/answer_postInsp_c4332y.svg",
     inspirations: [
       {
         title: "Directly",
@@ -128,7 +175,7 @@ export const RespondingInspirations = [
   {
     category: "Ask",
     categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656194912/InsoImages/createSomething_tsjf0a.svg",
+      "https://res.cloudinary.com/insomaryland/image/upload/v1656195040/InsoImages/exploreThinking_md9iw9.svg",
     inspirations: [
       {
         title: "Questions",
@@ -142,7 +189,7 @@ export const RespondingInspirations = [
   {
     category: "Evaluate",
     categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656194823/InsoImages/shareSomething_tvg5qn.svg",
+      "https://res.cloudinary.com/insomaryland/image/upload/v1657667976/evaluate_postInsp_cqareu.svg",
     inspirations: [
       {
         title: "1 Star 5 Stars",
@@ -159,7 +206,7 @@ export const RespondingInspirations = [
   {
     category: "React",
     categoryIcon:
-      "https://res.cloudinary.com/insomaryland/image/upload/v1656194955/InsoImages/startSomething_fnfshn.svg",
+      "https://res.cloudinary.com/insomaryland/image/upload/v1657667976/react_postInsp_ogiyl4.svg",
     inspirations: [
       {
         title: "Heart",
