@@ -1,7 +1,4 @@
 import React from "react";
-import Connections from "./Connections";
-import Tags from "./Tags";
-import Threads from "./Threads";
 import PostingInspirationTemp from "./PostingInspirationTemp";
 
 export const AllSynthInspirations = ({
@@ -29,10 +26,10 @@ export const AllSynthInspirations = ({
           instruction="Analyze connections between tags that were interesting to you."
           firstHeading="Connections"
           firstValue="Identify tags with connections that were interesting to you."
-          secondHeading="Explain"
+          secondHeading="Explanation"
           secondValue="Explain why the connection between the tags was interesting to you."
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons others could learn about the topic from your analysis of the relationship between the tags."
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
       {activeViewInspiration === "Missing Connections" && (
@@ -48,10 +45,10 @@ export const AllSynthInspirations = ({
           instruction="Analyse tags that you expected would have stronger connections"
           firstHeading="Connections"
           firstValue="Identify tags that you expected would have stronger connections between them."
-          secondHeading="Explain"
+          secondHeading="Explanation"
           secondValue="Explain why you believe the tags should be more strongly connected."
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons others could learn about the topic from your analysis of the relationship between the tags."
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
       {activeViewInspiration === "Popular Connections" && (
@@ -67,10 +64,10 @@ export const AllSynthInspirations = ({
           instruction="Analyze tags with strong connections between them."
           firstHeading="Connections"
           firstValue="Identify tags with strong connections between them."
-          secondHeading="Explain"
+          secondHeading="Explanation"
           secondValue="Explain why you believe the tags are so strongly connected."
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons others could learn about the topic from your analysis of the relationship between the tags."
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
       {activeViewInspiration === "Interesting Tags" && (
@@ -86,10 +83,10 @@ export const AllSynthInspirations = ({
           instruction="Analyze tags that were interesting to you."
           firstHeading="Tags"
           firstValue="List three tags used in the discussion that were interesting to you."
-          secondHeading="Explain"
+          secondHeading="Explanation"
           secondValue="Explain why the use of the tags was interesting to you."
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons others could learn about the topic from your analysis of the tags."
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
       {activeViewInspiration === "Missing Tags" && (
@@ -104,11 +101,11 @@ export const AllSynthInspirations = ({
           title="Missing Tags"
           instruction="Analyze tags (or unused keywords) that you expected to be used more frequently in the discussion."
           firstHeading="Tags"
-          firstValue="List three tags that you believe should have been used more frequently in the discussion (or keywords that you believe should have been used but did not appear in the discussion)."
-          secondHeading="Explain"
-          secondValue="Explain why you believe the tags (or keywords) should have been used more frequently."
+          firstValue="List three tags you believe should have been used more frequently."
+          secondHeading="Explanation"
+          secondValue="Explain why you believe the tags should have been used more frequently."
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons others could learn about the topic from your analysis of the tags."
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
       {activeViewInspiration === "Popular Tags" && (
@@ -124,7 +121,7 @@ export const AllSynthInspirations = ({
           instruction="Analyze tags that were frequently used."
           firstHeading="Tags"
           firstValue="Identify three tags that were frequently used in the discussion.."
-          secondHeading="Explain"
+          secondHeading="Explanation"
           secondValue="Explain why you believe the tags were used so frequently."
           ThirdHeading="Takeaway "
           ThirdValue="List three lessons others could learn about the topic from your analysis of the tags."
@@ -143,10 +140,10 @@ export const AllSynthInspirations = ({
           instruction="Analyze a thread that was interesting to you."
           firstHeading="Threads"
           firstValue="Identity a thread that was interesting to you."
-          secondHeading="Explain"
+          secondHeading="Explanation"
           secondValue="Explain why the thread was interesting to you."
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons others could learn about the topic from your analysis of the thread.."
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
       {activeViewInspiration === "Missing Thread" && (
@@ -161,11 +158,11 @@ export const AllSynthInspirations = ({
           title="Missing Thread"
           instruction="Analyze a thread that you believe was missing important information."
           firstHeading="Threads"
-          firstValue="Identify a thread that you believe was missing important concepts and list the concepts you believe should have been included."
-          secondHeading="Explain"
-          secondValue="Explain how including those concepts would have provided more insight to the discussion in the thread."
+          firstValue="List concepts you believe should have been included in one of the threads.."
+          secondHeading="Explanation"
+          secondValue="Explain how those concepts would have added insight to the discussion."
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons that you learned about the topic from your analysis of the thread."
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
       {activeViewInspiration === "Popular Thread" && (
@@ -181,28 +178,10 @@ export const AllSynthInspirations = ({
           instruction="Analyze a thread that was popular."
           firstHeading="Threads"
           firstValue="Identity a thread that was popular in the discussion."
-          secondHeading="Explain"
+          secondHeading="Explanation"
           secondValue="Explain why you believe the thread was so popular. "
           ThirdHeading="Takeaway "
-          ThirdValue="List three lessons that you learned about the topic from your analysis of the thread."
-        />
-      )}
-      {activeViewInspiration === "Threads" && (
-        <Threads
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-        />
-      )}
-      {activeViewInspiration === "Tags" && (
-        <Tags
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
-        />
-      )}
-      {activeViewInspiration === "Connections" && (
-        <Connections
-          setViewInspirations={setViewInspirations}
-          setActiveViewInspiration={setActiveViewInspiration}
+          ThirdValue="List three lessons that you learned from your analysis."
         />
       )}
     </div>

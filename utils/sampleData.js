@@ -102,7 +102,7 @@ export const PostingInspirations = [
       {
         title: "Study strategies",
         instruction:
-          "Describe the strategies you are using to make sense of and remember concepts related to the topic, such as uch as an acrostic you created, a song you wrote to remember key ideas, a framework identifying main points, etc.",
+          "Describe the strategies you are using to make sense of and remember concepts related to the topic, such as an acrostic you created, a song you wrote to remember key ideas, a framework identifying main points, etc.",
         subtitles: ["Strategies", "Understanding", "Questions"],
       },
     ],
@@ -142,15 +142,26 @@ export const RespondingInspirations = [
     inspirations: [
       {
         title: "Alternatives",
+        instruction:
+          "Recommend alternative perspectives about concepts in the post.",
+        subtitles: ["Summary", "Alternatives", "Continue"],
       },
       {
         title: "Illustrations",
+        instruction:
+          "Illustrate concepts in the post by including media such as a video, meme, newstory, or some other resource you located or created.",
+        subtitles: ["Summary", "Illustration", "Continue"],
       },
       {
         title: "Insights",
+        instruction:
+          "Add new ideas, explain concepts, or address questions posed.",
+        subtitles: ["Summary", "Insights", "Continue"],
       },
       {
         title: "Resources",
+        instruction: "Share resources related to concepts in the post.",
+        subtitles: ["Summary", "Resources", "Continue"],
       },
     ],
   },
@@ -162,12 +173,20 @@ export const RespondingInspirations = [
     inspirations: [
       {
         title: "Directly",
+        instruction: "Answer questions asked.",
+        subtitles: ["Summary", "Answer", "Support"],
       },
       {
         title: "For clarification",
+        instruction:
+          "Add clarity to questions by explaining related ideas and concepts.",
+        subtitles: ["Summary", "Clarify", "Support"],
       },
       {
         title: "More questions",
+        instruction:
+          "Summarize your understanding of the main points to which you are responding.",
+        subtitles: ["Summary", "Clarify", "Support"],
       },
     ],
   },
@@ -179,9 +198,14 @@ export const RespondingInspirations = [
     inspirations: [
       {
         title: "Questions",
+        instruction: "Pose questions to further discussion.",
+        subtitles: ["Summary", "Questions", "Outcomes"],
       },
       {
         title: "For clarification",
+        instruction:
+          "Pose questions to increase understanding about specific concepts.",
+        subtitles: ["Summary", "Clarification", "Insights"],
       },
     ],
   },
@@ -193,12 +217,20 @@ export const RespondingInspirations = [
     inspirations: [
       {
         title: "1 Star 5 Stars",
+        instruction: "Evaluate the post based on a 5-star rating.",
+        subtitles: ["Summary", "1 Star ", "5 Stars"],
       },
+
       {
         title: "Critical Review",
+        instruction: "Evaluate the strenghts and areas for growth in the post.",
+        subtitles: ["Summary", "Maximize", "Develop"],
       },
       {
         title: "Loved, Learned",
+        instruction:
+          "Evaluate the post based on what you loved and what you learned.",
+        subtitles: ["Summary", "Loved", "Learned"],
       },
     ],
   },
@@ -210,12 +242,18 @@ export const RespondingInspirations = [
     inspirations: [
       {
         title: "Heart",
+        instruction: "Explain why you loved the post.",
+        subtitles: ["Summary", "Reaction ", "Continue"],
       },
       {
         title: "Mad",
+        instruction: "Explain why the post made you mad..",
+        subtitles: ["Summary", "Reaction ", "Continue"],
       },
       {
         title: "Mindblown",
+        instruction: "Explain why the post blew your mind.",
+        subtitles: ["Summary", "Reaction ", "Continue"],
       },
     ],
   },
@@ -228,12 +266,20 @@ export const SynthesizingInspirations = [
     inspirations: [
       {
         title: "Interesting Connections",
+        instruction:
+          "Analyze connections between tags that were interesting to you.",
+        subtitles: ["Connections", "Explanation", "Takeaway"],
       },
       {
         title: "Missing Connections",
+        instruction:
+          "Analyse tags that you expected would have stronger connections",
+        subtitles: ["Connections", "Explanation", "Takeaway"],
       },
       {
         title: "Popular Connections",
+        instruction: "Analyze tags with strong connections between them.",
+        subtitles: ["Connections", "Explanation", "Takeaway"],
       },
     ],
   },
@@ -244,12 +290,19 @@ export const SynthesizingInspirations = [
     inspirations: [
       {
         title: "Interesting Tags",
+        instruction: "Analyze tags that were interesting to you.",
+        subtitles: ["Tags", "Explanation", "Takeaway"],
       },
       {
         title: "Missing Tags",
+        instruction:
+          "Analyze tags (or unused keywords) that you expected to be used more frequently in the discussion.",
+        subtitles: ["Tags", "Explanation", "Takeaway"],
       },
       {
         title: "Popular Tags",
+        instruction: "Analyze tags that were frequently used.",
+        subtitles: ["Tags", "Explanation", "Takeaway"],
       },
     ],
   },
@@ -260,12 +313,19 @@ export const SynthesizingInspirations = [
     inspirations: [
       {
         title: "Interesting Thread",
+        instruction: "Analyze a thread that was interesting to you.",
+        subtitles: ["Threads", "Explanation", "Takeaway"],
       },
       {
         title: "Missing Thread",
+        instruction:
+          "Analyze a thread that you believe was missing important information.",
+        subtitles: ["Threads", "Explanation", "Takeaway"],
       },
       {
         title: "Popular Thread",
+        instruction: "Analyze a thread that was popular.",
+        subtitles: ["Threads", "Explanation", "Takeaway"],
       },
     ],
   },

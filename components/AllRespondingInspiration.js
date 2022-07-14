@@ -26,9 +26,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Alternatives"
-          secondValue="Identify alternatives ideas and explain how those alternatives could lead to a more expansive understanding of the topic."
+          secondValue="Identify alternatives ideas and explain how those alternatives could lead to broader understanding of the topic."
           ThirdHeading="Continue"
-          ThirdValue="Ask follow-up questions, add new ideas, recommend alternative perspectives, and/or suggest new resources to increase understanding of the topic and encourage further discussion."
+          ThirdValue="Continue the discussion by asking more questions or adding new ideas, perspectives, or resources."
         />
       )}
       {activeViewInspiration === "Illustrations" && (
@@ -41,13 +41,13 @@ const AllRespondingInspiration = ({
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
           title="Illustrations"
-          instruction="Illustrate concepts in the post by including media."
+          instruction="Illustrate concepts in the post by including media such as a video, meme, newstory, or some other resource you located or created. "
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Illustration"
-          secondValue="Paste a copy of or include a link to media you located or created, such as a video, a meme, a newstory, or some other resource that helps illustrate the ideas made in the post."
+          secondValue="Paste a copy of (or link to) media you located or created that helps illustrate the ideas made in the post."
           ThirdHeading="Continue"
-          ThirdValue="Ask follow-up questions, add new ideas, recommend alternative perspectives, and/or suggest new resources to increase understanding of the topic and encourage further discussion."
+          ThirdValue="Continue the discussion by asking more questions or adding new ideas, perspectives, or resources."
         />
       )}
       {activeViewInspiration === "Insights" && (
@@ -64,9 +64,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Insight"
-          secondValue="Add new ideas to the post, explain concepts in the post, and/or address questions asked to help increase understanding of the topic."
+          secondValue="Add new ideas, explain concepts, and/or address questions to help increase understanding of the topic."
           ThirdHeading="Continue"
-          ThirdValue="Ask follow-up questions, add new ideas, recommend alternative perspectives, and/or suggest new resources to increase understanding of the topic and encourage further discussion."
+          ThirdValue="Continue the discussion by asking more questions or adding new ideas, perspectives, or resources."
         />
       )}
       {activeViewInspiration === "Resources" && (
@@ -83,9 +83,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Resources"
-          secondValue="List three resources related to the topic and include a link to and a brief description of each."
+          secondValue="List three resources related to the topic (include a link and brief description for each)."
           ThirdHeading="Continue"
-          ThirdValue="Ask follow-up questions, add new ideas, recommend alternative perspectives, and/or suggest new resources to increase understanding of the topic and encourage further discussion."
+          ThirdValue="Continue the discussion by asking more questions or adding new ideas, perspectives, or resources."
         />
       )}
       {activeViewInspiration === "Directly" && (
@@ -104,7 +104,7 @@ const AllRespondingInspiration = ({
           secondHeading="Answer"
           secondValue="Address the questions posed in the post. "
           ThirdHeading="Support"
-          ThirdValue="Paste the link to at least one web-based resource the supports your response and explain how that resource can be helpful for understanding the concepts in question."
+          ThirdValue="Paste the link to at least one web-based resource that supports your response and summarize the ideas in the resource."
         />
       )}
       {activeViewInspiration === "For clarification" && (
@@ -121,9 +121,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Clarify"
-          secondValue="Explain ideas in the post and/or address questions to help increase understanding of the topic."
+          secondValue="Explain ideas in the post and/or address questions to increase understanding."
           ThirdHeading="Support"
-          ThirdValue="Paste the link to at least one web-based resource the supports your response and explain how that resource can be helpful for understanding the concepts in question."
+          ThirdValue="Paste the link to at least one web-based resource that supports your response and summarize the ideas in the resource."
         />
       )}
       {activeViewInspiration === "More questions" && (
@@ -140,12 +140,11 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Clarify"
-          secondValue="Ask at least three follow-up questions to help focus in on important concepts and possible explanations."
+          secondValue="Ask at least three follow-up questions to help focus on important concepts and possible explanations."
           ThirdHeading="Support"
-          ThirdValue="Paste the link to at least one web-based resource the supports your response and explain how that resource can be helpful for understanding the concepts in question."
+          ThirdValue="Paste the link to at least one web-based resource that supports your response and summarize the ideas in the resource."
         />
       )}
-
       {activeViewInspiration === "Questions" && (
         <PostingInspirationTemp
           moveBack={() => {
@@ -198,11 +197,12 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="1 Star "
-          secondValue="Identify one aspect of the post that you would rate as 1-star and explain why rated that aspect as you did."
+          secondValue="Identify one aspect of the post that you would rate as 1-star and justify your rating."
           ThirdHeading="5 Stars"
-          ThirdValue="Identify one aspect of the post that you would rate as 5-star and explain why you rated that aspect as you did."
+          ThirdValue="Identify one aspect of the post that you would rate as 5-star and justify your rating."
         />
       )}
+
       {activeViewInspiration === "Critical Review" && (
         <PostingInspirationTemp
           moveBack={() => {
@@ -217,9 +217,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Maximize"
-          secondValue="Identify one aspect of the post that was particularly informative and/or well executed."
+          secondValue="Identify one aspect of the post that was informative."
           ThirdHeading="Develop"
-          ThirdValue="Identify one aspect of the post that needs further development and recommend specific actions for improvement"
+          ThirdValue="Identify one aspect of the post that needs further development and recommend specific stteps for improvement."
         />
       )}
       {activeViewInspiration === "Loved, Learned" && (
@@ -236,7 +236,7 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Loved"
-          secondValue="Identify one aspect of the post that you loved and explain why you selected that aspect."
+          secondValue="Identify one aspect of the post that you loved."
           ThirdHeading="Learned"
           ThirdValue="Explain how the ideas in the post informed your understanding of the topic."
         />
@@ -255,9 +255,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Reaction"
-          secondValue="Explain why you chose this reaction and how your reaction communicates your ideas related to the concepts in the post."
+          secondValue="Explain why you chose this reaction."
           ThirdHeading="Continue"
-          ThirdValue="Ask follow-up questions, add new ideas, recommend alternative perspectives, and/or suggest new resources to increase understanding of the topic and encourage further discussion."
+          ThirdValue="Continue the discussion by asking more questions or adding new ideas, perspectives, or resources."
         />
       )}
       {activeViewInspiration === "Mad" && (
@@ -274,9 +274,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Reaction"
-          secondValue="Explain why you chose this reaction and how your reaction communicates your ideas related to the concepts in the post."
+          secondValue="Explain why you chose this reaction."
           ThirdHeading="Continue"
-          ThirdValue="Ask follow-up questions, add new ideas, recommend alternative perspectives, and/or suggest new resources to increase understanding of the topic and encourage further discussion."
+          ThirdValue="Continue the discussion by asking more questions or adding new ideas, perspectives, or resources."
         />
       )}
       {activeViewInspiration === "Mindblown" && (
@@ -293,9 +293,9 @@ const AllRespondingInspiration = ({
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Reaction"
-          secondValue="Explain why you chose this reaction and how your reaction communicates your ideas related to the concepts in the post."
+          secondValue="Explain why you chose this reaction."
           ThirdHeading="Continue"
-          ThirdValue="Ask follow-up questions, add new ideas, recommend alternative perspectives, and/or suggest new resources to increase understanding of the topic and encourage further discussion."
+          ThirdValue="Continue the discussion by asking more questions or adding new ideas, perspectives, or resources."
         />
       )}
     </div>
