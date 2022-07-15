@@ -5,10 +5,9 @@ import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import CommentBoxHeader from "../CommentBoxHeader";
 import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
-
+import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
   import("react-draft-wysiwyg").then((mod) => mod.Editor),
   {
@@ -16,28 +15,31 @@ const Editor = dynamic(
   }
 );
 
-const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorStateQuest, setEditorStateQuest] = useState(
+const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStatePerspectives, setEditorStatePerspectives] = useState(
     EditorState.createEmpty()
   );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateInsights, setEditorStateInsights] = useState(
+  const [editorStateCommonality, setEditorStateCommonality] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Questions");
-  const [questionsValue, setQuestionsValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Perspectives");
+  const [perspectivesValue, setPerspectivesValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [insightsValue, setInsightsValue] = useState("");
+  const [commonalityValue, setCommonalityValue] = useState("");
 
-  const onEditorStateChangeQuestions = (editorStateQuest) => {
-    setEditorStateQuest(editorStateQuest);
-    const question = draftToHtml(
-      convertToRaw(editorStateQuest.getCurrentContent())
+  // FIRST
+  const onEditorStateChangePerspectives = (editorStatePerspectives) => {
+    setEditorStatePerspectives(editorStatePerspectives);
+    const perspective = draftToHtml(
+      convertToRaw(editorStatePerspectives.getCurrentContent())
     );
-    setQuestionsValue(question);
+    setPerspectivesValue(perspective);
   };
+
+  //   SECOND
   const onEditorStateChangeUnderstanding = (editorStateUnder) => {
     setEditorStateUnder(editorStateUnder);
     const understanding = draftToHtml(
@@ -45,36 +47,40 @@ const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setUnderstandingValue(understanding);
   };
-  const onEditorStateChangeInsights = (editorStateInsights) => {
-    setEditorStateInsights(editorStateInsights);
-    const insights = draftToHtml(
-      convertToRaw(editorStateInsights.getCurrentContent())
+
+  //   THIRD
+  const onEditorStateChangeCommonality = (editorStateCommonality) => {
+    setEditorStateCommonality(editorStateCommonality);
+    const commonality = draftToHtml(
+      convertToRaw(editorStateCommonality.getCurrentContent())
     );
-    setInsightsValue(insights);
+    setCommonalityValue(commonality);
   };
+  console.log(perspectivesValue);
+  console.log(understandingValue);
+  console.log(commonalityValue);
 
   const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
-  const editorStyle = `!w-full !h-150  !text-md`;
+  const editorStyle = `!w-full !h-150   !text-md`;
 
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
-      <div className=" bg-white-white py-20 px-29 rounded-t-lg">
+      <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="  Pose questions about the topic that would help you gain a better
-              understanding of important concepts."
+          instruction="Compare alternative perspectives about concepts related to the topic."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Questions"
+              currentSection === "Perspectives"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Questions")}
+            onClick={() => setCurrentSection("Perspectives")}
           >
-            Questions
+            Perspectives
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
@@ -90,62 +96,62 @@ const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Insights"
+              currentSection === "Commonality"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Insights")}
+            onClick={() => setCurrentSection("Commonality")}
           >
-            Insights
+            Commonality
           </button>
         </div>
-        {currentSection === "Questions" && (
-          <div className=" h-200 bg-white-white ">
+        {currentSection === "Perspectives" && (
+          <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateQuest}
-              onEditorStateChange={onEditorStateChangeQuestions}
+              editorState={editorStatePerspectives}
+              onEditorStateChange={onEditorStateChangePerspectives}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Pose three questions about specific aspects of the topic that would help you gain a better understanding."
+              placeholder="Identify a specific concept related to the topic about which there are at least two alternative perspectives."
             />
           </div>
         )}
         {currentSection === "Understanding" && (
-          <div className=" h-200 bg-white-white ">
+          <div className="h-200 bg-white-white ">
             <Editor
               editorState={editorStateUnder}
               onEditorStateChange={onEditorStateChangeUnderstanding}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Explain your current understanding of the topic and the specific aspects about which you would like further explanation."
+              mention={mention}
+              placeholder="Explain how each perspective understands the concept."
             />
           </div>
         )}
-        {currentSection === "Insights" && (
-          <div className=" h-200 bg-white-white ">
+        {currentSection === "Commonality" && (
+          <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateInsights}
-              onEditorStateChange={onEditorStateChangeInsights}
+              editorState={editorStateCommonality}
+              onEditorStateChange={onEditorStateChangeCommonality}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Describe the insights you would hope to gain through a discussion about your questions"
+              mention={mention}
+              placeholder="Recommend ways that each perspective can benefit from the ideas of the other."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Ask for clarity"
+        title="Alternative perspectives"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default AskForClarityComment;
+export default AlternativeComment;

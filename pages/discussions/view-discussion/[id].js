@@ -24,6 +24,8 @@ import CourseConceptsComment from "@/components/CommentBoxes/CourseConceptsComme
 import PersonalExperienceComment from "@/components/CommentBoxes/PersonalExperienceComment";
 import RealWorldComment from "@/components/CommentBoxes/RealWorldComment";
 import LegalEthicalComment from "@/components/CommentBoxes/LegalEthicalComment";
+import AlternativeComment from "@/components/CommentBoxes/AlternativeComment";
+import MemeComment from "@/components/CommentBoxes/MemeComment";
 
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -415,6 +417,18 @@ const ViewDiscussion = () => {
                   )}
                   {activeCommentBox === "Legal or ethical concerns" && (
                     <LegalEthicalComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Alternative perspectives" && (
+                    <AlternativeComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "A meme" && (
+                    <MemeComment
                       togglePostInsp={togglePostInsp}
                       setActiveCommentBox={setActiveCommentBox}
                     />

@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import CommentBoxHeader from "../CommentBoxHeader";
 import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
-
+import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
   import("react-draft-wysiwyg").then((mod) => mod.Editor),
   {
@@ -16,28 +14,29 @@ const Editor = dynamic(
   }
 );
 
-const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorStateQuest, setEditorStateQuest] = useState(
+const MemeComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateMeme, setEditorStateMeme] = useState(
     EditorState.createEmpty()
   );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateInsights, setEditorStateInsights] = useState(
+  const [editorStateQuestion, setEditorStateQuestion] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Questions");
-  const [questionsValue, setQuestionsValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Meme");
+  const [memeValue, setMemeValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [insightsValue, setInsightsValue] = useState("");
+  const [questionValue, setQuestionValue] = useState("");
 
-  const onEditorStateChangeQuestions = (editorStateQuest) => {
-    setEditorStateQuest(editorStateQuest);
-    const question = draftToHtml(
-      convertToRaw(editorStateQuest.getCurrentContent())
-    );
-    setQuestionsValue(question);
+  // FIRST
+  const onEditorStateChangeMeme = (editorStateMeme) => {
+    setEditorStateMeme(editorStateMeme);
+    const meme = draftToHtml(convertToRaw(editorStateMeme.getCurrentContent()));
+    setMemeValue(meme);
   };
+
+  //   SECOND
   const onEditorStateChangeUnderstanding = (editorStateUnder) => {
     setEditorStateUnder(editorStateUnder);
     const understanding = draftToHtml(
@@ -45,36 +44,40 @@ const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setUnderstandingValue(understanding);
   };
-  const onEditorStateChangeInsights = (editorStateInsights) => {
-    setEditorStateInsights(editorStateInsights);
-    const insights = draftToHtml(
-      convertToRaw(editorStateInsights.getCurrentContent())
+
+  //   THIRD
+  const onEditorStateChangeQuestion = (editorStateQuestion) => {
+    setEditorStateQuestion(editorStateQuestion);
+    const question = draftToHtml(
+      convertToRaw(editorStateQuestion.getCurrentContent())
     );
-    setInsightsValue(insights);
+    setQuestionValue(question);
   };
+  console.log(memeValue);
+  console.log(understandingValue);
+  console.log(questionValue);
 
   const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
-  const editorStyle = `!w-full !h-150  !text-md`;
+  const editorStyle = `!w-full !h-150   !text-md`;
 
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
-      <div className=" bg-white-white py-20 px-29 rounded-t-lg">
+      <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="  Pose questions about the topic that would help you gain a better
-              understanding of important concepts."
+          instruction="Create a meme that you believe conveys important ideas about concepts related to the topic."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Questions"
+              currentSection === "Meme"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Questions")}
+            onClick={() => setCurrentSection("Meme")}
           >
-            Questions
+            Meme
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
@@ -90,62 +93,62 @@ const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Insights"
+              currentSection === "Question"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Insights")}
+            onClick={() => setCurrentSection("Question")}
           >
-            Insights
+            Question
           </button>
         </div>
-        {currentSection === "Questions" && (
-          <div className=" h-200 bg-white-white ">
+        {currentSection === "Meme" && (
+          <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateQuest}
-              onEditorStateChange={onEditorStateChangeQuestions}
+              editorState={editorStateMeme}
+              onEditorStateChange={onEditorStateChangeMeme}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Pose three questions about specific aspects of the topic that would help you gain a better understanding."
+              placeholder="Insert the meme image you created and include a short caption about the meme."
             />
           </div>
         )}
         {currentSection === "Understanding" && (
-          <div className=" h-200 bg-white-white ">
+          <div className="h-200 bg-white-white ">
             <Editor
               editorState={editorStateUnder}
               onEditorStateChange={onEditorStateChangeUnderstanding}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Explain your current understanding of the topic and the specific aspects about which you would like further explanation."
+              mention={mention}
+              placeholder="Explain how you believe the meme enhances understanding of the topic."
             />
           </div>
         )}
-        {currentSection === "Insights" && (
-          <div className=" h-200 bg-white-white ">
+        {currentSection === "Question" && (
+          <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateInsights}
-              onEditorStateChange={onEditorStateChangeInsights}
+              editorState={editorStateQuestion}
+              onEditorStateChange={onEditorStateChangeQuestion}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Describe the insights you would hope to gain through a discussion about your questions"
+              mention={mention}
+              placeholder="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Ask for clarity"
+        title="A meme"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default AskForClarityComment;
+export default MemeComment;

@@ -61,7 +61,7 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
   console.log(reflectionValue);
 
   const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
-  const editorStyle = `!w-full !h-200  !text-md`;
+  const editorStyle = `!w-full !h-150  !text-md`;
 
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">

@@ -166,6 +166,7 @@ const AllPostInspirations = ({
           ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
         />
       )}
+
       {activeViewInspiration === "A graphic organizer" && (
         <PostingInspirationTemp
           moveBack={() => {
