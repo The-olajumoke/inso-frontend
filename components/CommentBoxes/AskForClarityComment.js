@@ -16,22 +16,26 @@ const Editor = dynamic(
   }
 );
 
-const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateQuest, setEditorStateQuest] = useState(
+    EditorState.createEmpty()
+  );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateOutcome, setEditorStateOutcome] = useState(
+  const [editorStateInsights, setEditorStateInsights] = useState(
     EditorState.createEmpty()
   );
   const [currentSection, setCurrentSection] = useState("Questions");
   const [questionsValue, setQuestionsValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [outcomeValue, setOutcomeValue] = useState("");
+  const [insightsValue, setInsightsValue] = useState("");
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-    const question = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+  const onEditorStateChangeQuestions = (editorStateQuest) => {
+    setEditorStateQuest(editorStateQuest);
+    const question = draftToHtml(
+      convertToRaw(editorStateQuest.getCurrentContent())
+    );
     setQuestionsValue(question);
   };
   const onEditorStateChangeUnderstanding = (editorStateUnder) => {
@@ -41,21 +45,23 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setUnderstandingValue(understanding);
   };
-  const onEditorStateChangeOutcome = (editorStateOutcome) => {
-    setEditorStateOutcome(editorStateOutcome);
-    const outcome = draftToHtml(
-      convertToRaw(editorStateOutcome.getCurrentContent())
+  const onEditorStateChangeInsights = (editorStateInsights) => {
+    setEditorStateInsights(editorStateInsights);
+    const insights = draftToHtml(
+      convertToRaw(editorStateInsights.getCurrentContent())
     );
-    setOutcomeValue(outcome);
+    setInsightsValue(insights);
   };
 
   const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-200  !text-md`;
+
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
       <div className=" bg-white-white py-20 px-29 rounded-t-lg">
         <CommentBoxHeader
-          instruction="  Pose questions to encourage discussion about the topic."
+          instruction="  Pose questions about the topic that would help you gain a better
+              understanding of important concepts."
           setActiveCommentBox={setActiveCommentBox}
         />
 
@@ -84,30 +90,30 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Outcomes"
+              currentSection === "Insights"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Outcomes")}
+            onClick={() => setCurrentSection("Insights")}
           >
-            Outcomes
+            Insights
           </button>
         </div>
         {currentSection === "Questions" && (
-          <div className="h-200 bg-white-white ">
+          <div className=" h-200 bg-white-white ">
             <Editor
-              editorState={editorState}
-              onEditorStateChange={onEditorStateChange}
+              editorState={editorStateQuest}
+              onEditorStateChange={onEditorStateChangeQuestions}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Pose three questions about the topic that would encourage further discussion."
+              placeholder="Pose three questions about specific aspects of the topic that would help you gain a better understanding."
             />
           </div>
         )}
         {currentSection === "Understanding" && (
-          <div className="h-200 bg-white-white ">
+          <div className=" h-200 bg-white-white ">
             <Editor
               editorState={editorStateUnder}
               onEditorStateChange={onEditorStateChangeUnderstanding}
@@ -115,31 +121,31 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Explain your current understanding of the topic."
+              placeholder="Explain your current understanding of the topic and the specific aspects about which you would like further explanation."
             />
           </div>
         )}
-        {currentSection === "Outcomes" && (
-          <div className="h-200 bg-white-white ">
+        {currentSection === "Insights" && (
+          <div className=" h-200 bg-white-white ">
             <Editor
-              editorState={editorStateOutcome}
-              onEditorStateChange={onEditorStateChangeOutcome}
+              editorState={editorStateInsights}
+              onEditorStateChange={onEditorStateChangeInsights}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Recommend three outcomes you would hope to see from discussion about your questions."
+              placeholder="Describe the insights you would hope to gain through a discussion about your questions"
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Ask questions"
+        title="Ask for clarity"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default AskQuestionsComment;
+export default AskForClarityComment;

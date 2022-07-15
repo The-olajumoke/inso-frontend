@@ -5,10 +5,9 @@ import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import CommentBoxHeader from "../CommentBoxHeader";
 import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
-
+import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
   import("react-draft-wysiwyg").then((mod) => mod.Editor),
   {
@@ -16,24 +15,31 @@ const Editor = dynamic(
   }
 );
 
-const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateConnections, setEditorStateConnections] = useState(
+    EditorState.createEmpty()
+  );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateOutcome, setEditorStateOutcome] = useState(
+  const [editorStateNewIdeas, setEditorStateNewIdeas] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Questions");
-  const [questionsValue, setQuestionsValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Connections");
+  const [connectionsValue, setConnectionsValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [outcomeValue, setOutcomeValue] = useState("");
+  const [newIdeasValue, setNewIdeasValue] = useState("");
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-    const question = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-    setQuestionsValue(question);
+  // FIRST
+  const onEditorStateChangeConnections = (editorStateQuestConnections) => {
+    setEditorStateConnections(editorStateQuestConnections);
+    const connections = draftToHtml(
+      convertToRaw(editorStateQuestConnections.getCurrentContent())
+    );
+    setConnectionsValue(connections);
   };
+
+  //   SECOND
   const onEditorStateChangeUnderstanding = (editorStateUnder) => {
     setEditorStateUnder(editorStateUnder);
     const understanding = draftToHtml(
@@ -41,34 +47,40 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setUnderstandingValue(understanding);
   };
-  const onEditorStateChangeOutcome = (editorStateOutcome) => {
-    setEditorStateOutcome(editorStateOutcome);
-    const outcome = draftToHtml(
-      convertToRaw(editorStateOutcome.getCurrentContent())
+
+  //   THIRD
+  const onEditorStateChangeNewIdeas = (editorStateNewIdeas) => {
+    setEditorStateNewIdeas(editorStateNewIdeas);
+    const newIdeas = draftToHtml(
+      convertToRaw(editorStateNewIdeas.getCurrentContent())
     );
-    setOutcomeValue(outcome);
+    setNewIdeasValue(newIdeas);
   };
+  console.log(connectionsValue);
+  console.log(understandingValue);
+  console.log(newIdeasValue);
 
   const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-200  !text-md`;
+
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
-      <div className=" bg-white-white py-20 px-29 rounded-t-lg">
+      <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="  Pose questions to encourage discussion about the topic."
+          instruction="Explain how specific concepts from the topic relate to other concepts in this course or concepts from another course or area."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Questions"
+              currentSection === "Connections"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Questions")}
+            onClick={() => setCurrentSection("Connections")}
           >
-            Questions
+            Connections
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
@@ -84,25 +96,25 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Outcomes"
+              currentSection === "New Ideas"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Outcomes")}
+            onClick={() => setCurrentSection("New Ideas")}
           >
-            Outcomes
+            New Ideas
           </button>
         </div>
-        {currentSection === "Questions" && (
+        {currentSection === "Connections" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorState}
-              onEditorStateChange={onEditorStateChange}
+              editorState={editorStateConnections}
+              onEditorStateChange={onEditorStateChangeConnections}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Pose three questions about the topic that would encourage further discussion."
+              placeholder="Describe the relationship(s) you identified between specific concepts."
             />
           </div>
         )}
@@ -113,33 +125,33 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeUnderstanding}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Explain your current understanding of the topic."
+              mention={mention}
+              placeholder="Explain how the relationship(s) can help increase understanding of the topic."
             />
           </div>
         )}
-        {currentSection === "Outcomes" && (
+        {currentSection === "New Ideas" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateOutcome}
-              onEditorStateChange={onEditorStateChangeOutcome}
+              editorState={editorStateNewIdeas}
+              onEditorStateChange={onEditorStateChangeNewIdeas}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Recommend three outcomes you would hope to see from discussion about your questions."
+              mention={mention}
+              placeholder="List three new ideas you are having because of the concepts and connections you identified."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Ask questions"
+        title="Course concepts"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default AskQuestionsComment;
+export default CourseConceptsComment;

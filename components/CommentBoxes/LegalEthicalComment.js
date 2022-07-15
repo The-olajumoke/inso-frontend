@@ -5,10 +5,9 @@ import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import CommentBoxHeader from "../CommentBoxHeader";
 import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
-
+import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
   import("react-draft-wysiwyg").then((mod) => mod.Editor),
   {
@@ -16,24 +15,31 @@ const Editor = dynamic(
   }
 );
 
-const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateConcerns, setEditorStateConcerns] = useState(
+    EditorState.createEmpty()
+  );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateOutcome, setEditorStateOutcome] = useState(
+  const [editorStateImplications, setEditorStateImplications] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Questions");
-  const [questionsValue, setQuestionsValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Concerns");
+  const [concernsValue, setConcernsValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [outcomeValue, setOutcomeValue] = useState("");
+  const [implicationsValue, setImplicationsValue] = useState("");
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-    const question = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-    setQuestionsValue(question);
+  // FIRST
+  const onEditorStateChangeConcerns = (editorStateConcerns) => {
+    setEditorStateConcerns(editorStateConcerns);
+    const concerns = draftToHtml(
+      convertToRaw(editorStateConcerns.getCurrentContent())
+    );
+    setConcernsValue(concerns);
   };
+
+  //   SECOND
   const onEditorStateChangeUnderstanding = (editorStateUnder) => {
     setEditorStateUnder(editorStateUnder);
     const understanding = draftToHtml(
@@ -41,34 +47,40 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setUnderstandingValue(understanding);
   };
-  const onEditorStateChangeOutcome = (editorStateOutcome) => {
-    setEditorStateOutcome(editorStateOutcome);
-    const outcome = draftToHtml(
-      convertToRaw(editorStateOutcome.getCurrentContent())
+
+  //   THIRD
+  const onEditorStateChangeImplications = (editorStateImplications) => {
+    setEditorStateImplications(editorStateImplications);
+    const implication = draftToHtml(
+      convertToRaw(editorStateImplications.getCurrentContent())
     );
-    setOutcomeValue(outcome);
+    setImplicationsValue(implication);
   };
+  console.log(concernsValue);
+  console.log(understandingValue);
+  console.log(implicationsValue);
 
   const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-200  !text-md`;
+
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
-      <div className=" bg-white-white py-20 px-29 rounded-t-lg">
+      <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="  Pose questions to encourage discussion about the topic."
+          instruction="Identify concepts related to the topic that could have legal or ethical implications."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Questions"
+              currentSection === "Concerns"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Questions")}
+            onClick={() => setCurrentSection("Concerns")}
           >
-            Questions
+            Concerns
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
@@ -84,25 +96,25 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Outcomes"
+              currentSection === "Implications"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Outcomes")}
+            onClick={() => setCurrentSection("Implications")}
           >
-            Outcomes
+            Implications
           </button>
         </div>
-        {currentSection === "Questions" && (
+        {currentSection === "Concerns" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorState}
-              onEditorStateChange={onEditorStateChange}
+              editorState={editorStateConcerns}
+              onEditorStateChange={onEditorStateChangeConcerns}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Pose three questions about the topic that would encourage further discussion."
+              placeholder="Identify a concept from the topic and explain the legal or ethical implications of it."
             />
           </div>
         )}
@@ -113,33 +125,33 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeUnderstanding}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Explain your current understanding of the topic."
+              mention={mention}
+              placeholder="Explain the importance of understanding the legal or ethical implications of the concept."
             />
           </div>
         )}
-        {currentSection === "Outcomes" && (
+        {currentSection === "Implications" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateOutcome}
-              onEditorStateChange={onEditorStateChangeOutcome}
+              editorState={editorStateImplications}
+              onEditorStateChange={onEditorStateChangeImplications}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
               toolbar={toolbar}
-              placeholder="Recommend three outcomes you would hope to see from discussion about your questions."
+              mention={mention}
+              placeholder="Suggest at least one positive and one negative legal or ethical implication related to the concepts and concerns you identified."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Ask questions"
+        title="Legal/Ethical Concerns"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default AskQuestionsComment;
+export default LegalEthicalComment;

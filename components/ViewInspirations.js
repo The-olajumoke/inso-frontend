@@ -5,6 +5,7 @@ const ViewInspirations = ({
   insp,
   setViewInspirations,
   setCurrentDetailedInsp,
+  togglePostInsp,
 }) => {
   const { category, categoryIcon } = insp;
   return (
@@ -35,7 +36,10 @@ const ViewInspirations = ({
           {category}
         </p>
       </div>
-      <div className="flex justify-center items-center">
+      <div
+        className="flex justify-center items-center"
+        onClick={togglePostInsp}
+      >
         <Image
           src="https://res.cloudinary.com/insomaryland/image/upload/v1656195114/InsoImages/arrow_forward_winp6p.svg"
           alt="arrow-right"

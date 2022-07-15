@@ -8,7 +8,7 @@ import {
   SynthesizingInspirations,
 } from "@/utils/sampleData";
 
-const FullPostInspirations = ({ setViewFullPostInsp }) => {
+const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
   const [activeInsp, setActiveInsp] = useState("Post with");
   const [seeInDetail, setSeeInDetail] = useState(false);
   return (
@@ -88,8 +88,12 @@ const FullPostInspirations = ({ setViewFullPostInsp }) => {
                   <div className="grid grid-cols-4 gap-6 ">
                     {insp.inspirations.map((inspiration, index) => (
                       <div
-                        className=" h-236 border border-gray-analyticsGray rounded-lg flex flex-col overflow-hidden"
+                        className=" h-236 border border-gray-analyticsGray rounded-lg flex flex-col overflow-hidden cursor-pointer"
                         key={index}
+                        onClick={() => {
+                          setViewFullPostInsp(false);
+                          setActiveCommentBox(`${inspiration.title}`);
+                        }}
                       >
                         {" "}
                         <div className="flex-grow px-16 pt-16 flex  flex-col">
@@ -155,6 +159,10 @@ const FullPostInspirations = ({ setViewFullPostInsp }) => {
                       <div
                         className=" h-236 border border-gray-analyticsGray rounded-lg flex flex-col overflow-hidden"
                         key={index}
+                        onClick={() => {
+                          setViewFullPostInsp(false);
+                          setActiveCommentBox(`${inspiration.title}`);
+                        }}
                       >
                         {" "}
                         <div className="flex-grow px-16 pt-16 flex  flex-col">
@@ -220,6 +228,10 @@ const FullPostInspirations = ({ setViewFullPostInsp }) => {
                       <div
                         className=" h-236 border border-gray-analyticsGray rounded-lg flex flex-col overflow-hidden"
                         key={index}
+                        onClick={() => {
+                          setViewFullPostInsp(false);
+                          setActiveCommentBox(`${inspiration.title}`);
+                        }}
                       >
                         {" "}
                         <div className="flex-grow px-16 pt-16 flex  flex-col">

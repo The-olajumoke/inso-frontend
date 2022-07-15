@@ -18,8 +18,12 @@ import AutomaticScoringTemp from "@/components/AutomaticScoringTemp";
 import RubricScoringTemp from "@/components/RubricScoringTemp";
 import RubricCriteriaTemp from "@/components/RubricCriteriaTemp";
 import AskQuestionsComment from "@/components/CommentBoxes/AskQuestionsComment";
-import AskForClarity from "@/components/CommentBoxes/AskForClarity";
+import AskForClarityComment from "@/components/CommentBoxes/AskForClarityComment";
 import FullPostInspirations from "@/components/FullPostInspirations";
+import CourseConceptsComment from "@/components/CommentBoxes/CourseConceptsComment";
+import PersonalExperienceComment from "@/components/CommentBoxes/PersonalExperienceComment";
+import RealWorldComment from "@/components/CommentBoxes/RealWorldComment";
+import LegalEthicalComment from "@/components/CommentBoxes/LegalEthicalComment";
 
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -31,7 +35,7 @@ const ViewDiscussion = () => {
   const [scoreType, setScoreType] = useState("automatic");
 
   const [showScoresSheet, setShowScoresSheet] = useState(false);
-  const [viewFullPostInsp, setViewFullPostInsp] = useState(true);
+  const [viewFullPostInsp, setViewFullPostInsp] = useState(false);
 
   const togglePostInsp = () => {
     setViewFullPostInsp(!viewFullPostInsp);
@@ -373,6 +377,12 @@ const ViewDiscussion = () => {
               {/* COMMENT BOX */}
               {showScoresSheet !== true && (
                 <div className="px-50  w-full  py-10 absolute bottom-0 bg-white-white ">
+                  {activeCommentBox === "noInspiration" && (
+                    <CommentBox
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
                   {activeCommentBox === "Ask questions" && (
                     <AskQuestionsComment
                       togglePostInsp={togglePostInsp}
@@ -380,29 +390,32 @@ const ViewDiscussion = () => {
                     />
                   )}
                   {activeCommentBox === "Ask for clarity" && (
-                    <AskForClarity
+                    <AskForClarityComment
                       togglePostInsp={togglePostInsp}
                       setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
-                  {activeCommentBox === "noInspiration" && (
-                    <CommentBox
+                  {activeCommentBox === "Course concepts" && (
+                    <CourseConceptsComment
                       togglePostInsp={togglePostInsp}
                       setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
-                  {activeCommentBox === "Resources" && (
-                    <ResourceCommentBox
+                  {activeCommentBox === "Personal experience" && (
+                    <PersonalExperienceComment
+                      togglePostInsp={togglePostInsp}
                       setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
-                  {activeCommentBox === "Popular tags" && (
-                    <PopularTagsComment
+                  {activeCommentBox === "Real-world applications" && (
+                    <RealWorldComment
+                      togglePostInsp={togglePostInsp}
                       setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
-                  {activeCommentBox === "Threads" && (
-                    <ThreadCommentBox
+                  {activeCommentBox === "Legal or ethical concerns" && (
+                    <LegalEthicalComment
+                      togglePostInsp={togglePostInsp}
                       setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
@@ -600,7 +613,10 @@ const ViewDiscussion = () => {
           </div>
         </div>
       ) : (
-        <FullPostInspirations setViewFullPostInsp={setViewFullPostInsp} />
+        <FullPostInspirations
+          setViewFullPostInsp={setViewFullPostInsp}
+          setActiveCommentBox={setActiveCommentBox}
+        />
       )}
     </Layout>
   );

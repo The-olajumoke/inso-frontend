@@ -86,7 +86,7 @@ const AllPostInspirations = ({
           secondHeading="Understanding"
           secondValue="Explain how this experience has informed your understanding of the concepts."
           ThirdHeading="Reflection"
-          ThirdValue="Generalize lessons you learned during this experience to other expeirences you might have."
+          ThirdValue="Generalize lessons you learned during this experience to other experiences you might have."
         />
       )}
       {activeViewInspiration === "Real-world applications" && (

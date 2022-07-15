@@ -68,7 +68,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
   );
 
   return (
-    <div className="flex w-full items-center absolute bottom-1 justify-between px-29">
+    <div className="flex w-full items-center absolute bottom-1 justify-between px-20">
       <div className="flex items-center">
         <div className="relative ">
           <div
@@ -87,7 +87,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                 className=" cursor-pointer"
               />
             </div>
-            <p className=" text-white-white">{title}</p>
+            <p className=" text-white-white cursor-pointer">{title}</p>
             <div className="flex items-center justify-center">
               <Image
                 src=" https://res.cloudinary.com/insomaryland/image/upload/v1655332180/InsoImages/dropdown_white_phtac2.svg"
@@ -101,7 +101,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
           </div>
           {openPostInspirationsDropDown && (
             <div
-              className={`${styles.dropdown}  absolute p-20 bg-white-white shadow-lg `}
+              className={`${styles.dropdown}   absolute p-20 bg-white-white shadow-lg z-99999 `}
             >
               {viewInspirations ? (
                 <div className="">
@@ -116,18 +116,21 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                     <ViewPostInspCategory
                       inspiration={connectSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Create something" && (
                     <ViewPostInspCategory
                       inspiration={createSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Share something" && (
                     <ViewPostInspCategory
                       inspiration={shareSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
 
@@ -135,6 +138,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                     <ViewPostInspCategory
                       inspiration={startSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
 
@@ -142,48 +146,56 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                     <ViewPostInspCategory
                       inspiration={addInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Answer" && (
                     <ViewPostInspCategory
                       inspiration={answerInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Ask" && (
                     <ViewPostInspCategory
                       inspiration={askInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Evaluate" && (
                     <ViewPostInspCategory
                       inspiration={evaluateInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "React" && (
                     <ViewPostInspCategory
                       inspiration={reactInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Connections" && (
                     <ViewPostInspCategory
                       inspiration={connectionsInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Tags" && (
                     <ViewPostInspCategory
                       inspiration={tagsInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                   {currentDetailedInsp === "Thread" && (
                     <ViewPostInspCategory
                       inspiration={threadsInsp[0]}
                       setViewInspirations={setViewInspirations}
+                      setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
                 </div>
@@ -252,6 +264,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                             insp={insp}
                             setViewInspirations={setViewInspirations}
                             setCurrentDetailedInsp={setCurrentDetailedInsp}
+                            togglePostInsp={togglePostInsp}
                           />
                         ))}
                       </div>
@@ -266,6 +279,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                             insp={insp}
                             setViewInspirations={setViewInspirations}
                             setCurrentDetailedInsp={setCurrentDetailedInsp}
+                            togglePostInsp={togglePostInsp}
                           />
                         ))}
                       </div>
@@ -279,6 +293,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                           insp={insp}
                           setViewInspirations={setViewInspirations}
                           setCurrentDetailedInsp={setCurrentDetailedInsp}
+                          togglePostInsp={togglePostInsp}
                         />
                       ))}
                     </div>
