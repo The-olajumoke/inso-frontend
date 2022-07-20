@@ -46,7 +46,7 @@ module.exports = {
         lightBlue: "#ECF4F4",
         inputBlue: " #F2FAFF",
         progressBlue: " #E9EFF7",
-        postInsp: "rgba(231, 247, 254, 1)",
+        postInsp: "rgba(231, 247, 254, 1)", //#E7F7FE
       },
       green: {
         lightGreen: "#F3FAFA",
@@ -58,6 +58,7 @@ module.exports = {
         background: "#FAFAFA",
         illustrationText: "#939393",
         faintGray: "#9D9D9D",
+        faintGrayOpacity: "rgba(157, 157, 157, 0.4)",
         footerGrey: "#FCFCFC",
         labelGrey: " #8692A6",
         createDisc: "#F9F9F9",
@@ -754,6 +755,7 @@ module.exports = {
         205: "20.5rem",
         210: "21rem",
         230: "23rem",
+        250: "25rem",
         252: "25.2rem",
         259: "25.9rem",
         262: "26.2rem",

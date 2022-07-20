@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -15,28 +14,28 @@ const Editor = dynamic(
   }
 );
 
-const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorStateExperience, setEditorStateExperience] = useState(
+const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateDebateTopic, setEditorStateDebateTopic] = useState(
     EditorState.createEmpty()
   );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateReflection, setEditorStateReflection] = useState(
+  const [editorStateQuestion, setEditorStateQuestion] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Experience");
-  const [experienceValue, setExperienceValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Debate Topic");
+  const [debateTopicValue, setDebateTopicValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [reflectionValue, setReflectionValue] = useState("");
+  const [questionValue, setQuestionValue] = useState("");
 
   // FIRST
-  const onEditorStateChangeExperience = (editorStateExperience) => {
-    setEditorStateExperience(editorStateExperience);
-    const experience = draftToHtml(
-      convertToRaw(editorStateExperience.getCurrentContent())
+  const onEditorStateChangeDebateTopic = (editorStateDebateTopic) => {
+    setEditorStateDebateTopic(editorStateDebateTopic);
+    const debate = draftToHtml(
+      convertToRaw(editorStateDebateTopic.getCurrentContent())
     );
-    setExperienceValue(experience);
+    setDebateTopicValue(debate);
   };
 
   //   SECOND
@@ -49,38 +48,38 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
   };
 
   //   THIRD
-  const onEditorStateChangeReflection = (editorStateReflection) => {
-    setEditorStateReflection(editorStateReflection);
-    const reflection = draftToHtml(
-      convertToRaw(editorStateReflection.getCurrentContent())
+  const onEditorStateChangeQuestion = (editorStateQuestion) => {
+    setEditorStateQuestion(editorStateQuestion);
+    const question = draftToHtml(
+      convertToRaw(editorStateQuestion.getCurrentContent())
     );
-    setReflectionValue(reflection);
+    setQuestionValue(question);
   };
-  console.log(experienceValue);
+  console.log(debateTopicValue);
   console.log(understandingValue);
-  console.log(reflectionValue);
+  console.log(questionValue);
 
-  const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
-  const editorStyle = `!w-full !h-150  !text-md`;
+  const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
+  const editorStyle = `!w-full !h-150   !text-md`;
 
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
       <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="Share a personal experience you have had with concepts related to the topic."
+          instruction="Start a debate about some concept(s) related this topic (e.g., Socialism is better than capitalism)."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Experience"
+              currentSection === "Debate Topic"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Experience")}
+            onClick={() => setCurrentSection("Debate Topic")}
           >
-            Experience
+            Debate Topic
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
@@ -96,25 +95,25 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Reflection"
+              currentSection === "Questions"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Reflection")}
+            onClick={() => setCurrentSection("Questions")}
           >
-            Reflection
+            Questions
           </button>
         </div>
-        {currentSection === "Experience" && (
+        {currentSection === "Debate Topic" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateExperience}
-              onEditorStateChange={onEditorStateChangeExperience}
+              editorState={editorStateDebateTopic}
+              onEditorStateChange={onEditorStateChangeDebateTopic}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Describe the experience(s) you have had with specific concepts related to the topic."
+              placeholder="Create a statement about concepts related to the topic that would inspire informative and healthy discussion."
             />
           </div>
         )}
@@ -127,31 +126,31 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Explain how this experience has informed your understanding of the concepts."
+              placeholder="Explain your understanding of at least two of the perspectives on the debate topic you chose."
             />
           </div>
         )}
-        {currentSection === "Reflection" && (
+        {currentSection === "Questions" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateReflection}
-              onEditorStateChange={onEditorStateChangeReflection}
+              editorState={editorStateQuestion}
+              onEditorStateChange={onEditorStateChangeQuestion}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Generalize lessons you learned during this experience to other experiences you might have."
+              placeholder="Pose at least three questions related to the concept you identified that would encourage further debate."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Personal experience"
+        title="A debate"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default PersonalExperienceComment;
+export default DebateComment;

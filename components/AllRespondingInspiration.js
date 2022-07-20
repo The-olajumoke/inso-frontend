@@ -41,7 +41,7 @@ const AllRespondingInspiration = ({
           setViewInspirations={setViewInspirations}
           setActiveViewInspiration={setActiveViewInspiration}
           title="Illustrations"
-          instruction="Illustrate concepts in the post by including media such as a video, meme, newstory, or some other resource you located or created. "
+          instruction="Illustrate concepts in the post by including media such as a video, meme, newstory, or some other resource you located or created."
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
           secondHeading="Illustration"
@@ -164,7 +164,7 @@ const AllRespondingInspiration = ({
           ThirdValue="Recommend three outcomes you would hope to see from discussion about your questions."
         />
       )}
-      {activeViewInspiration === "For clarification" && (
+      {activeViewInspiration === "For Clarification" && (
         <PostingInspirationTemp
           moveBack={() => {
             setShowDetailedInsp(true);
@@ -196,7 +196,7 @@ const AllRespondingInspiration = ({
           instruction="Evaluate the post based on a 5-star rating."
           firstHeading="Summary"
           firstValue="Summarize your understanding of the main points to which you are responding."
-          secondHeading="1 Star "
+          secondHeading="1 Star"
           secondValue="Identify one aspect of the post that you would rate as 1-star and justify your rating."
           ThirdHeading="5 Stars"
           ThirdValue="Identify one aspect of the post that you would rate as 5-star and justify your rating."
@@ -222,6 +222,7 @@ const AllRespondingInspiration = ({
           ThirdValue="Identify one aspect of the post that needs further development and recommend specific stteps for improvement."
         />
       )}
+
       {activeViewInspiration === "Loved, Learned" && (
         <PostingInspirationTemp
           moveBack={() => {

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -15,28 +14,26 @@ const Editor = dynamic(
   }
 );
 
-const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorStatePerspectives, setEditorStatePerspectives] = useState(
+const MemeComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateMeme, setEditorStateMeme] = useState(
     EditorState.createEmpty()
   );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateCommonality, setEditorStateCommonality] = useState(
+  const [editorStateQuestion, setEditorStateQuestion] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Perspectives");
-  const [perspectivesValue, setPerspectivesValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Meme");
+  const [memeValue, setMemeValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [commonalityValue, setCommonalityValue] = useState("");
+  const [questionValue, setQuestionValue] = useState("");
 
   // FIRST
-  const onEditorStateChangePerspectives = (editorStatePerspectives) => {
-    setEditorStatePerspectives(editorStatePerspectives);
-    const perspective = draftToHtml(
-      convertToRaw(editorStatePerspectives.getCurrentContent())
-    );
-    setPerspectivesValue(perspective);
+  const onEditorStateChangeMeme = (editorStateMeme) => {
+    setEditorStateMeme(editorStateMeme);
+    const meme = draftToHtml(convertToRaw(editorStateMeme.getCurrentContent()));
+    setMemeValue(meme);
   };
 
   //   SECOND
@@ -49,38 +46,38 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
   };
 
   //   THIRD
-  const onEditorStateChangeCommonality = (editorStateCommonality) => {
-    setEditorStateCommonality(editorStateCommonality);
-    const commonality = draftToHtml(
-      convertToRaw(editorStateCommonality.getCurrentContent())
+  const onEditorStateChangeQuestion = (editorStateQuestion) => {
+    setEditorStateQuestion(editorStateQuestion);
+    const question = draftToHtml(
+      convertToRaw(editorStateQuestion.getCurrentContent())
     );
-    setCommonalityValue(commonality);
+    setQuestionValue(question);
   };
-  console.log(perspectivesValue);
+  console.log(memeValue);
   console.log(understandingValue);
-  console.log(commonalityValue);
+  console.log(questionValue);
 
-  const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
+  const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150   !text-md`;
 
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
       <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="Compare alternative perspectives about concepts related to the topic."
+          instruction="Create a meme that you believe conveys important ideas about concepts related to the topic."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Perspectives"
+              currentSection === "Meme"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Perspectives")}
+            onClick={() => setCurrentSection("Meme")}
           >
-            Perspectives
+            Meme
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
@@ -96,25 +93,25 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Commonality"
+              currentSection === "Question"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Commonality")}
+            onClick={() => setCurrentSection("Question")}
           >
-            Commonality
+            Question
           </button>
         </div>
-        {currentSection === "Perspectives" && (
+        {currentSection === "Meme" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStatePerspectives}
-              onEditorStateChange={onEditorStateChangePerspectives}
+              editorState={editorStateMeme}
+              onEditorStateChange={onEditorStateChangeMeme}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Identify a specific concept related to the topic about which there are at least two alternative perspectives."
+              placeholder="Insert the meme image you created and include a short caption about the meme."
             />
           </div>
         )}
@@ -127,31 +124,31 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Explain how each perspective understands the concept."
+              placeholder="Explain how you believe the meme enhances understanding of the topic."
             />
           </div>
         )}
-        {currentSection === "Commonality" && (
+        {currentSection === "Question" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateCommonality}
-              onEditorStateChange={onEditorStateChangeCommonality}
+              editorState={editorStateQuestion}
+              onEditorStateChange={onEditorStateChangeQuestion}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Recommend ways that each perspective can benefit from the ideas of the other."
+              placeholder="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Alternative perspectives"
+        title="A meme"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default AlternativeComment;
+export default MemeComment;

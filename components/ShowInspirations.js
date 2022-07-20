@@ -68,7 +68,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
   );
 
   return (
-    <div className="flex w-full items-center absolute bottom-1 justify-between px-20">
+    <div className="flex w-full items-center absolute bottom-1 justify-between right-0 left-0  pb-5 px-20">
       <div className="flex items-center">
         <div className="relative ">
           <div

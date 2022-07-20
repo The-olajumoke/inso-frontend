@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -14,141 +15,143 @@ const Editor = dynamic(
   }
 );
 
-const MemeComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorStateMeme, setEditorStateMeme] = useState(
+const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateSummary, setEditorStateSummary] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateUnder, setEditorStateUnder] = useState(
+  const [editorStateAnswer, setEditorStateAnswer] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateQuestion, setEditorStateQuestion] = useState(
+  const [editorStateSupport, setEditorStateSupport] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Meme");
-  const [memeValue, setMemeValue] = useState("");
-  const [understandingValue, setUnderstandingValue] = useState("");
-  const [questionValue, setQuestionValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Summary");
+  const [summaryValue, setSummaryValue] = useState("");
+  const [answerValue, setAnswerValue] = useState("");
+  const [supportValue, setSupportValue] = useState("");
 
   // FIRST
-  const onEditorStateChangeMeme = (editorStateMeme) => {
-    setEditorStateMeme(editorStateMeme);
-    const meme = draftToHtml(convertToRaw(editorStateMeme.getCurrentContent()));
-    setMemeValue(meme);
+  const onEditorStateChangeSummary = (editorStateSummary) => {
+    setEditorStateSummary(editorStateSummary);
+    const summary = draftToHtml(
+      convertToRaw(editorStateSummary.getCurrentContent())
+    );
+    setSummaryValue(summary);
   };
 
   //   SECOND
-  const onEditorStateChangeUnderstanding = (editorStateUnder) => {
-    setEditorStateUnder(editorStateUnder);
-    const understanding = draftToHtml(
-      convertToRaw(editorStateUnder.getCurrentContent())
+  const onEditorStateChangeAnswer = (editorStateAnswer) => {
+    setEditorStateAnswer(editorStateAnswer);
+    const answer = draftToHtml(
+      convertToRaw(editorStateAnswer.getCurrentContent())
     );
-    setUnderstandingValue(understanding);
+    setAnswerValue(answer);
   };
 
   //   THIRD
-  const onEditorStateChangeQuestion = (editorStateQuestion) => {
-    setEditorStateQuestion(editorStateQuestion);
-    const question = draftToHtml(
-      convertToRaw(editorStateQuestion.getCurrentContent())
+  const onEditorStateChangeSupport = (editorStateSupport) => {
+    setEditorStateSupport(editorStateSupport);
+    const support = draftToHtml(
+      convertToRaw(editorStateSupport.getCurrentContent())
     );
-    setQuestionValue(question);
+    setSupportValue(support);
   };
-  console.log(memeValue);
-  console.log(understandingValue);
-  console.log(questionValue);
+  console.log(summaryValue);
+  console.log(answerValue);
+  console.log(supportValue);
 
-  const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
+  const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150   !text-md`;
 
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
       <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="Create a meme that you believe conveys important ideas about concepts related to the topic."
+          instruction="Answer questions asked."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Meme"
+              currentSection === "Summary"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Meme")}
+            onClick={() => setCurrentSection("Summary")}
           >
-            Meme
+            Summary
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Understanding"
+              currentSection === "Answer"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Understanding")}
+            onClick={() => setCurrentSection("Answer")}
           >
-            Understanding
+            Answer
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Question"
+              currentSection === "Support"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Question")}
+            onClick={() => setCurrentSection("Support")}
           >
-            Question
+            Support
           </button>
         </div>
-        {currentSection === "Meme" && (
+        {currentSection === "Summary" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateMeme}
-              onEditorStateChange={onEditorStateChangeMeme}
+              editorState={editorStateSummary}
+              onEditorStateChange={onEditorStateChangeSummary}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Insert the meme image you created and include a short caption about the meme."
+              placeholder="Summarize your understanding of the main points to which you are responding."
             />
           </div>
         )}
-        {currentSection === "Understanding" && (
+        {currentSection === "Answer" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateUnder}
-              onEditorStateChange={onEditorStateChangeUnderstanding}
+              editorState={editorStateAnswer}
+              onEditorStateChange={onEditorStateChangeAnswer}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Explain how you believe the meme enhances understanding of the topic."
+              placeholder="Address the questions posed in the post."
             />
           </div>
         )}
-        {currentSection === "Question" && (
+        {currentSection === "Support" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateQuestion}
-              onEditorStateChange={onEditorStateChangeQuestion}
+              editorState={editorStateSupport}
+              onEditorStateChange={onEditorStateChangeSupport}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
+              placeholder="Paste the link to at least one web-based resource that supports your response and summarize the ideas in the resource."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="A meme"
+        title="Directly"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default MemeComment;
+export default DirectlyComment;

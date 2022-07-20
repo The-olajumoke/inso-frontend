@@ -43,8 +43,8 @@ const SavedSettings = ({
         </div>
       </div>
 
-      {openSettings && (
-        <div className=" bg-gray-createDisc pt-8 px-45">
+      {/* {openSettings && (
+        <div className="border bg-gray-createDisc pt-8 px-45">
           <div className="flex items-center mb-17">
             <button
               className={` ${
@@ -212,7 +212,7 @@ const SavedSettings = ({
             </div>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

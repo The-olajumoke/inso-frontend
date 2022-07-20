@@ -202,7 +202,7 @@ export const RespondingInspirations = [
         subtitles: ["Summary", "Questions", "Outcomes"],
       },
       {
-        title: "For clarification",
+        title: "For Clarification",
         instruction:
           "Pose questions to increase understanding about specific concepts.",
         subtitles: ["Summary", "Clarification", "Insights"],

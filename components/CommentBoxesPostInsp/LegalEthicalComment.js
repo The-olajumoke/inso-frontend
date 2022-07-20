@@ -15,28 +15,28 @@ const Editor = dynamic(
   }
 );
 
-const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
-  const [editorStateRealWorld, setEditorStateRealWorld] = useState(
+const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
+  const [editorStateConcerns, setEditorStateConcerns] = useState(
     EditorState.createEmpty()
   );
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
   );
-  const [editorStateApplication, setEditorStateApplication] = useState(
+  const [editorStateImplications, setEditorStateImplications] = useState(
     EditorState.createEmpty()
   );
-  const [currentSection, setCurrentSection] = useState("Real-world");
-  const [realWorldValue, setRealWorldValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("Concerns");
+  const [concernsValue, setConcernsValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
-  const [applicationValue, setApplicationValue] = useState("");
+  const [implicationsValue, setImplicationsValue] = useState("");
 
   // FIRST
-  const onEditorStateChangeRealWorld = (editorStateRealWorld) => {
-    setEditorStateRealWorld(editorStateRealWorld);
-    const realWorld = draftToHtml(
-      convertToRaw(editorStateRealWorld.getCurrentContent())
+  const onEditorStateChangeConcerns = (editorStateConcerns) => {
+    setEditorStateConcerns(editorStateConcerns);
+    const concerns = draftToHtml(
+      convertToRaw(editorStateConcerns.getCurrentContent())
     );
-    setRealWorldValue(realWorld);
+    setConcernsValue(concerns);
   };
 
   //   SECOND
@@ -49,38 +49,38 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
   };
 
   //   THIRD
-  const onEditorStateChangeApplication = (editorStateApplication) => {
-    setEditorStateApplication(editorStateApplication);
-    const application = draftToHtml(
-      convertToRaw(editorStateApplication.getCurrentContent())
+  const onEditorStateChangeImplications = (editorStateImplications) => {
+    setEditorStateImplications(editorStateImplications);
+    const implication = draftToHtml(
+      convertToRaw(editorStateImplications.getCurrentContent())
     );
-    setApplicationValue(application);
+    setImplicationsValue(implication);
   };
-  console.log(realWorldValue);
+  console.log(concernsValue);
   console.log(understandingValue);
-  console.log(applicationValue);
+  console.log(implicationsValue);
 
-  const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
-  const editorStyle = `!w-full !h-150   !text-md`;
+  const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
+  const editorStyle = `!w-full !h-150  !text-md`;
 
   return (
     <div className="border border-primary-darkGreen rounded-lg  relative  overflow-hidden">
       <div className=" bg-white-white p-20 rounded-t-lg">
         <CommentBoxHeader
-          instruction="Explain how concepts about the topic could apply to real-world situations."
+          instruction="Identify concepts related to the topic that could have legal or ethical implications."
           setActiveCommentBox={setActiveCommentBox}
         />
 
         <div className="grid grid-cols-5 ">
           <button
             className={`${
-              currentSection === "Real-world"
+              currentSection === "Concerns"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Real-world")}
+            onClick={() => setCurrentSection("Concerns")}
           >
-            Real-world
+            Concerns
           </button>
           <button className="border-b-2 border-other-disabled"></button>
           <button
@@ -96,25 +96,25 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
           <button className="border-b-2 border-other-disabled"></button>
           <button
             className={`${
-              currentSection === "Application"
+              currentSection === "Implications"
                 ? "btn-currentSection"
                 : "btn-notCurrentSection"
             }`}
-            onClick={() => setCurrentSection("Application")}
+            onClick={() => setCurrentSection("Implications")}
           >
-            Application
+            Implications
           </button>
         </div>
-        {currentSection === "Real-world" && (
+        {currentSection === "Concerns" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateRealWorld}
-              onEditorStateChange={onEditorStateChangeRealWorld}
+              editorState={editorStateConcerns}
+              onEditorStateChange={onEditorStateChangeConcerns}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               mention={mention}
               toolbar={toolbar}
-              placeholder="Identify a specific real-world scenario that could be informed by, or could inform, concepts related to the topic."
+              placeholder="Identify a concept from the topic and explain the legal or ethical implications of it."
             />
           </div>
         )}
@@ -127,31 +127,31 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Explain how application of concepts to this real-world scenario can increase understanding of the topic."
+              placeholder="Explain the importance of understanding the legal or ethical implications of the concept."
             />
           </div>
         )}
-        {currentSection === "Application" && (
+        {currentSection === "Implications" && (
           <div className="h-200 bg-white-white ">
             <Editor
-              editorState={editorStateApplication}
-              onEditorStateChange={onEditorStateChangeApplication}
+              editorState={editorStateImplications}
+              onEditorStateChange={onEditorStateChangeImplications}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
               mention={mention}
-              placeholder="Recommend ways you could effectively interact with the concepts you identified in the context of other real-world scenarios."
+              placeholder="Suggest at least one positive and one negative legal or ethical implication related to the concepts and concerns you identified."
             />
           </div>
         )}
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Real-world"
+        title="Legal/Ethical Concerns"
         togglePostInsp={togglePostInsp}
       />
     </div>
   );
 };
 
-export default RealWorldComment;
+export default LegalEthicalComment;

@@ -33,7 +33,13 @@ export const ScoreSettings = ({
       </div>
       <div className="flex-grow">
         <div className="h-55 bg-gray-background w-full flex items-center justify-between px-45 mb-10 cursor-pointer ">
-          <div className="flex">
+          <div
+            className="flex"
+            onClick={() => {
+              setViewInspirations(true);
+              setActiveViewInspiration("NewScoresSettings");
+            }}
+          >
             <div className="flex items-center justify-center mr-16">
               <Image
                 src="/icons/settings_icon.svg"
@@ -58,7 +64,9 @@ export const ScoreSettings = ({
         </div>
         <div
           className="h-55 bg-gray-background w-full flex items-center justify-between px-45"
-          onClick={() => setShowSavedSettings(!showSavedSettings)}
+          onClick={() => {
+            setShowSavedSettings(!showSavedSettings);
+          }}
         >
           <div className="flex cursor-pointer">
             <div className="flex items-center justify-center mr-16">

@@ -53,7 +53,7 @@ const AskForClarityComment = ({ setActiveCommentBox, togglePostInsp }) => {
     setInsightsValue(insights);
   };
 
-  const toolbarStyle = ` absolute -bottom-1  left-96 !bg-transparent z-9999`;
+  const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150  !text-md`;
 
   return (

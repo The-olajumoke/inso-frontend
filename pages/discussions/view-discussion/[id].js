@@ -5,9 +5,7 @@ import styles from "@/styles/discussion.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import CommentBox from "@/components/CommentBox";
-import ResourceCommentBox from "@/components/ResourceCommentBox";
-import PopularTagsComment from "@/components/PopularTagsComment";
-import ThreadCommentBox from "@/components/ThreadCommentBox";
+
 import {
   automaticScoring,
   rubricCriteria,
@@ -17,15 +15,39 @@ import {
 import AutomaticScoringTemp from "@/components/AutomaticScoringTemp";
 import RubricScoringTemp from "@/components/RubricScoringTemp";
 import RubricCriteriaTemp from "@/components/RubricCriteriaTemp";
-import AskQuestionsComment from "@/components/CommentBoxes/AskQuestionsComment";
-import AskForClarityComment from "@/components/CommentBoxes/AskForClarityComment";
+import AskQuestionsComment from "@/components/CommentBoxesPostInsp/AskQuestionsComment";
+import AskForClarityComment from "@/components/CommentBoxesPostInsp/AskForClarityComment";
 import FullPostInspirations from "@/components/FullPostInspirations";
-import CourseConceptsComment from "@/components/CommentBoxes/CourseConceptsComment";
-import PersonalExperienceComment from "@/components/CommentBoxes/PersonalExperienceComment";
-import RealWorldComment from "@/components/CommentBoxes/RealWorldComment";
-import LegalEthicalComment from "@/components/CommentBoxes/LegalEthicalComment";
-import AlternativeComment from "@/components/CommentBoxes/AlternativeComment";
-import MemeComment from "@/components/CommentBoxes/MemeComment";
+import CourseConceptsComment from "@/components/CommentBoxesPostInsp/CourseConceptsComment";
+import PersonalExperienceComment from "@/components/CommentBoxesPostInsp/PersonalExperienceComment";
+import RealWorldComment from "@/components/CommentBoxesPostInsp/RealWorldComment";
+import LegalEthicalComment from "@/components/CommentBoxesPostInsp/LegalEthicalComment";
+import AlternativeComment from "@/components/CommentBoxesPostInsp/AlternativeComment";
+import MemeComment from "@/components/CommentBoxesPostInsp/MemeComment";
+import GraphicOrganizerComment from "@/components/CommentBoxesPostInsp/GraphicOrganizerComment";
+import CreateMediaComment from "@/components/CommentBoxesPostInsp/CreateMediaComment";
+import ShareMediaComment from "@/components/CommentBoxesPostInsp/ShareMediaComment";
+import QuoteComment from "@/components/CommentBoxesPostInsp/QuoteComment";
+import StudyStrategiesComment from "@/components/CommentBoxesPostInsp/StudyStrategiesComment";
+import DebateComment from "@/components/CommentBoxesPostInsp/DebateComment";
+import AMAThreadComment from "@/components/CommentBoxesPostInsp/AMAThreadComment";
+import SearchTreeComment from "@/components/CommentBoxesPostInsp/SearchTreeComment";
+import AlternativeCommentResp from "@/components/CommentBoxesRespondInsp/AlternativeCommentResp";
+import IllustrationsComment from "@/components/CommentBoxesRespondInsp/IllustrationsComment";
+import InsightsComment from "@/components/CommentBoxesRespondInsp/InsightsComment";
+import ResourcesComment from "@/components/CommentBoxesRespondInsp/ResourcesComment";
+import DirectlyComment from "@/components/CommentBoxesRespondInsp/DirectlyComment";
+import ClarificationComment from "@/components/CommentBoxesRespondInsp/ClarificationComment";
+import QuestionsComment from "@/components/CommentBoxesRespondInsp/QuestionsComment";
+import MoreQuestionsComment from "@/components/CommentBoxesRespondInsp/MoreQuestionsComment";
+import AskForClarifComment from "@/components/CommentBoxesRespondInsp/AskForClarifComment";
+import OneStarFiveComment from "@/components/CommentBoxesRespondInsp/OneStarFiveComment";
+import CriticalReviewComment from "@/components/CommentBoxesRespondInsp/CriticalReviewComment";
+import LovedLearnedComment from "@/components/CommentBoxesRespondInsp/LovedLearnedComment";
+import HeartComment from "@/components/CommentBoxesRespondInsp/HeartComment";
+import MadComment from "@/components/CommentBoxesRespondInsp/MadComment";
+import MindblownComment from "@/components/CommentBoxesRespondInsp/MindblownComment";
+import EditDiscussion from "@/components/EditDiscussion";
 
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -34,10 +56,11 @@ const ViewDiscussion = () => {
   const [viewAllTags, setViewAllTags] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
-  const [scoreType, setScoreType] = useState("automatic");
+  const [scoreType, setScoreType] = useState("rubric");
 
   const [showScoresSheet, setShowScoresSheet] = useState(false);
   const [viewFullPostInsp, setViewFullPostInsp] = useState(false);
+  const [editDiscussion, setEditDiscussion] = useState(false);
 
   const togglePostInsp = () => {
     setViewFullPostInsp(!viewFullPostInsp);
@@ -49,7 +72,7 @@ const ViewDiscussion = () => {
       bgColor="bg-white-white"
     >
       {!viewFullPostInsp ? (
-        <div className={` h-full flex flex-col relative w-full`}>
+        <div className={` h-full flex flex-col relative w-full `}>
           <div
             className={` h-65 bg-gray-background ${
               viewAllTags ? "mb-0" : "mb-5"
@@ -132,7 +155,7 @@ const ViewDiscussion = () => {
                           </div>
                           <p className="text-black-analText ">Drafts</p>
                         </div>
-                        <div
+                        {/* <div
                           className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start px-20"
                           onClick={() => {
@@ -152,7 +175,7 @@ const ViewDiscussion = () => {
                             />
                           </div>
                           <p className=" text-black-analText">Gradesheet</p>
-                        </div>
+                        </div> */}
                         <div
                           className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start  px-20"
@@ -221,9 +244,9 @@ const ViewDiscussion = () => {
               </div>
             </div>
           </div>
-          <div className="flex  overflow-hidden">
+          <div className="flex  h-full  overflow-hidden">
             <div
-              className={`h-full flex flex-col flex-grow  w-1/2 justify-between `}
+              className={`h-full relative flex flex-col flex-grow  w-1/2 justify-between `}
             >
               <div>
                 <div
@@ -433,6 +456,145 @@ const ViewDiscussion = () => {
                       setActiveCommentBox={setActiveCommentBox}
                     />
                   )}
+                  {activeCommentBox === "A graphic organizer" && (
+                    <GraphicOrganizerComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "A media" && (
+                    <CreateMediaComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Media" && (
+                    <ShareMediaComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "A Quote" && (
+                    <QuoteComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Study strategies" && (
+                    <StudyStrategiesComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "A debate" && (
+                    <DebateComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "An AMA thread" && (
+                    <AMAThreadComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "A search tree" && (
+                    <SearchTreeComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {/* RESPONDING */}
+                  {activeCommentBox === "Alternatives" && (
+                    <AlternativeCommentResp
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Illustrations" && (
+                    <IllustrationsComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Insights" && (
+                    <InsightsComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Resources" && (
+                    <ResourcesComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Directly" && (
+                    <DirectlyComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "For clarification" && (
+                    <ClarificationComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "More questions" && (
+                    <MoreQuestionsComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Questions" && (
+                    <QuestionsComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "For Clarification" && (
+                    <AskForClarifComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "1 Star 5 Stars" && (
+                    <OneStarFiveComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Critical Review" && (
+                    <CriticalReviewComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Loved, Learned" && (
+                    <LovedLearnedComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Heart" && (
+                    <HeartComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Mad" && (
+                    <MadComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
+                  {activeCommentBox === "Mindblown" && (
+                    <MindblownComment
+                      togglePostInsp={togglePostInsp}
+                      setActiveCommentBox={setActiveCommentBox}
+                    />
+                  )}
                 </div>
               )}
             </div>
@@ -625,6 +787,8 @@ const ViewDiscussion = () => {
               </div>
             )}
           </div>
+
+          {editDiscussion && <EditDiscussion />}
         </div>
       ) : (
         <FullPostInspirations

@@ -1,0 +1,7 @@
+.hiddenScrollbar {
+    overflow-y: scroll;
+}
+
+.hiddenScrollbar::-webkit-scrollbar {
+    display: none;
+}

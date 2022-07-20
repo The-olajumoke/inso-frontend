@@ -146,7 +146,6 @@ const AllPostInspirations = ({
           ThirdValue="Recommend ways that each perspective can benefit from the ideas of the other."
         />
       )}
-
       {activeViewInspiration === "A meme" && (
         <PostingInspirationTemp
           moveBack={() => {
@@ -166,7 +165,6 @@ const AllPostInspirations = ({
           ThirdValue="Pose a question that would encourage further discussion about the ideas conveyed in your creation."
         />
       )}
-
       {activeViewInspiration === "A graphic organizer" && (
         <PostingInspirationTemp
           moveBack={() => {
@@ -263,7 +261,6 @@ const AllPostInspirations = ({
           ThirdValue="Pose at least three questions about concepts related to the topic you feel confident answering."
         />
       )}
-
       {activeViewInspiration === "A debate" && (
         <PostingInspirationTemp
           moveBack={() => {
@@ -284,7 +281,6 @@ const AllPostInspirations = ({
           ThirdValue="Pose at least three questions related to the concept you identified that would encourage further debate."
         />
       )}
-
       {activeViewInspiration === "An AMA thread" && (
         <PostingInspirationTemp
           moveBack={() => {
@@ -305,7 +301,6 @@ const AllPostInspirations = ({
           ThirdValue="Pose at least three questions about concepts related to the topic that you feel confident addressing."
         />
       )}
-
       {activeViewInspiration === "A search tree" && (
         <PostingInspirationTemp
           moveBack={() => {
