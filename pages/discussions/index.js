@@ -8,11 +8,13 @@ import Image from "next/image";
 import styles from "@/styles/discussion.module.css";
 import CreateDiscussions from "@/components/CreateDiscussions";
 import { discussions } from "@/utils/sampleData";
+import CreateDiscResponsive from "@/components/CreateDiscResponsive";
 const Index = () => {
   let loading = false;
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
   const [createDiscussion, setCreateDiscussion] = useState(false);
+  const [createDiscussionResp, setCreateDiscussionResp] = useState(false);
 
   const filterOptions = ["All", "Discussions created", "Discussion joined"];
 
@@ -116,11 +118,14 @@ const Index = () => {
         {createDiscussion && (
           <CreateDiscussions setOpenModal={setCreateDiscussion} />
         )}
+        {createDiscussionResp && (
+          <CreateDiscResponsive setOpenModal={setCreateDiscussionResp} />
+        )}
 
         <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">
           <div
             className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center"
-            onClick={() => setCreateDiscussion(true)}
+            onClick={() => setCreateDiscussionResp(true)}
           >
             <Image
               src="/icons/add_icon_white.svg"

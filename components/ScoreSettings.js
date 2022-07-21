@@ -16,7 +16,7 @@ export const ScoreSettings = ({
 
   return (
     <div className=" flex flex-col justify-between  flex-grow">
-      <div className="px-45 mb-20 flex items-center justify-between ">
+      <div className="px-16 vp-min-601:px-42 mb-20 flex items-center justify-between ">
         <h6 className="">Scores</h6>
         <label className={`${styles.switch}`}>
           <input
@@ -32,14 +32,14 @@ export const ScoreSettings = ({
         </label>
       </div>
       <div className="flex-grow">
-        <div className="h-55 bg-gray-background w-full flex items-center justify-between px-45 mb-10 cursor-pointer ">
-          <div
-            className="flex"
-            onClick={() => {
-              setViewInspirations(true);
-              setActiveViewInspiration("NewScoresSettings");
-            }}
-          >
+        <div
+          className="h-55 bg-gray-background w-full flex items-center justify-between px-16 vp-min-601:px-42 mb-10 cursor-pointer "
+          onClick={() => {
+            setViewInspirations(true);
+            setActiveViewInspiration("NewScoresSettings");
+          }}
+        >
+          <div className="flex">
             <div className="flex items-center justify-center mr-16">
               <Image
                 src="/icons/settings_icon.svg"
@@ -63,7 +63,7 @@ export const ScoreSettings = ({
           </div>
         </div>
         <div
-          className="h-55 bg-gray-background w-full flex items-center justify-between px-45"
+          className="h-55 bg-gray-background w-full flex items-center justify-between px-16 vp-min-601:px-42"
           onClick={() => {
             setShowSavedSettings(!showSavedSettings);
           }}
@@ -117,12 +117,12 @@ export const ScoreSettings = ({
         )}
       </div>
 
-      <div className="h-54 flex justify-between items-center w-full px-45">
+      <div className="h-54 flex justify-between items-center w-full px-16 vp-min-601:px-42">
         <div className="flex items-center">
           <div
             className="flex justify-center items-center mr-75"
             onClick={() => {
-              setActiveSettings("Scores");
+              setActiveSettings("postInspiration");
             }}
           >
             <Image

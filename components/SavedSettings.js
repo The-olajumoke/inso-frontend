@@ -25,7 +25,7 @@ const SavedSettings = ({
       }}
     >
       <div
-        className=" bg-gray-createDisc px-45"
+        className=" bg-gray-createDisc px-16 vp-min-601:px-42"
         onClick={() => setOpenSettings(!openSettings)}
       >
         <div

@@ -12,7 +12,12 @@ import AllPostInspirations from "./AllPostInspirations";
 import { AllSynthInspirations } from "./AllSynthInspirations";
 import AllRespondingInspiration from "./AllRespondingInspiration";
 import dynamic from "next/dynamic";
-import { EditorState, convertToRaw } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  ContentState,
+  convertFromHTML,
+} from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import styles from "@/styles/createDisc.module.css";
 import {
@@ -29,7 +34,16 @@ const Editor = dynamic(
 );
 
 const CreateDiscussions = ({ setOpenModal }) => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(
+      ContentState.createFromBlockArray(
+        convertFromHTML(
+          "<p>For this discussion, we are going to explore ______</p>"
+        )
+      )
+    )
+  );
+
   const [allDiscussionNames, setAllDiscussionNames] = useState([]);
   const [showInput, setShowInput] = useState("true");
   const [discussionName, setDiscussionName] = useState("");
@@ -46,7 +60,8 @@ const CreateDiscussions = ({ setOpenModal }) => {
     useState(true);
   const [addScoresToSettings, setAddScoresToSettings] = useState(true);
   const [addCalendarToSettings, setAddCalendarToSettings] = useState(true);
-  const [selectedScoringOption, setSelectedScoringOption] = useState("");
+  const [selectedScoringOption, setSelectedScoringOption] =
+    useState("automatic");
 
   const today = new Date();
   let tommorrow = new Date();
@@ -112,9 +127,9 @@ const CreateDiscussions = ({ setOpenModal }) => {
   ];
   console.log(selectedScoringOption);
   return (
-    <div className="absolute grid place-items-center w-full h-screen top-0 left-0 z-9999 animate-fade-in vp-600:px-20">
+    <div className="absolute grid place-items-center w-full h-screen top-0 left-0 z-9999 animate-fade-in vp-600:px-20 vp-980:hidden ">
       <div
-        className={`w-1112 h-660 border  border-other-disabled   bg-white-white rounded-md  shadow-createDiscussion relative overflow-hidden flex justify-between`}
+        className={`w-1112 h-660 border-4  border-other-disabled   bg-white-white rounded-md  shadow-createDiscussion relative overflow-hidden flex justify-between `}
       >
         <div className="h-80  flex px-42  w-full items-center justify-between absolute left-0 right-0 top-0 rounded-t-md">
           <button
@@ -139,11 +154,11 @@ const CreateDiscussions = ({ setOpenModal }) => {
         </div>
         <div
           className="px-42 py-42
-        pt-80 rounded-l-md w-1/2 flex flex-col"
+        pt-80 rounded-l-md w-1/2  flex flex-col "
         >
           <div className="flex flex-col flex-grow ">
             <h4 className="text-primary-darkGreen mb-27 font-medium ">
-              Discussions
+              Discussion
             </h4>
 
             <div className="w-full flex-grow flex flex-col">
@@ -196,10 +211,10 @@ const CreateDiscussions = ({ setOpenModal }) => {
             </div>
           </div>
         </div>
-        <div className="h-full border border-green-lightGreen w-2"></div>
+        <div className="h-full border border-green-lightGreen w-2 bg-primary-darkGreen"></div>
         <div
           className="
-        pt-80 rounded-l-md w-1/2 flex flex-col"
+        pt-80 rounded-l-md w-1/2 vp-980:w-full vp-980:h-full flex flex-col"
         >
           {previewSettings ? (
             <div className="flex flex-col px-42 flex-grow h-full pb-10">
@@ -233,7 +248,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                   </div>
                 )}
 
-                {starterPromptValue !== "" && checkedDiscussions.length > 0 && (
+                {editorState !== "" && checkedDiscussions.length > 0 && (
                   <div className="">
                     <span className=" text-gray-faintGray">Starter prompt</span>
                     <div className="">
@@ -450,6 +465,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                       setViewInspirations={setViewInspirations}
                       setActiveViewInspiration={setActiveViewInspiration}
                       setSelectedScoringOption={setSelectedScoringOption}
+                      selectedScoringOption={selectedScoringOption}
                     />
                   )}
                 </div>

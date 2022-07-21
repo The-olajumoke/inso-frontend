@@ -12,7 +12,7 @@ const Calendar = ({
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   return (
     <div className=" flex-grow flex flex-col">
-      <div className="px-45 mb-20 flex items-center justify-between bg-white ">
+      <div className="px-16 vp-min-601:px-42 mb-20 flex items-center justify-between bg-white ">
         <h6 className="">Calendar</h6>
         <label className={`${styles.switch}`}>
           <input
@@ -27,7 +27,7 @@ const Calendar = ({
           ></span>
         </label>
       </div>
-      <div className="px-45 py-10 h-300 flex-grow overflow-y-auto bg-gray-createDisc">
+      <div className="px-16 vp-min-601:px-42 py-10 h-300 flex-grow overflow-y-auto bg-gray-createDisc">
         <div className="mb-15">
           <p className=" text-primary-darkGreen  mb-8">Open</p>
           <div className="flex items-center justify-between">
@@ -199,9 +199,14 @@ const Calendar = ({
           </>
         )}
       </div>
-      <div className="h-54 flex justify-between items-center w-full px-45">
+      <div className="h-54 flex justify-between items-center w-full px-16 vp-min-601:px-42">
         <div className="flex items-center">
-          <div className="flex justify-center items-center mr-75">
+          <div
+            className="flex justify-center items-center mr-75"
+            onClick={() => {
+              setActiveSettings("Scores");
+            }}
+          >
             <Image
               src="/icons/arrow_left_blue.svg"
               alt="back"
@@ -221,7 +226,7 @@ const Calendar = ({
           </div>
         </div>
         <button
-          className="btn bg-border-line text-white-white w-94 h-38 text-md"
+          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-md"
           disabled={addCalendarToSettings ? false : true}
         >
           {addCalendarToSettings ? "Continue" : "Save & Continue"}

@@ -259,6 +259,7 @@ input::-ms-input-placeholder {
     color: #2E2E2E!important;
         font-size: 20px !important;
         margin-bottom: 25px;
+        
 }
 .react-calendar__viewContainer{
     color: #2E2E2E !important;
@@ -272,3 +273,14 @@ abbr{
 .react-calendar__tile:disabled{
     color: rgba(128, 128, 128,0.5) !important;
 } 
+
+
+@media (max-width: 600px) {
+    .react-calendar {
+            padding: 20px 16px !important;
+    
+        }
+    .react-calendar__month-view__weekdays{
+      font-size: 14px !important;
+                    }
+}

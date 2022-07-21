@@ -14,13 +14,13 @@ const CalendarTemp = ({
   return (
     <div className="flex-grow">
       <div
-        className="px-45 flex items-center cursor-pointer mb-24 "
+        className="px-16 vp-min-601:px-42 flex items-center cursor-pointer mb-24 "
         onClick={() => {
           setViewInspirations(false);
           setActiveSettings("Calendar");
         }}
       >
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center h-50">
           <Image
             src="/icons/arrow_left_green.svg"
             alt="back"
@@ -31,11 +31,11 @@ const CalendarTemp = ({
         </div>
         <h6 className="ml-16 text-gray-faintGray">Back</h6>
       </div>
-      <div className="px-45 flex items-center  justify-between cursor-pointer mb-24">
+      <div className="px-16  vp-min-601:px-42 flex items-center  justify-between cursor-pointer mb-24">
         <h6 className=" text-black-analText">Set date</h6>
         <p className=" text-primary-blue">Save</p>
       </div>
-      <div className="w-full">
+      <div className="w-full flex  justify-center ">
         <Calendar
           className="react-calendar"
           onChange={setDate}
@@ -60,61 +60,3 @@ const CalendarTemp = ({
 };
 
 export default CalendarTemp;
-
-// import React, { useState } from "react";
-// import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
-// import { BsArrowDown, BsArrowUp } from "react-icons/bs";
-// import { MdClose } from "react-icons/md";
-// import clear from "../../Exports/clear.svg";
-
-// function CalendarTemp({ date, setDate, setShowCalDate }) {
-//   return (
-//     <div className=" font-poppins  p-5 calTemp">
-//       <div className="closeCalendar w-full">
-//         <img src={clear} alt="" onClick={() => setShowCalDate(false)} />
-//       </div>
-//       <Calendar
-//         className="react-calendar"
-//         onChange={setDate}
-//         value={date}
-//         selectRange={true}
-
-//         nextLabel={<BsArrowDown />}
-//         prevLabel={<BsArrowUp />}
-//         defaultView="month"
-//         // showNavigation={false}
-//         // showNeighboringMonth={false}
-//         prev2Label={false}
-//         next2Label={false}
-//         navigationLabel={({ date, label, locale, view }) =>
-//           `${label}
-//           `
-//         }
-//       />
-//       {/* {date[1].toLocaleString("en-US", {
-//         weekday: "short",
-//         day: "numeric",
-//         year: "numeric",
-//         month: "long",
-//       })}
-
-//       {date.length > 0 ? (
-//         <p className="text-center">
-//           <span className="bold">Start:</span> {date[0].toDateString()}
-//           &nbsp;|&nbsp;
-//           <span className="bold">End:</span>
-//           {date[1].toLocaleString()}
-//         </p>
-//       ) : (
-//         <p className="text-center">
-//           <span className="bold">Default selected date:</span>{" "}
-//           {date.toDateString()}
-//         </p>
-//       )} */}
-//     </div>
-//   );
-// }
-
-// export default CalendarTemp;
-// //CHANGE CALENDAR COLOR

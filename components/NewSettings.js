@@ -3,7 +3,11 @@ import Image from "next/image";
 import RubricInput from "./RubricInput";
 import CheckBox from "./CheckBox";
 import Radio from "./Radio";
-const NewSettings = ({ setViewInspirations, setSelectedScoringOption }) => {
+const NewSettings = ({
+  setViewInspirations,
+  setSelectedScoringOption,
+  selectedScoringOption,
+}) => {
   const [activeSetting, setActiveSetting] = useState("Automatic");
 
   const [showInstructions, setShowInstructions] = useState(false);
@@ -21,7 +25,7 @@ const NewSettings = ({ setViewInspirations, setSelectedScoringOption }) => {
   return (
     <div className="h-full flex flex-col flex-grow">
       <div
-        className="px-45 flex items-center cursor-pointer  "
+        className="px-16 vp-min-601:px-42 flex items-center cursor-pointer h-50 "
         onClick={() => setViewInspirations(false)}
       >
         <div className="flex justify-center items-center">
@@ -35,11 +39,11 @@ const NewSettings = ({ setViewInspirations, setSelectedScoringOption }) => {
         </div>
         <h6 className="ml-16 text-gray-faintGray">Back</h6>
       </div>
-      <div className="flex px-45 items-center my-17 justify-between">
+      <div className="flex px-16 vp-min-601:px-42 items-center my-17 justify-between">
         <h5>New score settings</h5>
         <h5 className=" text-primary-blue">Save</h5>
       </div>
-      <div className="  bg-white-white  pt-20 px-45 flex flex-col flex-grow ">
+      <div className="  bg-white-white  pt-20 px-16 vp-min-601:px-42 flex flex-col flex-grow ">
         <div className="flex items-center mb-17">
           <button
             className={` ${
@@ -104,6 +108,9 @@ const NewSettings = ({ setViewInspirations, setSelectedScoringOption }) => {
                       id="rubric"
                       name="scoreType"
                       value="rubric"
+                      checked={
+                        selectedScoringOption === "rubric" ? true : false
+                      }
                       handleChange={handleScoringOption}
                     />
                     <p className="ml-20">Use this scoring option</p>
@@ -426,6 +433,9 @@ const NewSettings = ({ setViewInspirations, setSelectedScoringOption }) => {
                       id="automatic"
                       name="scoreType"
                       value="automatic"
+                      checked={
+                        selectedScoringOption === "automatic" ? true : false
+                      }
                       handleChange={handleScoringOption}
                     />
                     <p className="ml-20">Use this scoring option</p>

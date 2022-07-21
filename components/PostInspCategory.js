@@ -12,7 +12,7 @@ const PostInspCategory = ({
   return (
     <div className=" flex-grow">
       <div
-        className="px-45 flex items-center cursor-pointer mb-20 "
+        className="px-16 vp-min-601:px-42 flex items-center cursor-pointer mb-20 "
         onClick={() => setShowDetailedInsp(false)}
       >
         <div className="flex justify-center items-center">
@@ -26,7 +26,7 @@ const PostInspCategory = ({
         </div>
         <h6 className="ml-16 text-gray-faintGray">back</h6>
       </div>
-      <div className="px-45 flex-grow">
+      <div className="px-16 vp-min-601:px-42 flex-grow">
         <h4 className=" text-primary-darkGreen mb-14">
           {inspiration.category}:
         </h4>
