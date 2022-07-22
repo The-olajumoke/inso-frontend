@@ -8,12 +8,12 @@ import {
   SynthesizingInspirations,
 } from "@/utils/sampleData";
 import FullInspirationTemp from "./FullInspirationTemp";
-import FullInspCategoryTemp from "./FullInspCategoryTemp";
+
 import FullInspButtonHeader from "./FullInspButtonHeader";
 
 const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
   const [activeInsp, setActiveInsp] = useState("Post with");
-  const [seeInDetail, setSeeInDetail] = useState(false);
+
   return (
     <div className={` h-full  ${styles.hiddenScrollbar} `}>
       <div className="h-65 bg-gray-background flex items-center px-16 vp-min-601:px-42 vp-600:mt-20">
@@ -34,60 +34,33 @@ const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
         </div>
       </div>
 
-      {seeInDetail ? (
-        <div className={`px-16 vp-min-601:px-42 mt-15`}>
-          <FullInspButtonHeader
-            activeInsp={activeInsp}
-            setActiveInsp={setActiveInsp}
+      <div className={`px-16 vp-min-601:px-42 mt-15`}>
+        <FullInspButtonHeader
+          activeInsp={activeInsp}
+          setActiveInsp={setActiveInsp}
+        />
+        {activeInsp == "Post with" && (
+          <FullInspirationTemp
+            arrayInsp={PostingInspirations}
+            setViewFullPostInsp={setViewFullPostInsp}
+            setActiveCommentBox={setActiveCommentBox}
           />
-          {activeInsp == "Post with" && (
-            <FullInspirationTemp
-              arrayInsp={PostingInspirations}
-              setViewFullPostInsp={setViewFullPostInsp}
-              setActiveCommentBox={setActiveCommentBox}
-            />
-          )}
-          {activeInsp == "Respond with" && (
-            <FullInspirationTemp
-              arrayInsp={RespondingInspirations}
-              setViewFullPostInsp={setViewFullPostInsp}
-              setActiveCommentBox={setActiveCommentBox}
-            />
-          )}
-          {activeInsp == "Synthesize" && (
-            <FullInspirationTemp
-              arrayInsp={SynthesizingInspirations}
-              setViewFullPostInsp={setViewFullPostInsp}
-              setActiveCommentBox={setActiveCommentBox}
-            />
-          )}
-        </div>
-      ) : (
-        <div className="px-16 vp-min-601:px-42">
-          <FullInspButtonHeader
-            activeInsp={activeInsp}
-            setActiveInsp={setActiveInsp}
+        )}
+        {activeInsp == "Respond with" && (
+          <FullInspirationTemp
+            arrayInsp={RespondingInspirations}
+            setViewFullPostInsp={setViewFullPostInsp}
+            setActiveCommentBox={setActiveCommentBox}
           />
-          {activeInsp === "Post with" && (
-            <FullInspCategoryTemp
-              arrayInsp={PostingInspirations}
-              setSeeInDetail={setSeeInDetail}
-            />
-          )}
-          {activeInsp === "Respond with" && (
-            <FullInspCategoryTemp
-              arrayInsp={RespondingInspirations}
-              setSeeInDetail={setSeeInDetail}
-            />
-          )}
-          {activeInsp === "Synthesize" && (
-            <FullInspCategoryTemp
-              arrayInsp={SynthesizingInspirations}
-              setSeeInDetail={setSeeInDetail}
-            />
-          )}
-        </div>
-      )}
+        )}
+        {activeInsp == "Synthesize" && (
+          <FullInspirationTemp
+            arrayInsp={SynthesizingInspirations}
+            setViewFullPostInsp={setViewFullPostInsp}
+            setActiveCommentBox={setActiveCommentBox}
+          />
+        )}
+      </div>
     </div>
   );
 };

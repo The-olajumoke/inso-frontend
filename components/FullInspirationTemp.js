@@ -37,9 +37,9 @@ const FullInspirationTemp = ({
                 {" "}
                 <div className="flex-grow px-16 pt-16 flex  flex-col">
                   <p className=" mb-8 text-primary-darkGreen ">Instruction</p>
-                  <h6 className=" text-gray-faintGrayOpacity hover:text-gray-faintGray mb-20 h-65">
+                  <p className=" text-gray-faintGrayOpacity hover:text-gray-faintGray mb-20 h-65">
                     {inspiration?.instruction}
-                  </h6>
+                  </p>
                 </div>
                 <div className=" bg-blue-postInsp h-50 px-28 flex items-center text-sm text-black-postInsp">
                   {" "}

@@ -46,7 +46,7 @@ const Calendar = ({
                   height="16"
                 />
               </div>
-              <p className="text-xs  text-black-analText">8:00 AM</p>
+              <p className="text-xs  text-black-analText"> 12:01 am</p>
             </div>
             <div
               className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText cursor-pointer"
@@ -85,7 +85,7 @@ const Calendar = ({
                   height="16"
                 />
               </div>
-              <p className="text-xs  text-black-analText">8:00 AM</p>
+              <p className="text-xs  text-black-analText">11:59pm</p>
             </div>
             <div
               className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText"
