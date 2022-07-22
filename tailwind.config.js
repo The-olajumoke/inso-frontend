@@ -43,6 +43,7 @@ module.exports = {
         white: "#FFFFFF",
       },
       blue: {
+        
         lightBlue: "#ECF4F4",
         inputBlue: " #F2FAFF",
         progressBlue: " #E9EFF7",
@@ -784,6 +785,7 @@ module.exports = {
         660: "66rem",
         680: "68rem",
         736: "73.6rem",
+        890: "89rem",
         1112: "111.2rem",
         full: "100%",
         "12%": "12%",
@@ -1008,6 +1010,8 @@ module.exports = {
         445: "44.5rem",
         450: "45rem",
         460: "46rem",
+        480: "48rem",
+        500: "50rem",
         548: "54.8rem",
         579: "57.9rem",
         600: "60rem",

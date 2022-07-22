@@ -25,7 +25,7 @@ const Index = () => {
       bgColor="bg-gray-background"
     >
       <div
-        className={`${styles.hiddenScrollbar} relative h-full p-50 vp-600:p-23 vp-980:p-46 w-full`}
+        className={`${styles.hiddenScrollbar} relative h-full py-50 px-35 vp-600:p-23 vp-980:p-46 w-full`}
       >
         <div className="flex justify-between w-full mb-33 vp-980:hidden">
           <button
@@ -71,7 +71,7 @@ const Index = () => {
             </button>
           </div>
         </div>
-        <div className=" hidden vp-980:flex mb-40">
+        <div className=" hidden vp-980:flex mb-20">
           <input
             type="text"
             className={`${styles.searchInput} border-none flex-grow `}
@@ -95,7 +95,7 @@ const Index = () => {
             </div>
           ) : discussions.length ? (
             // <div className=" grid vp-600:grid-cols-1  vp-980:grid-cols-2 vp-1024:grid-cols-3 grid-cols-4  justify-between w-full gap-x-8 gap-y-10 ">
-            <div className="flex justify-start flex-wrap gap-8 gap-y-10">
+            <div className="flex justify-start flex-wrap gap-8 gap-y-10 ">
               {discussions.map((disc, index) => (
                 <DiscussionBox discussion={disc} key={index} />
               ))}

@@ -46,12 +46,12 @@ const SignUpPage = () => {
         <Head>
           <title>Signup | Inso</title>
         </Head>
-        <div className="bg-white-white w-639  rounded-md  shadow-lg overflow-hidden mt-100 mb-100">
-          <div className=" bg-primary-darkGreen h-52 px-79 flex justify-end items-center">
+        <div className="bg-white-white w-500  rounded-md  shadow-lg overflow-hidden mt-50 mb-70">
+          <div className=" bg-primary-darkGreen h-40 px-51 flex justify-end items-center">
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/icons/cancel_white.svg"
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655469179/InsoImages/cancel_white_g248xm.svg"
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -61,8 +61,8 @@ const SignUpPage = () => {
               </button>
             </Link>
           </div>
-          <div className="px-79 py-20 text-center">
-            <h3 className="mb-20 font-medium">Create an account</h3>
+          <div className="px-51 py-15 text-center">
+            <h4 className="mb-20 font-medium">Create an account</h4>
             <form onSubmit={handleSignUp}>
               <div>
                 <Input
@@ -109,7 +109,7 @@ const SignUpPage = () => {
                   keyUpHandler={passwordErrorHandler}
                 />
               </div>
-              <div className="mb-53">
+              <div className="mb-30">
                 <Input
                   label="Confirm password"
                   placeholder="Confirm password"
@@ -120,10 +120,10 @@ const SignUpPage = () => {
                   keyUpHandler={passwordErrorHandler}
                 />
               </div>
-              <button className="h-60 text-primary-darkGreen text-xl  w-full mb-20  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
+              <button className="h-48 text-primary-darkGreen text-xl  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
                 <div>
                   <Image
-                    src="/icons/google.svg"
+                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
                     alt="google Icon"
                     draggable="false"
                     layout="fixed"
@@ -131,17 +131,17 @@ const SignUpPage = () => {
                     height="20"
                   />
                 </div>
-                <span>Sign up with Google</span>
+                <h6>Sign up with Google</h6>
               </button>
               <button
                 onClick={handleSignUp}
-                className="text-xl btn h-64 w-full mb-20"
+                className="text-md btn h-48 w-full mb-16"
                 disabled={isDisabled}
               >
                 Sign up
               </button>
             </form>
-            <h5 className="mb-24 text-gray-text">
+            <p className="mb-24 text-gray-text">
               Already have an account?{" "}
               <Link passHref href="/auth/login">
                 <button className=" font-medium text-primary-darkGreen">
@@ -149,12 +149,12 @@ const SignUpPage = () => {
                   Log in
                 </button>
               </Link>
-            </h5>
-            <p>
+            </p>
+            <span style={{ fontSize: "10px" }}>
               {" "}
               By continuing you agree to our Terms & Conditions and Privacy
               Policy.
-            </p>
+            </span>
           </div>
         </div>
       </div>

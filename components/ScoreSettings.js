@@ -16,8 +16,8 @@ export const ScoreSettings = ({
 
   return (
     <div className=" flex flex-col justify-between  flex-grow">
-      <div className="px-16 vp-min-601:px-42 mb-20 flex items-center justify-between ">
-        <h6 className="">Scores</h6>
+      <div className="px-16 vp-min-601:px-30 mb-20 flex items-center justify-between ">
+        <p className="">Scores</p>
         <label className={`${styles.switch}`}>
           <input
             type="checkbox"
@@ -33,7 +33,7 @@ export const ScoreSettings = ({
       </div>
       <div className="flex-grow">
         <div
-          className="h-55 bg-gray-background w-full flex items-center justify-between px-16 vp-min-601:px-42 mb-10 cursor-pointer "
+          className="h-48 bg-gray-background w-full flex items-center justify-between px-16 vp-min-601:px-30 mb-10 cursor-pointer "
           onClick={() => {
             setViewInspirations(true);
             setActiveViewInspiration("NewScoresSettings");
@@ -49,7 +49,7 @@ export const ScoreSettings = ({
                 height="18"
               />
             </div>
-            <h4 className=" text-black-analText">Create settings</h4>
+            <h6 className=" text-black-analText">Create settings</h6>
           </div>
 
           <div>
@@ -63,7 +63,7 @@ export const ScoreSettings = ({
           </div>
         </div>
         <div
-          className="h-55 bg-gray-background w-full flex items-center justify-between px-16 vp-min-601:px-42"
+          className="h-48 bg-gray-background w-full flex items-center justify-between px-16 vp-min-601:px-30"
           onClick={() => {
             setShowSavedSettings(!showSavedSettings);
           }}
@@ -78,7 +78,7 @@ export const ScoreSettings = ({
                 height="18"
               />
             </div>
-            <h4
+            <h6
               className={` ${
                 showSavedSettings
                   ? "text-primary-darkGreen"
@@ -86,7 +86,7 @@ export const ScoreSettings = ({
               }`}
             >
               Saved settings
-            </h4>
+            </h6>
           </div>
 
           <div>
@@ -117,7 +117,7 @@ export const ScoreSettings = ({
         )}
       </div>
 
-      <div className="h-54 flex justify-between items-center w-full px-16 vp-min-601:px-42">
+      <div className="h-40 flex justify-between items-center w-full px-16 vp-min-601:px-30">
         <div className="flex items-center">
           <div
             className="flex justify-center items-center mr-75"
@@ -149,7 +149,7 @@ export const ScoreSettings = ({
           </div>
         </div>
         <button
-          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-md"
+          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-sm"
           disabled={addScoresToSettings ? false : true}
           onClick={() => {
             setActiveSettings("Calendar");

@@ -11,9 +11,9 @@ const Calendar = ({
 }) => {
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   return (
-    <div className=" flex-grow flex flex-col">
-      <div className="px-16 vp-min-601:px-42 mb-20 flex items-center justify-between bg-white ">
-        <h6 className="">Calendar</h6>
+    <div className=" flex-grow flex flex-col ">
+      <div className="px-16 vp-min-601:px-30 mb-10 flex items-center justify-between bg-white ">
+        <p className=" text-xs text-black-postInsp">Calendar</p>
         <label className={`${styles.switch}`}>
           <input
             type="checkbox"
@@ -27,9 +27,14 @@ const Calendar = ({
           ></span>
         </label>
       </div>
-      <div className="px-16 vp-min-601:px-42 py-10 h-300 flex-grow overflow-y-auto bg-gray-createDisc">
-        <div className="mb-15">
-          <p className=" text-primary-darkGreen  mb-8">Open</p>
+      <div className="  px-16 vp-min-601:px-30 py-10 h-250 flex-grow overflow-y-auto  bg-gray-background">
+        <div className="mb-9 ">
+          <span
+            style={{ fontSize: "10px" }}
+            className=" text-primary-darkGreen  mb-4"
+          >
+            Open
+          </span>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="flex justify-center items-center mr-12">
@@ -37,11 +42,11 @@ const Calendar = ({
                   src="/icons/clock.svg"
                   alt="clock"
                   layout="fixed"
-                  width="20"
-                  height="20"
+                  width="16"
+                  height="16"
                 />
               </div>
-              <p className="  text-black-analText">8:00 AM</p>
+              <p className="text-xs  text-black-analText">8:00 AM</p>
             </div>
             <div
               className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText cursor-pointer"
@@ -50,7 +55,7 @@ const Calendar = ({
                 setActiveViewInspiration("Calendar");
               }}
             >
-              <p className="text-black-analText">
+              <p className="text-black-analText text-xs">
                 {" "}
                 {date[0].toLocaleString("en-US", {
                   weekday: "short",
@@ -62,8 +67,13 @@ const Calendar = ({
             </div>
           </div>
         </div>
-        <div className="mb-15">
-          <p className=" text-primary-darkGreen  mb-8">Close</p>
+        <div className="mb-16">
+          <span
+            style={{ fontSize: "10px" }}
+            className=" text-primary-darkGreen  mb-4"
+          >
+            Close
+          </span>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="flex justify-center items-center mr-12">
@@ -71,11 +81,11 @@ const Calendar = ({
                   src="/icons/clock.svg"
                   alt="clock"
                   layout="fixed"
-                  width="20"
-                  height="20"
+                  width="16"
+                  height="16"
                 />
               </div>
-              <p className="  text-black-analText">8:00 AM</p>
+              <p className="text-xs  text-black-analText">8:00 AM</p>
             </div>
             <div
               className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText"
@@ -84,7 +94,7 @@ const Calendar = ({
                 setActiveViewInspiration("Calendar");
               }}
             >
-              <p className="text-black-analText">
+              <p className="text-black-analText text-xs">
                 {" "}
                 {date[1].toLocaleString("en-US", {
                   weekday: "short",
@@ -97,9 +107,14 @@ const Calendar = ({
           </div>
         </div>
 
-        <p className=" text-border-dropdownLine mb-32">Duration : 6 days</p>
+        <span
+          style={{ fontSize: "10px" }}
+          className=" text-border-dropdownLine "
+        >
+          Duration : 6 days
+        </span>
 
-        <div className={` flex justify-between items-center pb-15`}>
+        <div className={` mt-30 flex justify-between items-center pb-15`}>
           <div className="flex items-center">
             <button
               onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
@@ -113,11 +128,17 @@ const Calendar = ({
                 }
                 alt="arrows"
                 layout="fixed"
-                width="15"
-                height="15"
+                width="12"
+                height="12"
               />
             </button>
-            <p className=" ml-12 text-primary-darkGreen">Advanced settings</p>
+
+            <span
+              style={{ fontSize: "10px" }}
+              className=" ml-12 text-primary-darkGreen"
+            >
+              Advanced settings
+            </span>
           </div>
           <div className="flex items-center">
             <label className={`${styles.switch} `}>
@@ -135,9 +156,14 @@ const Calendar = ({
           </div>
         </div>
         {showAdvancedSettings && (
-          <>
-            <div className="mb-15">
-              <p className=" text-primary-darkGreen  mb-8">Posting</p>
+          <div className="">
+            <div className="mb-15 ">
+              <span
+                style={{ fontSize: "10px" }}
+                className=" text-primary-darkGreen  mb-4"
+              >
+                Posting
+              </span>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex justify-center items-center mr-12">
@@ -145,19 +171,32 @@ const Calendar = ({
                       src="/icons/clock.svg"
                       alt="clock"
                       layout="fixed"
-                      width="20"
-                      height="20"
+                      width="16"
+                      height="16"
                     />
                   </div>
-                  <p className="  text-black-analText">8:00 AM</p>
+                  <p className="text-xs  text-black-analText">8:00 AM</p>
                 </div>
                 <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                  <p className="text-black-analText">Fri 1st, January 2021</p>
+                  <p className="text-black-analText text-xs">
+                    {" "}
+                    {date[0].toLocaleString("en-US", {
+                      weekday: "short",
+                      day: "numeric",
+                      year: "numeric",
+                      month: "long",
+                    })}
+                  </p>
                 </div>
               </div>
             </div>
             <div className="mb-15">
-              <p className=" text-primary-darkGreen  mb-8">Responding</p>
+              <span
+                style={{ fontSize: "10px" }}
+                className=" text-primary-darkGreen  mb-4"
+              >
+                Responding
+              </span>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex justify-center items-center mr-12">
@@ -165,19 +204,32 @@ const Calendar = ({
                       src="/icons/clock.svg"
                       alt="clock"
                       layout="fixed"
-                      width="20"
-                      height="20"
+                      width="16"
+                      height="16"
                     />
                   </div>
-                  <p className="  text-black-analText">8:00 AM</p>
+                  <p className="text-xs  text-black-analText">8:00 AM</p>
                 </div>
                 <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                  <p className="text-black-analText">Fri 1st, January 2021</p>
+                  <p className="text-black-analText text-xs">
+                    {" "}
+                    {date[1].toLocaleString("en-US", {
+                      weekday: "short",
+                      day: "numeric",
+                      year: "numeric",
+                      month: "long",
+                    })}
+                  </p>
                 </div>
               </div>
             </div>
             <div className="mb-15">
-              <p className=" text-primary-darkGreen  mb-8">Synthesizing</p>
+              <span
+                style={{ fontSize: "10px" }}
+                className=" text-primary-darkGreen  mb-4"
+              >
+                Synthesizing
+              </span>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex justify-center items-center mr-12">
@@ -185,21 +237,29 @@ const Calendar = ({
                       src="/icons/clock.svg"
                       alt="clock"
                       layout="fixed"
-                      width="20"
-                      height="20"
+                      width="16"
+                      height="16"
                     />
                   </div>
-                  <p className="text-black-analText">8:00 AM</p>
+                  <p className="text-xs  text-black-analText">8:00 AM</p>
                 </div>
                 <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                  <p className="text-black-analText">Fri 1st, January 2021</p>
+                  <p className="text-black-analText text-xs">
+                    {" "}
+                    {date[1].toLocaleString("en-US", {
+                      weekday: "short",
+                      day: "numeric",
+                      year: "numeric",
+                      month: "long",
+                    })}
+                  </p>
                 </div>
               </div>
             </div>
-          </>
+          </div>
         )}
       </div>
-      <div className="h-54 flex justify-between items-center w-full px-16 vp-min-601:px-42">
+      <div className=" h-40 flex justify-between items-center w-full px-16 vp-min-601:px-30">
         <div className="flex items-center">
           <div
             className="flex justify-center items-center mr-75"
@@ -226,7 +286,7 @@ const Calendar = ({
           </div>
         </div>
         <button
-          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-md"
+          className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm"
           disabled={addCalendarToSettings ? false : true}
         >
           {addCalendarToSettings ? "Continue" : "Save & Continue"}

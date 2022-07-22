@@ -127,14 +127,14 @@ const CreateDiscussions = ({ setOpenModal }) => {
   ];
   console.log(selectedScoringOption);
   return (
-    <div className="absolute grid place-items-center w-full h-screen top-0 left-0 z-9999 animate-fade-in vp-600:px-20 vp-980:hidden ">
+    <div className=" absolute grid place-items-center w-full h-screen top-0 left-0 z-9999 animate-fade-in vp-600:px-20 vp-980:hidden ">
       <div
-        className={`w-1112 h-660 border-4  border-other-disabled   bg-white-white rounded-md  shadow-createDiscussion relative overflow-hidden flex justify-between `}
+        className={`w-890 h-500 border-other-disabled   bg-white-white rounded-md  shadow-createDiscussion relative overflow-hidden flex justify-between `}
       >
-        <div className="h-80  flex px-42  w-full items-center justify-between absolute left-0 right-0 top-0 rounded-t-md">
+        <div className="h-50 flex px-30 w-full items-center justify-between absolute left-0 right-0 top-0 rounded-t-md">
           <button
             disabled={checkedDiscussions.length == 0 ? true : false}
-            className=" btn h-34 w-93  rounded text-sm"
+            className=" btn h-30 w-93  rounded text-xs"
           >
             Create
           </button>
@@ -153,19 +153,19 @@ const CreateDiscussions = ({ setOpenModal }) => {
           </button>
         </div>
         <div
-          className="px-42 py-42
-        pt-80 rounded-l-md w-1/2  flex flex-col "
+          className="  px-30 pb-42
+        pt-55 rounded-l-md w-1/2  flex flex-col "
         >
           <div className="flex flex-col flex-grow ">
-            <h4 className="text-primary-darkGreen mb-27 font-medium ">
+            <h6 className="text-primary-darkGreen mb-22 font-medium ">
               Discussion
-            </h4>
+            </h6>
 
             <div className="w-full flex-grow flex flex-col">
               {allDiscussionNames.map((disc, index) => (
                 <div
                   key={index}
-                  className="mb-10 flex items-center h-45 w-full px-20 py-9  bg-green-lighterGreen rounded-lg text-lg
+                  className="mb-10 flex items-center h-36 w-full px-16 py-9  bg-blue-inputBlue rounded-lg text-sm
       text-gray-text outline-none"
                 >
                   <CheckBox
@@ -173,7 +173,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     checked={disc.checked}
                     handleChange={handleCheckDisc}
                   />
-                  <h5 className="ml-20 text-black-analText">{disc.title}</h5>
+                  <p className="ml-16 text-black-analText">{disc.title}</p>
                 </div>
               ))}
               {showInput && (
@@ -214,10 +214,10 @@ const CreateDiscussions = ({ setOpenModal }) => {
         <div className="h-full border border-green-lightGreen w-2 bg-primary-darkGreen"></div>
         <div
           className="
-        pt-80 rounded-l-md w-1/2 vp-980:w-full vp-980:h-full flex flex-col"
+        pt-50 rounded-l-md w-1/2  vp-980:w-full vp-980:h-full flex flex-col "
         >
           {previewSettings ? (
-            <div className="flex flex-col px-42 flex-grow h-full pb-10">
+            <div className=" flex flex-col px-30 flex-grow h-full pb-10">
               <div className=" mb-27 flex  justify-between items-center ">
                 <div className="flex items-center ">
                   <div className="mr-17 flex items-center justify-center">
@@ -225,16 +225,16 @@ const CreateDiscussions = ({ setOpenModal }) => {
                       src="/icons/settings_icon.svg"
                       alt="settings"
                       layout="fixed"
-                      width="18"
-                      height="18"
+                      width="16"
+                      height="16"
                     />
                   </div>
-                  <h4 className=" font-medium  text-primary-darkGreen">
+                  <h6 className=" font-medium  text-primary-darkGreen">
                     Discussion settings Preview
-                  </h4>
+                  </h6>
                 </div>
                 <button
-                  className={`btn px-16 py-8 text-lg`}
+                  className={`btn  px-16 py-4 text-sm`}
                   disabled={checkedDiscussions.length == 0 ? true : false}
                   onClick={() => setPreviewSettings(false)}
                 >
@@ -383,7 +383,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     <div className="my-12 flex items-center w-full justify-between ">
                       <p className=" text-primary-darkGreen">open</p>
                       <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                        <p className="text-black-analText">
+                        <p className="text-sm text-black-analText">
                           {date[0].toLocaleString("en-US", {
                             weekday: "short",
                             day: "numeric",
@@ -396,7 +396,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     <div className="my-12 flex items-center w-full justify-between ">
                       <p className=" text-primary-darkGreen">Close</p>
                       <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                        <p className="text-black-analText">
+                        <p className="text-sm text-black-analText">
                           {date[1].toLocaleString("en-US", {
                             weekday: "short",
                             day: "numeric",
@@ -472,7 +472,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
               ) : (
                 <div className="flex flex-col h-full ">
                   <div
-                    className="px-42   flex items-center cursor-pointer mb-29"
+                    className="px-30  flex items-center cursor-pointer mb-23"
                     onClick={() => setPreviewSettings(true)}
                   >
                     <div className="flex justify-center items-center">
@@ -486,7 +486,9 @@ const CreateDiscussions = ({ setOpenModal }) => {
                     </div>
                     <h6 className="ml-16 text-gray-faintGray">Close edit</h6>
                   </div>
-                  <div className="w-full  mb-19 px-42 ">
+                  <div
+                    className={`${styles.hiddenScrollbar} w-full  mb-19 px-30  overflow-x-scroll `}
+                  >
                     <div className="flex items-center  gap-8   w-500 ">
                       <button
                         className={`${

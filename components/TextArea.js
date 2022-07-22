@@ -14,12 +14,12 @@ const Editor = dynamic(
 const TextArea = ({ placeholder, editorState, onEditorStateChange }) => {
   return (
     <div className="flex  flex-col flex-grow relative w-full ">
-      <div className=" h-full flex  text-lg">
+      <div className="  h-full flex ">
         <Editor
           editorState={editorState}
           onEditorStateChange={onEditorStateChange}
-          toolbarClassName="flex absolute top-0 left-0 z-50"
-          editorClassName="!overflow-none !text-lg w-full   pt-20 "
+          toolbarClassName="flex absolute bottom-0 left-0 z-50"
+          editorClassName="!overflow-none !text-md w-full  pb-20 "
           toolbar={toolbarSettings}
           placeholder={placeholder}
         />

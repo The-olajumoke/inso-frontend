@@ -5,6 +5,7 @@
     height: auto;
     max-height: 422px;
     border-radius: 17px;
+padding: 20px;
 
 }
 
@@ -16,4 +17,12 @@
     background-color: #F9F9F9;
     border-radius: 17px;
     opacity: 0.95;
+}
+
+@media (max-width: 600px) {
+    .dropdown{
+        width: 320px;
+        left: 0;
+        padding: 10px;
+    }
 }

@@ -20,7 +20,7 @@ function RegLayout({ children }) {
           <button className="btn-outline w-133 h-44 text-md">Log in</button>
         </div>
       </div>
-      <div className="border fixed grid place-items-center bg-other-overlay w-full h-full top-0 left-0  z-9999  overflow-y-auto ">
+      <div className="border-4 fixed grid place-items-center bg-other-overlay w-full h-full top-0 left-0  z-9999  overflow-y-auto ">
         {children}
       </div>
     </div>

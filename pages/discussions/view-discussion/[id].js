@@ -65,6 +65,7 @@ const ViewDiscussion = () => {
   const togglePostInsp = () => {
     setViewFullPostInsp(!viewFullPostInsp);
   };
+
   return (
     <Layout
       title={`Inso | Discussion`}
@@ -76,7 +77,7 @@ const ViewDiscussion = () => {
           <div
             className={` h-65 bg-gray-background ${
               viewAllTags ? "mb-0" : "mb-5"
-            } px-50 flex items-center justify-between`}
+            }  vp-980:mt-16 px-16 vp-min-601:px-42 flex items-center justify-between`}
           >
             <div className=" flex items-center">
               <Link href="/discussions" passHref>
@@ -92,24 +93,27 @@ const ViewDiscussion = () => {
               </Link>
               <h4 className="ml-13">Discussion title</h4>
             </div>
-            <form action="">
-              <div className={`${styles.searchInput}  `}>
-                <div className="flex items-center justify-center ">
-                  <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655331753/InsoImages/search_nhky7k.svg"
-                    alt="more"
-                    layout="fixed"
-                    width="13"
-                    height="13"
+            <div className="vp-980:hidden">
+              <form action="">
+                <div className={`${styles.searchInput}     `}>
+                  <div className="flex items-center justify-center ">
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1655331753/InsoImages/search_nhky7k.svg"
+                      alt="more"
+                      layout="fixed"
+                      width="13"
+                      height="13"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    className={`border-none h-auto focus:ring-0 bg-transparent w-400`}
+                    placeholder="Input keyword to search or filter "
                   />
                 </div>
-                <input
-                  type="text"
-                  className={`border-none h-auto focus:ring-0 bg-transparent w-400`}
-                  placeholder="Input keyword to search or filter "
-                />
-              </div>
-            </form>
+              </form>
+            </div>
+
             <div className="flex items-center gap-6">
               <div className="flex items-center justify-center cursor-pointer relative">
                 <div
@@ -250,7 +254,7 @@ const ViewDiscussion = () => {
             >
               <div>
                 <div
-                  className={` px-50 py-10 bg-gray-background ${
+                  className={` px-16 vp-min-601:px-42 py-10 bg-gray-background ${
                     showScoresSheet && "pr-4"
                   } `}
                 >
@@ -368,9 +372,9 @@ const ViewDiscussion = () => {
                   <div
                     className={` ${
                       viewAllTags ? "hidden" : "flex"
-                    } px-50 mt-7 justify-between`}
+                    } px-16 vp-min-601:px-42 mt-7 justify-between vp-600:overflow-x-scroll `}
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 ">
                       {tags.map((tag, index) => (
                         <div
                           className="h-32 bg-blue-inputBlue flex gap-8 items-center px-15 rounded-xs"
@@ -382,7 +386,7 @@ const ViewDiscussion = () => {
                       ))}
                     </div>
                     <button
-                      className="text-primary-darkGreen text-sm"
+                      className=" w-100 text-primary-darkGreen text-sm "
                       onClick={() => setViewAllTags(true)}
                     >
                       View all
@@ -394,14 +398,16 @@ const ViewDiscussion = () => {
               <div
                 className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar}`}
               >
-                <div className={` py-20 px-50  flex flex-col  pb-150`}>
+                <div
+                  className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
+                >
                   <h6>comments will be here</h6>
                 </div>
               </div>
 
               {/* COMMENT BOX */}
               {showScoresSheet !== true && (
-                <div className="px-50  w-full  py-10 absolute bottom-0 bg-white-white ">
+                <div className="px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white ">
                   {activeCommentBox === "noInspiration" && (
                     <CommentBox
                       togglePostInsp={togglePostInsp}

@@ -20,7 +20,7 @@ const CreateDiscInput = ({
         required={required}
         disabled={disabled}
         onKeyUp={handleKeyUp}
-        className="h-45 w-full px-20 py-9 bg-green-lighterGreen rounded-lg text-lg text-gray-text outline-none border-none"
+        className="h-36 w-full px-20 py-9 bg-green-lighterGreen rounded-lg text-sm text-gray-text outline-none border-none"
       />
     </div>
   );

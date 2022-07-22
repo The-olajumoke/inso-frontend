@@ -8,19 +8,19 @@ const PostingInspTemp = ({
 }) => {
   return (
     <div
-      className="mb-7 flex items-center justify-between h-45 w-full px-20 py-9 bg-blue-lightBlue rounded-lg text-lg
+      className="mb-7 flex items-center justify-between h-36 w-full px-20 py-9 bg-blue-postInsp rounded-lg text-lg
       text-gray-text outline-none cursor-pointer"
     >
       <div className="flex items-center">
-        <h6
-          className="text-black-analText"
+        <span
+          className="text-black-analText text-xs"
           onClick={() => {
             setViewInspirations(true);
             setActiveViewInspiration(`${title}`);
           }}
         >
           {title}
-        </h6>
+        </span>
       </div>
     </div>
   );

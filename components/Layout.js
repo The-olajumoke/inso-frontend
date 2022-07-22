@@ -53,8 +53,8 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
             <Image
               src={
                 openSideBar
-                  ? "/icons/hamburger_open.svg"
-                  : "/icons/hamburger_black.svg"
+                  ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326915/InsoImages/hamburger_open_fxdmt4.svg"
+                  : "https://res.cloudinary.com/insomaryland/image/upload/v1655326909/InsoImages/hamburger_aij9tq.svg"
               }
               alt=" Discussion dropdown "
               draggable="false"
@@ -65,7 +65,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
           </div>
           <div className="flex justify-center items-center">
             <Image
-              src="/images/inso_logo.svg"
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1655327110/InsoImages/inso_logo_yi1rgz.svg"
               alt=" Discussion dropdown "
               draggable="false"
               layout="fixed"
@@ -76,7 +76,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
           <Link passHref href="/notifications">
             <div className="flex justify-center items-center ">
               <Image
-                src="/icons/bell_black.svg"
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1658348798/InsoImages/bell_black_ciri74.svg"
                 alt="notifications"
                 draggable="false"
                 layout="fixed"

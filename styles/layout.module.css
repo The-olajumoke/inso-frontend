@@ -9,9 +9,9 @@
     width: 634px;
     background: rgba(7, 160, 152, 0.05);
     border-radius: 30px;
-    padding: 10.5px 30.62px;
+   height: 40px;
     font-weight: 400;
-        font-size: 16px;
+        font-size: 12px !important;
         line-height: 24px;
         display: flex ;
         justify-content: center;
@@ -34,12 +34,7 @@
 
     font-size: 1.3rem;
 }
-/* @media (min-width: 980px){
-    .searchInput{
-        width:2px;
-         background-color: red;
-    }
-}*/
+
 @media (min-width: 600px){
     .searchInput{
         width: 400px;

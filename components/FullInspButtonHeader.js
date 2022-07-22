@@ -2,7 +2,7 @@ import React from "react";
 
 const FullInspButtonHeader = ({ activeInsp, setActiveInsp }) => {
   return (
-    <div className="grid grid-cols-5 my-20 ">
+    <div className="grid grid-cols-5 vp-600:grid-cols-3 my-20 ">
       <button
         className={`${
           activeInsp === "Post with"
@@ -13,7 +13,7 @@ const FullInspButtonHeader = ({ activeInsp, setActiveInsp }) => {
       >
         Post with
       </button>
-      <button className="border-b-2 border-other-disabled"></button>
+      <button className="border-b-2 border-other-disabled vp-600:hidden"></button>
       <button
         className={`${
           activeInsp === "Respond with"
@@ -24,7 +24,7 @@ const FullInspButtonHeader = ({ activeInsp, setActiveInsp }) => {
       >
         Respond with
       </button>
-      <button className="border-b-2 border-other-disabled"></button>
+      <button className="border-b-2 border-other-disabled vp-600:hidden"></button>
       <button
         className={`${
           activeInsp === "Synthesize"

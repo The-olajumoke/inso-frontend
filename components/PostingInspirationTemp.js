@@ -16,7 +16,7 @@ const PostingInspirationTemp = ({
   return (
     <div className="">
       <div
-        className="px-16 vp-min-601:px-42 flex items-center cursor-pointer h-50 "
+        className="px-16 vp-min-601:px-30 flex items-center cursor-pointer h-30 "
         // onClick={() => setViewInspirations(false)}
         onClick={moveBack}
       >
@@ -29,27 +29,29 @@ const PostingInspirationTemp = ({
             height="16"
           />
         </div>
-        <h6 className="ml-16 text-gray-faintGray">Back</h6>
+        <p className="ml-16 text-gray-faintGray">Back</p>
       </div>
-      <h5 className="px-16 vp-min-601:px-42 my-17 text-black-analText">
+      <p className="px-16 vp-min-601:px-30 mt-17 mb-13 text-black-analText">
         {title}
-      </h5>
-      <div className=" bg-white-white flex items-center px-16 vp-min-601:px-42 justify-between"></div>
-      <div className=" bg-gray-createDisc py-10 px-16 vp-min-601:px-42">
-        <p className=" text-primary-darkGreen mb-7 vp-600:text-xs">
+      </p>
+      <div className=" bg-white-white flex items-center px-16 vp-min-601:px-30 justify-between"></div>
+      <div className=" bg-gray-createDisc py-10 px-16 vp-min-601:px-30 pr-10 ">
+        <span className=" text-primary-darkGreen mb-4 text-xs">
           Instruction
-        </p>
-        <h5 className=" vp-600:text-sm  text-black-analText  mb-28">
+        </span>
+        <p className=" text-xs vp-600:text-sm  text-black-analText  mb-25">
           {instruction}
-        </h5>
+        </p>
 
-        <p className=" text-primary-darkGreen mb-7">Headers and prompts</p>
-        <h5 className="  text-black-analText ">{firstHeading}</h5>
-        <p className="mb-40 text-gray-analyticsGray">{firstValue}</p>
-        <h5 className="  text-black-analText  ">{secondHeading}</h5>
-        <p className="mb-40 text-gray-analyticsGray">{secondValue}</p>
-        <h5 className="  text-black-analText  ">{ThirdHeading}</h5>
-        <p className="mb-40 text-gray-analyticsGray">{ThirdValue}</p>
+        <span className=" text-primary-darkGreen mb-4 text-xs">
+          Headers and prompts
+        </span>
+        <p className="  text-black-analText ">{firstHeading}</p>
+        <span className=" text-gray-analyticsGray text-xs">{firstValue}</span>
+        <p className="mt-25 text-black-analText  ">{secondHeading}</p>
+        <span className="text-gray-analyticsGray text-xs">{secondValue}</span>
+        <p className="mt-25  text-black-analText  ">{ThirdHeading}</p>
+        <span className=" text-gray-analyticsGray text-xs">{ThirdValue}</span>
       </div>
     </div>
   );

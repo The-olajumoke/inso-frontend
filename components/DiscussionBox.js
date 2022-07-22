@@ -7,7 +7,7 @@ const DiscussionBox = ({ discussion }) => {
   return (
     <div
       // style={{ width: "320px" }}
-      className=" vp-600:w-full vp-600:h-160  w-320 vp-980:flex-grow bg-white-white rounded-sm shadow-xs py-13 px-15  flex flex-col relative justify-between"
+      className="vp-600:w-full vp-600:h-160  w-320 vp-980:flex-grow bg-white-white rounded-sm shadow-xs py-13 px-15  flex flex-col relative justify-between"
     >
       <div className="border-b border-border-green flex items-center justify-between pb-10 mb-12">
         <div className="flex items-center">
@@ -20,7 +20,7 @@ const DiscussionBox = ({ discussion }) => {
               height="20"
             />
           </div>
-          <h6 className=" text-gray-text">{userName}</h6>
+          <p className=" text-gray-text">{userName}</p>
         </div>
         <div className=" flex items-center">
           <div className="flex justify-center items-center  ">
@@ -59,12 +59,12 @@ const DiscussionBox = ({ discussion }) => {
                   onClick={() => setOpenDropdown(false)}
                 ></div>
                 <div
-                  className={`w-176   top-6  -right-6 bg-white-white absolute  px-20 py-7 z-60  rounded-lg shadow-xs`}
+                  className={`w-176   top-6  -right-6 bg-white-white absolute z-60  rounded-lg shadow-xs`}
                 >
                   <div className="w-full ">
                     <div
                       className="text-gray-text
-                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  hover:bg-blue-lightBlue py-8 px-20 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                       onClick={() => {
                         setOpenDropdown(false);
                       }}
@@ -82,7 +82,7 @@ const DiscussionBox = ({ discussion }) => {
                     </div>
                     <div
                       className="text-gray-text
-                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  hover:bg-blue-lightBlue py-8 px-20 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                       onClick={() => {
                         setOpenDropdown(false);
                       }}
@@ -98,7 +98,7 @@ const DiscussionBox = ({ discussion }) => {
                       </div>
                       <p className=" ">Archive</p>
                     </div>
-                    <div
+                    {/* <div
                       className="text-gray-text
                   hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                       onClick={() => {
@@ -133,7 +133,7 @@ const DiscussionBox = ({ discussion }) => {
                         />
                       </div>
                       <p className=" ">Add Facilitator</p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </>

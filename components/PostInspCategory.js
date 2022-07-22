@@ -10,9 +10,9 @@ const PostInspCategory = ({
 }) => {
   console.log(inspiration);
   return (
-    <div className=" flex-grow">
+    <div className="">
       <div
-        className="px-16 vp-min-601:px-42 flex items-center cursor-pointer mb-20 "
+        className="px-16 vp-min-601:px-30 flex items-center cursor-pointer mb-12  "
         onClick={() => setShowDetailedInsp(false)}
       >
         <div className="flex justify-center items-center">
@@ -20,16 +20,16 @@ const PostInspCategory = ({
             src="/icons/arrow_left_green.svg"
             alt="back"
             layout="fixed"
-            width="16"
-            height="16"
+            width="12"
+            height="12"
           />
         </div>
-        <h6 className="ml-16 text-gray-faintGray">back</h6>
+        <p className="ml-16 text-gray-faintGray">back</p>
       </div>
-      <div className="px-16 vp-min-601:px-42 flex-grow">
-        <h4 className=" text-primary-darkGreen mb-14">
+      <div className="px-16 vp-min-601:px-30 flex-grow">
+        <h6 className=" text-primary-darkGreen mb-10">
           {inspiration.category}:
-        </h4>
+        </h6>
         {inspiration.inspirations.map((insp, index) => (
           <PostingInspTemp
             key={index}

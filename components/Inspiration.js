@@ -4,7 +4,7 @@ const Inspiration = ({ insp, setActiveDetailedInsp, setShowDetailedInsp }) => {
   const { category, categoryIcon } = insp;
   return (
     <div
-      className="mb-7 flex items-center justify-between h-45 w-full px-20 py-9 bg-blue-lightBlue rounded-lg text-lg
+      className="mb-7 flex items-center justify-between h-36 w-full px-20 py-9 bg-blue-postInsp rounded-lg text-lg
       text-gray-text outline-none cursor-pointer"
       onClick={() => {
         setShowDetailedInsp(true);
@@ -17,19 +17,19 @@ const Inspiration = ({ insp, setActiveDetailedInsp, setShowDetailedInsp }) => {
             src={`${categoryIcon}`}
             alt={category}
             layout="fixed"
-            width="24"
-            height="24"
+            width="16"
+            height="16"
           />
         </div>
-        <h6
-          className="ml-16 text-black-analText"
+        <span
+          className="ml-16 text-xs text-black-analText"
           onClick={() => {
             setShowDetailedInsp(true);
             setActiveDetailedInsp(`${category}`);
           }}
         >
           {category}
-        </h6>
+        </span>
       </div>
       <div className="flex justify-center items-center">
         <Image

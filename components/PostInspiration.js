@@ -68,8 +68,8 @@ const PostInspiration = ({
 
   return (
     <div className=" flex-grow flex flex-col ">
-      <div className="px-16 vp-min-601:px-42 flex items-center justify-between pb-18 bg-white-white">
-        <h6 className="">Post inspiration</h6>
+      <div className="px-16 vp-min-601:px-30 flex items-center justify-between pb-6 bg-white-white">
+        <p className=" text-xs">Post inspiration</p>
         <label className={`${styles.switch}`}>
           <input
             type="checkbox"
@@ -87,7 +87,7 @@ const PostInspiration = ({
       </div>
 
       {showDetailedInsp ? (
-        <div className="py-21 bg-gray-background flex-grow ">
+        <div className={`py-8 bg-gray-background flex-grow `}>
           {activeDetailedInsp === "Ask Something" && (
             <PostInspCategory
               inspiration={askSomethingInsp[0]}
@@ -212,13 +212,13 @@ const PostInspiration = ({
         <div
           className={`${
             !addInspirationToSettings && " opacity-20"
-          } px-16 vp-min-601:px-42 py-10   flex-grow bg-gray-background  `}
+          } px-16 vp-min-601:px-30 py-10   flex-grow bg-gray-background  `}
         >
-          <div className="grid  grid-cols-3 text-sm gap-8 mb-20">
+          <div className="grid  grid-cols-3 text-sm gap-8 mb-12">
             <button
               className={`${
                 activeInspiration === "posting" ? "btn" : "btn-nonActive"
-              }   h-30`}
+              }   h-25 text-xs`}
               onClick={() => setActiveInspiration("posting")}
             >
               Post
@@ -226,7 +226,7 @@ const PostInspiration = ({
             <button
               className={`${
                 activeInspiration === "responding" ? "btn" : "btn-nonActive"
-              }   h-30`}
+              }   h-25 text-xs`}
               onClick={() => setActiveInspiration("responding")}
             >
               Respond
@@ -235,10 +235,10 @@ const PostInspiration = ({
             <button
               className={`${
                 activeInspiration === "synthesizing" ? "btn" : "btn-nonActive"
-              }   h-30 `}
+              }   h-25 text-xs `}
               onClick={() => setActiveInspiration("synthesizing")}
             >
-              Synthesise
+              Synthesize
             </button>
           </div>
           {activeInspiration === "posting" && (
@@ -282,7 +282,7 @@ const PostInspiration = ({
           )}
         </div>
       )}
-      <div className="h-54 flex justify-between items-center w-full px-16 vp-min-601:px-42">
+      <div className="h-40 flex justify-between items-center w-full px-16 vp-min-601:px-30">
         <div className="flex items-center">
           <div
             className="flex justify-center items-center mr-75"
@@ -314,7 +314,7 @@ const PostInspiration = ({
           </div>
         </div>
         <button
-          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-md"
+          className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm"
           disabled={addInspirationToSettings ? false : true}
           onClick={() => {
             setActiveSettings("Scores");

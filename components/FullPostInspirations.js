@@ -16,7 +16,7 @@ const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
   const [seeInDetail, setSeeInDetail] = useState(false);
   return (
     <div className={` h-full  ${styles.hiddenScrollbar} `}>
-      <div className="h-65 bg-gray-background flex items-center px-37">
+      <div className="h-65 bg-gray-background flex items-center px-16 vp-min-601:px-42 vp-600:mt-20">
         <div className=" flex items-center ">
           <div
             className="flex items-center justify-center"
@@ -35,7 +35,7 @@ const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
       </div>
 
       {seeInDetail ? (
-        <div className={`px-37 mt-15`}>
+        <div className={`px-16 vp-min-601:px-42 mt-15`}>
           <FullInspButtonHeader
             activeInsp={activeInsp}
             setActiveInsp={setActiveInsp}
@@ -63,7 +63,7 @@ const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
           )}
         </div>
       ) : (
-        <div className="px-37">
+        <div className="px-16 vp-min-601:px-42">
           <FullInspButtonHeader
             activeInsp={activeInsp}
             setActiveInsp={setActiveInsp}

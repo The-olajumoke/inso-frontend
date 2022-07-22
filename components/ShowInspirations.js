@@ -68,7 +68,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
   );
 
   return (
-    <div className="flex w-full items-center absolute bottom-1 justify-between right-0 left-0  pb-5 px-20">
+    <div className="flex w-full items-center absolute bottom-1 justify-between right-0 left-0  pb-5 px-20 vp-600:px-10">
       <div className="flex items-center">
         <div className="relative ">
           <div
@@ -101,7 +101,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
           </div>
           {openPostInspirationsDropDown && (
             <div
-              className={`${styles.dropdown}   absolute p-20 bg-white-white shadow-lg z-99999 `}
+              className={`${styles.dropdown} absolute bg-white-white shadow-lg z-99999 `}
             >
               {viewInspirations ? (
                 <div className="">
@@ -200,12 +200,9 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                   )}
                 </div>
               ) : (
-                <div className="relative">
-                  {activePreview === "Polls" && <PollTemplate />}
-                  {activePreview === "Popular tags" && <PopularTags />}
-
+                <div className="relative ">
                   <div className="flex justify-between items-center mb-18  gap-4">
-                    <div className="grid  grid-cols-3 text-sm  gap-4 flex-grow ">
+                    <div className="grid  grid-cols-3 text-sm  gap-4 vp-600:gap-2 flex-grow ">
                       <button
                         style={{ fontSize: "10px" }}
                         className={`${

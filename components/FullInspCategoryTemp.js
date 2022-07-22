@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const FullInspCategoryTemp = ({ arrayInsp, setSeeInDetail }) => {
   return (
-    <div className=" grid grid-cols-3 gap-4">
+    <div className=" grid grid-cols-4 vp-980:grid-cols-2 vp-600:grid-cols-1 gap-4">
       {arrayInsp.map((insp, index) => (
         <div
           className="h-70 rounded-lg bg-blue-postInsp flex items-center justify-between pr-44 pl-23 cursor-pointer"

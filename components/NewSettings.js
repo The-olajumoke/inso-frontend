@@ -25,7 +25,7 @@ const NewSettings = ({
   return (
     <div className="h-full flex flex-col flex-grow">
       <div
-        className="px-16 vp-min-601:px-42 flex items-center cursor-pointer h-50 "
+        className="px-16 vp-min-601:px-30 flex items-center cursor-pointer h-30 "
         onClick={() => setViewInspirations(false)}
       >
         <div className="flex justify-center items-center">
@@ -37,18 +37,18 @@ const NewSettings = ({
             height="16"
           />
         </div>
-        <h6 className="ml-16 text-gray-faintGray">Back</h6>
+        <p className="ml-16 text-gray-faintGray">Back</p>
       </div>
-      <div className="flex px-16 vp-min-601:px-42 items-center my-17 justify-between">
-        <h5>New score settings</h5>
-        <h5 className=" text-primary-blue">Save</h5>
+      <div className="flex px-16 vp-min-601:px-30 items-center mb-12 mt-17 justify-between">
+        <p>New score settings</p>
+        <p className=" text-primary-blue">Save</p>
       </div>
-      <div className="  bg-white-white  pt-20 px-16 vp-min-601:px-42 flex flex-col flex-grow ">
+      <div className="  bg-gray-background pt-17 px-16 vp-min-601:px-30 flex flex-col flex-grow ">
         <div className="flex items-center mb-17">
           <button
             className={` ${
               activeSetting === "Automatic" ? "btn" : "btn-nonActive"
-            } w-130  h-30 mr-20 text-sm`}
+            } w-130  h-30 mr-20 text-xs`}
             onClick={() => setActiveSetting("Automatic")}
           >
             Automatic
@@ -56,7 +56,7 @@ const NewSettings = ({
           <button
             className={` ${
               activeSetting === "Rubric" ? "btn" : "btn-nonActive"
-            } btn h-30 w-130 text-sm`}
+            } btn h-30 w-130 text-xs`}
             onClick={() => setActiveSetting("Rubric")}
           >
             Rubric
@@ -66,14 +66,17 @@ const NewSettings = ({
           {activeSetting === "Rubric" && (
             <div className=" flex flex-col flex-grow justify-between">
               <div className="">
-                <div className=" flex items-center justify-between mb-13 text-gray-text">
-                  <p>Criteria</p>
-                  <p>Score</p>
-                </div>
                 <div className=" flex items-center justify-between mb-13">
-                  <p className="  text-border-dropdownLine">Maximum score</p>
-                  <p className=" text-xl text-primary-darkGreen">100</p>
+                  <span className=" text-gray-analyticsGray text-xs">
+                    Maximum score
+                  </span>
+                  <h6 className=" text-primary-darkGreen">100</h6>
                 </div>
+                <div className="flex items-center justify-between mb-6 text-gray-text">
+                  <span className=" text-black-postInsp text-xs">Criteria</span>
+                  <span className=" text-black-postInsp text-xs">Score</span>
+                </div>
+
                 <div className=" flex items-start justify-between mb-13 text-gray-text">
                   <form action="" onSubmit={handleAddCriteria}>
                     <div>
@@ -97,7 +100,7 @@ const NewSettings = ({
                       </div>
                     </div>
                   </form>
-                  <p className="text-xl">20</p>
+                  <p className=" text-black-postInsp">20</p>
                 </div>
               </div>
               <div className="">
@@ -121,7 +124,7 @@ const NewSettings = ({
             </div>
           )}
           {activeSetting === "Automatic" && (
-            <div className="bg-white-white flex flex-col justify-between  flex-grow">
+            <div className=" bg-gray-background flex flex-col justify-between  flex-grow">
               <div className="">
                 <div
                   className={`${
@@ -132,18 +135,23 @@ const NewSettings = ({
                     className="flex justify-between items-center"
                     onClick={() => setShowInstructions(!showInstructions)}
                   >
-                    <div className="flex items-center text-xl">
+                    <div className="flex items-center ">
                       <CheckBox />
-                      <h5 className="ml-20 text-black-analText">
+                      <h6 className="ml-20 text-black-analText">
                         Instructions
-                      </h5>
+                      </h6>
                     </div>
                     <div className="flex items-center">
-                      <p className=" text-black-analText mr-17">Set Max :</p>
+                      <span
+                        style={{ fontSize: "10px" }}
+                        className=" text-black-analText mr-17"
+                      >
+                        Set Max :
+                      </span>
                       <input
-                        type="text"
+                        type="number"
                         placeholder="20"
-                        className="h-30 w-63 mr-19  text-xl bg-blue-lightBlue rounded border-none"
+                        className="h-24 w-50 mr-19  text-md px-3 text-center bg-blue-lightBlue rounded border-none ring-0  focus:ring-0"
                       />
                       <button>
                         <Image
@@ -166,31 +174,39 @@ const NewSettings = ({
                         <CheckBox />
                       </div>
 
-                      <div className="flex-grow ml-20">
-                        <div className=" flex justify-between">
-                          <p className=" text-black-analText">Posting</p>
+                      <div className="flex-grow ml-20 ">
+                        <div className=" flex justify-between  mb-4 items-center">
+                          <span className=" text-black-analText">Posting</span>
                           <input
                             type="number"
                             placeholder="20"
-                            className="h-24 w-63  text-sm text-center flex items-center justify-center mb-5 bg-blue-lightBlue rounded border-none"
+                            className="h-20 w-50  text-sm px-3  text-center  bg-blue-lightBlue rounded border-none ring-0  focus:ring-0 placeholder:text-primary-darkGreen "
                             // value={}
                             // onChange={()=>}
                           />
                         </div>
-                        <div className="flex justify-between">
-                          <p className=" text-black-analText">Responding</p>
+                        <div className="flex justify-between mb-4 items-center">
+                          <span className=" text-black-analText">
+                            Responding
+                          </span>
                           <input
                             type="number"
                             placeholder="20"
-                            className="h-24 w-63  text-sm text-center flex items-center justify-center mb-5 bg-blue-lightBlue rounded border-none"
+                            className="h-20 w-50  text-sm px-3  text-center  bg-blue-lightBlue rounded border-none ring-0  focus:ring-0 placeholder:text-primary-darkGreen"
+                            // value={}
+                            // onChange={()=>}
                           />
                         </div>
-                        <div className="flex justify-between">
-                          <p className=" text-black-analText">Synthesizing</p>
+                        <div className="flex justify-between items-center mb-4">
+                          <span className=" text-black-analText">
+                            Synthesizing
+                          </span>
                           <input
                             type="number"
                             placeholder="20"
-                            className="h-24 w-63  text-sm text-center flex items-center justify-center mb-5 bg-blue-lightBlue rounded border-none"
+                            className="h-20 w-50  text-sm px-3  text-center  bg-blue-lightBlue rounded border-none ring-0  focus:ring-0 placeholder:text-primary-darkGreen"
+                            // value={}
+                            // onChange={()=>}
                           />
                         </div>
                       </div>
@@ -213,9 +229,12 @@ const NewSettings = ({
                         {showInstructionDetails && (
                           <div
                             style={{ borderRadius: "4px" }}
-                            className="absolute top-5 right-0  w-250 h-70  px-23 py-10 bg-other-disabled  shadow-lg flex justify-center items-center"
+                            className="absolute top-5 right-0  w-250 h-70  px-23 py-10 bg-white-white  shadow-lg flex justify-center items-center"
+                            onClick={() =>
+                              setShowInstructionDetails(!showInstructionDetails)
+                            }
                           >
-                            <p className=" text-black-postInsp">
+                            <p className=" text-black-postInsp text-xs">
                               Allocate individual and maximum score per
                               criteria.
                             </p>
@@ -236,16 +255,21 @@ const NewSettings = ({
                   >
                     <div className="flex items-center text-xl">
                       <CheckBox />
-                      <h5 className="ml-20 text-black-analText">
+                      <h6 className="ml-20 text-black-analText">
                         Interactions
-                      </h5>
+                      </h6>
                     </div>
                     <div className="flex items-center">
-                      <p className=" text-black-analText mr-17">Set Max :</p>
+                      <span
+                        style={{ fontSize: "10px" }}
+                        className=" text-black-analText mr-17"
+                      >
+                        Set Max :
+                      </span>
                       <input
-                        type="text"
+                        type="number"
                         placeholder="20"
-                        className="h-30 w-63 mr-19  text-xl bg-blue-lightBlue rounded border-none"
+                        className="h-24 w-50 mr-16  text-md px-3 text-center bg-blue-lightBlue rounded border-none ring-0  focus:ring-0"
                       />
                       <button>
                         <Image
@@ -269,21 +293,20 @@ const NewSettings = ({
                       </div>
 
                       <div className="flex-grow ml-20">
-                        <div className=" flex justify-between">
-                          <p className=" text-black-analText">
-                            {" "}
+                        <div className=" flex justify-between items-center">
+                          <span className=" text-black-analText">
                             Point per post
-                          </p>
+                          </span>
                           <input
                             type="number"
                             placeholder="20"
-                            className="h-24 w-63  text-sm text-center flex items-center justify-center mb-5 bg-blue-lightBlue rounded border-none"
+                            className="h-20 w-50  text-sm px-3  text-center  bg-blue-lightBlue rounded border-none ring-0   focus:ring-0  placeholder:text-primary-darkGreen"
                             // value={}
                             // onChange={()=>}
                           />
                         </div>
                       </div>
-                      <div className=" ml-16 flex justify-center items-center ">
+                      <div className=" ml-16 flex justify-center items-center opacity-0 ">
                         <Image
                           src="/icons/more_info.svg"
                           alt="more info"
@@ -304,16 +327,21 @@ const NewSettings = ({
                     className="flex justify-between items-center"
                     onClick={() => setShowImpact(!showImpact)}
                   >
-                    <div className="flex items-center text-xl">
+                    <div className="flex items-center text-md">
                       <CheckBox />
-                      <h5 className="ml-20 text-black-analText">Impact</h5>
+                      <h6 className="ml-20 text-black-analText">Impact</h6>
                     </div>
                     <div className="flex items-center">
-                      <p className=" text-black-analText mr-17">Set Max :</p>
+                      <span
+                        style={{ fontSize: "10px" }}
+                        className=" text-black-analText mr-17"
+                      >
+                        Set Max :
+                      </span>
                       <input
-                        type="text"
+                        type="number"
                         placeholder="20"
-                        className="h-30 w-63 mr-19  text-xl bg-blue-lightBlue rounded border-none"
+                        className="h-24 w-50 mr-16  text-md px-3 text-center bg-blue-lightBlue rounded border-none ring-0  focus:ring-0"
                       />
                       <button>
                         <Image
@@ -337,22 +365,24 @@ const NewSettings = ({
                       </div>
 
                       <div className="flex-grow ml-20">
-                        <div className=" flex justify-between">
-                          <p className=" text-black-analText"> Reactions</p>
+                        <div className=" flex justify-between mb-4">
+                          <span className=" text-black-analText">
+                            Reactions
+                          </span>
                           <input
                             type="number"
                             placeholder="20"
-                            className="h-24 w-63  text-sm text-center flex items-center justify-center mb-5 bg-blue-lightBlue rounded border-none"
+                            className="h-20 w-50  text-sm px-3  text-center  bg-blue-lightBlue rounded border-none ring-0  focus:ring-0 placeholder:text-primary-darkGreen"
                             // value={}
                             // onChange={()=>}
                           />
                         </div>
                         <div className=" flex justify-between">
-                          <p className=" text-black-analText"> Upvotes</p>
+                          <span className=" text-black-analText">Upvotes</span>
                           <input
                             type="number"
                             placeholder="20"
-                            className="h-24 w-63  text-sm text-center flex items-center justify-center mb-5 bg-blue-lightBlue rounded border-none"
+                            className="h-20 w-50  text-sm px-3  text-center  bg-blue-lightBlue rounded border-none ring-0  focus:ring-0 placeholder:text-primary-darkGreen"
                             // value={}
                             // onChange={()=>}
                           />
@@ -377,6 +407,9 @@ const NewSettings = ({
                           <div
                             style={{ borderRadius: "4px" }}
                             className="absolute -top-5 right-0  w-250 h-70  px-23 py-10 bg-other-disabled  shadow-lg flex justify-center items-center"
+                            onClick={() =>
+                              setShowInstructionDetails(!showInstructionDetails)
+                            }
                           >
                             <p className=" text-black-postInsp">
                               Allocate individual and maximum score per
@@ -390,7 +423,7 @@ const NewSettings = ({
                 </div>
 
                 <div className=" flex items-center w-full  text-black-analText justify-between  pb-27 mt-20 ">
-                  <div className="flex items-center text-xl">
+                  <div className="flex items-center text-md">
                     <div className=" flex items-center justify-center">
                       <Image
                         src="/icons/scores_icon.svg"
@@ -403,11 +436,14 @@ const NewSettings = ({
                     <h5 className="ml-20 text-primary-darkGreen">Max Score</h5>
                   </div>
                   <div className="flex items-center">
-                    <p className=" opacity-0  text-black-analText mr-17">
+                    <span
+                      style={{ fontSize: "10px" }}
+                      className="opacity-0 text-black-analText mr-17"
+                    >
                       Set Max :
-                    </p>
-                    <div className="h-30 w-63 flex items-center justify-center  mr-19 ">
-                      <h4 className=" text-primary-darkGreen text-xl ">20</h4>
+                    </span>
+                    <div className="h-30 w-50 flex items-center justify-center  mr-19 ">
+                      <h4 className=" text-primary-darkGreen text-md ">20</h4>
                     </div>
                     <div>
                       <button className="flex items-center justify-center opacity-0">

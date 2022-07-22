@@ -8,8 +8,8 @@ const StarterPrompt = ({
   onEditorStateChange,
 }) => {
   return (
-    <div className="w-full  bg-gray-background px-16 vp-min-601:px-42 py-24 flex-grow">
-      <div className="mb-17 p-12 border bg-white-white rounded-xs  h-270 flex flex-col border-border-dropdownLine ">
+    <div className="w-full  bg-gray-background px-16 vp-min-601:px-30 py-24 flex-grow">
+      <div className="mb-17 p-12 pb-0 border bg-white-white rounded-xs  h-220 flex flex-col border-border-dropdownLine ">
         <TextArea
           placeholder="say something different"
           editorState={editorState}

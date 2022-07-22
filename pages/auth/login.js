@@ -38,8 +38,8 @@ const LoginPage = () => {
         <Head>
           <title>Login | Inso</title>
         </Head>
-        <div className="bg-white-white w-639  rounded-md  shadow-lg overflow-hidden mt-100 mb-100">
-          <div className=" bg-primary-darkGreen h-52 px-79 flex justify-end items-center">
+        <div className="bg-white-white w-500  rounded-md  shadow-lg overflow-hidden mt-50 mb-70">
+          <div className=" bg-primary-darkGreen h-40 px-51 flex justify-end items-center">
             <Link passHref href="/">
               <button>
                 <Image
@@ -47,16 +47,16 @@ const LoginPage = () => {
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
-                  width="17"
-                  height="17"
+                  width="14"
+                  height="14"
                 />
               </button>
             </Link>
           </div>
-          <div className="px-79 pt-46 text-center">
-            <h3 className="mb-77 font-medium">
+          <div className="px-51 pt-35 text-center">
+            <h4 className="mb-61 font-medium">
               Welcome to <span className=" text-primary-darkGreen">Inso</span>
-            </h3>
+            </h4>
             <form onSubmit={handleLogin}>
               <div>
                 <Input
@@ -68,7 +68,7 @@ const LoginPage = () => {
                   errorMessage={emailError}
                 />
               </div>
-              <div className="mb-100">
+              <div className="mb-80">
                 <Input
                   label="Password"
                   placeholder="Password"
@@ -79,8 +79,8 @@ const LoginPage = () => {
                   keyUpHandler={passwordErrorHandler}
                 />
               </div>
-              <button className="h-60 text-primary-darkGreen text-xl  w-full mb-20  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
-                <div>
+              <button className="h-48 text-primary-darkGreen  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
+                <div className="flex items-center justify-center">
                   <Image
                     src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
                     alt="google Icon"
@@ -90,25 +90,25 @@ const LoginPage = () => {
                     height="20"
                   />
                 </div>
-                <span>Sign in with Google</span>
+                <h6>Sign in with Google</h6>
               </button>
               <Link passHref href="/discussions">
                 <button
-                  className="text-xl btn h-64 w-full mb-20"
-                  // disabled={isDisabled}
+                  className="btn h-48 w-full mb-16 text-md "
+                  disabled={isDisabled}
                 >
                   Log in
                 </button>
               </Link>
             </form>
-            <h5 className="mb-24">
+            <p className="mb-24 text-black-analText">
               If you don&#39;t have an account,{" "}
               <Link passHref href="/auth/signup">
                 <button className=" text-primary-darkGreen font-medium">
                   Sign up
                 </button>
               </Link>
-            </h5>
+            </p>
           </div>
         </div>
       </div>
