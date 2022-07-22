@@ -127,7 +127,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
   ];
   console.log(selectedScoringOption);
   return (
-    <div className=" absolute grid place-items-center w-full h-screen top-0 left-0 z-9999 animate-fade-in vp-600:px-20 vp-980:hidden ">
+    <div className=" absolute grid place-items-center w-full h-screen top-0 left-0 z-9999 animate-fade-in vp-600:px-20 vp-980:hidden  ">
       <div
         className={`w-890 h-500 border-other-disabled   bg-white-white rounded-md  shadow-createDiscussion relative overflow-hidden flex justify-between `}
       >
@@ -583,6 +583,7 @@ const CreateDiscussions = ({ setOpenModal }) => {
                       setActiveViewInspiration={setActiveViewInspiration}
                       addCalendarToSettings={addCalendarToSettings}
                       setAddCalendarToSettings={setAddCalendarToSettings}
+                      setPreviewSettings={setPreviewSettings}
                     />
                   )}
                 </div>

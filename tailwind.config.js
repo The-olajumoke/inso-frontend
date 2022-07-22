@@ -43,7 +43,6 @@ module.exports = {
         white: "#FFFFFF",
       },
       blue: {
-        
         lightBlue: "#ECF4F4",
         inputBlue: " #F2FAFF",
         progressBlue: " #E9EFF7",
@@ -100,9 +99,13 @@ module.exports = {
       md: "0px 8px 12px 0px rgba(46, 41, 78, 0.08)",
       lg: "0px 7px 15px 0px rgba(169, 169, 169, 0.12)",
       "plan-Shadow": "0px 2.48511px 100px 20px rgba(62, 54, 54, 0.13)",
-      createDiscussion: "0px 4px 21px rgba(182, 182, 182, 0.26)",
+      // createDiscussion: "0px 4px 21px rgba(182, 182, 182, 0.26)",
+      createDiscussion: "0px 3.2px 16.8px rgba(182, 182, 182, 0.26)",
       none: "0 0 #0000",
     },
+    // background: #FFFFFF;
+    //box-shadow: 0px 3.2px 16.8px rgba(182, 182, 182, 0.26);
+    //border-radius: 13.6px;
     screens: {
       "vp-1366": { max: "1366px" },
       "vp-1200": { max: "1200px" },

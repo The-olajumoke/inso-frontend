@@ -31,7 +31,8 @@ export const ScoreSettings = ({
           ></span>
         </label>
       </div>
-      <div className="flex-grow">
+
+      <div className={`${!addScoresToSettings && "opacity-20"} flex-grow`}>
         <div
           className="h-48 bg-gray-background w-full flex items-center justify-between px-16 vp-min-601:px-30 mb-10 cursor-pointer "
           onClick={() => {
@@ -149,7 +150,7 @@ export const ScoreSettings = ({
           </div>
         </div>
         <button
-          className="btn bg-border-line text-white-white w-auto px-16 h-38 text-sm"
+          className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm"
           disabled={addScoresToSettings ? false : true}
           onClick={() => {
             setActiveSettings("Calendar");

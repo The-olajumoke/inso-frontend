@@ -8,6 +8,7 @@ const Calendar = ({
   date,
   addCalendarToSettings,
   setAddCalendarToSettings,
+  setPreviewSettings,
 }) => {
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   return (
@@ -27,7 +28,11 @@ const Calendar = ({
           ></span>
         </label>
       </div>
-      <div className="  px-16 vp-min-601:px-30 py-10 h-250 flex-grow overflow-y-auto  bg-gray-background">
+      <div
+        className={`${
+          !addCalendarToSettings && "opacity-20"
+        }  px-16 vp-min-601:px-30 py-10 h-250 flex-grow overflow-y-auto  bg-gray-background`}
+      >
         <div className="mb-9 ">
           <span
             style={{ fontSize: "10px" }}
@@ -288,6 +293,7 @@ const Calendar = ({
         <button
           className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm"
           disabled={addCalendarToSettings ? false : true}
+          onClick={() => setPreviewSettings(true)}
         >
           {addCalendarToSettings ? "Continue" : "Save & Continue"}
         </button>
