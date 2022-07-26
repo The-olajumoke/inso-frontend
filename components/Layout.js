@@ -1,14 +1,29 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/layout.module.css";
-const Layout = ({ title, children, searchBar, bgColor }) => {
+import { GlobalContext } from "@/context/Provider";
+import { createDiscussion } from "@/context/actions/discussion/createDiscussion";
+const Layout = ({ title, children, searchBar, bgColor, API_URL }) => {
+  console.log(API_URL);
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
+  const [token, setToken] = useState(false);
 
+  // const {
+  //   discussionDispatch,
+  //   dicussionState: {
+  //     discussion: { createLoading, createSuccess, createError },
+  //   },
+  // } = useContext(GlobalContext);
+  console.log(GlobalContext);
+
+  // useEffect(() => {
+  //   createDiscussion(API_URL, token)(discussionDispatch);
+  // }, [token]);
   const handleNavSize = () => {
     if (navSize === "small") {
       console.log(navSize);
@@ -19,6 +34,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
       setNavSize("small");
     }
   };
+
   return (
     <div>
       <Head>
@@ -94,5 +110,13 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
     </div>
   );
 };
+export async function getServerSideProps() {
+  const API_URL = process.env.API_URL;
+  return {
+    props: {
+      API_URL,
+    },
+  };
+}
 
 export default Layout;

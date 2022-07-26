@@ -9,6 +9,7 @@ import styles from "@/styles/discussion.module.css";
 import CreateDiscussions from "@/components/CreateDiscussions";
 import { discussions } from "@/utils/sampleData";
 import CreateDiscResponsive from "@/components/CreateDiscResponsive";
+import withAuth from "@/HOC/withAuth";
 const Index = () => {
   let loading = false;
   const [filter, setFilter] = useState("");
@@ -140,5 +141,5 @@ const Index = () => {
     </Layout>
   );
 };
-
 export default Index;
+// export default withAuth(Index);

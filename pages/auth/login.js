@@ -34,12 +34,12 @@ const LoginPage = () => {
 
   return (
     <RegLayout>
-      <div>
+      <div className="vp-600:h-full vp-600:w-full">
         <Head>
           <title>Login | Inso</title>
         </Head>
-        <div className="bg-white-white w-500  rounded-md  shadow-lg overflow-hidden mt-50 mb-70">
-          <div className=" bg-primary-darkGreen h-40 px-51 flex justify-end items-center">
+        <div className="bg-white-white w-500  rounded-md  shadow-lg overflow-hidden mt-50 mb-70  vp-600:m-0 vp-600:w-full vp-600:h-full vp-600:flex-grow   vp-600:rounded-none">
+          <div className=" bg-primary-darkGreen h-40 px-51 flex justify-end items-center vp-600:hidden">
             <Link passHref href="/">
               <button>
                 <Image
@@ -53,7 +53,22 @@ const LoginPage = () => {
               </button>
             </Link>
           </div>
-          <div className="px-51 pt-35 text-center">
+          <div className=" bg-primary-darkGreen h-40 px-22 hidden justify-between items-center vp-600:flex">
+            <Link passHref href="/">
+              <button>
+                <Image
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655469179/InsoImages/cancel_white_g248xm.svg"
+                  alt="Inso Logo"
+                  draggable="false"
+                  layout="fixed"
+                  width="14"
+                  height="14"
+                />
+              </button>
+            </Link>
+            <h6 className="text-white-white">Log In</h6>
+          </div>
+          <div className="px-51 vp-600:px-22 pt-35 text-center">
             <h4 className="mb-61 font-medium">
               Welcome to <span className=" text-primary-darkGreen">Inso</span>
             </h4>
