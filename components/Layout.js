@@ -96,8 +96,8 @@ const Layout = ({ title, children, searchBar, bgColor, API_URL }) => {
                 alt="notifications"
                 draggable="false"
                 layout="fixed"
-                width="30"
-                height="30"
+                width="24"
+                height="24"
               />
             </div>
           </Link>

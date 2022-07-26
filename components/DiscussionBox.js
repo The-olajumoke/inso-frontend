@@ -5,168 +5,55 @@ const DiscussionBox = ({ discussion }) => {
   const { id, userName, users, title, date, code } = discussion;
   const [dropdown, setOpenDropdown] = useState(false);
   return (
-    <div
-      // style={{ width: "320px" }}
-      className="vp-600:w-full vp-600:h-160  w-320 vp-980:flex-grow bg-white-white rounded-sm shadow-xs py-13 px-15  flex flex-col relative justify-between"
-    >
-      <div className="border-b border-border-green flex items-center justify-between pb-10 mb-12">
-        <div className="flex items-center">
-          <div className="flex justify-center items-end  mr-12">
-            <Image
-              src="/icons/discussion_icon.svg"
-              alt="create discussion"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
+    <Link passHref href={`/discussions/view-discussion/${id}`}>
+      <div
+        // style={{ width: "320px" }}
+        className="vp-600:w-full vp-600:h-110  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14  flex flex-col relative justify-between"
+      >
+        <div className=" flex items-start justify-between mb-15">
+          <div className=" w-210">
+            <h5 className=" text-gray-text font-medium p-0 m-0">{title}</h5>
           </div>
-          <p className=" text-gray-text">{userName}</p>
-        </div>
-        <div className=" flex items-center">
-          <div className="flex justify-center items-center  ">
-            <Image
-              src="/icons/users_icon.svg"
-              alt="users"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
-            <h6 className="ml-5 text-gray-text">{users}</h6>
-          </div>
-          <button className="flex justify-center items-center ml-20">
-            <Image
-              src="/icons/muted_icon.svg"
-              alt="muted"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
-          </button>
-          <div className="flex justify-center items-center ml-18">
-            <div onClick={() => setOpenDropdown(true)}>
+
+          <div className="flex items-center">
+            {" "}
+            <div className=" flex justify-center items-center mr-10">
               <Image
-                src="/icons/more_icon.svg"
-                alt="more"
+                src="/icons/notifications_active.svg"
+                alt="copy"
                 layout="fixed"
-                width="20"
-                height="20"
+                width="14"
+                height="14"
               />
             </div>
-            {dropdown && (
-              <>
-                <div
-                  className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
-                  onClick={() => setOpenDropdown(false)}
-                ></div>
-                <div
-                  className={`w-176   top-6  -right-6 bg-white-white absolute z-60  rounded-lg shadow-xs`}
-                >
-                  <div className="w-full ">
-                    <div
-                      className="text-gray-text
-                  hover:bg-blue-lightBlue py-8 px-20 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
-                      onClick={() => {
-                        setOpenDropdown(false);
-                      }}
-                    >
-                      <div className=" mr-12 flex justify-center items-center">
-                        <Image
-                          src="/icons/edit.svg"
-                          alt="edit"
-                          layout="fixed"
-                          width="16"
-                          height="16"
-                        />
-                      </div>
-                      <p className=" ">Edit</p>
-                    </div>
-                    <div
-                      className="text-gray-text
-                  hover:bg-blue-lightBlue py-8 px-20 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
-                      onClick={() => {
-                        setOpenDropdown(false);
-                      }}
-                    >
-                      <div className=" mr-12 flex justify-center items-center">
-                        <Image
-                          src="/icons/archive.svg"
-                          alt="archive"
-                          layout="fixed"
-                          width="16"
-                          height="16"
-                        />
-                      </div>
-                      <p className=" ">Archive</p>
-                    </div>
-                    {/* <div
-                      className="text-gray-text
-                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
-                      onClick={() => {
-                        setOpenDropdown(false);
-                      }}
-                    >
-                      <div className=" mr-12 flex justify-center items-center">
-                        <Image
-                          src="/icons/duplicate.svg"
-                          alt="duplicate"
-                          layout="fixed"
-                          width="16"
-                          height="16"
-                        />
-                      </div>
-                      <p className=" ">Duplicate</p>
-                    </div>
-                    <div
-                      className="text-gray-text
-                  hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
-                      onClick={() => {
-                        setOpenDropdown(false);
-                      }}
-                    >
-                      <div className=" mr-12 flex justify-center items-center">
-                        <Image
-                          src="/icons/facilitator.svg"
-                          alt="facilitator"
-                          layout="fixed"
-                          width="16"
-                          height="16"
-                        />
-                      </div>
-                      <p className=" ">Add Facilitator</p>
-                    </div> */}
-                  </div>
-                </div>
-              </>
-            )}
+            <div className=" flex justify-center items-center">
+              <Image
+                src="/icons/active_disc.svg"
+                alt="copy"
+                layout="fixed"
+                width="12"
+                height="12"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between">
+          <span className=" text-xs text-gray-analyticsGray">
+            by {userName}
+          </span>
+          <div className="flex justify-center">
+            <Image
+              src="/icons/users_icon.svg"
+              alt="copy"
+              layout="fixed"
+              width="20"
+              height="20"
+            />
+            <p className=" text-black-postInsp ml-5">{users}</p>
           </div>
         </div>
       </div>
-      <div className=" flex items-center justify-between mb-15">
-        <div className=" w-210">
-          <h4 className=" text-gray-text font-medium">{title}</h4>
-        </div>
-        <div className=" text-gray-text py-2 px-8 bg-other-disabled text-xs font-normal rounded">
-          {date}
-        </div>
-      </div>
-      <div className="flex justify-between">
-        <div className="flex justify-center items-end  mr-12">
-          <h6 className=" text-gray-text mr-10">{code}</h6>
-          <Image
-            src="/icons/copy_icon.svg"
-            alt="copy"
-            layout="fixed"
-            width="20"
-            height="20"
-          />
-        </div>
-        <Link href={`/discussions/view-discussion/${id}`}>
-          <a className="h-34 bg-other-disabled py-7 px-25 rounded text-primary-darkGreen text-sm text-center">
-            Open
-          </a>
-        </Link>
-      </div>
-    </div>
+    </Link>
   );
 };
 

@@ -14,16 +14,18 @@ const Footer = () => {
             height="460"
           />
         </div>
-        <div className="absolute bg-transparent top-0 bottom-0 right-0 left-0 pt-144 text-center flex flex-col items-center">
-          <h2
-            style={{ fontSize: "36px" }}
-            className="font-medium text-gray-text mb-60"
-          >
-            Say something different
-          </h2>
+        <div className="absolute bg-transparent top-0 bottom-0 right-0 left-0 pt-144 text-center flex flex-col items-center  vp-600:pt-96 vp-600:items-start vp-600:px-20">
+          <div className="">
+            <h2
+              // style={{ fontSize: "32px" }}
+              className="font-medium text-gray-text mb-60 mx-0 text-left"
+            >
+              Say something different
+            </h2>
+          </div>
 
-          <div className="flex items-center">
-            <button className="btn text-xl mr-20 px-42 w-262 h-60">
+          <div className="flex items-center vp-600:flex-col vp-600:gap-8">
+            <button className="btn text-xl mr-20 px-42 w-280 h-60">
               Get started
             </button>
             <input
@@ -34,17 +36,28 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="h-93 bg-gray-footerGrey pl-123 pr-146 flex justify-between items-center">
-        <Image
-          src="/images/inso_logo_grey.svg"
-          alt="Inso Logo"
-          draggable="false"
-          layout="intrinsic"
-          width="116"
-          height="53"
-        />
-        <h6 className=" text-gray-text">Privacy Policy | Terms of Use</h6>
-        <h6 className=" text-gray-text">Copyright 2022 Inso LLC.</h6>
+      <div
+        className="h-93 bg-gray-footerGrey pl-123 pr-146 vp-600:px-20 flex flex-col justify-between 
+      items-center"
+      >
+        <div className="hidden vp-600:flex justify-between items-center w-full">
+          <h6 className=" text-black-postInsp">Privacy Policy</h6>
+          <h6 className=" text-black-postInsp"> Terms of Use</h6>
+        </div>
+        <div className="flex items-center justify-between w-full">
+          <Image
+            src="/images/inso_logo_grey.svg"
+            alt="Inso Logo"
+            draggable="false"
+            layout="intrinsic"
+            width="116"
+            height="53"
+          />
+          <h6 className="vp-600:hidden text-gray-text">
+            Privacy Policy | Terms of Use
+          </h6>
+          <h6 className=" text-gray-text">Copyright 2022 Inso LLC.</h6>
+        </div>
       </div>
     </div>
   );

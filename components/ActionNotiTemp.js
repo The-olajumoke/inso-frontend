@@ -4,7 +4,7 @@ import Image from "next/image";
 const ActionNotiTemp = () => {
   return (
     <>
-      <div className="bg-white-white h-66  w-full vp-600:hidden grid grid-cols-3 rounded-xs shadow-xs px-24 items-center mb-28">
+      <div className="bg-white-white h-66  w-full vp-600:hidden grid grid-cols-3 rounded-xs shadow-xs px-24 items-center mb-28 ">
         <div className="col-span-2 flex items-center ">
           <div className="mr-20 flex items-center justify-center ">
             <Image
@@ -39,7 +39,7 @@ const ActionNotiTemp = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white-white h-115 w-full hidden vp-600:flex flex-col rounded-xs shadow-xs px-24 items-center py-18 justify-between mb-28">
+      <div className="bg-white-white h-115 w-full hidden vp-600:flex flex-col rounded-xs shadow-xs px-12 items-center py-18 justify-between mb-28">
         <div className="mb-10 flex items-center ">
           <div className="mr-20 flex items-center justify-center ">
             <Image
@@ -57,8 +57,8 @@ const ActionNotiTemp = () => {
             come to an end.
           </h6>
         </div>
-        <div className=" border-l-2 border-green-lightGreen flex items-center justify-center">
-          <div className=" w-203 bg-other-lightRed h-34 rounded px-14 flex items-center justify-center">
+        <div className=" border-l-2 border-green-lightGreen flex items-center justify-center vp-600:border-none">
+          <div className=" w-203 vp-600:w-210 bg-other-lightRed h-34 rounded px-14 flex items-center justify-center">
             <Image
               src="/icons/clock.svg"
               alt=" Discussion dropdown "
