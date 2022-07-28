@@ -5,39 +5,114 @@ import Image from "next/image";
 import Input from "@/components/Input";
 import { validateEmail } from "@/utils/validations";
 import Link from "next/link";
-const SignUpPage = () => {
+import RegInput from "@/components/RegInput";
+import { validatePassword } from "@/utils/validations";
+import { register } from "@/context/actions/auth/register";
+import { GlobalContext } from "@/context/Provider";
+
+const SignUpPage = ({ API_URL }) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+
   const [lastName, setLastName] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    console.log("submitted");
-  };
+  const {
+    authDispatch,
+    authState: {
+      auth: { loading, registerSuccess },
+    },
+  } = useContext(GlobalContext);
 
+  useEffect(() => {
+    console.log(registerSuccess);
+  }, [registerSuccess]);
   useEffect(() => {
     if (
       validateEmail(email) &&
-      password.length >= 8 &&
-      firstName !== "" &&
-      lastName !== "" &&
-      confirmPassword === password
+      validatePassword(password) &&
+      confirmPassword === password &&
+      firstName.length >= 3 &&
+      lastName.length >= 3
     ) {
       setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
     }
   }, [email, password, confirmPassword, firstName, lastName]);
 
-  const passwordErrorHandler = () => {
-    if (password.length < 8) {
-      setPasswordError("Password can not be less than 8 characters");
+  const emailBlurHandler = () => {
+    if (!validateEmail(email)) {
+      setEmailError("Invalid email");
+    } else {
+      setEmailError("");
+    }
+  };
+  const confirmFirstNameHandler = () => {
+    if (firstName.length < 3) {
+      setFirstNameError("Input a valid firstname");
+    } else {
+      setFirstNameError("");
+    }
+  };
+  const confirmLastNameHandler = () => {
+    if (lastName.length < 3) {
+      setLastNameError("Input a valid lastname");
+    } else {
+      setLastNameError("");
+    }
+  };
+
+  const passwordHandler = () => {
+    if (!validatePassword(password)) {
+      setPasswordError(
+        "8 characters long, include an uppercase, a lowercase, a number and a special character."
+      );
     } else {
       setPasswordError("");
     }
+  };
+
+  const confirmPasswordHandler = () => {
+    if (confirmPassword !== password) {
+      setConfirmPasswordError("Passwords do not match");
+    } else {
+      setConfirmPasswordError("");
+    }
+  };
+
+  const handleRegistration = (evt) => {
+    evt.preventDefault();
+    //     {
+    //   "f_name": "string",
+    //   "l_name": "string",
+    //   "contact": [
+    //     {
+    //       "email": "mockemail",
+    //       "primary": true
+    //     }
+    //   ],
+    //   "password": "string"
+    // }
+    const user = {
+      f_name: firstName,
+      l_name: lastName,
+      contact: [
+        {
+          email: email,
+          primary: true,
+        },
+      ],
+      password,
+    };
+    register(API_URL, user)(authDispatch);
   };
 
   return (
@@ -78,63 +153,66 @@ const SignUpPage = () => {
           </div>
           <div className="px-51 vp-600:px-22 py-15 text-center">
             <h4 className="mb-20 font-medium">Create an account</h4>
-            <form onSubmit={handleSignUp}>
+            <form onSubmit={handleRegistration}>
               <div>
-                <Input
+                <RegInput
                   label="Email Address"
-                  type="email"
                   placeholder="Email"
                   value={email}
                   setValue={setEmail}
+                  type="email"
+                  blurHandler={emailBlurHandler}
                   errorMessage={emailError}
                 />
               </div>
-
               <div className="flex w-full  gap-8">
                 <div className="w-full">
-                  <Input
+                  <RegInput
                     label="First name"
                     type="text"
                     placeholder="First name"
                     value={firstName}
                     setValue={setFirstName}
-                    // errorMessage={emailError}
+                    errorMessage={firstNameError}
+                    keyUpHandler={confirmFirstNameHandler}
                   />
                 </div>
 
                 <div className="w-full">
-                  <Input
+                  <RegInput
                     label="Last name"
                     type="text"
                     placeholder="Last name"
                     value={lastName}
                     setValue={setLastName}
-                    // errorMessage={emailError}
+                    errorMessage={lastNameError}
+                    keyUpHandler={confirmLastNameHandler}
                   />
                 </div>
               </div>
-              <div className="">
-                <Input
+              <div>
+                <RegInput
                   label="Password"
-                  placeholder="Password"
+                  placeholder="Create password"
                   value={password}
                   setValue={setPassword}
                   type="password"
                   errorMessage={passwordError}
-                  keyUpHandler={passwordErrorHandler}
+                  keyUpHandler={passwordHandler}
                 />
               </div>
-              <div className="mb-30">
-                <Input
-                  label="Confirm password"
+              <div>
+                <RegInput
+                  label="Confirm Password"
                   placeholder="Confirm password"
                   value={confirmPassword}
                   setValue={setConfirmPassword}
                   type="password"
-                  errorMessage={passwordError}
-                  keyUpHandler={passwordErrorHandler}
+                  keyUpHandler={confirmPasswordHandler}
+                  errorMessage={confirmPasswordError}
                 />
               </div>
+
               <button className="h-48 text-primary-darkGreen text-xl  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
                 <div>
                   <Image
@@ -149,7 +227,7 @@ const SignUpPage = () => {
                 <h6>Sign up with Google</h6>
               </button>
               <button
-                onClick={handleSignUp}
+                onClick={handleRegistration}
                 className="text-md btn h-48 w-full mb-16"
                 disabled={isDisabled}
               >
@@ -176,5 +254,12 @@ const SignUpPage = () => {
     </RegLayout>
   );
 };
-
+export async function getServerSideProps() {
+  const API_URL = process.env.API_URL;
+  return {
+    props: {
+      API_URL,
+    },
+  };
+}
 export default SignUpPage;

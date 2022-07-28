@@ -56,7 +56,7 @@ const ViewDiscussion = () => {
   const [viewAllTags, setViewAllTags] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
-  const [scoreType, setScoreType] = useState("rubric");
+  const [scoreType, setScoreType] = useState("automatic");
 
   const [showScoresSheet, setShowScoresSheet] = useState(false);
   const [viewFullPostInsp, setViewFullPostInsp] = useState(false);

@@ -1,24 +1,21 @@
 export default {
   discussion: {
+    loading: false,
+    data: null,
+    error: null,
+    success: false,
     createLoading: false,
     createData: null,
     createError: null,
+    discussionLoading: false,
+    discussionData: null,
+    starterPromptLoading: false,
+    starterPromptData: null,
+    postInspLoading: false,
+    postInspData: null,
+    scoreLoading: false,
+    scoreData: null,
+    calendarLoading: false,
+    calendarData: null,
   },
 };
-
-// export default {
-//   discussion: {
-//     loading: true,
-//   },
-// };
-// let discussion = {
-//   createLoading: false,
-//   createData: null,
-//   createError: null,
-// };
-
-// export const discussionInitialStates = {
-//   createLoading: false,
-//   createData: null,
-//   createError: null,
-// };

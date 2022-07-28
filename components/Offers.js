@@ -8,8 +8,11 @@ const Offers = () => {
         What Inso offers
       </h2>
       <div className="flex  vp-768:flex-col  vp-768:items-start justify-between items-center mb-100 vp-768:mb-80">
-        <div className="w-260   ">
-          <h3 className="mb-40" style={{ lineHeight: "36.3px" }}>
+        <div className=" w-280">
+          <h3
+            className="mb-40  text-black-postInsp"
+            style={{ lineHeight: "36.3px" }}
+          >
             Host and join interesting and engaging discussions
           </h3>
           <div className={`${styles.line}`}></div>
@@ -27,7 +30,10 @@ const Offers = () => {
       </div>
       <div className="flex justify-between items-center vp-768:flex-col  vp-768:items-start mb-110 vp-768:mb-80">
         <div className="w-350 ">
-          <h3 className="mb-40" style={{ lineHeight: "36.3px" }}>
+          <h3
+            className="mb-40 text-black-postInsp"
+            style={{ lineHeight: "36.3px" }}
+          >
             Experience true freedom of expression with flexible setting and
             numerous messages styles.
           </h3>
@@ -46,7 +52,10 @@ const Offers = () => {
       </div>
       <div className="flex justify-between items-center vp-768:flex-col  vp-768:items-start vp-768:mb-80  ">
         <div className="w-350 ">
-          <h3 className="mb-40" style={{ lineHeight: "36.3px" }}>
+          <h3
+            className="mb-40 text-black-postInsp"
+            style={{ lineHeight: "36.3px" }}
+          >
             Track how interesting your discussions are with stats and fun
             achievement badges
           </h3>

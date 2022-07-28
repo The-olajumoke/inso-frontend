@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="">
             <h2
               // style={{ fontSize: "32px" }}
-              className="font-medium text-gray-text mb-60 mx-0 text-left"
+              className="font-medium text-black-postInsp mb-60 mx-0 text-left"
             >
               Say something different
             </h2>
@@ -53,10 +53,10 @@ const Footer = () => {
             width="116"
             height="53"
           />
-          <h6 className="vp-600:hidden text-gray-text">
+          <h6 className="vp-600:hidden text-black-postInsp">
             Privacy Policy | Terms of Use
           </h6>
-          <h6 className=" text-gray-text">Copyright 2022 Inso LLC.</h6>
+          <h6 className=" text-black-postInsp">Copyright 2022 Inso LLC.</h6>
         </div>
       </div>
     </div>

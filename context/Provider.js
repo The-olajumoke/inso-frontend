@@ -1,12 +1,13 @@
 import React, { createContext, useReducer } from "react";
 import authInitialStates from "./initialStates/authInitialStates";
 import layoutInitialStates from "./initialStates/layoutInitialStates";
-// import discussionInitialStates from "./initialStates/discussionInitialStates";
-import  discussionInitialStates  from "./initialStates/discussionInitialStates";
+import userInitialStates from "./initialStates/userInitialStates";
+import discussionInitialStates from "./initialStates/discussionInitialStates";
 
 import auth from "./reducers/auth";
 import layout from "./reducers/layout";
 import discussion from "./reducers/discussion";
+import user from "./reducers/user";
 
 export const GlobalContext = createContext({});
 
@@ -17,6 +18,7 @@ export const GlobalProvider = ({ children }) => {
     discussion,
     discussionInitialStates
   );
+  const [userState, userDispatch] = useReducer(user, userInitialStates);
 
   return (
     <GlobalContext.Provider
@@ -27,6 +29,8 @@ export const GlobalProvider = ({ children }) => {
         layoutDispatch,
         discussionState,
         discussionDispatch,
+        userState,
+        userDispatch,
       }}
     >
       {children}

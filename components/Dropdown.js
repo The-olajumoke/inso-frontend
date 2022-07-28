@@ -27,7 +27,7 @@ const Dropdown = ({
             />
           </div>
         )}
-        <p>{title}</p>
+        <span className="text-xs">{title}</span>
       </div>
       {openDropdown && (
         <>
@@ -45,13 +45,13 @@ const Dropdown = ({
                   className="  
                      first:text-primary-darkGreen
                      text-gray-text
-                  :hover:bg-other-faintBlue py-14 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  :hover:bg-other-faintBlue py-10 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                   onClick={() => {
                     setValue(item);
                     setOpenDropdown(false);
                   }}
                 >
-                  <h6 className=" ">{item}</h6>
+                  <p className=" ">{item}</p>
                 </div>
               ))}
             </div>

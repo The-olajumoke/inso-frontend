@@ -2,6 +2,6 @@ export const REGISTER_LOADING = "REGISTER_LOADING";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_ERROR = "REGISTER_ERROR";
 
-export const SIGN_IN_LOADING = "SIGN_IN_LOADING";
-export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
-export const SIGN_IN_ERROR = "SIGN_IN_ERROR";
+export const LOG_IN_LOADING = "LOG_IN_LOADING";
+export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
+export const LOG_IN_ERROR = "LOG_IN_ERROR";

@@ -68,7 +68,7 @@ const Index = () => {
                   height="18"
                 />
               </div>
-              <p>Archives</p>
+              <span className="text-xs">Archives</span>
             </button>
           </div>
         </div>

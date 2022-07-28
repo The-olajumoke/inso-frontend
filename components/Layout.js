@@ -12,14 +12,18 @@ const Layout = ({ title, children, searchBar, bgColor, API_URL }) => {
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
   const [token, setToken] = useState(false);
-
-  // const {
-  //   discussionDispatch,
-  //   dicussionState: {
-  //     discussion: { createLoading, createSuccess, createError },
-  //   },
-  // } = useContext(GlobalContext);
-  console.log(GlobalContext);
+  const {
+    authDispatch,
+    authState: {
+      auth: { loading },
+    },
+  } = useContext(GlobalContext);
+  const {
+    discussionDispatch,
+    discussionState: {
+      discussion: { createLoading, createSuccess, createError },
+    },
+  } = useContext(GlobalContext);
 
   // useEffect(() => {
   //   createDiscussion(API_URL, token)(discussionDispatch);

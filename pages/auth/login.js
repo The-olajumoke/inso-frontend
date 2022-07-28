@@ -3,18 +3,25 @@ import RegLayout from "@/components/RegLayout";
 import Head from "next/head";
 import Image from "next/image";
 import Input from "@/components/Input";
-import { validateEmail } from "@/utils/validations";
+import { validateEmail, validatePassword } from "@/utils/validations";
 import Link from "next/link";
-const LoginPage = () => {
+import RegInput from "@/components/RegInput";
+import { login } from "@/context/actions/auth/login";
+import { GlobalContext } from "@/context/Provider";
+
+const LoginPage = ({ API_URL }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-  };
+  const {
+    authDispatch,
+    authState: {
+      auth: { loading, registerSuccess },
+    },
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     if (validateEmail(email) && password.length >= 8) {
@@ -24,14 +31,32 @@ const LoginPage = () => {
     }
   }, [email, password]);
 
-  const passwordErrorHandler = () => {
-    if (password.length < 8) {
-      setPasswordError("Password can not be less than 8 characters");
+  const passwordHandler = () => {
+    if (!validatePassword(password)) {
+      setPasswordError(
+        "8 characters long, include an uppercase, a lowercase, a number and a special character."
+      );
     } else {
       setPasswordError("");
     }
   };
+  const emailBlurHandler = () => {
+    if (!validateEmail(email)) {
+      setEmailError("Invalid email");
+    } else {
+      setEmailError("");
+    }
+  };
 
+  const handleLogin = (evt) => {
+    evt.preventDefault();
+
+    const user = {
+      email,
+      password,
+    };
+    login(API_URL, user)(authDispatch);
+  };
   return (
     <RegLayout>
       <div className="vp-600:h-full vp-600:w-full">
@@ -74,24 +99,25 @@ const LoginPage = () => {
             </h4>
             <form onSubmit={handleLogin}>
               <div>
-                <Input
+                <RegInput
                   label="Email Address"
-                  type="email"
                   placeholder="Email"
                   value={email}
                   setValue={setEmail}
+                  type="email"
+                  blurHandler={emailBlurHandler}
                   errorMessage={emailError}
                 />
               </div>
               <div className="mb-80">
-                <Input
+                <RegInput
                   label="Password"
-                  placeholder="Password"
+                  placeholder="Create password"
                   value={password}
                   setValue={setPassword}
                   type="password"
                   errorMessage={passwordError}
-                  keyUpHandler={passwordErrorHandler}
+                  keyUpHandler={passwordHandler}
                 />
               </div>
               <button className="h-48 text-primary-darkGreen  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
@@ -107,14 +133,14 @@ const LoginPage = () => {
                 </div>
                 <h6>Sign in with Google</h6>
               </button>
-              <Link passHref href="/discussions">
-                <button
-                  className="btn h-48 w-full mb-16 text-md "
-                  disabled={isDisabled}
-                >
-                  Log in
-                </button>
-              </Link>
+              {/* <Link passHref href="/discussions"> */}
+              <button
+                className="btn h-48 w-full mb-16 text-md "
+                disabled={isDisabled}
+              >
+                Log in
+              </button>
+              {/* </Link> */}
             </form>
             <p className="mb-24 text-black-analText">
               If you don&#39;t have an account,{" "}
@@ -130,5 +156,12 @@ const LoginPage = () => {
     </RegLayout>
   );
 };
-
+export async function getServerSideProps() {
+  const API_URL = process.env.API_URL;
+  return {
+    props: {
+      API_URL,
+    },
+  };
+}
 export default LoginPage;

@@ -28,7 +28,7 @@ const Subscription = () => {
               <div className="border-r-2 border-border-line col-span-3">
                 <div className="h-174 border-b-2  border-border-line"></div>
                 {/* content */}
-                <div className="mt-38 ml-64 vp-600:ml-30  text-gray-text">
+                <div className="mt-38 ml-64 vp-600:ml-30  text-black-postInsp">
                   <h5 className="mb-21">First benefit</h5>
                   <h5 className="mb-21">Second benefit</h5>
                   <h5 className="mb-21">Third benefit</h5>
@@ -38,11 +38,11 @@ const Subscription = () => {
               </div>
               <div className="border-r-2 border-border-line col-span-2">
                 <div className="h-174 border-b-2  border-border-line flex flex-col items-center justify-center">
-                  <h4 className=" text-gray-text mb-19">Free User</h4>
+                  <h4 className=" text-black-postInsp mb-19">Free User</h4>
                   <h2 className=" text-border-line">$0</h2>
-                  <span className=" text-gray-text">per year</span>
+                  <span className=" text-black-postInsp">per year</span>
                 </div>
-                <div className="mt-38  text-gray-text text-center">
+                <div className="mt-38  text-black-postInsp text-center">
                   <h5 className="mb-21">Basic</h5>
                   <h5 className="mb-21">Basic</h5>
                   <h5 className="mb-21">Basic</h5>
@@ -52,11 +52,11 @@ const Subscription = () => {
               </div>
               <div className="border-r-2 border-border-line col-span-2">
                 <div className="h-174 border-b-2  border-border-line flex flex-col items-center justify-center">
-                  <h4 className=" text-gray-text mb-19">Level 1 User </h4>
+                  <h4 className=" text-black-postInsp mb-19">Level 1 User </h4>
                   <h2 className=" text-border-line">$10</h2>
-                  <span className=" text-gray-text">per year</span>
+                  <span className=" text-black-postInsp">per year</span>
                 </div>
-                <div className="mt-38  text-gray-text text-center">
+                <div className="mt-38  text-black-postInsp text-center">
                   <h5 className="mb-21">Third benefit</h5>
                   <h5 className="mb-21">-</h5>
                   <h5 className="mb-21">-</h5>
@@ -71,11 +71,11 @@ const Subscription = () => {
               </div>
               <div className=" col-span-2">
                 <div className="h-174 border-b-2  border-border-line flex flex-col items-center justify-center">
-                  <h4 className=" text-gray-text mb-19">Level 2 User </h4>
+                  <h4 className=" text-black-postInsp mb-19">Level 2 User </h4>
                   <h2 className=" text-border-line">$20</h2>
-                  <span className=" text-gray-text">per year</span>
+                  <span className=" text-black-postInsp">per year</span>
                 </div>
-                <div className="mt-38  text-gray-text text-center">
+                <div className="mt-38  text-black-postInsp text-center">
                   <h5 className="mb-21">Third benefit</h5>
                   <h5 className="mb-21">-</h5>
                   <h5 className="mb-21">-</h5>
