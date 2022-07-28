@@ -9,7 +9,8 @@ import RegInput from "@/components/RegInput";
 import { login } from "@/context/actions/auth/login";
 import { GlobalContext } from "@/context/Provider";
 
-const LoginPage = ({ API_URL }) => {
+const LoginPage = () => {
+  const API_URL = "http://localhost:3000";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -156,12 +157,12 @@ const LoginPage = ({ API_URL }) => {
     </RegLayout>
   );
 };
-export async function getStaticProps() {
-  const API_URL = process.env.API_URL;
-  return {
-    props: {
-      API_URL,
-    },
-  };
-}
+// export async function getStaticProps() {
+//   const API_URL = process.env.API_URL;
+//   return {
+//     props: {
+//       API_URL,
+//     },
+//   };
+// }
 export default LoginPage;
