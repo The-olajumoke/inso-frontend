@@ -6,6 +6,7 @@ import {
   REGISTER_SUCCESS,
 } from "@/constants/actionTypes";
 
+
 export const register = (API_URL, user) => async (dispatch) => {
   dispatch({
     type: REGISTER_LOADING,
