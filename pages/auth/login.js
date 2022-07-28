@@ -8,6 +8,10 @@ import Link from "next/link";
 import RegInput from "@/components/RegInput";
 import { login } from "@/context/actions/auth/login";
 import { GlobalContext } from "@/context/Provider";
+import ErrorModal from "@/components/ErrorModal";
+import SpinnerLoader from "@/components/SpinnerLoader";
+import SuccessModal from "@/components/SuccessModal";
+import { getUserProfile } from "@/context/actions/user/getUserProfile";
 
 const LoginPage = () => {
   const API_URL = "http://localhost:3000";
@@ -16,14 +20,35 @@ const LoginPage = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
+  const [loginErrorMessage, setLoginErrorMessage] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
   const {
     authDispatch,
     authState: {
-      auth: { loading, registerSuccess },
+      auth: { loginLoading, loginData, loginSuccess, loginError },
+    },
+  } = useContext(GlobalContext);
+  const {
+    userDispatch,
+    userState: {
+      user: { loading },
     },
   } = useContext(GlobalContext);
 
+  useEffect(() => {
+    setLoginErrorMessage(loginError);
+
+    if (loginData !== null) {
+      const access_token = loginData;
+      localStorage.setItem("accessToken", access_token);
+      setAccessToken(access_token);
+      getUserProfile(API_URL, access_token)(userDispatch);
+      location.replace("/discussions");
+    }
+    setEmail("");
+    setPassword("");
+  }, [loginError, loginSuccess, loginData]);
   useEffect(() => {
     if (validateEmail(email) && password.length >= 8) {
       setIsDisabled(false);
@@ -139,7 +164,13 @@ const LoginPage = () => {
                 className="btn h-48 w-full mb-16 text-md "
                 disabled={isDisabled}
               >
-                Log in
+                {loginLoading ? (
+                  <div className="flex justify-center items-center">
+                    <SpinnerLoader />
+                  </div>
+                ) : (
+                  "Log in"
+                )}
               </button>
               {/* </Link> */}
             </form>
@@ -153,6 +184,12 @@ const LoginPage = () => {
             </p>
           </div>
         </div>
+        {loginSuccess && (
+          <SuccessModal title="Log in Successful" subTitle="Welcome to Inso." />
+        )}
+        {loginError && (
+          <ErrorModal title="Unable to log in." subTitle={loginErrorMessage} />
+        )}
       </div>
     </RegLayout>
   );

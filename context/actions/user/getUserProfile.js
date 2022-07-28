@@ -17,11 +17,9 @@ export const getUserProfile = (API_URL, token) => async (dispatch) => {
       },
     };
 
-    const response = await axios.get(
-      `${API_URL}/api/orgservice/user/me`,
-      config
-    );
+    const response = await axios.get(`${API_URL}/profile`, config);
 
+    console.log(response);
     dispatch({
       type: GET_USERPROFILE_SUCCESS,
       payload: response.data.data,

@@ -14,12 +14,10 @@ export const login = (API_URL, user) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, user);
 
-    if (response.data.status === true) {
-      dispatch({
-        type: LOG_IN_SUCCESS,
-        payload: response.data.data,
-      });
-    }
+    dispatch({
+      type: LOG_IN_SUCCESS,
+      payload: response.data.access_token,
+    });
   } catch (error) {
     dispatch({
       type: LOG_IN_ERROR,

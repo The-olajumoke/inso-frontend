@@ -2,13 +2,15 @@ import React, { useState, useContext, useEffect } from "react";
 import RegLayout from "@/components/RegLayout";
 import Head from "next/head";
 import Image from "next/image";
-import Input from "@/components/Input";
 import { validateEmail } from "@/utils/validations";
 import Link from "next/link";
 import RegInput from "@/components/RegInput";
 import { validatePassword } from "@/utils/validations";
 import { register } from "@/context/actions/auth/register";
 import { GlobalContext } from "@/context/Provider";
+import SpinnerLoader from "@/components/SpinnerLoader";
+import ErrorModal from "@/components/ErrorModal";
+import SuccessModal from "@/components/SuccessModal";
 
 const SignUpPage = () => {
   const API_URL = "http://localhost:3000";
@@ -29,13 +31,19 @@ const SignUpPage = () => {
   const {
     authDispatch,
     authState: {
-      auth: { loading, registerSuccess },
+      auth: { loading, registerSuccess, registerError },
     },
   } = useContext(GlobalContext);
 
   useEffect(() => {
     console.log(registerSuccess);
-  }, [registerSuccess]);
+    console.log(registerError);
+    setEmail("");
+    setFirstName("");
+    setLastName("");
+    setConfirmPassword("");
+    setPassword("");
+  }, [registerSuccess, registerError]);
   useEffect(() => {
     if (
       validateEmail(email) &&
@@ -92,17 +100,7 @@ const SignUpPage = () => {
 
   const handleRegistration = (evt) => {
     evt.preventDefault();
-    //     {
-    //   "f_name": "string",
-    //   "l_name": "string",
-    //   "contact": [
-    //     {
-    //       "email": "mockemail",
-    //       "primary": true
-    //     }
-    //   ],
-    //   "password": "string"
-    // }
+
     const user = {
       f_name: firstName,
       l_name: lastName,
@@ -233,7 +231,13 @@ const SignUpPage = () => {
                 className="text-md btn h-48 w-full mb-16"
                 disabled={isDisabled}
               >
-                Sign up
+                {loading ? (
+                  <div className="flex justify-center items-center">
+                    <SpinnerLoader />
+                  </div>
+                ) : (
+                  "Sign up"
+                )}
               </button>
             </form>
             <p className="mb-24 text-gray-text">
@@ -252,6 +256,18 @@ const SignUpPage = () => {
             </span>
           </div>
         </div>
+        {registerSuccess && (
+          <SuccessModal
+            title="Account created Successfully"
+            subTitle="Log in to start a discussion."
+          />
+        )}
+        {registerError && (
+          <ErrorModal
+            title="Unable to create account."
+            subTitle="Email already Exist."
+          />
+        )}
       </div>
     </RegLayout>
   );

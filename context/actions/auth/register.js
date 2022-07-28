@@ -6,7 +6,6 @@ import {
   REGISTER_SUCCESS,
 } from "@/constants/actionTypes";
 
-
 export const register = (API_URL, user) => async (dispatch) => {
   dispatch({
     type: REGISTER_LOADING,
@@ -15,12 +14,11 @@ export const register = (API_URL, user) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_URL}/user`, user);
     console.log(response);
-    if (response.data.status) {
-      dispatch({
-        type: REGISTER_SUCCESS,
-        data: response.data,
-      });
-    }
+
+    dispatch({
+      type: REGISTER_SUCCESS,
+      data: response.data,
+    });
   } catch (error) {
     dispatch({
       type: REGISTER_ERROR,

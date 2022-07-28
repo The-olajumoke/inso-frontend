@@ -3,11 +3,11 @@ export default {
     success: false,
     loading: false,
     data: null,
-    registerSuccess: null,
+    registerSuccess: false,
     registerError: null,
     loginLoading: false,
     loginData: null,
-    loginSuccess: null,
+    loginSuccess: false,
     loginError: null,
   },
 };
