@@ -11,6 +11,7 @@ import { register } from "@/context/actions/auth/register";
 import { GlobalContext } from "@/context/Provider";
 
 const SignUpPage = ({ API_URL }) => {
+  console.log(API_URL);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
@@ -254,7 +255,7 @@ const SignUpPage = ({ API_URL }) => {
     </RegLayout>
   );
 };
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const API_URL = process.env.API_URL;
   return {
     props: {
