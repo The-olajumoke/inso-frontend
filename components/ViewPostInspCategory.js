@@ -8,6 +8,7 @@ const ViewPostInspCategory = ({
   inspiration,
   setViewInspirations,
   setActiveCommentBox,
+  togglePostInsp,
 }) => {
   return (
     <div className=" flex-grow ">
@@ -28,8 +29,8 @@ const ViewPostInspCategory = ({
           <p className="ml-16 text-gray-analyticsGray">back</p>
         </div>
 
-        <Link passHref href="/discussions/view-discussion/post-inspirations">
-          <div className="flex justify-center items-center">
+   
+          <div className="flex justify-center items-center" onClick={ togglePostInsp}>
             <p className=" text-primary-blue mr-10">View in full</p>
             <Image
               src="https://res.cloudinary.com/insomaryland/image/upload/v1657549596/viewInFull_tw4vq9.svg"
@@ -39,7 +40,6 @@ const ViewPostInspCategory = ({
               height="21"
             />
           </div>
-        </Link>
       </div>
       <div className=" flex-grow">
         <h6 className=" text-primary-darkGreen mb-14">

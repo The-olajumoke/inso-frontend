@@ -7,27 +7,48 @@ import Link from "next/link";
 import styles from "@/styles/layout.module.css";
 import { GlobalContext } from "@/context/Provider";
 import { createDiscussion } from "@/context/actions/discussion/createDiscussion";
-const Layout = ({ title, children, searchBar, bgColor, API_URL }) => {
-  console.log(API_URL);
+import { getUserProfile } from "@/context/actions/user/getUserProfile";
+const Layout = ({ title, children, searchBar, bgColor }) => {
+  const API_URL = "http://localhost:3000";
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState("");
+  const [userProfile, setUserProfile] = useState(null);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken);
+    setToken(accessToken);
+  }, []);
   const {
-    authDispatch,
-    authState: {
-      auth: { loading },
-    },
-  } = useContext(GlobalContext);
-  const {
-    discussionDispatch,
-    discussionState: {
-      discussion: { createLoading, createSuccess, createError },
+    userDispatch,
+    userState: {
+      user: { profileData, updatePasswordSuccess, editProfileSuccess },
     },
   } = useContext(GlobalContext);
 
-  // useEffect(() => {
-  //   createDiscussion(API_URL, token)(discussionDispatch);
-  // }, [token]);
+  useEffect(() => {
+    if (token !== "") {
+      getUserProfile(API_URL, token)(userDispatch);
+    }
+  }, [token, updatePasswordSuccess, editProfileSuccess]);
+
+  useEffect(() => {
+    if (profileData !== null) {
+      console.log(profileData);
+      setUserProfile(profileData);
+    }
+  }, [profileData]);
+
+  //   data:
+  // contact: Array(1)
+  // 0: {email: 'jummy@yopmail.com', verified: false, primary: true}
+  // length: 1
+  // [[Prototype]]: Array(0)
+  // f_name: "jumy"
+  // l_name: "goody"
+  // username: "jumygoody1"
+  // _id: "62e2a7c89a0f5c1cdae61cb3"
+
   const handleNavSize = () => {
     if (navSize === "small") {
       console.log(navSize);
@@ -58,7 +79,7 @@ const Layout = ({ title, children, searchBar, bgColor, API_URL }) => {
             style={{ minHeight: "109px" }}
             className={`${styles.hiddenScrollbar} border-r  border-other-disabled `}
           >
-            <Sidebar navSize={navSize} />
+            <Sidebar navSize={navSize} user={userProfile} />
           </div>
           <div className={`${bgColor} w-full`}>{children}</div>
         </div>

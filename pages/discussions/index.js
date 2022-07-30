@@ -55,6 +55,7 @@ const Index = () => {
                 items={filterOptions}
                 openDropdown={openDropdown}
                 setOpenDropdown={setOpenDropdown}
+                showTitle={true}
               />
             </button>
 

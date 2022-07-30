@@ -516,17 +516,17 @@ export const rubricScoring = [
     total: 40,
   },
 ];
-export const rubricCriteria = [
-  {
-    criteria: "Explain why you are ...",
-    totalScore: 28,
-  },
-  {
-    criteria: "Explain why you are ...",
-    totalScore: 28,
-  },
-  {
-    criteria: "Explain why you are ...",
-    totalScore: 28,
-  },
-];
+export const rubricCriteria = {
+  totalScore: 40,
+  allCriteria: [
+    {
+      criteria: "Explain why you are ...",
+    },
+    {
+      criteria: "Explain why you are ...",
+    },
+    {
+      criteria: "Explain why you are ...",
+    },
+  ],
+};

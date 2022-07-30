@@ -110,6 +110,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={askSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Connect something" && (
@@ -117,6 +118,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={connectSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Create something" && (
@@ -124,6 +126,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={createSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Share something" && (
@@ -131,6 +134,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={shareSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
 
@@ -139,6 +143,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={startSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
 
@@ -147,6 +152,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={addInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Answer" && (
@@ -154,6 +160,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={answerInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Ask" && (
@@ -161,6 +168,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={askInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Evaluate" && (
@@ -168,6 +176,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={evaluateInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "React" && (
@@ -182,6 +191,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={connectionsInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Tags" && (
@@ -189,6 +199,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={tagsInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                   {currentDetailedInsp === "Thread" && (
@@ -196,6 +207,7 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
                       inspiration={threadsInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
                     />
                   )}
                 </div>

@@ -7,17 +7,21 @@ const SettingsInput = ({
   placeholder,
   disabled,
   editProfile,
+  blurHandler,
+  keyUpHandler,
 }) => {
   const [showPassword, setShowPassword] = useState(true);
   const [currentType, setCurrentType] = useState(type);
   return (
-    <div className=" w-full relative" disabled={disabled}>
+    <div className="relative" disabled={disabled}>
       <input
         type={currentType}
         placeholder={placeholder || "Enter"}
         value={value}
         onChange={(evt) => setValue(evt.target.value)}
         disabled={disabled}
+        onBlur={blurHandler}
+        onKeyUp={keyUpHandler}
         className={`${
           editProfile ? "border-2 border-blue-inputBlue" : "border-none"
         } h-36 vp-980:h-45 px-15   w-414 vp-600:w-full  text-sm text-gray-text`}

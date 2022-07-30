@@ -147,7 +147,7 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
       </div>
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
-        title="Alternative Perspectives"
+        title="Alternative"
         togglePostInsp={togglePostInsp}
       />
     </div>

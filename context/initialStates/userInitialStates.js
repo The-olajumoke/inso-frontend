@@ -4,5 +4,8 @@ export default {
     success: false,
     error: null,
     profileData: null,
+    editProfileSuccess: false,
+    updatePasswordSuccess: false,
+    updatePasswordError: null,
   },
 };

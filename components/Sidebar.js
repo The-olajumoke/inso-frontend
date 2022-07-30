@@ -1,36 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/sidebar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-const Sidebar = ({ navSize, userPicture }) => {
+const Sidebar = ({ navSize, userPicture, user }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [initials, setInitials] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    if (user !== null) {
+      const { f_name, l_name, username } = user;
+      setFirstName(f_name);
+      setLastName(l_name);
+      setUserName(username);
+      const firstInit = f_name?.split("")[0];
+      const lastInit = l_name?.split("")[0];
+      setInitials(`${firstInit} ${lastInit}`);
+    }
+  }, [user]);
 
   return (
     <>
       <div
         className={`${styles.sidebarContainer} ${
           navSize === "small" ? "w-109" : "w-333"
-        }   flex flex-col justify-between p-9  vp-980:hidden`}
+        }   flex flex-col justify-between p-9  h-full  vp-980:hidden`}
       >
         <div className=" flex  pl-50">
           {userPicture ? (
             <div>picture</div>
           ) : (
             <div className="h-37 w-37 text-xs flex justify-center items-center font-semibold mr-15 border overflow-hidden p-0 rounded-full bg-primary-darkGreen">
-              <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 ">
-                PD
+              <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 capitalize ">
+                {initials}
               </span>
             </div>
           )}
           <div className={`${navSize === "small" && "hidden"}`}>
-            <h4 className="text-gray-text">Patrick Dempsey</h4>
-            <h6 className=" text-primary-darkGreen">@patrick</h6>
-            <h5 className=" text-other-success mt-10">Starter</h5>
+            <h6 className="text-gray-text">
+              {firstName} {lastName}
+            </h6>
+            <span className=" text-xs text-primary-darkGreen">@{userName}</span>
+            <h6 className=" text-other-success mt-10">Starter</h6>
           </div>
         </div>
-        <div className="mt-12">
+        <div className="mt-12 flex-grow">
           <div className="">
+            <Link href="/home">
+              <a
+                className={`${
+                  router.pathname.startsWith("/home") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/home")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1659168361/home_ihfz7d.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_cf2xom.svg"
+                  }
+                  alt="discussion"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+
+                <h6 className={`${navSize === "small" && "hidden"}  `}>Home</h6>
+              </a>
+            </Link>
             <Link href="/discussions">
               <a
                 className={`${
@@ -51,9 +92,9 @@ const Sidebar = ({ navSize, userPicture }) => {
                   layout="fixed"
                 />
 
-                <h4 className={`${navSize === "small" && "hidden"}  `}>
+                <h6 className={`${navSize === "small" && "hidden"}  `}>
                   Discussions
-                </h4>
+                </h6>
               </a>
             </Link>
             <Link passHref href="/notifications">
@@ -75,9 +116,9 @@ const Sidebar = ({ navSize, userPicture }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className={`${navSize === "small" && "hidden"} `}>
+                <h6 className={`${navSize === "small" && "hidden"} `}>
                   Notifications
-                </h4>
+                </h6>
               </div>
             </Link>
             <Link href="/stats" passHref>
@@ -99,7 +140,7 @@ const Sidebar = ({ navSize, userPicture }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className={`${navSize === "small" && "hidden"}`}>Stats</h4>
+                <h6 className={`${navSize === "small" && "hidden"}`}>Stats</h6>
               </div>
             </Link>
             <Link href="/analytics" passHref>
@@ -121,12 +162,12 @@ const Sidebar = ({ navSize, userPicture }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className={`${navSize === "small" && "hidden"}`}>
+                <h6 className={`${navSize === "small" && "hidden"}`}>
                   Analytics
-                </h4>
+                </h6>
               </div>
             </Link>
-            <Link href="/charts" passHref>
+            {/* <Link href="/charts" passHref>
               <div
                 className={`${
                   router.pathname.startsWith("/charts") &&
@@ -145,10 +186,10 @@ const Sidebar = ({ navSize, userPicture }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className={`${navSize === "small" && "hidden"}`}>Charts</h4>
+                <h6 className={`${navSize === "small" && "hidden"}`}>Charts</h6>
               </div>
-            </Link>
-            <Link href="/calendar" passHref>
+            </Link> */}
+            {/* <Link href="/calendar" passHref>
               <div
                 className={`${
                   router.pathname.startsWith("/calendar") &&
@@ -167,11 +208,11 @@ const Sidebar = ({ navSize, userPicture }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className={`${navSize === "small" && "hidden"}`}>
+                <h6 className={`${navSize === "small" && "hidden"}`}>
                   Calendar
-                </h4>
+                </h6>
               </div>
-            </Link>
+            </Link> */}
             <Link href="/contact" passHref>
               <div
                 className={`${
@@ -191,9 +232,9 @@ const Sidebar = ({ navSize, userPicture }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className={`${navSize === "small" && "hidden"}`}>
+                <h6 className={`${navSize === "small" && "hidden"}`}>
                   Contact us
-                </h4>
+                </h6>
               </div>
             </Link>
             <Link href="/settings" passHref>
@@ -215,9 +256,9 @@ const Sidebar = ({ navSize, userPicture }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className={`${navSize === "small" && "hidden"}`}>
+                <h6 className={`${navSize === "small" && "hidden"}`}>
                   Settings
-                </h4>
+                </h6>
               </div>
             </Link>
           </div>

@@ -1,15 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import Profile from "@/components/Profile";
 import Security from "@/components/Security";
 import Plan from "@/components/Plan";
 import styles from "@/styles/progressbar.module.css";
+import ErrorModal from "@/components/ErrorModal";
+import SuccessModal from "@/components/SuccessModal";
+import { GlobalContext } from "@/context/Provider";
+import { updateUserPassword } from "@/context/actions/user/updateUserPassword";
 
 const Settings = () => {
+  const API_URL = "http://localhost:3000";
   const [activeSetting, setActiveSetting] = useState("profile");
   const [incompleteProfile, setIncompleteProfile] = useState(true);
   const [editProfile, setEditProfile] = useState(false);
+  const [title, setTitle] = useState("");
+  const [subTitle, setSubTitle] = useState("");
+  const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState("");
+  const {
+    userDispatch,
+    userState: {
+      user: {
+        profileData,
+        editProfileSuccess,
+        error,
+        updatePasswordSuccess,
+        updatePasswordError,
+      },
+    },
+  } = useContext(GlobalContext);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken);
+    setToken(accessToken);
+  }, []);
+
+  useEffect(() => {
+    if (profileData !== null) {
+      const { _id } = profileData;
+      setUserId(_id);
+    }
+  }, [profileData]);
+  useEffect(() => {
+    if (editProfileSuccess) {
+      setTitle("User Updated Successfully");
+    }
+    if (error) {
+      setTitle(error);
+    }
+  }, [editProfileSuccess, error]);
+
+  useEffect(() => {
+    console.log(updatePasswordSuccess);
+    console.log(updatePasswordError);
+    if (updatePasswordSuccess) {
+      setTitle("Password Updated Successfully");
+    }
+    if (updatePasswordError !== null) {
+      setTitle(updatePasswordError);
+    }
+  }, [updatePasswordSuccess, updatePasswordError]);
+
+  const handlePasswordUpdate = (body) => {
+    updateUserPassword(API_URL, token, userId, body)(userDispatch);
+  };
 
   return (
     <Layout title="Inso | Settings">
@@ -87,9 +143,22 @@ const Settings = () => {
               setEditProfile={setEditProfile}
             />
           )}
-          {activeSetting === "security" && <Security editProfile={true} />}
+          {activeSetting === "security" && (
+            <Security
+              editProfile={true}
+              handlePasswordUpdate={handlePasswordUpdate}
+            />
+          )}
           {activeSetting === "plan" && <Plan />}
         </div>
+        {editProfileSuccess && updatePasswordSuccess && (
+          <SuccessModal title={title} subTitle={subTitle} />
+        )}
+        {error && <ErrorModal title={title} subTitle={subTitle} />}
+
+        {updatePasswordError !== null && (
+          <ErrorModal title={title} subTitle={subTitle} />
+        )}
       </div>
     </Layout>
   );

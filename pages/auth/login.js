@@ -43,12 +43,12 @@ const LoginPage = () => {
       const access_token = loginData;
       localStorage.setItem("accessToken", access_token);
       setAccessToken(access_token);
-      getUserProfile(API_URL, access_token)(userDispatch);
-      location.replace("/discussions");
+      location.replace("/home");
     }
     setEmail("");
     setPassword("");
   }, [loginError, loginSuccess, loginData]);
+
   useEffect(() => {
     if (validateEmail(email) && password.length >= 8) {
       setIsDisabled(false);
@@ -159,7 +159,7 @@ const LoginPage = () => {
                 </div>
                 <h6>Sign in with Google</h6>
               </button>
-              {/* <Link passHref href="/discussions"> */}
+
               <button
                 className="btn h-48 w-full mb-16 text-md "
                 disabled={isDisabled}
@@ -172,7 +172,6 @@ const LoginPage = () => {
                   "Log in"
                 )}
               </button>
-              {/* </Link> */}
             </form>
             <p className="mb-24 text-black-analText">
               If you don&#39;t have an account,{" "}

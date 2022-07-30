@@ -1,301 +1,288 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.rdw-editor-toolbar,.rdw-option-wrapper{
-    border: none !important;
+.rdw-editor-toolbar,
+.rdw-option-wrapper {
+  border: none !important;
 }
-.rdw-editor-main{
-    overflow: hidden !important;
+.rdw-editor-main {
+  overflow: hidden !important;
 }
-.public-DraftStyleDefault-block{
-    /* font-size: 20px !important; */
+.public-DraftStyleDefault-block {
+  /* font-size: 20px !important; */
 }
 /* input,button, */
 @layer base {
-    html {
-        font-size: 62.5%;
-            
-    }
+  html {
+    font-size: 62.5%;
+  }
 
-       h1 {
-        @apply text-5xl text-gray-text font-medium font-poppins;
-    }
-    
-    h2 {
-        @apply text-3xl  text-gray-text font-poppins;
-    }
-    
-    h3 {
-        @apply text-2xl text-gray-text vp-768:text-xl vp-600:text-lg font-poppins  ;
-    }
-    
-    h4 {
-        @apply text-xl vp-768:text-lg  vp-600:text-md font-poppins  ;
-    }
-    
-    h5 {
-        @apply text-lg font-poppins;
-    }
-    
-    h6 {
-        @apply text-md vp-600:text-sm font-poppins;
-    }
+  h1 {
+    @apply text-5xl text-gray-text font-medium font-poppins;
+  }
 
-    
-    p {
-        @apply text-sm text-gray-text font-poppins;
-    }
+  h2 {
+    @apply text-3xl  text-gray-text font-poppins;
+  }
 
-    button,span,div{
-@apply font-poppins
-    }
-[type='text'],
-[type='email'],
-[type='url'],
-[type='password'],
-[type='number'],
-[type='date'],
-[type='datetime-local'],
-[type='month'],
-[type='search'],
-[type='tel'],
-[type='time'],
-[type='week'],
-[multiple]{
-    @apply text-sm w-full rounded-xs  border-primary-blue h-43 px-17  text-gray-text  focus:ring-primary-darkGreen focus:ring-2 focus:border-0 font-poppins font-light
-}
+  h3 {
+    @apply text-2xl text-gray-text vp-768:text-xl vp-600:text-lg font-poppins;
+  }
 
-textarea {
-    @apply  w-full text-gray-text h-full  resize-none outline-none  focus:ring-0  
-     text-lg  leading-10 font-poppins
-}
+  h4 {
+    @apply text-xl vp-768:text-lg  vp-600:text-md font-poppins;
+  }
 
-input:disabled{
-    @apply  text-other-disabledText bg-other-disabled font-poppins
-}
-input::placeholder{
-    color:#BBBBBB;
-    
-    
-}
+  h5 {
+    @apply text-lg font-poppins;
+  }
 
-input:-ms-input-placeholder {
+  h6 {
+    @apply text-md vp-600:text-sm font-poppins;
+  }
+
+  p {
+    @apply text-sm text-gray-text font-poppins;
+  }
+
+  button,
+  span,
+  div {
+    @apply font-poppins;
+  }
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple] {
+    @apply text-sm w-full rounded-xs  border-primary-blue h-43 px-17  text-gray-text  focus:ring-primary-darkGreen focus:ring-2 focus:border-0 font-poppins font-light;
+  }
+
+  textarea {
+    @apply w-full text-gray-text h-full  resize-none outline-none  focus:ring-0  
+     text-lg  leading-10 font-poppins;
+  }
+
+  input:disabled {
+    @apply text-other-disabledText bg-other-disabled font-poppins cursor-not-allowed;
+  }
+  input::placeholder {
+    color: #bbbbbb;
+  }
+
+  input:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-     color:#BBBBBB;
+    color: #bbbbbb;
     font-size: 1.3rem;
-}
+  }
 
-input::-ms-input-placeholder {
+  input::-ms-input-placeholder {
     /* Microsoft Edge */
-     color:#BBBBBB;
+    color: #bbbbbb;
     font-size: 1.3rem;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
+  }
 
-/* Firefox */
-input[type=number] {
+  /* Firefox */
+  input[type="number"] {
     -moz-appearance: textfield;
-}
+  }
 
-/* CHECKBOX */
+  /* CHECKBOX */
   .checkbox-container {
-      display: flex;
-      position: relative;
-      align-items: center;
+    display: flex;
+    position: relative;
+    align-items: center;
   }
 
   .checkbox-container label {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
   }
 
-  .checkbox-container input[type='checkbox'] , .checkbox-container input[type='radio'] {
-      cursor: pointer;
-      opacity: 0;
-      position: absolute;
-      width: 1.4rem;
-      height: 1.4rem;
-  
+  .checkbox-container input[type="checkbox"],
+  .checkbox-container input[type="radio"] {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    width: 1.4rem;
+    height: 1.4rem;
   }
 
   .checkbox-container label::before {
-      content: '';
-      width: 1.4rem;
-      height: 1.4rem;
-      display: flex;
-      border-radius: 2px;
-      border: 1px solid #caceca;
-      transition: all 0.3s;
+    content: "";
+    width: 1.4rem;
+    height: 1.4rem;
+    display: flex;
+    border-radius: 2px;
+    border: 1px solid #caceca;
+    transition: all 0.3s;
   }
 
-  .checkbox-container input[type='checkbox']:checked+label span,
-  .checkbox-container input[type='radio']:checked +label span
-   {
-      content: '';
-      background-color: #07A098;
-      width: 1.4rem;
-      height: 1.4rem;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-container: center;
-      pointer-events: none;
-      transition: all 0.3s;
+  .checkbox-container input[type="checkbox"]:checked + label span,
+  .checkbox-container input[type="radio"]:checked + label span {
+    content: "";
+    background-color: #07a098;
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-container: center;
+    pointer-events: none;
+    transition: all 0.3s;
   }
 
-  .checkbox-container input[type='checkbox']:disabled+label span, 
-   .checkbox-container input[type='radio']:disabled+label span {
-      content: '';
-      background-color: #caceca;
-      width: 1.4rem;
-      height: 1.4rem;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-container: center;
-      pointer-events: none;
-      transition: all 0.3s;
+  .checkbox-container input[type="checkbox"]:disabled + label span,
+  .checkbox-container input[type="radio"]:disabled + label span {
+    content: "";
+    background-color: #caceca;
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-container: center;
+    pointer-events: none;
+    transition: all 0.3s;
   }
 
-/* ////////// */
-.btn{
-        @apply bg-primary-darkGreen text-white-white  font-normal rounded  text-center items-center flex justify-center outline-none font-poppins
-    }
+  /* ////////// */
+  .btn {
+    @apply bg-primary-darkGreen text-white-white  font-normal rounded  text-center items-center flex justify-center outline-none font-poppins;
+  }
 
-    .btn-outline{
-        @apply  border-2 border-primary-blue text-primary-darkGreen bg-white-white rounded text-center items-center flex justify-center outline-none font-poppins
-    }
-.btn:disabled {
+  .btn-outline {
+    @apply border-2 border-primary-blue text-primary-darkGreen bg-white-white rounded text-center items-center flex justify-center outline-none font-poppins;
+  }
+  .btn:disabled {
     @apply bg-other-disabled text-gray-faintGray font-normal rounded cursor-not-allowed font-poppins;
-}
-.btn-nonActive{
-    @apply bg-blue-lightBlue text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins
-}
-.btnPostInspNonActive{
-    @apply bg-blue-postInsp text-black-postInsp font-normal rounded text-center flex items-center justify-center outline-none font-poppins
-}
-.btn-analNonActive{
-    @apply  bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins
-}
+  }
+  .btn-nonActive {
+    @apply bg-blue-lightBlue text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
+  }
+  .btnPostInspNonActive {
+    @apply bg-blue-postInsp text-black-postInsp font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
+  }
+  .btn-analNonActive {
+    @apply bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
+  }
 
-.btn-currentSection{
-    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-primary-darkGreen outline-none vp-600:text-sm
+  .btn-currentSection {
+    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-primary-darkGreen outline-none vp-600:text-sm;
+  }
+  .btn-notCurrentSection {
+    @apply  text-other-disabledText text-md flex justify-center items-center border-b-2 border-other-disabled outline-none vp-600:text-sm;
+  }
 }
-.btn-notCurrentSection{
-    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-other-disabled outline-none vp-600:text-sm
-}
-
-}
-
-
 
 /* ///////////////////////////////////////////////// */
 
-
 .react-calendar {
-    width:100% !important;
-    height: auto !important;
-    /* background: #ffffff; */
-    background: #FAFAFA !important;
-    padding: 0px 30px !important;
-    border: none !important;
- 
+  width: 100% !important;
+  height: auto !important;
+  /* background: #ffffff; */
+  background: #fafafa !important;
+  padding: 0px 30px !important;
+  border: none !important;
 }
 
 .react-calendar__navigation {
-    display: flex;
-    justify-content: space-between;
-    /* background-color: rebeccapurple; */
-    margin-bottom: 16px !important;
-    background-color:transparent;
-    font-size: 12px !important;
-    transform: translateY(20px);
-    color:#2E2E2E !important;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: rebeccapurple; */
+  margin-bottom: 16px !important;
+  background-color: transparent;
+  font-size: 12px !important;
+  transform: translateY(20px);
+  color: #2e2e2e !important;
 }
 
 .react-calendar__navigation__prev-button {
-    order: 1;
+  order: 1;
 }
 
 .react-calendar__navigation__prev-button:hover,
 .react-calendar__navigation__next-button:hover {
-    background-color: none !important;
+  background-color: none !important;
 }
 
 .react-calendar__navigation__next-button {
-    order: 1;
+  order: 1;
 }
 
 .react-calendar__navigation__prev2-button,
 .react-calendar__navigation__next2-button {
-    display: none;
+  display: none;
 }
 
 .react-calendar__navigation__label {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    color: #2E2E2E;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: #2e2e2e;
 }
 
 .react-calendar__month-view__days__day--weekend {
-    color: black !important;
+  color: black !important;
 }
 
 .react-calendar__tile--active {
-    background: rgb(7, 160, 152, 0.45) !important;
+  background: rgb(7, 160, 152, 0.45) !important;
 
-    color: white !important;
+  color: white !important;
 }
 
 .react-calendar__tile--rangeEnd,
 .react-calendar__tile--rangeStart {
-    background: #07a098 !important;
-    color: white !important;
+  background: #07a098 !important;
+  color: white !important;
 }
 
-
-.react-calendar__month-view__days__day{
-    color:#2E2E2E !important;
-    font-size: 14px !important;
-        margin-bottom:8px !important;
+.react-calendar__month-view__days__day {
+  color: #2e2e2e !important;
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
 }
 .react-calendar__month-view__weekdays {
-    color: #2E2E2E!important;
-        font-size: 14px !important;
-        margin-bottom: 16px;
-        
+  color: #2e2e2e !important;
+  font-size: 14px !important;
+  margin-bottom: 16px;
 }
-.react-calendar__viewContainer{
-    color: #2E2E2E !important;
-        font-size: 12px !important;
+.react-calendar__viewContainer {
+  color: #2e2e2e !important;
+  font-size: 12px !important;
 }
-abbr{
-    text-decoration: none !important;
-    text-transform: capitalize;
-    font-weight: normal;
+abbr {
+  text-decoration: none !important;
+  text-transform: capitalize;
+  font-weight: normal;
 }
-.react-calendar__tile:disabled{
-    color: rgba(128, 128, 128,0.5) !important;
-} 
-
+.react-calendar__tile:disabled {
+  color: rgba(128, 128, 128, 0.5) !important;
+}
 
 @media (max-width: 600px) {
-    .react-calendar {
-            padding: 20px 16px !important;
-    
-        }
-    .react-calendar__month-view__weekdays{
-      font-size: 14px !important;
-                    }
-
-                 
+  .react-calendar {
+    padding: 20px 16px !important;
+  }
+  .react-calendar__month-view__weekdays {
+    font-size: 14px !important;
+  }
 }

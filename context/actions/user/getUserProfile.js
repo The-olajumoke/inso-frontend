@@ -22,7 +22,7 @@ export const getUserProfile = (API_URL, token) => async (dispatch) => {
     console.log(response);
     dispatch({
       type: GET_USERPROFILE_SUCCESS,
-      payload: response.data.data,
+      payload: response.data,
     });
   } catch (error) {
     dispatch({

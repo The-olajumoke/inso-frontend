@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/styles/dropdown.module.css";
 import Image from "next/image";
-const Dropdown = ({
+const SettingsDropdown = ({
   value,
   setValue,
   title,
@@ -9,12 +9,18 @@ const Dropdown = ({
   openDropdown,
   setOpenDropdown,
   icon,
-  showTitle,
+  placeholder,
+  disabled,
 }) => {
   return (
-    <div className="relative">
+    <div
+      style={{ width: "416px" }}
+      className={`cursor-pointer relative border-2 border-blue-inputBlue rounded-sm ${
+        disabled ? " bg-other-disabled !text-other-disabledText" : ""
+      }`}
+    >
       <div
-        className="cursor-pointer flex items-center mr-43"
+        className="cursor-pointer px-16  h-36 vp-980:h-45 flex items-center "
         onClick={() => setOpenDropdown(true)}
       >
         {icon && (
@@ -28,11 +34,18 @@ const Dropdown = ({
             />
           </div>
         )}
-        <span className="text-xs">{value}</span>
-        {showTitle ? (
-          <span className="text-xs">{title}</span>
+        {value === "" ? (
+          <span className="text-sm text-other-disabledText capitalize">
+            {placeholder}
+          </span>
         ) : (
-          <span className="text-xs">{value}</span>
+          <span
+            className={`text-sm text-gray-text capitalize ${
+              disabled ? "!text-other-disabledText" : ""
+            }`}
+          >
+            {value}
+          </span>
         )}
       </div>
       {openDropdown && (
@@ -42,22 +55,21 @@ const Dropdown = ({
             onClick={() => setOpenDropdown(false)}
           ></div>
           <div
-            className={`${styles.dropdown} absolute  top-10 bg-white-white w-210  px-20 py-7 z-60  rounded-lg shadow-xs`}
+            className={`${styles.dropdown} absolute top-12 !bg-gray-background w-full  px-20 py-7 z-60  rounded-b-lg shadow-lg`}
           >
-            <div className="w-full ">
+            <div className="w-full">
               {items.map((item, index) => (
                 <div
                   key={index}
                   className="  
-                     first:text-primary-darkGreen
-                     text-gray-text
-                  :hover:bg-other-faintBlue py-10 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  text-gray-text
+                bg-gray-background py-10 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                   onClick={() => {
                     setValue(item);
                     setOpenDropdown(false);
                   }}
                 >
-                  <p className=" ">{item}</p>
+                  <p className=" capitalize">{item}</p>
                 </div>
               ))}
             </div>
@@ -68,4 +80,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default SettingsDropdown;

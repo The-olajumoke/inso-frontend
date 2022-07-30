@@ -1,21 +1,105 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import SettingsInput from "./SettingsInput";
-
+import { GlobalContext } from "@/context/Provider";
+import SettingsDropdown from "./SettingsDropdown";
+import { validateEmail } from "@/utils/validations";
+import { updateUserProfile } from "@/context/actions/user/updateUserProfile";
 const Profile = ({ editProfile, setEditProfile }) => {
+  const API_URL = "http://localhost:3000";
   const [userPicture, setUserPicture] = useState(true);
-  const [userName, setUserName] = useState("@Patrick");
-  const [firstName, setFirstName] = useState("Patrick");
-  const [lastName, setLastName] = useState("Dempsey");
-  const [email, setEmail] = useState("p**********ey@gmail.com");
+  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [alternativeMail, setAlternativeMail] = useState("");
   const [role, setRole] = useState("");
   const [level, setLevel] = useState("");
+  const [initials, setInitials] = useState("");
+  const [userId, setUserId] = useState(null);
+  const [openDropdownRoles, setOpenDropdownRoles] = useState(false);
+  const [openDropdownLevel, setOpenDropdownLevel] = useState(false);
+  const roles = ["Teacher", "Student", "Other"];
+  const levels = [
+    "K-6",
+    "7-12",
+    "2-year college",
+    "4-year undergraduate",
+    "Graduate",
+    "Corporate",
+    "Non-profit",
+    "Other",
+  ];
+  const [token, setToken] = useState("");
+
+  const {
+    userDispatch,
+    userState: {
+      user: { profileData },
+    },
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (profileData !== null) {
+      console.log(profileData);
+      const { f_name, l_name, username, contact, _id, level, role } =
+        profileData;
+      setFirstName(f_name);
+      setLastName(l_name);
+      setUserName(username);
+      setEmail(contact[0]?.email);
+      setAlternativeMail(contact[1]?.email);
+      setLevel(level);
+      setRole(role);
+      setUserId(_id);
+      const firstInit = f_name?.split("")[0];
+      const lastInit = l_name?.split("")[0];
+      setInitials(`${firstInit} ${lastInit}`);
+    }
+  }, [profileData]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken);
+    setToken(accessToken);
+  }, []);
+
+  const emailBlurHandler = () => {
+    if (!validateEmail(alternativeMail)) {
+      setEmailError("Invalid email");
+    } else {
+      setEmailError("");
+    }
+  };
+  const EditUserProfile = () => {
+    let allEmails;
+    if (alternativeMail !== "") {
+      allEmails = [
+        {
+          email: alternativeMail,
+          primary: false,
+        },
+      ];
+    } else {
+      allEmails = [];
+    }
+    const body = {
+      username: userName,
+      f_name: firstName,
+      l_name: lastName,
+      contact: allEmails,
+      level,
+      role,
+    };
+    console.log(body);
+    updateUserProfile(API_URL, token, userId, body)(userDispatch);
+  };
   return (
     <div className="mt-34">
-      <h3 className=" vp-600:hidden text-primary-darkGreen font-medium mb-36">
+      <h4 className=" vp-600:hidden text-primary-darkGreen font-medium mb-36">
         Profile
-      </h3>
+      </h4>
       <div className="flex items-center mb-51">
         <div className=" flex mr-255 vp-600:mr-0 items-center">
           {userPicture ? (
@@ -35,13 +119,18 @@ const Profile = ({ editProfile, setEditProfile }) => {
             </div>
           )}
           <div className="pl-25 ">
-            <h6 className="text-gray-text">Patrick Dempsey</h6>
-            <p className=" text-primary-darkGreen">@patrick</p>
+            <h6 className="text-gray-text">
+              {firstName} {lastName}
+            </h6>
+            <p className=" text-primary-darkGreen">@{userName}</p>
           </div>
         </div>
         <div className="vp-600:hidden">
           {editProfile ? (
-            <button className="w-146 h-34 bg-primary-blue text-white-white rounded text-sm">
+            <button
+              className="w-146 h-34 bg-primary-blue text-white-white rounded text-sm"
+              onClick={EditUserProfile}
+            >
               Save Changes
             </button>
           ) : (
@@ -75,6 +164,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
             setValue={setUserName}
             placeholder="Enter Username"
             editProfile={editProfile}
+            disabled={!editProfile ? true : false}
           />
         </div>
 
@@ -88,6 +178,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
             setValue={setFirstName}
             placeholder="Enter Username"
             editProfile={editProfile}
+            disabled={!editProfile ? true : false}
           />
         </div>
         <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
@@ -100,6 +191,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
             setValue={setLastName}
             placeholder="Enter Username"
             editProfile={editProfile}
+            disabled={!editProfile ? true : false}
           />
         </div>
         <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
@@ -112,6 +204,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
             setValue={setEmail}
             placeholder="Enter Email Address"
             editProfile={editProfile}
+            disabled={true}
           />
         </div>
         <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
@@ -119,41 +212,51 @@ const Profile = ({ editProfile, setEditProfile }) => {
             Alternative Mail :
           </h6>
           <SettingsInput
-            type="text"
+            type="email"
             value={alternativeMail}
             setValue={setAlternativeMail}
             placeholder="Input an alternative  email"
             editProfile={editProfile}
+            disabled={!editProfile ? true : false}
+            blurHandler={emailBlurHandler}
           />
+          {emailError !== "" && (
+            <p className="text-xs text-other-danger">{emailError}</p>
+          )}
         </div>
         <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
           <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
             Primary role :
           </h6>
-          <SettingsInput
-            type="text"
-            value={role}
+
+          <SettingsDropdown
+            items={roles}
             setValue={setRole}
+            value={role}
+            openDropdown={openDropdownRoles}
+            setOpenDropdown={setOpenDropdownRoles}
             placeholder="Input  your professional role"
-            editProfile={editProfile}
+            disabled={!editProfile ? true : false}
           />
         </div>
         <div className="flex vp-980:flex-col items-center mb-12 vp-980:mb-26 vp-980:items-start">
           <h6 className="  w-182 vp-980:w-auto  text-gray-text vp-980:mb-6">
             Level :
           </h6>
-          <SettingsInput
-            type="text"
-            value={level}
+          <SettingsDropdown
+            items={levels}
             setValue={setLevel}
-            placeholder="Input  level/rank"
-            editProfile={editProfile}
+            value={level}
+            openDropdown={openDropdownLevel}
+            setOpenDropdown={setOpenDropdownLevel}
+            placeholder="Input level/rank"
+            disabled={!editProfile ? true : false}
           />
         </div>
       </div>
       <button
         style={{ border: "2px solid rgba(7, 160, 152, 0.05)" }}
-        className="flex justify-center items-center h-34 w-146 rounded "
+        className="flex justify-center items-center h-34 w-146 rounded"
       >
         <Image
           src="/icons/logout.svg"

@@ -56,7 +56,7 @@ const ViewDiscussion = () => {
   const [viewAllTags, setViewAllTags] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
-  const [scoreType, setScoreType] = useState("automatic");
+  const [scoreType, setScoreType] = useState("rubric");
 
   const [showScoresSheet, setShowScoresSheet] = useState(false);
   const [viewFullPostInsp, setViewFullPostInsp] = useState(false);
@@ -769,12 +769,42 @@ const ViewDiscussion = () => {
                             </span>
                           </div>
                           <div className="col-span-4 grid grid-cols-6 justify-between items-center">
-                            <span className=" text-gray-analyticsGray">0</span>
-                            <span className=" text-gray-analyticsGray">1</span>
-                            <span className=" text-gray-analyticsGray">2</span>
-                            <span className=" text-gray-analyticsGray">3</span>
-                            <span className=" text-gray-analyticsGray">4</span>
-                            <span className=" text-gray-analyticsGray">5</span>
+                            <span
+                              className=" text-gray-analyticsGray cursor-pointer"
+                              title={rubricCriteria.totalScore * 0}
+                            >
+                              0
+                            </span>
+                            <span
+                              className=" text-gray-analyticsGray cursor-pointer"
+                              title={rubricCriteria.totalScore * 0.5}
+                            >
+                              1
+                            </span>
+                            <span
+                              className=" text-gray-analyticsGray cursor-pointer"
+                              title={rubricCriteria.totalScore * 0.7}
+                            >
+                              2
+                            </span>
+                            <span
+                              className=" text-gray-analyticsGray cursor-pointer"
+                              title={rubricCriteria.totalScore * 0.8}
+                            >
+                              3
+                            </span>
+                            <span
+                              className=" text-gray-analyticsGray cursor-pointer"
+                              title={rubricCriteria.totalScore * 0.9}
+                            >
+                              4
+                            </span>
+                            <span
+                              className=" text-gray-analyticsGray cursor-pointer"
+                              title={rubricCriteria.totalScore * 1}
+                            >
+                              5
+                            </span>
                           </div>
                           <div className="col-span-2">
                             <span className=" text-xs">Points</span>
@@ -782,8 +812,12 @@ const ViewDiscussion = () => {
                         </div>
 
                         <div className={`${styles.hiddenScrollbar} `}>
-                          {rubricCriteria.map((item, index) => (
-                            <RubricCriteriaTemp item={item} key={index} />
+                          {rubricCriteria.allCriteria.map((item, index) => (
+                            <RubricCriteriaTemp
+                              item={item}
+                              key={index}
+                              total={rubricCriteria.totalScore}
+                            />
                           ))}
                         </div>
                       </div>
