@@ -1,20 +1,24 @@
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import React from "react";
-const withAuth = (WrappedComponent) => {
-  return (props) => {
-    if (typeof window !== "undefined") {
-      const Router = useRouter();
-      const accessToken = localStorage.getItem("accessToken");
 
-      if (!accessToken) {
-        Router.replace("/auth/login");
-        return null;
-      } else if (accessToken) {
-        return <WrappedComponent {...props} />;
+const withAuth = (Component) => {
+  const AuthenticatedComponent = (props) => {
+    const router = useRouter();
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+      const authToken = localStorage.getItem("accessToken");
+      if (!authToken) {
+        router.replace("/auth/login");
+      } else {
+        setToken(authToken);
       }
-    }
-    return null;
+    }, []);
+
+    return !!token ? <Component {...props} /> : null;
   };
+
+  return AuthenticatedComponent;
 };
 
 export default withAuth;

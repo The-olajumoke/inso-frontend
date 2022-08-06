@@ -5,8 +5,8 @@ import {
   UPDATE_SCORES_ERROR,
 } from "@/constants/actionTypes";
 
-export const updateScores =
-  (INV_API_URL, body, token, id) => async (dispatch) => {
+export const createScores =
+  (API_URL, token, body, userId) => async (dispatch) => {
     try {
       dispatch({
         type: UPDATE_SCORES_LOADING,
@@ -16,17 +16,16 @@ export const updateScores =
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.put(
-        `${INV_API_URL}/api/invservice/category/put/${id}`,
+      const response = await axios.post(
+        `${API_URL}/users/${userId}/score`,
         body,
         config
       );
-      if (response.data.status === true) {
-        dispatch({
-          type: UPDATE_SCORES_SUCCESS,
-          payload: response.data.data,
-        });
-      }
+      console.log(response);
+      dispatch({
+        type: UPDATE_SCORES_SUCCESS,
+        payload: response.data,
+      });
     } catch (error) {
       dispatch({
         type: UPDATE_SCORES_ERROR,

@@ -5,8 +5,9 @@ import { GlobalContext } from "@/context/Provider";
 import SettingsDropdown from "./SettingsDropdown";
 import { validateEmail } from "@/utils/validations";
 import { updateUserProfile } from "@/context/actions/user/updateUserProfile";
+import { API_URL } from "@/utils/url";
+
 const Profile = ({ editProfile, setEditProfile }) => {
-  const API_URL = "http://localhost:3000";
   const [userPicture, setUserPicture] = useState(true);
   const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");

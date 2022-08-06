@@ -99,13 +99,10 @@ module.exports = {
       md: "0px 8px 12px 0px rgba(46, 41, 78, 0.08)",
       lg: "0px 7px 15px 0px rgba(169, 169, 169, 0.12)",
       "plan-Shadow": "0px 2.48511px 100px 20px rgba(62, 54, 54, 0.13)",
-      // createDiscussion: "0px 4px 21px rgba(182, 182, 182, 0.26)",
       createDiscussion: "0px 3.2px 16.8px rgba(182, 182, 182, 0.26)",
       none: "0 0 #0000",
     },
-    // background: #FFFFFF;
-    //box-shadow: 0px 3.2px 16.8px rgba(182, 182, 182, 0.26);
-    //border-radius: 13.6px;
+
     screens: {
       "vp-1366": { max: "1366px" },
       "vp-1200": { max: "1200px" },
@@ -537,10 +534,16 @@ module.exports = {
           "50%": { opacity: 0.3 },
           "100%": { opacity: 1 },
         },
+        "fade-in-left": {
+          "0%": { opacity: 0 },
+          "50%": { right: -200, opacity: 0 },
+          "100%": { right: 0 },
+        },
       },
 
       animation: {
         "fade-in": "fade-in 300ms ease-out",
+        "fade-in-left": "fade-in-left 300ms ease-in",
       },
       zIndex: {
         60: 60,
@@ -774,6 +777,7 @@ module.exports = {
         400: "40rem",
         350: "35rem",
         414: "41.4rem",
+        450: "45rem",
         460: "46rem",
         486: "48.6rem",
         500: "50rem",
@@ -1007,6 +1011,7 @@ module.exports = {
         295: "29.5rem",
         300: "30rem",
         317: "31.7rem",
+        320: "32rem",
         350: "35rem",
         400: "39rem",
         439: "43.9rem",

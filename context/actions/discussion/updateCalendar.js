@@ -16,7 +16,7 @@ export const updateScores =
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.put(
+      const response = await axios.patch(
         `${INV_API_URL}/api/invservice/category/put/${id}`,
         body,
         config

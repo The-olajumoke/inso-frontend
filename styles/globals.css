@@ -10,8 +10,13 @@
 .rdw-editor-main {
   overflow: hidden !important;
 }
+.bordered-option-classname img{
+  /* border: 2px solid red; */
+  width: 19.2px;
+  height: 19.2px;
+}
 .public-DraftStyleDefault-block {
-  /* font-size: 20px !important; */
+  margin:0 !important;
 }
 /* input,button, */
 @layer base {
@@ -198,8 +203,8 @@
   width: 100% !important;
   height: auto !important;
   /* background: #ffffff; */
-  background: #fafafa !important;
-  padding: 0px 30px !important;
+  background: #ffffff !important;
+  padding: 0px 38px !important;
   border: none !important;
 }
 
@@ -260,6 +265,9 @@
   font-size: 14px !important;
   margin-bottom: 8px !important;
 }
+.react-calendar__tile--now{
+  background:rgba(14, 180, 246,0.3) !important ;
+}
 .react-calendar__month-view__weekdays {
   color: #2e2e2e !important;
   font-size: 14px !important;
@@ -276,6 +284,10 @@ abbr {
 }
 .react-calendar__tile:disabled {
   color: rgba(128, 128, 128, 0.5) !important;
+}
+.react-calendar__navigation button:disabled{
+  background: none !important;
+  cursor: not-allowed;
 }
 
 @media (max-width: 600px) {

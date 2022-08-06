@@ -1,15 +1,16 @@
 const uploadFile = () => {};
 export const toolbarSettings = {
-  options: [, "emoji", "inline", "image"],
+  options: ["inline", "image", "emoji"],
   emoji: {
     icon: "https://res.cloudinary.com/insomaryland/image/upload/v1655332613/emoji_icon_xamatp.svg",
+    className: "bordered-option-classname",
   },
   inline: {
     options: ["bold", "italic", "underline"],
     bold: {
       className: "bordered-option-classname",
       icon: "https://res.cloudinary.com/insomaryland/image/upload/v1655332608/font_icon_xubtsf.svg",
-      className: "bordered-option-classname",
+      className: "bordered-option-classname ",
     },
     italic: { className: "bordered-option-classname" },
     underline: { className: "bordered-option-classname" },
@@ -22,5 +23,6 @@ export const toolbarSettings = {
     alt: { present: true, mandatory: false },
     previewImage: true,
     inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
+    className: "bordered-option-classname",
   },
 };

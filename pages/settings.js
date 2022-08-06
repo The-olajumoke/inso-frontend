@@ -9,9 +9,9 @@ import ErrorModal from "@/components/ErrorModal";
 import SuccessModal from "@/components/SuccessModal";
 import { GlobalContext } from "@/context/Provider";
 import { updateUserPassword } from "@/context/actions/user/updateUserPassword";
+import { API_URL } from "@/utils/url";
 
 const Settings = () => {
-  const API_URL = "http://localhost:3000";
   const [activeSetting, setActiveSetting] = useState("profile");
   const [incompleteProfile, setIncompleteProfile] = useState(true);
   const [editProfile, setEditProfile] = useState(false);

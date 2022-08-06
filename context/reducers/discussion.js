@@ -5,6 +5,9 @@ import {
   GET_DISCUSSIONS_LOADING,
   GET_DISCUSSIONS_SUCCESS,
   GET_DISCUSSIONS_ERROR,
+  GET_SINGLE_DISCUSSION_LOADING,
+  GET_SINGLE_DISCUSSION_SUCCESS,
+  GET_SINGLE_DISCUSSION_ERROR,
   GET_POSTINSP_LOADING,
   GET_POSTINSP_SUCCESS,
   GET_POSTINSP_ERROR,
@@ -56,7 +59,7 @@ const discussion = (state, { type, payload }) => {
         ...state,
         discussion: {
           ...state.discussion,
-          discussionLoading: true,
+          loading: true,
           error: null,
         },
       };
@@ -65,7 +68,7 @@ const discussion = (state, { type, payload }) => {
         ...state,
         discussion: {
           ...state.discussion,
-          discussionLoading: false,
+          loading: false,
           discussionData: payload,
         },
       };
@@ -74,7 +77,34 @@ const discussion = (state, { type, payload }) => {
         ...state,
         discussion: {
           ...state.discussion,
-          discussionLoading: false,
+          loading: false,
+          error: payload,
+        },
+      };
+    case GET_SINGLE_DISCUSSION_LOADING:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          loading: true,
+          error: null,
+        },
+      };
+    case GET_SINGLE_DISCUSSION_SUCCESS:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          loading: false,
+          singleDiscData: payload,
+        },
+      };
+    case GET_SINGLE_DISCUSSION_ERROR:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          loading: false,
           error: payload,
         },
       };

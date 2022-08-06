@@ -12,9 +12,8 @@ import ErrorModal from "@/components/ErrorModal";
 import SpinnerLoader from "@/components/SpinnerLoader";
 import SuccessModal from "@/components/SuccessModal";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
-
+import { API_URL } from "@/utils/url";
 const LoginPage = () => {
-  const API_URL = "http://localhost:3000";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");

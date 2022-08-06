@@ -8,8 +8,8 @@ import styles from "@/styles/layout.module.css";
 import { GlobalContext } from "@/context/Provider";
 import { createDiscussion } from "@/context/actions/discussion/createDiscussion";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
+import { API_URL } from "@/utils/url";
 const Layout = ({ title, children, searchBar, bgColor }) => {
-  const API_URL = "http://localhost:3000";
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
   const [token, setToken] = useState("");

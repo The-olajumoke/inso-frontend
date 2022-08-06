@@ -5,7 +5,7 @@ import {
   GET_DISCUSSIONS_ERROR,
 } from "@/constants/actionTypes";
 
-export const getDiscussions = (INV_API_URL, token) => async (dispatch) => {
+export const getDiscussions = (API_URL, token, userId) => async (dispatch) => {
   try {
     dispatch({ type: GET_DISCUSSIONS_LOADING });
     const config = {
@@ -14,12 +14,13 @@ export const getDiscussions = (INV_API_URL, token) => async (dispatch) => {
       },
     };
     const response = await axios.get(
-      `${INV_API_URL}/api/invservice/category/get`,
+      `${API_URL}/users/${userId}/discussions`,
       config
     );
+    console.log(response);
     dispatch({
       type: GET_DISCUSSIONS_SUCCESS,
-      payload: response.data.data,
+      payload: response.data,
     });
   } catch (error) {
     dispatch({

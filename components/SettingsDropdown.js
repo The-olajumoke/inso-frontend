@@ -35,12 +35,16 @@ const SettingsDropdown = ({
           </div>
         )}
         {value === "" ? (
-          <span className="text-sm text-other-disabledText capitalize">
+          <span
+            className={`text-sm !text-other-disabledText capitalize ${
+              disabled ? "!text-other-disabledText" : ""
+            }`}
+          >
             {placeholder}
           </span>
         ) : (
           <span
-            className={`text-sm text-gray-text capitalize ${
+            className={`text-sm capitalize ${
               disabled ? "!text-other-disabledText" : ""
             }`}
           >

@@ -11,9 +11,8 @@ import { GlobalContext } from "@/context/Provider";
 import SpinnerLoader from "@/components/SpinnerLoader";
 import ErrorModal from "@/components/ErrorModal";
 import SuccessModal from "@/components/SuccessModal";
-
+import { API_URL } from "@/utils/url";
 const SignUpPage = () => {
-  const API_URL = "http://localhost:3000";
   console.log(API_URL);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");

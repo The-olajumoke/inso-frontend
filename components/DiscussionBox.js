@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 const DiscussionBox = ({ discussion }) => {
-  const { id, userName, users, title, date, code } = discussion;
+  const { _id, poster, participants, name, date, insoCode } = discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
   return (
     <div
-      // style={{ width: "320px" }}
-      className="vp-600:w-full vp-600:h-110  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14  flex flex-col relative justify-between"
+      // style={{ minHeight: "110px" }}
+      className="vp-600:w-full h-145  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14  flex flex-col relative justify-between"
     >
       <div className=" flex items-start justify-between mb-15">
-        <Link passHref href={`/discussions/view-discussion/${id}`}>
-          <div className=" w-210">
-            <h5 className=" text-gray-text font-medium p-0 m-0">{title}</h5>
+        <Link passHref href={`/discussions/view-discussion/${_id}`}>
+          <div className=" w-210 cursor-pointer">
+            <h5 className=" text-gray-text font-medium p-0 m-0">{name}</h5>
           </div>
         </Link>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center  gap-4">
           {" "}
           <div className=" flex justify-center items-center ">
             <Image
@@ -59,27 +59,28 @@ const DiscussionBox = ({ discussion }) => {
                   className={`w-150   top-6 -right-40 bg-white-white absolute px-14 py-7 z-60  rounded-lg shadow-md `}
                 >
                   <div className="w-full ">
-                    <div
-                      className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background cursor-pointer flex justify-start "
-                      // onClick={}
-                    >
+                    <Link passHref href={`/discussions/edit-discussion/${_id}`}>
                       <div
-                        className=" mr-10
-                               flex justify-center items-center"
+                        className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background cursor-pointer flex justify-start "
                       >
-                        <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/edit_grey_ko2542.svg"
-                          alt="edit"
-                          layout="fixed"
-                          width="20"
-                          height="20"
-                        />
+                        <div
+                          className=" mr-10
+                               flex justify-center items-center"
+                        >
+                          <Image
+                            src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/edit_grey_ko2542.svg"
+                            alt="edit"
+                            layout="fixed"
+                            width="20"
+                            height="20"
+                          />
+                        </div>
+                        <span className=" text-xs text-black-postInsp ">
+                          Edit
+                        </span>
                       </div>
-                      <span className=" text-xs text-black-postInsp ">
-                        Edit
-                      </span>
-                    </div>
+                    </Link>
                     <div
                       className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
@@ -93,7 +94,7 @@ const DiscussionBox = ({ discussion }) => {
                       >
                         <Image
                           src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/archive_grey_wgyedn.svg"
-                          alt="edit"
+                          alt="archived"
                           layout="fixed"
                           width="20"
                           height="20"
@@ -121,7 +122,9 @@ const DiscussionBox = ({ discussion }) => {
                       </div>
                       <span className=" text-xs text-black-postInsp ">
                         Share :{" "}
-                        <span className=" text-primary-darkGreen">57128JH</span>
+                        <span className=" text-primary-darkGreen">
+                          {insoCode}
+                        </span>
                       </span>
                     </div>
                   </div>
@@ -132,7 +135,9 @@ const DiscussionBox = ({ discussion }) => {
         </div>
       </div>
       <div className="flex justify-between">
-        <span className=" text-xs text-gray-analyticsGray">by {userName}</span>
+        <span className=" text-xs text-gray-analyticsGray">
+          by {poster.username}
+        </span>
         <div className="flex justify-center">
           <Image
             src="/icons/users_icon.svg"
@@ -141,7 +146,7 @@ const DiscussionBox = ({ discussion }) => {
             width="20"
             height="20"
           />
-          <p className=" text-black-postInsp ml-5">{users}</p>
+          <p className=" text-black-postInsp ml-5">{participants.length}</p>
         </div>
       </div>
     </div>

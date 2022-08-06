@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/switch.module.css";
+import CalendarTemp from "./CalendarTemp";
+import WhiteLoader from "./whiteLoader";
 const Calendar = ({
   setActiveSettings,
-  setViewInspirations,
-  setActiveViewInspiration,
   date,
   addCalendarToSettings,
   setAddCalendarToSettings,
-  setPreviewSettings,
+  setDate,
+  diffInDays,
+  handleCreateCalendar,
+  calendarLoading,
+  calendarData,
 }) => {
-  const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
   return (
-    <div className=" flex-grow flex flex-col ">
-      <div className="px-16 vp-min-601:px-30 mb-10 flex items-center justify-between bg-white ">
-        <p className=" text-xs text-black-postInsp">Calendar</p>
+    <div className=" flex flex-col shadow-lg  w-400 ">
+      <div className=" bg-primary-darkGreen h-60 vp-600:px-16 px-38 py-13  rounded-t-md flex justify-between items-center">
+        <h4 className=" text-white-white">Duration</h4>
         <label className={`${styles.switch}`}>
           <input
             type="checkbox"
@@ -28,162 +32,32 @@ const Calendar = ({
           ></span>
         </label>
       </div>
-      <div
-        className={`${
-          !addCalendarToSettings && "opacity-20"
-        }  px-16 vp-min-601:px-30 py-10 h-250 flex-grow overflow-y-auto  bg-gray-background`}
-      >
-        <div className="mb-9 ">
-          <span
-            style={{ fontSize: "10px" }}
-            className=" text-primary-darkGreen  mb-4"
-          >
-            Open
-          </span>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="flex justify-center items-center mr-12">
-                <Image
-                  src="/icons/clock.svg"
-                  alt="clock"
-                  layout="fixed"
-                  width="16"
-                  height="16"
-                />
-              </div>
-              <p className="text-xs  text-black-analText"> 12:01 am</p>
-            </div>
-            <div
-              className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText cursor-pointer"
-              onClick={() => {
-                setViewInspirations(true);
-                setActiveViewInspiration("Calendar");
-              }}
-            >
-              <p className="text-black-analText text-xs">
-                {" "}
-                {date[0].toLocaleString("en-US", {
-                  weekday: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  month: "long",
-                })}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="mb-16">
-          <span
-            style={{ fontSize: "10px" }}
-            className=" text-primary-darkGreen  mb-4"
-          >
-            Close
-          </span>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="flex justify-center items-center mr-12">
-                <Image
-                  src="/icons/clock.svg"
-                  alt="clock"
-                  layout="fixed"
-                  width="16"
-                  height="16"
-                />
-              </div>
-              <p className="text-xs  text-black-analText">11:59pm</p>
-            </div>
-            <div
-              className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText"
-              onClick={() => {
-                setViewInspirations(true);
-                setActiveViewInspiration("Calendar");
-              }}
-            >
-              <p className="text-black-analText text-xs">
-                {" "}
-                {date[1].toLocaleString("en-US", {
-                  weekday: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  month: "long",
-                })}
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <span
-          style={{ fontSize: "10px" }}
-          className=" text-border-dropdownLine "
+      {showCalendar ? (
+        <CalendarTemp
+          date={date}
+          setDate={setDate}
+          setShowCalendar={setShowCalendar}
+        />
+      ) : (
+        <div
+          className={`${
+            !addCalendarToSettings && "opacity-20"
+          }  px-16 vp-min-601:px-38 py-10 h-250 flex flex-col justify-between  bg-white-white rounded-b-md`}
         >
-          Duration : 6 days
-        </span>
-
-        <div className={` mt-30 flex justify-between items-center pb-15`}>
-          <div className="flex items-center">
-            <button
-              onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
-              className="flex justify-center items-center"
-            >
-              <Image
-                src={
-                  showAdvancedSettings
-                    ? "/icons/arrow_up.svg"
-                    : "/icons/arrow_down.svg"
-                }
-                alt="arrows"
-                layout="fixed"
-                width="12"
-                height="12"
-              />
-            </button>
-
-            <span
-              style={{ fontSize: "10px" }}
-              className=" ml-12 text-primary-darkGreen"
-            >
-              Advanced settings
-            </span>
-          </div>
-          <div className="flex items-center">
-            <label className={`${styles.switch} `}>
-              <input
-                type="checkbox"
-                name="reports"
-                id="postInspiration"
-                checked={showAdvancedSettings}
-                onChange={() => setShowAdvancedSettings(!showAdvancedSettings)}
-              />
-              <span
-                className={`${styles.slider} ${styles.round} "slider round"`}
-              ></span>
-            </label>
-          </div>
-        </div>
-        {showAdvancedSettings && (
           <div className="">
-            <div className="mb-15 ">
-              <span
-                style={{ fontSize: "10px" }}
-                className=" text-primary-darkGreen  mb-4"
-              >
-                Posting
-              </span>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex justify-center items-center mr-12">
-                    <Image
-                      src="/icons/clock.svg"
-                      alt="clock"
-                      layout="fixed"
-                      width="16"
-                      height="16"
-                    />
-                  </div>
-                  <p className="text-xs  text-black-analText">8:00 AM</p>
-                </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                  <p className="text-black-analText text-xs">
+            <div className="mb-9 ">
+              <div className="flex items-center justify-between ">
+                <span className=" text-black-postInsp w-52 text-sm  mb-4">
+                  Open:
+                </span>
+                <div
+                  className="border border-other-disabled w-200 rounded h-30 flex  justify-center items-center  text-black-postInsp cursor-pointer"
+                  onClick={() => {
+                    setShowCalendar(true);
+                  }}
+                >
+                  <p className=" text-black-postInsp text-xs">
                     {" "}
                     {date[0].toLocaleString("en-US", {
                       weekday: "short",
@@ -195,28 +69,18 @@ const Calendar = ({
                 </div>
               </div>
             </div>
-            <div className="mb-15">
-              <span
-                style={{ fontSize: "10px" }}
-                className=" text-primary-darkGreen  mb-4"
-              >
-                Responding
-              </span>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex justify-center items-center mr-12">
-                    <Image
-                      src="/icons/clock.svg"
-                      alt="clock"
-                      layout="fixed"
-                      width="16"
-                      height="16"
-                    />
-                  </div>
-                  <p className="text-xs  text-black-analText">8:00 AM</p>
-                </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                  <p className="text-black-analText text-xs">
+            <div className="mb-9 ">
+              <div className="flex items-center justify-between ">
+                <span className=" text-black-postInsp w-52 text-sm  mb-4">
+                  Close:
+                </span>
+                <div
+                  className="border border-other-disabled w-200 rounded h-30 flex  justify-center items-center  text-black-postInsp cursor-pointer"
+                  onClick={() => {
+                    setShowCalendar(true);
+                  }}
+                >
+                  <p className=" text-black-postInsp text-xs">
                     {" "}
                     {date[1].toLocaleString("en-US", {
                       weekday: "short",
@@ -228,76 +92,71 @@ const Calendar = ({
                 </div>
               </div>
             </div>
-            <div className="mb-15">
-              <span
-                style={{ fontSize: "10px" }}
-                className=" text-primary-darkGreen  mb-4"
+
+            <span
+              style={{ fontSize: "11px" }}
+              className=" text-gray-analyticsGray"
+            >
+              Duration : {diffInDays} day(s)
+            </span>
+          </div>
+          <div className=" h-40 flex justify-between items-center w-full">
+            <div className="flex items-center">
+              <div
+                className="flex justify-center items-center mr-75"
+                onClick={() => {
+                  setActiveSettings("starterPrompt");
+                }}
               >
-                Synthesizing
-              </span>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex justify-center items-center mr-12">
-                    <Image
-                      src="/icons/clock.svg"
-                      alt="clock"
-                      layout="fixed"
-                      width="16"
-                      height="16"
-                    />
-                  </div>
-                  <p className="text-xs  text-black-analText">8:00 AM</p>
-                </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center text-black-analText">
-                  <p className="text-black-analText text-xs">
-                    {" "}
-                    {date[1].toLocaleString("en-US", {
-                      weekday: "short",
-                      day: "numeric",
-                      year: "numeric",
-                      month: "long",
-                    })}
-                  </p>
-                </div>
+                <Image
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1659612940/arrow_left_blue_otwon7.svg"
+                  alt="back"
+                  layout="fixed"
+                  width="16"
+                  height="16"
+                />
+              </div>
+              <div
+                className="justify-center items-center"
+                onClick={() => {
+                  setActiveSettings("scores");
+                }}
+              >
+                <Image
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1659612936/arrow_right_blue_qamrbk.svg"
+                  alt="forward"
+                  layout="fixed"
+                  width="16"
+                  height="16"
+                />
               </div>
             </div>
-          </div>
-        )}
-      </div>
-      <div className=" h-40 flex justify-between items-center w-full px-16 vp-min-601:px-30">
-        <div className="flex items-center">
-          <div
-            className="flex justify-center items-center mr-75"
-            onClick={() => {
-              setActiveSettings("Scores");
-            }}
-          >
-            <Image
-              src="/icons/arrow_left_blue.svg"
-              alt="back"
-              layout="fixed"
-              width="16"
-              height="16"
-            />
-          </div>
-          <div className="justify-center items-center hidden">
-            <Image
-              src="/icons/arrow_right_blue.svg"
-              alt="back"
-              layout="fixed"
-              width="16"
-              height="16"
-            />
+
+            {calendarLoading ? (
+              <button className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm">
+                <WhiteLoader />
+              </button>
+            ) : calendarData !== null ? (
+              <button
+                className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm"
+                onClick={() => {
+                  setActiveSettings("scores");
+                }}
+              >
+                Next
+              </button>
+            ) : (
+              <button
+                className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm"
+                onClick={handleCreateCalendar}
+                disabled={addCalendarToSettings ? false : true}
+              >
+                Update
+              </button>
+            )}
           </div>
         </div>
-        <button
-          className="btn bg-border-line text-white-white w-auto px-16 h-30 text-sm"
-          disabled={addCalendarToSettings ? false : true}
-          onClick={() => setPreviewSettings(true)}
-        >
-          {addCalendarToSettings ? "Continue" : "Save & Continue"}
-        </button>
-      </div>
+      )}
     </div>
   );
 };

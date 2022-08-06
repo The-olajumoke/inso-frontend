@@ -1,34 +1,34 @@
 import axios from "axios";
 import {
-  UPDATE_STARTERPROMPT_LOADING,
-  UPDATE_STARTERPROMPT_SUCCESS,
-  UPDATE_STARTERPROMPT_ERROR,
+  UPDATE_CALENDAR_LOADING,
+  UPDATE_CALENDAR_SUCCESS,
+  UPDATE_CALENDAR_ERROR,
 } from "@/constants/actionTypes";
 
-export const updateStarterPrompt =
-  (API_URL, token, body, id) => async (dispatch) => {
+export const createCalendar =
+  (API_URL, token, body, userId) => async (dispatch) => {
     try {
       dispatch({
-        type: UPDATE_STARTERPROMPT_LOADING,
+        type: UPDATE_CALENDAR_LOADING,
       });
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.patch(
-        `${API_URL}/discussion/${id}/settings`,
+      const response = await axios.post(
+        `${API_URL}/users/${userId}/calendar`,
         body,
         config
       );
       console.log(response);
       dispatch({
-        type: UPDATE_STARTERPROMPT_SUCCESS,
-        payload: response.data.data,
+        type: UPDATE_CALENDAR_SUCCESS,
+        payload: response.data,
       });
     } catch (error) {
       dispatch({
-        type: UPDATE_STARTERPROMPT_ERROR,
+        type: UPDATE_CALENDAR_ERROR,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

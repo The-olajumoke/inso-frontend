@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import styles from "@/styles/discussion.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import CommentBox from "@/components/CommentBox";
+import { GlobalContext } from "@/context/Provider";
 
 import {
   automaticScoring,
@@ -48,10 +49,14 @@ import HeartComment from "@/components/CommentBoxesRespondInsp/HeartComment";
 import MadComment from "@/components/CommentBoxesRespondInsp/MadComment";
 import MindblownComment from "@/components/CommentBoxesRespondInsp/MindblownComment";
 import EditDiscussion from "@/components/EditDiscussion";
-
+import { API_URL } from "@/utils/url";
+import { getSingleDiscussion } from "@/context/actions/discussion/getSingleDiscussion";
+const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
   const id = router.query.id;
+  const [token, setToken] = useState("");
+  const [userId, setUserId] = useState(null);
   const [activeCommentBox, setActiveCommentBox] = useState("noInspiration");
   const [viewAllTags, setViewAllTags] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -61,7 +66,52 @@ const ViewDiscussion = () => {
   const [showScoresSheet, setShowScoresSheet] = useState(false);
   const [viewFullPostInsp, setViewFullPostInsp] = useState(false);
   const [editDiscussion, setEditDiscussion] = useState(false);
+  const [discTitle, setDiscTitle] = useState("");
+  const [starterPrompt, setStarterPrompt] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
 
+  const {
+    discussionDispatch,
+    discussionState: {
+      discussion: { singleDiscData },
+    },
+  } = useContext(GlobalContext);
+  const {
+    userDispatch,
+    userState: {
+      user: { profileData },
+    },
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken);
+    setToken(accessToken);
+  }, []);
+  useEffect(() => {
+    if (profileData !== null) {
+      const { _id } = profileData;
+      setUserId(_id);
+    }
+  }, [profileData]);
+  useEffect(() => {
+    if (token !== "" && id) {
+      getSingleDiscussion(API_URL, token, id)(discussionDispatch);
+    }
+  }, [id, token]);
+
+  useEffect(() => {
+    if (singleDiscData !== null) {
+      setDiscTitle(singleDiscData.name);
+      setStarterPrompt(singleDiscData?.settings?.starter_prompt);
+      setFirstName(singleDiscData?.poster.f_name);
+      setLastName(singleDiscData?.poster.l_name);
+      setUserName(singleDiscData?.poster.username);
+      console.log(parse(singleDiscData?.settings?.starter_prompt));
+    }
+  }, [singleDiscData]);
   const togglePostInsp = () => {
     setViewFullPostInsp(!viewFullPostInsp);
   };
@@ -91,7 +141,7 @@ const ViewDiscussion = () => {
                   />
                 </div>
               </Link>
-              <h4 className="ml-13">Discussion title</h4>
+              <h5 className="ml-13 capitalize">{discTitle}</h5>
             </div>
             <div className="vp-980:hidden">
               <form action="">
@@ -159,27 +209,7 @@ const ViewDiscussion = () => {
                           </div>
                           <p className="text-black-analText ">Drafts</p>
                         </div>
-                        {/* <div
-                          className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start px-20"
-                          onClick={() => {
-                            setOpenDropdown(false);
-                          }}
-                        >
-                          <div
-                            className=" mr-12
-                               flex justify-center items-center"
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1657101638/InsoImages/gradesheet_green_raitxv.svg"
-                              alt="edit"
-                              layout="fixed"
-                              width="18"
-                              height="18"
-                            />
-                          </div>
-                          <p className=" text-black-analText">Gradesheet</p>
-                        </div> */}
+
                         <div
                           className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start  px-20"
@@ -271,9 +301,9 @@ const ViewDiscussion = () => {
                       </div>
                       <div className="ml-13">
                         <h6 className=" font-medium">
-                          Dante Bowe
+                          {firstName} {lastName}
                           <span className=" text-primary-darkGreen text-xs font-normal ml-3">
-                            @DANTE
+                            @{userName}
                           </span>
                         </h6>
                         <span className="text-xs text-gray-faintGray">
@@ -311,27 +341,32 @@ const ViewDiscussion = () => {
                               className={`w-176   top-6  -right-6 bg-white-white absolute px-16 py-7 z-60  rounded-lg shadow-xs `}
                             >
                               <div className="w-full ">
-                                <div
-                                  className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start "
-                                  // onClick={}
+                                <Link
+                                  passHref
+                                  href={`/discussions/edit-discussion/${id}`}
                                 >
                                   <div
-                                    className=" mr-12
-                               flex justify-center items-center"
+                                    className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start "
+                                    // onClick={}
                                   >
-                                    <Image
-                                      src="https://res.cloudinary.com/insomaryland/image/upload/v1657099297/InsoImages/edit_green_ijlfht.svg"
-                                      alt="edit"
-                                      layout="fixed"
-                                      width="12"
-                                      height="12"
-                                    />
+                                    <div
+                                      className=" mr-12
+                               flex justify-center items-center"
+                                    >
+                                      <Image
+                                        src="https://res.cloudinary.com/insomaryland/image/upload/v1657099297/InsoImages/edit_green_ijlfht.svg"
+                                        alt="edit"
+                                        layout="fixed"
+                                        width="12"
+                                        height="12"
+                                      />
+                                    </div>
+                                    <p className="text-black-analText ">
+                                      Edit discussion
+                                    </p>
                                   </div>
-                                  <p className="text-black-analText ">
-                                    Edit discussion
-                                  </p>
-                                </div>
+                                </Link>
                                 <div
                                   className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray  cursor-pointer flex justify-start"
@@ -362,11 +397,16 @@ const ViewDiscussion = () => {
                       </div>
                     )}
                   </div>
-                  <p className="mt-10 text-gray-text break-words">
-                    What’s your opinion on the Fukushima Nuclear power plant
-                    incident in 2011 and how does it relate with current
-                    occurences now in 2021?
-                  </p>
+                  {singleDiscData?.settings?.starter_prompt === "" ? (
+                    <p>
+                      For this discussion, we are going to explore{" "}
+                      {parse(discTitle)}
+                    </p>
+                  ) : (
+                    <p className="mt-10 text-gray-text break-words">
+                      {parse(starterPrompt)}
+                    </p>
+                  )}
                 </div>
                 {showScoresSheet !== true && (
                   <div
