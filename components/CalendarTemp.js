@@ -8,25 +8,7 @@ const CalendarTemp = ({ date, setDate, setShowCalendar }) => {
   const today = new Date();
   today.setDate(today.getDate() + 1);
   return (
-    <div className="h-full rounded-b-md bg-white-white overflow-hidden">
-      <div
-        className="px-16 vp-min-601:px-30 flex items-center cursor-pointer mb-0 pt-12"
-        onClick={() => {
-          setShowCalendar(false);
-        }}
-      >
-        <div className="flex justify-center items-center">
-          <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1657550652/arrow_left_green_mrrpsi.svg"
-            alt="back"
-            layout="fixed"
-            width="16"
-            height="16"
-          />
-        </div>
-        <h6 className="ml-16 text-gray-faintGray">Back</h6>
-      </div>
-
+    <div className="h-full bg-white-white overflow-hidden ">
       <div className={`${styles.hiddenScrollbar}  h-320`}>
         <div className="w-full flex h-full justify-center ">
           <Calendar

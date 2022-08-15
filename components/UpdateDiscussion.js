@@ -11,7 +11,7 @@ const UpdateDiscussion = ({
   setActiveSettings,
 }) => {
   return (
-    <div className=" w-400  bg-gray-background shadow-lg">
+    <div className=" w-450  bg-gray-background shadow-lg">
       <div className=" bg-primary-darkGreen h-60 px-38 vp-600:px-16 py-13  rounded-t-md">
         <h4 className=" text-white-white">Discussion Name</h4>
       </div>

@@ -9,5 +9,6 @@ export default {
     loginData: null,
     loginSuccess: false,
     loginError: null,
+    googleError: null,
   },
 };

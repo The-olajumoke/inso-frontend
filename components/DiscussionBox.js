@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-const DiscussionBox = ({ discussion }) => {
+const DiscussionBox = ({ discussion, createArchived }) => {
   const { _id, poster, participants, name, date, insoCode } = discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
   return (
@@ -84,9 +84,10 @@ const DiscussionBox = ({ discussion }) => {
                     <div
                       className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
-                      // onClick={() => {
-                      //   setOpenDropdown(false);
-                      // }}
+                      onClick={() => {
+                        setOpenDropdown(false);
+                        createArchived(_id);
+                      }}
                     >
                       <div
                         className=" mr-10

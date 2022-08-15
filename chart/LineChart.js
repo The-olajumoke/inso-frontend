@@ -28,8 +28,8 @@ const LineChart = ({ labels, lineData1, lineData2 }) => {
     datasets: [
       {
         data: lineData1,
-        backgroundColor: "rgb(229, 229, 229,0.5)",
-        borderColor: "rgba(14, 180, 246, 1)",
+        backgroundColor: "#F2B544",
+        borderColor: "#F2B544",
         lineTension: 0.5,
         borderCapStyle: "butt",
         borderDash: [],
@@ -47,8 +47,8 @@ const LineChart = ({ labels, lineData1, lineData2 }) => {
       },
       {
         data: lineData2,
-        backgroundColor: "rgb(255, 0, 0)",
-        borderColor: "#07A098",
+        backgroundColor: "#525AF2",
+        borderColor: "#525AF2",
         borderWidth: 2,
         lineTension: 0.5,
         borderCapStyle: "butt",

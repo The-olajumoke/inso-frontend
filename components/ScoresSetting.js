@@ -28,8 +28,9 @@ const ScoresSetting = ({
   setAllCriteriaRubric,
   rubricTotalScore,
   setRubricTotalScore,
+  diffInDays,
 }) => {
-  console.log(selectedScoringOption);
+  console.log(diffInDays);
   const [allActiveScoringOption, setAllActiveScoringOption] = useState([]);
 
   const handleScoringOption = (id) => {
@@ -89,7 +90,20 @@ const ScoresSetting = ({
         max_points: +dividedScore,
       },
     };
-    handleCreateScoring(body);
+    const allCrit = allCriteriaRubric.map((cri) => ({
+      criteria: cri,
+      max_points: dividedScoreRubric,
+    }));
+    const bodyRubric = {
+      type: "rubric",
+      total: +rubricTotalScore,
+      criteria: allCrit,
+    };
+    if (selectedScoringOption === "automatic") {
+      handleCreateScoring(body);
+    } else {
+      handleCreateScoring(bodyRubric);
+    }
   };
   console.log(allCriteriaRubric);
   const addToCriteria = (e) => {
@@ -100,7 +114,7 @@ const ScoresSetting = ({
     setShowInput(false);
   };
   return (
-    <div className="w-400 h-450 flex flex-col shadow-createDiscussion">
+    <div className="w-450 h-450 flex flex-col shadow-createDiscussion">
       <div className=" bg-primary-darkGreen h-60 px-35 vp-600:px-16 py-13  rounded-t-md flex justify-between items-center">
         <h4 className=" text-white-white">Scores</h4>
         <label className={`${styles.switch}`}>
@@ -197,11 +211,22 @@ const ScoresSetting = ({
                 <input
                   type="number"
                   disabled={maxScore === "" ? true : false}
-                  title={maxScore === "" ? "set Max score first" : ""}
+                  title={
+                    maxScore === ""
+                      ? "set Max score first"
+                      : `Value cannot be more than ${diffInDays} day(s)`
+                  }
                   className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-blue-inputBlue border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
                   placeholder="0"
+                  max={diffInDays}
                   value={activeDays}
-                  onChange={(e) => setActiveDays(e.target.value)}
+                  onChange={(e) => {
+                    if (e.target.value > diffInDays) {
+                      setActiveDays(diffInDays);
+                    } else {
+                      setActiveDays(e.target.value);
+                    }
+                  }}
                 />
               </div>
               <div className="w-62 h-30 rounded-xs bg-gray-background border-none text-gray-faintGray text-md flex justify-center items-center text-center">
@@ -315,7 +340,10 @@ const ScoresSetting = ({
                   className="grid grid-cols-5 mb-4  gap-4 w-full"
                 >
                   <div className=" col-span-4 text-xs text-primary-darkGreen relative">
-                    <div className="h-30 w-full rounded-xs bg-blue-postInsp border-none px-10 text-black-postInsp text-sm flex items-center">
+                    <div
+                      style={{ minHeight: "30px" }}
+                      className=" w-full rounded-xs bg-blue-postInsp border-none px-10 text-black-postInsp text-sm flex items-center"
+                    >
                       {criteria}
                     </div>
                   </div>
@@ -334,6 +362,8 @@ const ScoresSetting = ({
                   >
                     <input
                       type="text"
+                      disabled={rubricTotalScore === "" ? true : false}
+                      title={rubricTotalScore === "" ? "set maxscore" : ""}
                       className="h-30 w-full rounded-xs bg-blue-postInsp border-none px-10 placeholder:text-gray-faintGray focus:ring-0 focus:border-none text-black-postInsp"
                       placeholder="Type criteria here "
                       value={currentCriteria}
@@ -404,21 +434,26 @@ const ScoresSetting = ({
             <button className="btn px-17 h-32 text-md">
               <WhiteLoader />
             </button>
-          ) : scoreData !== null ? (
-            <button
-              className="btn px-17 h-32 text-md"
-              onClick={() => setActiveSettings("success")}
-            >
-              Complete
-            </button>
           ) : (
-            <button
-              className="btn px-17 h-32 text-md"
-              disabled={!addScoresToSettings}
-              onClick={handleSubmitScores}
-            >
-              Update
-            </button>
+            <div>
+              {selectedScoringOption === "automatic" ? (
+                <button
+                  className="btn px-17 h-32 text-md"
+                  disabled={!addScoresToSettings || maxScore === ""}
+                  onClick={handleSubmitScores}
+                >
+                  Update
+                </button>
+              ) : (
+                <button
+                  className="btn px-17 h-32 text-md"
+                  disabled={!addScoresToSettings || rubricTotalScore === ""}
+                  onClick={handleSubmitScores}
+                >
+                  Update
+                </button>
+              )}
+            </div>
           )}
         </div>
       </div>

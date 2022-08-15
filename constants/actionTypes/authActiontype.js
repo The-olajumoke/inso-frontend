@@ -5,3 +5,6 @@ export const REGISTER_ERROR = "REGISTER_ERROR";
 export const LOG_IN_LOADING = "LOG_IN_LOADING";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
 export const LOG_IN_ERROR = "LOG_IN_ERROR";
+export const GOOGLE_LOADING = "GOOGLE_LOADING";
+export const GOOGLE_SUCCESS = "GOOGLE_SUCCESS";
+export const GOOGLE_ERROR = "GOOGLE_ERROR";

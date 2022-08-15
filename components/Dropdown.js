@@ -23,8 +23,8 @@ const Dropdown = ({
               src={icon}
               alt={value}
               layout="fixed"
-              width="18"
-              height="18"
+              width="24"
+              height="24"
             />
           </div>
         )}

@@ -19,6 +19,7 @@
     "emoji-picker-react": "^3.5.1",
     "html-react-parser": "^3.0.1",
     "html-to-draftjs": "^1.5.0",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
     "next": "12.1.2",
     "next-pwa": "^5.5.2",
@@ -27,6 +28,7 @@
     "react-chartjs-2": "^4.1.0",
     "react-dom": "18.0.0",
     "react-draft-wysiwyg": "^1.14.7",
+    "react-google-login": "^5.2.2",
     "react-icons": "^4.4.0",
     "react-input-emoji": "^4.1.0"
   },

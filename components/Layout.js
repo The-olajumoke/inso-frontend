@@ -39,16 +39,6 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
     }
   }, [profileData]);
 
-  //   data:
-  // contact: Array(1)
-  // 0: {email: 'jummy@yopmail.com', verified: false, primary: true}
-  // length: 1
-  // [[Prototype]]: Array(0)
-  // f_name: "jumy"
-  // l_name: "goody"
-  // username: "jumygoody1"
-  // _id: "62e2a7c89a0f5c1cdae61cb3"
-
   const handleNavSize = () => {
     if (navSize === "small") {
       console.log(navSize);
@@ -106,7 +96,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
           </div>
           <div className="flex justify-center items-center">
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1655327110/InsoImages/inso_logo_yi1rgz.svg"
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1660169006/inso_logo_x1kgxc.svg"
               alt=" Discussion dropdown "
               draggable="false"
               layout="fixed"
@@ -127,7 +117,7 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
             </div>
           </Link>
         </div>
-        {openSideBar && <Sidebar />}
+        {openSideBar && <Sidebar navSize={navSize} user={userProfile} />}
         <div className={`${bgColor} pt-35 flex-grow overflow-y-auto relative`}>
           {children}
         </div>

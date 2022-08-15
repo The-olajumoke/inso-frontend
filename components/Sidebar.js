@@ -53,14 +53,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <a
                 className={`${
                   router.pathname.startsWith("/home") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white"
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/home")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1659168361/home_ihfz7d.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_cf2xom.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960630/home_tfw1yn.svg"
                   }
                   alt="discussion"
                   draggable="false"
@@ -76,14 +76,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <a
                 className={`${
                   router.pathname.startsWith("/discussions") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/discussions")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_active_rrsvgb.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_cf2xom.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659963398/disc_inactive_gb4ka8.svg"
                   }
                   alt="discussion"
                   draggable="false"
@@ -101,14 +101,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <div
                 className={`${
                   router.pathname.startsWith("/notifications") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/notifications")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468844/InsoImages/notification_active_ai8d5r.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655468844/InsoImages/notification_dkfhw1.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960378/notifications_inactive_ye3826.svg"
                   }
                   alt="notifications"
                   draggable="false"
@@ -125,14 +125,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <div
                 className={`${
                   router.pathname.startsWith("/stats") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/stats")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325351/InsoImages/stats_zjldog.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325354/InsoImages/stats_active_loxtf9.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962014/stats_inactive_je9wv9.svg"
                   }
                   alt="stats"
                   draggable="false"
@@ -147,14 +147,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <div
                 className={`${
                   router.pathname.startsWith("/analytics") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/analytics")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325640/InsoImages/analytics_active_isunzk.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325638/InsoImages/analytics_kff72r.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960921/analytics_inactive_kul1jz.svg"
                   }
                   alt="analytics"
                   draggable="false"
@@ -171,14 +171,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <div
                 className={`${
                   router.pathname.startsWith("/charts") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/charts")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655827744/InsoImages/chart_active_cxtrna.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659961761/chart_inactive_je8rth.svg"
                   }
                   alt="charts"
                   draggable="false"
@@ -193,14 +193,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <div
                 className={`${
                   router.pathname.startsWith("/calendar") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/calendar")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_active_ixszvw.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_ix65zg.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659961867/calendar_inactive_fj8ays.svg"
                   }
                   alt="calendar"
                   draggable="false"
@@ -217,14 +217,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <div
                 className={`${
                   router.pathname.startsWith("/contact") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/contact")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_active_e9ipb6.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_hz2oeq.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962244/contact_inactive_gnxlpe.svg"
                   }
                   alt="contact"
                   draggable="false"
@@ -241,14 +241,14 @@ const Sidebar = ({ navSize, userPicture, user }) => {
               <div
                 className={`${
                   router.pathname.startsWith("/settings") &&
-                  "bg-primary-darkGreen  justify-start text-white-white "
+                  " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
                 <Image
                   src={
                     router.pathname.startsWith("/settings")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_active_efkgp4.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_zspo9l.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962637/settings_inactive_twggmi.svg"
                   }
                   alt="settings"
                   draggable="false"
@@ -271,10 +271,10 @@ const Sidebar = ({ navSize, userPicture, user }) => {
           <div
             className={`${
               navSize === "small" && " rounded-full w-40 "
-            } w-full h-40 border border-border-line rounded flex items-center  justify-center  `}
+            } w-full h-40 border border-primary-blue   rounded flex items-center  justify-center  `}
           >
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1655326491/InsoImages/download_mbd2hu.svg"
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1659963152/download_inactive_kqpgt2.svg"
               alt="download"
               draggable="false"
               layout="fixed"
@@ -299,13 +299,17 @@ const Sidebar = ({ navSize, userPicture, user }) => {
           {userPicture ? (
             <div>picture</div>
           ) : (
-            <div className="  h-45 w-45 text-primary-blue bg-other-faintBlue rounded-full text-md flex justify-center items-center font-semibold mr-15">
-              PD
+            <div className="h-37 w-37 text-xs flex justify-center items-center font-semibold mr-15 border overflow-hidden p-0 rounded-full bg-primary-darkGreen">
+              <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 capitalize ">
+                {initials}
+              </span>
             </div>
           )}
           <div className="">
-            <h4 className="text-gray-text">Patrick Dempsey</h4>
-            <h6 className=" text-primary-darkGreen">@patrick</h6>
+            <h4 className="text-gray-text ">
+              {firstName} {lastName}
+            </h4>
+            <h6 className=" text-primary-darkGreen">@{userName}</h6>
             <h5 className=" text-other-success mt-10 vp-768:text-xs">
               Starter
             </h5>
@@ -324,7 +328,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                   src={
                     router.pathname.startsWith("/discussions")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_active_rrsvgb.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_cf2xom.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960630/home_tfw1yn.svg"
                   }
                   alt="discussion"
                   draggable="false"
@@ -346,7 +350,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                   src={
                     router.pathname.startsWith("/notifications")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468844/InsoImages/notification_active_ai8d5r.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655468844/InsoImages/notification_dkfhw1.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960378/notifications_inactive_ye3826.svg"
                   }
                   alt="notifications"
                   draggable="false"
@@ -368,7 +372,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                   src={
                     router.pathname.startsWith("/stats")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325351/InsoImages/stats_zjldog.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325354/InsoImages/stats_active_loxtf9.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962014/stats_inactive_je9wv9.svg"
                   }
                   alt="stats"
                   draggable="false"
@@ -390,7 +394,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                   src={
                     router.pathname.startsWith("/analytics")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325640/InsoImages/analytics_active_isunzk.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325638/InsoImages/analytics_kff72r.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960921/analytics_inactive_kul1jz.svg"
                   }
                   alt="analytics"
                   draggable="false"
@@ -401,7 +405,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                 <h4 className="">Analytics</h4>
               </div>
             </Link>
-            <Link href="/charts" passHref>
+            {/* <Link href="/charts" passHref>
               <div
                 className={`${
                   router.pathname.startsWith("/charts") &&
@@ -422,8 +426,8 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                 />
                 <h4 className="">Charts</h4>
               </div>
-            </Link>
-            <Link href="/calendar" passHref>
+            </Link> */}
+            {/* <Link href="/calendar" passHref>
               <div
                 className={`${
                   router.pathname.startsWith("/calendar") &&
@@ -444,7 +448,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                 />
                 <h4 className="">Calendar</h4>
               </div>
-            </Link>
+            </Link> */}
             <Link href="/contact" passHref>
               <div
                 className={`${
@@ -456,7 +460,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                   src={
                     router.pathname.startsWith("/contact")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_active_e9ipb6.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_hz2oeq.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962244/contact_inactive_gnxlpe.svg"
                   }
                   alt="contact"
                   draggable="false"
@@ -478,7 +482,7 @@ const Sidebar = ({ navSize, userPicture, user }) => {
                   src={
                     router.pathname.startsWith("/settings")
                       ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_active_efkgp4.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_zspo9l.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962637/settings_inactive_twggmi.svg"
                   }
                   alt="settings"
                   draggable="false"
@@ -493,10 +497,10 @@ const Sidebar = ({ navSize, userPicture, user }) => {
         </div>
         <div className=" w-full px-25 mt-42">
           <div
-            className={`w-full h-40 border border-border-line rounded flex items-center  justify-center  `}
+            className={`w-full h-40 border border-primary-blue rounded flex items-center  justify-center  `}
           >
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1655326491/InsoImages/download_mbd2hu.svg"
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1659963152/download_inactive_kqpgt2.svg"
               alt="download"
               draggable="false"
               layout="fixed"

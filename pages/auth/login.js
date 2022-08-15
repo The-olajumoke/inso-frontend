@@ -12,7 +12,10 @@ import ErrorModal from "@/components/ErrorModal";
 import SpinnerLoader from "@/components/SpinnerLoader";
 import SuccessModal from "@/components/SuccessModal";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
+import GoogleLogin from "react-google-login";
+import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 import { API_URL } from "@/utils/url";
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -82,6 +85,9 @@ const LoginPage = () => {
     };
     login(API_URL, user)(authDispatch);
   };
+  const signInWithGoogleHandler = () => {
+    signInWithGoogle(API_URL)(authDispatch);
+  };
   return (
     <RegLayout>
       <div className="vp-600:h-full vp-600:w-full">
@@ -122,56 +128,61 @@ const LoginPage = () => {
             <h4 className="mb-61 font-medium">
               Welcome to <span className=" text-primary-darkGreen">Inso</span>
             </h4>
-            <form onSubmit={handleLogin}>
-              <div>
-                <RegInput
-                  label="Email Address"
-                  placeholder="Email"
-                  value={email}
-                  setValue={setEmail}
-                  type="email"
-                  blurHandler={emailBlurHandler}
-                  errorMessage={emailError}
-                />
-              </div>
-              <div className="mb-80">
-                <RegInput
-                  label="Password"
-                  placeholder="Create password"
-                  value={password}
-                  setValue={setPassword}
-                  type="password"
-                  errorMessage={passwordError}
-                  keyUpHandler={passwordHandler}
-                />
-              </div>
-              <button className="h-48 text-primary-darkGreen  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
-                    alt="google Icon"
-                    draggable="false"
-                    layout="fixed"
-                    width="20"
-                    height="20"
-                  />
-                </div>
-                <h6>Sign in with Google</h6>
-              </button>
+            {/* <form onSubmit={handleLogin}> */}
+            <div>
+              <RegInput
+                label="Email Address"
+                placeholder="Email"
+                value={email}
+                setValue={setEmail}
+                type="email"
+                blurHandler={emailBlurHandler}
+                errorMessage={emailError}
+              />
+            </div>
+            <div className="mb-80">
+              <RegInput
+                label="Password"
+                placeholder="Create password"
+                value={password}
+                setValue={setPassword}
+                type="password"
+                errorMessage={passwordError}
+                keyUpHandler={passwordHandler}
+              />
+            </div>
 
-              <button
-                className="btn h-48 w-full mb-16 text-md "
-                disabled={isDisabled}
-              >
-                {loginLoading ? (
-                  <div className="flex justify-center items-center">
-                    <SpinnerLoader />
-                  </div>
-                ) : (
-                  "Log in"
-                )}
-              </button>
-            </form>
+            <button
+              className="h-48 text-primary-darkGreen  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8"
+              onClick={signInWithGoogleHandler}
+            >
+              <div className="flex items-center justify-center">
+                <Image
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
+                  alt="google Icon"
+                  draggable="false"
+                  layout="fixed"
+                  width="20"
+                  height="20"
+                />
+              </div>
+              <h6>Sign in with Google</h6>
+            </button>
+
+            <button
+              className="btn h-48 w-full mb-16 text-md "
+              disabled={isDisabled}
+              onClick={handleLogin}
+            >
+              {loginLoading ? (
+                <div className="flex justify-center items-center">
+                  <SpinnerLoader />
+                </div>
+              ) : (
+                "Log in"
+              )}
+            </button>
+            {/* </form> */}
             <p className="mb-24 text-black-analText">
               If you don&#39;t have an account,{" "}
               <Link passHref href="/auth/signup">

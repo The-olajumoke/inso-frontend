@@ -23,11 +23,11 @@ const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
             onClick={() => setViewFullPostInsp(false)}
           >
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1655331724/InsoImages/arrow_back_tqezov.svg"
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
               alt="back"
               layout="fixed"
-              width="20"
-              height="20"
+              width="30"
+              height="30"
             />
           </div>
           <h5 className="ml-13">Post Inspiration</h5>

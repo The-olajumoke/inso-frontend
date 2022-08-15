@@ -5,6 +5,9 @@ import {
   LOG_IN_LOADING,
   LOG_IN_SUCCESS,
   LOG_IN_ERROR,
+  GOOGLE_LOADING,
+  GOOGLE_SUCCESS,
+  GOOGLE_ERROR,
 } from "@/constants/actionTypes";
 const auth = (state, { payload, type }) => {
   switch (type) {
@@ -64,7 +67,44 @@ const auth = (state, { payload, type }) => {
           loginError: payload,
         },
       };
+    case GOOGLE_LOADING:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loading: true,
+          registerError: null,
+          verifyError: null,
+          resendVerifyError: null,
+          signInError: null,
+          googleError: null,
+          facebookError: null,
+          forgotPasswordError: null,
+          resetPasswordError: null,
+          resetPasswordError: null,
+          error: null,
+        },
+      };
 
+    case GOOGLE_SUCCESS:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loading: false,
+          data: payload,
+        },
+      };
+
+    case GOOGLE_ERROR:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loading: false,
+          error: payload,
+        },
+      };
     default:
       return state;
   }

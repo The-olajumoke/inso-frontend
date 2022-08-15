@@ -51,6 +51,7 @@ import MindblownComment from "@/components/CommentBoxesRespondInsp/MindblownComm
 import EditDiscussion from "@/components/EditDiscussion";
 import { API_URL } from "@/utils/url";
 import { getSingleDiscussion } from "@/context/actions/discussion/getSingleDiscussion";
+import LargeSpinner from "@/components/LargeSpinner";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -61,21 +62,21 @@ const ViewDiscussion = () => {
   const [viewAllTags, setViewAllTags] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
-  const [scoreType, setScoreType] = useState("rubric");
+  const [scoreType, setScoreType] = useState("");
 
   const [showScoresSheet, setShowScoresSheet] = useState(false);
   const [viewFullPostInsp, setViewFullPostInsp] = useState(false);
-  const [editDiscussion, setEditDiscussion] = useState(false);
+  const [showParticipants, setShowParticipants] = useState(false);
   const [discTitle, setDiscTitle] = useState("");
   const [starterPrompt, setStarterPrompt] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
-
+  const [scores, setScores] = useState(null);
   const {
     discussionDispatch,
     discussionState: {
-      discussion: { singleDiscData },
+      discussion: { loading, singleDiscData },
     },
   } = useContext(GlobalContext);
   const {
@@ -109,7 +110,21 @@ const ViewDiscussion = () => {
       setFirstName(singleDiscData?.poster.f_name);
       setLastName(singleDiscData?.poster.l_name);
       setUserName(singleDiscData?.poster.username);
-      console.log(parse(singleDiscData?.settings?.starter_prompt));
+      if (
+        singleDiscData?.settings?.scores !== null &&
+        singleDiscData?.settings?.scores?.type === "auto"
+      ) {
+        setScoreType("automatic");
+        // setScores(singleDiscData?.settings?.scores?.criteria);
+      }
+
+      if (
+        singleDiscData?.settings?.scores !== null &&
+        singleDiscData?.settings?.scores?.type === "rubric"
+      ) {
+        setScoreType("rubric");
+        setScores(singleDiscData?.settings?.scores?.criteria);
+      }
     }
   }, [singleDiscData]);
   const togglePostInsp = () => {
@@ -122,302 +137,523 @@ const ViewDiscussion = () => {
       searchBar={false}
       bgColor="bg-white-white"
     >
-      {!viewFullPostInsp ? (
-        <div className={` h-full flex flex-col relative w-full `}>
-          <div
-            className={` h-65 bg-gray-background ${
-              viewAllTags ? "mb-0" : "mb-5"
-            }  vp-980:mt-16 px-16 vp-min-601:px-42 flex items-center justify-between`}
-          >
-            <div className=" flex items-center">
-              <Link href="/discussions" passHref>
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655331724/InsoImages/arrow_back_tqezov.svg"
-                    alt="back"
-                    layout="fixed"
-                    width="20"
-                    height="20"
-                  />
-                </div>
-              </Link>
-              <h5 className="ml-13 capitalize">{discTitle}</h5>
-            </div>
-            <div className="vp-980:hidden">
-              <form action="">
-                <div className={`${styles.searchInput}     `}>
-                  <div className="flex items-center justify-center ">
-                    <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1655331753/InsoImages/search_nhky7k.svg"
-                      alt="more"
-                      layout="fixed"
-                      width="13"
-                      height="13"
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    className={`border-none h-auto focus:ring-0 bg-transparent w-400`}
-                    placeholder="Input keyword to search or filter "
-                  />
-                </div>
-              </form>
-            </div>
-
-            <div className="flex items-center gap-6">
-              <div className="flex items-center justify-center cursor-pointer relative">
-                <div
-                  className="flex items-center justify-center"
-                  onClick={() => setOpenDropdown(true)}
-                >
-                  <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655331782/InsoImages/more_icon_desucz.svg"
-                    alt="more"
-                    layout="fixed"
-                    width="5"
-                    height="20"
-                  />
-                </div>
-                {openDropdown && (
-                  <>
-                    <div
-                      className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
-                      onClick={() => setOpenDropdown(false)}
-                    ></div>
-                    <div
-                      className={`w-176   top-6  -right-6 bg-white-white absolute p-0 z-60  rounded-lg shadow-xs `}
-                    >
-                      <div className="w-full ">
-                        <div
-                          className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8  last:border-none cursor-pointer flex justify-start bg-other-disabled px-20"
-                          onClick={() => {
-                            setOpenDropdown(false);
-                          }}
-                        >
-                          <div
-                            className=" mr-12
-                               flex justify-center items-center"
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_cf2xom.svg"
-                              alt="edit"
-                              layout="fixed"
-                              width="18"
-                              height="18"
-                            />
-                          </div>
-                          <p className="text-black-analText ">Drafts</p>
-                        </div>
-
-                        <div
-                          className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start  px-20"
-                          onClick={() => {
-                            setOpenDropdown(false);
-                          }}
-                        >
-                          <div
-                            className=" mr-12
-                               flex justify-center items-center"
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1657101638/InsoImages/chart_green_jwsxvj.svg"
-                              alt="edit"
-                              layout="fixed"
-                              width="18"
-                              height="18"
-                            />
-                          </div>
-                          <p className=" text-black-analText">Charts</p>
-                        </div>
-                        <div
-                          className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start  px-20"
-                          onClick={() => {
-                            setOpenDropdown(false);
-                            setShowScoresSheet(true);
-                          }}
-                        >
-                          <div
-                            className=" mr-12
-                               flex justify-center items-center"
-                          >
-                            <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1657101638/InsoImages/scores_green_tn8iuj.svg"
-                              alt="edit"
-                              layout="fixed"
-                              width="18"
-                              height="18"
-                            />
-                          </div>
-                          <p className=" text-black-analText">Scores</p>
-                        </div>
-                      </div>
+      {loading ? (
+        <div className="flex items-center justify-center h-[40vh] mt-60">
+          <LargeSpinner />
+        </div>
+      ) : (
+        <div className="h-full">
+          {!viewFullPostInsp ? (
+            <div className={` h-full flex flex-col relative w-full `}>
+              <div
+                className={` h-65 bg-gray-background ${
+                  viewAllTags ? "mb-0" : "mb-5"
+                }  vp-980:mt-16 px-16 vp-min-601:px-42 flex items-center justify-between`}
+              >
+                <div className=" flex items-center">
+                  <Link href="/discussions" passHref>
+                    <div className="flex items-center justify-center">
+                      <Image
+                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
+                        alt="back"
+                        layout="fixed"
+                        width="30"
+                        height="30"
+                      />
                     </div>
-                  </>
-                )}
-              </div>
-              <div className="flex items-center justify-center ">
-                <Image
-                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655331824/InsoImages/divider_er0cbs.svg"
-                  alt="divider"
-                  layout="fixed"
-                  width="20"
-                  height="53"
-                />
-              </div>
-              <div className="flex items-center justify-center cursor-pointer">
-                <Image
-                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655331849/InsoImages/help_icon_ccclpk.svg"
-                  alt="help"
-                  layout="fixed"
-                  width="23"
-                  height="23"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex  h-full  overflow-hidden">
-            <div
-              className={`h-full relative flex flex-col flex-grow  w-1/2 justify-between `}
-            >
-              <div>
-                <div
-                  className={` px-16 vp-min-601:px-42 py-10 bg-gray-background ${
-                    showScoresSheet && "pr-4"
-                  } `}
-                >
-                  <div className=" flex justify-between items-center">
-                    <div className="flex  items-center">
-                      <div className="flex items-center justify-center">
+                  </Link>
+                  <h5 className="ml-13 capitalize">{discTitle}</h5>
+                </div>
+                <div className="vp-980:hidden">
+                  <form action="">
+                    <div className={`${styles.searchInput}     `}>
+                      <div className="flex items-center justify-center ">
                         <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1655331879/InsoImages/avatar_bdtbd1.svg"
-                          alt="back"
+                          src="https://res.cloudinary.com/insomaryland/image/upload/v1655331753/InsoImages/search_nhky7k.svg"
+                          alt="more"
                           layout="fixed"
-                          width="40"
-                          height="40"
+                          width="13"
+                          height="13"
                         />
                       </div>
-                      <div className="ml-13">
-                        <h6 className=" font-medium">
-                          {firstName} {lastName}
-                          <span className=" text-primary-darkGreen text-xs font-normal ml-3">
-                            @{userName}
-                          </span>
-                        </h6>
-                        <span className="text-xs text-gray-faintGray">
-                          posted 6 mins ago
-                        </span>
-                      </div>
+                      <input
+                        type="text"
+                        className={`border-none h-auto focus:ring-0 bg-transparent w-400`}
+                        placeholder="Input keyword to search or filter "
+                      />
                     </div>
-                    {showScoresSheet && (
-                      <div className="w-128 h-27  text-primary-blue bg-blue-inputBlue flex items-center justify-center rounded">
-                        #ReadMode
-                      </div>
-                    )}
-                    {!showScoresSheet && (
-                      <div className="flex items-center justify-center relative">
-                        <div
-                          className="flex items-center justify-center "
-                          onClick={() => setOpenEditDropdown(true)}
-                        >
-                          <Image
-                            src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
-                            alt="back"
-                            layout="fixed"
-                            width="6"
-                            height="22"
-                            className=" cursor-pointer"
-                          />
+                  </form>
+                </div>
+                <div className="flex items-center gap-6 h-full">
+                  <div
+                    className="flex items-end justify-center  h-22"
+                    title="Drafts"
+                  >
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/drafts_y6fbx2.svg"
+                      alt="more"
+                      layout="fixed"
+                      width="20"
+                      height="20"
+                    />
+                  </div>
+                  <div
+                    className="flex items-center justify-center "
+                    title="Charts"
+                  >
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/charts_izhlnl.svg"
+                      alt="more"
+                      layout="fixed"
+                      width="21"
+                      height="21"
+                    />
+                  </div>
+                  <div
+                    className="flex items-center justify-center "
+                    title="Scoresheet"
+                    onClick={() => {
+                      setShowScoresSheet(true);
+                      setShowParticipants(false);
+                    }}
+                  >
+                    {" "}
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/scoreSheet_fpziio.svg"
+                      alt="more"
+                      layout="fixed"
+                      width="21"
+                      height="21"
+                    />
+                  </div>
+                  <div
+                    className="flex items-center justify-center "
+                    title="Participants"
+                    onClick={() => {
+                      setShowParticipants(true);
+                      setShowScoresSheet(false);
+                    }}
+                  >
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/participants_zgvlm1.svg"
+                      alt="more"
+                      layout="fixed"
+                      width="21"
+                      height="21"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center ">
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1655331824/InsoImages/divider_er0cbs.svg"
+                      alt="divider"
+                      layout="fixed"
+                      width="20"
+                      height="53"
+                    />
+                  </div>
+                  <div
+                    className="flex items-center justify-center cursor-pointer"
+                    title="Help"
+                  >
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/help_aako7c.svg"
+                      alt="help"
+                      layout="fixed"
+                      width="23"
+                      height="23"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex  h-full  overflow-hidden">
+                <div
+                  className={`h-full relative flex flex-col flex-grow  w-1/2 justify-between `}
+                >
+                  <div>
+                    <div
+                      className={` px-16 vp-min-601:px-42 py-10 bg-gray-background ${
+                        showScoresSheet && "pr-4"
+                      } `}
+                    >
+                      <div className=" flex justify-between items-center">
+                        <div className="flex  items-center">
+                          <div className="flex items-center justify-center">
+                            <Image
+                              src="https://res.cloudinary.com/insomaryland/image/upload/v1655331879/InsoImages/avatar_bdtbd1.svg"
+                              alt="back"
+                              layout="fixed"
+                              width="40"
+                              height="40"
+                            />
+                          </div>
+                          <div className="ml-13">
+                            <h6 className=" font-medium">
+                              {firstName} {lastName}
+                              <span className=" text-primary-darkGreen text-xs font-normal ml-3">
+                                @{userName}
+                              </span>
+                            </h6>
+                            <span className="text-xs text-gray-faintGray">
+                              posted 6 mins ago
+                            </span>
+                          </div>
                         </div>
-                        {openEditDropdown && (
-                          <>
-                            <div
-                              className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
-                              onClick={() => setOpenEditDropdown(false)}
-                            ></div>
-                            <div
-                              className={`w-176   top-6  -right-6 bg-white-white absolute px-16 py-7 z-60  rounded-lg shadow-xs `}
-                            >
-                              <div className="w-full ">
-                                <Link
-                                  passHref
-                                  href={`/discussions/edit-discussion/${id}`}
-                                >
-                                  <div
-                                    className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start "
-                                    // onClick={}
-                                  >
-                                    <div
-                                      className=" mr-12
-                               flex justify-center items-center"
-                                    >
-                                      <Image
-                                        src="https://res.cloudinary.com/insomaryland/image/upload/v1657099297/InsoImages/edit_green_ijlfht.svg"
-                                        alt="edit"
-                                        layout="fixed"
-                                        width="12"
-                                        height="12"
-                                      />
-                                    </div>
-                                    <p className="text-black-analText ">
-                                      Edit discussion
-                                    </p>
-                                  </div>
-                                </Link>
-                                <div
-                                  className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray  cursor-pointer flex justify-start"
-                                  // onClick={() => {
-                                  //   setOpenDropdown(false);
-                                  // }}
-                                >
-                                  <div
-                                    className=" mr-12
-                               flex justify-center items-center"
-                                  >
-                                    <Image
-                                      src="https://res.cloudinary.com/insomaryland/image/upload/v1657099304/InsoImages/close_green_kjr4pd.svg"
-                                      alt="edit"
-                                      layout="fixed"
-                                      width="12"
-                                      height="12"
-                                    />
-                                  </div>
-                                  <p className=" text-black-analText">
-                                    Close discussion
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </>
+                        {showScoresSheet && (
+                          <div className="w-128 h-27  text-primary-blue bg-blue-inputBlue flex items-center justify-center rounded">
+                            #ReadMode
+                          </div>
                         )}
+                        {!showScoresSheet && (
+                          <div className="flex items-center justify-center relative">
+                            <div
+                              className="flex items-center justify-center "
+                              onClick={() => setOpenEditDropdown(true)}
+                            >
+                              <Image
+                                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
+                                alt="back"
+                                layout="fixed"
+                                width="6"
+                                height="22"
+                                className=" cursor-pointer"
+                              />
+                            </div>
+                            {openEditDropdown && (
+                              <>
+                                <div
+                                  className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
+                                  onClick={() => setOpenEditDropdown(false)}
+                                ></div>
+                                <div
+                                  className={`w-176   top-6  -right-6 bg-white-white absolute px-16 py-7 z-60  rounded-lg shadow-xs `}
+                                >
+                                  <div className="w-full ">
+                                    <Link
+                                      passHref
+                                      href={`/discussions/edit-discussion/${id}`}
+                                    >
+                                      <div
+                                        className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start "
+                                        // onClick={}
+                                      >
+                                        <div
+                                          className=" mr-12
+                               flex justify-center items-center"
+                                        >
+                                          <Image
+                                            src="https://res.cloudinary.com/insomaryland/image/upload/v1657099297/InsoImages/edit_green_ijlfht.svg"
+                                            alt="edit"
+                                            layout="fixed"
+                                            width="12"
+                                            height="12"
+                                          />
+                                        </div>
+                                        <p className="text-black-analText ">
+                                          Edit discussion
+                                        </p>
+                                      </div>
+                                    </Link>
+                                    <div
+                                      className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray  cursor-pointer flex justify-start"
+                                      // onClick={() => {
+                                      //   setOpenDropdown(false);
+                                      // }}
+                                    >
+                                      <div
+                                        className=" mr-12
+                               flex justify-center items-center"
+                                      >
+                                        <Image
+                                          src="https://res.cloudinary.com/insomaryland/image/upload/v1657099304/InsoImages/close_green_kjr4pd.svg"
+                                          alt="edit"
+                                          layout="fixed"
+                                          width="12"
+                                          height="12"
+                                        />
+                                      </div>
+                                      <p className=" text-black-analText">
+                                        Close discussion
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      {singleDiscData?.settings?.starter_prompt === "" ? (
+                        <p>
+                          For this discussion, we are going to explore{" "}
+                          {parse(discTitle)}
+                        </p>
+                      ) : (
+                        <p className="mt-10 text-gray-text break-words">
+                          {parse(starterPrompt)}
+                        </p>
+                      )}
+                    </div>
+                    {showScoresSheet !== true && (
+                      <div
+                        className={` ${
+                          viewAllTags ? "hidden" : "flex"
+                        } px-16 vp-min-601:px-42 mt-7 justify-between vp-600:overflow-x-scroll `}
+                      >
+                        <div className="flex items-center gap-4 ">
+                          {tags.map((tag, index) => (
+                            <div
+                              className="h-32 bg-blue-inputBlue flex gap-8 items-center px-15 rounded-xs"
+                              key={index}
+                            >
+                              <p className=" text-gray-text">#{tag.tagName}</p>
+                              <p className=" text-primary-blue">{tag.used}</p>
+                            </div>
+                          ))}
+                        </div>
+                        <button
+                          className=" w-100 text-primary-darkGreen text-sm "
+                          onClick={() => setViewAllTags(true)}
+                        >
+                          View all
+                        </button>
                       </div>
                     )}
                   </div>
-                  {singleDiscData?.settings?.starter_prompt === "" ? (
-                    <p>
-                      For this discussion, we are going to explore{" "}
-                      {parse(discTitle)}
-                    </p>
-                  ) : (
-                    <p className="mt-10 text-gray-text break-words">
-                      {parse(starterPrompt)}
-                    </p>
+
+                  <div
+                    className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar}`}
+                  >
+                    <div
+                      className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
+                    >
+                      <h6>comments will be here</h6>
+                    </div>
+                  </div>
+
+                  {/* COMMENT BOX */}
+                  {showScoresSheet !== true && (
+                    <div className="px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white ">
+                      {activeCommentBox === "noInspiration" && (
+                        <CommentBox
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Ask questions" && (
+                        <AskQuestionsComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Ask for clarity" && (
+                        <AskForClarityComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Course concepts" && (
+                        <CourseConceptsComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Personal experience" && (
+                        <PersonalExperienceComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Real-world applications" && (
+                        <RealWorldComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Legal or ethical concerns" && (
+                        <LegalEthicalComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Alternative perspectives" && (
+                        <AlternativeComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "A meme" && (
+                        <MemeComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "A graphic organizer" && (
+                        <GraphicOrganizerComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "A media" && (
+                        <CreateMediaComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Media" && (
+                        <ShareMediaComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "A Quote" && (
+                        <QuoteComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Study strategies" && (
+                        <StudyStrategiesComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "A debate" && (
+                        <DebateComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "An AMA thread" && (
+                        <AMAThreadComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "A search tree" && (
+                        <SearchTreeComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {/* RESPONDING */}
+                      {activeCommentBox === "Alternatives" && (
+                        <AlternativeCommentResp
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Illustrations" && (
+                        <IllustrationsComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Insights" && (
+                        <InsightsComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Resources" && (
+                        <ResourcesComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Directly" && (
+                        <DirectlyComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "For clarification" && (
+                        <ClarificationComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "More questions" && (
+                        <MoreQuestionsComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Questions" && (
+                        <QuestionsComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "For Clarification" && (
+                        <AskForClarifComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "1 Star 5 Stars" && (
+                        <OneStarFiveComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Critical Review" && (
+                        <CriticalReviewComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Loved, Learned" && (
+                        <LovedLearnedComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Heart" && (
+                        <HeartComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Mad" && (
+                        <MadComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                      {activeCommentBox === "Mindblown" && (
+                        <MindblownComment
+                          togglePostInsp={togglePostInsp}
+                          setActiveCommentBox={setActiveCommentBox}
+                        />
+                      )}
+                    </div>
                   )}
                 </div>
-                {showScoresSheet !== true && (
-                  <div
-                    className={` ${
-                      viewAllTags ? "hidden" : "flex"
-                    } px-16 vp-min-601:px-42 mt-7 justify-between vp-600:overflow-x-scroll `}
-                  >
-                    <div className="flex items-center gap-4 ">
+                {viewAllTags && (
+                  <div className="border-l-2 w-252 border-primary-darkGreen">
+                    <div className=" mb-22 border-b-2 border-other-disabled p-24  flex justify-between items-center">
+                      <p className="text-primary-darkGreen">
+                        Trending tags (6)
+                      </p>
+                      <div
+                        className="flex justify-center items-center"
+                        onClick={() => setViewAllTags(false)}
+                      >
+                        <Image
+                          src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                          alt="cancel"
+                          layout="fixed"
+                          width="14"
+                          height="14"
+                        />
+                      </div>
+                    </div>
+                    <div className="px-24">
                       {tags.map((tag, index) => (
                         <div
-                          className="h-32 bg-blue-inputBlue flex gap-8 items-center px-15 rounded-xs"
+                          className="h-32 mb-10 bg-blue-inputBlue flex mr-10 gap-8 items-center px-15 rounded-xs w-189"
                           key={index}
                         >
                           <p className=" text-gray-text">#{tag.tagName}</p>
@@ -425,266 +661,15 @@ const ViewDiscussion = () => {
                         </div>
                       ))}
                     </div>
-                    <button
-                      className=" w-100 text-primary-darkGreen text-sm "
-                      onClick={() => setViewAllTags(true)}
-                    >
-                      View all
-                    </button>
                   </div>
                 )}
-              </div>
-
-              <div
-                className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar}`}
-              >
-                <div
-                  className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
-                >
-                  <h6>comments will be here</h6>
-                </div>
-              </div>
-
-              {/* COMMENT BOX */}
-              {showScoresSheet !== true && (
-                <div className="px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white ">
-                  {activeCommentBox === "noInspiration" && (
-                    <CommentBox
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Ask questions" && (
-                    <AskQuestionsComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Ask for clarity" && (
-                    <AskForClarityComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Course concepts" && (
-                    <CourseConceptsComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Personal experience" && (
-                    <PersonalExperienceComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Real-world applications" && (
-                    <RealWorldComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Legal or ethical concerns" && (
-                    <LegalEthicalComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Alternative perspectives" && (
-                    <AlternativeComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "A meme" && (
-                    <MemeComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "A graphic organizer" && (
-                    <GraphicOrganizerComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "A media" && (
-                    <CreateMediaComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Media" && (
-                    <ShareMediaComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "A Quote" && (
-                    <QuoteComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Study strategies" && (
-                    <StudyStrategiesComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "A debate" && (
-                    <DebateComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "An AMA thread" && (
-                    <AMAThreadComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "A search tree" && (
-                    <SearchTreeComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {/* RESPONDING */}
-                  {activeCommentBox === "Alternatives" && (
-                    <AlternativeCommentResp
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Illustrations" && (
-                    <IllustrationsComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Insights" && (
-                    <InsightsComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Resources" && (
-                    <ResourcesComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Directly" && (
-                    <DirectlyComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "For clarification" && (
-                    <ClarificationComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "More questions" && (
-                    <MoreQuestionsComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Questions" && (
-                    <QuestionsComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "For Clarification" && (
-                    <AskForClarifComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "1 Star 5 Stars" && (
-                    <OneStarFiveComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Critical Review" && (
-                    <CriticalReviewComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Loved, Learned" && (
-                    <LovedLearnedComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Heart" && (
-                    <HeartComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Mad" && (
-                    <MadComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                  {activeCommentBox === "Mindblown" && (
-                    <MindblownComment
-                      togglePostInsp={togglePostInsp}
-                      setActiveCommentBox={setActiveCommentBox}
-                    />
-                  )}
-                </div>
-              )}
-            </div>
-            {viewAllTags && (
-              <div className="border-l-2 w-252   border-border-line">
-                <div className=" mb-22 border-b-2 border-other-disabled p-24  flex justify-between items-center">
-                  <p className="text-primary-darkGreen">Trending tags (6)</p>
-                  <div
-                    className="flex justify-center items-center"
-                    onClick={() => setViewAllTags(false)}
-                  >
-                    <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
-                      alt="cancel"
-                      layout="fixed"
-                      width="14"
-                      height="14"
-                    />
-                  </div>
-                </div>
-                <div className="px-24">
-                  {tags.map((tag, index) => (
-                    <div
-                      className="h-32 mb-10 bg-blue-inputBlue flex mr-10 gap-8 items-center px-15 rounded-xs w-189"
-                      key={index}
-                    >
-                      <p className=" text-gray-text">#{tag.tagName}</p>
-                      <p className=" text-primary-blue">{tag.used}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-            {showScoresSheet && (
-              <div className=" w-1/2 py-8 px-20">
-                {scoreType === "automatic" && (
-                  <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
-                    <div className=" flex justify-between items-center">
-                      <h6 className=" text-primary-darkGreen ">
-                        Automatic scoring
-                      </h6>
+                {showParticipants && (
+                  <div className="border-l-2 w-350 border-primary-darkGreen">
+                    <div className=" mb-22 border-b-2 border-other-disabled p-24  flex justify-between items-center">
+                      <p className="text-primary-darkGreen">Participants (4)</p>
                       <div
                         className="flex justify-center items-center"
-                        onClick={() => setShowScoresSheet(false)}
+                        onClick={() => setShowParticipants(false)}
                       >
                         <Image
                           src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
@@ -695,186 +680,262 @@ const ViewDiscussion = () => {
                         />
                       </div>
                     </div>
-
-                    <div className={`${styles.tableHeader} grid-cols-12`}>
-                      <div className="col-span-4 flex  items-center justify-start">
-                        <div className="w-20 opacity-0 mr-10">S</div>
-                        <div className="flex  items-center  justify-center">
-                          <span>
-                            User
-                            <span className=" text-gray-faintGray">
-                              ({automaticScoring.length})
-                            </span>
-                          </span>
-                        </div>
-                      </div>
-                      <div className="col-span-2 flex  items-center  justify-center">
-                        <span className=" text-xs">
-                          Instru...{" "}
-                          <span className=" text-gray-faintGray">(20)</span>{" "}
-                        </span>
-                      </div>
-                      <div className="col-span-2 flex  items-center  justify-center">
-                        <span className=" text-xs">
-                          Intera...{" "}
-                          <span className=" text-gray-faintGray">(28)</span>
-                        </span>
-                      </div>
-                      <div className="col-span-2 flex  items-center  justify-center">
-                        <span className=" text-xs">
-                          Impact
-                          <span className=" text-gray-faintGray">(12)</span>
-                        </span>
-                      </div>
-                      <div className="col-span-2 flex  items-center  justify-center">
-                        <span className=" text-xs">Total score</span>
-                      </div>
+                    {/* PARTICIPANTS */}
+                    <div className="px-24 flex items-center mb-16">
+                      <Image
+                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/Avatar_yftjvt.svg"
+                        alt="avatar"
+                        width={24}
+                        height={24}
+                      />
+                      <p className="ml-8 mr-40 text-black-postInsp">
+                        Carl John{" "}
+                        <span className=" text-gray-analyticsGray">@JOHN</span>
+                      </p>
+                      <Image
+                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/mute_yvnudc.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                        className="cursor-pointer"
+                      />
+                      <button className="ml-30 text-primary-blue cursor-pointer text-sm hover:text-other-danger">
+                        Remove
+                      </button>
                     </div>
-                    <div
-                      className={`${styles.hiddenScrollbar} h-full flex-grow`}
-                    >
-                      {automaticScoring.map((user, index) => (
-                        <AutomaticScoringTemp user={user} key={index} />
-                      ))}
+                    <div className="px-24 flex items-center mb-16">
+                      <Image
+                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/Avatar_yftjvt.svg"
+                        alt="avatar"
+                        width={24}
+                        height={24}
+                      />
+                      <p className="ml-8 mr-40 text-black-postInsp">
+                        Carl John{" "}
+                        <span className=" text-gray-analyticsGray">@JOHN</span>
+                      </p>
+                      <Image
+                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/mute_yvnudc.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                        className="cursor-pointer"
+                      />
+                      <button className="ml-30 text-primary-blue cursor-pointer text-sm hover:text-other-danger">
+                        Remove
+                      </button>
                     </div>
                   </div>
                 )}
-
-                {scoreType === "rubric" && (
-                  <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
-                    <div className="flex justify-between items-center">
-                      <h6 className=" text-primary-darkGreen ">
-                        Rubric scoring
-                      </h6>
-                      <div
-                        className="flex justify-center items-center"
-                        onClick={() => setShowScoresSheet(false)}
-                      >
-                        <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
-                          alt="cancel"
-                          layout="fixed"
-                          width="14"
-                          height="14"
-                        />
-                      </div>
-                    </div>
-                    <div className={`${styles.tableHeader} grid-cols-10 gap-4`}>
-                      <div className="col-span-4 flex  items-center justify-start ">
-                        <div className="w-20 opacity-0 mr-10">S</div>
-                        <div className="flex  items-center  justify-center">
-                          <span>
-                            User
-                            <span className=" text-gray-faintGray">
-                              ({automaticScoring.length})
-                            </span>
-                          </span>
+                {showScoresSheet && (
+                  <div className=" w-1/2 py-8 px-20">
+                    {scoreType === "automatic" && (
+                      <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
+                        <div className=" flex justify-between items-center">
+                          <h6 className=" text-primary-darkGreen ">
+                            Automatic scoring
+                          </h6>
+                          <div
+                            className="flex justify-center items-center"
+                            onClick={() => setShowScoresSheet(false)}
+                          >
+                            <Image
+                              src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                              alt="cancel"
+                              layout="fixed"
+                              width="14"
+                              height="14"
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className=" col-span-2   flex  items-center  justify-center">
-                        <span className=" text-xs">
-                          Graded
-                          <span className=" text-gray-faintGray">(2)</span>{" "}
-                        </span>
-                      </div>
-                      <div className="col-span-2  flex  items-center  justify-center">
-                        <span className=" text-xs">
-                          Feedback
-                          <span className=" text-gray-faintGray">(28)</span>
-                        </span>
-                      </div>
 
-                      <div className="col-span-2  flex  items-center  justify-center">
-                        <span className=" text-xs">Total score</span>
-                      </div>
-                    </div>
-                    <div className=" h-full">
-                      <div className=" h-1/2">
+                        <div className={`${styles.tableHeader} grid-cols-8`}>
+                          <div className="col-span-3 flex  items-center justify-start">
+                            <div className="w-20 opacity-0 mr-10">S</div>
+                            <div className="flex  items-center  justify-center">
+                              <span>
+                                User
+                                <span className=" text-gray-faintGray">
+                                  ({automaticScoring.length})
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                          <div className=" flex  items-center  justify-center">
+                            <span className=" text-xs">Posts</span>
+                          </div>
+                          <div className=" flex  items-center  justify-center">
+                            <span className=" text-xs">Days</span>
+                          </div>
+                          <div className=" flex  items-center  justify-center">
+                            <span className=" text-xs">Comments</span>
+                          </div>
+                          <div className=" flex  items-center  justify-center">
+                            <span className=" text-xs">P. insp</span>
+                          </div>
+                          <div className=" flex  items-center  justify-center">
+                            <span className=" text-xs">Total score</span>
+                          </div>
+                        </div>
                         <div
                           className={`${styles.hiddenScrollbar} h-full flex-grow`}
                         >
-                          {rubricScoring.map((user, index) => (
-                            <RubricScoringTemp user={user} key={index} />
-                          ))}
-                        </div>
-                      </div>
-                      <div className={` h-1/2`}>
-                        <div
-                          className={`${styles.tableHeader}  h-1/2  grid-cols-11   gap-4`}
-                        >
-                          <div className="col-span-5 flex  items-center  justify-start">
-                            <span className=" text-xs">
-                              Criteria
-                              <span className=" text-gray-faintGray">(5)</span>
-                            </span>
-                          </div>
-                          <div className="col-span-4 grid grid-cols-6 justify-between items-center">
-                            <span
-                              className=" text-gray-analyticsGray cursor-pointer"
-                              title={rubricCriteria.totalScore * 0}
-                            >
-                              0
-                            </span>
-                            <span
-                              className=" text-gray-analyticsGray cursor-pointer"
-                              title={rubricCriteria.totalScore * 0.5}
-                            >
-                              1
-                            </span>
-                            <span
-                              className=" text-gray-analyticsGray cursor-pointer"
-                              title={rubricCriteria.totalScore * 0.7}
-                            >
-                              2
-                            </span>
-                            <span
-                              className=" text-gray-analyticsGray cursor-pointer"
-                              title={rubricCriteria.totalScore * 0.8}
-                            >
-                              3
-                            </span>
-                            <span
-                              className=" text-gray-analyticsGray cursor-pointer"
-                              title={rubricCriteria.totalScore * 0.9}
-                            >
-                              4
-                            </span>
-                            <span
-                              className=" text-gray-analyticsGray cursor-pointer"
-                              title={rubricCriteria.totalScore * 1}
-                            >
-                              5
-                            </span>
-                          </div>
-                          <div className="col-span-2">
-                            <span className=" text-xs">Points</span>
-                          </div>
-                        </div>
-
-                        <div className={`${styles.hiddenScrollbar} `}>
-                          {rubricCriteria.allCriteria.map((item, index) => (
-                            <RubricCriteriaTemp
-                              item={item}
+                          {automaticScoring.map((user, index) => (
+                            <AutomaticScoringTemp
+                              user={user}
                               key={index}
-                              total={rubricCriteria.totalScore}
+                              scores={scores}
                             />
                           ))}
                         </div>
                       </div>
-                    </div>
+                    )}
+
+                    {scoreType === "rubric" && (
+                      <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
+                        <div className="flex justify-between items-center">
+                          <h6 className=" text-primary-darkGreen ">
+                            Rubric scoring
+                          </h6>
+                          <div
+                            className="flex justify-center items-center"
+                            onClick={() => setShowScoresSheet(false)}
+                          >
+                            <Image
+                              src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                              alt="cancel"
+                              layout="fixed"
+                              width="14"
+                              height="14"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className={`${styles.tableHeader} grid-cols-10 gap-4`}
+                        >
+                          <div className="col-span-4 flex  items-center justify-start ">
+                            <div className="w-20 opacity-0 mr-10">S</div>
+                            <div className="flex  items-center  justify-center">
+                              <span>
+                                User
+                                <span className=" text-gray-faintGray">
+                                  ({automaticScoring.length})
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                          <div className=" col-span-2   flex  items-center  justify-center">
+                            <span className=" text-xs">
+                              Graded
+                              <span className=" text-gray-faintGray">
+                                (2)
+                              </span>{" "}
+                            </span>
+                          </div>
+                          <div className="col-span-2  flex  items-center  justify-center">
+                            <span className=" text-xs">
+                              Feedback
+                              <span className=" text-gray-faintGray">(28)</span>
+                            </span>
+                          </div>
+
+                          <div className="col-span-2  flex  items-center  justify-center">
+                            <span className=" text-xs">Total score</span>
+                          </div>
+                        </div>
+                        <div className=" h-full">
+                          <div className=" h-1/2">
+                            <div
+                              className={`${styles.hiddenScrollbar} h-full flex-grow`}
+                            >
+                              {rubricScoring.map((user, index) => (
+                                <RubricScoringTemp
+                                  user={user}
+                                  key={index}
+                                  scores={scores}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                          <div className={` h-1/2`}>
+                            <div
+                              className={`${styles.tableHeader}  h-1/2  grid-cols-11   gap-4`}
+                            >
+                              <div className="col-span-5 flex  items-center  justify-start">
+                                <span className=" text-xs">
+                                  Criteria
+                                  <span className=" text-gray-faintGray">
+                                    (5)
+                                  </span>
+                                </span>
+                              </div>
+                              <div className="col-span-4 grid grid-cols-6 justify-between items-center">
+                                <span
+                                  className=" text-gray-analyticsGray cursor-pointer"
+                                  title={rubricCriteria.totalScore * 0}
+                                >
+                                  0
+                                </span>
+                                <span
+                                  className=" text-gray-analyticsGray cursor-pointer"
+                                  title={rubricCriteria.totalScore * 0.5}
+                                >
+                                  1
+                                </span>
+                                <span
+                                  className=" text-gray-analyticsGray cursor-pointer"
+                                  title={rubricCriteria.totalScore * 0.7}
+                                >
+                                  2
+                                </span>
+                                <span
+                                  className=" text-gray-analyticsGray cursor-pointer"
+                                  title={rubricCriteria.totalScore * 0.8}
+                                >
+                                  3
+                                </span>
+                                <span
+                                  className=" text-gray-analyticsGray cursor-pointer"
+                                  title={rubricCriteria.totalScore * 0.9}
+                                >
+                                  4
+                                </span>
+                                <span
+                                  className=" text-gray-analyticsGray cursor-pointer"
+                                  title={rubricCriteria.totalScore * 1}
+                                >
+                                  5
+                                </span>
+                              </div>
+                              <div className="col-span-2">
+                                <span className=" text-xs">Points</span>
+                              </div>
+                            </div>
+
+                            <div className={`${styles.hiddenScrollbar} `}>
+                              {scores?.map((item, index) => (
+                                <RubricCriteriaTemp
+                                  item={item}
+                                  key={index}
+                                  // total={rubricCriteria.totalScore}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
-            )}
-          </div>
-
-          {editDiscussion && <EditDiscussion />}
+            </div>
+          ) : (
+            <FullPostInspirations
+              setViewFullPostInsp={setViewFullPostInsp}
+              setActiveCommentBox={setActiveCommentBox}
+            />
+          )}
         </div>
-      ) : (
-        <FullPostInspirations
-          setViewFullPostInsp={setViewFullPostInsp}
-          setActiveCommentBox={setActiveCommentBox}
-        />
       )}
     </Layout>
   );

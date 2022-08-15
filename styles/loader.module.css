@@ -11,7 +11,7 @@
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: #01C1B7;
+    background: #525AF2;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
@@ -128,7 +128,7 @@
     width: 6px;
     height: 18px;
     border-radius: 20%;
-    background: #01C1B7;
+    background: #525AF2;
 }
 
 .ldSpinner div:nth-child(1) {
@@ -217,10 +217,10 @@
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 8px solid #01C1B7;
+    border: 8px solid #525AF2;
     border-radius: 50%;
     animation: ldsLargeRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #01C1B7 transparent transparent transparent;
+    border-color: #525AF2 transparent transparent transparent;
 }
 
 .ldsLargeRing div:nth-child(1) {
@@ -264,7 +264,7 @@
     border: 3px solid transparent;
     border-radius: 50%;
     animation: WhiteldsRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #01C1B7 white white white;
+    border-color: #525AF2 white white white;
 }
 
 .WhiteldsRing div:nth-child(1) {

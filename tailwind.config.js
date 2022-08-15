@@ -35,8 +35,8 @@ module.exports = {
     colors: {
       transparent: "transparent",
       primary: {
-        darkGreen: "#01C1B7",
-        blue: "#0EB4F6",
+        darkGreen: "#525AF2",
+        blue: "#F2B544",
       },
 
       white: {
@@ -68,7 +68,7 @@ module.exports = {
       black: {
         darkPretzl: "#001E2F",
         analText: "#2E2E2E",
-        postInsp: "#001312",
+        postInsp: "#161925",
       },
       other: {
         danger: " #E84949",
@@ -78,6 +78,7 @@ module.exports = {
         faintBlue: " #DAF2FF",
         success: " #04BE00",
         lightRed: "#FFF5F5",
+        orange: "#FFF2DC",
       },
       border: {
         green: "rgba(144, 215, 255, 0.1)",
@@ -104,6 +105,7 @@ module.exports = {
     },
 
     screens: {
+      "vp-1440": { max: "1440px" },
       "vp-1366": { max: "1366px" },
       "vp-1200": { max: "1200px" },
       "vp-1024": { max: "1024px" },
@@ -114,6 +116,7 @@ module.exports = {
       "vp-768": { max: "768px" },
       "vp-600": { max: "600px" },
       "vp-min-1440": "1440px",
+      "vp-min-1174": "1174px",
       "vp-min-1024": "1024px",
       "vp-min-601": "601px",
       "vp-min-769": "769px",
@@ -323,6 +326,7 @@ module.exports = {
       199: "19.9rem",
       200: "20rem",
       255: "25.5rem",
+      350: "35rem",
     },
     padding: {
       0: "0px",
@@ -528,6 +532,12 @@ module.exports = {
       200: "20rem",
     },
     extend: {
+      backgroundImage: {
+        "hero-img":
+          "url('https://res.cloudinary.com/insomaryland/image/upload/v1660383489/hero_bg_e0mhlq.svg')",
+        "hero-inso":
+          "url('https://res.cloudinary.com/insomaryland/image/upload/v1660385026/hero-photo_psyazz.svg')",
+      },
       keyframes: {
         "fade-in": {
           "0%": { opacity: 0 },
@@ -772,6 +782,7 @@ module.exports = {
         311: "31.1rem",
         319: "31.9rem",
         320: "32rem",
+        330: "33rem",
         333: "33.3rem",
         384: "38.4rem",
         400: "40rem",
@@ -787,11 +798,13 @@ module.exports = {
         561: "56.1rem",
         600: "60rem",
         613: "61.3rem",
+        618: "61.8rem",
         634: "63.4rem",
         639: "63.9rem",
         660: "66rem",
         680: "68rem",
         736: "73.6rem",
+        800: "80rem",
         890: "89rem",
         1112: "111.2rem",
         full: "100%",
@@ -1018,13 +1031,18 @@ module.exports = {
         445: "44.5rem",
         450: "45rem",
         460: "46rem",
+        470: "47rem",
         480: "48rem",
         500: "50rem",
+        520: "52rem",
         548: "54.8rem",
         579: "57.9rem",
         600: "60rem",
         660: "66rem",
+        700: "70rem",
         748: "74.8rem",
+        790: "79rem",
+        850: "85rem",
         900: "90rem",
         full: "100%",
       },

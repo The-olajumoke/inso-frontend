@@ -1,13 +1,18 @@
 .heading{
     font-style: normal;
-    font-weight: 500;
-    font-size: 40px;
-    /* line-height: 84px; */
+font-weight: 700;
+    font-size: 52px;
+    line-height: 72px;
     display: flex;
     align-items: center;
     padding: 0;
     /* margin: 0; */
-    color: #2E2E2E;
+    color:#FFFFFF;
+}
+.subHeading{
+    font-size: 48px;
+    font-weight: 700;
+
 }
 .line{
     background: #E3FDFF;
@@ -29,18 +34,21 @@
         color: #07A098;
         margin-top: 65px;
 }
+
 @media (max-width: 768px) {
 .heading {
 font-style: normal;
-    font-weight: 500;
-    font-size: 40px;
+    font-weight: 400;
+    font-size: 42px;
     line-height: 48px;
     display: flex;
     align-items: center;
-
-    /* Pretzl Black */
-
     
+}
+.subHeading {
+    font-size: 32px;
+    font-weight: 500;
+
 }
 }
 @media (max-width: 600px) {
@@ -52,8 +60,5 @@ font-style: normal;
     display: flex;
     align-items: center;
 
-    /* Pretzl Black */
-
-    color: #2E2E2E;
 }
 }

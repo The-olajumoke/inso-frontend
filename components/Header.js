@@ -3,25 +3,10 @@ import Image from "next/image";
 import styles from "@/styles/layout.module.css";
 const Header = ({ navSize, handleNavSize, searchBar }) => {
   return (
-    <div className="h-60 flex sticky top-0 bg-white-white z-50 w-full px-50 items-center shadow-sm">
-      <div className="mr-64" onClick={handleNavSize}>
-        <Image
-          src={`${
-            navSize === "small"
-              ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326909/InsoImages/hamburger_aij9tq.svg"
-              : "https://res.cloudinary.com/insomaryland/image/upload/v1655326915/InsoImages/hamburger_open_fxdmt4.svg"
-          }`}
-          alt="hamburger"
-          draggable="false"
-          layout="fixed"
-          width="25"
-          height="15"
-        />
-      </div>
-
+    <div className="h-60 flex sticky top-0 bg-white-white z-50 w-full px-50 items-center shadow-sm ">
       <div>
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1655327110/InsoImages/inso_logo_yi1rgz.svg"
+          src="https://res.cloudinary.com/insomaryland/image/upload/v1660169006/inso_logo_x1kgxc.svg"
           alt="Inso Logo"
           draggable="false"
           layout="fixed"

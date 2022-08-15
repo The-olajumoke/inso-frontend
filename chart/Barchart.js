@@ -18,11 +18,13 @@ const Barchart = ({ thick, radius, labels, barData }) => {
       {
         // label: "# of Votes",
         data: barData,
-        backgroundColor: "rgba(7, 160, 152, 0.3)",
-        borderColor: "rgba(7, 160, 152, 0.3)",
-        pointBorderColor: "rgba(7, 160, 152, 0.3)",
+        backgroundColor: "#525AF2",
+        borderColor: "#525AF2",
+        pointBorderColor: "#525AF2",
         borderWidth: 1,
-        borderRadius: radius,
+        // borderRadius: radius,
+        borderRadius: 10,
+
         barThickness: thick,
         // categoryPercentage: 1.0,
         // barPercentage: 0.98,

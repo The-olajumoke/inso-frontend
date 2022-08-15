@@ -18,10 +18,14 @@
 .public-DraftStyleDefault-block {
   margin:0 !important;
 }
+body{
+  color: #161925;
+}
 /* input,button, */
 @layer base {
   html {
     font-size: 62.5%;
+    
   }
 
   h1 {
@@ -143,7 +147,7 @@
   .checkbox-container input[type="checkbox"]:checked + label span,
   .checkbox-container input[type="radio"]:checked + label span {
     content: "";
-    background-color: #07a098;
+    background-color: #525AF2;
     width: 1.4rem;
     height: 1.4rem;
     position: absolute;
@@ -179,9 +183,7 @@
   .btn:disabled {
     @apply bg-other-disabled text-gray-faintGray font-normal rounded cursor-not-allowed font-poppins;
   }
-  .btn-nonActive {
-    @apply bg-blue-lightBlue text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
-  }
+#F5F6F8
   .btnPostInspNonActive {
     @apply bg-blue-postInsp text-black-postInsp font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
   }
@@ -249,15 +251,27 @@
 }
 
 .react-calendar__tile--active {
-  background: rgb(7, 160, 152, 0.45) !important;
-
+  background: #525AF2 !important;
+  color: white !important;
+}
+.react-calendar__tile--active abbr,.react-calendar__tile--rangeEnd abbr,
+.react-calendar__tile--rangeStart abbr{
   color: white !important;
 }
 
 .react-calendar__tile--rangeEnd,
 .react-calendar__tile--rangeStart {
-  background: #07a098 !important;
+  background: #F2B544 !important;
   color: white !important;
+
+}
+.react-calendar__tile--rangeStart{
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+.react-calendar__tile--rangeEnd{
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .react-calendar__month-view__days__day {
@@ -265,9 +279,14 @@
   font-size: 14px !important;
   margin-bottom: 8px !important;
 }
-.react-calendar__tile--now{
+/* .react-calendar__tile--now{
   background:rgba(14, 180, 246,0.3) !important ;
-}
+  border-radius: 100% ;
+height:100%;
+border: #525AF2 solid 2px;} */
+
+
+
 .react-calendar__month-view__weekdays {
   color: #2e2e2e !important;
   font-size: 14px !important;
@@ -283,7 +302,8 @@ abbr {
   font-weight: normal;
 }
 .react-calendar__tile:disabled {
-  color: rgba(128, 128, 128, 0.5) !important;
+  color: rgba(112, 112, 112, 0.564) !important;
+  cursor: not-allowed;
 }
 .react-calendar__navigation button:disabled{
   background: none !important;

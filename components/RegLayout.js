@@ -1,3 +1,4 @@
+import withAuth from "@/HOC/withAuth";
 import Image from "next/image";
 import React from "react";
 
@@ -7,7 +8,7 @@ function RegLayout({ children }) {
       <div className="h-61 flex justify-between vp-600:hidden">
         <div>
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655327110/InsoImages/inso_logo_yi1rgz.svg"
+            src="https://res.cloudinary.com/insomaryland/image/upload/v1660169006/inso_logo_x1kgxc.svg"
             alt="Inso Logo"
             draggable="false"
             layout="fixed"
@@ -27,4 +28,4 @@ function RegLayout({ children }) {
   );
 }
 
-export default RegLayout;
+export default withAuth(RegLayout);

@@ -12,6 +12,7 @@ import SpinnerLoader from "@/components/SpinnerLoader";
 import ErrorModal from "@/components/ErrorModal";
 import SuccessModal from "@/components/SuccessModal";
 import { API_URL } from "@/utils/url";
+import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 const SignUpPage = () => {
   console.log(API_URL);
   const [email, setEmail] = useState("");
@@ -42,7 +43,13 @@ const SignUpPage = () => {
     setLastName("");
     setConfirmPassword("");
     setPassword("");
+    if (registerSuccess) {
+      setTimeout(() => {
+        location.replace("/auth/login");
+      }, 2000);
+    }
   }, [registerSuccess, registerError]);
+
   useEffect(() => {
     if (
       validateEmail(email) &&
@@ -113,7 +120,9 @@ const SignUpPage = () => {
     };
     register(API_URL, user)(authDispatch);
   };
-
+  const signInWithGoogleHandler = () => {
+    signInWithGoogle(API_URL)(authDispatch);
+  };
   return (
     <RegLayout>
       <div className="vp-600:h-full vp-600:w-full">
@@ -151,94 +160,99 @@ const SignUpPage = () => {
             <h6 className="text-white-white">Create account</h6>
           </div>
           <div className="px-51 vp-600:px-22 py-15 text-center">
-            <h4 className="mb-20 font-medium">Create an account</h4>
-            <form onSubmit={handleRegistration}>
-              <div>
+            <h4 className="mb-20 vp-600:mt-20 font-medium">
+              Create an account
+            </h4>
+            {/* <form onSubmit=> */}
+            <div>
+              <RegInput
+                label="Email Address"
+                placeholder="Email"
+                value={email}
+                setValue={setEmail}
+                type="email"
+                blurHandler={emailBlurHandler}
+                errorMessage={emailError}
+              />
+            </div>
+            <div className="flex  vp-600:flex-col vp-600:gap-0 w-full  gap-8">
+              <div className="w-full">
                 <RegInput
-                  label="Email Address"
-                  placeholder="Email"
-                  value={email}
-                  setValue={setEmail}
-                  type="email"
-                  blurHandler={emailBlurHandler}
-                  errorMessage={emailError}
-                />
-              </div>
-              <div className="flex w-full  gap-8">
-                <div className="w-full">
-                  <RegInput
-                    label="First name"
-                    type="text"
-                    placeholder="First name"
-                    value={firstName}
-                    setValue={setFirstName}
-                    errorMessage={firstNameError}
-                    keyUpHandler={confirmFirstNameHandler}
-                  />
-                </div>
-
-                <div className="w-full">
-                  <RegInput
-                    label="Last name"
-                    type="text"
-                    placeholder="Last name"
-                    value={lastName}
-                    setValue={setLastName}
-                    errorMessage={lastNameError}
-                    keyUpHandler={confirmLastNameHandler}
-                  />
-                </div>
-              </div>
-              <div>
-                <RegInput
-                  label="Password"
-                  placeholder="Create password"
-                  value={password}
-                  setValue={setPassword}
-                  type="password"
-                  errorMessage={passwordError}
-                  keyUpHandler={passwordHandler}
-                />
-              </div>
-              <div>
-                <RegInput
-                  label="Confirm Password"
-                  placeholder="Confirm password"
-                  value={confirmPassword}
-                  setValue={setConfirmPassword}
-                  type="password"
-                  keyUpHandler={confirmPasswordHandler}
-                  errorMessage={confirmPasswordError}
+                  label="First name"
+                  type="text"
+                  placeholder="First name"
+                  value={firstName}
+                  setValue={setFirstName}
+                  errorMessage={firstNameError}
+                  keyUpHandler={confirmFirstNameHandler}
                 />
               </div>
 
-              <button className="h-48 text-primary-darkGreen text-xl  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8">
-                <div>
-                  <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
-                    alt="google Icon"
-                    draggable="false"
-                    layout="fixed"
-                    width="20"
-                    height="20"
-                  />
+              <div className="w-full">
+                <RegInput
+                  label="Last name"
+                  type="text"
+                  placeholder="Last name"
+                  value={lastName}
+                  setValue={setLastName}
+                  errorMessage={lastNameError}
+                  keyUpHandler={confirmLastNameHandler}
+                />
+              </div>
+            </div>
+            <div>
+              <RegInput
+                label="Password"
+                placeholder="Create password"
+                value={password}
+                setValue={setPassword}
+                type="password"
+                errorMessage={passwordError}
+                keyUpHandler={passwordHandler}
+              />
+            </div>
+            <div>
+              <RegInput
+                label="Confirm Password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                setValue={setConfirmPassword}
+                type="password"
+                keyUpHandler={confirmPasswordHandler}
+                errorMessage={confirmPasswordError}
+              />
+            </div>
+
+            <button
+              className="h-48 text-primary-darkGreen text-xl  w-full mb-16  flex justify-center items-center bg-white-white rounded  shadow-md gap-8"
+              onClick={signInWithGoogleHandler}
+            >
+              <div>
+                <Image
+                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
+                  alt="google Icon"
+                  draggable="false"
+                  layout="fixed"
+                  width="20"
+                  height="20"
+                />
+              </div>
+              <h6>Sign up with Google</h6>
+            </button>
+            <button
+              onClick={handleRegistration}
+              className="text-md btn h-48 w-full mb-16"
+              disabled={isDisabled}
+            >
+              {loading ? (
+                <div className="flex justify-center items-center">
+                  <SpinnerLoader />
                 </div>
-                <h6>Sign up with Google</h6>
-              </button>
-              <button
-                onClick={handleRegistration}
-                className="text-md btn h-48 w-full mb-16"
-                disabled={isDisabled}
-              >
-                {loading ? (
-                  <div className="flex justify-center items-center">
-                    <SpinnerLoader />
-                  </div>
-                ) : (
-                  "Sign up"
-                )}
-              </button>
-            </form>
+              ) : (
+                "Sign up"
+              )}
+            </button>
+            {/* </form> */}
             <p className="mb-24 text-gray-text">
               Already have an account?{" "}
               <Link passHref href="/auth/login">

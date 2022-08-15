@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Image from "next/image";
 import styles from "@/styles/layout.module.css";
@@ -10,12 +10,55 @@ import Upvotes from "@/components/Upvotes";
 import Replied from "@/components/Replied";
 import ActionNotiTemp from "@/components/ActionNotiTemp";
 import PerfectScoreNotiTemp from "@/components/PerfectScoreNotiTemp";
+import { GlobalContext } from "@/context/Provider";
 import BadgeNotiTemp from "@/components/BadgeNotiTemp";
+import { API_URL } from "@/utils/url";
+import { getNotifications } from "@/context/actions/notification/getNotifications";
+import LargeSpinner from "@/components/LargeSpinner";
+import Link from "next/link";
 const Notifications = () => {
+  const [token, setToken] = useState("");
+  const [userId, setUserId] = useState(null);
+  const [notificationData, setNotificationData] = useState([]);
+
+  const {
+    userDispatch,
+    userState: {
+      user: { profileData },
+    },
+  } = useContext(GlobalContext);
+  const {
+    notificationDispatch,
+    notificationState: {
+      notification: { loading, data },
+    },
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken);
+    setToken(accessToken);
+  }, []);
+  useEffect(() => {
+    if (profileData !== null) {
+      const { _id } = profileData;
+      setUserId(_id);
+    }
+  }, [profileData]);
+  useEffect(() => {
+    if (userId !== null && token !== "") {
+      getNotifications(API_URL, token, userId)(notificationDispatch);
+    }
+  }, [userId, token]);
+  useEffect(() => {
+    if (data !== null) {
+      setNotificationData(data);
+    }
+  }, [data]);
   return (
     <Layout title="Inso | Notifications" bgColor="bg-gray-background">
       <div
-        className={`${styles.hiddenScrollbar} py-25 px-40 vp-600:p-23 vp-980:p-46 h-full`}
+        className={`${styles.hiddenScrollbar} pt-40 pb-25 px-40 vp-600:p-23 vp-980:p-46 h-full`}
       >
         <div className="flex items-center justify-between vp-980:hidden">
           <h4 className=" text-primary-darkGreen mb-35">Notifications</h4>
@@ -29,30 +72,57 @@ const Notifications = () => {
           />
         </div>
         <div className="items-center  h-50 mb-12 hidden vp-980:flex">
-          <div className="flex justify-center items-center mr-23">
-            <Image
-              src="/icons/arrow_left_green.svg"
-              alt=" Discussion dropdown "
-              draggable="false"
-              layout="fixed"
-              width="18"
-              height="18"
-            />
-          </div>
+          <Link href="/discussions" passHref>
+            <div className="flex justify-center items-center mr-23">
+              <Image
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
+                alt=" Discussion dropdown "
+                draggable="false"
+                layout="fixed"
+                width="30"
+                height="30"
+              />
+            </div>
+          </Link>
           <h4 className=" text-black-analText">Notifications</h4>
         </div>
 
-        <ActionNotiTemp />
-        <PerfectScoreNotiTemp />
-        <BadgeNotiTemp />
+        <div className="hidden">
+          <ActionNotiTemp />
+          <PerfectScoreNotiTemp />
+          <BadgeNotiTemp />
 
-        <RecentPost />
-        <Replied />
+          <RecentPost />
+          <Replied />
 
-        <Mention />
-        <Replied />
+          <Mention />
+          <Replied />
 
-        <Upvotes />
+          <Upvotes />
+        </div>
+
+        {loading ? (
+          <div className="flex items-center justify-center h-[40vh] mt-40">
+            <LargeSpinner />
+          </div>
+        ) : notificationData.length ? (
+          <div className="flex justify-start flex-wrap gap-8 gap-y-10">
+            {notificationData.map((notif, index) => (
+              <div key={index}>{notif}</div>
+            ))}
+          </div>
+        ) : (
+          <div className=" flex flex-col items-center justify-end h-400 ">
+            <Image
+              src="/illustrations/no_discussion.svg"
+              alt="no discussion"
+              layout="fixed"
+              width="128"
+              height="128"
+            />
+            <h6 className=" text-gray-illustrationText">No notifications</h6>
+          </div>
+        )}
       </div>
     </Layout>
   );

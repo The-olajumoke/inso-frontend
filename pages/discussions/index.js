@@ -12,15 +12,13 @@ import withAuth from "@/HOC/withAuth";
 import Link from "next/link";
 import { getDiscussions } from "@/context/actions/discussion/getDiscussions";
 import { API_URL } from "@/utils/url";
+import { createArchivedDiscussion } from "@/context/actions/discussion/createArchivedDisc";
 const Index = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
   const [allDiscussions, setAllDiscussions] = useState([]);
-
-  // const [createDiscussion, setCreateDiscussion] = useState(false);
-  // const [createDiscussionResp, setCreateDiscussionResp] = useState(false);
 
   const {
     discussionDispatch,
@@ -61,6 +59,9 @@ const Index = () => {
     }
   }, [error, loading, discussionData]);
 
+  const createArchived = (discId) => {
+    createArchivedDiscussion(API_URL, token, discId)(discussionDispatch);
+  };
   const filterOptions = ["All", "Discussions created", "Discussion joined"];
 
   return (
@@ -96,7 +97,7 @@ const Index = () => {
               <Dropdown
                 value={filter}
                 setValue={setFilter}
-                icon="/icons/filter_icon.svg"
+                icon="https://res.cloudinary.com/insomaryland/image/upload/v1659964386/sort_llttic.svg"
                 title="Filter by..."
                 items={filterOptions}
                 openDropdown={openDropdown}
@@ -109,11 +110,11 @@ const Index = () => {
               <button className="flex items-center">
                 <div className="mr-14 flex justify-center items-center">
                   <Image
-                    src="/icons/archive_icon.svg"
+                    src="https://res.cloudinary.com/insomaryland/image/upload/v1659964386/archive_o3qntw.svg"
                     alt="create discussion"
                     layout="fixed"
-                    width="18"
-                    height="18"
+                    width="24"
+                    height="24"
                   />
                 </div>
                 <span className="text-xs">Archives</span>
@@ -146,7 +147,11 @@ const Index = () => {
           ) : allDiscussions.length ? (
             <div className="flex justify-start flex-wrap gap-8 gap-y-10 ">
               {allDiscussions.map((disc, index) => (
-                <DiscussionBox discussion={disc} key={index} />
+                <DiscussionBox
+                  discussion={disc}
+                  key={index}
+                  createArchived={createArchived}
+                />
               ))}
             </div>
           ) : (
@@ -182,5 +187,4 @@ const Index = () => {
     </Layout>
   );
 };
-// export default Index;
 export default withAuth(Index);
