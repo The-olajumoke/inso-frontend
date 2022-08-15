@@ -203,12 +203,5 @@ const LoginPage = () => {
     </RegLayout>
   );
 };
-// export async function getStaticProps() {
-//   const API_URL = process.env.API_URL;
-//   return {
-//     props: {
-//       API_URL,
-//     },
-//   };
-// }
+
 export default LoginPage;

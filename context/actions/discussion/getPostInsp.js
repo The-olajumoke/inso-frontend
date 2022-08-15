@@ -16,7 +16,7 @@ export const getPostInspirations = (API_URL, token) => async (dispatch) => {
     const response = await axios.get(`${API_URL}/inspirations`, config);
     dispatch({
       type: GET_POSTINSP_SUCCESS,
-      payload: response.data.data,
+      payload: response.data,
     });
   } catch (error) {
     dispatch({

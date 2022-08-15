@@ -1,6 +1,6 @@
 import withAuth from "@/HOC/withAuth";
 import Image from "next/image";
-import React from "react";
+import React, { Children } from "react";
 
 function RegLayout({ children }) {
   return (
@@ -28,4 +28,4 @@ function RegLayout({ children }) {
   );
 }
 
-export default withAuth(RegLayout);
+export default RegLayout;

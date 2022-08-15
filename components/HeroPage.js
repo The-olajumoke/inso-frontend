@@ -11,7 +11,7 @@ const HeroPage = () => {
   const handleJoinDiscussion = () => {
     const authToken = localStorage.getItem("accessToken");
     if (!authToken) {
-      router.replace(`/auth/register/${insoCode}`);
+      location.replace(`/auth/register/${insoCode}`);
     } else {
       setToken(authToken);
     }

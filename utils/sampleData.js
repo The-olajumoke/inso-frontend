@@ -1,6 +1,7 @@
 export const PostingInspirations = [
   {
     category: "Ask Something",
+
     categoryIcon:
       "https://res.cloudinary.com/insomaryland/image/upload/v1656195040/InsoImages/exploreThinking_md9iw9.svg",
     inspirations: [
@@ -368,7 +369,6 @@ export const discussions = [
 export const tags = [
   { tagName: "Electricity", used: 14 },
   { tagName: "Electricity", used: 14 },
-  { tagName: "NuclearPower", used: 12 },
   { tagName: "NuclearPower", used: 12 },
   { tagName: "Electricity", used: 14 },
 ];

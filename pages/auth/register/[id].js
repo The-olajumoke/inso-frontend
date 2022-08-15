@@ -12,13 +12,15 @@ import ErrorModal from "@/components/ErrorModal";
 import SpinnerLoader from "@/components/SpinnerLoader";
 import SuccessModal from "@/components/SuccessModal";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
+import GoogleLogin from "react-google-login";
 import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
-import { API_URL } from "@/utils/url";
 import { useRouter } from "next/router";
+import { API_URL } from "@/utils/url";
 
-const LoginPagewithId = () => {
+const LoginPageWithCode = () => {
   const router = useRouter();
   const id = router.query.id;
+  console.log(id);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -205,12 +207,5 @@ const LoginPagewithId = () => {
     </RegLayout>
   );
 };
-// export async function getStaticProps() {
-//   const API_URL = process.env.API_URL;
-//   return {
-//     props: {
-//       API_URL,
-//     },
-//   };
-// }
-export default LoginPagewithId;
+
+export default LoginPageWithCode;

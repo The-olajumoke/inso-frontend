@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import styles from "@/styles/viewDiscussion.module.css";
 import PollTemplate from "./PollTemplate";
 import PopularTags from "./PopularTags";
+import { GlobalContext } from "@/context/Provider";
 import {
   PostingInspirations,
   RespondingInspirations,
@@ -12,6 +13,8 @@ import Inspiration from "./Inspiration";
 import PostInspCategory from "./PostInspCategory";
 import ViewPostInspCategory from "./ViewPostInspCategory";
 import ViewInspirations from "./ViewInspirations";
+import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
+import { API_URL } from "@/utils/url";
 
 const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
@@ -22,7 +25,29 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
   const [activeViewInspiration, setActiveViewInspiration] = useState("");
   const [currentDetailedInsp, setCurrentDetailedInsp] =
     useState("Ask Something");
-
+  // const [PostingInspirations, setPostingInspirations] = useState([]);
+  const [token, setToken] = useState("");
+  const {
+    discussionDispatch,
+    discussionState: {
+      discussion: { loading, singleDiscData, postInspData },
+    },
+  } = useContext(GlobalContext);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    setToken(accessToken);
+  }, []);
+  useEffect(() => {
+    if (token !== "") {
+      getPostInspirations(API_URL, token)(discussionDispatch);
+    }
+  }, [token]);
+  useEffect(() => {
+    if (postInspData !== null) {
+      console.log(postInspData);
+      // setPostingInspirations(postInspData.posting);
+    }
+  });
   // POSTING
   const askSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Ask Something"

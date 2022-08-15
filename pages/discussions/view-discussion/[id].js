@@ -52,6 +52,8 @@ import EditDiscussion from "@/components/EditDiscussion";
 import { API_URL } from "@/utils/url";
 import { getSingleDiscussion } from "@/context/actions/discussion/getSingleDiscussion";
 import LargeSpinner from "@/components/LargeSpinner";
+import withAuth from "@/HOC/withAuth";
+import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -76,7 +78,7 @@ const ViewDiscussion = () => {
   const {
     discussionDispatch,
     discussionState: {
-      discussion: { loading, singleDiscData },
+      discussion: { loading, singleDiscData, postInspData },
     },
   } = useContext(GlobalContext);
   const {
@@ -102,6 +104,31 @@ const ViewDiscussion = () => {
       getSingleDiscussion(API_URL, token, id)(discussionDispatch);
     }
   }, [id, token]);
+  useEffect(() => {
+    if (token !== "") {
+      getPostInspirations(API_URL, token)(discussionDispatch);
+    }
+  }, [id, token]);
+  useEffect(() => {
+    if (postInspData !== null) {
+      // console.log(postInspData);
+      //       icon: "compass.svg"
+      // instructions: "Pose questions to encourage discussion about the topic."
+      // name: "Ask questions"
+      // outline: [{header: "Questions",…},…]
+      // 0: {header: "Questions",…}
+      // header: "Questions"
+      // prompt: "Pose three questions about the topic that would encourage further discussion."
+      // 1: {header: "Understanding", prompt: "Explain your current understanding of the topic."}
+      // header: "Understanding"
+      // prompt: "Explain your current understanding of the topic."
+      // 2: {header: "Outcomes",…}
+      // header: "Outcomes"
+      // prompt: "Recommend three outcomes you would hope to see from discussion about your questions."
+      // type: "posting"
+      // _id: "62ddfb8934dbd7fc44753242"
+    }
+  }, [postInspData]);
 
   useEffect(() => {
     if (singleDiscData !== null) {
@@ -941,4 +968,4 @@ const ViewDiscussion = () => {
   );
 };
 
-export default ViewDiscussion;
+export default withAuth(ViewDiscussion);
