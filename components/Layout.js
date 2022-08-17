@@ -9,7 +9,7 @@ import { GlobalContext } from "@/context/Provider";
 import { createDiscussion } from "@/context/actions/discussion/createDiscussion";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
 import { API_URL } from "@/utils/url";
-const Layout = ({ title, children, searchBar, bgColor }) => {
+const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
   const [token, setToken] = useState("");
@@ -57,11 +57,13 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
       </Head>
 
       <div className=" flex flex-col vp-980:hidden  h-screen">
-        <Header
-          navSize={navSize}
-          handleNavSize={handleNavSize}
-          searchBar={searchBar}
-        />
+        {showHeader !== false && (
+          <Header
+            navSize={navSize}
+            handleNavSize={handleNavSize}
+            searchBar={searchBar}
+          />
+        )}
         <div
           className={` ${styles.hiddenScrollbar}   justify-between flex h-full`}
         >
@@ -69,7 +71,11 @@ const Layout = ({ title, children, searchBar, bgColor }) => {
             style={{ minHeight: "109px" }}
             className={`${styles.hiddenScrollbar} border-r  border-other-disabled `}
           >
-            <Sidebar navSize={navSize} user={userProfile} />
+            <Sidebar
+              navSize={navSize}
+              user={userProfile}
+              showHeader={showHeader}
+            />
           </div>
           <div className={`${bgColor} w-full`}>{children}</div>
         </div>

@@ -135,8 +135,8 @@ const Home = () => {
             </div>
           </div>
           <div className=" flex vp-1024:grid vp-1024:gap-8 vp-1024:grid-cols-2  vp-1024:col-span-2 vp-600:flex">
-            <div className="flex flex-col w-full vp-600:justify-center items-center">
-              <div className="relative w-full flex vp-600:justify-center">
+            <div className="flex flex-col w-full justify-center items-center">
+              <div className="relative w-full flex justify-center">
                 <Image
                   src={dashboard_img}
                   alt="dashboard_img"
@@ -150,7 +150,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col vp-768:w-300  shadow-sm  rounded-lg bg-white-white items-center pt-50 flex-grow">
+              <div className="flex flex-col w-300  shadow-sm  rounded-lg bg-white-white items-center pt-50 flex-grow">
                 <h6 className="mb-3 text-primary-darkGreen font-semibold ">
                   {firstName}
                   {""}

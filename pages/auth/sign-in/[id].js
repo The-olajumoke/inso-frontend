@@ -16,6 +16,7 @@ import GoogleLogin from "react-google-login";
 import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 import { useRouter } from "next/router";
 import { API_URL } from "@/utils/url";
+import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
 
 const LoginPageWithCode = () => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const LoginPageWithCode = () => {
   const [passwordError, setPasswordError] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
+  const [userId, setUserId] = useState(null);
   const [accessToken, setAccessToken] = useState("");
 
   const {
@@ -38,9 +40,31 @@ const LoginPageWithCode = () => {
   const {
     userDispatch,
     userState: {
-      user: { loading },
+      user: { loading, profileData },
     },
   } = useContext(GlobalContext);
+  const {
+    discussionDispatch,
+    discussionState: {
+      discussion: { discussionData },
+    },
+  } = useContext(GlobalContext);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken);
+    setAccessToken(accessToken);
+  }, []);
+  useEffect(() => {
+    if (accessToken !== "") {
+      getUserProfile(API_URL, accessToken)(userDispatch);
+    }
+  }, [accessToken]);
+  useEffect(() => {
+    if (profileData !== null) {
+      const { _id } = profileData;
+      setUserId(_id);
+    }
+  }, [profileData]);
 
   useEffect(() => {
     setLoginErrorMessage(loginError);
@@ -49,11 +73,16 @@ const LoginPageWithCode = () => {
       const access_token = loginData;
       localStorage.setItem("accessToken", access_token);
       setAccessToken(access_token);
-      location.replace("/home");
+      if (userId !== null) {
+        console.log(userId);
+        joinDiscussion(API_URL, access_token, userId, id)(discussionDispatch);
+      }
+      // location.replace(`/discussions/view-discussion/${id}`);
+      location.replace(`/discussions`);
     }
     setEmail("");
     setPassword("");
-  }, [loginError, loginSuccess, loginData]);
+  }, [loginError, loginSuccess, loginData, profileData, userId]);
 
   useEffect(() => {
     if (validateEmail(email) && password.length >= 8) {
@@ -189,7 +218,7 @@ const LoginPageWithCode = () => {
             {/* </form> */}
             <p className="mb-24 text-black-analText">
               If you don&#39;t have an account,{" "}
-              <Link passHref href="/auth/signup">
+              <Link passHref href={`/auth/sign-up/${id}`}>
                 <button className=" text-primary-darkGreen font-medium">
                   Sign up
                 </button>

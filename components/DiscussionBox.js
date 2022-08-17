@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-const DiscussionBox = ({ discussion, createArchived }) => {
+const DiscussionBox = ({
+  discussion,
+  createArchived,
+  handleJoinDiscussion,
+}) => {
   const { _id, poster, participants, name, date, insoCode } = discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
   return (
@@ -81,6 +85,29 @@ const DiscussionBox = ({ discussion, createArchived }) => {
                         </span>
                       </div>
                     </Link>
+                    <div
+                      className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
+                      onClick={() => {
+                        handleJoinDiscussion(insoCode);
+                      }}
+                    >
+                      <div
+                        className=" mr-10
+                               flex justify-center items-center"
+                      >
+                        <Image
+                          src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/archive_grey_wgyedn.svg"
+                          alt="archived"
+                          layout="fixed"
+                          width="20"
+                          height="20"
+                        />
+                      </div>
+                      <span className=" text-xs text-black-postInsp ">
+                        JOIN DISC
+                      </span>
+                    </div>
                     <div
                       className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"

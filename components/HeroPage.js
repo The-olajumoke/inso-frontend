@@ -1,19 +1,57 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
+import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
+import { API_URL } from "@/utils/url";
+import { GlobalContext } from "@/context/Provider";
+import { getUserProfile } from "@/context/actions/user/getUserProfile";
+
 const HeroPage = () => {
-  const router = useRouter();
   const [insoCode, setInsoCode] = useState("");
-  const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState("");
+  const [isCodeUpToFive, setIsCodeUpToFive] = useState(false);
+  const {
+    userDispatch,
+    userState: {
+      user: { profileData },
+    },
+  } = useContext(GlobalContext);
+  const {
+    discussionDispatch,
+    discussionState: {
+      discussion: { loading, error, discussionData },
+    },
+  } = useContext(GlobalContext);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken);
+    setToken(accessToken);
+  }, []);
+  useEffect(() => {
+    if (token !== "") {
+      getUserProfile(API_URL, token)(userDispatch);
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (insoCode.length > 4) {
+      setIsCodeUpToFive(true);
+    }
+  }, [insoCode]);
+  useEffect(() => {
+    if (profileData !== null) {
+      const { _id } = profileData;
+      setUserId(_id);
+    }
+  }, [profileData]);
   const handleJoinDiscussion = () => {
-    const authToken = localStorage.getItem("accessToken");
-    if (!authToken) {
-      location.replace(`/auth/register/${insoCode}`);
+    if (!token) {
+      location.replace(`/auth/sign-in/${insoCode}`);
     } else {
-      setToken(authToken);
+      joinDiscussion(API_URL, token, userId, insoCode)(discussionDispatch);
     }
   };
   return (
@@ -60,19 +98,30 @@ const HeroPage = () => {
               >
                 Get started for free
               </button>
-              <input
-                type="text"
-                className="w-262 h-60 vp-768:h-50  px-25  text-xl vp-768:text-lg vp-600:text-sm rounded"
-                placeholder="Enter inso code"
-                value={insoCode}
-                onChange={(e) => setInsoCode(e.target.value)}
-              />
-              <button onClick={handleJoinDiscussion}>Join</button>
+              <div
+                style={{ background: "rgba(255, 255, 255, 0.05)" }}
+                className="w-262 h-60 vp-768:h-50 flex justify-between items-center rounded px-20"
+              >
+                <input
+                  type="text"
+                  className="text-lg vp-600:text-sm bg-transparent border-none px-0 text-white-white focus:ring-0 "
+                  placeholder="Enter inso code"
+                  value={insoCode}
+                  onChange={(e) => setInsoCode(e.target.value)}
+                />
+                <button
+                  disabled={isCodeUpToFive}
+                  className={` disabled:text-primary-darkGreen text-lg text-primary-blue`}
+                  onClick={handleJoinDiscussion}
+                >
+                  Join
+                </button>
+              </div>
             </div>
           </div>
 
           <div className="w-full flex relative  vp-600:h-350  h-600  ">
-            <div className="absolute vp-768:-right-1/4 vp-768:w-full h-full right-0 ">
+            <div className="absolute vp-768:-right-1/4 vp-768:w-full h-full right-0 flex items-center ">
               <Image
                 src="https://res.cloudinary.com/insomaryland/image/upload/v1660385026/hero-photo_psyazz.svg"
                 alt="Inso Logo"

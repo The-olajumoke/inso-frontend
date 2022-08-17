@@ -54,12 +54,14 @@ import { getSingleDiscussion } from "@/context/actions/discussion/getSingleDiscu
 import LargeSpinner from "@/components/LargeSpinner";
 import withAuth from "@/HOC/withAuth";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
+import Posts from "@/components/Posts";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
   const id = router.query.id;
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
+  const [discId, setDiscId] = useState(null);
   const [activeCommentBox, setActiveCommentBox] = useState("noInspiration");
   const [viewAllTags, setViewAllTags] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -75,6 +77,13 @@ const ViewDiscussion = () => {
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
   const [scores, setScores] = useState(null);
+  const [allPosts, setAllPosts] = useState([]);
+  const [allTags, setAllTags] = useState([]);
+  const [topSixTags, setTopSixTags] = useState([]);
+  const [replyingId, setReplyingId] = useState({
+    user: "",
+    id: "",
+  });
   const {
     discussionDispatch,
     discussionState: {
@@ -111,32 +120,19 @@ const ViewDiscussion = () => {
   }, [id, token]);
   useEffect(() => {
     if (postInspData !== null) {
-      // console.log(postInspData);
-      //       icon: "compass.svg"
-      // instructions: "Pose questions to encourage discussion about the topic."
-      // name: "Ask questions"
-      // outline: [{header: "Questions",…},…]
-      // 0: {header: "Questions",…}
-      // header: "Questions"
-      // prompt: "Pose three questions about the topic that would encourage further discussion."
-      // 1: {header: "Understanding", prompt: "Explain your current understanding of the topic."}
-      // header: "Understanding"
-      // prompt: "Explain your current understanding of the topic."
-      // 2: {header: "Outcomes",…}
-      // header: "Outcomes"
-      // prompt: "Recommend three outcomes you would hope to see from discussion about your questions."
-      // type: "posting"
-      // _id: "62ddfb8934dbd7fc44753242"
     }
   }, [postInspData]);
-
+  console.log(allPosts);
   useEffect(() => {
     if (singleDiscData !== null) {
       setDiscTitle(singleDiscData.name);
+      setDiscId(singleDiscData._id);
       setStarterPrompt(singleDiscData?.settings?.starter_prompt);
       setFirstName(singleDiscData?.poster.f_name);
       setLastName(singleDiscData?.poster.l_name);
       setUserName(singleDiscData?.poster.username);
+      setAllPosts(singleDiscData?.posts);
+      setAllTags(singleDiscData.tags);
       if (
         singleDiscData?.settings?.scores !== null &&
         singleDiscData?.settings?.scores?.type === "auto"
@@ -163,6 +159,7 @@ const ViewDiscussion = () => {
       title={`Inso | Discussion`}
       searchBar={false}
       bgColor="bg-white-white"
+      showHeader={false}
     >
       {loading ? (
         <div className="flex items-center justify-center h-[40vh] mt-60">
@@ -314,9 +311,9 @@ const ViewDiscussion = () => {
                             />
                           </div>
                           <div className="ml-13">
-                            <h6 className=" font-medium">
+                            <h6 className=" font-medium capitalize">
                               {firstName} {lastName}
-                              <span className=" text-primary-darkGreen text-xs font-normal ml-3">
+                              <span className=" text-primary-darkGreen text-xs font-normal ml-3 uppercase">
                                 @{userName}
                               </span>
                             </h6>
@@ -412,14 +409,14 @@ const ViewDiscussion = () => {
                         )}
                       </div>
                       {singleDiscData?.settings?.starter_prompt === "" ? (
-                        <p>
+                        <p className=" text-black-postInsp">
                           For this discussion, we are going to explore{" "}
                           {parse(discTitle)}
                         </p>
                       ) : (
-                        <p className="mt-10 text-gray-text break-words">
+                        <div className="mt-10 text-black-postInsp  break-words">
                           {parse(starterPrompt)}
-                        </p>
+                        </div>
                       )}
                     </div>
                     {showScoresSheet !== true && (
@@ -429,13 +426,16 @@ const ViewDiscussion = () => {
                         } px-16 vp-min-601:px-42 mt-7 justify-between vp-600:overflow-x-scroll `}
                       >
                         <div className="flex items-center gap-4 ">
-                          {tags.map((tag, index) => (
+                          {allTags.map((tag, index) => (
                             <div
                               className="h-32 bg-blue-inputBlue flex gap-8 items-center px-15 rounded-xs"
                               key={index}
                             >
-                              <p className=" text-gray-text">#{tag.tagName}</p>
-                              <p className=" text-primary-blue">{tag.used}</p>
+                              <p className=" text-gray-text">
+                                #{parse(tag.tag)}
+                                {}
+                              </p>
+                              <p className=" text-primary-blue">{tag.count}</p>
                             </div>
                           ))}
                         </div>
@@ -450,22 +450,45 @@ const ViewDiscussion = () => {
                   </div>
 
                   <div
-                    className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar}`}
+                    className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar} `}
                   >
                     <div
                       className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
                     >
-                      <h6>comments will be here</h6>
+                      {/* {allPosts?.map((post, index) => (
+                        <div key={index}>
+                          <Posts posts={post} key={index} />
+                          <Posts posts={post} key={index} />
+                          <Posts posts={post} key={index} />
+                        </div>
+                      ))} */}
+                      {allPosts?.map((post, index) => (
+                        <Posts
+                          posts={post}
+                          key={index}
+                          setReplyingId={setReplyingId}
+                        />
+                      ))}
                     </div>
                   </div>
 
                   {/* COMMENT BOX */}
                   {showScoresSheet !== true && (
-                    <div className="px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white ">
+                    <div className="px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white">
+                      {replyingId.id !== "" && (
+                        <p className="mb-2 text-gray-text">
+                          replying to{" "}
+                          <span className=" text-primary-darkGreen">
+                            @{replyingId.user}
+                          </span>
+                        </p>
+                      )}
                       {activeCommentBox === "noInspiration" && (
                         <CommentBox
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
                         />
                       )}
                       {activeCommentBox === "Ask questions" && (
@@ -678,13 +701,13 @@ const ViewDiscussion = () => {
                       </div>
                     </div>
                     <div className="px-24">
-                      {tags.map((tag, index) => (
+                      {allTags.map((tag, index) => (
                         <div
                           className="h-32 mb-10 bg-blue-inputBlue flex mr-10 gap-8 items-center px-15 rounded-xs w-189"
                           key={index}
                         >
-                          <p className=" text-gray-text">#{tag.tagName}</p>
-                          <p className=" text-primary-blue">{tag.used}</p>
+                          <p className=" text-gray-text">#{tag.tag}</p>
+                          <p className=" text-primary-blue">{tag.count}</p>
                         </div>
                       ))}
                     </div>

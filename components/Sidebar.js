@@ -3,7 +3,7 @@ import styles from "@/styles/sidebar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-const Sidebar = ({ navSize, userPicture, user }) => {
+const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -27,8 +27,22 @@ const Sidebar = ({ navSize, userPicture, user }) => {
       <div
         className={`${styles.sidebarContainer} ${
           navSize === "small" ? "w-109" : "w-333"
-        }   flex flex-col justify-between p-9  h-full  vp-980:hidden`}
+        }   flex flex-col justify-between ${
+          showHeader === false ? "!pt-8" : "p-9"
+        }  h-full  vp-980:hidden`}
       >
+        {showHeader === false && (
+          <div className="pl-45 mb-25">
+            <Image
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1660572712/logo_without_text_jrhirt.svg"
+              alt="inso"
+              draggable="false"
+              width="40"
+              height="40"
+              layout="fixed"
+            />
+          </div>
+        )}
         <div className=" flex  pl-50">
           {userPicture ? (
             <div>picture</div>

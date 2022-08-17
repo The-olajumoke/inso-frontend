@@ -8,7 +8,7 @@ const withAuth = (Component) => {
     useEffect(() => {
       const authToken = localStorage.getItem("accessToken");
       if (!authToken) {
-        // router.replace("/auth/login");
+        router.replace("/auth/login");
       } else {
         setToken(authToken);
       }

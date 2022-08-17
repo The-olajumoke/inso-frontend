@@ -13,6 +13,7 @@ import Link from "next/link";
 import { getDiscussions } from "@/context/actions/discussion/getDiscussions";
 import { API_URL } from "@/utils/url";
 import { createArchivedDiscussion } from "@/context/actions/discussion/createArchivedDisc";
+import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
 const Index = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
@@ -64,6 +65,9 @@ const Index = () => {
   };
   const filterOptions = ["All", "Discussions created", "Discussion joined"];
 
+  const handleJoinDiscussion = (code) => {
+    joinDiscussion(API_URL, token, userId, code)(discussionDispatch);
+  };
   return (
     <Layout
       title="Inso | Discussions"
@@ -151,6 +155,7 @@ const Index = () => {
                   discussion={disc}
                   key={index}
                   createArchived={createArchived}
+                  handleJoinDiscussion={handleJoinDiscussion}
                 />
               ))}
             </div>
@@ -187,5 +192,4 @@ const Index = () => {
     </Layout>
   );
 };
-// export default withAuth(Index);
-export default Index;
+export default withAuth(Index);

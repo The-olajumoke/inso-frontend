@@ -4,11 +4,10 @@ import styles from "@/styles/viewDiscussion.module.css";
 import PollTemplate from "./PollTemplate";
 import PopularTags from "./PopularTags";
 import { GlobalContext } from "@/context/Provider";
-import {
-  PostingInspirations,
-  RespondingInspirations,
-  SynthesizingInspirations,
-} from "@/utils/sampleData";
+import // PostingInspirations,
+// RespondingInspirations,
+// SynthesizingInspirations,
+"@/utils/sampleData";
 import Inspiration from "./Inspiration";
 import PostInspCategory from "./PostInspCategory";
 import ViewPostInspCategory from "./ViewPostInspCategory";
@@ -16,7 +15,13 @@ import ViewInspirations from "./ViewInspirations";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import { API_URL } from "@/utils/url";
 
-const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
+const ShowInspirations = ({
+  setActiveCommentBox,
+  title,
+  togglePostInsp,
+  btnIsActive,
+  onButtonClick,
+}) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
     useState(false);
   const [activeInspiration, setActiveInspiration] = useState("posting");
@@ -25,7 +30,9 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
   const [activeViewInspiration, setActiveViewInspiration] = useState("");
   const [currentDetailedInsp, setCurrentDetailedInsp] =
     useState("Ask Something");
-  // const [PostingInspirations, setPostingInspirations] = useState([]);
+  const [PostingInspirations, setPostingInspirations] = useState([]);
+  const [RespondingInspirations, setRespondingInspirations] = useState([]);
+  const [SynthesizingInspirations, setSynthesizingInspirations] = useState([]);
   const [token, setToken] = useState("");
   const {
     discussionDispatch,
@@ -45,7 +52,20 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
   useEffect(() => {
     if (postInspData !== null) {
       console.log(postInspData);
+      let poster = [];
+      for (let [index, post] of Object.entries(postInspData?.posting)) {
+        console.log(`${index}: ${post}`);
+        poster = [
+          ...poster,
+          {
+            post,
+          },
+        ];
+      }
+      console.log(poster);
       // setPostingInspirations(postInspData.posting);
+      // setRespondingInspirations(postInspData.responding);
+      // setSynthesizingInspirations(postInspData.synthesizing);
     }
   });
   // POSTING
@@ -383,7 +403,11 @@ const ShowInspirations = ({ setActiveCommentBox, title, togglePostInsp }) => {
         </div> */}
       </div>
 
-      <button disabled={true} className="w-93 h-34 text-sm  btn">
+      <button
+        // disabled={btnIsActive}
+        onClick={onButtonClick}
+        className="w-93 h-34 text-sm  btn"
+      >
         Send
       </button>
     </div>
