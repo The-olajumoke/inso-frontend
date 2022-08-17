@@ -14,6 +14,7 @@ import ViewPostInspCategory from "./ViewPostInspCategory";
 import ViewInspirations from "./ViewInspirations";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import { API_URL } from "@/utils/url";
+import WhiteLoader from "./whiteLoader";
 
 const ShowInspirations = ({
   setActiveCommentBox,
@@ -37,7 +38,7 @@ const ShowInspirations = ({
   const {
     discussionDispatch,
     discussionState: {
-      discussion: { loading, singleDiscData, postInspData },
+      discussion: { loading, postInspData, postLoading, postError },
     },
   } = useContext(GlobalContext);
   useEffect(() => {
@@ -397,7 +398,7 @@ const ShowInspirations = ({
         onClick={onButtonClick}
         className="w-93 h-34 text-sm  btn"
       >
-        Send
+        {postLoading ? <WhiteLoader /> : "Send"}
       </button>
     </div>
   );

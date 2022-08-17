@@ -26,6 +26,9 @@ import {
   JOIN_DISCUSSION_LOADING,
   JOIN_DISCUSSION_SUCCESS,
   JOIN_DISCUSSION_ERROR,
+  POST_LOADING,
+  POST_SUCCESS,
+  POST_ERROR,
 } from "@/constants/actionTypes";
 
 const discussion = (state, { type, payload }) => {
@@ -275,6 +278,36 @@ const discussion = (state, { type, payload }) => {
           joinLoading: false,
           joinSuccess: false,
           joinError: payload,
+        },
+      };
+    case POST_LOADING:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          postLoading: true,
+          postSuccess: false,
+          postError: null,
+        },
+      };
+    case POST_SUCCESS:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          postLoading: false,
+          postSuccess: true,
+          postError: null,
+        },
+      };
+    case POST_ERROR:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          postLoading: false,
+          postSuccess: false,
+          postError: payload,
         },
       };
     default:
