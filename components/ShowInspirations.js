@@ -56,7 +56,7 @@ const ShowInspirations = ({
       setRespondingInspirations(postInspData?.responding);
       setSynthesizingInspirations(postInspData?.synthesizing);
     }
-  });
+  }, [postInspData]);
   // POSTING
   const askSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Ask Something"
