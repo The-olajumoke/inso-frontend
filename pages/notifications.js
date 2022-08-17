@@ -91,17 +91,16 @@ const Notifications = () => {
           <ActionNotiTemp />
           <PerfectScoreNotiTemp />
           <BadgeNotiTemp />
-
-          <RecentPost />
           <Replied />
-
           <Mention />
           <Replied />
-
           <Upvotes />
         </div>
 
-        {loading ? (
+        {notificationData.map((notif, index) => (
+          <RecentPost notification={notif} key={index} />
+        ))}
+        {/* {loading ? (
           <div className="flex items-center justify-center h-[40vh] mt-40">
             <LargeSpinner />
           </div>
@@ -122,7 +121,7 @@ const Notifications = () => {
             />
             <h6 className=" text-gray-illustrationText">No notifications</h6>
           </div>
-        )}
+        )} */}
       </div>
     </Layout>
   );

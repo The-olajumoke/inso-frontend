@@ -23,6 +23,9 @@ import {
   UPDATE_CALENDAR_LOADING,
   UPDATE_CALENDAR_SUCCESS,
   UPDATE_CALENDAR_ERROR,
+  JOIN_DISCUSSION_LOADING,
+  JOIN_DISCUSSION_SUCCESS,
+  JOIN_DISCUSSION_ERROR,
 } from "@/constants/actionTypes";
 
 const discussion = (state, { type, payload }) => {
@@ -241,6 +244,37 @@ const discussion = (state, { type, payload }) => {
           ...state.discussion,
           calendarLoading: false,
           error: payload,
+        },
+      };
+    case JOIN_DISCUSSION_LOADING:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          joinLoading: true,
+          joinSuccess: false,
+          joinError: null,
+        },
+      };
+    case JOIN_DISCUSSION_SUCCESS:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          joinLoading: false,
+          joinSuccess: true,
+          joinData: payload,
+          joinError: null,
+        },
+      };
+    case JOIN_DISCUSSION_ERROR:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          joinLoading: false,
+          joinSuccess: false,
+          joinError: payload,
         },
       };
     default:

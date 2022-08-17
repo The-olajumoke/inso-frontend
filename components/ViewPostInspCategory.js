@@ -29,17 +29,19 @@ const ViewPostInspCategory = ({
           <p className="ml-16 text-gray-analyticsGray">back</p>
         </div>
 
-   
-          <div className="flex justify-center items-center" onClick={ togglePostInsp}>
-            <p className=" text-primary-blue mr-10">View in full</p>
-            <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1657549596/viewInFull_tw4vq9.svg"
-              alt="post inspiration in full"
-              layout="fixed"
-              width="15"
-              height="21"
-            />
-          </div>
+        <div
+          className="flex justify-center items-center"
+          onClick={togglePostInsp}
+        >
+          <p className=" text-primary-blue mr-10">View in full</p>
+          <Image
+            src="https://res.cloudinary.com/insomaryland/image/upload/v1657549596/viewInFull_tw4vq9.svg"
+            alt="post inspiration in full"
+            layout="fixed"
+            width="15"
+            height="21"
+          />
+        </div>
       </div>
       <div className=" flex-grow">
         <h6 className=" text-primary-darkGreen mb-14">
@@ -48,7 +50,7 @@ const ViewPostInspCategory = ({
         {inspiration.inspirations.map((insp, index) => (
           <ViewInspTemp
             key={index}
-            title={insp.title}
+            title={insp.name}
             icon={insp.icon}
             setActiveCommentBox={setActiveCommentBox}
             // setActiveViewInspiration={setActiveViewInspiration}

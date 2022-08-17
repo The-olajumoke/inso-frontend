@@ -7,6 +7,7 @@ import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
 import { API_URL } from "@/utils/url";
 import { GlobalContext } from "@/context/Provider";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
+import WhiteLoader from "./whiteLoader";
 
 const HeroPage = () => {
   const [insoCode, setInsoCode] = useState("");
@@ -22,7 +23,14 @@ const HeroPage = () => {
   const {
     discussionDispatch,
     discussionState: {
-      discussion: { loading, error, discussionData },
+      discussion: {
+        loading,
+        error,
+        discussionData,
+        joinLoading,
+        joinSuccess,
+        joinError,
+      },
     },
   } = useContext(GlobalContext);
   useEffect(() => {
@@ -110,11 +118,11 @@ const HeroPage = () => {
                   onChange={(e) => setInsoCode(e.target.value)}
                 />
                 <button
-                  disabled={isCodeUpToFive}
+                  // disabled={isCodeUpToFive}
                   className={` disabled:text-primary-darkGreen text-lg text-primary-blue`}
                   onClick={handleJoinDiscussion}
                 >
-                  Join
+                  {joinLoading ? <WhiteLoader /> : "Join"}
                 </button>
               </div>
             </div>

@@ -18,5 +18,9 @@ export default {
     scoreData: null,
     calendarLoading: false,
     calendarData: null,
+    joinLoading: false,
+    joinData: null,
+    joinSuccess: false,
+    joinError: null,
   },
 };

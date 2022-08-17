@@ -17,6 +17,7 @@ import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 import { useRouter } from "next/router";
 import { API_URL } from "@/utils/url";
 import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
+import { loginWithCode } from "@/context/actions/auth/loginWithCode";
 
 const LoginPageWithCode = () => {
   const router = useRouter();
@@ -46,7 +47,7 @@ const LoginPageWithCode = () => {
   const {
     discussionDispatch,
     discussionState: {
-      discussion: { discussionData },
+      discussion: { discussionData, joinData },
     },
   } = useContext(GlobalContext);
   useEffect(() => {
@@ -68,7 +69,6 @@ const LoginPageWithCode = () => {
 
   useEffect(() => {
     setLoginErrorMessage(loginError);
-
     if (loginData !== null) {
       const access_token = loginData;
       localStorage.setItem("accessToken", access_token);
@@ -78,11 +78,17 @@ const LoginPageWithCode = () => {
         joinDiscussion(API_URL, access_token, userId, id)(discussionDispatch);
       }
       // location.replace(`/discussions/view-discussion/${id}`);
-      location.replace(`/discussions`);
+      // location.replace(`/discussions`);
     }
     setEmail("");
     setPassword("");
-  }, [loginError, loginSuccess, loginData, profileData, userId]);
+  }, [loginError, loginSuccess, loginData, profileData]);
+  console.log(joinData);
+  useEffect(() => {
+    if (joinData !== null) {
+      location.replace(`/discussions/view-discussion/${joinData}`);
+    }
+  }, [joinData]);
 
   useEffect(() => {
     if (validateEmail(email) && password.length >= 8) {
@@ -109,14 +115,15 @@ const LoginPageWithCode = () => {
     }
   };
 
-  const handleLogin = (evt) => {
+  const handleLogin = async (evt) => {
     evt.preventDefault();
 
     const user = {
       email,
       password,
     };
-    login(API_URL, user)(authDispatch);
+    await loginWithCode(API_URL, user)(authDispatch);
+    await getUserProfile(API_URL, accessToken)(userDispatch);
   };
   const signInWithGoogleHandler = () => {
     signInWithGoogle(API_URL)(authDispatch);

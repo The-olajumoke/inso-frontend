@@ -51,27 +51,16 @@ const ShowInspirations = ({
   }, [token]);
   useEffect(() => {
     if (postInspData !== null) {
-      console.log(postInspData);
-      let poster = [];
-      for (let [index, post] of Object.entries(postInspData?.posting)) {
-        console.log(`${index}: ${post}`);
-        poster = [
-          ...poster,
-          {
-            post,
-          },
-        ];
-      }
-      console.log(poster);
-      // setPostingInspirations(postInspData.posting);
-      // setRespondingInspirations(postInspData.responding);
-      // setSynthesizingInspirations(postInspData.synthesizing);
+      setPostingInspirations(postInspData?.posting);
+      setRespondingInspirations(postInspData?.responding);
+      setSynthesizingInspirations(postInspData?.synthesizing);
     }
   });
   // POSTING
   const askSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Ask Something"
   );
+  console.log(askSomethingInsp);
   const connectSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Connect something"
   );

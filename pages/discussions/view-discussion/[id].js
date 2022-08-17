@@ -55,6 +55,7 @@ import LargeSpinner from "@/components/LargeSpinner";
 import withAuth from "@/HOC/withAuth";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import Posts from "@/components/Posts";
+import ParticipantsRow from "@/components/ParticipantsRow";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -80,6 +81,7 @@ const ViewDiscussion = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [allTags, setAllTags] = useState([]);
   const [topSixTags, setTopSixTags] = useState([]);
+  const [allParticipants, setAllParticipants] = useState([]);
   const [replyingId, setReplyingId] = useState({
     user: "",
     id: "",
@@ -132,7 +134,9 @@ const ViewDiscussion = () => {
       setLastName(singleDiscData?.poster.l_name);
       setUserName(singleDiscData?.poster.username);
       setAllPosts(singleDiscData?.posts);
-      setAllTags(singleDiscData.tags);
+      setAllParticipants(singleDiscData?.participants);
+      setAllTags(singleDiscData?.tags);
+      setTopSixTags(singleDiscData?.tags?.slice(0, 5));
       if (
         singleDiscData?.settings?.scores !== null &&
         singleDiscData?.settings?.scores?.type === "auto"
@@ -188,7 +192,7 @@ const ViewDiscussion = () => {
                   </Link>
                   <h5 className="ml-13 capitalize">{discTitle}</h5>
                 </div>
-                <div className="vp-980:hidden">
+                {/* <div className="vp-980:hidden">
                   <form action="">
                     <div className={`${styles.searchInput}     `}>
                       <div className="flex items-center justify-center ">
@@ -207,7 +211,7 @@ const ViewDiscussion = () => {
                       />
                     </div>
                   </form>
-                </div>
+                </div> */}
                 <div className="flex items-center gap-6 h-full">
                   <div
                     className="flex items-end justify-center  h-22"
@@ -425,17 +429,18 @@ const ViewDiscussion = () => {
                           viewAllTags ? "hidden" : "flex"
                         } px-16 vp-min-601:px-42 mt-7 justify-between vp-600:overflow-x-scroll `}
                       >
-                        <div className="flex items-center gap-4 ">
-                          {allTags.map((tag, index) => (
+                        <div className="flex items-center gap-2  w-full ">
+                          {topSixTags?.map((tag, index) => (
                             <div
-                              className="h-32 bg-blue-inputBlue flex gap-8 items-center px-15 rounded-xs"
+                              className="h-25 bg-blue-inputBlue flex  items-center px-8 rounded-xs "
                               key={index}
                             >
-                              <p className=" text-gray-text">
+                              <p className=" text-gray-text  flex">
                                 #{parse(tag.tag)}
-                                {}
                               </p>
-                              <p className=" text-primary-blue">{tag.count}</p>
+                              <p className="ml-16 text-primary-blue">
+                                {tag.count}
+                              </p>
                             </div>
                           ))}
                         </div>
@@ -706,8 +711,10 @@ const ViewDiscussion = () => {
                           className="h-32 mb-10 bg-blue-inputBlue flex mr-10 gap-8 items-center px-15 rounded-xs w-189"
                           key={index}
                         >
-                          <p className=" text-gray-text">#{tag.tag}</p>
-                          <p className=" text-primary-blue">{tag.count}</p>
+                          <p className=" text-gray-text  flex">
+                            #{parse(tag.tag)}
+                          </p>
+                          <p className="ml-16 text-primary-blue">{tag.count}</p>
                         </div>
                       ))}
                     </div>
@@ -731,50 +738,9 @@ const ViewDiscussion = () => {
                       </div>
                     </div>
                     {/* PARTICIPANTS */}
-                    <div className="px-24 flex items-center mb-16">
-                      <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/Avatar_yftjvt.svg"
-                        alt="avatar"
-                        width={24}
-                        height={24}
-                      />
-                      <p className="ml-8 mr-40 text-black-postInsp">
-                        Carl John{" "}
-                        <span className=" text-gray-analyticsGray">@JOHN</span>
-                      </p>
-                      <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/mute_yvnudc.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                        className="cursor-pointer"
-                      />
-                      <button className="ml-30 text-primary-blue cursor-pointer text-sm hover:text-other-danger">
-                        Remove
-                      </button>
-                    </div>
-                    <div className="px-24 flex items-center mb-16">
-                      <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/Avatar_yftjvt.svg"
-                        alt="avatar"
-                        width={24}
-                        height={24}
-                      />
-                      <p className="ml-8 mr-40 text-black-postInsp">
-                        Carl John{" "}
-                        <span className=" text-gray-analyticsGray">@JOHN</span>
-                      </p>
-                      <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/mute_yvnudc.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                        className="cursor-pointer"
-                      />
-                      <button className="ml-30 text-primary-blue cursor-pointer text-sm hover:text-other-danger">
-                        Remove
-                      </button>
-                    </div>
+                    {allParticipants.map((parti, index) => (
+                      <ParticipantsRow key={index} participants={parti} />
+                    ))}
                   </div>
                 )}
                 {showScoresSheet && (

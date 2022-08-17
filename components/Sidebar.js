@@ -309,7 +309,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
       <div
         className={`pt-80 py-25  w-300 absolute left-0 top-0 bottom-0 vp-980:flex flex-col justify-start vp-600:justify-between hidden   overflow-y-auto bg-white-white  z-9999`}
       >
-        <div className=" flex  pl-25 my-20 vp-600:my-2">
+        <div className=" flex  pl-25 my-16 vp-600:my-2">
           {userPicture ? (
             <div>picture</div>
           ) : (
@@ -320,16 +320,16 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
             </div>
           )}
           <div className="">
-            <h4 className="text-gray-text ">
+            <h6 className="text-gray-text ">
               {firstName} {lastName}
-            </h4>
-            <h6 className=" text-primary-darkGreen">@{userName}</h6>
-            <h5 className=" text-other-success mt-10 vp-768:text-xs">
+            </h6>
+            <p className=" text-primary-darkGreen">@{userName}</p>
+            <h6 className=" text-other-success mt-10 vp-768:text-xs">
               Starter
-            </h5>
+            </h6>
           </div>
         </div>
-        <div className="mt-12">
+        <div className="mt-10">
           <div className="">
             <Link href="/discussions" passHref>
               <div
@@ -350,7 +350,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Discussions</h4>
+                <h6 className="">Discussions</h6>
               </div>
             </Link>
             <Link href="/notifications" passHref>
@@ -372,7 +372,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Notifications</h4>
+                <h6 className="">Notifications</h6>
               </div>
             </Link>
             <Link href="/stats" passHref>
@@ -394,7 +394,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Stats</h4>
+                <h6 className="">Stats</h6>
               </div>
             </Link>
             <Link href="/analytics" passHref>
@@ -416,7 +416,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Analytics</h4>
+                <h6 className="">Analytics</h6>
               </div>
             </Link>
             {/* <Link href="/charts" passHref>
@@ -438,7 +438,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Charts</h4>
+                <h6 className="">Charts</h6>
               </div>
             </Link> */}
             {/* <Link href="/calendar" passHref>
@@ -460,7 +460,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Calendar</h4>
+                <h6 className="">Calendar</h6>
               </div>
             </Link> */}
             <Link href="/contact" passHref>
@@ -482,7 +482,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Contact us</h4>
+                <h6 className="">Contact us</h6>
               </div>
             </Link>
             <Link href="/settings" passHref>
@@ -504,7 +504,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   height="24"
                   layout="fixed"
                 />
-                <h4 className="">Settings</h4>
+                <h6 className="">Settings</h6>
               </div>
             </Link>
           </div>

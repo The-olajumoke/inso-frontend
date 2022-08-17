@@ -19,10 +19,12 @@ export const joinDiscussion =
         {},
         config
       );
+
       dispatch({
         type: JOIN_DISCUSSION_SUCCESS,
         payload: response.data,
       });
+      return response.data;
     } catch (error) {
       dispatch({
         type: JOIN_DISCUSSION_ERROR,
