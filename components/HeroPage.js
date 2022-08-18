@@ -108,7 +108,7 @@ const HeroPage = () => {
               </button>
               <div
                 style={{ background: "rgba(255, 255, 255, 0.05)" }}
-                className="w-262 h-60 vp-768:h-50 flex justify-between items-center rounded px-20"
+                className="w-262 h-60 vp-768:h-50 flex justify-between items-center rounded px-20 focus:border-white-white focus:border"
               >
                 <input
                   type="text"
