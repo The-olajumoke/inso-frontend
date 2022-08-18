@@ -26,8 +26,6 @@ jobs:
 
 
 
-name: Update Production
-
 on:
   push:
     branches:
