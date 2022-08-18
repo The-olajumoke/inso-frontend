@@ -9,6 +9,7 @@ const Dropdown = ({
   openDropdown,
   setOpenDropdown,
   icon,
+  showTitle,
 }) => {
   return (
     <div className="relative">
@@ -20,14 +21,19 @@ const Dropdown = ({
           <div className="mr-14 flex justify-center items-center">
             <Image
               src={icon}
-              alt={title}
+              alt={value}
               layout="fixed"
-              width="18"
-              height="18"
+              width="24"
+              height="24"
             />
           </div>
         )}
-        <p>{title}</p>
+        <span className="text-xs">{value}</span>
+        {showTitle ? (
+          <span className="text-xs">{title}</span>
+        ) : (
+          <span className="text-xs">{value}</span>
+        )}
       </div>
       {openDropdown && (
         <>
@@ -36,7 +42,7 @@ const Dropdown = ({
             onClick={() => setOpenDropdown(false)}
           ></div>
           <div
-            className={`${styles.dropdown} absolute  top-10 bg-white-white w-199  px-20 py-7 z-60  rounded-lg shadow-xs`}
+            className={`${styles.dropdown} absolute  top-10 bg-white-white w-210  px-20 py-7 z-60  rounded-lg shadow-xs`}
           >
             <div className="w-full ">
               {items.map((item, index) => (
@@ -45,13 +51,13 @@ const Dropdown = ({
                   className="  
                      first:text-primary-darkGreen
                      text-gray-text
-                  :hover:bg-other-faintBlue py-14 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
+                  :hover:bg-other-faintBlue py-10 border-b-2  last:border-none border-border-dropdownLine cursor-pointer flex justify-start"
                   onClick={() => {
                     setValue(item);
                     setOpenDropdown(false);
                   }}
                 >
-                  <h6 className=" ">{item}</h6>
+                  <p className=" ">{item}</p>
                 </div>
               ))}
             </div>

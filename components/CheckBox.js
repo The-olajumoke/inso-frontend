@@ -1,16 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const CheckBox = ({ id, checked, handleChange, disabled, value }) => {
   return (
     <div className="checkbox-container">
-  
       {handleChange ? (
         <input
           type="checkbox"
           id={id}
           checked={checked}
           disabled={disabled}
-          onChange={(evt) => handleChange(evt.target.checked)}
+          onChange={(evt) => handleChange(id)}
         />
       ) : (
         <input
@@ -28,4 +27,4 @@ const CheckBox = ({ id, checked, handleChange, disabled, value }) => {
   );
 };
 
-export default CheckBox
+export default CheckBox;

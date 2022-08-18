@@ -11,7 +11,7 @@ const RubricInput = ({
   handleKeyUp,
 }) => {
   return (
-    <div className="flex items-center h-34   w-350 pr-15 py-9 bg-blue-lightBlue rounded-lg text-md text-gray-text">
+    <div className="flex items-center h-27 w-300 pr-15 py-9 bg-blue-lightBlue rounded-lg text-md text-gray-text">
       <input
         type={type}
         placeholder={placeholder || "Enter"}
@@ -20,7 +20,8 @@ const RubricInput = ({
         required={required}
         disabled={disabled}
         onKeyUp={handleKeyUp}
-        className=" h-full bg-transparent outline-none border-none  focus:ring-0"
+        className=" h-full bg-transparent outline-none border-none text-xs
+         focus:ring-0 text-black-postInsp"
       />
       <Image
         src="/icons/delete_green.svg"

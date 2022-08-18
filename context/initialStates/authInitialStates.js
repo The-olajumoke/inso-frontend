@@ -3,7 +3,12 @@ export default {
     success: false,
     loading: false,
     data: null,
+    registerSuccess: false,
     registerError: null,
-    signInError: null,
+    loginLoading: false,
+    loginData: null,
+    loginSuccess: false,
+    loginError: null,
+    googleError: null,
   },
 };

@@ -2,9 +2,12 @@ import {
   REGISTER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
-  SIGN_IN_LOADING,
-  SIGN_IN_SUCCESS,
-  SIGN_IN_ERROR,
+  LOG_IN_LOADING,
+  LOG_IN_SUCCESS,
+  LOG_IN_ERROR,
+  GOOGLE_LOADING,
+  GOOGLE_SUCCESS,
+  GOOGLE_ERROR,
 } from "@/constants/actionTypes";
 const auth = (state, { payload, type }) => {
   switch (type) {
@@ -23,7 +26,7 @@ const auth = (state, { payload, type }) => {
         auth: {
           ...state.auth,
           loading: false,
-          success: true,
+          registerSuccess: true,
         },
       };
     case REGISTER_ERROR:
@@ -36,35 +39,72 @@ const auth = (state, { payload, type }) => {
         },
       };
 
-    case SIGN_IN_LOADING:
+    case LOG_IN_LOADING:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loginLoading: true,
+          loginError: null,
+        },
+      };
+    case LOG_IN_SUCCESS:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loginLoading: false,
+          loginSuccess: true,
+          loginData: payload,
+        },
+      };
+    case LOG_IN_ERROR:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loginLoading: false,
+          loginError: payload,
+        },
+      };
+    case GOOGLE_LOADING:
       return {
         ...state,
         auth: {
           ...state.auth,
           loading: true,
+          registerError: null,
+          verifyError: null,
+          resendVerifyError: null,
           signInError: null,
-        },
-      };
-    case SIGN_IN_SUCCESS:
-      return {
-        ...state,
-        auth: {
-          ...state.auth,
-          loading: false,
-          success: true,
-          data: payload,
-        },
-      };
-    case SIGN_IN_ERROR:
-      return {
-        ...state,
-        auth: {
-          ...state.auth,
-          loading: false,
-          signInError: payload,
+          googleError: null,
+          facebookError: null,
+          forgotPasswordError: null,
+          resetPasswordError: null,
+          resetPasswordError: null,
+          error: null,
         },
       };
 
+    case GOOGLE_SUCCESS:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loading: false,
+          data: payload,
+        },
+      };
+
+    case GOOGLE_ERROR:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loading: false,
+          error: payload,
+        },
+      };
     default:
       return state;
   }

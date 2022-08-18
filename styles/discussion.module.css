@@ -1,6 +1,13 @@
+.hiddenScrollbar{
+    overflow-y: scroll;
+}
+
+.hiddenScrollbar::-webkit-scrollbar {
+    display: none;
+}
 .searchInput {
-    width: 516px;
-    height: 50px;
+    width:auto;
+    height: 40px;
     background: rgba(7, 160, 152, 0.05);
     border-radius: 30px;
     padding: 10.5px 30.62px;
@@ -31,4 +38,23 @@
     color: rgba(0, 30, 47, 0.2);
 
     font-size: 1.3rem;
+}
+
+
+.tableHeader {
+    border-bottom: 0.5px solid #caceca;
+    height: 5rem;
+    margin-bottom: 1rem;
+}
+/* .tableRow {
+    height: 7.8rem;
+} */
+.tableHeader,
+.tableRow {
+    display: grid;
+    justify-content: space-between;
+    /* grid-template-columns: 14rem repeat(4, minmax(0, 10rem)) ; */
+    align-items: center;
+    /* padding: 0 1.6rem; */
+    font-size: 12px;
 }

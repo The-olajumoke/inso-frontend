@@ -1,228 +1,553 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/sidebar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-const Sidebar = ({ navSize, userPicture }) => {
+const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [initials, setInitials] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    if (user !== null) {
+      const { f_name, l_name, username } = user;
+      setFirstName(f_name);
+      setLastName(l_name);
+      setUserName(username);
+      const firstInit = f_name?.split("")[0];
+      const lastInit = l_name?.split("")[0];
+      setInitials(`${firstInit} ${lastInit}`);
+    }
+  }, [user]);
+
   return (
-    <div
-      className={`${styles.sidebarContainer} ${
-        navSize === "small" ? "w-109" : "w-333"
-      }   fixed flex flex-col justify-between  vp-980:hidden `}
-    >
-      <div className=" flex  pl-50">
-        {userPicture ? (
-          <div>picture</div>
-        ) : (
-          <div className="  h-45 w-45 text-primary-blue bg-other-faintBlue rounded-full text-md flex justify-center items-center font-semibold mr-15">
-            PD
+    <>
+      <div
+        className={`${styles.sidebarContainer} ${
+          navSize === "small" ? "w-109" : "w-333"
+        }   flex flex-col justify-between ${
+          showHeader === false ? "!pt-8" : "p-9"
+        }  h-full  vp-980:hidden`}
+      >
+        {showHeader === false && (
+          <div className="pl-45 mb-25">
+            <Image
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1660572712/logo_without_text_jrhirt.svg"
+              alt="inso"
+              draggable="false"
+              width="40"
+              height="40"
+              layout="fixed"
+            />
           </div>
         )}
-        <div className={`${navSize === "small" && "hidden"}`}>
-          <h4 className="text-gray-text">Patrick Dempsey</h4>
-          <h6 className=" text-primary-darkGreen">@patrick</h6>
-          <h5 className=" text-other-success mt-10">Starter</h5>
+        <div className=" flex  pl-50">
+          {userPicture ? (
+            <div>picture</div>
+          ) : (
+            <div className="h-37 w-37 text-xs flex justify-center items-center font-semibold mr-15 border overflow-hidden p-0 rounded-full bg-primary-darkGreen">
+              <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 capitalize ">
+                {initials}
+              </span>
+            </div>
+          )}
+          <div className={`${navSize === "small" && "hidden"}`}>
+            <h6 className="text-gray-text">
+              {firstName} {lastName}
+            </h6>
+            <span className=" text-xs text-primary-darkGreen">@{userName}</span>
+            <h6 className=" text-other-success mt-10">Starter</h6>
+          </div>
         </div>
-      </div>
-      <div className="mt-12">
-        <div className="">
-          <Link href="/discussions" passHref>
-            <div
-              className={`${router.pathname.startsWith("/discussions") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/discussions")
-                    ? "/icons/dashboard_active.svg"
-                    : "/icons/dashboard.svg"
-                }
-                alt="dashboard"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"}  `}>
-                Discussions
-              </h4>
-            </div>
-          </Link>
-          <Link href="/notifications" passHref>
-            <div
-              className={`${router.pathname.startsWith("/notifications") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/notifications")
-                    ? "/icons/notification_active.svg"
-                    : "/icons/notification.svg"
-                }
-                alt="notifications"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"} `}>
-                Notifications
-              </h4>
-            </div>
-          </Link>
-          <Link href="/stats" passHref>
-            <div
-              className={`${router.pathname.startsWith("/stats") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/stats")
-                    ? "/icons/stats.svg"
-                    : "/icons/stats_active.svg"
-                }
-                alt="stats"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"}`}>Stats</h4>
-            </div>
-          </Link>
-          <Link href="/analytics" passHref>
-            <div
-              className={`${router.pathname.startsWith("/analytics") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/analytics")
-                    ? "/icons/analytics_active.svg"
-                    : "/icons/analytics.svg"
-                }
-                alt="analytics"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"}`}>
-                Analytics
-              </h4>
-            </div>
-          </Link>
-          <Link href="/charts" passHref>
-            <div
-              className={`${router.pathname.startsWith("/charts") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/charts")
-                    ? "/icons/charts.svg"
-                    : "/icons/charts.svg"
-                }
-                alt="charts"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"}`}>Charts</h4>
-            </div>
-          </Link>
-          <Link href="/calendar" passHref>
-            <div
-              className={`${router.pathname.startsWith("/calendar") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/calendar")
-                    ? "/icons/calendar_active.svg"
-                    : "/icons/calendar.svg"
-                }
-                alt="calendar"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"}`}>Calendar</h4>
-            </div>
-          </Link>
-          <Link href="/contact" passHref>
-            <div
-              className={`${router.pathname.startsWith("/contact") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/contact")
-                    ? "/icons/contact_active.svg"
-                    : "/icons/contact.svg"
-                }
-                alt="contact"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"}`}>
-                Contact us
-              </h4>
-            </div>
-          </Link>
-          <Link href="/settings" passHref>
-            <div
-              className={`${router.pathname.startsWith("/settings") &&
-                "bg-primary-darkGreen  justify-start text-white-white "} ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-70`}
-            >
-              <Image
-                src={
-                  router.pathname.startsWith("/settings")
-                    ? "/icons/settings_active.svg"
-                    : "/icons/settings.svg"
-                }
-                alt="settings"
-                draggable="false"
-                width="24"
-                height="24"
-                layout="fixed"
-              />
-              <h4 className={`${navSize === "small" && "hidden"}`}>Settings</h4>
-            </div>
-          </Link>
+        <div className="mt-12 flex-grow">
+          <div className="">
+            <Link href="/home">
+              <a
+                className={`${
+                  router.pathname.startsWith("/home") &&
+                  " bg-primary-blue  justify-start text-white-white"
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/home")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1659168361/home_ihfz7d.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960630/home_tfw1yn.svg"
+                  }
+                  alt="discussion"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+
+                <h6 className={`${navSize === "small" && "hidden"}  `}>Home</h6>
+              </a>
+            </Link>
+            <Link href="/discussions">
+              <a
+                className={`${
+                  router.pathname.startsWith("/discussions") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/discussions")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_active_rrsvgb.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659963398/disc_inactive_gb4ka8.svg"
+                  }
+                  alt="discussion"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+
+                <h6 className={`${navSize === "small" && "hidden"}  `}>
+                  Discussions
+                </h6>
+              </a>
+            </Link>
+            <Link passHref href="/notifications">
+              <div
+                className={`${
+                  router.pathname.startsWith("/notifications") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/notifications")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468844/InsoImages/notification_active_ai8d5r.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960378/notifications_inactive_ye3826.svg"
+                  }
+                  alt="notifications"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className={`${navSize === "small" && "hidden"} `}>
+                  Notifications
+                </h6>
+              </div>
+            </Link>
+            <Link href="/stats" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/stats") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/stats")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325351/InsoImages/stats_zjldog.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962014/stats_inactive_je9wv9.svg"
+                  }
+                  alt="stats"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className={`${navSize === "small" && "hidden"}`}>Stats</h6>
+              </div>
+            </Link>
+            <Link href="/analytics" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/analytics") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/analytics")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325640/InsoImages/analytics_active_isunzk.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960921/analytics_inactive_kul1jz.svg"
+                  }
+                  alt="analytics"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className={`${navSize === "small" && "hidden"}`}>
+                  Analytics
+                </h6>
+              </div>
+            </Link>
+            {/* <Link href="/charts" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/charts") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/charts")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655827744/InsoImages/chart_active_cxtrna.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659961761/chart_inactive_je8rth.svg"
+                  }
+                  alt="charts"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className={`${navSize === "small" && "hidden"}`}>Charts</h6>
+              </div>
+            </Link> */}
+            {/* <Link href="/calendar" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/calendar") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/calendar")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_active_ixszvw.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659961867/calendar_inactive_fj8ays.svg"
+                  }
+                  alt="calendar"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className={`${navSize === "small" && "hidden"}`}>
+                  Calendar
+                </h6>
+              </div>
+            </Link> */}
+            <Link href="/contact" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/contact") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/contact")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_active_e9ipb6.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962244/contact_inactive_gnxlpe.svg"
+                  }
+                  alt="contact"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className={`${navSize === "small" && "hidden"}`}>
+                  Contact us
+                </h6>
+              </div>
+            </Link>
+            <Link href="/settings" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/settings") &&
+                  " bg-primary-blue  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/settings")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_active_efkgp4.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962637/settings_inactive_twggmi.svg"
+                  }
+                  alt="settings"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className={`${navSize === "small" && "hidden"}`}>
+                  Settings
+                </h6>
+              </div>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div
-        className={`${navSize === "small" &&
-          "pr-0 pl-50"} w-full px-50 mt-60  `}
-      >
         <div
-          className={`${navSize === "small" &&
-            " rounded-full w-40 "} w-full h-40 border border-border-line rounded flex items-center  justify-center  `}
+          className={`${
+            navSize === "small" && "pr-0 pl-50"
+          } w-full px-50 mt-60  `}
         >
-          <Image
-            src="/icons/download.svg"
-            alt="download"
-            draggable="false"
-            layout="fixed"
-            height="24"
-            width="24"
-          />
-          <p
-            className={` ${navSize === "small" &&
-              " hidden"}  ml-17 text-primary-darkGreen border  bg-primary-darkGreen`}
+          <div
+            className={`${
+              navSize === "small" && " rounded-full w-40 "
+            } w-full h-40 border border-primary-blue   rounded flex items-center  justify-center  `}
           >
-            Upgrade
-          </p>
+            <Image
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1659963152/download_inactive_kqpgt2.svg"
+              alt="download"
+              draggable="false"
+              layout="fixed"
+              height="24"
+              width="24"
+            />
+            <p
+              className={` ${
+                navSize === "small" && " hidden"
+              }  ml-17 text-primary-darkGreen`}
+            >
+              Upgrade
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div
+        className={`pt-80 py-25  w-300 absolute left-0 top-0 bottom-0 vp-980:flex flex-col justify-start vp-600:justify-between hidden   overflow-y-auto bg-white-white  z-9999`}
+      >
+        <div className=" flex  pl-25 my-16 vp-600:my-2">
+          {userPicture ? (
+            <div>picture</div>
+          ) : (
+            <div className="h-37 w-37 text-xs flex justify-center items-center font-semibold mr-15 border overflow-hidden p-0 rounded-full bg-primary-darkGreen">
+              <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 capitalize ">
+                {initials}
+              </span>
+            </div>
+          )}
+          <div className="">
+            <h6 className="text-gray-text ">
+              {firstName} {lastName}
+            </h6>
+            <p className=" text-primary-darkGreen">@{userName}</p>
+            <h6 className=" text-other-success mt-10 vp-768:text-xs">
+              Starter
+            </h6>
+          </div>
+        </div>
+        <div className="mt-10">
+          <div className="">
+            <Link href="/home" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/home") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-texth h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/home")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1659168361/home_ihfz7d.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960630/home_tfw1yn.svg"
+                  }
+                  alt="home"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Home</h6>
+              </div>
+            </Link>
+            <Link href="/discussions" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/discussions") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-texth h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/discussions")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468832/InsoImages/dashboard_active_rrsvgb.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960630/home_tfw1yn.svg"
+                  }
+                  alt="discussion"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Discussions</h6>
+              </div>
+            </Link>
+            <Link href="/notifications" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/notifications") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/notifications")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655468844/InsoImages/notification_active_ai8d5r.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960378/notifications_inactive_ye3826.svg"
+                  }
+                  alt="notifications"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Notifications</h6>
+              </div>
+            </Link>
+            <Link href="/stats" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/stats") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/stats")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325351/InsoImages/stats_zjldog.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962014/stats_inactive_je9wv9.svg"
+                  }
+                  alt="stats"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Stats</h6>
+              </div>
+            </Link>
+            <Link href="/analytics" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/analytics") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/analytics")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325640/InsoImages/analytics_active_isunzk.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960921/analytics_inactive_kul1jz.svg"
+                  }
+                  alt="analytics"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Analytics</h6>
+              </div>
+            </Link>
+            {/* <Link href="/charts" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/charts") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/charts")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
+                  }
+                  alt="charts"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Charts</h6>
+              </div>
+            </Link> */}
+            {/* <Link href="/calendar" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/calendar") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/calendar")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_active_ixszvw.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_ix65zg.svg"
+                  }
+                  alt="calendar"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Calendar</h6>
+              </div>
+            </Link> */}
+            <Link href="/contact" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/contact") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/contact")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326270/InsoImages/contact_active_e9ipb6.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962244/contact_inactive_gnxlpe.svg"
+                  }
+                  alt="contact"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Contact us</h6>
+              </div>
+            </Link>
+            <Link href="/settings" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/settings") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/settings")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326321/InsoImages/settings_active_efkgp4.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659962637/settings_inactive_twggmi.svg"
+                  }
+                  alt="settings"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Settings</h6>
+              </div>
+            </Link>
+          </div>
+        </div>
+        <div className=" w-full px-25 mt-42">
+          <div
+            className={`w-full h-40 border border-primary-blue rounded flex items-center  justify-center  `}
+          >
+            <Image
+              src="https://res.cloudinary.com/insomaryland/image/upload/v1659963152/download_inactive_kqpgt2.svg"
+              alt="download"
+              draggable="false"
+              layout="fixed"
+              height="24"
+              width="24"
+            />
+            <p className={`  ml-17 text-primary-darkGreen `}>Upgrade</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

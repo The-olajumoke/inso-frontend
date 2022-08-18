@@ -1,9 +1,8 @@
 import React from "react";
-
-const ProgressBar = ({ value }) => {
+const ProgressBar = ({ value}) => {
   return (
     <div>
-      <progress value={value} max={100} className="w-full" />
+      <progress  value={value} max={100} className="w-full" />
     </div>
   );
 };

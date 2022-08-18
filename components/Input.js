@@ -13,7 +13,7 @@ const Input = ({
   handleKeyUp,
 }) => {
   return (
-    <div className="flex flex-col mb-20 relative" disabled={disabled}>
+    <div className="flex flex-col mb-16 relative" disabled={disabled}>
       {value.length ? (
         <div
           style={{ fontSize: "10px" }}

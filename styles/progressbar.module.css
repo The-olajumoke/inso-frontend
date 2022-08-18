@@ -1,0 +1,43 @@
+.progressBarBlue::-webkit-progress-bar {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
+
+
+.progressBarBlue::-webkit-progress-value {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F2B544;
+}
+.progressBarGreen::-webkit-progress-bar {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
+
+
+.progressBarGreen::-webkit-progress-value {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #525AF2;
+}
+.progressBarBadge::-webkit-progress-bar {
+    height: 2px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
+
+.progressBarBadge::-webkit-progress-value {
+    height: 2px;
+    border-radius: 17.741px;
+    background-color: #525AF2;
+}
+.hiddenScrollbar {
+
+    overflow-y: scroll;
+}
+
+.hiddenScrollbar::-webkit-scrollbar {
+    display: none;
+}
