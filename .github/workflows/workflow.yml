@@ -26,7 +26,7 @@ jobs:
 
 
 
-name: Update Staging
+name: Update Production
 
 on:
   push:
