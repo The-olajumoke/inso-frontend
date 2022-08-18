@@ -292,7 +292,7 @@ const Index = () => {
                 <div className="mb-40 flex items-center gap-4">
                   <div className=" flex-grow vp-1024:flex-grow-0 h-34 px-21   bg-border-green  rounded-xl  flex items-center ">
                     <span className=" text-xs text-black-analText mr-14">
-                      Discussion set / Discussions
+                      Discussions
                     </span>
                     <Image
                       src="/icons/arrow_down_green.svg"

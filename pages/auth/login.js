@@ -126,7 +126,8 @@ const LoginPage = () => {
           </div>
           <div className="px-51 vp-600:px-22 pt-35 text-center">
             <h4 className="mb-61 font-medium">
-              Welcome to <span className=" text-primary-darkGreen">Inso</span>
+              Welcome to{" "}
+              <span className=" text-primary-darkGreen text-xl">Inso</span>
             </h4>
             {/* <form onSubmit={handleLogin}> */}
             <div>

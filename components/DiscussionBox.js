@@ -11,12 +11,14 @@ const DiscussionBox = ({
   return (
     <div
       // style={{ minHeight: "110px" }}
-      className="vp-600:w-full h-145  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14  flex flex-col relative justify-between"
+      className="vp-600:w-full h-145  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between hover:bg-primary-darkGreen text-gray-text hover:text-white-white hover:-translate-y-4"
     >
-      <div className=" flex items-start justify-between mb-15">
+      <div className=" flex items-start justify-between mb-15 h-85">
         <Link passHref href={`/discussions/view-discussion/${_id}`}>
-          <div className=" w-210 cursor-pointer">
-            <h5 className=" text-gray-text font-medium p-0 m-0">{name}</h5>
+          <div className=" w-210 cursor-pointer h-full overflow-hidden">
+            <h5 className="  font-medium p-0 m-0 break-words hover:text-white-white">
+              {name}
+            </h5>
           </div>
         </Link>
 
@@ -162,7 +164,7 @@ const DiscussionBox = ({
           </div>
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between hover:text-white-white">
         <span className=" text-xs text-gray-analyticsGray">
           by {poster.username}
         </span>

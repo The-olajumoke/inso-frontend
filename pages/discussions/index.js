@@ -75,7 +75,7 @@ const Index = () => {
       bgColor="bg-gray-background"
     >
       <div
-        className={`${styles.hiddenScrollbar} relative h-full py-50 px-35 vp-600:p-23 vp-980:p-46 w-full`}
+        className={`${styles.hiddenScrollbar} relative h-full p-35 vp-600:p-23 vp-980:p-46 w-full`}
       >
         <div className="flex justify-between w-full mb-33 vp-980:hidden">
           <Link passHref href="/discussions/create-discussion">

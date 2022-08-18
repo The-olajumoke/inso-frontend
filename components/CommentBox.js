@@ -25,6 +25,7 @@ const CommentBox = ({
   togglePostInsp,
   discId,
   replyingId,
+  postSuccess,
 }) => {
   const [token, setToken] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -50,7 +51,11 @@ const CommentBox = ({
     console.log(accessToken);
     setToken(accessToken);
   }, []);
-
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorState(EditorState.createEmpty());
+    }
+  }, [postSuccess]);
   useEffect(() => {
     const textLength = convertToRaw(editorState.getCurrentContent());
     console.log(textLength?.blocks[0]);

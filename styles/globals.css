@@ -199,6 +199,25 @@ body{
   }
 }
 
+.notif_header h1{
+font-size: 16px;
+padding: 0;
+margin: 0;
+font-weight: 400;
+}
+.notif_subHeader p,.notif_subHeader span{
+font-size: 14px !important;
+color: #686868;
+}
+.username{
+  color: #525AF2;
+}
+.discussion-link{
+  color: #F2B544;
+  cursor: pointer;
+  font-weight: 400;
+  text-decoration: underline;
+}
 /* ///////////////////////////////////////////////// */
 
 .react-calendar {
@@ -317,4 +336,21 @@ abbr {
   .react-calendar__month-view__weekdays {
     font-size: 14px !important;
   }
+    .notif_header h1 {
+      font-size: 14px;
+      line-height: normal;
+    }
+        .discussion-link,.username {
+          font-size: 14px;
+        }
+                .notif_subHeader p,
+                             .notif_subHeader span {
+                  font-size: 12px !important;
+                }
 }
+
+
+
+
+
+
