@@ -10,7 +10,7 @@ import TrackEngagement from "@/components/TrackEngagement";
 
 export default function Home() {
   return (
-    <div className=" w-screen border-4">
+    <div className=" w-screen">
       <Head>
         <title>Home | Inso</title>
       </Head>
