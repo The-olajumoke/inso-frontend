@@ -1,0 +1,31 @@
+.hiddenScrollbar {
+    overflow-y: scroll;
+}
+
+.hiddenScrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.badge{
+    background: #FFFAF0;
+    width: 405px;
+        border: 7px solid #FFF2DC;
+        border-radius: 15px;
+}
+.badgeBtn{
+background-color:
+    #FFF2DC;}
+
+        /* DASHBOARd */
+        .progressBarDashb::-webkit-progress-bar {
+            height: 4px;
+            border-radius: 17.741px;
+            background-color: #F0F0F0;
+        }
+    
+    
+        .progressBarDashb::-webkit-progress-value {
+            height: 4px;
+            border-radius: 17.741px;
+            background-color: #525AF2;
+        }

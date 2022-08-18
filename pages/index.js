@@ -4,17 +4,21 @@ import HeroPage from "@/components/HeroPage";
 import Offers from "@/components/Offers";
 import Subscription from "@/components/Subscription";
 import Footer from "@/components/Footer";
+import InsoCreates from "@/components/InsoCreates";
+import PostWithEase from "@/components/PostWithEase";
+import TrackEngagement from "@/components/TrackEngagement";
 
 export default function Home() {
   return (
-    <div className="pt-32">
+    <div className=" w-full">
       <Head>
         <title>Home | Inso</title>
       </Head>
       <HeroPage />
       <About />
-      <Offers />
-      <Subscription />
+      <InsoCreates />
+      <PostWithEase />
+      <TrackEngagement />
       <Footer />
     </div>
   );

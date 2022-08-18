@@ -1,113 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
+.rdw-editor-toolbar,
+.rdw-option-wrapper {
+  border: none !important;
+}
+.rdw-editor-main {
+  overflow: hidden !important;
+}
+.bordered-option-classname img{
+  /* border: 2px solid red; */
+  width: 19.2px;
+  height: 19.2px;
+}
+.public-DraftStyleDefault-block {
+  margin:0 !important;
+}
+body{
+  color: #161925;
+}
 /* input,button, */
 @layer base {
-    html {
-        font-size: 62.5%;
-        
-        
-    }
+  html {
+    font-size: 62.5%;
+    
+  }
 
-       h1 {
-        @apply text-5xl  text-gray-text font-medium;
-    }
-    
-    h2 {
-        @apply text-3xl  text-gray-text;
-    }
-    
-    h3 {
-        @apply text-2xl text-gray-text  ;
-    }
-    
-    h4 {
-        @apply text-xl  ;
-    }
-    
-    h5 {
-        @apply text-lg;
-    }
-    
-    h6 {
-        @apply text-md;
-    }
+  h1 {
+    @apply text-5xl text-gray-text font-medium font-poppins;
+  }
 
-    
-    p {
-        @apply text-sm text-gray-text;
-    }
-    
-[type='text'],
-[type='email'],
-[type='url'],
-[type='password'],
-[type='number'],
-[type='date'],
-[type='datetime-local'],
-[type='month'],
-[type='search'],
-[type='tel'],
-[type='time'],
-[type='week'],
-[multiple]{
-    @apply text-sm w-full rounded-xs  border-primary-blue h-54 px-20  text-gray-text  focus:ring-primary-darkGreen focus:ring-2 focus:border-0
-}
+  h2 {
+    @apply text-3xl  text-gray-text font-poppins;
+  }
 
-textarea {
-    @apply  w-full text-gray-text h-full  resize-none outline-none  focus:ring-0  
-     text-lg  leading-10
-}
+  h3 {
+    @apply text-2xl text-gray-text vp-768:text-xl vp-600:text-lg font-poppins;
+  }
 
-input:disabled{
-    @apply  text-other-disabledText bg-other-disabled 
-}
-input::placeholder{
-    color:#8692A6;
-}
+  h4 {
+    @apply text-xl vp-768:text-lg  vp-600:text-md font-poppins;
+  }
 
-input:-ms-input-placeholder {
+  h5 {
+    @apply text-lg font-poppins;
+  }
+
+  h6 {
+    @apply text-md vp-600:text-sm font-poppins;
+  }
+
+  p {
+    @apply text-sm text-gray-text font-poppins;
+  }
+
+  button,
+  span,
+  div {
+    @apply font-poppins;
+  }
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple] {
+    @apply text-sm w-full rounded-xs  border-primary-blue h-43 px-17  text-gray-text  focus:ring-primary-darkGreen focus:ring-2 focus:border-0 font-poppins font-light;
+  }
+
+  textarea {
+    @apply w-full text-gray-text h-full  resize-none outline-none  focus:ring-0  
+     text-lg  leading-10 font-poppins;
+  }
+
+  input:disabled {
+    @apply text-other-disabledText bg-other-disabled font-poppins cursor-not-allowed;
+  }
+  input::placeholder {
+    color: #bbbbbb;
+  }
+
+  input:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-     color:#8692A6;
+    color: #bbbbbb;
     font-size: 1.3rem;
-}
+  }
 
-input::-ms-input-placeholder {
+  input::-ms-input-placeholder {
     /* Microsoft Edge */
-     color:#8692A6;
+    color: #bbbbbb;
     font-size: 1.3rem;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* CHECKBOX */
+  .checkbox-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+
+  .checkbox-container label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .checkbox-container input[type="checkbox"],
+  .checkbox-container input[type="radio"] {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .checkbox-container label::before {
+    content: "";
+    width: 1.4rem;
+    height: 1.4rem;
+    display: flex;
+    border-radius: 2px;
+    border: 1px solid #caceca;
+    transition: all 0.3s;
+  }
+
+  .checkbox-container input[type="checkbox"]:checked + label span,
+  .checkbox-container input[type="radio"]:checked + label span {
+    content: "";
+    background-color: #525AF2;
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-container: center;
+    pointer-events: none;
+    transition: all 0.3s;
+  }
+
+  .checkbox-container input[type="checkbox"]:disabled + label span,
+  .checkbox-container input[type="radio"]:disabled + label span {
+    content: "";
+    background-color: #caceca;
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-container: center;
+    pointer-events: none;
+    transition: all 0.3s;
+  }
+
+  /* ////////// */
+  .btn {
+    @apply bg-primary-darkGreen text-white-white  font-normal rounded  text-center items-center flex justify-center outline-none font-poppins;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-blue text-primary-darkGreen bg-white-white rounded text-center items-center flex justify-center outline-none font-poppins;
+  }
+  .btn:disabled {
+    @apply bg-other-disabled text-gray-faintGray font-normal rounded cursor-not-allowed font-poppins;
+  }
+#F5F6F8
+  .btnPostInspNonActive {
+    @apply bg-blue-postInsp text-black-postInsp font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
+  }
+  .btn-analNonActive {
+    @apply bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
+  }
+
+  .btn-currentSection {
+    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-primary-darkGreen outline-none vp-600:text-sm;
+  }
+  .btn-notCurrentSection {
+    @apply  text-other-disabledText text-md flex justify-center items-center border-b-2 border-other-disabled outline-none vp-600:text-sm;
+  }
 }
 
+.notif_header h1{
+font-size: 16px;
+padding: 0;
+margin: 0;
+font-weight: 400;
+}
+.notif_subHeader p,.notif_subHeader span{
+font-size: 14px !important;
+color: #686868;
+}
+.username{
+  color: #525AF2;
+}
+.discussion-link{
+  color: #F2B544;
+  cursor: pointer;
+  font-weight: 400;
+  text-decoration: underline;
+}
+/* ///////////////////////////////////////////////// */
 
-.btn{
-        @apply bg-primary-darkGreen text-white-white  font-normal rounded  text-center items-center flex justify-center outline-none
+.react-calendar {
+  width: 100% !important;
+  height: auto !important;
+  /* background: #ffffff; */
+  background: #ffffff !important;
+  padding: 0px 38px !important;
+  border: none !important;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: rebeccapurple; */
+  margin-bottom: 16px !important;
+  background-color: transparent;
+  font-size: 12px !important;
+  transform: translateY(20px);
+  color: #2e2e2e !important;
+}
+
+.react-calendar__navigation__prev-button {
+  order: 1;
+}
+
+.react-calendar__navigation__prev-button:hover,
+.react-calendar__navigation__next-button:hover {
+  background-color: none !important;
+}
+
+.react-calendar__navigation__next-button {
+  order: 1;
+}
+
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+
+.react-calendar__navigation__label {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: #2e2e2e;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: black !important;
+}
+
+.react-calendar__tile--active {
+  background: #525AF2 !important;
+  color: white !important;
+}
+.react-calendar__tile--active abbr,.react-calendar__tile--rangeEnd abbr,
+.react-calendar__tile--rangeStart abbr{
+  color: white !important;
+}
+
+.react-calendar__tile--rangeEnd,
+.react-calendar__tile--rangeStart {
+  background: #F2B544 !important;
+  color: white !important;
+
+}
+.react-calendar__tile--rangeStart{
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+.react-calendar__tile--rangeEnd{
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.react-calendar__month-view__days__day {
+  color: #2e2e2e !important;
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+}
+/* .react-calendar__tile--now{
+  background:rgba(14, 180, 246,0.3) !important ;
+  border-radius: 100% ;
+height:100%;
+border: #525AF2 solid 2px;} */
+
+
+
+.react-calendar__month-view__weekdays {
+  color: #2e2e2e !important;
+  font-size: 14px !important;
+  margin-bottom: 16px;
+}
+.react-calendar__viewContainer {
+  color: #2e2e2e !important;
+  font-size: 12px !important;
+}
+abbr {
+  text-decoration: none !important;
+  text-transform: capitalize;
+  font-weight: normal;
+}
+.react-calendar__tile:disabled {
+  color: rgba(112, 112, 112, 0.564) !important;
+  cursor: not-allowed;
+}
+.react-calendar__navigation button:disabled{
+  background: none !important;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .react-calendar {
+    padding: 20px 16px !important;
+  }
+  .react-calendar__month-view__weekdays {
+    font-size: 14px !important;
+  }
+    .notif_header h1 {
+      font-size: 14px;
+      line-height: normal;
     }
-
-    .btn-outline{
-        @apply  border-2 border-primary-blue text-primary-darkGreen bg-white-white rounded text-center items-center flex justify-center outline-none
-    }
-.btn:disabled {
-    @apply bg-other-disabled text-gray-faintGray font-normal rounded cursor-not-allowed;
-}
-.btn-nonActive{
-    @apply bg-blue-lightBlue   text-gray-text font-normal rounded text-center flex items-center justify-center outline-none
-}
-.btn-analNonActive{
-    @apply  bg-blue-inputBlue  text-black-analText font-normal rounded text-center flex items-center justify-center outline-none
+        .discussion-link,.username {
+          font-size: 14px;
+        }
+                .notif_subHeader p,
+                             .notif_subHeader span {
+                  font-size: 12px !important;
+                }
 }
 
-::-webkit-progress-bar {
-    height: 4px;
-    border-radius: 17.741px;
-    background-color: #F3FAFA;
-}
 
-::-webkit-progress-value {
-    height: 4px;
-    border-radius: 17.741px;
-    background-color: #0EB4F6;
-}
-}
+
+
+
 

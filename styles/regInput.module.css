@@ -1,0 +1,7 @@
+.eyeIcon {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    right: 1.6rem;
+    transform: translateY(-50%);
+}

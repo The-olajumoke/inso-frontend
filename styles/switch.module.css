@@ -40,17 +40,17 @@ height: 36px; */
     left: 2px;
     bottom: 0;
     margin: auto;
-    background-color: white;
+    background-color:#525AF2;
     -webkit-transition: 0.4s;
     transition: 0.4s;
 }
 
 input:checked+.slider {
-    background-color: #2196f3;
+    background-color: white;
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 1px white;
 }
 
 input:checked+.slider::before {

@@ -1,169 +1,123 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/switch.module.css";
-const Calendar = ({ setActiveSection }) => {
-  const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
+import CalendarTemp from "./CalendarTemp";
+import WhiteLoader from "./whiteLoader";
+const Calendar = ({
+  setActiveSettings,
+  date,
+  addCalendarToSettings,
+  setAddCalendarToSettings,
+  setDate,
+  diffInDays,
+  handleCreateCalendar,
+  calendarLoading,
+  calendarData,
+}) => {
+  const [showCalendar, setShowCalendar] = useState(false);
   return (
-    <div className="pt-18 pb-40">
-      <div className=" bg-white-white h-55 flex items-center px-45 justify-between">
-        <div className="flex items-center">
-          <button
-            className="flex items-center justify-center"
-            onClick={() => setActiveSection("discussions")}
-          >
-            <Image
-              src="/icons/arrow_left_green.svg"
-              alt="back"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
-          </button>
-          <h3 className="ml-30  font-medium">Calendar</h3>
-        </div>
+    <div className=" flex flex-col shadow-lg  w-450  ">
+      <div className=" bg-primary-darkGreen h-60 vp-600:px-16 px-38 py-13  rounded-t-md flex justify-between items-center">
+        <h4 className=" text-white-white">Duration</h4>
+        <label className={`${styles.switch}`}>
+          <input
+            type="checkbox"
+            name="reports"
+            id="postInspiration"
+            checked={addCalendarToSettings}
+            onChange={() => setAddCalendarToSettings(!addCalendarToSettings)}
+          />
+          <span
+            className={`${styles.slider} ${styles.round} "slider round"`}
+          ></span>
+        </label>
       </div>
-      <div className="px-45 py-32 bg-gray-createDisc">
-        <div className="mb-15">
-          <p className=" text-primary-darkGreen  mb-8">Open</p>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="flex justify-center items-center mr-12">
-                <Image
-                  src="/icons/clock.svg"
-                  alt="clock"
-                  layout="fixed"
-                  width="20"
-                  height="20"
-                />
-              </div>
-              <p className=" text-gray-text">8:00 AM</p>
-            </div>
-            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-              <p>Fri 1st, January 2021</p>
-            </div>
-          </div>
-        </div>
-        <div className="mb-15">
-          <p className=" text-primary-darkGreen  mb-8">Close</p>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="flex justify-center items-center mr-12">
-                <Image
-                  src="/icons/clock.svg"
-                  alt="clock"
-                  layout="fixed"
-                  width="20"
-                  height="20"
-                />
-              </div>
-              <p className=" text-gray-text">8:00 AM</p>
-            </div>
-            <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-              <p>Fri 1st, January 2021</p>
-            </div>
-          </div>
-        </div>
 
-        <p className=" text-border-dropdownLine mb-32">Duration : 6 days</p>
-
-        <div className={` flex justify-between items-center pb-15`}>
+      <div
+        className={`${
+          !addCalendarToSettings && "opacity-20"
+        }  px-16 vp-min-601:px-38 py-10  flex flex-col justify-between  bg-white-white rounded-b-md`}
+      >
+        <span
+          style={{ fontSize: "11px" }}
+          className=" text-gray-analyticsGray mb-11"
+        >
+          <span className="text-primary-darkGreen">Open for :</span>{" "}
+          {diffInDays} day(s)
+        </span>
+        <div className="border border-other-disabled px-12 py-7 rounded h-30 flex  justify-center items-center  text-black-postInsp cursor-pointer gap-4">
+          <p className=" text-black-postInsp text-xs">
+            {" "}
+            {date[0].toLocaleString("en-US", {
+              weekday: "short",
+              day: "numeric",
+              year: "numeric",
+              month: "long",
+            })}
+          </p>
+          <p className=" text-gray-analyticsGray">to</p>
+          <p className=" text-black-postInsp text-xs">
+            {" "}
+            {date[1].toLocaleString("en-US", {
+              weekday: "short",
+              day: "numeric",
+              year: "numeric",
+              month: "long",
+            })}
+          </p>
+        </div>
+        <div className=""></div>
+        <CalendarTemp
+          date={date}
+          setDate={setDate}
+          setShowCalendar={setShowCalendar}
+        />
+        <div className=" h-40 flex justify-between items-center w-full">
           <div className="flex items-center">
-            <button
-              onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
-              className="flex justify-center items-center"
+            <div
+              className="flex justify-center items-center mr-75"
+              onClick={() => {
+                setActiveSettings("starterPrompt");
+              }}
             >
               <Image
-                src={
-                  showAdvancedSettings
-                    ? "/icons/arrow_up.svg"
-                    : "/icons/arrow_down.svg"
-                }
-                alt="arrows"
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1659612940/arrow_left_blue_otwon7.svg"
+                alt="back"
                 layout="fixed"
-                width="15"
-                height="15"
+                width="16"
+                height="16"
               />
+            </div>
+            <div
+              className="justify-center items-center"
+              onClick={() => {
+                setActiveSettings("scores");
+              }}
+            >
+              <Image
+                src="https://res.cloudinary.com/insomaryland/image/upload/v1659612936/arrow_right_blue_qamrbk.svg"
+                alt="forward"
+                layout="fixed"
+                width="16"
+                height="16"
+              />
+            </div>
+          </div>
+
+          {calendarLoading ? (
+            <button className="btn bg-primary-darkGreen text-white-white w-auto px-16 h-30 text-sm">
+              <WhiteLoader />
             </button>
-            <p className=" ml-12 text-primary-darkGreen">Advanced settings</p>
-          </div>
-          <div className="flex items-center">
-            <label className={`${styles.switch} `}>
-              <input
-                type="checkbox"
-                name="reports"
-                id="postInspiration"
-                // className={`${styles.switch}`}
-              />
-              <span
-                className={`${styles.slider} ${styles.round} "slider round"`}
-              ></span>
-            </label>
-          </div>
+          ) : (
+            <button
+              className="btn bg-primary-darkGreen text-white-white w-auto px-16 h-30 text-sm"
+              onClick={handleCreateCalendar}
+              disabled={addCalendarToSettings ? false : true}
+            >
+              Update
+            </button>
+          )}
         </div>
-        {showAdvancedSettings && (
-          <>
-            <div className="mb-15">
-              <p className=" text-primary-darkGreen  mb-8">Posting</p>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex justify-center items-center mr-12">
-                    <Image
-                      src="/icons/clock.svg"
-                      alt="clock"
-                      layout="fixed"
-                      width="20"
-                      height="20"
-                    />
-                  </div>
-                  <p className=" text-gray-text">8:00 AM</p>
-                </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-                  <p>Fri 1st, January 2021</p>
-                </div>
-              </div>
-            </div>
-            <div className="mb-15">
-              <p className=" text-primary-darkGreen  mb-8">Responding</p>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex justify-center items-center mr-12">
-                    <Image
-                      src="/icons/clock.svg"
-                      alt="clock"
-                      layout="fixed"
-                      width="20"
-                      height="20"
-                    />
-                  </div>
-                  <p className=" text-gray-text">8:00 AM</p>
-                </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-                  <p>Fri 1st, January 2021</p>
-                </div>
-              </div>
-            </div>
-            <div className="mb-15">
-              <p className=" text-primary-darkGreen  mb-8">Synthesizing</p>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex justify-center items-center mr-12">
-                    <Image
-                      src="/icons/clock.svg"
-                      alt="clock"
-                      layout="fixed"
-                      width="20"
-                      height="20"
-                    />
-                  </div>
-                  <p className=" text-gray-text">8:00 AM</p>
-                </div>
-                <div className="border border-other-disabled w-156 rounded h-24 flex  justify-center items-center">
-                  <p>Fri 1st, January 2021</p>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
       </div>
     </div>
   );
