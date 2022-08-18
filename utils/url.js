@@ -1,1 +1,1 @@
-export const API_URL = "http://api-gatway.inso.ai";
+export const API_URL = "http://api-gateway.inso.ai";
