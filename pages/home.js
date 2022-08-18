@@ -70,7 +70,7 @@ const Home = () => {
   return (
     <Layout title="Inso | Home" searchBar={false} bgColor="bg-gray-background">
       <div
-        className={`${styles.hiddenScrollbar} relative h-full py-50 px-35 vp-600:p-23 vp-980:p-46 w-full `}
+        className={`${styles.hiddenScrollbar} relative h-full p-35 vp-600:px-23 vp-980:px-46 w-full border`}
       >
         <div className="h-125 vp-600:h-100 hidden vp-768:flex bg-primary-darkGreen rounded-lg w-full mb-40 pl-59 vp-1024:pl-16 pr-16  items-center justify-between py-22 vp-600:py-16">
           <div className="h-full flex items-center">
@@ -99,7 +99,7 @@ const Home = () => {
           style={{ minHeight: "520px" }}
           className=" grid-cols-4 vp-1024:grid-cols-5  grid gap-6  h-520 vp-768:h-auto mb-41 vp-768:flex vp-768:flex-col-reverse"
         >
-          <div className="col-span-3 h-full">
+          <div className="col-span-3 h-full flex-grow">
             <div className="h-125 vp-768:hidden bg-primary-darkGreen rounded-lg w-full mb-40 pl-59 vp-1024:pl-16 pr-16 flex  items-center justify-between py-22">
               <div className="h-full flex items-center">
                 <Image src={unlock} alt="badge" />
@@ -123,19 +123,20 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="">
+            <div className="vp-1024:mt-8">
               <h4 className=" text-primary-darkGreen mb-13 font-medium">
                 Discussions
               </h4>
-              <div className=" border grid grid-cols-3 vp-1024:grid-cols-2  vp-600:grid-cols-1 justify-between gap-6">
+              {/* <div className=" border grid grid-cols-3 vp-1024:grid-cols-2  vp-600:grid-cols-1 justify-between gap-6"> */}
+              <div className="flex flex-wrap gap-6">
                 {allDiscussions.map((disc, index) => (
                   <DasbboardDiscBox discussion={disc} key={index} />
                 ))}
               </div>
             </div>
           </div>
-          <div className=" flex vp-1024:grid vp-1024:gap-8 vp-1024:grid-cols-2  vp-1024:col-span-2 vp-600:flex">
-            <div className="flex flex-col w-full justify-center items-center">
+          <div className=" flex w-300 vp-1024:w-full vp-1024:justify-center">
+            <div className="flex flex-col w-full justify-center items-center vp-1024:w-300">
               <div className="relative w-full flex justify-center">
                 <Image
                   src={dashboard_img}
@@ -150,12 +151,15 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col w-300  shadow-sm  rounded-lg bg-white-white items-center pt-50 flex-grow">
-                <h6 className="mb-3 text-primary-darkGreen font-semibold ">
-                  {firstName}
-                  {""}
-                  {lastName}
-                </h6>
+              <div className="flex flex-col w-full  shadow-sm  rounded-lg bg-white-white items-center pt-50 flex-grow">
+                <div className="flex items-center gap-1">
+                  <h6 className="mb-3 text-primary-darkGreen font-semibold capitalize ">
+                    {firstName}
+                  </h6>
+                  <h6 className="mb-3 text-primary-darkGreen font-semibold capitalize ">
+                    {lastName}
+                  </h6>
+                </div>
                 <span className=" text-primary-darkGreen">1050 posts</span>
 
                 <div className="h-full w-full py-27 px-30">
@@ -168,7 +172,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="h-full hidden vp-768:flex vp-768:flex-col vp-600:hidden">
+            {/* <div className="h-full hidden vp-768:flex vp-768:flex-col vp-600:hidden">
               <h4 className=" text-primary-darkGreen  font-medium mb-28">
                 Badges
               </h4>
@@ -200,7 +204,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -208,83 +212,82 @@ const Home = () => {
           <h4 className=" vp-768:hidden vp-600:flex text-primary-darkGreen  font-medium mb-28">
             Badges
           </h4>
-          <div className="grid-cols-4 grid vp-1024:flex  flex-wrap gap-6 h-175 vp-1024:h-auto ">
-            <div className=" col-span-3 h-full gap-6 flex justify-between flex-wrap vp-1024:w-full ">
-              <div
-                className={`${styles.badge} px-35 flex items-center justify-between shadow-sm   vp-768:hidden vp-600:flex`}
-              >
-                <div>
-                  <Image
-                    src={big_badge}
-                    alt="badge"
-                    width="77"
-                    height="102"
-                    layout="intrinsic"
-                  />
-                </div>
-                <div className="">
-                  <h3 className="text-primary-darkGreen  font-bold">
-                    Build an amazing{" "}
-                  </h3>
-                  <h3 className="text-primary-darkGreen  font-bold mb-11">
-                    Collection
-                  </h3>
-                  <button
-                    className={` ${styles.badgeBtn} w-140 h-35 rounded text-sm text-primary-darkGreen`}
-                  >
-                    View badges
-                  </button>
-                </div>
+
+          <div className="flex flex-wrap gap-6 ">
+            <div
+              className={`${styles.badge} px-35 flex items-center justify-between shadow-sm   vp-768:hidden vp-600:flex vp-600:px-16`}
+            >
+              <div>
+                <Image
+                  src={big_badge}
+                  alt="badge"
+                  width="77"
+                  height="102"
+                  layout="intrinsic"
+                />
               </div>
-              <div className=" flex-grow rounded-xl bg-white-white py-13 px-15 shadow-sm">
+              <div className="">
+                <h3 className="text-primary-darkGreen  font-bold">
+                  Build an amazing{" "}
+                </h3>
+                <h3 className="text-primary-darkGreen  font-bold mb-11">
+                  Collection
+                </h3>
+                <button
+                  className={` ${styles.badgeBtn} w-140 h-35 rounded text-sm text-primary-darkGreen`}
+                >
+                  View badges
+                </button>
+              </div>
+            </div>
+            <div className=" flex-grow rounded-xl bg-white-white py-13 px-15 shadow-sm  w-500">
+              <div className="">
+                <p className=" text-primary-darkGreen mb-15  font-medium">
+                  Badge progress
+                </p>
                 <div className="">
-                  <p className=" text-primary-darkGreen mb-15  font-medium">
-                    Badge progress
-                  </p>
-                  <div className="">
-                    <div className=" flex items-center mb-7">
-                      <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
-                        Make 10 posts
-                      </div>
-                      <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
-                        <progress
-                          className={`${styles.progressBarDashb} w-full`}
-                          value={65}
-                          max={100}
-                        />
-                        <div className="flex-grow flex items-start">
-                          <p> In progress</p>
-                        </div>
+                  <div className=" flex items-center mb-7">
+                    <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
+                      Make 10 posts
+                    </div>
+                    <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
+                      <progress
+                        className={`${styles.progressBarDashb} w-full`}
+                        value={65}
+                        max={100}
+                      />
+                      <div className="flex-grow flex items-start">
+                        <p> In progress</p>
                       </div>
                     </div>
-                    <div className=" flex items-center mb-7">
-                      <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
-                        Make 10 posts
-                      </div>
-                      <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
-                        <progress
-                          className={`${styles.progressBarDashb} w-full`}
-                          value={65}
-                          max={100}
-                        />
-                        <div className="flex-grow flex items-start">
-                          <p> In progress</p>
-                        </div>
+                  </div>
+                  <div className=" flex items-center mb-7">
+                    <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
+                      Make 10 posts
+                    </div>
+                    <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
+                      <progress
+                        className={`${styles.progressBarDashb} w-full`}
+                        value={65}
+                        max={100}
+                      />
+                      <div className="flex-grow flex items-start">
+                        <p> In progress</p>
                       </div>
                     </div>
-                    <div className=" flex items-center mb-7">
-                      <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
-                        Make 10 posts
-                      </div>
-                      <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
-                        <progress
-                          className={`${styles.progressBarDashb} w-full`}
-                          value={65}
-                          max={100}
-                        />
-                        <div className="flex-grow flex items-start">
-                          <p> In progress</p>
-                        </div>
+                  </div>
+                  <div className=" flex items-center mb-7">
+                    <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
+                      Make 10 posts
+                    </div>
+                    <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
+                      <progress
+                        className={`${styles.progressBarDashb} w-full`}
+                        value={65}
+                        max={100}
+                      />
+                      <div className="flex-grow flex items-start">
+                        <p> In progress</p>
                       </div>
                     </div>
                   </div>

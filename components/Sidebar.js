@@ -331,6 +331,28 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
         </div>
         <div className="mt-10">
           <div className="">
+            <Link href="/home" passHref>
+              <div
+                className={`${
+                  router.pathname.startsWith("/home") &&
+                  "bg-primary-darkGreen  justify-start text-white-white "
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-texth h-73 vp-600:h-53`}
+              >
+                <Image
+                  src={
+                    router.pathname.startsWith("/home")
+                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1659168361/home_ihfz7d.svg"
+                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659960630/home_tfw1yn.svg"
+                  }
+                  alt="home"
+                  draggable="false"
+                  width="24"
+                  height="24"
+                  layout="fixed"
+                />
+                <h6 className="">Home</h6>
+              </div>
+            </Link>
             <Link href="/discussions" passHref>
               <div
                 className={`${

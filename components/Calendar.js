@@ -108,15 +108,6 @@ const Calendar = ({
             <button className="btn bg-primary-darkGreen text-white-white w-auto px-16 h-30 text-sm">
               <WhiteLoader />
             </button>
-          ) : calendarData !== null ? (
-            <button
-              className="btn bg-primary-darkGreen text-white-white w-auto px-16 h-30 text-sm"
-              onClick={() => {
-                setActiveSettings("scores");
-              }}
-            >
-              Next
-            </button>
           ) : (
             <button
               className="btn bg-primary-darkGreen text-white-white w-auto px-16 h-30 text-sm"

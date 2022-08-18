@@ -124,7 +124,9 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
           </Link>
         </div>
         {openSideBar && <Sidebar navSize={navSize} user={userProfile} />}
-        <div className={`${bgColor} pt-35 flex-grow overflow-y-auto relative`}>
+        <div
+          className={`${bgColor} vp-980:pt-50 flex-grow overflow-y-auto relative`}
+        >
           {children}
         </div>
       </div>

@@ -2,19 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
-const Posts = ({ posts, setReplyingId }) => {
-  // date: "2022-08-15T17:58:38.051Z"
-  // discussionId: "62f9c2e0737d223398bfc900"
-  // draft: false
-  // post: "<p><span style=\"color: rgb(22,25,37);background-color: rgb(255,255,255);font-size: 16px;font-family: Poppins, san-serif;\">first post here</span>&nbsp;</p>\n"
-  // reactions: []
-  // user: {_id: "62e7fe7ba80a92fa3502c749", username: "testtest", f_name: "test", l_name: "test"}
-  // f_name: "test"
-  // l_name: "test"
-  // username: "testtest"
-  // _id: "62e7fe7ba80a92fa3502c749"
-  // __v: 0
-  // _id: "62fa894eeb3e41952f382ceb"
+const Posts = ({ posts, setReplyingId, discId }) => {
   const { _id, date, post, user, comments } = posts;
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
   return (
@@ -114,8 +102,11 @@ const Posts = ({ posts, setReplyingId }) => {
           </div> */}
       </div>
 
-      <Link passHref href="">
-        <div className="text-black-postInsp cursor-pointer">{parse(post)}</div>
+      <Link
+        passHref
+        href={`/discussions/view-discussion/${discId}/post/${_id}/`}
+      >
+        <a className="text-black-postInsp cursor-pointer">{parse(post)}</a>
       </Link>
       <div className=" mt-24 flex gap-8">
         <div className="flex items-center gap-2">

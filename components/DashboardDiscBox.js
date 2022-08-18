@@ -7,12 +7,12 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
   return (
     <div
       // style={{ minHeight: "110px" }}
-      className="vp-600:w-full h-145  w-full vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14  flex flex-col relative justify-between"
+      className="vp-600:w-full vp-1024:w-280 w-300 h-110  vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between "
     >
-      <div className=" flex items-start justify-between mb-15">
+      <div className=" flex items-start justify-between mb-15 h-50">
         <Link passHref href={`/discussions/view-discussion/${_id}`}>
-          <div className=" w-210 cursor-pointer">
-            <h5 className=" text-gray-text font-medium p-0 m-0">{name}</h5>
+          <div className=" w-210 cursor-pointer h-full overflow-hidden">
+            <h6 className=" text-gray-text font-medium p-0 m-0">{name}</h6>
           </div>
         </Link>
 
