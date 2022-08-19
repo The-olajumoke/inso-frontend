@@ -20,8 +20,7 @@ class MyDocument extends Document {
             name="apple-mobile-web-app-status-bar-style"
             content="default"
           />
-          <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-          <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+
           <meta name="apple-mobile-web-app-title" content="Inso" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="theme-color" content="#07A098" />
