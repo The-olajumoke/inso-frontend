@@ -55,22 +55,22 @@ const Home = () => {
       getDiscussions(API_URL, token, userId)(discussionDispatch);
     }
   }, [userId, token]);
-  useEffect(() => {
-    if (discussionData !== null) {
-      const discArry = [
-        discussionData[0],
-        discussionData[1],
-        discussionData[2],
-        discussionData[3],
-      ];
-      console.log(discArry);
-      setAllDiscussions(discArry);
-    }
-  }, [error, loading, discussionData]);
+  // useEffect(() => {
+  //   if (discussionData !== null) {
+  //     const discArry = [
+  //       discussionData[0],
+  //       discussionData[1],
+  //       discussionData[2],
+  //       discussionData[3],
+  //     ];
+  //     console.log(discArry);
+  //     setAllDiscussions(discArry);
+  //   }
+  // }, [error, loading, discussionData]);
   return (
     <Layout title="Inso | Home" searchBar={false} bgColor="bg-gray-background">
       <div
-        className={`${styles.hiddenScrollbar} relative h-full p-35 vp-600:px-23 vp-980:px-46 w-full border`}
+        className={`${styles.hiddenScrollbar} relative h-full p-35 vp-600:px-23 vp-980:px-46 w-full`}
       >
         <div className="h-125 vp-600:h-100 hidden vp-768:flex bg-primary-darkGreen rounded-lg w-full mb-40 pl-59 vp-1024:pl-16 pr-16  items-center justify-between py-22 vp-600:py-16">
           <div className="h-full flex items-center">
