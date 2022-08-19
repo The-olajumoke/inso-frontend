@@ -57,12 +57,7 @@ const Home = () => {
   }, [userId, token]);
   useEffect(() => {
     if (discussionData !== null) {
-      const discArry = [
-        discussionData[0],
-        discussionData[1],
-        discussionData[2],
-        discussionData[3],
-      ];
+      const discArry = discussionData;
       console.log(discArry);
       setAllDiscussions(discArry);
     }
