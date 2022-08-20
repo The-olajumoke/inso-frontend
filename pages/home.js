@@ -220,7 +220,9 @@ const Home = () => {
             >
               <div>
                 <Image
-                  src={big_badge}
+                  // src={}
+                  // src={big_badge}
+                  src={require("../public/illustrations/big_badge.svg")}
                   alt="badge"
                   width="77"
                   height="102"
