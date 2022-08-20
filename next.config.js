@@ -3,8 +3,8 @@
  */
 const nextConfig = {
   images: {
-    // loader: "cloudinary",
-    // path: "https://res.cloudinary.com/",
+    loader: "cloudinary",
+    path: "/",
     domains: ["res.cloudinary.com"],
   },
   /* config options here */
