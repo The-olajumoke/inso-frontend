@@ -1,8 +1,9 @@
 /**@type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
+  //   reactStrictMode: true,
   images: {
-      loader: "cloudinary",
+    // loader: "cloudinary",
+    // path: "https://res.cloudinary.com/",
     domains: ["res.cloudinary.com"],
   },
 };
