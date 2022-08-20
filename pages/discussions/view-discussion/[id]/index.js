@@ -56,6 +56,7 @@ import withAuth from "@/HOC/withAuth";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import Posts from "@/components/Posts";
 import ParticipantsRow from "@/components/ParticipantsRow";
+import SunburstChart from "chart/SunBurstChart";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -82,6 +83,8 @@ const ViewDiscussion = () => {
   const [allTags, setAllTags] = useState([]);
   const [topSixTags, setTopSixTags] = useState([]);
   const [allParticipants, setAllParticipants] = useState([]);
+  const [openChartModal, setOpenChartModal] = useState(false);
+  const [activeChart, setActiveChart] = useState("burst");
   const [replyingId, setReplyingId] = useState({
     user: "",
     id: "",
@@ -337,17 +340,82 @@ const ViewDiscussion = () => {
                     height="20"
                   />
                 </div>
-                <div
-                  className="flex items-center justify-center "
-                  title="Charts"
-                >
-                  <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/charts_izhlnl.svg"
-                    alt="more"
-                    layout="fixed"
-                    width="21"
-                    height="21"
-                  />
+                <div className="relative">
+                  <div
+                    className="flex items-center justify-center "
+                    title="Charts"
+                    onClick={() => setOpenChartModal(true)}
+                  >
+                    <Image
+                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/charts_izhlnl.svg"
+                      alt="more"
+                      layout="fixed"
+                      width="21"
+                      height="21"
+                    />
+                  </div>
+
+                  {openChartModal && (
+                    <>
+                      <div
+                        className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
+                        onClick={() => setOpenChartModal(false)}
+                      ></div>
+                      <div
+                        className={` w-736  h-660 top-6 right-6 bg-white-white absolute  z-60  rounded-xl overflow-hidden  shadow-createDiscussion `}
+                      >
+                        <div className="h-14 bg-primary-blue"></div>
+
+                        <div className="grid grid-cols-3 px-20 pt-25">
+                          <div
+                            className={`${
+                              activeChart === "burst"
+                                ? "activeChart"
+                                : "inactiveChart"
+                            }`}
+                            onClick={() => setActiveChart("burst")}
+                          >
+                            Burst chart
+                          </div>
+                          <div
+                            className={`${
+                              activeChart === "dependency"
+                                ? "activeChart"
+                                : "inactiveChart"
+                            }`}
+                            onClick={() => setActiveChart("dependency")}
+                          >
+                            Dependency chart
+                          </div>
+                          <div
+                            className={`${
+                              activeChart === "directed"
+                                ? "activeChart"
+                                : "inactiveChart"
+                            }`}
+                            onClick={() => setActiveChart("directed")}
+                          >
+                            Directed graph
+                          </div>
+                        </div>
+                        {activeChart === "burst" && (
+                          <div className=" px-40">
+                            <SunburstChart />
+                          </div>
+                        )}
+                        {activeChart === "dependency" && (
+                          <div className=" px-40">
+                            <h2>CHORD CHART WILL BE HERE</h2>
+                          </div>
+                        )}
+                        {activeChart === "directed" && (
+                          <div className=" px-40">
+                            <h2>TREND BAR CHART WILL BE HERE</h2>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
                 <div
                   className="flex items-center justify-center "

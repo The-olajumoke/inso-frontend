@@ -21,3 +21,6 @@ export default function Home() {
     </div>
   );
 }
+
+// "name": "inso",
+//   "version": "0.1.0",

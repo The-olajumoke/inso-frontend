@@ -26,7 +26,7 @@ const DiscussionBox = ({
           {" "}
           <div className=" flex justify-center items-center ">
             <Image
-              src="/icons/notifications_active.svg"
+              src="/static/icons/notifications_active.svg"
               alt="copy"
               layout="fixed"
               width="14"
@@ -35,7 +35,7 @@ const DiscussionBox = ({
           </div>
           <div className=" flex justify-center items-center">
             <Image
-              src="/icons/active_disc.svg"
+              src="/static/icons/active_disc.svg"
               alt="copy"
               layout="fixed"
               width="12"
@@ -170,7 +170,7 @@ const DiscussionBox = ({
         </span>
         <div className="flex justify-center">
           <Image
-            src="/icons/users_icon.svg"
+            src="/static/icons/users_icon.svg"
             alt="copy"
             layout="fixed"
             width="20"

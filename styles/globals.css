@@ -197,6 +197,12 @@ body{
   .btn-notCurrentSection {
     @apply  text-other-disabledText text-md flex justify-center items-center border-b-2 border-other-disabled outline-none vp-600:text-sm;
   }
+  .activeChart{
+    @apply text-primary-blue  font-medium border-b-2 cursor-pointer border-primary-blue text-sm pb-10 mb-24 text-center
+  }
+  .inactiveChart{
+    @apply text-gray-faintGray font-normal border-b cursor-pointer border-gray-faintGray text-sm pb-10 mb-24 text-center
+  }
 }
 
 .notif_header h1{

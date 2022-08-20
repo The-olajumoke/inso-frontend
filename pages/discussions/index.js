@@ -85,7 +85,7 @@ const Index = () => {
             >
               <div className="flex justify-center items-center mr-15">
                 <Image
-                  src="/icons/add_icon_white.svg"
+                  src="/static/icons/add_icon_white.svg"
                   alt="create discussion"
                   layout="fixed"
                   width="14"
@@ -134,7 +134,7 @@ const Index = () => {
           />
           <div className="flex items-center justify-center ml-20">
             <Image
-              src="/icons/more_icon.svg"
+              src="/static/icons/more_icon.svg"
               alt="more"
               layout="fixed"
               width="20"
@@ -162,7 +162,7 @@ const Index = () => {
           ) : (
             <div className=" flex flex-col items-center justify-end h-400 ">
               <Image
-                src="/illustrations/no_discussion.svg"
+                src="/static/illustrations/no_discussion.svg"
                 alt="no discussion"
                 layout="fixed"
                 width="128"
@@ -179,7 +179,7 @@ const Index = () => {
           <Link passHref href="/discussions/create-discussion">
             <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
               <Image
-                src="/icons/add_icon_white.svg"
+                src="/static/icons/add_icon_white.svg"
                 alt="no discussion"
                 layout="fixed"
                 width="14"

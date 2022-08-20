@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 import * as d3 from "d3";
 import data from "./data.json";
-const SIZE = 600;
+const SIZE = 400;
 const RADIUS = SIZE / 2;
 
 const SunburstChart = () => {
@@ -88,8 +88,8 @@ const SunburstChart = () => {
           x - 90
         }) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
       })
-      .attr("dy", "0.35em")
-      .text((d) => d.data.name);
+      .attr("dy", "0.35em");
+    // .text((d) => d.data.name);
 
     svg.attr("viewBox", getAutoBox);
   }, []);

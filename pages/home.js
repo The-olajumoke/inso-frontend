@@ -307,7 +307,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/images/avatar.svg"
+                      src="/static/images/avatar.svg"
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -325,7 +325,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/images/avatar.svg"
+                      src="/static/images/avatar.svg"
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -343,7 +343,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/images/avatar.svg"
+                      src="/static/images/avatar.svg"
                       alt="user"
                       draggable="false"
                       layout="fixed"

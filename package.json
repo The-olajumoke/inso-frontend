@@ -1,6 +1,4 @@
 {
-  "name": "inso",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -27,8 +25,8 @@
     "html-to-draftjs": "^1.5.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
-    "next": "12.1.2",
-    "next-pwa": "^5.5.2",
+    "next": "latest",
+    "next-pwa": "^5.5.5",
     "react": "18.0.0",
     "react-calendar": "^3.7.0",
     "react-chartjs-2": "^4.1.0",
