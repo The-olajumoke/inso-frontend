@@ -19,6 +19,9 @@ module.exports = withPWA({
     skipWaiting: true,
   },
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: [
+      "res.cloudinary.com",
+      "inso-staging.s3-website-us-east-1.amazonaws.com/",
+    ],
   },
 });
