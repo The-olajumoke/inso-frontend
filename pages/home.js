@@ -13,6 +13,7 @@ import Image from "next/image";
 import DasbboardDiscBox from "@/components/DashboardDiscBox";
 import BarchartDash from "chart/BarchartDash";
 import withAuth from "@/HOC/withAuth";
+import ChordChart from "chart/ChordChart";
 
 const Home = () => {
   const [token, setToken] = useState("");
