@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import footer_img from "../public/illustrations/footer_img.svg";
+import footer_img from "../public/static/illustrations/footer_img.svg";
 import styles from "@/styles/Home.module.css";
 
 const Footer = () => {

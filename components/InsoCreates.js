@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import add_title from "../public/images/add_title.svg";
-import write_starter from "../public/images/write_starter.svg";
-import duration from "../public/images/duration.svg";
+import add_title from "../public/static/images/add_title.svg";
+import write_starter from "../public/static/images/write_starter.svg";
+import duration from "../public/static/images/duration.svg";
 import styles from "@/styles/Home.module.css";
 const InsoCreates = () => {
   return (

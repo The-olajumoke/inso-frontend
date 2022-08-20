@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import post_with_ease from "../public/illustrations/post_with_ease.svg";
-import post_image from "../public/images/post_image.svg";
+import post_with_ease from "../public/static/illustrations/post_with_ease.svg";
+import post_image from "../public/static/images/post_image.svg";
 import styles from "@/styles/Home.module.css";
 
 const PostWithEase = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import track_eng from "../public/illustrations/track_eng.svg";
-import track_img from "../public/images/track_img.svg";
+import track_eng from "../public/static/illustrations/track_eng.svg";
+import track_img from "../public/static/images/track_img.svg";
 import styles from "@/styles/Home.module.css";
 
 const TrackEngagement = () => {
