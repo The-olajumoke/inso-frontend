@@ -4,16 +4,17 @@ import styles from "@/styles/dashboard.module.css";
 import { GlobalContext } from "@/context/Provider";
 import DiscussionBox from "@/components/DiscussionBox";
 import { getDiscussions } from "@/context/actions/discussion/getDiscussions";
-import dashboard_img from "../public/illustrations/dashboard_img.svg";
-import big_badge from "../public/illustrations/big_badge.svg";
-import unlock from "../public/illustrations/unlock.svg";
-import close from "../public/icons/close.svg";
+// import dashboard_img from "../public/illustrations/dashboard_img.svg";
+import dashboard_img from "../public/static/illustrations/dashboard_img.svg";
+import big_badge from "../public/static/illustrations/big_badge.svg";
+import unlock from "../public/static/illustrations/unlock.svg";
+import close from "../public/static/icons/close.svg";
 import { API_URL } from "@/utils/url";
 import Image from "next/image";
 import DasbboardDiscBox from "@/components/DashboardDiscBox";
 import BarchartDash from "chart/BarchartDash";
 import withAuth from "@/HOC/withAuth";
-import ChordChart from "chart/ChordChart";
+// import ChordChart from "chart/ChordChart";
 
 const Home = () => {
   const [token, setToken] = useState("");
@@ -222,7 +223,7 @@ const Home = () => {
                 <Image
                   // src={}
                   // src={big_badge}
-                  src={require("../public/illustrations/big_badge.svg")}
+                  src={require("../public/static/illustrations/big_badge.svg")}
                   alt="badge"
                   width="77"
                   height="102"
