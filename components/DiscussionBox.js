@@ -107,7 +107,7 @@ const DiscussionBox = ({
                         />
                       </div>
                       <span className=" text-xs text-black-postInsp ">
-                        JOIN DISC
+                        JOIN DISCU
                       </span>
                     </div>
                     <div
