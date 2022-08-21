@@ -312,7 +312,7 @@ const ViewDiscussion = () => {
                     <div className={`${styles.searchInput}     `}>
                       <div className="flex items-center justify-center ">
                         <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1655331753/InsoImages/search_nhky7k.svg"
+                          src="/static/icons/search.svg"
                           alt="more"
                           layout="fixed"
                           width="13"

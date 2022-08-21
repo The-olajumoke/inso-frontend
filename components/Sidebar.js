@@ -188,18 +188,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
-                <Image
-                  src={
-                    router.pathname.startsWith("/charts")
-                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655827744/InsoImages/chart_active_cxtrna.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659961761/chart_inactive_je8rth.svg"
-                  }
-                  alt="charts"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
+                
                 <h6 className={`${navSize === "small" && "hidden"}`}>Charts</h6>
               </div>
             </Link> */}
@@ -210,18 +199,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   " bg-primary-blue  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
               >
-                <Image
-                  src={
-                    router.pathname.startsWith("/calendar")
-                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_active_ixszvw.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1659961867/calendar_inactive_fj8ays.svg"
-                  }
-                  alt="calendar"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
+
                 <h6 className={`${navSize === "small" && "hidden"}`}>
                   Calendar
                 </h6>
@@ -447,18 +425,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   "bg-primary-darkGreen  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
               >
-                <Image
-                  src={
-                    router.pathname.startsWith("/charts")
-                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655325713/InsoImages/charts_bczceq.svg"
-                  }
-                  alt="charts"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
+              
                 <h6 className="">Charts</h6>
               </div>
             </Link> */}
@@ -469,18 +436,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                   "bg-primary-darkGreen  justify-start text-white-white "
                 } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
               >
-                <Image
-                  src={
-                    router.pathname.startsWith("/calendar")
-                      ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_active_ixszvw.svg"
-                      : "https://res.cloudinary.com/insomaryland/image/upload/v1655326223/InsoImages/calendar_ix65zg.svg"
-                  }
-                  alt="calendar"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
+
                 <h6 className="">Calendar</h6>
               </div>
             </Link> */}

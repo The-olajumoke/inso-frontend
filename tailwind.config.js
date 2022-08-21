@@ -532,12 +532,6 @@ module.exports = {
       200: "20rem",
     },
     extend: {
-      // backgroundImage: {
-      //   "hero-img":
-      //     "url('https://res.cloudinary.com/insomaryland/image/upload/v1660383489/hero_bg_e0mhlq.svg')",
-      //   "hero-inso":
-      //     "url('https://res.cloudinary.com/insomaryland/image/upload/v1660385026/hero-photo_psyazz.svg')",
-      // },
       keyframes: {
         "fade-in": {
           "0%": { opacity: 0 },

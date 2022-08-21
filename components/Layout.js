@@ -81,7 +81,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
         </div>
       </div>
 
-      {/* <div className="bg-gray-background py-10 hidden vp-980:flex  flex-col  h-screen ">
+      <div className="bg-gray-background py-10 hidden vp-980:flex  flex-col  h-screen ">
         <div className="flex h-55 w-full bg-white-white justify-between items-center  vp-600:px-23 vp-980:px-46 shadow-sm fixed left-0 right-0 top-3 z-99999 ">
           <div
             className="flex justify-center items-center"
@@ -90,8 +90,8 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
             <Image
               src={
                 openSideBar
-                  ? "https://res.cloudinary.com/insomaryland/image/upload/v1655326915/InsoImages/hamburger_open_fxdmt4.svg"
-                  : "https://res.cloudinary.com/insomaryland/image/upload/v1655326909/InsoImages/hamburger_aij9tq.svg"
+                  ? "/static/icons/hamburger_open.svg"
+                  : "/static/icons/hamburger.svg"
               }
               alt=" Discussion dropdown "
               draggable="false"
@@ -102,7 +102,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
           </div>
           <div className="flex justify-center items-center">
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1660169006/inso_logo_x1kgxc.svg"
+              src="/static/images/inso_logo.svg"
               alt=" Discussion dropdown "
               draggable="false"
               layout="fixed"
@@ -113,7 +113,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
           <Link passHref href="/notifications">
             <div className="flex justify-center items-center ">
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1658348798/InsoImages/bell_black_ciri74.svg"
+                src="/static/icons/bell_black.svg"
                 alt="notifications"
                 draggable="false"
                 layout="fixed"
@@ -129,7 +129,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
         >
           {children}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

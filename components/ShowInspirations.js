@@ -357,40 +357,6 @@ const ShowInspirations = ({
             className=" cursor-pointer"
           />
         </div>
-        {/* <div className="flex items-center gap-12">
-          <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655332608/font_icon_xubtsf.svg"
-            alt="font"
-            layout="fixed"
-            width="20"
-            height="20"
-            className=" cursor-pointer"
-          />
-          <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655332613/emoji_icon_xamatp.svg"
-            alt="emoji"
-            layout="fixed"
-            width="22"
-            height="22"
-            className=" cursor-pointer"
-          />
-          <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655332629/attach_icon_vm5na4.svg"
-            alt="attach"
-            layout="fixed"
-            width="20"
-            height="20"
-            className=" cursor-pointer"
-          />
-          <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655332639/image_icon_e9zrlz.svg"
-            alt="image"
-            layout="fixed"
-            width="18"
-            height="18"
-            className=" cursor-pointer"
-          />
-        </div> */}
       </div>
 
       <button

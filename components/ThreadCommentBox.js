@@ -7,14 +7,7 @@ const ThreadCommentBox = ({ setActiveCommentBox }) => {
       {/* <div className="py-24 px-29 ">
         <div className="  flex items-center mb-12 w-full border-b pb-15 border-green-lightGreen">
           <div className="flex items-center justify-center">
-            <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1655333490/info_outline_exdgeh.svg"
-              alt="back"
-              layout="fixed"
-              width="24"
-              height="24"
-              className=" cursor-pointer"
-            />
+          
           </div>
           <h6 className=" text-primary-darkGreen ml-14">
             Analyse this chart to see interesting threads mapped to posts.
@@ -25,13 +18,6 @@ const ThreadCommentBox = ({ setActiveCommentBox }) => {
             <div>
               <p className=" text-black-analText">Charts</p>
 
-              <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1655328330/InsoImages/Thread_chart_a1isvi.svg"
-                alt="cancel"
-                layout="fixed"
-                width="280"
-                height="280"
-              />
             </div>
             <div>
               <h5 className=" text-black-analText">Summary</h5>
