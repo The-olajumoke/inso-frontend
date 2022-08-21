@@ -64,7 +64,7 @@ const HeroPage = () => {
   };
   return (
     <div className="bg-primary-darkGreen  relative overflow-hidden">
-      <div className="pt-32 bg-hero-img h-850 vp-768:h-auto w-full mb-10 pb-32">
+      <div className="pt-32  h-850 vp-768:h-auto w-full mb-10 pb-32">
         <div className=" h-61 flex justify-between  px-50 vp-768:px-24 vp-600:px-14 w-full  ">
           <div className="  vp-600:w-87 flex justify-center items-center">
             <Image
