@@ -83,7 +83,7 @@ const ViewDiscussion = () => {
   const [allTags, setAllTags] = useState([]);
   const [topSixTags, setTopSixTags] = useState([]);
   const [allParticipants, setAllParticipants] = useState([]);
-  const [openChartModal, setOpenChartModal] = useState(false);
+  const [openChartModal, setOpenChartModal] = useState(true);
   const [activeChart, setActiveChart] = useState("burst");
   const [replyingId, setReplyingId] = useState({
     user: "",
@@ -399,17 +399,17 @@ const ViewDiscussion = () => {
                           </div>
                         </div>
                         {activeChart === "burst" && (
-                          <div className=" px-40">
+                          <div className="border-4 px-40">
                             <SunburstChart />
                           </div>
                         )}
                         {activeChart === "dependency" && (
-                          <div className=" px-40">
+                          <div className="border-4 px-40">
                             <h2>CHORD CHART WILL BE HERE</h2>
                           </div>
                         )}
                         {activeChart === "directed" && (
-                          <div className=" px-40">
+                          <div className="border-4 px-40">
                             <h2>TREND BAR CHART WILL BE HERE</h2>
                           </div>
                         )}

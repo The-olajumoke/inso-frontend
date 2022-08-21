@@ -58,11 +58,12 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
 
       <div className=" flex flex-col vp-980:hidden  h-screen">
         {showHeader !== false && (
-          <Header
-            navSize={navSize}
-            handleNavSize={handleNavSize}
-            searchBar={searchBar}
-          />
+          <div></div>
+          // <Header
+          //   navSize={navSize}
+          //   handleNavSize={handleNavSize}
+          //   searchBar={searchBar}
+          // />
         )}
         <div
           className={` ${styles.hiddenScrollbar}   justify-between flex h-full`}
@@ -81,7 +82,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
         </div>
       </div>
 
-      <div className="bg-gray-background py-10 hidden vp-980:flex  flex-col  h-screen ">
+      {/* <div className="bg-gray-background py-10 hidden vp-980:flex  flex-col  h-screen ">
         <div className="flex h-55 w-full bg-white-white justify-between items-center  vp-600:px-23 vp-980:px-46 shadow-sm fixed left-0 right-0 top-3 z-99999 ">
           <div
             className="flex justify-center items-center"
@@ -129,7 +130,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
         >
           {children}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

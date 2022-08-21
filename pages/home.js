@@ -129,7 +129,7 @@ const Home = () => {
               <h4 className=" text-primary-darkGreen mb-13 font-medium">
                 Discussions
               </h4>
-              {/* <div className=" border grid grid-cols-3 vp-1024:grid-cols-2  vp-600:grid-cols-1 justify-between gap-6"> */}
+
               <div className="flex flex-wrap gap-6">
                 {allDiscussions.map((disc, index) => (
                   <DasbboardDiscBox discussion={disc} key={index} />
