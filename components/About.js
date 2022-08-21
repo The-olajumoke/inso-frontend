@@ -9,8 +9,8 @@ const About = () => {
       <div className=" vp-768:w-full vp-768:flex vp-768:flex-col vp-768:items-start">
         <div className=" flex justify-center">
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1660074394/new_level_w8pmlf.svg"
-            alt="Inso Logo"
+            src="/static/illustrations/new_level.svg"
+            alt="new level"
             draggable="false"
             layout="intrinsic"
             width="103"

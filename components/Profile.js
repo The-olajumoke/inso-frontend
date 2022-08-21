@@ -106,7 +106,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
           {userPicture ? (
             <div className=" rounded-full">
               <Image
-                src="/images/avatar.svg"
+                src="/static/images/avatar.svg"
                 alt=" userImage "
                 draggable="false"
                 layout="fixed"
@@ -141,7 +141,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
               onClick={() => setEditProfile(true)}
             >
               <Image
-                src="/icons/edit_blue.svg"
+                src="/static/icons/edit_blue.svg"
                 alt=" edit "
                 draggable="false"
                 layout="fixed"
@@ -260,7 +260,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
         className="flex justify-center items-center h-34 w-146 rounded"
       >
         <Image
-          src="/icons/logout.svg"
+          src="/static/icons/logout.svg"
           alt=" Discussion dropdown "
           draggable="false"
           layout="fixed"

@@ -14,7 +14,7 @@ const InsoCreates = () => {
         </div>
         <div>
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1660074742/crooked_arrow_jj2pej.svg"
+            src="/static/illustrations/crooked_arrow.svg"
             alt="arrow"
             draggable="false"
             layout="intrinsic"

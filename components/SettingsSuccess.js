@@ -10,7 +10,7 @@ const SettingsSuccess = ({ insoCode, setActiveSettings }) => {
       <div className="flex flex-col items-center bg-white-white pt-14 px-38">
         <div className="flex items-center justify-center mb-9">
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1660216834/savedSuccessfully_wg8hew.svg"
+            src="/static/icons/savedSuccessfully.svg"
             alt="success"
             layout="fixed"
             width="25"

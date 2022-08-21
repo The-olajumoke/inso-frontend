@@ -4,7 +4,7 @@ import ShowInspirations from "./ShowInspirations";
 const PopularTagsComment = ({ setActiveCommentBox }) => {
   return (
     <div className="border border-primary-darkGreen rounded-lg  mb-32  ">
-      <div className="py-24 px-29 ">
+      {/* <div className="py-24 px-29 ">
         <div className="  flex items-center mb-12 w-full border-b pb-15 border-green-lightGreen">
           <div className="flex items-center justify-center">
             <Image
@@ -91,7 +91,7 @@ const PopularTagsComment = ({ setActiveCommentBox }) => {
             placeholder="Summarize your synthesis from the chart above"
           />
         </div>
-      </div>
+      </div> */}
       <ShowInspirations
         setActiveCommentBox={setActiveCommentBox}
         title="Popular Tags"

@@ -68,7 +68,7 @@ const Archives = () => {
           ) : (
             <div className=" flex flex-col items-center justify-end h-400 ">
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1659792852/no_discussion_chztel.svg"
+                src="static/illustrations/no_discussion.svg"
                 alt="no discussion"
                 layout="fixed"
                 width="128"

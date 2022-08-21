@@ -33,7 +33,7 @@ const Inspiration = ({ insp, setActiveDetailedInsp, setShowDetailedInsp }) => {
       </div>
       <div className="flex justify-center items-center">
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1656195114/InsoImages/arrow_forward_winp6p.svg"
+          src="/static/icons/arrow_forward.svg"
           alt="arrow-right"
           layout="fixed"
           width="16"

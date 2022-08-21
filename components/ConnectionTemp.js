@@ -18,7 +18,7 @@ const ConnectionTemp = () => {
         <p className=" text-primary-darkGreen">Charts</p>
 
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1655331129/InsoImages/Connections_chart_q70koh.svg"
+          src="/static/illustrations/Connections_chart_q70koh.svg"
           alt="cancel"
           layout="fixed"
           width="120"

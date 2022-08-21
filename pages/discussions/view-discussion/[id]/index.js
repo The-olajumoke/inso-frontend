@@ -83,7 +83,7 @@ const ViewDiscussion = () => {
   const [allTags, setAllTags] = useState([]);
   const [topSixTags, setTopSixTags] = useState([]);
   const [allParticipants, setAllParticipants] = useState([]);
-  const [openChartModal, setOpenChartModal] = useState(true);
+  const [openChartModal, setOpenChartModal] = useState(false);
   const [activeChart, setActiveChart] = useState("burst");
   const [replyingId, setReplyingId] = useState({
     user: "",
@@ -185,7 +185,7 @@ const ViewDiscussion = () => {
                 <Link href="/discussions" passHref>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
+                      src="/static/icons/arrow_back_blue.svg"
                       alt="back"
                       layout="fixed"
                       width="30"
@@ -202,7 +202,7 @@ const ViewDiscussion = () => {
                   onClick={() => setOpenDropdown(true)}
                 >
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
+                    src="/static/icons/more_icon_grey.svg"
                     alt="back"
                     layout="fixed"
                     width="6"
@@ -229,7 +229,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/drafts_y6fbx2.svg"
+                              src="/static/icons/drafts.svg"
                               alt="more"
                               layout="fixed"
                               width="20"
@@ -247,7 +247,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/charts_izhlnl.svg"
+                              src="/static/icons/charts.svg"
                               alt="more"
                               layout="fixed"
                               width="21"
@@ -270,7 +270,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/scoreSheet_fpziio.svg"
+                              src="/static/icons/scoreSheet.svg"
                               alt="more"
                               layout="fixed"
                               width="21"
@@ -293,7 +293,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/participants_zgvlm1.svg"
+                              src="/static/icons/participants.svg"
                               alt="more"
                               layout="fixed"
                               width="21"
@@ -333,7 +333,7 @@ const ViewDiscussion = () => {
                   title="Drafts"
                 >
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/drafts_y6fbx2.svg"
+                    src="/static/icons/drafts.svg"
                     alt="more"
                     layout="fixed"
                     width="20"
@@ -347,7 +347,7 @@ const ViewDiscussion = () => {
                     onClick={() => setOpenChartModal(true)}
                   >
                     <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/charts_izhlnl.svg"
+                      src="/static/icons/charts.svg"
                       alt="more"
                       layout="fixed"
                       width="21"
@@ -428,7 +428,7 @@ const ViewDiscussion = () => {
                 >
                   {" "}
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/scoreSheet_fpziio.svg"
+                    src="/static/icons/scoreSheet.svg"
                     alt="more"
                     layout="fixed"
                     width="21"
@@ -444,7 +444,7 @@ const ViewDiscussion = () => {
                   }}
                 >
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/participants_zgvlm1.svg"
+                    src="/static/icons/participants.svg"
                     alt="more"
                     layout="fixed"
                     width="21"
@@ -453,7 +453,7 @@ const ViewDiscussion = () => {
                 </div>
                 <div className="flex items-center justify-center ">
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1655331824/InsoImages/divider_er0cbs.svg"
+                    src="/static/icons/divider.svg"
                     alt="divider"
                     layout="fixed"
                     width="20"
@@ -465,7 +465,7 @@ const ViewDiscussion = () => {
                   title="Help"
                 >
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1660172073/help_aako7c.svg"
+                    src="/static/icons/help.svg"
                     alt="help"
                     layout="fixed"
                     width="23"
@@ -488,7 +488,7 @@ const ViewDiscussion = () => {
                       <div className="flex  items-center">
                         <div className="flex items-center justify-center">
                           <Image
-                            src="https://res.cloudinary.com/insomaryland/image/upload/v1655331879/InsoImages/avatar_bdtbd1.svg"
+                            src="/static/images/avatar.svg"
                             alt="back"
                             layout="fixed"
                             width="40"
@@ -519,7 +519,7 @@ const ViewDiscussion = () => {
                             onClick={() => setOpenEditDropdown(true)}
                           >
                             <Image
-                              src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
+                              src="/static/icons/more_icon_grey.svg"
                               alt="back"
                               layout="fixed"
                               width="6"
@@ -551,7 +551,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                                       >
                                         <Image
-                                          src="https://res.cloudinary.com/insomaryland/image/upload/v1657099297/InsoImages/edit_green_ijlfht.svg"
+                                          src="/static/icons/edit_green.svg"
                                           alt="edit"
                                           layout="fixed"
                                           width="12"
@@ -575,7 +575,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                                     >
                                       <Image
-                                        src="https://res.cloudinary.com/insomaryland/image/upload/v1657099304/InsoImages/close_green_kjr4pd.svg"
+                                        src="/static/icons/close_green.svg"
                                         alt="edit"
                                         layout="fixed"
                                         width="12"
@@ -871,7 +871,7 @@ const ViewDiscussion = () => {
                       onClick={() => setViewAllTags(false)}
                     >
                       <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                        src="/static/icons/cancel.svg"
                         alt="cancel"
                         layout="fixed"
                         width="14"
@@ -903,7 +903,7 @@ const ViewDiscussion = () => {
                       onClick={() => setShowParticipants(false)}
                     >
                       <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                        src="/static/icons/cancel.svg"
                         alt="cancel"
                         layout="fixed"
                         width="14"
@@ -930,7 +930,7 @@ const ViewDiscussion = () => {
                           onClick={() => setShowScoresSheet(false)}
                         >
                           <Image
-                            src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                            src="/static/icons/cancel.svg"
                             alt="cancel"
                             layout="fixed"
                             width="14"
@@ -992,7 +992,7 @@ const ViewDiscussion = () => {
                           onClick={() => setShowScoresSheet(false)}
                         >
                           <Image
-                            src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+                            src="/static/icons/cancel.svg"
                             alt="cancel"
                             layout="fixed"
                             width="14"

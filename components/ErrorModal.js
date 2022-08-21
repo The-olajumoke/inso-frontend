@@ -5,7 +5,7 @@ const ErrorModal = ({ title, subTitle }) => {
     <div className="h-62 w-auto px-24 flex items-center shadow-createDiscussion rounded-lg absolute top-10 right-0 bg-white-white z-9999 ">
       <div className="flex justify-center items-center mr-20">
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1659005571/error_kzznok.svg"
+          src="/static/icons/error.svg"
           alt="done"
           draggable="false"
           layout="fixed"

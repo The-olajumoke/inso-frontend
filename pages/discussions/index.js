@@ -101,7 +101,7 @@ const Index = () => {
               <Dropdown
                 value={filter}
                 setValue={setFilter}
-                icon="https://res.cloudinary.com/insomaryland/image/upload/v1659964386/sort_llttic.svg"
+                icon="/static/new_icons/sort.svg"
                 title="Filter by..."
                 items={filterOptions}
                 openDropdown={openDropdown}
@@ -114,7 +114,7 @@ const Index = () => {
               <button className="flex items-center">
                 <div className="mr-14 flex justify-center items-center">
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1659964386/archive_o3qntw.svg"
+                    src="/static/new_icons/archive.svg"
                     alt="create discussion"
                     layout="fixed"
                     width="24"

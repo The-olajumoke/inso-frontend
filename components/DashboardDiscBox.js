@@ -20,7 +20,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
           {" "}
           <div className=" flex justify-center items-center ">
             <Image
-              src="/icons/notifications_active.svg"
+              src="/static/icons/notifications_active.svg"
               alt="copy"
               layout="fixed"
               width="14"
@@ -29,7 +29,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
           </div>
           <div className=" flex justify-center items-center">
             <Image
-              src="/icons/active_disc.svg"
+              src="/static/icons/active_disc.svg"
               alt="copy"
               layout="fixed"
               width="12"
@@ -42,7 +42,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
               onClick={() => setOpenDropdown(true)}
             >
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
+                src="/static/icons/more_icon_grey.svg"
                 alt="copy"
                 layout="fixed"
                 width="12"
@@ -69,7 +69,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                                flex justify-center items-center"
                         >
                           <Image
-                            src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/edit_grey_ko2542.svg"
+                            src="/static/icons/edit_grey.svg"
                             alt="edit"
                             layout="fixed"
                             width="20"
@@ -94,8 +94,8 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                                flex justify-center items-center"
                       >
                         <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/archive_grey_wgyedn.svg"
-                          alt="archived"
+                          src="/static/icons/archive_grey.svg"
+                          alt="archive"
                           layout="fixed"
                           width="20"
                           height="20"
@@ -114,7 +114,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                     >
                       <div className=" mr-10 flex justify-center items-center">
                         <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/copy_grey_zvy53b.svg"
+                          src="/static/icons/copy_grey.svg"
                           alt="edit"
                           layout="fixed"
                           width="20"
@@ -141,7 +141,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
         </span>
         <div className="flex justify-center">
           <Image
-            src="/icons/users_icon.svg"
+            src="/static/icons/users_icon.svg"
             alt="copy"
             layout="fixed"
             width="20"

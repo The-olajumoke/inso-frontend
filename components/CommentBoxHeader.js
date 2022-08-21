@@ -7,7 +7,7 @@ const CommentBoxHeader = ({ instruction, setActiveCommentBox }) => {
       <div className=" flex items-center w-9/12">
         <div className="flex items-center justify-center">
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655333490/info_outline_exdgeh.svg"
+            src="/static/icons/info_outline.svg"
             alt="back"
             layout="fixed"
             width="20   "
@@ -24,7 +24,7 @@ const CommentBoxHeader = ({ instruction, setActiveCommentBox }) => {
           onClick={() => setActiveCommentBox("noInspiration")}
         >
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655455953/InsoImages/cancel_zcyobf.svg"
+            src="/static/icons/cancel.svg"
             alt="cancel"
             layout="fixed"
             width="16"

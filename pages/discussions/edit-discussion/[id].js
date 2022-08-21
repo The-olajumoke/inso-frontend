@@ -243,7 +243,7 @@ const DiscussionSettings = () => {
             <Link href="/discussions" passHref>
               <div className="flex items-center justify-center">
                 <Image
-                  src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
+                  src="/static/icons/arrow_back_blue.svg"
                   alt="back"
                   layout="fixed"
                   width="30"
@@ -271,7 +271,7 @@ const DiscussionSettings = () => {
                 >
                   {discName !== "" && (
                     <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660169489/Checkbox_blue_thq05n.svg"
+                      src="/static/icons/Checkbox_blue.svg"
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -296,7 +296,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.starter_prompt !== "" && (
                     <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660169489/Checkbox_blue_thq05n.svg"
+                      src="/static/icons/Checkbox_blue.svg"
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -320,7 +320,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.calendar !== null && (
                     <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660169489/Checkbox_blue_thq05n.svg"
+                      src="/static/icons/Checkbox_blue.svg"
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -344,7 +344,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.scores !== null && (
                     <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1660169489/Checkbox_blue_thq05n.svg"
+                      src="/static/icons/Checkbox_blue.svg"
                       alt="success"
                       layout="fixed"
                       width="14"

@@ -48,7 +48,7 @@ const DiscussionBox = ({
               onClick={() => setOpenDropdown(true)}
             >
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1655331924/InsoImages/more_icon_grey_gpknda.svg"
+                src="/static/icons/more_icon_grey.svg"
                 alt="copy"
                 layout="fixed"
                 width="12"
@@ -62,7 +62,7 @@ const DiscussionBox = ({
                   onClick={() => setOpenDropdown(false)}
                 ></div>
                 <div
-                  className={`w-150   top-6 -right-40 bg-white-white absolute px-14 py-7 z-60  rounded-lg shadow-md `}
+                  className={`w-150   top-6 -right-40 bg-white-white absolute px-14 py-7 z-9999  rounded-lg shadow-md `}
                 >
                   <div className="w-full ">
                     <Link passHref href={`/discussions/edit-discussion/${_id}`}>
@@ -75,7 +75,7 @@ const DiscussionBox = ({
                                flex justify-center items-center"
                         >
                           <Image
-                            src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/edit_grey_ko2542.svg"
+                            src="/static/icons/edit_grey.svg"
                             alt="edit"
                             layout="fixed"
                             width="20"
@@ -99,7 +99,7 @@ const DiscussionBox = ({
                                flex justify-center items-center"
                       >
                         <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/archive_grey_wgyedn.svg"
+                          src="/static/icons/archive_grey.svg"
                           alt="archived"
                           layout="fixed"
                           width="20"
@@ -123,7 +123,7 @@ const DiscussionBox = ({
                                flex justify-center items-center"
                       >
                         <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/archive_grey_wgyedn.svg"
+                          src="/static/icons/archive_grey.svg"
                           alt="archived"
                           layout="fixed"
                           width="20"
@@ -143,7 +143,7 @@ const DiscussionBox = ({
                     >
                       <div className=" mr-10 flex justify-center items-center">
                         <Image
-                          src="https://res.cloudinary.com/insomaryland/image/upload/v1659170193/copy_grey_zvy53b.svg"
+                          src="/static/icons/copy_grey.svg"
                           alt="edit"
                           layout="fixed"
                           width="20"

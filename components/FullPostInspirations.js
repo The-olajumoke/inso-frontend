@@ -23,7 +23,7 @@ const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
             onClick={() => setViewFullPostInsp(false)}
           >
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
+              src="/static/icons/arrow_back_blue.svg"
               alt="back"
               layout="fixed"
               width="30"

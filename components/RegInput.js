@@ -90,7 +90,7 @@ const RegInput = ({
           <div className={styles.eyeIcon}>
             {inputType === "password" && (
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1659026566/closed_eye_si5r61.svg"
+                src="/static/icons/closed_eye.svg"
                 alt="see-password"
                 draggable="false"
                 layout="intrinsic"
@@ -104,8 +104,8 @@ const RegInput = ({
               <Image
                 src={
                   value.length
-                    ? "https://res.cloudinary.com/insomaryland/image/upload/v1659026613/open_eye_b6by26.svg"
-                    : "https://res.cloudinary.com/insomaryland/image/upload/v1659026566/closed_eye_si5r61.svg"
+                    ? "/static/icons/open_eye.svg"
+                    : "/static/icons/closed_eye.svg"
                 }
                 alt="see-password"
                 draggable="false"

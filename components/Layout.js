@@ -58,12 +58,11 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
 
       <div className=" flex flex-col vp-980:hidden  h-screen">
         {showHeader !== false && (
-          <div></div>
-          // <Header
-          //   navSize={navSize}
-          //   handleNavSize={handleNavSize}
-          //   searchBar={searchBar}
-          // />
+          <Header
+            navSize={navSize}
+            handleNavSize={handleNavSize}
+            searchBar={searchBar}
+          />
         )}
         <div
           className={` ${styles.hiddenScrollbar}   justify-between flex h-full`}

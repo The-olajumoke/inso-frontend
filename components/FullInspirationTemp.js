@@ -12,13 +12,13 @@ const FullInspirationTemp = ({
         <div key={index} className="mb-22">
           <div className="flex items-center mb-13">
             <div className="flex items-center justify-center">
-              <Image
+              {/* <Image
                 src={`${insp.categoryIcon}`}
                 alt={insp.category}
                 layout="fixed"
                 width="18"
                 height="18"
-              />
+              /> */}
             </div>
             <p className="ml-12 text-xs text-black-analText ">
               {insp.category}

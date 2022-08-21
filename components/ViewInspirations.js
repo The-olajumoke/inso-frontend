@@ -18,13 +18,13 @@ const ViewInspirations = ({
     >
       <div className="flex items-center">
         <div className=" flex items-center justify-center">
-          <Image
+          {/* <Image
             src={`${categoryIcon}`}
             alt={category}
             layout="fixed"
             width="17"
             height="17"
-          />
+          /> */}
         </div>
         <p
           className="ml-9 text-sm text-black-analText"
@@ -41,7 +41,7 @@ const ViewInspirations = ({
         onClick={togglePostInsp}
       >
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1656195114/InsoImages/arrow_forward_winp6p.svg"
+          src="/static/icons/arrow_forward.svg"
           alt="arrow-right"
           layout="fixed"
           width="12"

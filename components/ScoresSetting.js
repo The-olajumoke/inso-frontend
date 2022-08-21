@@ -263,7 +263,7 @@ const ScoresSetting = ({
                 >
                   <h6 className="mr-12">{usePostInsp}</h6>
                   <Image
-                    src="https://res.cloudinary.com/insomaryland/image/upload/v1659650421/small_arrow_down_gjlf6p.svg"
+                    src="/static/icons/small_arrow_down.svg"
                     alt="dropdown"
                     layout="fixed"
                     width="8"
@@ -382,7 +382,7 @@ const ScoresSetting = ({
                     onClick={() => setShowInput(true)}
                   >
                     <Image
-                      src="https://res.cloudinary.com/insomaryland/image/upload/v1659787696/add_postInsp_blue_dhryf3.svg"
+                      src="/static/icons/add_postInsp_blue.svg"
                       alt="back"
                       layout="fixed"
                       width="20"
@@ -398,22 +398,8 @@ const ScoresSetting = ({
           </div>
         )}
 
-        <div className=" h-40  mt-20 flex justify-between items-center w-full">
+        <div className=" h-40  mt-20 flex justify-end items-center w-full">
           <div className="flex items-center">
-            <div
-              className="flex justify-center items-center mr-75"
-              onClick={() => {
-                setActiveSettings("calendar");
-              }}
-            >
-              <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1659612940/arrow_left_blue_otwon7.svg"
-                alt="back"
-                layout="fixed"
-                width="16"
-                height="16"
-              />
-            </div>
             <div
               className="justify-center items-center hidden"
               onClick={() => {
@@ -421,7 +407,7 @@ const ScoresSetting = ({
               }}
             >
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1659612936/arrow_right_blue_qamrbk.svg"
+                src="/static/icons/arrow_right_blue.svg"
                 alt="forward"
                 layout="fixed"
                 width="16"

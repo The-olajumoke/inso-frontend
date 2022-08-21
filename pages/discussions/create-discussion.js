@@ -96,7 +96,7 @@ const CreateDiscussion = () => {
           <Link href="/discussions" passHref>
             <div className="flex items-center justify-center">
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
+                src="/static/icons/arrow_back_blue.svg"
                 alt="back"
                 layout="fixed"
                 width="30"
@@ -132,7 +132,7 @@ const CreateDiscussion = () => {
                   {showSuccessMessage && (
                     <button className="bg-blue-inputBlue rounded-md h-33 w-200 flex items-center justify-between gap-4 text-primary-darkGreen px-12  ">
                       <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1659390044/check_green_jscxfz.svg"
+                        src="/static/icons/check_green.svg"
                         alt="success"
                         layout="fixed"
                         width="18"

@@ -12,7 +12,7 @@ const ParticipantsRow = ({ participants }) => {
     <div className="px-24 flex items-center justify-between w-full mb-16">
       <div className="flex items-center">
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/Avatar_yftjvt.svg"
+          src="/static/icons/Avatar.svg"
           alt="avatar"
           width={24}
           height={24}
@@ -28,7 +28,7 @@ const ParticipantsRow = ({ participants }) => {
       </div>
       <div className="flex items-center">
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1660174052/mute_yvnudc.svg"
+          src="/static/icons/mute.svg"
           alt="avatar"
           width={16}
           height={16}

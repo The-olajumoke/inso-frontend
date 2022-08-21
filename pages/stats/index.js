@@ -49,7 +49,7 @@ const Index = () => {
         <div className="items-center  h-50 mb-12 hidden vp-980:flex vp-600:px-23 px-46 ">
           <div className="flex justify-center items-center mr-23">
             <Image
-              src="/icons/arrow_left_green.svg"
+              src="/static/icons/arrow_left_green.svg"
               alt=" Discussion dropdown "
               draggable="false"
               layout="fixed"
@@ -102,7 +102,7 @@ const Index = () => {
                 </div>
                 <div className="mb-36 flex items-center gap-10 ">
                   <Image
-                    src="/illustrations/badge.svg"
+                    src="/static/illustrations/badge.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -110,7 +110,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge.svg"
+                    src="/static/illustrations/badge.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -118,7 +118,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_love.svg"
+                    src="/static/illustrations/badge_love.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -126,7 +126,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -134,7 +134,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -142,7 +142,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -150,7 +150,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -158,7 +158,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -166,7 +166,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -174,7 +174,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -182,7 +182,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -190,7 +190,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -198,7 +198,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src="/illustrations/badge_empty.svg"
+                    src="/static/illustrations/badge_empty.svg"
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="fixed"
@@ -295,7 +295,7 @@ const Index = () => {
                       Discussions
                     </span>
                     <Image
-                      src="/icons/arrow_down_green.svg"
+                      src="/static/icons/arrow_down_green.svg"
                       alt=" Discussion dropdown "
                       draggable="false"
                       layout="fixed"
@@ -305,7 +305,7 @@ const Index = () => {
                   </div>
                   <div className=" h-34  bg-other-lightRed  rounded-xl px-15 vp-min-601:px-10  flex items-center ">
                     <Image
-                      src="/icons/clock.svg"
+                      src="/static/icons/clock.svg"
                       alt=" Discussion dropdown "
                       draggable="false"
                       layout="fixed"
@@ -372,7 +372,7 @@ const Index = () => {
                     <div className="h-34 w-95 rounded bg-border-green text-xs flex justify-center items-center">
                       Sort by...
                       <Image
-                        src="/icons/arrow_down_green.svg"
+                        src="/static/icons/arrow_down_green.svg"
                         alt=" Discussion dropdown "
                         draggable="false"
                         layout="fixed"
@@ -384,7 +384,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/icons/upvote_grey.svg"
+                      src="/static/icons/upvote_grey.svg"
                       alt="upvotes"
                       draggable="false"
                       layout="fixed"
@@ -394,7 +394,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/icons/disc_grey.svg"
+                      src="/static/icons/disc_grey.svg"
                       alt="discussions"
                       draggable="false"
                       layout="fixed"
@@ -404,7 +404,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/icons/emoji_grey.svg"
+                      src="/static/icons/emoji_grey.svg"
                       alt="emojis"
                       draggable="false"
                       layout="fixed"
@@ -432,7 +432,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/images/avatar.svg"
+                      src="/static/images/avatar.svg"
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -456,7 +456,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/images/avatar.svg"
+                      src="/static/images/avatar.svg"
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -480,7 +480,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/images/avatar.svg"
+                      src="/static/images/avatar.svg"
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -504,7 +504,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/images/avatar.svg"
+                      src="/static/images/avatar.svg"
                       alt="user"
                       draggable="false"
                       layout="fixed"

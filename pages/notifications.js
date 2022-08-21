@@ -75,7 +75,7 @@ const Notifications = () => {
           <Link href="/discussions" passHref>
             <div className="flex justify-center items-center mr-23">
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1660169099/arrow_back_blue_jqgoiq.svg"
+                src="/static/icons/arrow_back_blue.svg"
                 alt=" Discussion dropdown "
                 draggable="false"
                 layout="fixed"
@@ -110,7 +110,7 @@ const Notifications = () => {
         ) : (
           <div className=" flex flex-col items-center justify-end h-400 ">
             <Image
-              src="/illustrations/no_discussion.svg"
+              src="/static/illustrations/no_discussion.svg"
               alt="no discussion"
               layout="fixed"
               width="128"

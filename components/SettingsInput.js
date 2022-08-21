@@ -39,7 +39,9 @@ const SettingsInput = ({
         >
           <Image
             src={`${
-              showPassword ? "/icons/closed_eye.svg" : "/icons/open_eye.svg"
+              showPassword
+                ? "/static/icons/closed_eye.svg"
+                : "/static/icons/open_eye.svg"
             }`}
             alt=" Discussion dropdown "
             draggable="false"

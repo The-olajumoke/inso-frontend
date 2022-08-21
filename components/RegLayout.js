@@ -8,7 +8,7 @@ function RegLayout({ children }) {
       <div className="h-61 flex justify-between vp-600:hidden">
         <div>
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1660169006/inso_logo_x1kgxc.svg"
+            src="/static/images/inso_logo.svg"
             alt="Inso Logo"
             draggable="false"
             layout="fixed"

@@ -134,7 +134,7 @@ const SignUpPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655469179/InsoImages/cancel_white_g248xm.svg"
+                  src="/static/icons/cancel_white.svg"
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -148,7 +148,7 @@ const SignUpPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="https://res.cloudinary.com/insomaryland/image/upload/v1658836883/arrow_left_white_tvknkn.svg"
+                  src="/static/icons/arrow_left_white.svg"
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -229,7 +229,7 @@ const SignUpPage = () => {
             >
               <div>
                 <Image
-                  src="https://res.cloudinary.com/insomaryland/image/upload/v1655469200/InsoImages/google_kmjhxy.svg"
+                  src="/static/icons/google.svg"
                   alt="google Icon"
                   draggable="false"
                   layout="fixed"

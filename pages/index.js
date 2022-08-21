@@ -17,7 +17,7 @@ export default function Home() {
       <InsoCreates />
       <PostWithEase />
       <TrackEngagement />
-      <Footer />
+       <Footer /> 
     </div>
   );
 }

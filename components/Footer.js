@@ -42,7 +42,7 @@ const Footer = () => {
         <div className="flex items-center justify-between w-full ">
           <div className="">
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1660382946/inso_logo_yellow_mjtgbl.svg"
+              src="/static/images/inso_logo_yellow.svg"
               alt="Inso Logo"
               draggable="false"
               layout="intrinsic"

@@ -6,7 +6,7 @@ const Header = ({ navSize, handleNavSize, searchBar }) => {
     <div className="h-60 flex sticky top-0 bg-white-white z-50 w-full px-50 items-center shadow-sm ">
       <div>
         <Image
-          src="https://res.cloudinary.com/insomaryland/image/upload/v1660169006/inso_logo_x1kgxc.svg"
+          src="/static/images/inso_logo.svg"
           alt="Inso Logo"
           draggable="false"
           layout="fixed"

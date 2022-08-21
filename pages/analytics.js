@@ -34,7 +34,7 @@ const Analytics = () => {
           <div className="items-center flex  ">
             <div className="flex justify-center items-center mr-23">
               <Image
-                src="/icons/arrow_left_green.svg"
+                src="/static/icons/arrow_left_green.svg"
                 alt="back "
                 draggable="false"
                 layout="fixed"
@@ -47,7 +47,7 @@ const Analytics = () => {
 
           <div className="flex items-center justify-center">
             <Image
-              src="/icons/more_icon_black.svg"
+              src="/static/icons/more_icon_black.svg"
               alt=" more "
               draggable="false"
               layout="fixed"
@@ -80,7 +80,7 @@ const Analytics = () => {
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between mr-12">
                 <p className=" text-border-line ">Discussion A</p>
                 <Image
-                  src="/icons/arrow_down_blue.svg"
+                  src="/static/icons/arrow_down_blue.svg"
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -91,7 +91,7 @@ const Analytics = () => {
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
                 <p className=" text-primary-darkGreen ">Discussion B</p>
                 <Image
-                  src="/icons/arrow_down_green.svg"
+                  src="/static/icons/arrow_down_green.svg"
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -123,7 +123,7 @@ const Analytics = () => {
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
                 <p className=" text-border-line ">Discussion A</p>
                 <Image
-                  src="/icons/arrow_down_blue.svg"
+                  src="/static/icons/arrow_down_blue.svg"
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -137,7 +137,7 @@ const Analytics = () => {
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
                 <p className=" text-primary-darkGreen ">Discussion B</p>
                 <Image
-                  src="/icons/arrow_down_green.svg"
+                  src="/static/icons/arrow_down_green.svg"
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -155,7 +155,7 @@ const Analytics = () => {
               <div className="flex items-center mb-40">
                 <h6 className=" text-primary-darkGreen mr-18">Active Users </h6>
                 <Image
-                  src="/icons/arrow_down_green.svg"
+                  src="/static/icons/arrow_down_green.svg"
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"

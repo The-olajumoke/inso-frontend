@@ -19,7 +19,7 @@ const ViewPostInspCategory = ({
         <div className="flex items-center">
           <div className="flex justify-between w-full items-center">
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1657550652/arrow_left_green_mrrpsi.svg"
+              src="/static/icons/arrow_left_blue.svg"
               alt="back"
               layout="fixed"
               width="16"
@@ -35,7 +35,7 @@ const ViewPostInspCategory = ({
         >
           <p className=" text-primary-blue mr-10">View in full</p>
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1657549596/viewInFull_tw4vq9.svg"
+            src="/static/icons/viewInFull.svg"
             alt="post inspiration in full"
             layout="fixed"
             width="15"

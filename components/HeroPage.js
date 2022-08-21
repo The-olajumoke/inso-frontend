@@ -68,7 +68,7 @@ const HeroPage = () => {
         <div className=" h-61 flex justify-between  px-50 vp-768:px-24 vp-600:px-14 w-full  ">
           <div className="  vp-600:w-87 flex justify-center items-center">
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1660382946/inso_logo_yellow_mjtgbl.svg"
+              src="/static/images/inso_logo_yellow.svg"
               alt="Inso Logo"
               draggable="false"
               layout="intrinsic"
@@ -131,8 +131,8 @@ const HeroPage = () => {
           <div className="w-full flex relative  vp-600:h-350  h-600  ">
             <div className="absolute vp-768:-right-1/4 vp-768:w-full h-full right-0 flex items-center ">
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1660385026/hero-photo_psyazz.svg"
-                alt="Inso Logo"
+                src="/static/images/hero-photo.svg"
+                alt="hero photo"
                 draggable="false"
                 layout="intrinsic"
                 width="618"

@@ -71,38 +71,7 @@ const StarterPrompt = ({
             </div>
           </div>
         </div>
-        <div className=" h-40 px-38 vp-600:px-16 flex justify-between items-center w-full">
-          <div className="flex items-center">
-            <div
-              className="flex justify-center items-center mr-75"
-              onClick={() => {
-                setActiveSettings("starterPrompt");
-              }}
-            >
-              <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1659612940/arrow_left_blue_otwon7.svg"
-                alt="back"
-                layout="fixed"
-                width="16"
-                height="16"
-              />
-            </div>
-            <div
-              className="justify-center items-center"
-              onClick={() => {
-                setActiveSettings("duration");
-              }}
-            >
-              <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1659612936/arrow_right_blue_qamrbk.svg"
-                alt="forward"
-                layout="fixed"
-                width="16"
-                height="16"
-              />
-            </div>
-          </div>
-
+        <div className=" h-40 px-38 vp-600:px-16 flex justify-end items-center w-full">
           {starterPromptLoading ? (
             <button className="btn w-75 h-32 text-md px-22">
               <WhiteLoader />

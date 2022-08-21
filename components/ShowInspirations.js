@@ -114,7 +114,7 @@ const ShowInspirations = ({
           >
             <div className="flex justify-center items-center">
               <Image
-                src="https://res.cloudinary.com/insomaryland/image/upload/v1655332181/InsoImages/postInspIcon_jtqr0p.svg"
+                src="/static/icons/postInspIcon.svg"
                 alt="Post Inspiration"
                 layout="fixed"
                 width="16"
@@ -125,7 +125,7 @@ const ShowInspirations = ({
             <p className=" text-white-white cursor-pointer">{title}</p>
             <div className="flex items-center justify-center">
               <Image
-                src=" https://res.cloudinary.com/insomaryland/image/upload/v1655332180/InsoImages/dropdown_white_phtac2.svg"
+                src="/static/icons/dropdown_white.svg"
                 alt="back"
                 layout="fixed"
                 width="10"
@@ -290,7 +290,7 @@ const ShowInspirations = ({
                       onClick={togglePostInsp}
                     >
                       <Image
-                        src="https://res.cloudinary.com/insomaryland/image/upload/v1657549596/viewInFull_tw4vq9.svg"
+                        src="/static/icons/viewInFull.svg"
                         alt="post inspiration in full"
                         layout="fixed"
                         width="15"
@@ -349,8 +349,8 @@ const ShowInspirations = ({
         </div>
         <div className="flex justify-center items-center mr-15">
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1655331824/InsoImages/divider_er0cbs.svg"
-            alt="font"
+            src="/static/icons/divider.svg"
+            alt="divider"
             layout="fixed"
             width="4"
             height="33"

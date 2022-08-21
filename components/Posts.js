@@ -11,7 +11,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
         <div className="flex  items-center">
           <div className="flex items-center justify-center">
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1655331879/InsoImages/avatar_bdtbd1.svg"
+              src="/static/icons/avatar.svg"
               alt="back"
               layout="fixed"
               width="40"
@@ -111,7 +111,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
       <div className=" mt-24 flex gap-8">
         <div className="flex items-center gap-2">
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1660590726/upvote_emoji_iktl64.svg"
+            src="/static/icons/upvote_emoji.svg"
             alt="back"
             layout="fixed"
             width="24"
@@ -130,7 +130,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
             }
           >
             <Image
-              src="https://res.cloudinary.com/insomaryland/image/upload/v1660590114/comment_emoji_yns0js.svg"
+              src="/static/icons/comment_emoji.svg"
               alt="back"
               layout="fixed"
               width="24"
@@ -142,7 +142,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
         </div>
         <div className="flex items-center gap-2">
           <Image
-            src="https://res.cloudinary.com/insomaryland/image/upload/v1660591312/love_emoji_ehuafp.svg"
+            src="/static/icons/love_emoji.svg"
             alt="back"
             layout="fixed"
             width="20"
