@@ -23,7 +23,7 @@ import { updateDiscussion } from "@/context/actions/discussion/updateDiscussion"
 import SettingsSuccess from "@/components/SettingsSuccess";
 import LargeSpinner from "@/components/LargeSpinner";
 import arrow_back_blue from "../../../public/static/icons/arrow_back_blue.svg";
-// import checkbox_blue from "../../../public/static/icons/checkbox_blue.svg";
+
 import checkbox_blue from "../../../public/static/icons/checkbox_blue.svg";
 const DiscussionSettings = () => {
   const router = useRouter();
