@@ -7,6 +7,7 @@ import { createDiscussion } from "@/context/actions/discussion/createDiscussion"
 import { GlobalContext } from "@/context/Provider";
 import WhiteLoader from "@/components/whiteLoader";
 import { updateStarterPrompt } from "@/context/actions/discussion/updateStarterPrompt";
+import arrow_back_blue from "../../public/static/icons/arrow_back_blue.svg";
 import withAuth from "@/HOC/withAuth";
 
 const CreateDiscussion = () => {
@@ -96,7 +97,7 @@ const CreateDiscussion = () => {
           <Link href="/discussions" passHref>
             <div className="flex items-center justify-center">
               <Image
-                src="/static/icons/arrow_back_blue.svg"
+                src={"/" + arrow_back_blue.src}
                 alt="back"
                 layout="fixed"
                 width="30"
@@ -132,7 +133,7 @@ const CreateDiscussion = () => {
                   {showSuccessMessage && (
                     <button className="bg-blue-inputBlue rounded-md h-33 w-200 flex items-center justify-between gap-4 text-primary-darkGreen px-12  ">
                       <Image
-                        src="/static/icons/check_green.svg"
+                        src="/static/icons/check_blue.svg"
                         alt="success"
                         layout="fixed"
                         width="18"
@@ -147,7 +148,7 @@ const CreateDiscussion = () => {
                     <div className="flex items-center gap-5 justify-end">
                       <Link href="/discussions" passHref>
                         <button className="border border-primary-darkGreen w-101 h-32 text-sm rounded text-primary-darkGreen ">
-                          Done
+                          Proceed
                         </button>
                       </Link>
                       <Link
@@ -158,7 +159,7 @@ const CreateDiscussion = () => {
                           className="btn w-152 h-32 text-sm"
                           //   onClick={() => setActive("settings")}
                         >
-                          Add settings
+                          Add discussion settings
                         </button>
                       </Link>
                     </div>

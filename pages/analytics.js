@@ -3,7 +3,9 @@ import Layout from "@/components/Layout";
 import Image from "next/image";
 import styles from "@/styles/progressbar.module.css";
 import LineChart from "chart/LineChart";
-
+import arrow_back_blue from "../public/static/icons/arrow_back_blue.svg";
+import more_icon_black from "../public/static/icons/more_icon_black.svg";
+import arrow_down_blue from "../public/static/icons/arrow_down_blue.svg";
 const Analytics = () => {
   const [activeInspiration, setActiveInspiration] = useState("posting");
 
@@ -28,18 +30,18 @@ const Analytics = () => {
   return (
     <Layout title="Inso | Analytics" bgColor="bg-gray-background">
       <div
-        className={`${styles.hiddenScrollbar} h-full py-25 px-40 vp-980:px-0`}
+        className={`${styles.hiddenScrollbar} h-full  pt-40 pb-25 px-40 vp-600:p-23 vp-980:p-46 vp-980:pt-10`}
       >
-        <div className="items-center w-full justify-between  h-50 mb-12 hidden vp-980:flex px-20">
+        <div className="items-center w-full justify-between  h-50 mb-12 hidden vp-980:flex ">
           <div className="items-center flex  ">
             <div className="flex justify-center items-center mr-23">
               <Image
-                src="/static/icons/arrow_left_green.svg"
+                src={"/" + arrow_back_blue.src}
                 alt="back "
                 draggable="false"
                 layout="fixed"
-                width="14"
-                height="16"
+                width="30"
+                height="30"
               />
             </div>
             <h4 className=" text-black-analText">Analytics</h4>
@@ -47,7 +49,7 @@ const Analytics = () => {
 
           <div className="flex items-center justify-center">
             <Image
-              src="/static/icons/more_icon_black.svg"
+              src={"/" + more_icon_black.src}
               alt=" more "
               draggable="false"
               layout="fixed"
@@ -78,9 +80,9 @@ const Analytics = () => {
                 Compare discussion:
               </span>
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between mr-12">
-                <p className=" text-border-line ">Discussion A</p>
+                <p className="text-primary-blue ">Discussion A</p>
                 <Image
-                  src="/static/icons/arrow_down_blue.svg"
+                  src={"/" + arrow_down_blue.src}
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -91,7 +93,7 @@ const Analytics = () => {
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
                 <p className=" text-primary-darkGreen ">Discussion B</p>
                 <Image
-                  src="/static/icons/arrow_down_green.svg"
+                  src={"/" + arrow_down_blue.src}
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -121,9 +123,9 @@ const Analytics = () => {
             <h6 className=" text-gray-text mb-20">Compare discussion:</h6>
             <div className="flex items-center gap-10 mb-15">
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
-                <p className=" text-border-line ">Discussion A</p>
+                <p className=" text-primary-blue ">Discussion A</p>
                 <Image
-                  src="/static/icons/arrow_down_blue.svg"
+                  src={"/" + arrow_down_blue.src}
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -137,7 +139,7 @@ const Analytics = () => {
               <div className="w-230 h-34 rounded bg-border-settingsLine px-20 flex items-center justify-between">
                 <p className=" text-primary-darkGreen ">Discussion B</p>
                 <Image
-                  src="/static/icons/arrow_down_green.svg"
+                  src={"/" + arrow_down_blue.src}
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"
@@ -155,7 +157,7 @@ const Analytics = () => {
               <div className="flex items-center mb-40">
                 <h6 className=" text-primary-darkGreen mr-18">Active Users </h6>
                 <Image
-                  src="/static/icons/arrow_down_green.svg"
+                  src={"/" + arrow_down_blue.src}
                   alt=" Discussion dropdown "
                   draggable="false"
                   layout="fixed"

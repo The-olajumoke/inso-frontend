@@ -20,7 +20,7 @@ const Dropdown = ({
         {icon && (
           <div className="mr-14 flex justify-center items-center">
             <Image
-              src={icon}
+              src={"/" + icon.src}
               alt={value}
               layout="fixed"
               width="24"

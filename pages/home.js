@@ -4,16 +4,16 @@ import styles from "@/styles/dashboard.module.css";
 import { GlobalContext } from "@/context/Provider";
 import DiscussionBox from "@/components/DiscussionBox";
 import { getDiscussions } from "@/context/actions/discussion/getDiscussions";
-// import dashboard_img from "../public/illustrations/dashboard_img.svg";
-import dashboard_img from "../public/static/illustrations/dashboard_img.svg";
-import big_badge from "../public/static/illustrations/big_badge.svg";
-import unlock from "../public/static/illustrations/unlock.svg";
-import close from "../public/static/icons/close.svg";
 import { API_URL } from "@/utils/url";
 import Image from "next/image";
 import DasbboardDiscBox from "@/components/DashboardDiscBox";
 import BarchartDash from "chart/BarchartDash";
 import withAuth from "@/HOC/withAuth";
+import dashboard_img from "../public/static/illustrations/dashboard_img.svg";
+import big_badge from "../public/static/illustrations/big_badge.svg";
+import unlock from "../public/static/illustrations/unlock.svg";
+import close from "../public/static/icons/close.svg";
+import avatar from "../public/static/images/avatar.svg";
 // import ChordChart from "chart/ChordChart";
 
 const Home = () => {
@@ -76,7 +76,7 @@ const Home = () => {
       >
         <div className="h-125 vp-600:h-100 hidden vp-768:flex bg-primary-darkGreen rounded-lg w-full mb-40 pl-59 vp-1024:pl-16 pr-16  items-center justify-between py-22 vp-600:py-16">
           <div className="h-full flex items-center">
-            <Image src={unlock} alt="badge" height={50} width={50} />
+            <Image src={"/" + unlock.src} alt="badge" height={50} width={50} />
             <div className="ml-38 vp-600:ml-16">
               <h3 className=" text-white-white font-bold vp-1024:text-lg vp-600:text-sm">
                 New Post Inspiration
@@ -93,7 +93,7 @@ const Home = () => {
               </button>
             </div>
             <div>
-              <Image src={close} alt="badge" />
+              <Image src={"/" + close.src} alt="close" width={16} height={16} />
             </div>
           </div>
         </div>
@@ -104,7 +104,12 @@ const Home = () => {
           <div className="col-span-3 h-full flex-grow">
             <div className="h-125 vp-768:hidden bg-primary-darkGreen rounded-lg w-full mb-40 pl-59 vp-1024:pl-16 pr-16 flex  items-center justify-between py-22">
               <div className="h-full flex items-center">
-                <Image src={unlock} alt="badge" />
+                <Image
+                  src={"/" + unlock.src}
+                  alt="badge"
+                  height={50}
+                  width={50}
+                />
                 <div className="ml-38">
                   <h3 className=" text-white-white font-bold vp-1024:text-lg">
                     New Post Inspiration
@@ -121,7 +126,12 @@ const Home = () => {
                   </button>
                 </div>
                 <div>
-                  <Image src={close} alt="badge" />
+                  <Image
+                    src={"/" + close.src}
+                    alt="close"
+                    width={16}
+                    height={16}
+                  />
                 </div>
               </div>
             </div>
@@ -139,11 +149,12 @@ const Home = () => {
           </div>
           <div className=" flex w-300 vp-1024:w-full vp-1024:justify-center">
             <div className="flex flex-col w-full justify-center items-center vp-1024:w-300">
-              <div className="relative w-full flex justify-center">
+              <div className="relative w-300 h-125 flex justify-center">
                 <Image
-                  src={dashboard_img}
+                  src={"/" + dashboard_img.src}
                   alt="dashboard_img"
                   className=" vp-1024:w-full"
+                  layout="fill"
                 />
               </div>
               <div className="w-full  relative mb-16 rounded-lg bg-white-white  z-99">
@@ -221,9 +232,7 @@ const Home = () => {
             >
               <div>
                 <Image
-                  // src={}
-                  // src={big_badge}
-                  src={require("../public/static/illustrations/big_badge.svg")}
+                  src={"/" + big_badge.src}
                   alt="badge"
                   width="77"
                   height="102"
@@ -307,7 +316,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/static/images/avatar.svg"
+                      src={"/" + avatar.src}
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -325,7 +334,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/static/images/avatar.svg"
+                      src={"/" + avatar.src}
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -343,7 +352,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/static/images/avatar.svg"
+                      src={"/" + avatar.src}
                       alt="user"
                       draggable="false"
                       layout="fixed"

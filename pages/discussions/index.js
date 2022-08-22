@@ -14,6 +14,10 @@ import { getDiscussions } from "@/context/actions/discussion/getDiscussions";
 import { API_URL } from "@/utils/url";
 import { createArchivedDiscussion } from "@/context/actions/discussion/createArchivedDisc";
 import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
+
+import add_icon_white from "../../public/static/icons/add_icon_white.svg";
+import sort from "../../public/static/new_icons/sort.svg";
+import archive from "../../public/static/new_icons/archive.svg";
 const Index = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
@@ -85,7 +89,7 @@ const Index = () => {
             >
               <div className="flex justify-center items-center mr-15">
                 <Image
-                  src="/static/icons/add_icon_white.svg"
+                  src={"/" + add_icon_white.src}
                   alt="create discussion"
                   layout="fixed"
                   width="14"
@@ -101,7 +105,7 @@ const Index = () => {
               <Dropdown
                 value={filter}
                 setValue={setFilter}
-                icon="/static/new_icons/sort.svg"
+                icon={sort}
                 title="Filter by..."
                 items={filterOptions}
                 openDropdown={openDropdown}
@@ -114,7 +118,7 @@ const Index = () => {
               <button className="flex items-center">
                 <div className="mr-14 flex justify-center items-center">
                   <Image
-                    src="/static/new_icons/archive.svg"
+                    src={"/" + archive.src}
                     alt="create discussion"
                     layout="fixed"
                     width="24"
@@ -179,7 +183,7 @@ const Index = () => {
           <Link passHref href="/discussions/create-discussion">
             <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
               <Image
-                src="/static/icons/add_icon_white.svg"
+                src={"/" + add_icon_white.src}
                 alt="no discussion"
                 layout="fixed"
                 width="14"

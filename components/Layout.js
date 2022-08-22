@@ -8,6 +8,11 @@ import styles from "@/styles/layout.module.css";
 import { GlobalContext } from "@/context/Provider";
 import { createDiscussion } from "@/context/actions/discussion/createDiscussion";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
+import hamburger from "../public/static/icons/hamburger.svg";
+import hamburger_open from "../public/static/icons/hamburger_open.svg";
+import inso_logo from "../public/static/images/inso_logo.svg";
+import bell_black from "../public/static/icons/bell_black.svg";
+
 import { API_URL } from "@/utils/url";
 const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
   const [navSize, setNavSize] = useState("small");
@@ -88,12 +93,8 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
             onClick={() => setOpenSideBar(!openSideBar)}
           >
             <Image
-              src={
-                openSideBar
-                  ? "/static/icons/hamburger_open.svg"
-                  : "/static/icons/hamburger.svg"
-              }
-              alt=" Discussion dropdown "
+              src={openSideBar ? `/${hamburger_open.src}` : `/${hamburger.src}`}
+              alt="menu "
               draggable="false"
               layout="fixed"
               width="25"
@@ -102,8 +103,8 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
           </div>
           <div className="flex justify-center items-center">
             <Image
-              src="/static/images/inso_logo.svg"
-              alt=" Discussion dropdown "
+              src={"/" + inso_logo.src}
+              alt="inso_logo "
               draggable="false"
               layout="fixed"
               width="87"
@@ -113,7 +114,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
           <Link passHref href="/notifications">
             <div className="flex justify-center items-center ">
               <Image
-                src="/static/icons/bell_black.svg"
+                src={"/" + bell_black.src}
                 alt="notifications"
                 draggable="false"
                 layout="fixed"

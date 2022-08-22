@@ -6,6 +6,9 @@ import SettingsDropdown from "./SettingsDropdown";
 import { validateEmail } from "@/utils/validations";
 import { updateUserProfile } from "@/context/actions/user/updateUserProfile";
 import { API_URL } from "@/utils/url";
+import avatar from "../public/static/images/avatar.svg";
+import edit_blue from "../public/static/icons/edit_blue.svg";
+import logout from "../public/static/icons/logout.svg";
 
 const Profile = ({ editProfile, setEditProfile }) => {
   const [userPicture, setUserPicture] = useState(true);
@@ -106,7 +109,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
           {userPicture ? (
             <div className=" rounded-full">
               <Image
-                src="/static/images/avatar.svg"
+                src={"/" + avatar.src}
                 alt=" userImage "
                 draggable="false"
                 layout="fixed"
@@ -141,7 +144,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
               onClick={() => setEditProfile(true)}
             >
               <Image
-                src="/static/icons/edit_blue.svg"
+                src={"/" + edit_blue.src}
                 alt=" edit "
                 draggable="false"
                 layout="fixed"
@@ -260,7 +263,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
         className="flex justify-center items-center h-34 w-146 rounded"
       >
         <Image
-          src="/static/icons/logout.svg"
+          src={"/" + logout.src}
           alt=" Discussion dropdown "
           draggable="false"
           layout="fixed"

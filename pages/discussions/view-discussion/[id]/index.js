@@ -57,6 +57,18 @@ import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import Posts from "@/components/Posts";
 import ParticipantsRow from "@/components/ParticipantsRow";
 import SunburstChart from "chart/SunBurstChart";
+import arrow_back_blue from "../../../../public/static/icons/arrow_back_blue.svg";
+import more_icon_grey from "../../../../public/static/icons/more_icon_grey.svg";
+import drafts from "../../../../public/static/icons/drafts.svg";
+import charts from "../../../../public/static/icons/charts.svg";
+import scoreSheet from "../../../../public/static/icons/scoreSheet.svg";
+import divider from "../../../../public/static/icons/divider.svg";
+import participants from "../../../../public/static/icons/participants.svg";
+import help from "../../../../public/static/icons/help.svg";
+import edit_grey from "../../../../public/static/icons/edit_grey.svg";
+import close_green from "../../../../public/static/icons/close_green.svg";
+import cancel from "../../../../public/static/icons/cancel.svg";
+import avatar from "../../../../public/static/images/avatar.svg";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -185,7 +197,7 @@ const ViewDiscussion = () => {
                 <Link href="/discussions" passHref>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/static/icons/arrow_back_blue.svg"
+                      src={"/" + arrow_back_blue.src}
                       alt="back"
                       layout="fixed"
                       width="30"
@@ -202,7 +214,7 @@ const ViewDiscussion = () => {
                   onClick={() => setOpenDropdown(true)}
                 >
                   <Image
-                    src="/static/icons/more_icon_grey.svg"
+                    src={"/" + more_icon_grey.src}
                     alt="back"
                     layout="fixed"
                     width="6"
@@ -229,7 +241,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="/static/icons/drafts.svg"
+                              src={"/" + drafts.src}
                               alt="more"
                               layout="fixed"
                               width="20"
@@ -247,7 +259,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="/static/icons/charts.svg"
+                              src={"/" + charts.src}
                               alt="more"
                               layout="fixed"
                               width="21"
@@ -270,7 +282,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="/static/icons/scoreSheet.svg"
+                              src={"/" + scoreSheet.src}
                               alt="more"
                               layout="fixed"
                               width="21"
@@ -293,14 +305,14 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                           >
                             <Image
-                              src="/static/icons/participants.svg"
+                              src={"/" + participants.src}
                               alt="more"
                               layout="fixed"
                               width="21"
                               height="21"
                             />
                           </div>
-                          <p className=" text-black-analText">Participantst</p>
+                          <p className=" text-black-analText">Participants</p>
                         </div>
                       </div>
                     </div>
@@ -333,7 +345,7 @@ const ViewDiscussion = () => {
                   title="Drafts"
                 >
                   <Image
-                    src="/static/icons/drafts.svg"
+                    src={"/" + drafts.src}
                     alt="more"
                     layout="fixed"
                     width="20"
@@ -347,7 +359,7 @@ const ViewDiscussion = () => {
                     onClick={() => setOpenChartModal(true)}
                   >
                     <Image
-                      src="/static/icons/charts.svg"
+                      src={"/" + charts.src}
                       alt="more"
                       layout="fixed"
                       width="21"
@@ -428,7 +440,7 @@ const ViewDiscussion = () => {
                 >
                   {" "}
                   <Image
-                    src="/static/icons/scoreSheet.svg"
+                    src={"/" + scoreSheet.src}
                     alt="more"
                     layout="fixed"
                     width="21"
@@ -444,7 +456,7 @@ const ViewDiscussion = () => {
                   }}
                 >
                   <Image
-                    src="/static/icons/participants.svg"
+                    src={"/" + participants.src}
                     alt="more"
                     layout="fixed"
                     width="21"
@@ -453,7 +465,7 @@ const ViewDiscussion = () => {
                 </div>
                 <div className="flex items-center justify-center ">
                   <Image
-                    src="/static/icons/divider.svg"
+                    src={"/" + divider.src}
                     alt="divider"
                     layout="fixed"
                     width="20"
@@ -465,7 +477,7 @@ const ViewDiscussion = () => {
                   title="Help"
                 >
                   <Image
-                    src="/static/icons/help.svg"
+                    src={"/" + help.src}
                     alt="help"
                     layout="fixed"
                     width="23"
@@ -488,7 +500,7 @@ const ViewDiscussion = () => {
                       <div className="flex  items-center">
                         <div className="flex items-center justify-center">
                           <Image
-                            src="/static/images/avatar.svg"
+                            src={"/" + avatar.src}
                             alt="back"
                             layout="fixed"
                             width="40"
@@ -519,7 +531,7 @@ const ViewDiscussion = () => {
                             onClick={() => setOpenEditDropdown(true)}
                           >
                             <Image
-                              src="/static/icons/more_icon_grey.svg"
+                              src={"/" + more_icon_grey.src}
                               alt="back"
                               layout="fixed"
                               width="6"
@@ -551,11 +563,11 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                                       >
                                         <Image
-                                          src="/static/icons/edit_green.svg"
+                                          src={"/" + edit_grey.src}
                                           alt="edit"
                                           layout="fixed"
-                                          width="12"
-                                          height="12"
+                                          width="24"
+                                          height="24"
                                         />
                                       </div>
                                       <p className="text-black-analText ">
@@ -575,7 +587,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                                     >
                                       <Image
-                                        src="/static/icons/close_green.svg"
+                                        src={"/" + close_green.src}
                                         alt="edit"
                                         layout="fixed"
                                         width="12"
@@ -871,7 +883,7 @@ const ViewDiscussion = () => {
                       onClick={() => setViewAllTags(false)}
                     >
                       <Image
-                        src="/static/icons/cancel.svg"
+                        src={"/" + cancel.src}
                         alt="cancel"
                         layout="fixed"
                         width="14"
@@ -903,7 +915,7 @@ const ViewDiscussion = () => {
                       onClick={() => setShowParticipants(false)}
                     >
                       <Image
-                        src="/static/icons/cancel.svg"
+                        src={"/" + cancel.src}
                         alt="cancel"
                         layout="fixed"
                         width="14"
@@ -930,7 +942,7 @@ const ViewDiscussion = () => {
                           onClick={() => setShowScoresSheet(false)}
                         >
                           <Image
-                            src="/static/icons/cancel.svg"
+                            src={"/" + cancel.src}
                             alt="cancel"
                             layout="fixed"
                             width="14"
@@ -992,7 +1004,7 @@ const ViewDiscussion = () => {
                           onClick={() => setShowScoresSheet(false)}
                         >
                           <Image
-                            src="/static/icons/cancel.svg"
+                            src={"/" + cancel.src}
                             alt="cancel"
                             layout="fixed"
                             width="14"

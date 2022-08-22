@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import closed_eye from "../public/static/icons/closed_eye.svg";
+import open_eye from "../public/static/icons/open_eye.svg";
 const SettingsInput = ({
   type,
   value,
@@ -38,11 +40,7 @@ const SettingsInput = ({
           }}
         >
           <Image
-            src={`${
-              showPassword
-                ? "/static/icons/closed_eye.svg"
-                : "/static/icons/open_eye.svg"
-            }`}
+            src={`${showPassword ? `/${closed_eye.src}` : `/${open_eye.src}`}`}
             alt=" Discussion dropdown "
             draggable="false"
             layout="fixed"

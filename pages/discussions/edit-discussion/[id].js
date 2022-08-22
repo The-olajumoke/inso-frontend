@@ -22,6 +22,9 @@ import { createDiscussion } from "@/context/actions/discussion/createDiscussion"
 import { updateDiscussion } from "@/context/actions/discussion/updateDiscussion";
 import SettingsSuccess from "@/components/SettingsSuccess";
 import LargeSpinner from "@/components/LargeSpinner";
+import arrow_back_blue from "../../../public/static/icons/arrow_back_blue.svg";
+// import checkbox_blue from "../../../public/static/icons/checkbox_blue.svg";
+import checkbox_blue from "../../../public/static/icons/checkbox_blue.svg";
 const DiscussionSettings = () => {
   const router = useRouter();
   const id = router.query.id;
@@ -243,7 +246,7 @@ const DiscussionSettings = () => {
             <Link href="/discussions" passHref>
               <div className="flex items-center justify-center">
                 <Image
-                  src="/static/icons/arrow_back_blue.svg"
+                  src={"/" + arrow_back_blue.src}
                   alt="back"
                   layout="fixed"
                   width="30"
@@ -271,7 +274,7 @@ const DiscussionSettings = () => {
                 >
                   {discName !== "" && (
                     <Image
-                      src="/static/icons/Checkbox_blue.svg"
+                      src={"/" + checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -296,7 +299,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.starter_prompt !== "" && (
                     <Image
-                      src="/static/icons/Checkbox_blue.svg"
+                      src={"/" + checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -320,7 +323,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.calendar !== null && (
                     <Image
-                      src="/static/icons/Checkbox_blue.svg"
+                      src={"/" + checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -344,7 +347,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.scores !== null && (
                     <Image
-                      src="/static/icons/Checkbox_blue.svg"
+                      src={"/" + checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"

@@ -10,6 +10,15 @@ import disc_active from "../public/static/icons/dashboard_active.svg";
 import disc_inactive from "../public/static/new_icons/disc_inactive.svg";
 import notification_active from "../public/static/icons/notification_active.svg";
 import notifications_inactive from "../public/static/new_icons/notifications_inactive.svg";
+import stats_active from "../public/static/icons/stats.svg";
+import stats_inactive from "../public/static/new_icons/stats_inactive.svg";
+import analytics_active from "../public/static/icons/analytics_active.svg";
+import analytics_inactive from "../public/static/new_icons/analytics_inactive.svg";
+import contact_active from "../public/static/icons/contact_active.svg";
+import contact_inactive from "../public/static/new_icons/contact_inactive.svg";
+import settings_active from "../public/static/icons/settings_active.svg";
+import settings_inactive from "../public/static/new_icons/settings_inactive.svg";
+import download_inactive from "../public/static/new_icons/download_inactive.svg";
 const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -152,8 +161,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/stats")
-                      ? "/static/icons/stats.svg"
-                      : "/static/new_icons/stats_inactive.svg"
+                      ? `/${stats_active.src}`
+                      : `/${stats_inactive.src}`
                   }
                   alt="stats"
                   draggable="false"
@@ -174,8 +183,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/analytics")
-                      ? "/static/icons/analytics_active.svg"
-                      : "/static/new_icons/analytics_inactive.svg"
+                      ? `/${analytics_active.src}`
+                      : `/${analytics_inactive.src}`
                   }
                   alt="analytics"
                   draggable="false"
@@ -222,8 +231,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/contact")
-                      ? "/static/icons/contact_active.svg"
-                      : "/static/new_icons/contact_inactive.svg"
+                      ? `/${contact_active.src}`
+                      : `/${contact_inactive.src}`
                   }
                   alt="contact"
                   draggable="false"
@@ -246,8 +255,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/settings")
-                      ? "/static/icons/settings_active.svg"
-                      : "/static/new_icons/settings_inactive.svg"
+                      ? `/${settings_active.src}`
+                      : `/${settings_inactive.src}`
                   }
                   alt="settings"
                   draggable="false"
@@ -273,7 +282,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
             } w-full h-40 border border-primary-blue   rounded flex items-center  justify-center  `}
           >
             <Image
-              src="/static/new_icons/download_inactive.svg"
+              src={"/" + download_inactive.src}
               alt="download"
               draggable="false"
               layout="fixed"
@@ -325,8 +334,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/home")
-                      ? "/static/icons/home.svg"
-                      : "/static/new_icons/home.svg"
+                      ? `/${home_active.src}`
+                      : `/${home_inactive.src}`
                   }
                   alt="home"
                   draggable="false"
@@ -347,8 +356,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/discussions")
-                      ? "/static/icons/dashboard_active.svg"
-                      : "/static/new_icons/disc_inactive.svg"
+                      ? `/${disc_active.src}`
+                      : `/${disc_inactive.src}`
                   }
                   alt="discussion"
                   draggable="false"
@@ -369,8 +378,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/notifications")
-                      ? "/static/icons/notification_active.svg"
-                      : "/static/new_icons/notifications_inactive.svg"
+                      ? `/${notification_active.src}`
+                      : `/${notifications_inactive.src}`
                   }
                   alt="notifications"
                   draggable="false"
@@ -391,8 +400,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/stats")
-                      ? "/static/icons/stats.svg"
-                      : "/static/new_icons/stats_inactive.svg"
+                      ? `/${stats_active.src}`
+                      : `/${stats_inactive.src}`
                   }
                   alt="stats"
                   draggable="false"
@@ -413,8 +422,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/analytics")
-                      ? "/static/icons/analytics_active.svg"
-                      : "/static/new_icons/analytics_inactive.svg"
+                      ? `/${analytics_active.src}`
+                      : `/${analytics_inactive.src}`
                   }
                   alt="analytics"
                   draggable="false"
@@ -457,8 +466,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/contact")
-                      ? "/static/icons/contact_active.svg"
-                      : "/static/new_icons/contact_inactive.svg"
+                      ? `/${contact_active.src}`
+                      : `/${contact_inactive.src}`
                   }
                   alt="contact"
                   draggable="false"
@@ -479,8 +488,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/settings")
-                      ? "/static/icons/settings_active.svg"
-                      : "/static/new_icons/settings_inactive.svg"
+                      ? `/${settings_active.src}`
+                      : `/${settings_inactive.src}`
                   }
                   alt="settings"
                   draggable="false"
@@ -498,7 +507,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
             className={`w-full h-40 border border-primary-blue rounded flex items-center  justify-center  `}
           >
             <Image
-              src="/static/new_icons/download_inactive.svg"
+              src={"/" + download_inactive.src}
               alt="download"
               draggable="false"
               layout="fixed"

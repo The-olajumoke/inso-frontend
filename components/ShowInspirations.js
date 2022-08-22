@@ -4,10 +4,7 @@ import styles from "@/styles/viewDiscussion.module.css";
 import PollTemplate from "./PollTemplate";
 import PopularTags from "./PopularTags";
 import { GlobalContext } from "@/context/Provider";
-import // PostingInspirations,
-// RespondingInspirations,
-// SynthesizingInspirations,
-"@/utils/sampleData";
+
 import Inspiration from "./Inspiration";
 import PostInspCategory from "./PostInspCategory";
 import ViewPostInspCategory from "./ViewPostInspCategory";
@@ -15,6 +12,9 @@ import ViewInspirations from "./ViewInspirations";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import { API_URL } from "@/utils/url";
 import WhiteLoader from "./whiteLoader";
+import postInspIcon from "../public/static/icons/postInspIcon.svg";
+import dropdown_white from "../public/static/icons/dropdown_white.svg";
+import divider from "../public/static/icons/divider.svg";
 
 const ShowInspirations = ({
   setActiveCommentBox,
@@ -114,7 +114,7 @@ const ShowInspirations = ({
           >
             <div className="flex justify-center items-center">
               <Image
-                src="/static/icons/postInspIcon.svg"
+                src={"/" + postInspIcon.src}
                 alt="Post Inspiration"
                 layout="fixed"
                 width="16"
@@ -125,7 +125,7 @@ const ShowInspirations = ({
             <p className=" text-white-white cursor-pointer">{title}</p>
             <div className="flex items-center justify-center">
               <Image
-                src="/static/icons/dropdown_white.svg"
+                src={"/" + dropdown_white.src}
                 alt="back"
                 layout="fixed"
                 width="10"
@@ -349,7 +349,7 @@ const ShowInspirations = ({
         </div>
         <div className="flex justify-center items-center mr-15">
           <Image
-            src="/static/icons/divider.svg"
+            src={"/" + divider.src}
             alt="divider"
             layout="fixed"
             width="4"

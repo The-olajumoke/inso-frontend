@@ -10,6 +10,8 @@ import SuccessModal from "@/components/SuccessModal";
 import { GlobalContext } from "@/context/Provider";
 import { updateUserPassword } from "@/context/actions/user/updateUserPassword";
 import { API_URL } from "@/utils/url";
+import user_profile from "../public/static/icons/user_profile.svg";
+import arrow_back_blue from "../public/static/icons/arrow_back_blue.svg";
 
 const Settings = () => {
   const [activeSetting, setActiveSetting] = useState("profile");
@@ -73,7 +75,7 @@ const Settings = () => {
         {incompleteProfile && (
           <div className="h-80 bg-primary-darkGreen pl-50  flex items-center font-poppins">
             <Image
-              src="/static/icons/user_profile.svg"
+              src={"/" + user_profile.src}
               alt="user "
               draggable="false"
               layout="fixed"
@@ -92,16 +94,16 @@ const Settings = () => {
           </div>
         )}
 
-        <div className={` p-40  vp-600:p-23 vp-980:p-46`}>
+        <div className={` p-40  vp-600:p-23 vp-980:p-46 vp-980:pt-20`}>
           <div className="items-center  h-50 mb-20 hidden vp-980:flex">
             <div className="flex justify-center items-center mr-23">
               <Image
-                src="/static/icons/arrow_left_green.svg"
+                src={"/" + arrow_back_blue.src}
                 alt=" Discussion dropdown "
                 draggable="false"
                 layout="fixed"
-                width="18"
-                height="18"
+                width="30"
+                height="30"
               />
             </div>
             <h4 className=" text-black-analText">Settings</h4>

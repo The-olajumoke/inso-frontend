@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+import notifications_active from "../public/static/icons/notifications_active.svg";
+import active_disc from "../public/static/icons/active_disc.svg";
+import more_icon_grey from "../public/static/icons/more_icon_grey.svg";
+import edit_grey from "../public/static/icons/edit_grey.svg";
+import archive_grey from "../public/static/icons/archive_grey.svg";
+import copy_grey from "../public/static/icons/copy_grey.svg";
+import users_icon from "../public/static/icons/users_icon.svg";
 const DasbboardDiscBox = ({ discussion, createArchived }) => {
   const { _id, poster, participants, name, date, insoCode } = discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -20,7 +28,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
           {" "}
           <div className=" flex justify-center items-center ">
             <Image
-              src="/static/icons/notifications_active.svg"
+              src={"/" + notifications_active.src}
               alt="copy"
               layout="fixed"
               width="14"
@@ -29,7 +37,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
           </div>
           <div className=" flex justify-center items-center">
             <Image
-              src="/static/icons/active_disc.svg"
+              src={"/" + active_disc.src}
               alt="copy"
               layout="fixed"
               width="12"
@@ -42,7 +50,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
               onClick={() => setOpenDropdown(true)}
             >
               <Image
-                src="/static/icons/more_icon_grey.svg"
+                src={"/" + more_icon_grey.src}
                 alt="copy"
                 layout="fixed"
                 width="12"
@@ -69,7 +77,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                                flex justify-center items-center"
                         >
                           <Image
-                            src="/static/icons/edit_grey.svg"
+                            src={"/" + edit_grey.src}
                             alt="edit"
                             layout="fixed"
                             width="20"
@@ -94,7 +102,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                                flex justify-center items-center"
                       >
                         <Image
-                          src="/static/icons/archive_grey.svg"
+                          src={"/" + archive_grey.src}
                           alt="archive"
                           layout="fixed"
                           width="20"
@@ -114,7 +122,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                     >
                       <div className=" mr-10 flex justify-center items-center">
                         <Image
-                          src="/static/icons/copy_grey.svg"
+                          src={"/" + copy_grey.src}
                           alt="edit"
                           layout="fixed"
                           width="20"
@@ -141,7 +149,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
         </span>
         <div className="flex justify-center">
           <Image
-            src="/static/icons/users_icon.svg"
+            src={"/" + users_icon.src}
             alt="copy"
             layout="fixed"
             width="20"

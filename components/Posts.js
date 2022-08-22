@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
+import avatar from "../public/static/icons/avatar.svg";
+import more_icon_grey from "../public/static/icons/more_icon_grey.svg";
+import edit_green from "../public/static/icons/edit_green.svg";
+import upvote_emoji from "../public/static/icons/upvote_emoji.svg";
+import comment_emoji from "../public/static/icons/comment_emoji.svg";
+import love_emoji from "../public/static/icons/love_emoji.svg";
 const Posts = ({ posts, setReplyingId, discId }) => {
   const { _id, date, post, user, comments } = posts;
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
@@ -11,7 +17,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
         <div className="flex  items-center">
           <div className="flex items-center justify-center">
             <Image
-              src="/static/icons/avatar.svg"
+              src={"/" + avatar.src}
               alt="back"
               layout="fixed"
               width="40"
@@ -37,7 +43,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
             onClick={() => setOpenEditDropdown(true)}
           >
             <Image
-              src="/static/icons/more_icon_grey.svg"
+              src={"/" + more_icon_grey.src}
               alt="back"
               layout="fixed"
               width="6"
@@ -65,7 +71,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
                                flex justify-center items-center"
                     >
                       <Image
-                        src="/static/icons/edit_green.svg"
+                        src={"/" + edit_green.src}
                         alt="edit"
                         layout="fixed"
                         width="12"
@@ -90,7 +96,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
       <div className=" mt-24 flex gap-8">
         <div className="flex items-center gap-2">
           <Image
-            src="/static/icons/upvote_emoji.svg"
+            src={"/" + upvote_emoji.src}
             alt="back"
             layout="fixed"
             width="24"
@@ -109,7 +115,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
             }
           >
             <Image
-              src="/static/icons/comment_emoji.svg"
+              src={"/" + comment_emoji.src}
               alt="back"
               layout="fixed"
               width="24"
@@ -121,7 +127,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
         </div>
         <div className="flex items-center gap-2">
           <Image
-            src="/static/icons/love_emoji.svg"
+            src={"/" + love_emoji.src}
             alt="back"
             layout="fixed"
             width="20"
