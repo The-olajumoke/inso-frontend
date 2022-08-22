@@ -18,6 +18,9 @@ import { useRouter } from "next/router";
 import { API_URL } from "@/utils/url";
 import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
 import { loginWithCode } from "@/context/actions/auth/loginWithCode";
+import cancel_white from "../../../public/static/icons/cancel_white.svg";
+import arrow_left_white from "../../../public/static/icons/arrow_left_white.svg";
+import google from "../../../public/static/icons/google.svg";
 
 const LoginPageWithCode = () => {
   const router = useRouter();
@@ -139,7 +142,7 @@ const LoginPageWithCode = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/static/icons/cancel_white.svg"
+                  src={"/" + cancel_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -153,7 +156,7 @@ const LoginPageWithCode = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/static/icons/arrow_left_white.svg"
+                  src={"/" + arrow_left_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -198,7 +201,7 @@ const LoginPageWithCode = () => {
             >
               <div className="flex items-center justify-center">
                 <Image
-                  src="/static/icons/google.svg"
+                  src={"/" + google.src}
                   alt="google Icon"
                   draggable="false"
                   layout="fixed"

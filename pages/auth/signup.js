@@ -13,6 +13,9 @@ import ErrorModal from "@/components/ErrorModal";
 import SuccessModal from "@/components/SuccessModal";
 import { API_URL } from "@/utils/url";
 import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
+import cancel_white from "../../public/static/icons/cancel_white.svg";
+import arrow_left_white from "../../public/static/icons/arrow_left_white.svg";
+import google from "../../public/static/icons/google.svg";
 const SignUpPage = () => {
   console.log(API_URL);
   const [email, setEmail] = useState("");
@@ -134,7 +137,7 @@ const SignUpPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/static/icons/cancel_white.svg"
+                  src={"/" + cancel_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -148,7 +151,7 @@ const SignUpPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/static/icons/arrow_left_white.svg"
+                  src={"/" + arrow_left_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -229,7 +232,7 @@ const SignUpPage = () => {
             >
               <div>
                 <Image
-                  src="/static/icons/google.svg"
+                  src={"/" + google.src}
                   alt="google Icon"
                   draggable="false"
                   layout="fixed"

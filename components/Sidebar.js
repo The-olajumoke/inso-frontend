@@ -3,6 +3,13 @@ import styles from "@/styles/sidebar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import logo_without_text from "../public/static/images/logo_without_text.svg";
+import home_active from "../public/static/icons/home.svg";
+import home_inactive from "../public/static/new_icons/home.svg";
+import disc_active from "../public/static/icons/dashboard_active.svg";
+import disc_inactive from "../public/static/new_icons/disc_inactive.svg";
+import notification_active from "../public/static/icons/notification_active.svg";
+import notifications_inactive from "../public/static/new_icons/notifications_inactive.svg";
 const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -34,7 +41,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
         {showHeader === false && (
           <div className="pl-45 mb-25">
             <Image
-              src="/static/images/logo_without_text.svg"
+              src={"/" + logo_without_text.src}
               alt="inso"
               draggable="false"
               width="40"
@@ -73,8 +80,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/home")
-                      ? "/static/icons/home.svg"
-                      : "/static/new_icons/home.svg"
+                      ? `/${home_active.src}`
+                      : `/${home_inactive.src}`
                   }
                   alt="discussion"
                   draggable="false"
@@ -96,8 +103,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/discussions")
-                      ? "/static/icons/dashboard_active.svg"
-                      : "/static/new_icons/disc_inactive.svg"
+                      ? `/${disc_active.src}`
+                      : `/${disc_inactive.src}`
                   }
                   alt="discussion"
                   draggable="false"
@@ -121,8 +128,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/notifications")
-                      ? "/static/icons/notification_active.svg"
-                      : "/static/new_icons/notifications_inactive.svg"
+                      ? `/${notification_active.src}`
+                      : `/${notifications_inactive.src}`
                   }
                   alt="notifications"
                   draggable="false"

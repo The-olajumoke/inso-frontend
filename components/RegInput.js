@@ -4,6 +4,8 @@ import Image from "next/image";
 
 import styles from "@/styles/regInput.module.css";
 
+import closed_eye from "../public/static/icons/closed_eye.svg";
+import open_eye from "../public/static/icons/open_eye.svg";
 const RegInput = ({
   label,
   type,
@@ -90,7 +92,7 @@ const RegInput = ({
           <div className={styles.eyeIcon}>
             {inputType === "password" && (
               <Image
-                src="/static/icons/closed_eye.svg"
+                src={`/${closed_eye.src}`}
                 alt="see-password"
                 draggable="false"
                 layout="intrinsic"
@@ -102,11 +104,7 @@ const RegInput = ({
             )}
             {inputType === "text" && (
               <Image
-                src={
-                  value.length
-                    ? "/static/icons/open_eye.svg"
-                    : "/static/icons/closed_eye.svg"
-                }
+                src={value.length ? `/${closed_eye.src}` : `/${open_eye.src}`}
                 alt="see-password"
                 draggable="false"
                 layout="intrinsic"

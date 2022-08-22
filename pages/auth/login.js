@@ -16,6 +16,8 @@ import GoogleLogin from "react-google-login";
 import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 import { API_URL } from "@/utils/url";
 import cancel_white from "../../public/static/icons/cancel_white.svg";
+import arrow_left_white from "../../public/static/icons/arrow_left_white.svg";
+import google from "../../public/static/icons/google.svg";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -101,7 +103,6 @@ const LoginPage = () => {
               <button>
                 <Image
                   src={"/" + cancel_white.src}
-                  // src="./public/static/icons/cancel_white.svg"
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -115,8 +116,7 @@ const LoginPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  // src="/static/icons/arrow_left_white.svg"
-                  src="/../../public/static/icons/arrow_left_white.svg"
+                  src={"/" + arrow_left_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -162,7 +162,7 @@ const LoginPage = () => {
             >
               <div className="flex items-center justify-center">
                 <Image
-                  src="/static/icons/google.svg"
+                  src={"/" + google.src}
                   alt="google Icon"
                   draggable="false"
                   layout="fixed"
