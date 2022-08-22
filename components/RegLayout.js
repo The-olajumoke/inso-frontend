@@ -1,14 +1,15 @@
 import withAuth from "@/HOC/withAuth";
 import Image from "next/image";
 import React, { Children } from "react";
-
+import inso_logo from "../public/static/images/inso_logo.svg";
 function RegLayout({ children }) {
   return (
     <div className="py-32 px-50 vp-600:p-0 h-screen ">
       <div className="h-61 flex justify-between vp-600:hidden">
         <div>
           <Image
-            src="/static/images/inso_logo.svg"
+            // src="/../public/static/images/inso_logo.svg"
+            src={"/" + inso_logo.src}
             alt="Inso Logo"
             draggable="false"
             layout="fixed"

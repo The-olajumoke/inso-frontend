@@ -15,6 +15,7 @@ import { getUserProfile } from "@/context/actions/user/getUserProfile";
 import GoogleLogin from "react-google-login";
 import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 import { API_URL } from "@/utils/url";
+import cancel_white from "../../public/static/icons/cancel_white.svg";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -99,7 +100,8 @@ const LoginPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/static/icons/cancel_white.svg"
+                  src={"/" + cancel_white.src}
+                  // src="./public/static/icons/cancel_white.svg"
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -113,7 +115,8 @@ const LoginPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src="/static/icons/arrow_left_white.svg"
+                  // src="/static/icons/arrow_left_white.svg"
+                  src="/../../public/static/icons/arrow_left_white.svg"
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
