@@ -57,6 +57,7 @@ const Home = () => {
       getDiscussions(API_URL, token, userId)(discussionDispatch);
     }
   }, [userId, token]);
+
   // useEffect(() => {
   //   if (discussionData !== null) {
   //     const discArry = [
@@ -69,6 +70,7 @@ const Home = () => {
   //     setAllDiscussions(discArry);
   //   }
   // }, [error, loading, discussionData]);
+
   return (
     <Layout title="Inso | Home" searchBar={false} bgColor="bg-gray-background">
       <div

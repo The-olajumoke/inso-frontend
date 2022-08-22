@@ -2,6 +2,6 @@ module.exports = {
   trailingSlash: true,
   images: {
     loader: "akamai",
-    path: "",
+    path: "https://s3.amazonaws.com/inso.ai"
   },
 };
