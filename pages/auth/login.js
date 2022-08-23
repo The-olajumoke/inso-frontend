@@ -102,7 +102,7 @@ const LoginPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src={"/" + cancel_white.src}
+                  src={"cancel_white.svg"}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -116,7 +116,7 @@ const LoginPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src={"/" + arrow_left_white.src}
+                  src={"arrow_left_white.svg"}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"

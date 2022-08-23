@@ -1,9 +1,8 @@
-// module.exports = {
-//   // trailingSlash: true,
-// };
+
 module.exports = {
+  trailingSlash: true,
   images: {
     loader: "akamai",
-    path: "/",
+    path: "",
   },
 };
