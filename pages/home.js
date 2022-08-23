@@ -78,7 +78,7 @@ const Home = () => {
       >
         <div className="h-125 vp-600:h-100 hidden vp-768:flex bg-primary-darkGreen rounded-lg w-full mb-40 pl-59 vp-1024:pl-16 pr-16  items-center justify-between py-22 vp-600:py-16">
           <div className="h-full flex items-center">
-            <Image src={"/" + unlock.src} alt="badge" height={50} width={50} />
+            <Image src={"unlock.svg"} alt="badge" height={50} width={50} />
             <div className="ml-38 vp-600:ml-16">
               <h3 className=" text-white-white font-bold vp-1024:text-lg vp-600:text-sm">
                 New Post Inspiration
