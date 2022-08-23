@@ -8,7 +8,7 @@ import edit_green from "../public/static/icons/edit_green.svg";
 import upvote_emoji from "../public/static/icons/upvote_emoji.svg";
 import comment_emoji from "../public/static/icons/comment_emoji.svg";
 import love_emoji from "../public/static/icons/love_emoji.svg";
-const Posts = ({ posts, setReplyingId, discId }) => {
+const CommentThread = ({ posts, setReplyingId, discId }) => {
   const { _id, date, post, user, comments } = posts;
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
   return (
@@ -87,12 +87,8 @@ const Posts = ({ posts, setReplyingId, discId }) => {
         </div>
       </div>
 
-      <Link
-        passHref
-        href={`/discussions/view-discussion/${discId}/post/${_id}/`}
-      >
-        <a className="text-black-postInsp cursor-pointer">{parse(post)}</a>
-      </Link>
+      <a className="text-black-postInsp cursor-pointer">{parse(post)}</a>
+
       <div className=" mt-24 flex gap-8">
         <div className="flex items-center gap-2">
           <Image
@@ -141,4 +137,4 @@ const Posts = ({ posts, setReplyingId, discId }) => {
   );
 };
 
-export default Posts;
+export default CommentThread;
