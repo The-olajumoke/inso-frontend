@@ -18,7 +18,7 @@ const DiscussionBox = ({
   return (
     <div
       // style={{ minHeight: "110px" }}
-      className="vp-600:w-full h-145  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between hover:bg-primary-darkGreen text-gray-text hover:text-white-white hover:-translate-y-4"
+      className="vp-600:w-full h-145  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between  text-gray-text"
     >
       <div className=" flex items-start justify-between mb-15 h-85">
         <Link passHref href={`/discussions/view-discussion/${_id}`}>
@@ -33,7 +33,7 @@ const DiscussionBox = ({
           {" "}
           <div className=" flex justify-center items-center ">
             <Image
-              src={"/" + notifications_active.src}
+              src={notifications_active.src}
               alt="copy"
               layout="fixed"
               width="14"
@@ -42,7 +42,7 @@ const DiscussionBox = ({
           </div>
           <div className=" flex justify-center items-center">
             <Image
-              src={"/" + active_disc.src}
+              src={active_disc.src}
               alt="copy"
               layout="fixed"
               width="12"
@@ -55,7 +55,7 @@ const DiscussionBox = ({
               onClick={() => setOpenDropdown(true)}
             >
               <Image
-                src={"/" + more_icon_grey.src}
+                src={more_icon_grey.src}
                 alt="copy"
                 layout="fixed"
                 width="12"
