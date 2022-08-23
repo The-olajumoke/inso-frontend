@@ -4,6 +4,6 @@
 module.exports = {
   images: {
     loader: "akamai",
-    path: "/",
+    path: "https://s3.amazonaws.com/inso.ai",
   },
 };
