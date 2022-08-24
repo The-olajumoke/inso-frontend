@@ -224,6 +224,9 @@ color: #686868;
   font-weight: 400;
   text-decoration: underline;
 }
+.post-title p{
+  color: #161925;
+}
 /* ///////////////////////////////////////////////// */
 
 .react-calendar {

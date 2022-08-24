@@ -132,7 +132,14 @@ const ScoresSetting = ({
           ></span>
         </label>
       </div>
-      <div className="px-35 vp-600:px-16  bg-white-white flex-grow flex flex-col pb-24 rounded-b-md">
+      <div
+        className={`${
+          !addScoresToSettings && "opacity-20"
+        } px-35 vp-600:px-16  bg-white-white flex-grow flex flex-col pb-24 rounded-b-md relative`}
+      >
+        {!addScoresToSettings && (
+          <div className="absolute bg-black-overlay top-0 left-0 right-0 bottom-0"></div>
+        )}
         <div className="flex items-center mb-12">
           <button
             className={` ${
@@ -184,7 +191,7 @@ const ScoresSetting = ({
               <div className=" text-primary-darkGreen text-center">
                 Required
               </div>
-              <div className="text-primary-darkGreen text-center">Max. Pts</div>
+              <div className="text-primary-darkGreen text-center">Max</div>
             </div>
             <div className="  grid grid-cols-5  gap-5 mb-10">
               <div className=" col-span-3 text-xs text-gray-faintGray flex items-center font-normal">
@@ -195,7 +202,7 @@ const ScoresSetting = ({
                   type="number"
                   disabled={maxScore === "" ? true : false}
                   title={maxScore === "" ? "set Max score first" : ""}
-                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-blue-inputBlue border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
+                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-other-disabled border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
                   placeholder="0"
                   value={postMade}
                   onChange={(e) => setPostMade(e.target.value)}
@@ -218,7 +225,7 @@ const ScoresSetting = ({
                       ? "set Max score first"
                       : `Value cannot be more than ${diffInDays} day(s)`
                   }
-                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-blue-inputBlue border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
+                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-other-disabled border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
                   placeholder="0"
                   max={diffInDays}
                   value={activeDays}
@@ -244,7 +251,7 @@ const ScoresSetting = ({
                   type="number"
                   disabled={maxScore === "" ? true : false}
                   title={maxScore === "" ? "set Max score first" : ""}
-                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-blue-inputBlue border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
+                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-other-disabled border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
                   placeholder="0"
                   value={comments}
                   onChange={(e) => setComments(e.target.value)}
@@ -255,12 +262,12 @@ const ScoresSetting = ({
               </div>
             </div>
             <div className={` grid grid-cols-5  gap-5 mb-10  `}>
-              <div className="col-span-3 text-xs text-gray-faintGray flex items-center font-normal ">
+              <div className="col-span-3 text-xs text-gray-faintGray disabled:bg-other-disabled flex items-center font-normal ">
                 Use post inspirations
               </div>
               <div className="">
                 <div
-                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-blue-inputBlue border-none text-black-postInsp  placeholder:text-gray-faintGray text-sm flex justify-center items-center text-center cursor-pointer"
+                  className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-other-disabled border-none text-black-postInsp  placeholder:text-gray-faintGray text-sm flex justify-center items-center text-center cursor-pointer"
                   onClick={() => setOpenPostDropdown(!openPostDropdown)}
                 >
                   <h6 className="mr-12">{usePostInsp}</h6>
@@ -320,7 +327,7 @@ const ScoresSetting = ({
               </span>
               <input
                 type="number"
-                className="w-62 h-30 rounded-xs bg-blue-inputBlue border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-between items-center text-center font-medium"
+                className="w-62 h-30 rounded-xs bg-blue-inputBlue border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-between items-center text-center font-medium p-1"
                 placeholder="0"
                 value={rubricTotalScore}
                 onChange={(e) => setRubricTotalScore(e.target.value)}
@@ -332,7 +339,7 @@ const ScoresSetting = ({
               </div>
 
               <div className="text-center text-xs text-primary-darkGreen">
-                Max. Pts
+                Max
               </div>
             </div>
             <div className="">
@@ -344,7 +351,7 @@ const ScoresSetting = ({
                   <div className=" col-span-4 text-xs text-primary-darkGreen relative">
                     <div
                       style={{ minHeight: "30px" }}
-                      className=" w-full rounded-xs bg-blue-postInsp border-none px-10 text-black-postInsp text-sm flex items-center"
+                      className=" w-full rounded-xs bg-blue-inputBlue border-none px-10 text-black-postInsp text-sm flex items-center"
                     >
                       {criteria}
                     </div>
@@ -430,16 +437,14 @@ const ScoresSetting = ({
                   disabled={!addScoresToSettings || maxScore === ""}
                   onClick={handleSubmitScores}
                 >
-                  Update
+                  Next
                 </button>
               ) : (
                 <button
                   className="btn px-17 h-32 text-md"
                   disabled={!addScoresToSettings || rubricTotalScore === ""}
                   onClick={handleSubmitScores}
-                >
-                  Update
-                </button>
+                ></button>
               )}
             </div>
           )}

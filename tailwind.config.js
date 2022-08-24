@@ -69,6 +69,7 @@ module.exports = {
         darkPretzl: "#001E2F",
         analText: "#2E2E2E",
         postInsp: "#161925",
+        overlay: "rgba(255, 255, 255,0.1)",
       },
       other: {
         danger: " #E84949",

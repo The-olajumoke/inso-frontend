@@ -18,6 +18,8 @@ import { joinDiscussion } from "@/context/actions/discussion/joinDiscussion";
 import add_icon_white from "../../public/static/icons/add_icon_white.svg";
 import sort from "../../public/static/new_icons/sort.svg";
 import archive from "../../public/static/new_icons/archive.svg";
+import { getDiscCreated } from "@/context/actions/discussion/getDiscussionCreated";
+import { getDiscJoined } from "@/context/actions/discussion/getDiscussionJoined";
 const Index = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
@@ -68,6 +70,17 @@ const Index = () => {
     createArchivedDiscussion(API_URL, token, discId)(discussionDispatch);
   };
   const filterOptions = ["All", "Discussions created", "Discussion joined"];
+  useEffect(() => {
+    if (filter === "All") {
+      getDiscussions(API_URL, token, userId)(discussionDispatch);
+    }
+    if (filter === "Discussions created") {
+      getDiscCreated(API_URL, token, userId)(discussionDispatch);
+    }
+    if (filter === "Discussion joined") {
+      getDiscJoined(API_URL, token, userId)(discussionDispatch);
+    }
+  }, [filter]);
 
   const handleJoinDiscussion = (code) => {
     joinDiscussion(API_URL, token, userId, code)(discussionDispatch);
