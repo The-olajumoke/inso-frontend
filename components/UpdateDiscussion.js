@@ -36,7 +36,7 @@ const UpdateDiscussion = ({
             <button className="btn w-90 h-32 text-sm">
               <WhiteLoader />
             </button>
-          ) : createData !== null ? (
+          ) : (
             <button
               className="btn w-90 h-32 text-sm"
               onClick={() => {
@@ -45,14 +45,6 @@ const UpdateDiscussion = ({
               }}
             >
               Next
-            </button>
-          ) : (
-            <button
-              className="btn w-90 h-32 text-sm"
-              onClick={handleCreateDisc}
-              disabled={discName === "" ? true : false}
-            >
-              Update
             </button>
           )}
         </div>

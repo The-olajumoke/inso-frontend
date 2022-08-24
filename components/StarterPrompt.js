@@ -76,7 +76,7 @@ const StarterPrompt = ({
             <button className="btn w-75 h-32 text-md px-22">
               <WhiteLoader />
             </button>
-          ) : starterPromptData !== null ? (
+          ) : (
             <button
               className="btn w-75 h-32  text-sm px-22"
               onClick={() => {
@@ -84,13 +84,6 @@ const StarterPrompt = ({
               }}
             >
               Next
-            </button>
-          ) : (
-            <button
-              className="btn w-75 h-32 text-sm px-22"
-              onClick={handleStarterPrompt}
-            >
-              Update
             </button>
           )}
         </div>

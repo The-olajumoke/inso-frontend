@@ -34,10 +34,14 @@ const Calendar = ({
       </div>
 
       <div
-        className={`${
-          !addCalendarToSettings && "opacity-20"
-        }  px-16 vp-min-601:px-38 py-10  flex flex-col justify-between  bg-white-white rounded-b-md`}
+        className={`px-16 vp-min-601:px-38 py-10  flex flex-col justify-between  bg-white-white rounded-b-md relative`}
       >
+        {!addCalendarToSettings && (
+          <div
+            style={{ background: "rgba(255, 255, 255,0.8)" }}
+            className="absolute  top-0 left-0 right-0 bottom-0 z-9999"
+          ></div>
+        )}
         <span
           style={{ fontSize: "11px" }}
           className=" text-gray-analyticsGray mb-11"
@@ -83,7 +87,7 @@ const Calendar = ({
               onClick={handleCreateCalendar}
               disabled={addCalendarToSettings ? false : true}
             >
-              Update
+              Next
             </button>
           )}
         </div>
