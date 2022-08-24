@@ -35,7 +35,7 @@ const DiscussionSettings = () => {
   const [discId, setDiscId] = useState("");
   const [discName, setDiscName] = useState("");
   const [starterPrompt, setStarterPrompt] = useState(
-    "<p>For this discussion, we are going to explore ______</p>"
+    "<p>For this discussion, we are going to explore ___</p>"
   );
 
   const [starterPromptValue, setStarterPromptValue] = useState("");
