@@ -28,12 +28,13 @@ const Dropdown = ({
             />
           </div>
         )}
-        <span className="text-xs">{value}</span>
-        {showTitle ? (
+        <span className="text-xs">{title}</span>
+
+        {/* {showTitle ? (
           <span className="text-xs">{title}</span>
         ) : (
           <span className="text-xs">{value}</span>
-        )}
+        )} */}
       </div>
       {openDropdown && (
         <>

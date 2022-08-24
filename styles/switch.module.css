@@ -22,8 +22,8 @@ height: 36px; */
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
-    background-color: grey;
+    background-color: rgb(255, 255, 255,0.7);
+    /* background-color: grey; */
 
     -webkit-transition: 0.4s;
     transition: 0.4s;

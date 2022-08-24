@@ -74,6 +74,7 @@ const HeroPage = () => {
               layout="intrinsic"
               width="129"
               height="60"
+              priority
             />
           </div>
           <div className="flex items-center  gap-8 vp-600:gap-4">

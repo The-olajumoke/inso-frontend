@@ -24,8 +24,8 @@ import SettingsSuccess from "@/components/SettingsSuccess";
 import LargeSpinner from "@/components/LargeSpinner";
 import arrow_back_blue from "../../../public/static/icons/arrow_back_blue.svg";
 
-// import checkbox_blue from "../../../public/static/icons/checkbox_blue.svg";
 import checkbox_blue from "../../../public/static/icons/arrow_back_blue.svg";
+// import checkbox_blue from "../../../public/static/icons/checkbox_blue.svg";
 const DiscussionSettings = () => {
   const router = useRouter();
   const id = router.query.id;
@@ -36,7 +36,7 @@ const DiscussionSettings = () => {
   const [discId, setDiscId] = useState("");
   const [discName, setDiscName] = useState("");
   const [starterPrompt, setStarterPrompt] = useState(
-    "<p>For this discussion, we are going to explore ______</p>"
+    "<p>For this discussion, we are going to explore ___</p>"
   );
 
   const [starterPromptValue, setStarterPromptValue] = useState("");
