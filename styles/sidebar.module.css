@@ -1,4 +1,55 @@
+.hiddenScrollbar {
+    overflow-y: scroll;
+}
+.hiddenScrollbar::-webkit-scrollbar {
+    display: none;
+}
 .sidebarContainer {
 padding: 35px 0;
     background: #FFFFFF;
+}
+.sidebarContainer {
+    width: fit-content;
+    /* height: 100vh; */
+    transition: all 350ms ease-out;
+    z-index: 99;
+}
+
+.linkContainer {
+    /* border: white 2px dashed; */
+    width: 100%;
+    position: relative;
+}
+
+.linkContainer:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transition: all 350ms ease-out;
+    z-index: 99999999;
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 99999999;
+    top: 50%;
+    left: 7rem;
+    transform: translateY(-55%);
+    pointer-events: none;
+    opacity: 0;
+    /* order: 2; */
+    visibility: hidden;
+    
+}
+
+.arrowTip {
+    position: absolute;
+    content: "";
+    background: #525AF2;
+    top: 50%;
+    left: -3%;
+    height: 20px;
+    width: 20px;
+    transform: translateY(-50%) rotate(-45deg);
+    border-radius: 4px;
+    z-index: -1;
 }

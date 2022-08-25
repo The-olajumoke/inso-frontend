@@ -18,7 +18,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
           <div className="flex items-center justify-center mr-12">
             <Image
               src={avatar.src}
-              alt="back"
+              alt="user"
               layout="fixed"
               width="40"
               height="40"
