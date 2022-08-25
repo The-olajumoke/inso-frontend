@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
+// import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import { createPost } from "@/context/actions/discussion/post";
 import { API_URL } from "@/utils/url";
@@ -26,11 +26,13 @@ const CommentBox = ({
   discId,
   replyingId,
   postSuccess,
+  participants,
 }) => {
   const [token, setToken] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [btnIsActive, setBtnIsActive] = useState(false);
   const [textValue, setTextValue] = useState("");
+  const [mentionsArray, setMentionsArray] = useState([]);
   // console.log(convertToRaw(editorState.getCurrentContent()));
 
   const onEditorStateChange = (editorState) => {
@@ -38,7 +40,25 @@ const CommentBox = ({
     const text = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     setTextValue(text);
   };
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      console.log(menti);
+      setMentionsArray(menti);
+    }
+  }, [participants]);
 
+  const mention = {
+    seperator: "",
+    trigger: "@",
+    suggestions: mentionsArray,
+  };
   const {
     discussionDispatch,
     discussionState: {

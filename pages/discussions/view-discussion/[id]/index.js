@@ -670,7 +670,7 @@ const ViewDiscussion = () => {
                   </div>
 
                   <div
-                    className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar} `}
+                    className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar}  `}
                   >
                     <div
                       className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
@@ -689,7 +689,7 @@ const ViewDiscussion = () => {
                   {/* COMMENT BOX */}
                   {showScoresSheet !== true && (
                     <div
-                      className={`px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white ${
+                      className={`px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0  z-9999 bg-white-white ${
                         hideComments && "hidden"
                       }`}
                     >
@@ -708,6 +708,7 @@ const ViewDiscussion = () => {
                           discId={discId}
                           replyingId={replyingId}
                           postSuccess={postSuccess}
+                          participants={allParticipants}
                         />
                       )}
                       {activeCommentBox === "Ask questions" && (
