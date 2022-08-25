@@ -9,7 +9,7 @@ const RecentPost = ({ notification }) => {
     <div className=" flex pt-10 items-start w-full first:pt-0">
       <div className="mr-25 mt-10 flex items-start  pt-5 vp-980:mr-12">
         <Image
-          src={"/" + disc_inactive.src}
+          src={ disc_inactive.src}
           alt="discussion"
           draggable="false"
           layout="intrinsic"

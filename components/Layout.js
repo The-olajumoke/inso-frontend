@@ -93,7 +93,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
             onClick={() => setOpenSideBar(!openSideBar)}
           >
             <Image
-              src={openSideBar ? `/${hamburger_open.src}` : `/${hamburger.src}`}
+              src={openSideBar ? `${hamburger_open.src}` : `${hamburger.src}`}
               alt="menu "
               draggable="false"
               layout="fixed"
@@ -103,7 +103,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
           </div>
           <div className="flex justify-center items-center">
             <Image
-              src={"/" + inso_logo.src}
+              src={inso_logo.src}
               alt="inso_logo "
               draggable="false"
               layout="fixed"
@@ -114,7 +114,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
           <Link passHref href="/notifications">
             <div className="flex justify-center items-center ">
               <Image
-                src={"/" + bell_black.src}
+                src={bell_black.src}
                 alt="notifications"
                 draggable="false"
                 layout="fixed"

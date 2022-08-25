@@ -97,7 +97,7 @@ const CreateDiscussion = () => {
           <Link href="/discussions" passHref>
             <div className="flex items-center justify-center">
               <Image
-                src={"/" + arrow_back_blue.src}
+                src={ arrow_back_blue.src}
                 alt="back"
                 layout="fixed"
                 width="30"

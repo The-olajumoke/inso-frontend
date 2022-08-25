@@ -9,7 +9,7 @@ function RegLayout({ children }) {
         <div>
           <Image
         
-            src={"/" + inso_logo.src}
+            src={ inso_logo.src}
             alt="Inso Logo"
             draggable="false"
             layout="fixed"

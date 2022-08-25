@@ -35,7 +35,9 @@ padding: 16px !important ;
  color:#686868 !important ;
  cursor: pointer;
 }
-.public-DraftStyleDefault-block{
+
+.public-DraftStyleDefault-block,
+.public-DraftEditor-content[contenteditable=true] {
   width: 100% !important;
 }
 body{

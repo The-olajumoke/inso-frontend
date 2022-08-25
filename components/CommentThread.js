@@ -17,7 +17,7 @@ const CommentThread = ({ posts, setReplyingId, discId }) => {
         <div className="flex  items-center">
           <div className="flex items-center justify-center">
             <Image
-              src={"/" + avatar.src}
+              src={avatar.src}
               alt="back"
               layout="fixed"
               width="40"
@@ -43,7 +43,7 @@ const CommentThread = ({ posts, setReplyingId, discId }) => {
             onClick={() => setOpenEditDropdown(true)}
           >
             <Image
-              src={"/" + more_icon_grey.src}
+              src={more_icon_grey.src}
               alt="back"
               layout="fixed"
               width="6"
@@ -71,7 +71,7 @@ const CommentThread = ({ posts, setReplyingId, discId }) => {
                                flex justify-center items-center"
                     >
                       <Image
-                        src={"/" + edit_green.src}
+                        src={edit_green.src}
                         alt="edit"
                         layout="fixed"
                         width="12"
@@ -92,7 +92,7 @@ const CommentThread = ({ posts, setReplyingId, discId }) => {
       <div className=" mt-24 flex gap-8">
         <div className="flex items-center gap-2">
           <Image
-            src={"/" + upvote_emoji.src}
+            src={upvote_emoji.src}
             alt="back"
             layout="fixed"
             width="24"
@@ -111,7 +111,7 @@ const CommentThread = ({ posts, setReplyingId, discId }) => {
             }
           >
             <Image
-              src={"/" + comment_emoji.src}
+              src={comment_emoji.src}
               alt="back"
               layout="fixed"
               width="24"
@@ -123,7 +123,7 @@ const CommentThread = ({ posts, setReplyingId, discId }) => {
         </div>
         {/* <div className="flex items-center gap-2">
           <Image
-            src={"/" + love_emoji.src}
+            src={ love_emoji.src}
             alt="back"
             layout="fixed"
             width="20"

@@ -7,7 +7,7 @@ const Header = ({ navSize, handleNavSize, searchBar }) => {
     <div className="h-60 flex sticky top-0 bg-white-white z-50 w-full px-50 items-center shadow-sm ">
       <div>
         <Image
-          src={"/"+ inso_logo.src}
+          src={inso_logo.src}
           alt="Inso Logo"
           draggable="false"
           layout="fixed"

@@ -95,7 +95,7 @@ const DiscussionBox = ({
                                flex justify-center items-center"
                         >
                           <Image
-                            src={"/" + edit_grey.src}
+                            src={edit_grey.src}
                             alt="edit"
                             layout="fixed"
                             width="20"
@@ -119,7 +119,7 @@ const DiscussionBox = ({
                                flex justify-center items-center"
                       >
                         <Image
-                          src={"/" + archive_grey.src}
+                          src={archive_grey.src}
                           alt="archived"
                           layout="fixed"
                           width="20"
@@ -143,7 +143,7 @@ const DiscussionBox = ({
                                flex justify-center items-center"
                       >
                         <Image
-                          src={"/" + archive_grey.src}
+                          src={archive_grey.src}
                           alt="archived"
                           layout="fixed"
                           width="20"
@@ -163,7 +163,7 @@ const DiscussionBox = ({
                     >
                       <div className=" mr-10 flex justify-center items-center">
                         <Image
-                          src={"/" + copy_grey.src}
+                          src={copy_grey.src}
                           alt="edit"
                           layout="fixed"
                           width="20"
@@ -190,7 +190,7 @@ const DiscussionBox = ({
         </span>
         <div className="flex justify-center">
           <Image
-            src={"/" + users_icon.src}
+            src={users_icon.src}
             alt="copy"
             layout="fixed"
             width="20"

@@ -28,7 +28,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
           {" "}
           <div className=" flex justify-center items-center ">
             <Image
-              src={"/" + notifications_active.src}
+              src={notifications_active.src}
               alt="copy"
               layout="fixed"
               width="14"
@@ -37,7 +37,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
           </div>
           <div className=" flex justify-center items-center">
             <Image
-              src={"/" + active_disc.src}
+              src={active_disc.src}
               alt="copy"
               layout="fixed"
               width="12"
@@ -50,7 +50,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
               onClick={() => setOpenDropdown(true)}
             >
               <Image
-                src={"/" + more_icon_grey.src}
+                src={more_icon_grey.src}
                 alt="copy"
                 layout="fixed"
                 width="12"
@@ -77,7 +77,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                                flex justify-center items-center"
                         >
                           <Image
-                            src={"/" + edit_grey.src}
+                            src={edit_grey.src}
                             alt="edit"
                             layout="fixed"
                             width="20"
@@ -102,7 +102,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                                flex justify-center items-center"
                       >
                         <Image
-                          src={"/" + archive_grey.src}
+                          src={archive_grey.src}
                           alt="archive"
                           layout="fixed"
                           width="20"
@@ -122,7 +122,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
                     >
                       <div className=" mr-10 flex justify-center items-center">
                         <Image
-                          src={"/" + copy_grey.src}
+                          src={copy_grey.src}
                           alt="edit"
                           layout="fixed"
                           width="20"
@@ -149,7 +149,7 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
         </span>
         <div className="flex justify-center">
           <Image
-            src={"/" + users_icon.src}
+            src={users_icon.src}
             alt="copy"
             layout="fixed"
             width="20"
