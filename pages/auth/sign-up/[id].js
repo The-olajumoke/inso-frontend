@@ -92,7 +92,7 @@ const SignUpPageWithInsoCode = () => {
   const passwordHandler = () => {
     if (!validatePassword(password)) {
       setPasswordError(
-        "8 characters long, include an uppercase, a lowercase, a number and a special character."
+        "At least 8 characters,  include an uppercase, a lowercase, a number and a special character."
       );
     } else {
       setPasswordError("");

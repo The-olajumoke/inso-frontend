@@ -56,15 +56,15 @@ const BarchartDash = ({ thick, radius, labels, barData }) => {
         // },
       },
     },
-    // plugins: {
-    //   legend: {
-    //     display: false,
-    //   },
-    // },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
 
   return (
-    <div className=" bg-white-white pt-20">
+    <div className=" bg-white-white pt-30 w-full">
       <Bar height={190} data={data} options={options} />
     </div>
   );

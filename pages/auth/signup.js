@@ -92,7 +92,7 @@ const SignUpPage = () => {
   const passwordHandler = () => {
     if (!validatePassword(password)) {
       setPasswordError(
-        "8 characters long, include an uppercase, a lowercase, a number and a special character."
+        "At least 8 characters, include an uppercase, a lowercase, a number and a special character."
       );
     } else {
       setPasswordError("");
@@ -137,7 +137,7 @@ const SignUpPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src={ cancel_white.src}
+                  src={cancel_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -151,7 +151,7 @@ const SignUpPage = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src={ arrow_left_white.src}
+                  src={arrow_left_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -232,7 +232,7 @@ const SignUpPage = () => {
             >
               <div>
                 <Image
-                  src={ google.src}
+                  src={google.src}
                   alt="google Icon"
                   draggable="false"
                   layout="fixed"

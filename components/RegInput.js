@@ -92,7 +92,7 @@ const RegInput = ({
           <div className={styles.eyeIcon}>
             {inputType === "password" && (
               <Image
-                src={`/${closed_eye.src}`}
+                src={`${closed_eye.src}`}
                 alt="see-password"
                 draggable="false"
                 layout="intrinsic"
@@ -104,7 +104,7 @@ const RegInput = ({
             )}
             {inputType === "text" && (
               <Image
-                src={value.length ? `/${closed_eye.src}` : `/${open_eye.src}`}
+                src={value.length ? `${closed_eye.src}` : `${open_eye.src}`}
                 alt="see-password"
                 draggable="false"
                 layout="intrinsic"

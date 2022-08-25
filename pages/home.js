@@ -14,6 +14,7 @@ import big_badge from "../public/static/illustrations/big_badge.svg";
 import unlock from "../public/static/illustrations/unlock.svg";
 import close from "../public/static/icons/close.svg";
 import avatar from "../public/static/images/avatar.svg";
+import Link from "next/link";
 // import ChordChart from "chart/ChordChart";
 
 const Home = () => {
@@ -59,7 +60,7 @@ const Home = () => {
   }, [userId, token]);
 
   // useEffect(() => {
-  //   if (discussionData !== null) {
+  //   if (discussionData !== null && discussionData.length) {
   //     const discArry = [
   //       discussionData[0],
   //       discussionData[1],
@@ -67,7 +68,7 @@ const Home = () => {
   //       discussionData[3],
   //     ];
   //     console.log(discArry);
-  //     setAllDiscussions(discArry);
+  //     // setAllDiscussions(discArry);
   //   }
   // }, [error, loading, discussionData]);
 
@@ -132,11 +133,22 @@ const Home = () => {
                 Discussions
               </h4>
 
-              <div className="flex flex-wrap gap-6">
-                {allDiscussions.map((disc, index) => (
-                  <DasbboardDiscBox discussion={disc} key={index} />
-                ))}
-              </div>
+              {allDiscussions.length ? (
+                <div className="flex flex-wrap gap-6">
+                  {allDiscussions.map((disc, index) => (
+                    <DasbboardDiscBox discussion={disc} key={index} />
+                  ))}
+                </div>
+              ) : (
+                <div>
+                  {" "}
+                  <Link href="/discussions/create-discussion" passHref>
+                    <div className=" cursor-pointer h-full flex justify-center items-center mt-150">
+                      <p className=" font-medium">Create a discussion</p>
+                    </div>
+                  </Link>{" "}
+                </div>
+              )}
             </div>
           </div>
           <div className=" flex w-300 vp-1024:w-full vp-1024:justify-center">
@@ -156,7 +168,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col w-full  shadow-sm  rounded-lg bg-white-white items-center pt-50 flex-grow">
+              <div className="flex flex-col w-full  shadow-sm  rounded-lg bg-white-white items-center pt-50 flex-grow justify-between">
                 <div className="flex items-center gap-1">
                   <h6 className="mb-3 text-primary-darkGreen font-semibold capitalize ">
                     {firstName}
@@ -167,7 +179,7 @@ const Home = () => {
                 </div>
                 <span className=" text-primary-darkGreen">1050 posts</span>
 
-                <div className="h-full w-full py-27 px-30">
+                <div className="h-full w-full py-27 px-20 flex items-end">
                   <BarchartDash
                     thick={10}
                     radius={5}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
-import avatar from "../public/static/images/avatar.svg";
+import avatar from "../public/static/images/avatar_user.svg";
 import more_icon_grey from "../public/static/icons/more_icon_grey.svg";
 import edit_green from "../public/static/icons/edit_green.svg";
 import upvote_emoji from "../public/static/icons/upvote_emoji.svg";

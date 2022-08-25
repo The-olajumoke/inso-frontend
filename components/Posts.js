@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
-import avatar from "../public/static/images/avatar.svg";
+import avatar from "../public/static/images/avatar_user.svg";
 import more_icon_grey from "../public/static/icons/more_icon_grey.svg";
 import edit_green from "../public/static/icons/edit_green.svg";
 import upvote_emoji from "../public/static/icons/upvote_emoji.svg";
@@ -12,10 +12,10 @@ const Posts = ({ posts, setReplyingId, discId }) => {
   const { _id, date, post, user, comments } = posts;
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
   return (
-    <div className={` py-10 bg-white-white  mb-6`}>
-      <div className=" flex justify-between items-center">
-        <div className="flex  items-center">
-          <div className="flex items-center justify-center">
+    <div className={` py-10 bg-white-white  mb-6 pl-16`}>
+      <div className=" flex items-start">
+        <div className="w-full flex items-start">
+          <div className="flex items-center justify-center mr-12">
             <Image
               src={avatar.src}
               alt="back"
@@ -24,19 +24,76 @@ const Posts = ({ posts, setReplyingId, discId }) => {
               height="40"
             />
           </div>
-          <div className="ml-13">
-            <p className=" font-medium capitalize text-black-postInsp">
-              {user.f_name} {user.l_name}
-              <span className=" text-primary-darkGreen text-xs font-normal ml-3 uppercase">
-                @{user.username}
-              </span>
-            </p>
-            <span className="text-xs text-gray-faintGray">
-              posted 6 mins ago
-            </span>
+
+          <div className=" flex flex-col">
+            <div className="flex  items-center">
+              <div className="">
+                <p className=" font-medium capitalize text-black-postInsp">
+                  {user.f_name} {user.l_name}
+                  <span className=" text-primary-darkGreen text-xs font-normal ml-3 uppercase">
+                    @{user.username}
+                  </span>
+                </p>
+                <span className="text-xs text-gray-faintGray">
+                  posted 6 mins ago
+                </span>
+              </div>
+            </div>
+            <Link
+              passHref
+              href={`/discussions/view-discussion/${discId}/post/${_id}/`}
+            >
+              <a className="text-black-postInsp cursor-pointer">
+                {parse(post.post)}
+              </a>
+            </Link>
+            <div className=" mt-24 flex items-center gap-8">
+              <div className="flex items-center gap-2">
+                <Image
+                  src={upvote_emoji.src}
+                  alt="back"
+                  layout="fixed"
+                  width="24"
+                  height="24"
+                  className=" cursor-pointer"
+                />
+                <p className=" text-black-postInsp">0</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <div
+                  className="flex items-center"
+                  onClick={() =>
+                    setReplyingId({
+                      user: user.username,
+                      id: _id,
+                    })
+                  }
+                >
+                  <Image
+                    src={comment_emoji.src}
+                    alt="back"
+                    layout="fixed"
+                    width="24"
+                    height="24"
+                    className=" cursor-pointer"
+                  />
+                </div>
+                <p className=" text-black-postInsp">{comments.length}</p>
+              </div>
+              {/* <div className="flex items-center gap-2">
+          <Image
+            src={ love_emoji.src}
+            alt="back"
+            layout="fixed"
+            width="20"
+            height="20"
+            className=" cursor-pointer"
+          />
+          <p className=" text-black-postInsp">12</p>
+        </div> */}
+            </div>
           </div>
         </div>
-
         <div className="flex items-center justify-center relative">
           <div
             className="flex items-center justify-center "
@@ -85,58 +142,6 @@ const Posts = ({ posts, setReplyingId, discId }) => {
             </>
           )}
         </div>
-      </div>
-
-      <Link
-        passHref
-        href={`/discussions/view-discussion/${discId}/post/${_id}/`}
-      >
-        <a className="text-black-postInsp cursor-pointer">{parse(post.post)}</a>
-      </Link>
-      <div className=" mt-24 flex items-center gap-8">
-        <div className="flex items-center gap-2">
-          <Image
-            src={upvote_emoji.src}
-            alt="back"
-            layout="fixed"
-            width="24"
-            height="24"
-            className=" cursor-pointer"
-          />
-          <p className=" text-black-postInsp">0</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <div
-            className="flex items-center"
-            onClick={() =>
-              setReplyingId({
-                user: user.username,
-                id: _id,
-              })
-            }
-          >
-            <Image
-              src={comment_emoji.src}
-              alt="back"
-              layout="fixed"
-              width="24"
-              height="24"
-              className=" cursor-pointer"
-            />
-          </div>
-          <p className=" text-black-postInsp">{comments.length}</p>
-        </div>
-        {/* <div className="flex items-center gap-2">
-          <Image
-            src={ love_emoji.src}
-            alt="back"
-            layout="fixed"
-            width="20"
-            height="20"
-            className=" cursor-pointer"
-          />
-          <p className=" text-black-postInsp">12</p>
-        </div> */}
       </div>
     </div>
   );

@@ -3,22 +3,32 @@ export const toolbar = {
   options: [, "emoji", "inline", "image", "link"],
 
   emoji: {
-    icon: "/static/icons/emoji_icon.svg",
+    icon: "/static/new_icons/emoji.svg",
+    // className: "bordered-option-classname",
   },
   inline: {
     options: ["bold", "italic", "underline"],
     bold: {
-      icon: "/static/icons/font_icon.svg",
-      className: "bordered-option-classname",
+      icon: "/static/new_icons/bold.svg",
+      // className: "bordered-option-classname",
     },
-    italic: { className: "bordered-option-classname" },
-    underline: { className: "bordered-option-classname" },
+    italic: {
+      icon: "/static/new_icons/italic.svg",
+      // className: "bordered-option-classname",
+    },
+    underline: {
+      icon: "/static/new_icons/underline.svg",
+      // className: "bordered-option-classname",
+    },
   },
   link: {
     options: ["link"],
+    link: {
+      icon: "/static/new_icons/link.svg",
+    },
   },
   image: {
-    icon: "/static/icons/image.svg",
+    icon: "/static/new_icons/photo.svg",
     uploadCallback: uploadFile,
     urlEnabled: true,
     alt: { present: true, mandatory: false },

@@ -2,21 +2,27 @@ const uploadFile = () => {};
 export const toolbarSettings = {
   options: ["inline", "image", "emoji"],
   emoji: {
-    icon: "/static/icons/emoji_icon.svg",
-    className: "bordered-option-classname",
+    icon: "/static/new_icons/emoji.svg",
+    // className: "bordered-option-classname",
   },
   inline: {
     options: ["bold", "italic", "underline"],
     bold: {
+      icon: "/static/new_icons/bold.svg",
       className: "bordered-option-classname",
-      icon: "/static/icons/font_icon.svg",
-      className: "bordered-option-classname ",
     },
-    italic: { className: "bordered-option-classname" },
-    underline: { className: "bordered-option-classname" },
+    italic: {
+      icon: "/static/new_icons/italic.svg",
+      className: "bordered-option-classname",
+    },
+    underline: {
+      icon: "/static/new_icons/underline.svg",
+      className: "bordered-option-classname",
+    },
   },
 
   image: {
+    icon: "/static/new_icons/photo.svg",
     uploadCallback: uploadFile,
     icon: "/static/icons/image_icon.svg",
     urlEnabled: true,

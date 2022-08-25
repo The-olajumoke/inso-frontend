@@ -50,7 +50,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
         {showHeader === false && (
           <div className="pl-45 mb-25">
             <Image
-              src={+logo_without_text.src}
+              src={logo_without_text.src}
               alt="inso"
               draggable="false"
               width="40"
