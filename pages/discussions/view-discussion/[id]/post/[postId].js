@@ -71,7 +71,7 @@ const Post = () => {
             <Link passHref href={`/discussions/view-discussion/${id}`}>
               <div className="flex items-center justify-center">
                 <Image
-                  src={"/" + arrow_back_blue.src}
+                  src={arrow_back_blue.src}
                   alt="back"
                   layout="fixed"
                   width="30"
@@ -87,7 +87,7 @@ const Post = () => {
             <div className="flex  items-center">
               <div className="flex items-center justify-center">
                 <Image
-                  src={"/" + avatar.src}
+                  src={avatar.src}
                   alt="user"
                   layout="fixed"
                   width="40"

@@ -142,7 +142,7 @@ const LoginPageWithCode = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src={"/" + cancel_white.src}
+                  src={ cancel_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -156,7 +156,7 @@ const LoginPageWithCode = () => {
             <Link passHref href="/">
               <button>
                 <Image
-                  src={"/" + arrow_left_white.src}
+                  src={ arrow_left_white.src}
                   alt="Inso Logo"
                   draggable="false"
                   layout="fixed"
@@ -201,7 +201,7 @@ const LoginPageWithCode = () => {
             >
               <div className="flex items-center justify-center">
                 <Image
-                  src={"/" + google.src}
+                  src={google.src}
                   alt="google Icon"
                   draggable="false"
                   layout="fixed"

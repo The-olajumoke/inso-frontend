@@ -128,7 +128,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
         </div>
         {/* <div className="flex items-center gap-2">
           <Image
-            src={"/" + love_emoji.src}
+            src={ love_emoji.src}
             alt="back"
             layout="fixed"
             width="20"

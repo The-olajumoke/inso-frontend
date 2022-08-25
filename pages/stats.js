@@ -109,7 +109,7 @@ const Index = () => {
                 </div>
                 <div className="mb-36 flex items-center gap-10 ">
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -117,7 +117,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -125,7 +125,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -133,7 +133,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -141,7 +141,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -149,7 +149,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -157,7 +157,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -165,7 +165,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -173,7 +173,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -181,7 +181,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -189,7 +189,7 @@ const Index = () => {
                     height="45"
                   />
                   <Image
-                    src={"/" + badge.src}
+                    src={ badge.src}
                     alt=" Discussion dropdown "
                     draggable="false"
                     layout="intrinsic"
@@ -286,7 +286,7 @@ const Index = () => {
                       Discussions
                     </span>
                     <Image
-                      src={"/" + arrow_down_green.src}
+                      src={ arrow_down_green.src}
                       alt=" Discussion dropdown "
                       draggable="false"
                       layout="fixed"
@@ -296,7 +296,7 @@ const Index = () => {
                   </div>
                   <div className=" h-34  bg-other-lightRed  rounded-xl px-15 vp-min-601:px-10  flex items-center ">
                     <Image
-                      src={"/" + clock.src}
+                      src={ clock.src}
                       alt=" Discussion dropdown "
                       draggable="false"
                       layout="fixed"
@@ -363,7 +363,7 @@ const Index = () => {
                     <div className="h-34 w-95 rounded bg-border-green text-xs flex justify-center items-center">
                       Sort by...
                       <Image
-                        src={"/" + arrow_down_green.src}
+                        src={ arrow_down_green.src}
                         alt=" Discussion dropdown "
                         draggable="false"
                         layout="fixed"
@@ -375,7 +375,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src={"/" + upvote_grey.src}
+                      src={ upvote_grey.src}
                       alt="upvotes"
                       draggable="false"
                       layout="fixed"
@@ -385,7 +385,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src={"/" + disc_grey.src}
+                      src={ disc_grey.src}
                       alt="discussions"
                       draggable="false"
                       layout="fixed"
@@ -395,7 +395,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src={"/" + emoji_grey.src}
+                      src={ emoji_grey.src}
                       alt="emojis"
                       draggable="false"
                       layout="fixed"
@@ -423,7 +423,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src={"/" + avatar.src}
+                      src={ avatar.src}
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -447,7 +447,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src={"/" + avatar.src}
+                      src={ avatar.src}
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -471,7 +471,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src={"/" + avatar.src}
+                      src={ avatar.src}
                       alt="user"
                       draggable="false"
                       layout="fixed"
@@ -495,7 +495,7 @@ const Index = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src={"/" + avatar.src}
+                      src={ avatar.src}
                       alt="user"
                       draggable="false"
                       layout="fixed"

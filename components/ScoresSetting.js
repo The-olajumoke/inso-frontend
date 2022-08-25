@@ -272,7 +272,7 @@ const ScoresSetting = ({
                 >
                   <h6 className="mr-12">{usePostInsp}</h6>
                   <Image
-                    src={"/" + small_arrow_down.src}
+                    src={ small_arrow_down.src}
                     alt="dropdown"
                     layout="fixed"
                     width="8"
@@ -391,7 +391,7 @@ const ScoresSetting = ({
                     onClick={() => setShowInput(true)}
                   >
                     <Image
-                      src={"/" + add_postInsp_blue.src}
+                      src={ add_postInsp_blue.src}
                       alt="back"
                       layout="fixed"
                       width="20"

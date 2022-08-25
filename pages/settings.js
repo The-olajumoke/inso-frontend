@@ -75,7 +75,7 @@ const Settings = () => {
         {incompleteProfile && (
           <div className="h-80 bg-primary-darkGreen pl-50  flex items-center font-poppins">
             <Image
-              src={"/" + user_profile.src}
+              src={ user_profile.src}
               alt="user "
               draggable="false"
               layout="fixed"
@@ -98,7 +98,7 @@ const Settings = () => {
           <div className="items-center  h-50 mb-20 hidden vp-980:flex">
             <div className="flex justify-center items-center mr-23">
               <Image
-                src={"/" + arrow_back_blue.src}
+                src={ arrow_back_blue.src}
                 alt=" Discussion dropdown "
                 draggable="false"
                 layout="fixed"
