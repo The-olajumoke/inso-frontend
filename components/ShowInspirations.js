@@ -114,7 +114,7 @@ const ShowInspirations = ({
           >
             <div className="flex justify-center items-center">
               <Image
-                src={ postInspIcon.src}
+                src={postInspIcon.src}
                 alt="Post Inspiration"
                 layout="fixed"
                 width="16"
@@ -125,7 +125,7 @@ const ShowInspirations = ({
             <p className=" text-white-white cursor-pointer">{title}</p>
             <div className="flex items-center justify-center">
               <Image
-                src={ dropdown_white.src}
+                src={dropdown_white.src}
                 alt="back"
                 layout="fixed"
                 width="10"
@@ -349,7 +349,7 @@ const ShowInspirations = ({
         </div>
         <div className="flex justify-center items-center mr-15">
           <Image
-            src={ divider.src}
+            src={divider.src}
             alt="divider"
             layout="fixed"
             width="4"
@@ -362,7 +362,7 @@ const ShowInspirations = ({
       <button
         // disabled={btnIsActive}
         onClick={onButtonClick}
-        className="w-93 h-34 text-sm  btn"
+        className="w-93 h-34 text-sm  btn bg-primary-blue"
       >
         {postLoading ? <WhiteLoader /> : "Send"}
       </button>

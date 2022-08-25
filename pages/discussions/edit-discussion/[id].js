@@ -23,9 +23,8 @@ import { updateDiscussion } from "@/context/actions/discussion/updateDiscussion"
 import SettingsSuccess from "@/components/SettingsSuccess";
 import LargeSpinner from "@/components/LargeSpinner";
 import arrow_back_blue from "../../../public/static/icons/arrow_back_blue.svg";
+import checkbox from "../../../public/static/new_icons/blue_checkbox.svg";
 
-import checkbox_blue from "../../../public/static/icons/arrow_back_blue.svg";
-// import checkbox_blue from "../../../public/static/icons/checkbox_blue.svg";
 const DiscussionSettings = () => {
   const router = useRouter();
   const id = router.query.id;
@@ -275,7 +274,7 @@ const DiscussionSettings = () => {
                 >
                   {discName !== "" && (
                     <Image
-                      src={checkbox_blue.src}
+                      src={checkbox.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -300,7 +299,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.starter_prompt !== "" && (
                     <Image
-                      src={checkbox_blue.src}
+                      src={checkbox.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -324,7 +323,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.calendar !== null && (
                     <Image
-                      src={checkbox_blue.src}
+                      src={checkbox.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -348,7 +347,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.scores !== null && (
                     <Image
-                      src={checkbox_blue.src}
+                      src={checkbox.src}
                       alt="success"
                       layout="fixed"
                       width="14"

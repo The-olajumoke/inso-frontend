@@ -9,22 +9,21 @@ export const toolbarSettings = {
     options: ["bold", "italic", "underline"],
     bold: {
       icon: "/static/new_icons/bold.svg",
-      className: "bordered-option-classname",
+      // className: "bordered-option-classname",
     },
     italic: {
       icon: "/static/new_icons/italic.svg",
-      className: "bordered-option-classname",
+      // className: "bordered-option-classname",
     },
     underline: {
       icon: "/static/new_icons/underline.svg",
-      className: "bordered-option-classname",
+      // className: "bordered-option-classname",
     },
   },
 
   image: {
     icon: "/static/new_icons/photo.svg",
     uploadCallback: uploadFile,
-    icon: "/static/icons/image_icon.svg",
     urlEnabled: true,
     alt: { present: true, mandatory: false },
     previewImage: true,

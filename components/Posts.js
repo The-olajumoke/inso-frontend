@@ -7,7 +7,7 @@ import more_icon_grey from "../public/static/icons/more_icon_grey.svg";
 import edit_green from "../public/static/icons/edit_green.svg";
 import upvote_emoji from "../public/static/icons/upvote_emoji.svg";
 import comment_emoji from "../public/static/icons/comment_emoji.svg";
-import love_emoji from "../public/static/icons/love_emoji.svg";
+import more_icons from "../public/static/new_icons/more_icons.svg";
 const Posts = ({ posts, setReplyingId, discId }) => {
   const { _id, date, post, user, comments } = posts;
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
@@ -80,17 +80,19 @@ const Posts = ({ posts, setReplyingId, discId }) => {
                 </div>
                 <p className=" text-black-postInsp">{comments.length}</p>
               </div>
-              {/* <div className="flex items-center gap-2">
-          <Image
-            src={ love_emoji.src}
-            alt="back"
-            layout="fixed"
-            width="20"
-            height="20"
-            className=" cursor-pointer"
-          />
-          <p className=" text-black-postInsp">12</p>
-        </div> */}
+              <div className="flex items-center gap-2">
+                <div className="flex items-center">
+                  <Image
+                    src={more_icons.src}
+                    alt="back"
+                    layout="fixed"
+                    width="24"
+                    height="24"
+                    className="cursor-pointer"
+                  />
+                </div>
+                <p className=" text-black-postInsp">{comments.length}</p>
+              </div>
             </div>
           </div>
         </div>

@@ -546,6 +546,12 @@ const ViewDiscussion = () => {
                             #ReadMode
                           </div>
                         )}
+                        {hideComments && (
+                          <div className="w-128 h-27  text-white-white bg-other-danger flex items-center justify-center rounded">
+                            #DiscussionClosed
+                          </div>
+                        )}
+
                         {!showScoresSheet && (
                           <div className="flex items-center justify-center relative">
                             <div
