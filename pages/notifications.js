@@ -66,7 +66,7 @@ const Notifications = () => {
         <div className="flex items-center justify-between vp-980:hidden">
           <h4 className=" text-primary-darkGreen mb-35">Notifications</h4>
           <Image
-            src={"/" + more_icon_grey.src}
+            src={more_icon_grey.src}
             alt=" Discussion dropdown "
             draggable="false"
             layout="fixed"
@@ -78,7 +78,7 @@ const Notifications = () => {
           <Link href="/discussions" passHref>
             <div className="flex justify-center items-center mr-23">
               <Image
-                src={"/" + arrow_back_blue.src}
+                src={arrow_back_blue.src}
                 alt=" Discussion dropdown "
                 draggable="false"
                 layout="fixed"
@@ -113,7 +113,7 @@ const Notifications = () => {
         ) : (
           <div className=" flex flex-col items-center justify-end h-400 ">
             <Image
-              src={"/" + no_discussion.src}
+              src={ no_discussion.src}
               alt="no discussion"
               layout="fixed"
               width="128"

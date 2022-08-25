@@ -201,7 +201,7 @@ const ScoresSetting = ({
                 <input
                   type="number"
                   disabled={maxScore === "" ? true : false}
-                  title={maxScore === "" ? "set Max score first" : ""}
+                  title={maxScore === "" ? "set max score first" : ""}
                   className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-other-disabled border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
                   placeholder="0"
                   value={postMade}
@@ -222,7 +222,7 @@ const ScoresSetting = ({
                   disabled={maxScore === "" ? true : false}
                   title={
                     maxScore === ""
-                      ? "set Max score first"
+                      ? "set max score first"
                       : `Value cannot be more than ${diffInDays} day(s)`
                   }
                   className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-other-disabled border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
@@ -250,7 +250,7 @@ const ScoresSetting = ({
                 <input
                   type="number"
                   disabled={maxScore === "" ? true : false}
-                  title={maxScore === "" ? "set Max score first" : ""}
+                  title={maxScore === "" ? "set max score first" : ""}
                   className="w-62 h-30 rounded-xs bg-blue-inputBlue disabled:bg-other-disabled border-none text-black-postInsp  placeholder:text-gray-faintGray text-md flex justify-center items-center text-center font-medium"
                   placeholder="0"
                   value={comments}

@@ -51,8 +51,8 @@ const StarterPrompt = ({
         <h4 className=" text-white-white">Starter Prompt</h4>
       </div>
       <div className=" pb-15 bg-white-white  rounded-b-md">
-        <div className="h-86 bg-white-white flex items-center   px-38 vp-600:px-16">
-          <h4>{discName}</h4>
+        <div className="h-86 bg-white-white flex items-center   px-38 vp-600:px-16 w-full overflow-hidden py-8">
+          <h5>{discName}</h5>
         </div>
 
         <div className="px-38 vp-600:px-16">
@@ -81,6 +81,7 @@ const StarterPrompt = ({
               className="btn w-75 h-32  text-sm px-22"
               onClick={() => {
                 setActiveSettings("duration");
+                handleStarterPrompt();
               }}
             >
               Next

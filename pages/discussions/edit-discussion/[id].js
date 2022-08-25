@@ -247,7 +247,7 @@ const DiscussionSettings = () => {
             <Link href="/discussions" passHref>
               <div className="flex items-center justify-center">
                 <Image
-                  src={"/" + arrow_back_blue.src}
+                  src={arrow_back_blue.src}
                   alt="back"
                   layout="fixed"
                   width="30"
@@ -275,7 +275,7 @@ const DiscussionSettings = () => {
                 >
                   {discName !== "" && (
                     <Image
-                      src={"/" + checkbox_blue.src}
+                      src={checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -300,7 +300,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.starter_prompt !== "" && (
                     <Image
-                      src={"/" + checkbox_blue.src}
+                      src={checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -324,7 +324,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.calendar !== null && (
                     <Image
-                      src={"/" + checkbox_blue.src}
+                      src={checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"
@@ -348,7 +348,7 @@ const DiscussionSettings = () => {
                 >
                   {singleDiscData?.settings?.scores !== null && (
                     <Image
-                      src={"/" + checkbox_blue.src}
+                      src={checkbox_blue.src}
                       alt="success"
                       layout="fixed"
                       width="14"

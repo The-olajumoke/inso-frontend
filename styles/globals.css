@@ -18,6 +18,26 @@
 .public-DraftStyleDefault-block {
   margin:0 !important;
 }
+.rdw-suggestion-wrapper,.DraftEditor-editorContainer,.public-DraftStyleDefault-block,.DraftEditor-root{
+  position:absolute !important;
+  width: 100% !important;
+}
+.rdw-suggestion-dropdown{
+  z-index: 99999 !important;
+  position: absolute !important;
+padding: 16px !important ;
+}
+
+ .rdw-suggestion-option{
+ padding: 8px 0 !important;
+ border-bottom: 1px solid #f1f1f1;
+ font-size: 12px !important;
+ color:#686868 !important ;
+ cursor: pointer;
+}
+.public-DraftStyleDefault-block{
+  width: 100% !important;
+}
 body{
   color: #161925;
 }

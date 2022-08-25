@@ -84,7 +84,10 @@ const Calendar = ({
           ) : (
             <button
               className="btn bg-primary-darkGreen text-white-white w-auto px-16 h-30 text-sm"
-              onClick={handleCreateCalendar}
+              onClick={() => {
+                setActiveSettings("scores");
+                handleCreateCalendar();
+              }}
               disabled={addCalendarToSettings ? false : true}
             >
               Next

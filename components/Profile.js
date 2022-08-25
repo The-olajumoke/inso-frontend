@@ -99,6 +99,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
     console.log(body);
     updateUserProfile(API_URL, token, userId, body)(userDispatch);
   };
+  const handleLogOut = () => {
+    localStorage.removeItem("accessToken");
+    window.location.replace("/auth/login");
+  };
   return (
     <div className="mt-34">
       <h4 className=" vp-600:hidden text-primary-darkGreen font-medium mb-36">
@@ -109,7 +113,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
           {userPicture ? (
             <div className=" rounded-full">
               <Image
-                src={"/" + avatar.src}
+                src={avatar.src}
                 alt=" userImage "
                 draggable="false"
                 layout="fixed"
@@ -144,7 +148,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
               onClick={() => setEditProfile(true)}
             >
               <Image
-                src={"/" + edit_blue.src}
+                src={edit_blue.src}
                 alt=" edit "
                 draggable="false"
                 layout="fixed"
@@ -261,9 +265,10 @@ const Profile = ({ editProfile, setEditProfile }) => {
       <button
         style={{ border: "2px solid rgba(7, 160, 152, 0.05)" }}
         className="flex justify-center items-center h-34 w-146 rounded"
+        onClick={handleLogOut}
       >
         <Image
-          src={"/" + logout.src}
+          src={logout.src}
           alt=" Discussion dropdown "
           draggable="false"
           layout="fixed"
