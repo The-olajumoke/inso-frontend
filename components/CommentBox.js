@@ -66,12 +66,27 @@ const CommentBox = ({
     }
   }, [editorState]);
 
+  //   {
+  //   "draft": true,
+  //   "comment_for": "507f1f77bcf86cd799439011",
+  //   "post": {
+  //     "post": "I like cream cheese on my bagel",
+  //     "outline": {
+  //       "inspirationOutline1": "Do you like bagels?",
+  //       "inspirationOutline2": " I want to find out who likes cream cheese on their bagel",
+  //       "inspirationOutline3": "I suspect people like regular cream cheese rather than strawberry"
+  //     }
+  //   },
+  //   "post_inspiration": "507f1f77bcf86cd799439011"
+  // }
   const handlePost = () => {
     if (replyingId.id !== "") {
       const body = {
         draft: false,
         comment_for: replyingId.id,
-        post: `${textValue}`,
+        post: {
+          post: `${textValue}`,
+        },
         // post_inspiration: "",
       };
       createPost(API_URL, token, discId, body)(discussionDispatch);
@@ -79,7 +94,9 @@ const CommentBox = ({
       const body = {
         draft: false,
         // comment_for: `${discId}`,
-        post: `${textValue}`,
+        post: {
+          post: `${textValue}`,
+        },
         // post_inspiration: "",
       };
       createPost(API_URL, token, discId, body)(discussionDispatch);

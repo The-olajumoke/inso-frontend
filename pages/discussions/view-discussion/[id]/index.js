@@ -219,7 +219,7 @@ const ViewDiscussion = () => {
                   <Link href="/discussions" passHref>
                     <div className="flex items-center justify-center">
                       <Image
-                        src={"/" + arrow_back_blue.src}
+                        src={arrow_back_blue.src}
                         alt="back"
                         layout="fixed"
                         width="30"
@@ -236,7 +236,7 @@ const ViewDiscussion = () => {
                     onClick={() => setOpenDropdown(true)}
                   >
                     <Image
-                      src={"/" + more_icon_grey.src}
+                      src={more_icon_grey.src}
                       alt="back"
                       layout="fixed"
                       width="6"
@@ -263,7 +263,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                             >
                               <Image
-                                src={"/" + drafts.src}
+                                src={drafts.src}
                                 alt="more"
                                 layout="fixed"
                                 width="20"
@@ -281,7 +281,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                             >
                               <Image
-                                src={"/" + charts.src}
+                                src={charts.src}
                                 alt="more"
                                 layout="fixed"
                                 width="21"
@@ -304,7 +304,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                             >
                               <Image
-                                src={"/" + scoreSheet.src}
+                                src={scoreSheet.src}
                                 alt="more"
                                 layout="fixed"
                                 width="21"
@@ -327,7 +327,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                             >
                               <Image
-                                src={"/" + participants.src}
+                                src={participants.src}
                                 alt="more"
                                 layout="fixed"
                                 width="21"
@@ -367,7 +367,7 @@ const ViewDiscussion = () => {
                     title="Drafts"
                   >
                     <Image
-                      src={"/" + drafts.src}
+                      src={drafts.src}
                       alt="more"
                       layout="fixed"
                       width="20"
@@ -381,7 +381,7 @@ const ViewDiscussion = () => {
                       onClick={() => setOpenChartModal(true)}
                     >
                       <Image
-                        src={"/" + charts.src}
+                        src={charts.src}
                         alt="more"
                         layout="fixed"
                         width="21"
@@ -462,7 +462,7 @@ const ViewDiscussion = () => {
                   >
                     {" "}
                     <Image
-                      src={"/" + scoreSheet.src}
+                      src={scoreSheet.src}
                       alt="more"
                       layout="fixed"
                       width="21"
@@ -478,7 +478,7 @@ const ViewDiscussion = () => {
                     }}
                   >
                     <Image
-                      src={"/" + participants.src}
+                      src={participants.src}
                       alt="more"
                       layout="fixed"
                       width="21"
@@ -487,7 +487,7 @@ const ViewDiscussion = () => {
                   </div>
                   <div className="flex items-center justify-center ">
                     <Image
-                      src={"/" + divider.src}
+                      src={divider.src}
                       alt="divider"
                       layout="fixed"
                       width="20"
@@ -499,7 +499,7 @@ const ViewDiscussion = () => {
                     title="Help"
                   >
                     <Image
-                      src={"/" + help.src}
+                      src={help.src}
                       alt="help"
                       layout="fixed"
                       width="23"
@@ -522,7 +522,7 @@ const ViewDiscussion = () => {
                         <div className="flex  items-center">
                           <div className="flex items-center justify-center">
                             <Image
-                              src={"/" + avatar.src}
+                              src={avatar.src}
                               alt="back"
                               layout="fixed"
                               width="40"
@@ -553,7 +553,7 @@ const ViewDiscussion = () => {
                               onClick={() => setOpenEditDropdown(true)}
                             >
                               <Image
-                                src={"/" + more_icon_grey.src}
+                                src={more_icon_grey.src}
                                 alt="back"
                                 layout="fixed"
                                 width="6"
@@ -585,7 +585,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                                         >
                                           <Image
-                                            src={"/" + edit_grey.src}
+                                            src={edit_grey.src}
                                             alt="edit"
                                             layout="fixed"
                                             width="24"
@@ -609,7 +609,7 @@ const ViewDiscussion = () => {
                                flex justify-center items-center"
                                       >
                                         <Image
-                                          src={"/" + close_green.src}
+                                          src={close_green.src}
                                           alt="edit"
                                           layout="fixed"
                                           width="12"
@@ -911,7 +911,7 @@ const ViewDiscussion = () => {
                         onClick={() => setViewAllTags(false)}
                       >
                         <Image
-                          src={"/" + cancel.src}
+                          src={cancel.src}
                           alt="cancel"
                           layout="fixed"
                           width="14"
@@ -945,7 +945,7 @@ const ViewDiscussion = () => {
                         onClick={() => setShowParticipants(false)}
                       >
                         <Image
-                          src={"/" + cancel.src}
+                          src={cancel.src}
                           alt="cancel"
                           layout="fixed"
                           width="14"
@@ -981,7 +981,7 @@ const ViewDiscussion = () => {
                             onClick={() => setShowScoresSheet(false)}
                           >
                             <Image
-                              src={"/" + cancel.src}
+                              src={cancel.src}
                               alt="cancel"
                               layout="fixed"
                               width="14"
@@ -1018,17 +1018,26 @@ const ViewDiscussion = () => {
                             <span className=" text-xs">Total score</span>
                           </div>
                         </div>
-                        <div
-                          className={`${styles.hiddenScrollbar} h-full flex-grow`}
-                        >
-                          {/* {automaticScoring.map((user, index) => (
+                        {participants.length ? (
+                          <div
+                            className={`${styles.hiddenScrollbar} h-full flex-grow`}
+                          >
+                            {/* {automaticScoring.map((user, index) => (
                             <AutomaticScoringTemp
                               user={user}
                               key={index}
                               scores={scores}
                             />
                           ))} */}
-                        </div>
+                          </div>
+                        ) : (
+                          <div
+                            className="flex flex-grow items-center justify-center text-gray-text
+                      h-full w-full text-sm mt-40"
+                          >
+                            No participants to score
+                          </div>
+                        )}
                       </div>
                     )}
 
@@ -1043,7 +1052,7 @@ const ViewDiscussion = () => {
                             onClick={() => setShowScoresSheet(false)}
                           >
                             <Image
-                              src={"/" + cancel.src}
+                              src={cancel.src}
                               alt="cancel"
                               layout="fixed"
                               width="14"
@@ -1084,86 +1093,95 @@ const ViewDiscussion = () => {
                             <span className=" text-xs">Total score</span>
                           </div>
                         </div>
-                        <div className=" h-full">
-                          <div className=" h-1/2">
-                            <div
-                              className={`${styles.hiddenScrollbar} h-full flex-grow`}
-                            >
-                              {rubricScoring.map((user, index) => (
-                                <RubricScoringTemp
-                                  user={user}
-                                  key={index}
-                                  scores={scores}
-                                />
-                              ))}
+                        {participants.length ? (
+                          <div className=" h-full">
+                            <div className=" h-1/2">
+                              <div
+                                className={`${styles.hiddenScrollbar} h-full flex-grow`}
+                              >
+                                {rubricScoring.map((user, index) => (
+                                  <RubricScoringTemp
+                                    user={user}
+                                    key={index}
+                                    scores={scores}
+                                  />
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                          <div className={` h-1/2`}>
-                            <div
-                              className={`${styles.tableHeader}  h-1/2  grid-cols-11   gap-4`}
-                            >
-                              <div className="col-span-5 flex  items-center  justify-start">
-                                <span className=" text-xs">
-                                  Criteria
-                                  <span className=" text-gray-faintGray">
-                                    (5)
+                            <div className={` h-1/2`}>
+                              <div
+                                className={`${styles.tableHeader}  h-1/2  grid-cols-11   gap-4`}
+                              >
+                                <div className="col-span-5 flex  items-center  justify-start">
+                                  <span className=" text-xs">
+                                    Criteria
+                                    <span className=" text-gray-faintGray">
+                                      (5)
+                                    </span>
                                   </span>
-                                </span>
+                                </div>
+                                <div className="col-span-4 grid grid-cols-6 justify-between items-center">
+                                  <span
+                                    className=" text-gray-analyticsGray cursor-pointer"
+                                    title={rubricCriteria.totalScore * 0}
+                                  >
+                                    0
+                                  </span>
+                                  <span
+                                    className=" text-gray-analyticsGray cursor-pointer"
+                                    title={rubricCriteria.totalScore * 0.5}
+                                  >
+                                    1
+                                  </span>
+                                  <span
+                                    className=" text-gray-analyticsGray cursor-pointer"
+                                    title={rubricCriteria.totalScore * 0.7}
+                                  >
+                                    2
+                                  </span>
+                                  <span
+                                    className=" text-gray-analyticsGray cursor-pointer"
+                                    title={rubricCriteria.totalScore * 0.8}
+                                  >
+                                    3
+                                  </span>
+                                  <span
+                                    className=" text-gray-analyticsGray cursor-pointer"
+                                    title={rubricCriteria.totalScore * 0.9}
+                                  >
+                                    4
+                                  </span>
+                                  <span
+                                    className=" text-gray-analyticsGray cursor-pointer"
+                                    title={rubricCriteria.totalScore * 1}
+                                  >
+                                    5
+                                  </span>
+                                </div>
+                                <div className="col-span-2">
+                                  <span className=" text-xs">Points</span>
+                                </div>
                               </div>
-                              <div className="col-span-4 grid grid-cols-6 justify-between items-center">
-                                <span
-                                  className=" text-gray-analyticsGray cursor-pointer"
-                                  title={rubricCriteria.totalScore * 0}
-                                >
-                                  0
-                                </span>
-                                <span
-                                  className=" text-gray-analyticsGray cursor-pointer"
-                                  title={rubricCriteria.totalScore * 0.5}
-                                >
-                                  1
-                                </span>
-                                <span
-                                  className=" text-gray-analyticsGray cursor-pointer"
-                                  title={rubricCriteria.totalScore * 0.7}
-                                >
-                                  2
-                                </span>
-                                <span
-                                  className=" text-gray-analyticsGray cursor-pointer"
-                                  title={rubricCriteria.totalScore * 0.8}
-                                >
-                                  3
-                                </span>
-                                <span
-                                  className=" text-gray-analyticsGray cursor-pointer"
-                                  title={rubricCriteria.totalScore * 0.9}
-                                >
-                                  4
-                                </span>
-                                <span
-                                  className=" text-gray-analyticsGray cursor-pointer"
-                                  title={rubricCriteria.totalScore * 1}
-                                >
-                                  5
-                                </span>
-                              </div>
-                              <div className="col-span-2">
-                                <span className=" text-xs">Points</span>
-                              </div>
-                            </div>
 
-                            <div className={`${styles.hiddenScrollbar} `}>
-                              {scores?.map((item, index) => (
-                                <RubricCriteriaTemp
-                                  item={item}
-                                  key={index}
-                                  // total={rubricCriteria.totalScore}
-                                />
-                              ))}
+                              <div className={`${styles.hiddenScrollbar} `}>
+                                {scores?.map((item, index) => (
+                                  <RubricCriteriaTemp
+                                    item={item}
+                                    key={index}
+                                    // total={rubricCriteria.totalScore}
+                                  />
+                                ))}
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        ) : (
+                          <div
+                            className="flex flex-grow items-center justify-center text-gray-text
+                      h-full w-full text-sm mt-40"
+                          >
+                            No participants to score
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

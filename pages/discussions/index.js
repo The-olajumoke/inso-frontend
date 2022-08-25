@@ -102,7 +102,7 @@ const Index = () => {
             >
               <div className="flex justify-center items-center mr-15">
                 <Image
-                  src={"/" + add_icon_white.src}
+                  src={add_icon_white.src}
                   alt="create discussion"
                   layout="fixed"
                   width="14"
@@ -131,7 +131,7 @@ const Index = () => {
               <button className="flex items-center">
                 <div className="mr-14 flex justify-center items-center">
                   <Image
-                    src={"/" + archive.src}
+                    src={archive.src}
                     alt="create discussion"
                     layout="fixed"
                     width="24"
@@ -196,7 +196,7 @@ const Index = () => {
           <Link passHref href="/discussions/create-discussion">
             <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
               <Image
-                src={"/" + add_icon_white.src}
+                src={add_icon_white.src}
                 alt="no discussion"
                 layout="fixed"
                 width="14"

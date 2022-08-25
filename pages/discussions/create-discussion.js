@@ -156,7 +156,7 @@ const CreateDiscussion = () => {
                         href={`/discussions/edit-discussion/${discId}`}
                       >
                         <button
-                          className="btn w-auto h-32 text-sm"
+                          className="btn w-auto h-32 text-sm px-8"
                           //   onClick={() => setActive("settings")}
                         >
                           Add discussion settings
