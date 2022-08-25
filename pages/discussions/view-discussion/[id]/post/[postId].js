@@ -50,7 +50,7 @@ const Post = () => {
         setFirstName(foundPost[0]?.user?.f_name);
         setLastName(foundPost[0]?.user?.l_name);
         setUserName(foundPost[0]?.user?.username);
-        setPostTitle(foundPost[0]?.post);
+        setPostTitle(foundPost[0]?.post?.post);
         setComments(foundPost[0]?.comments);
       }
     }
