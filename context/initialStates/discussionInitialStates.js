@@ -22,8 +22,9 @@ export default {
     joinData: null,
     joinSuccess: false,
     joinError: null,
-    postLoading:false,
-    postSuccess:false,
-    postError:null
+    postLoading: false,
+    postSuccess: false,
+    postError: null,
+    autoScoringData: null,
   },
 };

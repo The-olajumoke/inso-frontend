@@ -50,7 +50,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
         {showHeader === false && (
           <div className="pl-45 mb-25">
             <Image
-              src={"/" + logo_without_text.src}
+              src={+logo_without_text.src}
               alt="inso"
               draggable="false"
               width="40"
@@ -334,8 +334,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/home")
-                      ? `/${home_active.src}`
-                      : `/${home_inactive.src}`
+                      ? `${home_active.src}`
+                      : `${home_inactive.src}`
                   }
                   alt="home"
                   draggable="false"
@@ -356,8 +356,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/discussions")
-                      ? `/${disc_active.src}`
-                      : `/${disc_inactive.src}`
+                      ? `${disc_active.src}`
+                      : `${disc_inactive.src}`
                   }
                   alt="discussion"
                   draggable="false"
@@ -378,8 +378,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/notifications")
-                      ? `/${notification_active.src}`
-                      : `/${notifications_inactive.src}`
+                      ? `${notification_active.src}`
+                      : `${notifications_inactive.src}`
                   }
                   alt="notifications"
                   draggable="false"
@@ -400,8 +400,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/stats")
-                      ? `/${stats_active.src}`
-                      : `/${stats_inactive.src}`
+                      ? `${stats_active.src}`
+                      : `${stats_inactive.src}`
                   }
                   alt="stats"
                   draggable="false"
@@ -422,8 +422,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/analytics")
-                      ? `/${analytics_active.src}`
-                      : `/${analytics_inactive.src}`
+                      ? `${analytics_active.src}`
+                      : `${analytics_inactive.src}`
                   }
                   alt="analytics"
                   draggable="false"
@@ -466,8 +466,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/contact")
-                      ? `/${contact_active.src}`
-                      : `/${contact_inactive.src}`
+                      ? `${contact_active.src}`
+                      : `${contact_inactive.src}`
                   }
                   alt="contact"
                   draggable="false"
@@ -488,8 +488,8 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <Image
                   src={
                     router.pathname.startsWith("/settings")
-                      ? `/${settings_active.src}`
-                      : `/${settings_inactive.src}`
+                      ? `${settings_active.src}`
+                      : `${settings_inactive.src}`
                   }
                   alt="settings"
                   draggable="false"
@@ -507,7 +507,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
             className={`w-full h-40 border border-primary-blue rounded flex items-center  justify-center  `}
           >
             <Image
-              src={"/" + download_inactive.src}
+              src={download_inactive.src}
               alt="download"
               draggable="false"
               layout="fixed"

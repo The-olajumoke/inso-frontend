@@ -29,6 +29,9 @@ import {
   POST_LOADING,
   POST_SUCCESS,
   POST_ERROR,
+  GRADE_PARTICIPANTS_LOADING,
+  GRADE_PARTICIPANTS_SUCCESS,
+  GRADE_PARTICIPANTS_ERROR,
 } from "@/constants/actionTypes";
 
 const discussion = (state, { type, payload }) => {
@@ -308,6 +311,33 @@ const discussion = (state, { type, payload }) => {
           postLoading: false,
           postSuccess: false,
           postError: payload,
+        },
+      };
+    case GRADE_PARTICIPANTS_LOADING:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          loading: true,
+          error: null,
+        },
+      };
+    case GRADE_PARTICIPANTS_SUCCESS:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          loading: false,
+          autoScoringData: payload,
+        },
+      };
+    case GRADE_PARTICIPANTS_ERROR:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          loading: false,
+          error: payload,
         },
       };
     default:

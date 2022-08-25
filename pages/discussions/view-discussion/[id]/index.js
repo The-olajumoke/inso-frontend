@@ -69,6 +69,8 @@ import edit_grey from "../../../../public/static/icons/edit_grey.svg";
 import close_green from "../../../../public/static/icons/close_green.svg";
 import cancel from "../../../../public/static/icons/cancel.svg";
 import avatar from "../../../../public/static/images/avatar.svg";
+import moment from "moment";
+import { gradeParticipants } from "@/context/actions/discussion/autoGradeParticipants";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -97,6 +99,7 @@ const ViewDiscussion = () => {
   const [allParticipants, setAllParticipants] = useState([]);
   const [openChartModal, setOpenChartModal] = useState(false);
   const [activeChart, setActiveChart] = useState("burst");
+  const [hideComments, setHideComments] = useState(false);
   const [replyingId, setReplyingId] = useState({
     user: "",
     id: "",
@@ -104,7 +107,13 @@ const ViewDiscussion = () => {
   const {
     discussionDispatch,
     discussionState: {
-      discussion: { loading, singleDiscData, postInspData, postSuccess },
+      discussion: {
+        loading,
+        singleDiscData,
+        postInspData,
+        postSuccess,
+        autoScoringData,
+      },
     },
   } = useContext(GlobalContext);
   const {
@@ -139,7 +148,7 @@ const ViewDiscussion = () => {
     if (postInspData !== null) {
     }
   }, [postInspData]);
-  console.log(allPosts);
+  console.log(autoScoringData);
   useEffect(() => {
     if (singleDiscData !== null) {
       setDiscTitle(singleDiscData.name);
@@ -158,6 +167,11 @@ const ViewDiscussion = () => {
       ) {
         setScoreType("automatic");
         // setScores(singleDiscData?.settings?.scores?.criteria);
+        gradeParticipants(
+          API_URL,
+          token,
+          singleDiscData?._id
+        )(discussionDispatch);
       }
 
       if (
@@ -166,6 +180,14 @@ const ViewDiscussion = () => {
       ) {
         setScoreType("rubric");
         setScores(singleDiscData?.settings?.scores?.criteria);
+      }
+      let closeDate = new Date(singleDiscData?.settings?.calendar?.close);
+      if (closeDate) {
+        let today = new Date();
+        let isNotClosed = moment(closeDate).isAfter(today);
+        if (!isNotClosed) {
+          setHideComments(true);
+        }
       }
     }
   }, [singleDiscData]);
@@ -666,7 +688,11 @@ const ViewDiscussion = () => {
 
                   {/* COMMENT BOX */}
                   {showScoresSheet !== true && (
-                    <div className="px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white">
+                    <div
+                      className={`px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 bg-white-white ${
+                        hideComments && "hidden"
+                      }`}
+                    >
                       {replyingId.id !== "" && (
                         <p className="mb-2 text-gray-text">
                           replying to{" "}
@@ -911,7 +937,9 @@ const ViewDiscussion = () => {
                 {showParticipants && (
                   <div className="border-l-2 w-350 border-primary-darkGreen">
                     <div className=" mb-22 border-b-2 border-other-disabled p-24  flex justify-between items-center">
-                      <p className="text-primary-darkGreen">Participants (4)</p>
+                      <p className="text-primary-darkGreen">
+                        Participants ({allParticipants.length})
+                      </p>
                       <div
                         className="flex justify-center items-center"
                         onClick={() => setShowParticipants(false)}
@@ -926,9 +954,18 @@ const ViewDiscussion = () => {
                       </div>
                     </div>
                     {/* PARTICIPANTS */}
-                    {allParticipants.map((parti, index) => (
-                      <ParticipantsRow key={index} participants={parti} />
-                    ))}
+                    {allParticipants.length ? (
+                      allParticipants.map((parti, index) => (
+                        <ParticipantsRow key={index} participants={parti} />
+                      ))
+                    ) : (
+                      <div
+                        className="flex items-center justify-center text-gray-text
+                      h-full w-full text-sm"
+                      >
+                        No participants
+                      </div>
+                    )}
                   </div>
                 )}
                 {showScoresSheet && (
@@ -960,7 +997,7 @@ const ViewDiscussion = () => {
                               <span>
                                 User
                                 <span className=" text-gray-faintGray">
-                                  ({automaticScoring.length})
+                                  {/* ({automaticScoring?.length}) */}
                                 </span>
                               </span>
                             </div>
@@ -984,13 +1021,13 @@ const ViewDiscussion = () => {
                         <div
                           className={`${styles.hiddenScrollbar} h-full flex-grow`}
                         >
-                          {automaticScoring.map((user, index) => (
+                          {/* {automaticScoring.map((user, index) => (
                             <AutomaticScoringTemp
                               user={user}
                               key={index}
                               scores={scores}
                             />
-                          ))}
+                          ))} */}
                         </div>
                       </div>
                     )}

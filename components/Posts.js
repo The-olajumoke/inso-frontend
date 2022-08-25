@@ -93,7 +93,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
       >
         <a className="text-black-postInsp cursor-pointer">{parse(post)}</a>
       </Link>
-      <div className=" mt-24 flex gap-8">
+      <div className=" mt-24 flex items-center gap-8">
         <div className="flex items-center gap-2">
           <Image
             src={"/" + upvote_emoji.src}
@@ -107,6 +107,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
         </div>
         <div className="flex items-center gap-2">
           <div
+            className="flex items-center"
             onClick={() =>
               setReplyingId({
                 user: user.username,

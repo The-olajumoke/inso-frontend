@@ -8,17 +8,32 @@ import edit_grey from "../public/static/icons/edit_grey.svg";
 import archive_grey from "../public/static/icons/archive_grey.svg";
 import copy_grey from "../public/static/icons/copy_grey.svg";
 import users_icon from "../public/static/icons/users_icon.svg";
+import moment from "moment";
 const DiscussionBox = ({
   discussion,
   createArchived,
   handleJoinDiscussion,
 }) => {
-  const { _id, poster, participants, name, date, insoCode } = discussion;
+  const { _id, poster, participants, name, date, insoCode, settings } =
+    discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [discussionClosed, setDiscussionClosed] = useState(false);
+
+  console.log(settings);
+  // let closeDate = new Date(settings?.calendar?.close);
+  // if (closeDate) {
+  //   let today = new Date();
+  //   let isNotClosed = moment(closeDate).isAfter(today);
+  //   if (!isNotClosed) {
+  //     setDiscussionClosed(true);
+  //   }
+  // }
   return (
     <div
       // style={{ minHeight: "110px" }}
-      className="vp-600:w-full h-145  w-300 vp-980:flex-grow bg-white-white rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between  text-gray-text"
+      className={`vp-600:w-full h-145  w-300 vp-980:flex-grow rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between  text-gray-text ${
+        discussionClosed ? " bg-primary-darkGreen" : "bg-white-white"
+      }`}
     >
       <div className=" flex items-start justify-between mb-15 h-85">
         <Link passHref href={`/discussions/view-discussion/${_id}`}>
