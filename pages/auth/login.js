@@ -52,6 +52,7 @@ const LoginPage = () => {
     }
     setEmail("");
     setPassword("");
+    console.log("Ahahah", process.env.NODE_ENV);
   }, [loginError, loginSuccess, loginData]);
 
   useEffect(() => {
