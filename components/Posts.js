@@ -60,7 +60,7 @@ const Posts = ({ posts, setReplyingId, discId }) => {
                   href={`/discussions/view-discussion/${discId}/post/${_id}/`}
                 >
                   <a className="text-black-postInsp cursor-pointer">
-                    {parse(post.post)}
+                    {parse(post?.post)}
                   </a>
                 </Link>
                 <div className=" mt-16 flex items-center gap-8">
@@ -107,7 +107,6 @@ const Posts = ({ posts, setReplyingId, discId }) => {
                         className="cursor-pointer"
                       />
                     </div>
-                    <p className=" text-black-postInsp">{comments.length}</p>
                   </div>
                 </div>
               </div>
@@ -290,7 +289,6 @@ const Posts = ({ posts, setReplyingId, discId }) => {
                       className="cursor-pointer"
                     />
                   </div>
-                  <p className=" text-black-postInsp">{comments.length}</p>
                 </div>
               </div>
             </div>

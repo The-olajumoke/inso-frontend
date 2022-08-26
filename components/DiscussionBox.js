@@ -31,7 +31,7 @@ const DiscussionBox = ({
   return (
     <div
       // style={{ minHeight: "110px" }}
-      className={`vp-600:w-full h-145  w-300 vp-980:flex-grow rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between  text-gray-text ${
+      className={`vp-600:w-full h-145  w-300 vp-600:flex-grow rounded-sm shadow-xs p-14 px-12  flex flex-col relative justify-between  text-gray-text ${
         discussionClosed ? " bg-primary-darkGreen" : "bg-white-white"
       }`}
     >

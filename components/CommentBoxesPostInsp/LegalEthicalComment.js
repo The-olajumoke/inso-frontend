@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const LegalEthicalComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateConcerns, setEditorStateConcerns] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +37,7 @@ const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [concernsValue, setConcernsValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [implicationsValue, setImplicationsValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeConcerns = (editorStateConcerns) => {
     setEditorStateConcerns(editorStateConcerns);
@@ -56,10 +64,61 @@ const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setImplicationsValue(implication);
   };
-  console.log(concernsValue);
-  console.log(understandingValue);
-  console.log(implicationsValue);
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      console.log(menti);
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateConcerns(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateImplications(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
 
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Concerns: `${concernsValue}`,
+            Understanding: `${understandingValue}`,
+            Implications: `${implicationsValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Concerns: `${concernsValue}`,
+            Understanding: `${understandingValue}`,
+            Implications: `${implicationsValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150  !text-md`;
 
@@ -112,7 +171,7 @@ const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeConcerns}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Identify a concept from the topic and explain the legal or ethical implications of it."
             />
@@ -126,7 +185,7 @@ const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain the importance of understanding the legal or ethical implications of the concept."
             />
           </div>
@@ -139,7 +198,7 @@ const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Suggest at least one positive and one negative legal or ethical implication related to the concepts and concerns you identified."
             />
           </div>
@@ -149,6 +208,8 @@ const LegalEthicalComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Legal/Ethical Concerns"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );
