@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
@@ -6,7 +6,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import CommentBoxHeader from "../CommentBoxHeader";
-import { mention } from "@/utils/mentions";
+
 import { toolbar } from "@/utils/toolbar";
 
 const Editor = dynamic(
@@ -16,7 +16,17 @@ const Editor = dynamic(
   }
 );
 
-const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const AskQuestionsComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [editorStateUnder, setEditorStateUnder] = useState(
     EditorState.createEmpty()
@@ -28,7 +38,7 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [questionsValue, setQuestionsValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [outcomeValue, setOutcomeValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     const question = draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -48,7 +58,65 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setOutcomeValue(outcome);
   };
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      console.log(menti);
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorState(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateOutcome(EditorState.createEmpty());
+    }
+  }, [postSuccess]);
+  useEffect(() => {
+    if (activePostInspId !== "") {
+      alert(activePostInspId);
+    }
+  }, [activePostInspId]);
 
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Questions: `${questionsValue}`,
+            Understanding: `${understandingValue}`,
+            Outcomes: `${outcomeValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Questions: `${questionsValue}`,
+            Understanding: `${understandingValue}`,
+            Outcomes: `${outcomeValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150  !text-md`;
   return (
@@ -100,7 +168,7 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChange}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Pose three questions about the topic that would encourage further discussion."
             />
@@ -113,7 +181,7 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeUnderstanding}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Explain your current understanding of the topic."
             />
@@ -126,7 +194,7 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeOutcome}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Recommend three outcomes you would hope to see from discussion about your questions."
             />
@@ -137,6 +205,8 @@ const AskQuestionsComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Ask questions"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

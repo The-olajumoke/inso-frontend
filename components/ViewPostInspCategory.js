@@ -9,6 +9,7 @@ const ViewPostInspCategory = ({
   setViewInspirations,
   setActiveCommentBox,
   togglePostInsp,
+  setActivePostInspId,
 }) => {
   return (
     <div className=" flex-grow ">
@@ -52,7 +53,9 @@ const ViewPostInspCategory = ({
             key={index}
             title={insp.name}
             icon={insp.icon}
+            inspId={insp._id}
             setActiveCommentBox={setActiveCommentBox}
+            setActivePostInspId={setActivePostInspId}
             // setActiveViewInspiration={setActiveViewInspiration}
             // setViewInspirations={setViewInspirations}
           />

@@ -27,6 +27,7 @@ const CommentBox = ({
   replyingId,
   postSuccess,
   participants,
+  setActivePostInspId,
 }) => {
   const [token, setToken] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -34,7 +35,6 @@ const CommentBox = ({
   const [textValue, setTextValue] = useState("");
   const [mentionsArray, setMentionsArray] = useState([]);
   // console.log(convertToRaw(editorState.getCurrentContent()));
-
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     const text = draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -76,6 +76,7 @@ const CommentBox = ({
       setEditorState(EditorState.createEmpty());
     }
   }, [postSuccess]);
+
   useEffect(() => {
     const textLength = convertToRaw(editorState.getCurrentContent());
     console.log(textLength?.blocks[0]);
@@ -144,6 +145,7 @@ const CommentBox = ({
           togglePostInsp={togglePostInsp}
           btnIsActive={btnIsActive}
           onButtonClick={handlePost}
+          setActivePostInspId={setActivePostInspId}
         />
       </div>
     </div>

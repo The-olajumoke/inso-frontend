@@ -31,6 +31,7 @@ const ViewInspirations = ({
           onClick={() => {
             setViewInspirations(true);
             setCurrentDetailedInsp(`${category}`);
+           
           }}
         >
           {category}
