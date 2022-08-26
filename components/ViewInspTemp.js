@@ -1,6 +1,11 @@
 import React from "react";
 
-const ViewInspTemp = ({ title, setActiveCommentBox }) => {
+const ViewInspTemp = ({
+  title,
+  setActiveCommentBox,
+  inspId,
+  setActivePostInspId,
+}) => {
   return (
     <div
       className="mb-7 flex items-center justify-between h-40 w-full px-20 bg-blue-postInsp rounded-lg text-lg  text-black-postInsp outline-none cursor-pointer"
@@ -15,6 +20,7 @@ const ViewInspTemp = ({ title, setActiveCommentBox }) => {
             setActiveCommentBox(`${title}`);
             // setViewInspirations(true);
             // setActiveViewInspiration(`${title}`);
+            setActivePostInspId(inspId);
           }}
         >
           {title}

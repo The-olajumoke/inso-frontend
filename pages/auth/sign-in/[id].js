@@ -87,11 +87,12 @@ const LoginPageWithCode = () => {
     setPassword("");
   }, [loginError, loginSuccess, loginData, profileData]);
   console.log(joinData);
-  useEffect(() => {
-    if (joinData !== null) {
-      location.replace(`/discussions/view-discussion/${joinData}`);
-    }
-  }, [joinData]);
+
+  // useEffect(() => {
+  //   if (joinData !== null) {
+  //     location.replace(`/discussions/view-discussion/${joinData}`);
+  //   }
+  // }, [joinData]);
 
   useEffect(() => {
     if (validateEmail(email) && password.length >= 8) {
@@ -125,7 +126,7 @@ const LoginPageWithCode = () => {
       email,
       password,
     };
-    await loginWithCode(API_URL, user)(authDispatch);
+    await loginWithCode(API_URL, user, id)(authDispatch);
     await getUserProfile(API_URL, accessToken)(userDispatch);
   };
   const signInWithGoogleHandler = () => {

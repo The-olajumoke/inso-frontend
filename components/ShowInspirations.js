@@ -22,6 +22,7 @@ const ShowInspirations = ({
   togglePostInsp,
   btnIsActive,
   onButtonClick,
+  setActivePostInspId,
 }) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
     useState(false);
@@ -103,7 +104,7 @@ const ShowInspirations = ({
   );
 
   return (
-    <div className="flex w-full items-center absolute bottom-1 justify-between right-0 left-0  pb-5 px-20 vp-600:px-10">
+    <div className="flex  items-center absolute bottom-1 justify-between  right-1 left-1  pb-5 px-20 vp-600:px-10 bg-white-white z-999">
       <div className="flex items-center">
         <div className="relative ">
           <div
@@ -146,6 +147,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Connect something" && (
@@ -154,6 +156,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Create something" && (
@@ -162,6 +165,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Share something" && (
@@ -170,6 +174,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
 
@@ -179,6 +184,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
 
@@ -188,6 +194,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Answer" && (
@@ -196,6 +203,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Ask" && (
@@ -204,6 +212,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Evaluate" && (
@@ -212,6 +221,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "React" && (
@@ -227,6 +237,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Tags" && (
@@ -235,6 +246,7 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Thread" && (
@@ -243,12 +255,13 @@ const ShowInspirations = ({
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
                       togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                 </div>
               ) : (
                 <div className="relative ">
-                  <div className="flex justify-between items-center mb-18  gap-4">
+                  <div className="flex justify-between items-center mb-18  gap-4 ">
                     <div className="grid  grid-cols-3 text-sm  gap-4 vp-600:gap-2 flex-grow ">
                       <button
                         style={{ fontSize: "10px" }}

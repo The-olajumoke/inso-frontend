@@ -61,7 +61,7 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
         <title>{title || "Custigrow"}</title>
       </Head>
 
-      <div className=" flex flex-col vp-980:hidden  h-screen">
+      <div className=" flex flex-col vp-980:hidden  h-screen border-4">
         {showHeader !== false && (
           <Header
             navSize={navSize}
@@ -72,17 +72,17 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
         <div
           className={` ${styles.hiddenScrollbar}   justify-between flex h-full`}
         >
-          <div
+          {/* <div
             style={{ minHeight: "109px" }}
-            className={`${styles.hiddenScrollbar} border-r  border-other-disabled `}
-          >
-            <Sidebar
-              navSize={navSize}
-              user={userProfile}
-              showHeader={showHeader}
-            />
-          </div>
-          <div className={`${bgColor} w-full`}>{children}</div>
+            className={`${styles.hiddenScrollbar} border-r  border-other-disabled  overflow-x-hidden relative`}
+          > */}
+          <Sidebar
+            navSize={navSize}
+            user={userProfile}
+            showHeader={showHeader}
+          />
+          {/* </div> */}
+          <div className={`${bgColor} w-full h-full`}>{children}</div>
         </div>
       </div>
 

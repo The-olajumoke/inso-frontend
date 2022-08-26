@@ -18,28 +18,50 @@
 .public-DraftStyleDefault-block {
   margin:0 !important;
 }
-.rdw-suggestion-wrapper,.DraftEditor-editorContainer,.public-DraftStyleDefault-block,.DraftEditor-root{
+.rdw-editor-wrapper{
+  height: 100%;
+  overflow-y: auto;
+}
+/* .rdw-suggestion-wrapper,.public-DraftStyleDefault-block,.DraftEditor-root{
   position:absolute !important;
   width: 100% !important;
+  height:200px !important;
+  border: 2px solid; */
+  /* height: 70px !important; */
+/* } */
+/* 
+.DraftEditor-editorContainer{
+  border: 2px solid red;
 }
+.DraftEditor-root{
+  border: 3px purple solid;
+  height: 70px !important;
+  width: 95% !important;
+}*/
 .rdw-suggestion-dropdown{
   z-index: 99999 !important;
-  position: absolute !important;
-padding: 16px !important ;
+  /* position: absolute !important; */
+  /* display: block !important; */
+  top: 0 !important;
+  max-height: 200px !important;
+  border: 2px solid;
+/* padding: 16px !important ; */
 }
 
  .rdw-suggestion-option{
- padding: 8px 0 !important;
+ padding: 4px 0 !important;
  border-bottom: 1px solid #f1f1f1;
  font-size: 12px !important;
  color:#686868 !important ;
  cursor: pointer;
-}
+} 
 
-.public-DraftStyleDefault-block,
-.public-DraftEditor-content[contenteditable=true] {
-  width: 100% !important;
-}
+/* .public-DraftStyleDefault-block,
+.public-DraftEditor-content[contenteditable=true],.notranslate .public-DraftEditor-content { */
+  /* height: auto !important; */
+  /* height: 70px !important; */
+  /* width: 100% !important; */
+/* } */
 body{
   color: #161925;
 }
@@ -214,7 +236,7 @@ body{
   }
 
   .btn-currentSection {
-    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-primary-darkGreen outline-none vp-600:text-sm;
+    @apply text-black-postInsp text-md flex justify-center items-center border-b-2 border-primary-darkGreen outline-none vp-600:text-sm font-medium;
   }
   .btn-notCurrentSection {
     @apply  text-other-disabledText text-md flex justify-center items-center border-b-2 border-other-disabled outline-none vp-600:text-sm;
@@ -232,6 +254,7 @@ font-size: 16px;
 padding: 0;
 margin: 0;
 font-weight: 400;
+line-height: normal
 }
 .notif_subHeader p,.notif_subHeader span{
 font-size: 14px !important;

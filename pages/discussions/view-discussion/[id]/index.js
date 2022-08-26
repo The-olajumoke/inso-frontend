@@ -71,6 +71,7 @@ import cancel from "../../../../public/static/icons/cancel.svg";
 import avatar from "../../../../public/static/images/avatar.svg";
 import moment from "moment";
 import { gradeParticipants } from "@/context/actions/discussion/autoGradeParticipants";
+import { createPost } from "@/context/actions/discussion/post";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -100,6 +101,7 @@ const ViewDiscussion = () => {
   const [openChartModal, setOpenChartModal] = useState(false);
   const [activeChart, setActiveChart] = useState("burst");
   const [hideComments, setHideComments] = useState(false);
+  const [activePostInspId, setActivePostInspId] = useState("");
   const [replyingId, setReplyingId] = useState({
     user: "",
     id: "",
@@ -194,7 +196,9 @@ const ViewDiscussion = () => {
   const togglePostInsp = () => {
     setViewFullPostInsp(!viewFullPostInsp);
   };
-
+  const handleCreatePost = (discId, body) => {
+    createPost(API_URL, token, discId, body)(discussionDispatch);
+  };
   return (
     <Layout
       title={`Inso | Discussion`}
@@ -715,102 +719,175 @@ const ViewDiscussion = () => {
                           replyingId={replyingId}
                           postSuccess={postSuccess}
                           participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Ask questions" && (
                         <AskQuestionsComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Ask for clarity" && (
                         <AskForClarityComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Course concepts" && (
                         <CourseConceptsComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Personal experience" && (
                         <PersonalExperienceComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Real-world applications" && (
                         <RealWorldComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Legal or ethical concerns" && (
                         <LegalEthicalComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Alternative perspectives" && (
                         <AlternativeComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "A meme" && (
                         <MemeComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "A graphic organizer" && (
                         <GraphicOrganizerComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "A media" && (
                         <CreateMediaComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Media" && (
                         <ShareMediaComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "A Quote" && (
                         <QuoteComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Study strategies" && (
                         <StudyStrategiesComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "A debate" && (
                         <DebateComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "An AMA thread" && (
                         <AMAThreadComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "A search tree" && (
                         <SearchTreeComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {/* RESPONDING */}
@@ -818,90 +895,150 @@ const ViewDiscussion = () => {
                         <AlternativeCommentResp
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Illustrations" && (
                         <IllustrationsComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Insights" && (
                         <InsightsComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Resources" && (
                         <ResourcesComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Directly" && (
                         <DirectlyComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "For clarification" && (
                         <ClarificationComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "More questions" && (
                         <MoreQuestionsComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Questions" && (
                         <QuestionsComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "For Clarification" && (
                         <AskForClarifComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "1 Star 5 Stars" && (
                         <OneStarFiveComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Critical Review" && (
                         <CriticalReviewComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Loved, Learned" && (
                         <LovedLearnedComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Heart" && (
                         <HeartComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Mad" && (
                         <MadComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                       {activeCommentBox === "Mindblown" && (
                         <MindblownComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          participants={allParticipants}
+                          activePostInspId={activePostInspId}
+                          setActivePostInspId={setActivePostInspId}
+                          handleCreatePost={handleCreatePost}
                         />
                       )}
                     </div>

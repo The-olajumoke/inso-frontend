@@ -5,9 +5,8 @@ import {
   LOG_IN_LOADING,
   LOG_IN_SUCCESS,
 } from "@/constants/actionTypes";
-import { joinDiscussion } from "../discussion/joinDiscussion";
 
-export const loginWithCode = (API_URL, user) => async (dispatch) => {
+export const loginWithCode = (API_URL, user, insoCode) => async (dispatch) => {
   dispatch({
     type: LOG_IN_LOADING,
   });
@@ -15,9 +14,27 @@ export const loginWithCode = (API_URL, user) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, user);
 
+    const token = response.data.access_token;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const userProfile = await axios.get(`${API_URL}/profile`, config);
+    const userId = userProfile.data._id;
+
+    const joinDisc = await axios.patch(
+      `${API_URL}/users/${userId}/discussions/${insoCode}/join`,
+      {},
+      config
+    );
+
+    console.log(userProfile);
+
     dispatch({
       type: LOG_IN_SUCCESS,
-      payload: response.data.access_token,
+      payload: token,
     });
   } catch (error) {
     dispatch({

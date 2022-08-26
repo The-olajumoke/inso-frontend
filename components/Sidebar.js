@@ -39,165 +39,201 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
   }, [user]);
 
   return (
-    <>
+    <div className="border-r  border-other-disabled ">
       <div
-        className={`${styles.sidebarContainer} ${
-          navSize === "small" ? "w-109" : "w-333"
-        }   flex flex-col justify-between ${
+        className={`${
+          styles.sidebarContainer
+        } w-109  flex flex-col justify-between  ${
           showHeader === false ? "!pt-8" : "p-9"
         }  h-full  vp-980:hidden`}
       >
-        {showHeader === false && (
-          <div className="pl-45 mb-25">
-            <Image
-              src={logo_without_text.src}
-              alt="inso"
-              draggable="false"
-              width="40"
-              height="40"
-              layout="fixed"
-            />
-          </div>
-        )}
-        <div className=" flex  pl-50">
-          {userPicture ? (
-            <div>picture</div>
-          ) : (
-            <div className="h-37 w-37 text-xs flex justify-center items-center font-semibold mr-15 border overflow-hidden p-0 rounded-full bg-primary-darkGreen">
-              <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 capitalize ">
-                {initials}
-              </span>
+        <div className="">
+          {showHeader === false && (
+            <div className="pl-45 mb-25">
+              <Image
+                src={logo_without_text.src}
+                alt="inso"
+                draggable="false"
+                width="40"
+                height="40"
+                layout="fixed"
+              />
             </div>
           )}
-          <div className={`${navSize === "small" && "hidden"}`}>
-            <h6 className="text-gray-text">
-              {firstName} {lastName}
-            </h6>
-            <span className=" text-xs text-primary-darkGreen">@{userName}</span>
-            <h6 className=" text-other-success mt-10">Starter</h6>
+          <div className=" flex  pl-50">
+            {userPicture ? (
+              <div>picture</div>
+            ) : (
+              <div className="h-37 w-37 text-xs flex justify-center items-center font-semibold mr-15 border overflow-hidden p-0 rounded-full bg-primary-darkGreen">
+                <span className="flex-grow h-full w-full text-white-white bg-primary-darkGreen flex justify-center items-center border-2 rounded-full border-white-white m-0 capitalize ">
+                  {initials}
+                </span>
+              </div>
+            )}
+            <div className={`${navSize === "small" && "hidden"}`}>
+              <h6 className="text-gray-text">
+                {firstName} {lastName}
+              </h6>
+              <span className=" text-xs text-primary-darkGreen">
+                @{userName}
+              </span>
+              <h6 className=" text-other-success mt-10">Starter</h6>
+            </div>
           </div>
-        </div>
-        <div className="mt-12 flex-grow">
-          <div className="">
-            <Link href="/home">
-              <a
-                className={`${
-                  router.pathname.startsWith("/home") &&
-                  " bg-primary-blue  justify-start text-white-white"
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
-              >
-                <Image
-                  src={
-                    router.pathname.startsWith("/home")
-                      ? `${home_active.src}`
-                      : `${home_inactive.src}`
-                  }
-                  alt="discussion"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
+          <div className={`mt-12 `}>
+            <div className="">
+              <div className={`${styles.linkContainer} relative `}>
+                <Link href="/home">
+                  <a
+                    className={`${
+                      router.pathname.startsWith("/home") &&
+                      " bg-primary-blue  justify-start text-white-white"
+                    } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+                  >
+                    <Image
+                      src={
+                        router.pathname.startsWith("/home")
+                          ? `${home_active.src}`
+                          : `${home_inactive.src}`
+                      }
+                      alt="discussion"
+                      draggable="false"
+                      width="24"
+                      height="24"
+                      layout="fixed"
+                    />
+                  </a>
+                </Link>
 
-                <h6 className={`${navSize === "small" && "hidden"}  `}>Home</h6>
-              </a>
-            </Link>
-            <Link href="/discussions">
-              <a
-                className={`${
-                  router.pathname.startsWith("/discussions") &&
-                  " bg-primary-blue  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
-              >
-                <Image
-                  src={
-                    router.pathname.startsWith("/discussions")
-                      ? `${disc_active.src}`
-                      : `${disc_inactive.src}`
-                  }
-                  alt="discussion"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
-
-                <h6 className={`${navSize === "small" && "hidden"}  `}>
-                  Discussions
-                </h6>
-              </a>
-            </Link>
-            <Link passHref href="/notifications">
-              <div
-                className={`${
-                  router.pathname.startsWith("/notifications") &&
-                  " bg-primary-blue  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
-              >
-                <Image
-                  src={
-                    router.pathname.startsWith("/notifications")
-                      ? `${notification_active.src}`
-                      : `${notifications_inactive.src}`
-                  }
-                  alt="notifications"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
-                <h6 className={`${navSize === "small" && "hidden"} `}>
-                  Notifications
-                </h6>
+                <div
+                  className={`${styles.tooltip} bg-black-coal p-8 rounded-md animate-fade-in`}
+                >
+                  <p className="text-xs whitespace-nowrap text-white-white bg-primary-darkGreen py-4 px-8">
+                    Home
+                  </p>
+                </div>
               </div>
-            </Link>
-            <Link href="/stats" passHref>
-              <div
-                className={`${
-                  router.pathname.startsWith("/stats") &&
-                  " bg-primary-blue  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
-              >
-                <Image
-                  src={
-                    router.pathname.startsWith("/stats")
-                      ? `${stats_active.src}`
-                      : `${stats_inactive.src}`
-                  }
-                  alt="stats"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
-                <h6 className={`${navSize === "small" && "hidden"}`}>Stats</h6>
+              <div className={`${styles.linkContainer} relative`}>
+                <Link href="/discussions">
+                  <a
+                    className={`${
+                      router.pathname.startsWith("/discussions") &&
+                      " bg-primary-blue  justify-start text-white-white "
+                    } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+                  >
+                    <Image
+                      src={
+                        router.pathname.startsWith("/discussions")
+                          ? `${disc_active.src}`
+                          : `${disc_inactive.src}`
+                      }
+                      alt="discussion"
+                      draggable="false"
+                      width="24"
+                      height="24"
+                      layout="fixed"
+                    />
+                  </a>
+                </Link>
+                <div
+                  className={`${styles.tooltip} bg-black-coal p-8 rounded-md animate-fade-in`}
+                >
+                  <p className="text-xs whitespace-nowrap text-white-white bg-primary-darkGreen py-4 px-8">
+                    Discussions
+                  </p>
+                </div>
               </div>
-            </Link>
-            <Link href="/analytics" passHref>
-              <div
-                className={`${
-                  router.pathname.startsWith("/analytics") &&
-                  " bg-primary-blue  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
-              >
-                <Image
-                  src={
-                    router.pathname.startsWith("/analytics")
-                      ? `${analytics_active.src}`
-                      : `${analytics_inactive.src}`
-                  }
-                  alt="analytics"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
-                <h6 className={`${navSize === "small" && "hidden"}`}>
-                  Analytics
-                </h6>
+              <div className={`${styles.linkContainer} relative `}>
+                <Link passHref href="/notifications">
+                  <div
+                    className={`${
+                      router.pathname.startsWith("/notifications") &&
+                      " bg-primary-blue  justify-start text-white-white "
+                    } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+                  >
+                    <Image
+                      src={
+                        router.pathname.startsWith("/notifications")
+                          ? `${notification_active.src}`
+                          : `${notifications_inactive.src}`
+                      }
+                      alt="notifications"
+                      draggable="false"
+                      width="24"
+                      height="24"
+                      layout="fixed"
+                    />
+                  </div>
+                </Link>
+                <div
+                  className={`${styles.tooltip} bg-black-coal p-8 rounded-md animate-fade-in`}
+                >
+                  <p className="text-xs whitespace-nowrap text-white-white bg-primary-darkGreen py-4 px-8">
+                    Notifications
+                  </p>
+                </div>
               </div>
-            </Link>
-            {/* <Link href="/charts" passHref>
+              <div className={`${styles.linkContainer} relative `}>
+                <Link href="/stats" passHref>
+                  <div
+                    className={`${
+                      router.pathname.startsWith("/stats") &&
+                      " bg-primary-blue  justify-start text-white-white "
+                    } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+                  >
+                    <Image
+                      src={
+                        router.pathname.startsWith("/stats")
+                          ? `${stats_active.src}`
+                          : `${stats_inactive.src}`
+                      }
+                      alt="stats"
+                      draggable="false"
+                      width="24"
+                      height="24"
+                      layout="fixed"
+                    />
+                  </div>
+                </Link>
+                <div
+                  className={`${styles.tooltip} bg-black-coal p-8 rounded-md animate-fade-in`}
+                >
+                  <p className="text-xs whitespace-nowrap text-white-white bg-primary-darkGreen py-4 px-8">
+                    Stats
+                  </p>
+                </div>
+              </div>
+              <div className={`${styles.linkContainer} relative `}>
+                <Link href="/analytics" passHref>
+                  <div
+                    className={`${
+                      router.pathname.startsWith("/analytics") &&
+                      " bg-primary-blue  justify-start text-white-white "
+                    } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+                  >
+                    <Image
+                      src={
+                        router.pathname.startsWith("/analytics")
+                          ? `${analytics_active.src}`
+                          : `${analytics_inactive.src}`
+                      }
+                      alt="analytics"
+                      draggable="false"
+                      width="24"
+                      height="24"
+                      layout="fixed"
+                    />
+                  </div>
+                </Link>
+                <div
+                  className={`${styles.tooltip} bg-black-coal p-8 rounded-md animate-fade-in`}
+                >
+                  <p className="text-xs whitespace-nowrap text-white-white bg-primary-darkGreen py-4 px-8">
+                    Analytics
+                  </p>
+                </div>
+              </div>
+              {/* <Link href="/charts" passHref>
               <div
                 className={`${
                   router.pathname.startsWith("/charts") &&
@@ -208,7 +244,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 <h6 className={`${navSize === "small" && "hidden"}`}>Charts</h6>
               </div>
             </Link> */}
-            {/* <Link href="/calendar" passHref>
+              {/* <Link href="/calendar" passHref>
               <div
                 className={`${
                   router.pathname.startsWith("/calendar") &&
@@ -221,60 +257,74 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 </h6>
               </div>
             </Link> */}
-            <Link href="/contact" passHref>
-              <div
-                className={`${
-                  router.pathname.startsWith("/contact") &&
-                  " bg-primary-blue  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
-              >
-                <Image
-                  src={
-                    router.pathname.startsWith("/contact")
-                      ? `${contact_active.src}`
-                      : `${contact_inactive.src}`
-                  }
-                  alt="contact"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
-                <h6 className={`${navSize === "small" && "hidden"}`}>
-                  Contact us
-                </h6>
+              <div className={`${styles.linkContainer} relative `}>
+                <Link href="/contact" passHref>
+                  <div
+                    className={`${
+                      router.pathname.startsWith("/contact") &&
+                      " bg-primary-blue  justify-start text-white-white "
+                    } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+                  >
+                    <Image
+                      src={
+                        router.pathname.startsWith("/contact")
+                          ? `${contact_active.src}`
+                          : `${contact_inactive.src}`
+                      }
+                      alt="contact"
+                      draggable="false"
+                      width="24"
+                      height="24"
+                      layout="fixed"
+                    />
+                  </div>
+                </Link>
+                <div
+                  className={`${styles.tooltip} bg-black-coal p-8 rounded-md animate-fade-in`}
+                >
+                  <p className="text-xs whitespace-nowrap text-white-white bg-primary-darkGreen py-4 px-8">
+                    Contact us
+                  </p>
+                </div>
               </div>
-            </Link>
-            <Link href="/settings" passHref>
-              <div
-                className={`${
-                  router.pathname.startsWith("/settings") &&
-                  " bg-primary-blue  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
-              >
-                <Image
-                  src={
-                    router.pathname.startsWith("/settings")
-                      ? `${settings_active.src}`
-                      : `${settings_inactive.src}`
-                  }
-                  alt="settings"
-                  draggable="false"
-                  width="24"
-                  height="24"
-                  layout="fixed"
-                />
-                <h6 className={`${navSize === "small" && "hidden"}`}>
-                  Settings
-                </h6>
+              <div className={`${styles.linkContainer} relative `}>
+                <Link href="/settings" passHref>
+                  <div
+                    className={`${
+                      router.pathname.startsWith("/settings") &&
+                      " bg-primary-blue  justify-start text-white-white "
+                    } ' flex items-center gap-x-7  cursor-pointer pl-50  text-gray-text h-60`}
+                  >
+                    <Image
+                      src={
+                        router.pathname.startsWith("/settings")
+                          ? `${settings_active.src}`
+                          : `${settings_inactive.src}`
+                      }
+                      alt="settings"
+                      draggable="false"
+                      width="24"
+                      height="24"
+                      layout="fixed"
+                    />
+                  </div>
+                </Link>
+                <div
+                  className={`${styles.tooltip} bg-black-coal p-8 rounded-md animate-fade-in`}
+                >
+                  <p className="text-xs whitespace-nowrap text-white-white bg-primary-darkGreen py-4 px-8">
+                    Settings
+                  </p>
+                </div>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
+
         <div
           className={`${
             navSize === "small" && "pr-0 pl-50"
-          } w-full px-50 mt-60  `}
+          } w-full px-50 mt-20`}
         >
           <div
             className={`${
@@ -300,7 +350,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
         </div>
       </div>
       <div
-        className={`pt-80 py-25  w-300 absolute left-0 top-0 bottom-0 vp-980:flex flex-col justify-start vp-600:justify-between hidden   overflow-y-auto bg-white-white  z-9999`}
+        className={`pt-80 py-25  w-300 absolute left-0 top-0 bottom-0 vp-980:flex flex-col justify-start vp-600:justify-between hidden  bg-white-white  z-9999`}
       >
         <div className=" flex  pl-25 my-16 vp-600:my-2">
           {userPicture ? (
@@ -518,8 +568,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
           </div>
         </div>
       </div>
-      ;
-    </>
+    </div>
   );
 };
 
