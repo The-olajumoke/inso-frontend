@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const PersonalExperienceComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateExperience, setEditorStateExperience] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +37,7 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [experienceValue, setExperienceValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [reflectionValue, setReflectionValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeExperience = (editorStateExperience) => {
     setEditorStateExperience(editorStateExperience);
@@ -56,9 +64,61 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setReflectionValue(reflection);
   };
-  console.log(experienceValue);
-  console.log(understandingValue);
-  console.log(reflectionValue);
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      console.log(menti);
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateExperience(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateReflection(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Experience: `${experienceValue}`,
+            Understanding: `${understandingValue}`,
+            Reflection: `${reflectionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Experience: `${experienceValue}`,
+            Understanding: `${understandingValue}`,
+            Reflection: `${reflectionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
 
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150  !text-md`;
@@ -112,7 +172,7 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeExperience}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Describe the experience(s) you have had with specific concepts related to the topic."
             />
@@ -126,7 +186,7 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain how this experience has informed your understanding of the concepts."
             />
           </div>
@@ -139,7 +199,7 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Generalize lessons you learned during this experience to other experiences you might have."
             />
           </div>
@@ -149,6 +209,8 @@ const PersonalExperienceComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Personal experience"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

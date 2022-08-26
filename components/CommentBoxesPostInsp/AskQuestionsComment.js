@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -76,13 +75,9 @@ const AskQuestionsComment = ({
       setEditorState(EditorState.createEmpty());
       setEditorStateUnder(EditorState.createEmpty());
       setEditorStateOutcome(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
     }
   }, [postSuccess]);
-  useEffect(() => {
-    if (activePostInspId !== "") {
-      alert(activePostInspId);
-    }
-  }, [activePostInspId]);
 
   const handlePost = () => {
     if (replyingId.id !== "") {

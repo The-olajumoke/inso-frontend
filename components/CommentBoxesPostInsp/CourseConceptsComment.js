@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +14,17 @@ const Editor = dynamic(
   }
 );
 
-const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const CourseConceptsComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateConnections, setEditorStateConnections] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +38,7 @@ const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [connectionsValue, setConnectionsValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [newIdeasValue, setNewIdeasValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeConnections = (editorStateQuestConnections) => {
     setEditorStateConnections(editorStateQuestConnections);
@@ -56,9 +65,61 @@ const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setNewIdeasValue(newIdeas);
   };
-  console.log(connectionsValue);
-  console.log(understandingValue);
-  console.log(newIdeasValue);
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      console.log(menti);
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateConnections(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateNewIdeas(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Connections: `${connectionsValue}`,
+            Understanding: `${understandingValue}`,
+            "New Ideas": `${newIdeasValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Connections: `${connectionsValue}`,
+            Understanding: `${understandingValue}`,
+            "New Ideas": `${newIdeasValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
 
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150  !text-md`;
@@ -112,7 +173,7 @@ const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeConnections}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Describe the relationship(s) you identified between specific concepts."
             />
@@ -126,7 +187,7 @@ const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain how the relationship(s) can help increase understanding of the topic."
             />
           </div>
@@ -139,7 +200,7 @@ const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="List three new ideas you are having because of the concepts and connections you identified."
             />
           </div>
@@ -149,6 +210,8 @@ const CourseConceptsComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Course concepts"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

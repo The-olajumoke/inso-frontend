@@ -750,10 +750,14 @@ const ViewDiscussion = () => {
                           handleCreatePost={handleCreatePost}
                         />
                       )}
+                      {console.log(activeCommentBox)}
                       {activeCommentBox === "Course concepts" && (
                         <CourseConceptsComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -764,6 +768,9 @@ const ViewDiscussion = () => {
                         <PersonalExperienceComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -774,6 +781,9 @@ const ViewDiscussion = () => {
                         <RealWorldComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -784,6 +794,9 @@ const ViewDiscussion = () => {
                         <LegalEthicalComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -794,6 +807,9 @@ const ViewDiscussion = () => {
                         <AlternativeComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -804,6 +820,9 @@ const ViewDiscussion = () => {
                         <MemeComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -814,6 +833,9 @@ const ViewDiscussion = () => {
                         <GraphicOrganizerComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -824,6 +846,9 @@ const ViewDiscussion = () => {
                         <CreateMediaComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -834,6 +859,9 @@ const ViewDiscussion = () => {
                         <ShareMediaComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -844,6 +872,9 @@ const ViewDiscussion = () => {
                         <QuoteComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -854,6 +885,9 @@ const ViewDiscussion = () => {
                         <StudyStrategiesComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -864,6 +898,9 @@ const ViewDiscussion = () => {
                         <DebateComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}
@@ -874,6 +911,9 @@ const ViewDiscussion = () => {
                         <AMAThreadComment
                           togglePostInsp={togglePostInsp}
                           setActiveCommentBox={setActiveCommentBox}
+                          discId={discId}
+                          replyingId={replyingId}
+                          postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}
                           setActivePostInspId={setActivePostInspId}

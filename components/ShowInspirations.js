@@ -62,18 +62,18 @@ const ShowInspirations = ({
   const askSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Ask Something"
   );
-  console.log(askSomethingInsp);
   const connectSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Connect something"
+    (insp) => insp.category === "Connect Something"
   );
+  console.log(connectSomethingInsp);
   const createSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Create something"
+    (insp) => insp.category === "Create Something"
   );
   const shareSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Share something"
+    (insp) => insp.category === "Share Something"
   );
   const startSomethingInsp = PostingInspirations.filter(
-    (insp) => insp.category === "Start something"
+    (insp) => insp.category === "Start Something"
   );
   //RESPONDING
   const addInsp = RespondingInspirations.filter(
@@ -150,7 +150,7 @@ const ShowInspirations = ({
                       setActivePostInspId={setActivePostInspId}
                     />
                   )}
-                  {currentDetailedInsp === "Connect something" && (
+                  {currentDetailedInsp === "Connect Something" && (
                     <ViewPostInspCategory
                       inspiration={connectSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
@@ -159,7 +159,7 @@ const ShowInspirations = ({
                       setActivePostInspId={setActivePostInspId}
                     />
                   )}
-                  {currentDetailedInsp === "Create something" && (
+                  {currentDetailedInsp === "Create Something" && (
                     <ViewPostInspCategory
                       inspiration={createSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
@@ -168,7 +168,7 @@ const ShowInspirations = ({
                       setActivePostInspId={setActivePostInspId}
                     />
                   )}
-                  {currentDetailedInsp === "Share something" && (
+                  {currentDetailedInsp === "Share Something" && (
                     <ViewPostInspCategory
                       inspiration={shareSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
@@ -178,7 +178,7 @@ const ShowInspirations = ({
                     />
                   )}
 
-                  {currentDetailedInsp === "Start something" && (
+                  {currentDetailedInsp === "Start Something" && (
                     <ViewPostInspCategory
                       inspiration={startSomethingInsp[0]}
                       setViewInspirations={setViewInspirations}
