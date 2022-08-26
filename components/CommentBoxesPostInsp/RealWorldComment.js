@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const RealWorldComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateRealWorld, setEditorStateRealWorld] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +37,7 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [realWorldValue, setRealWorldValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [applicationValue, setApplicationValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeRealWorld = (editorStateRealWorld) => {
     setEditorStateRealWorld(editorStateRealWorld);
@@ -56,10 +64,62 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setApplicationValue(application);
   };
-  console.log(realWorldValue);
-  console.log(understandingValue);
-  console.log(applicationValue);
 
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      console.log(menti);
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateRealWorld(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateApplication(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            "Real world": `${realWorldValue}`,
+            Understanding: `${understandingValue}`,
+            Application: `${applicationValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            "Real world": `${realWorldValue}`,
+            Understanding: `${understandingValue}`,
+            Application: `${applicationValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150   !text-md`;
 
@@ -112,7 +172,7 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeRealWorld}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Identify a specific real-world scenario that could be informed by, or could inform, concepts related to the topic."
             />
@@ -126,7 +186,7 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain how application of concepts to this real-world scenario can increase understanding of the topic."
             />
           </div>
@@ -139,7 +199,7 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Recommend ways you could effectively interact with the concepts you identified in the context of other real-world scenarios."
             />
           </div>
@@ -149,6 +209,8 @@ const RealWorldComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Real-world"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

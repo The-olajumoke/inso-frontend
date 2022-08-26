@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const AlternativeComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStatePerspectives, setEditorStatePerspectives] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +37,7 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [perspectivesValue, setPerspectivesValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [commonalityValue, setCommonalityValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangePerspectives = (editorStatePerspectives) => {
     setEditorStatePerspectives(editorStatePerspectives);
@@ -56,10 +64,61 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setCommonalityValue(commonality);
   };
-  console.log(perspectivesValue);
-  console.log(understandingValue);
-  console.log(commonalityValue);
 
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStatePerspectives(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateCommonality(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Perspectives: `${perspectivesValue}`,
+            Understanding: `${understandingValue}`,
+            Commonality: `${commonalityValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Perspectives: `${perspectivesValue}`,
+            Understanding: `${understandingValue}`,
+            Commonality: `${commonalityValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150   !text-md`;
 
@@ -112,7 +171,7 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangePerspectives}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Identify a specific concept related to the topic about which there are at least two alternative perspectives."
             />
@@ -126,7 +185,7 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain how each perspective understands the concept."
             />
           </div>
@@ -139,7 +198,7 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Recommend ways that each perspective can benefit from the ideas of the other."
             />
           </div>
@@ -149,6 +208,8 @@ const AlternativeComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Alternative"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

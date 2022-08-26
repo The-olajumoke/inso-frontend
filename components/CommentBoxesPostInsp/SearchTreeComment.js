@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -14,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const SearchTreeComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const SearchTreeComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateSearch, setEditorStateSearch] = useState(
     EditorState.createEmpty()
   );
@@ -28,7 +37,7 @@ const SearchTreeComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [searchValue, setSearchValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [additionValue, setAdditionValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeSearch = (editorStateSearch) => {
     setEditorStateSearch(editorStateSearch);
@@ -55,10 +64,61 @@ const SearchTreeComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setAdditionValue(addition);
   };
-  console.log(searchValue);
-  console.log(understandingValue);
-  console.log(additionValue);
 
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateSearch(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateAddition(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Search: `${searchValue}`,
+            Understanding: `${understandingValue}`,
+            Addition: `${additionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Search: `${searchValue}`,
+            Understanding: `${understandingValue}`,
+            Addition: `${additionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
   const toolbarStyle = `absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150   !text-md`;
 
@@ -111,7 +171,7 @@ const SearchTreeComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeSearch}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="List three concepts related to the topic and include a link to at least one web-based resource related to each concept."
             />
@@ -125,7 +185,7 @@ const SearchTreeComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain how the resources you identified inform your understanding of the concepts related to the topic."
             />
           </div>
@@ -138,7 +198,7 @@ const SearchTreeComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Recommend three other concepts about which you would like others to investigate and share resources."
             />
           </div>
@@ -148,6 +208,8 @@ const SearchTreeComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="A search tree"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import styles from "@/styles/discussion.module.css";
 
 import Image from "next/image";
-import {
-  PostingInspirations,
-  RespondingInspirations,
-  SynthesizingInspirations,
-} from "@/utils/sampleData";
+
 import FullInspirationTemp from "./FullInspirationTemp";
 
 import FullInspButtonHeader from "./FullInspButtonHeader";
 
-const FullPostInspirations = ({ setViewFullPostInsp, setActiveCommentBox }) => {
+const FullPostInspirations = ({
+  setViewFullPostInsp,
+  setActiveCommentBox,
+  PostingInspirations,
+  RespondingInspirations,
+  SynthesizingInspirations,
+}) => {
   const [activeInsp, setActiveInsp] = useState("Post with");
 
   return (

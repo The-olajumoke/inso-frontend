@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -14,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const QuoteComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const QuoteComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateQuote, setEditorStateQuote] = useState(
     EditorState.createEmpty()
   );
@@ -28,7 +37,7 @@ const QuoteComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [quoteValue, setQuoteValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [questionValue, setQuestionValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeQuote = (editorStateQuote) => {
     setEditorStateQuote(editorStateQuote);
@@ -54,6 +63,61 @@ const QuoteComment = ({ setActiveCommentBox, togglePostInsp }) => {
       convertToRaw(editorStateQuestion.getCurrentContent())
     );
     setQuestionValue(question);
+  };
+
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateQuote(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateQuestion(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Quote: `${quoteValue}`,
+            Understanding: `${understandingValue}`,
+            Question: `${questionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Quote: `${quoteValue}`,
+            Understanding: `${understandingValue}`,
+            Question: `${questionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
   };
   console.log(quoteValue);
   console.log(understandingValue);
@@ -111,7 +175,7 @@ const QuoteComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeQuote}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Paste (or retype) a quote from an assigned resource or a resource you identified that captures important information about concepts related to the topic."
             />
@@ -125,7 +189,7 @@ const QuoteComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain how the quote you identified informs your understanding of concepts related to the topic."
             />
           </div>
@@ -138,7 +202,7 @@ const QuoteComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Pose a question that would encourage further discussion about the ideas conveyed in the quote."
             />
           </div>
@@ -148,6 +212,8 @@ const QuoteComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="A Quote"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

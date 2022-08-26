@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -14,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const DebateComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateDebateTopic, setEditorStateDebateTopic] = useState(
     EditorState.createEmpty()
   );
@@ -28,7 +37,7 @@ const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [debateTopicValue, setDebateTopicValue] = useState("");
   const [understandingValue, setUnderstandingValue] = useState("");
   const [questionValue, setQuestionValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeDebateTopic = (editorStateDebateTopic) => {
     setEditorStateDebateTopic(editorStateDebateTopic);
@@ -55,9 +64,60 @@ const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setQuestionValue(question);
   };
-  console.log(debateTopicValue);
-  console.log(understandingValue);
-  console.log(questionValue);
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateDebateTopic(EditorState.createEmpty());
+      setEditorStateUnder(EditorState.createEmpty());
+      setEditorStateQuestion(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            "Debate Topic": `${debateTopicValue}`,
+            Understanding: `${understandingValue}`,
+            Question: `${questionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            "Debate Topic": `${debateTopicValue}`,
+            Understanding: `${understandingValue}`,
+            Question: `${questionValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
 
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150   !text-md`;
@@ -111,7 +171,7 @@ const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeDebateTopic}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Create a statement about concepts related to the topic that would inspire informative and healthy discussion."
             />
@@ -125,7 +185,7 @@ const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain your understanding of at least two of the perspectives on the debate topic you chose."
             />
           </div>
@@ -138,7 +198,7 @@ const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Pose at least three questions related to the concept you identified that would encourage further debate."
             />
           </div>
@@ -148,6 +208,8 @@ const DebateComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="A debate"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

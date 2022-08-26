@@ -66,7 +66,6 @@ const AskQuestionsComment = ({
           url: part?.username,
         };
       });
-      console.log(menti);
       setMentionsArray(menti);
     }
   }, [participants]);

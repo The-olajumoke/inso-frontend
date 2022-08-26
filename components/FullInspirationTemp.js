@@ -11,15 +11,7 @@ const FullInspirationTemp = ({
       {arrayInsp.map((insp, index) => (
         <div key={index} className="mb-22">
           <div className="flex items-center mb-13">
-            <div className="flex items-center justify-center">
-              {/* <Image
-                src={`${insp.categoryIcon}`}
-                alt={insp.category}
-                layout="fixed"
-                width="18"
-                height="18"
-              /> */}
-            </div>
+            <div className="flex items-center justify-center"></div>
             <p className="ml-12 text-xs text-black-analText ">
               {insp.category}
             </p>
@@ -31,19 +23,19 @@ const FullInspirationTemp = ({
                 key={index}
                 onClick={() => {
                   setViewFullPostInsp(false);
-                  setActiveCommentBox(`${inspiration.title}`);
+                  setActiveCommentBox(`${inspiration.name}`);
                 }}
               >
                 {" "}
                 <div className="flex-grow px-16 pt-16 flex  flex-col">
                   <p className=" mb-8 text-primary-darkGreen ">Instruction</p>
                   <p className=" text-gray-faintGrayOpacity hover:text-gray-faintGray mb-20 h-65">
-                    {inspiration?.instruction}
+                    {inspiration?.instructions}
                   </p>
                 </div>
                 <div className=" bg-blue-postInsp h-50 px-28 flex items-center text-sm text-black-postInsp">
                   {" "}
-                  {inspiration.title}
+                  {inspiration.name}
                 </div>
               </div>
             ))}

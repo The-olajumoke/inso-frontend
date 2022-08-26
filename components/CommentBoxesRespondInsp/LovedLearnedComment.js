@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const LovedLearnedComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const LovedLearnedComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateSummary, setEditorStateSummary] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +37,7 @@ const LovedLearnedComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [summaryValue, setSummaryValue] = useState("");
   const [lovedValue, setLovedValue] = useState("");
   const [learnedValue, setLearnedValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeSummary = (editorStateSummary) => {
     setEditorStateSummary(editorStateSummary);
@@ -55,6 +63,60 @@ const LovedLearnedComment = ({ setActiveCommentBox, togglePostInsp }) => {
       convertToRaw(editorStateLearned.getCurrentContent())
     );
     setLearnedValue(learn);
+  };
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateSummary(EditorState.createEmpty());
+      setEditorStateLoved(EditorState.createEmpty());
+      setEditorStateLearned(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Summary: `${summaryValue}`,
+            Loved: `${lovedValue}`,
+            Learned: `${learnedValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Summary: `${summaryValue}`,
+            Loved: `${lovedValue}`,
+            Learned: `${learnedValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
   };
   console.log(summaryValue);
   console.log(lovedValue);
@@ -112,7 +174,7 @@ const LovedLearnedComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeSummary}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Summarize your understanding of the main points to which you are responding."
             />
@@ -126,7 +188,7 @@ const LovedLearnedComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Identify one aspect of the post that you loved."
             />
           </div>
@@ -139,7 +201,7 @@ const LovedLearnedComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Explain how the ideas in the post informed your understanding of the topic."
             />
           </div>
@@ -149,6 +211,8 @@ const LovedLearnedComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Loved, Learned"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

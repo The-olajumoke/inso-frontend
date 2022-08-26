@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const OneStarFiveComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const OneStarFiveComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateSummary, setEditorStateSummary] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +37,7 @@ const OneStarFiveComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [summaryValue, setSummaryValue] = useState("");
   const [oneStarValue, setOneStarValue] = useState("");
   const [fiveStarsValue, setFiveStarsValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeSummary = (editorStateSummary) => {
     setEditorStateSummary(editorStateSummary);
@@ -55,6 +63,61 @@ const OneStarFiveComment = ({ setActiveCommentBox, togglePostInsp }) => {
       convertToRaw(editorStateFiveStars.getCurrentContent())
     );
     setFiveStarsValue(star);
+  };
+
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateSummary(EditorState.createEmpty());
+      setEditorStateOneStar(EditorState.createEmpty());
+      setEditorStateFiveStars(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Summary: `${summaryValue}`,
+            "1 Star": `${oneStarValue}`,
+            "5 Stars": `${fiveStarsValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Summary: `${summaryValue}`,
+            "1 Star": `${oneStarValue}`,
+            "5 Stars": `${fiveStarsValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
   };
   console.log(summaryValue);
   console.log(oneStarValue);
@@ -112,7 +175,7 @@ const OneStarFiveComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeSummary}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Summarize your understanding of the main points to which you are responding."
             />
@@ -126,7 +189,7 @@ const OneStarFiveComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Identify one aspect of the post that you would rate as 1-star and justify your rating."
             />
           </div>
@@ -139,7 +202,7 @@ const OneStarFiveComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Identify one aspect of the post that you would rate as 5-star and justify your rating."
             />
           </div>
@@ -149,6 +212,8 @@ const OneStarFiveComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="1 Star 5 Stars"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

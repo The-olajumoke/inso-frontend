@@ -29,6 +29,7 @@ import {
   POST_LOADING,
   POST_SUCCESS,
   POST_ERROR,
+  POST_FALSE,
   GRADE_PARTICIPANTS_LOADING,
   GRADE_PARTICIPANTS_SUCCESS,
   GRADE_PARTICIPANTS_ERROR,
@@ -311,6 +312,15 @@ const discussion = (state, { type, payload }) => {
           postLoading: false,
           postSuccess: false,
           postError: payload,
+        },
+      };
+    case POST_FALSE:
+      return {
+        ...state,
+        discussion: {
+          ...state.discussion,
+          postLoading: false,
+          postSuccess: false,
         },
       };
     case GRADE_PARTICIPANTS_LOADING:

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import ShowInspirations from "../ShowInspirations";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { mention } from "@/utils/mentions";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
 const Editor = dynamic(
@@ -15,7 +13,17 @@ const Editor = dynamic(
   }
 );
 
-const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
+const DirectlyComment = ({
+  setActiveCommentBox,
+  togglePostInsp,
+  discId,
+  replyingId,
+  postSuccess,
+  participants,
+  activePostInspId,
+  setActivePostInspId,
+  handleCreatePost,
+}) => {
   const [editorStateSummary, setEditorStateSummary] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +37,7 @@ const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
   const [summaryValue, setSummaryValue] = useState("");
   const [answerValue, setAnswerValue] = useState("");
   const [supportValue, setSupportValue] = useState("");
-
+  const [mentionsArray, setMentionsArray] = useState([]);
   // FIRST
   const onEditorStateChangeSummary = (editorStateSummary) => {
     setEditorStateSummary(editorStateSummary);
@@ -56,9 +64,61 @@ const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
     );
     setSupportValue(support);
   };
-  console.log(summaryValue);
-  console.log(answerValue);
-  console.log(supportValue);
+
+  useEffect(() => {
+    if (participants.length) {
+      const menti = participants.map((part) => {
+        return {
+          text: part?.username,
+          value: part?.username,
+          url: part?.username,
+        };
+      });
+      setMentionsArray(menti);
+    }
+  }, [participants]);
+  useEffect(() => {
+    if (postSuccess == true) {
+      setEditorStateSummary(EditorState.createEmpty());
+      setEditorStateAnswer(EditorState.createEmpty());
+      setEditorStateSupport(EditorState.createEmpty());
+      setActiveCommentBox("noInspiration");
+    }
+  }, [postSuccess]);
+
+  const handlePost = () => {
+    if (replyingId.id !== "") {
+      const body = {
+        draft: false,
+        comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Summary: `${summaryValue}`,
+            Answer: `${answerValue}`,
+            Support: `${supportValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    } else {
+      const body = {
+        draft: false,
+        // comment_for: replyingId.id,
+        post: {
+          post: ``,
+          outline: {
+            Summary: `${summaryValue}`,
+            Answer: `${answerValue}`,
+            Support: `${supportValue}`,
+          },
+        },
+        post_inspiration: `${activePostInspId}`,
+      };
+      handleCreatePost(discId, body);
+    }
+  };
 
   const toolbarStyle = ` absolute bottom-1  left-96 !bg-transparent z-9999`;
   const editorStyle = `!w-full !h-150   !text-md`;
@@ -112,7 +172,7 @@ const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
               onEditorStateChange={onEditorStateChangeSummary}
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
-              mention={mention}
+              mention={mentionsArray}
               toolbar={toolbar}
               placeholder="Summarize your understanding of the main points to which you are responding."
             />
@@ -126,7 +186,7 @@ const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Address the questions posed in the post."
             />
           </div>
@@ -139,7 +199,7 @@ const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
               toolbarClassName={toolbarStyle}
               editorClassName={editorStyle}
               toolbar={toolbar}
-              mention={mention}
+              mention={mentionsArray}
               placeholder="Paste the link to at least one web-based resource that supports your response and summarize the ideas in the resource."
             />
           </div>
@@ -149,6 +209,8 @@ const DirectlyComment = ({ setActiveCommentBox, togglePostInsp }) => {
         setActiveCommentBox={setActiveCommentBox}
         title="Directly"
         togglePostInsp={togglePostInsp}
+        onButtonClick={handlePost}
+        setActivePostInspId={setActivePostInspId}
       />
     </div>
   );

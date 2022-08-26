@@ -13,18 +13,12 @@ const Posts = ({ posts, setReplyingId, discId }) => {
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
   const [activeOutline, setActiveOutline] = useState("first");
   const [outlineArray, setOutlineArray] = useState([]);
-  //   outline: {Questions: "<p>hellow questions</p>↵", Understanding: "<p>hi understrt</p>↵",…}
-  // Outcomes: "<p>hey outcomes</p>\n"
-  // Questions: "<p>hellow questions</p>\n"
-  // Understanding: "<p>hi understrt</p>\n"
-  // post: ""
-  //
+
   useEffect(() => {
     if (post_inspiration) {
       setOutlineArray(Object.keys(post?.outline));
     }
   }, [post_inspiration, post]);
-  // console.log;
   return (
     <>
       {!post_inspiration ? (

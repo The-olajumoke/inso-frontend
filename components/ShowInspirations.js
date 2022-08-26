@@ -229,6 +229,8 @@ const ShowInspirations = ({
                       inspiration={reactInsp[0]}
                       setViewInspirations={setViewInspirations}
                       setActiveCommentBox={setActiveCommentBox}
+                      togglePostInsp={togglePostInsp}
+                      setActivePostInspId={setActivePostInspId}
                     />
                   )}
                   {currentDetailedInsp === "Connections" && (
