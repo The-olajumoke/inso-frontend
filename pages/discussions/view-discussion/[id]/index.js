@@ -7,15 +7,6 @@ import Link from "next/link";
 import CommentBox from "@/components/CommentBox";
 import { GlobalContext } from "@/context/Provider";
 
-import {
-  automaticScoring,
-  rubricCriteria,
-  rubricScoring,
-  tags,
-} from "@/utils/sampleData";
-import AutomaticScoringTemp from "@/components/AutomaticScoringTemp";
-import RubricScoringTemp from "@/components/RubricScoringTemp";
-import RubricCriteriaTemp from "@/components/RubricCriteriaTemp";
 import AskQuestionsComment from "@/components/CommentBoxesPostInsp/AskQuestionsComment";
 import AskForClarityComment from "@/components/CommentBoxesPostInsp/AskForClarityComment";
 import FullPostInspirations from "@/components/FullPostInspirations";
@@ -55,7 +46,7 @@ import LargeSpinner from "@/components/LargeSpinner";
 import withAuth from "@/HOC/withAuth";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import Posts from "@/components/Posts";
-import ParticipantsRow from "@/components/ParticipantsRow";
+
 import SunburstChart from "chart/SunBurstChart";
 import arrow_back_blue from "../../../../public/static/icons/arrow_back_blue.svg";
 import more_icon_grey from "../../../../public/static/icons/more_icon_grey.svg";
@@ -73,6 +64,10 @@ import moment from "moment";
 import { gradeParticipants } from "@/context/actions/discussion/autoGradeParticipants";
 import { createPost } from "@/context/actions/discussion/post";
 import { setPostFalse } from "@/context/actions/discussion/setPostFalse";
+import ScoreSheetTeacher from "@/components/ScoreSheetTeacher";
+import ScoreSheetStudent from "@/components/ScoreSheetStudent";
+import ShowParticipants from "@/components/ShowParticipants";
+import ShowAllTags from "@/components/ShowAllTags";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -86,7 +81,7 @@ const ViewDiscussion = () => {
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
   const [scoreType, setScoreType] = useState("");
 
-  const [showScoresSheet, setShowScoresSheet] = useState(false);
+  const [showScoresSheet, setShowScoresSheet] = useState(true);
   const [viewFullPostInsp, setViewFullPostInsp] = useState(false);
   const [showParticipants, setShowParticipants] = useState(false);
   const [discTitle, setDiscTitle] = useState("");
@@ -111,6 +106,7 @@ const ViewDiscussion = () => {
     user: "",
     id: "",
   });
+  const [role, setRole] = useState("facilitator");
   const {
     discussionDispatch,
     discussionState: {
@@ -157,6 +153,13 @@ const ViewDiscussion = () => {
   //     };
   //   });
   // }, [allParticipants]);
+  useEffect(() => {
+    if (userId == singleDiscData?.poster?._id) {
+      setRole("facilitator");
+    } else {
+      setRole("participant");
+    }
+  }, [userId, singleDiscData]);
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     console.log(accessToken);
@@ -600,7 +603,7 @@ const ViewDiscussion = () => {
                           </div>
                         )}
 
-                        {!showScoresSheet && (
+                        {!showScoresSheet && role === "facilitator" && (
                           <div className="flex items-center justify-center relative">
                             <div
                               className="flex items-center justify-center "
@@ -735,6 +738,7 @@ const ViewDiscussion = () => {
                           key={index}
                           discId={discId}
                           setReplyingId={setReplyingId}
+                          userId={userId}
                         />
                       ))}
                     </div>
@@ -1177,296 +1181,38 @@ const ViewDiscussion = () => {
                     </div>
                   )}
                 </div>
+
                 {viewAllTags && (
-                  <div className="border-l-2 w-252 border-primary-darkGreen">
-                    <div className=" mb-22 border-b-2 border-other-disabled p-24  flex justify-between items-center">
-                      <p className="text-primary-darkGreen">
-                        Trending tags (6)
-                      </p>
-                      <div
-                        className="flex justify-center items-center"
-                        onClick={() => setViewAllTags(false)}
-                      >
-                        <Image
-                          src={cancel.src}
-                          alt="cancel"
-                          layout="fixed"
-                          width="14"
-                          height="14"
-                        />
-                      </div>
-                    </div>
-                    <div className="px-24">
-                      {allTags.map((tag, index) => (
-                        <div
-                          className="h-32 mb-10 bg-blue-inputBlue flex mr-10 gap-8 items-center px-15 rounded-xs w-189"
-                          key={index}
-                        >
-                          <p className=" text-gray-text  flex">
-                            #{parse(tag.tag)}
-                          </p>
-                          <p className="ml-16 text-primary-blue">{tag.count}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <ShowAllTags
+                    setViewAllTags={setViewAllTags}
+                    allTags={allTags}
+                  />
                 )}
                 {showParticipants && (
-                  <div className="border-l-2 w-350 border-primary-darkGreen">
-                    <div className=" mb-22 border-b-2 border-other-disabled p-24  flex justify-between items-center">
-                      <p className="text-primary-darkGreen">
-                        Participants ({allParticipants.length})
-                      </p>
-                      <div
-                        className="flex justify-center items-center"
-                        onClick={() => setShowParticipants(false)}
-                      >
-                        <Image
-                          src={cancel.src}
-                          alt="cancel"
-                          layout="fixed"
-                          width="14"
-                          height="14"
-                        />
-                      </div>
-                    </div>
-                    {/* PARTICIPANTS */}
-                    {allParticipants.length ? (
-                      allParticipants.map((parti, index) => (
-                        <ParticipantsRow key={index} participants={parti} />
-                      ))
-                    ) : (
-                      <div
-                        className="flex items-center justify-center text-gray-text
-                      h-full w-full text-sm"
-                      >
-                        No participants
-                      </div>
-                    )}
-                  </div>
+                  <ShowParticipants
+                    allParticipants={allParticipants}
+                    role={role}
+                    setShowParticipants={setShowParticipants}
+                  />
                 )}
-                {showScoresSheet && (
-                  <div className=" w-1/2 py-8 px-20">
-                    {scoreType === "automatic" && (
-                      <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
-                        <div className=" flex justify-between items-center">
-                          <h6 className=" text-primary-darkGreen ">
-                            Automatic scoring
-                          </h6>
-                          <div
-                            className="flex justify-center items-center"
-                            onClick={() => setShowScoresSheet(false)}
-                          >
-                            <Image
-                              src={cancel.src}
-                              alt="cancel"
-                              layout="fixed"
-                              width="14"
-                              height="14"
-                            />
-                          </div>
-                        </div>
-
-                        <div className={`${styles.tableHeader} grid-cols-8`}>
-                          <div className="col-span-3 flex  items-center justify-start">
-                            <div className="w-20 opacity-0 mr-10">S</div>
-                            <div className="flex  items-center  justify-center">
-                              <span>
-                                User
-                                <span className=" text-gray-faintGray">
-                                  {allParticipants.length}
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                          <div className=" flex  items-center  justify-center">
-                            <span className=" text-xs">Posts</span>
-                          </div>
-                          <div className=" flex  items-center  justify-center">
-                            <span className=" text-xs">Days</span>
-                          </div>
-                          <div className=" flex  items-center  justify-center">
-                            <span className=" text-xs">Comments</span>
-                          </div>
-                          <div className=" flex  items-center  justify-center">
-                            <span className=" text-xs">P. insp</span>
-                          </div>
-                          <div className=" flex  items-center  justify-center">
-                            <span className=" text-xs">Total score</span>
-                          </div>
-                        </div>
-                        {allParticipants.length ? (
-                          <div
-                            className={`${styles.hiddenScrollbar} h-full flex-grow`}
-                          >
-                            {allParticipants?.map((user, index) => (
-                              <AutomaticScoringTemp
-                                user={user}
-                                key={index}
-                                scores={scores}
-                              />
-                            ))}
-                          </div>
-                        ) : (
-                          <div
-                            className="flex flex-grow items-center justify-center text-gray-text
-                      h-full w-full text-sm mt-40"
-                          >
-                            No participants to score
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {scoreType === "rubric" && (
-                      <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
-                        <div className="flex justify-between items-center">
-                          <h6 className=" text-primary-darkGreen ">
-                            Rubric scoring
-                          </h6>
-                          <div
-                            className="flex justify-center items-center"
-                            onClick={() => setShowScoresSheet(false)}
-                          >
-                            <Image
-                              src={cancel.src}
-                              alt="cancel"
-                              layout="fixed"
-                              width="14"
-                              height="14"
-                            />
-                          </div>
-                        </div>
-                        <div
-                          className={`${styles.tableHeader} grid-cols-10 gap-4`}
-                        >
-                          <div className="col-span-4 flex  items-center justify-start ">
-                            <div className="w-20 opacity-0 mr-10">S</div>
-                            <div className="flex  items-center  justify-center">
-                              <span>
-                                User
-                                <span className=" text-gray-faintGray">
-                                  ({allParticipants?.length})
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                          <div className=" col-span-2   flex  items-center  justify-center">
-                            <span className=" text-xs">
-                              Graded
-                              <span className=" text-gray-faintGray">
-                                (2)
-                              </span>{" "}
-                            </span>
-                          </div>
-                          <div className="col-span-2  flex  items-center  justify-center">
-                            <span className=" text-xs">
-                              Feedback
-                              <span className=" text-gray-faintGray">(28)</span>
-                            </span>
-                          </div>
-
-                          <div className="col-span-2  flex  items-center  justify-center">
-                            <span className=" text-xs">Total score</span>
-                          </div>
-                        </div>
-                        {allParticipants.length ? (
-                          <div className=" h-full">
-                            <div className=" h-1/2">
-                              <div
-                                className={`${styles.hiddenScrollbar} h-full flex-grow`}
-                              >
-                                {allParticipants?.map((user, index) => (
-                                  <div key={index}>
-                                    <RubricScoringTemp
-                                      user={user}
-                                      key={index}
-                                      scores={scores}
-                                      setCurrentUserInfo={setCurrentUserInfo}
-                                    />
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                            <div className={` h-1/2`}>
-                              <div
-                                className={`${styles.tableHeader}  h-1/2  grid-cols-11   gap-4`}
-                              >
-                                <div className="col-span-5 flex  items-center  justify-start">
-                                  <span className=" text-xs">
-                                    Criteria
-                                    <span className=" text-gray-faintGray">
-                                      {/* (5) */}
-                                    </span>
-                                  </span>
-                                </div>
-                                {/* <div className="col-span-4 grid grid-cols-6 justify-between items-center">
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0}
-                                  >
-                                    0
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.5}
-                                  >
-                                    1
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.7}
-                                  >
-                                    2
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.8}
-                                  >
-                                    3
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.9}
-                                  >
-                                    4
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 1}
-                                  >
-                                    5
-                                  </span>
-                                </div> */}
-                                <div className="col-span-2">
-                                  <span className=" text-xs">Points</span>
-                                </div>
-                              </div>
-
-                              <div className={`${styles.hiddenScrollbar} `}>
-                                {scores?.map((item, index) => (
-                                  <RubricCriteriaTemp
-                                    item={item}
-                                    key={index}
-                                    currentUserInfo={currentUserInfo}
-                                    setCurrentUserInfo={setCurrentUserInfo}
-                                    // total={rubricCriteria.totalScore}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <div
-                            className="flex flex-grow items-center justify-center text-gray-text
-                      h-full w-full text-sm mt-40"
-                          >
-                            No participants to score
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                {showScoresSheet && role == "facilitator" && (
+                  <ScoreSheetTeacher
+                    scoreType={scoreType}
+                    setShowScoresSheet={setShowScoresSheet}
+                    allParticipants={allParticipants}
+                    role={role}
+                    scores={scores}
+                  />
+                )}
+                {showScoresSheet && role == "participant" && (
+                  <ScoreSheetStudent
+                    scoreType={scoreType}
+                    setShowScoresSheet={setShowScoresSheet}
+                    allParticipants={allParticipants}
+                    scores={scores}
+                    userId={userId}
+                    rubricCriteria={scores}
+                  />
                 )}
               </div>
             </div>

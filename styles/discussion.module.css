@@ -40,7 +40,18 @@
     font-size: 1.3rem;
 }
 
+.progressBarBlue::-webkit-progress-bar {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F3FAFA;
+}
 
+
+.progressBarBlue::-webkit-progress-value {
+    height: 4px;
+    border-radius: 17.741px;
+    background-color: #F2B544;
+}
 .tableHeader {
     border-bottom: 0.5px solid #caceca;
     height: 5rem;

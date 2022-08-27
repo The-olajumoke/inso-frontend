@@ -181,7 +181,7 @@ const Index = () => {
                   discussion={disc}
                   key={index}
                   createArchived={createArchived}
-                  handleJoinDiscussion={handleJoinDiscussion}
+                  userId={userId}
                 />
               ))}
             </div>

@@ -8,17 +8,26 @@ import edit_green from "../public/static/icons/edit_green.svg";
 import upvote_emoji from "../public/static/icons/upvote_emoji.svg";
 import comment_emoji from "../public/static/icons/comment_emoji.svg";
 import more_icons from "../public/static/new_icons/more_icons.svg";
-const Posts = ({ posts, setReplyingId, discId }) => {
+const Posts = ({ posts, setReplyingId, discId, userId }) => {
   const { _id, date, post, user, comments, post_inspiration } = posts;
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
   const [activeOutline, setActiveOutline] = useState("first");
   const [outlineArray, setOutlineArray] = useState([]);
+  const [poster, setPoster] = useState(true);
 
   useEffect(() => {
     if (post_inspiration) {
       setOutlineArray(Object.keys(post?.outline));
     }
   }, [post_inspiration, post]);
+
+  useEffect(() => {
+    if (userId == user._id) {
+      setPoster(true);
+    } else {
+      setPoster(false);
+    }
+  }, [userId, user]);
   return (
     <>
       {!post_inspiration ? (
@@ -105,54 +114,56 @@ const Posts = ({ posts, setReplyingId, discId }) => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-center relative">
-              <div
-                className="flex items-center justify-center "
-                onClick={() => setOpenEditDropdown(true)}
-              >
-                <Image
-                  src={more_icon_grey.src}
-                  alt="back"
-                  layout="fixed"
-                  width="6"
-                  height="22"
-                  className=" cursor-pointer"
-                />
-              </div>
-              {openEditDropdown && (
-                <>
-                  <div
-                    className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
-                    onClick={() => setOpenEditDropdown(false)}
-                  ></div>
-                  <div
-                    className={`w-176   top-6  -right-6 bg-white-white absolute px-16 py-7 z-60  rounded-lg shadow-xs `}
-                  >
-                    <div className="w-full ">
-                      <div
-                        className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start "
-                        // onClick={}
-                      >
+            {poster && (
+              <div className="flex items-center justify-center relative">
+                <div
+                  className="flex items-center justify-center "
+                  onClick={() => setOpenEditDropdown(true)}
+                >
+                  <Image
+                    src={more_icon_grey.src}
+                    alt="back"
+                    layout="fixed"
+                    width="6"
+                    height="22"
+                    className=" cursor-pointer"
+                  />
+                </div>
+                {openEditDropdown && (
+                  <>
+                    <div
+                      className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
+                      onClick={() => setOpenEditDropdown(false)}
+                    ></div>
+                    <div
+                      className={`w-176   top-6  -right-6 bg-white-white absolute px-16 py-7 z-60  rounded-lg shadow-xs `}
+                    >
+                      <div className="w-full ">
                         <div
-                          className=" mr-12
-                               flex justify-center items-center"
+                          className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray cursor-pointer flex justify-start "
+                          // onClick={}
                         >
-                          <Image
-                            src={edit_green.src}
-                            alt="edit"
-                            layout="fixed"
-                            width="12"
-                            height="12"
-                          />
+                          <div
+                            className=" mr-12
+                               flex justify-center items-center"
+                          >
+                            <Image
+                              src={edit_green.src}
+                              alt="edit"
+                              layout="fixed"
+                              width="12"
+                              height="12"
+                            />
+                          </div>
+                          <p className="text-black-analText ">Edit Post</p>
                         </div>
-                        <p className="text-black-analText ">Edit Post</p>
                       </div>
                     </div>
-                  </div>
-                </>
-              )}
-            </div>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
       ) : (

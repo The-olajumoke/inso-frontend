@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import notifications_active from "../public/static/icons/notifications_active.svg";
@@ -9,25 +9,21 @@ import archive_grey from "../public/static/icons/archive_grey.svg";
 import copy_grey from "../public/static/icons/copy_grey.svg";
 import users_icon from "../public/static/icons/users_icon.svg";
 import moment from "moment";
-const DiscussionBox = ({
-  discussion,
-  createArchived,
-  handleJoinDiscussion,
-}) => {
+const DiscussionBox = ({ discussion, createArchived, userId }) => {
   const { _id, poster, participants, name, date, insoCode, settings } =
     discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
   const [discussionClosed, setDiscussionClosed] = useState(false);
+  const [role, setRole] = useState("facilitator");
 
-  console.log(settings);
-  // let closeDate = new Date(settings?.calendar?.close);
-  // if (closeDate) {
-  //   let today = new Date();
-  //   let isNotClosed = moment(closeDate).isAfter(today);
-  //   if (!isNotClosed) {
-  //     setDiscussionClosed(true);
-  //   }
-  // }
+  useEffect(() => {
+    if (userId == poster._id) {
+      setRole("facilitator");
+    } else {
+      setRole("participant");
+    }
+  }, [userId, poster]);
+
   return (
     <div
       // style={{ minHeight: "110px" }}
@@ -85,53 +81,60 @@ const DiscussionBox = ({
                   className={`w-150   top-6 -right-40 bg-white-white absolute px-14 py-7 z-9999  rounded-lg shadow-md `}
                 >
                   <div className="w-full ">
-                    <Link passHref href={`/discussions/edit-discussion/${_id}`}>
+                    {role === "facilitator" && (
+                      <Link
+                        passHref
+                        href={`/discussions/edit-discussion/${_id}`}
+                      >
+                        <div
+                          className=" text-black-analText
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background cursor-pointer flex justify-start "
+                        >
+                          <div
+                            className=" mr-10
+                               flex justify-center items-center"
+                          >
+                            <Image
+                              src={edit_grey.src}
+                              alt="edit"
+                              layout="fixed"
+                              width="20"
+                              height="20"
+                            />
+                          </div>
+                          <span className=" text-xs text-black-postInsp ">
+                            Edit
+                          </span>
+                        </div>
+                      </Link>
+                    )}
+
+                    {role === "facilitator" && (
                       <div
                         className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background cursor-pointer flex justify-start "
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
+                        onClick={() => {
+                          setOpenDropdown(false);
+                          createArchived(_id);
+                        }}
                       >
                         <div
                           className=" mr-10
                                flex justify-center items-center"
                         >
                           <Image
-                            src={edit_grey.src}
-                            alt="edit"
+                            src={archive_grey.src}
+                            alt="archived"
                             layout="fixed"
                             width="20"
                             height="20"
                           />
                         </div>
                         <span className=" text-xs text-black-postInsp ">
-                          Edit
+                          Archive
                         </span>
                       </div>
-                    </Link>
-
-                    <div
-                      className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
-                      onClick={() => {
-                        setOpenDropdown(false);
-                        createArchived(_id);
-                      }}
-                    >
-                      <div
-                        className=" mr-10
-                               flex justify-center items-center"
-                      >
-                        <Image
-                          src={archive_grey.src}
-                          alt="archived"
-                          layout="fixed"
-                          width="20"
-                          height="20"
-                        />
-                      </div>
-                      <span className=" text-xs text-black-postInsp ">
-                        Archive
-                      </span>
-                    </div>
+                    )}
                     <div
                       className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
