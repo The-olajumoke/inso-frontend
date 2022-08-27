@@ -52,6 +52,7 @@ module.exports = {
         lightGreen: "#F3FAFA",
         lighterGreen: "rgba(243, 250, 250, 1)",
         doneBg: "#EDFBED",
+        boldGreen: "#00CECB",
       },
       gray: {
         text: "#686868",
@@ -64,6 +65,7 @@ module.exports = {
         createDisc: "#F9F9F9",
         analyticsGray: "#BBBBBB",
         notificationBg: "#CBCBCB",
+        bold: "#D8D8D8",
       },
       black: {
         darkPretzl: "#001E2F",
@@ -80,6 +82,8 @@ module.exports = {
         success: " #04BE00",
         lightRed: "#FFF5F5",
         orange: "#FFF2DC",
+        boldOrange: "#FCD27B",
+        boldRed: "#FF5E5B",
       },
       border: {
         green: "rgba(144, 215, 255, 0.1)",

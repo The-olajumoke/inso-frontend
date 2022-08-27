@@ -29,6 +29,9 @@ export const loginWithCode = (API_URL, user, insoCode) => async (dispatch) => {
       {},
       config
     );
+    if (joinDisc.data) {
+      location.replace(`/discussions/view-discussion/${joinDisc.data}`);
+    }
 
     console.log(userProfile);
 

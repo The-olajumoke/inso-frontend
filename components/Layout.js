@@ -14,7 +14,16 @@ import inso_logo from "../public/static/images/inso_logo.svg";
 import bell_black from "../public/static/icons/bell_black.svg";
 
 import { API_URL } from "@/utils/url";
-const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
+const Layout = ({
+  title,
+  children,
+  searchBar,
+  bgColor,
+  showHeader,
+  searchItem,
+  setSearchItem,
+  handleSearch,
+}) => {
   const [navSize, setNavSize] = useState("small");
   const [openSideBar, setOpenSideBar] = useState(false);
   const [token, setToken] = useState("");
@@ -61,12 +70,15 @@ const Layout = ({ title, children, searchBar, bgColor, showHeader }) => {
         <title>{title || "Custigrow"}</title>
       </Head>
 
-      <div className=" flex flex-col vp-980:hidden  h-screen border-4">
+      <div className=" flex flex-col vp-980:hidden  h-screen">
         {showHeader !== false && (
           <Header
             navSize={navSize}
             handleNavSize={handleNavSize}
             searchBar={searchBar}
+            searchItem={searchItem}
+            setSearchItem={setSearchItem}
+            handleSearch={handleSearch}
           />
         )}
         <div

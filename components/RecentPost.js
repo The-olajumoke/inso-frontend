@@ -21,7 +21,7 @@ const RecentPost = ({ notification }) => {
 
       <div className="border-b border-gray-analyticsGray w-full pb-10 ">
         <div className="notif_header "> {parse(notificationHeader)}</div>
-        {/* <div className="notif_subHeader "> {parse(notificationText?.post)}</div> */}
+        <div className="notif_subHeader"> {parse(notificationText)}</div>
         <p className=" text-xs text-gray-analyticsGray">3 mins ago</p>
       </div>
     </div>

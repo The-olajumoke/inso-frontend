@@ -106,6 +106,7 @@ const ViewDiscussion = () => {
   const [PostingInspirations, setPostingInspirations] = useState([]);
   const [RespondingInspirations, setRespondingInspirations] = useState([]);
   const [SynthesizingInspirations, setSynthesizingInspirations] = useState([]);
+  const [currentUserInfo, setCurrentUserInfo] = useState({});
   const [replyingId, setReplyingId] = useState({
     user: "",
     id: "",
@@ -128,7 +129,34 @@ const ViewDiscussion = () => {
       user: { profileData },
     },
   } = useContext(GlobalContext);
+  // f_name: "Jummy";
+  // grade: null;
+  // l_name: "Principal";
+  // muted: false;
+  // username: "JummyPrincipal";
+  // _id: "63073b68d47b3dd7b75a0ab6";
+  //   {
+  //     type: "rubric",
+  //     total: 20,
+  //     criteria: [
+  //         {
+  //             "criteria": "Make at least 4 posts",
+  //             "max_points": 10
+  //         },
+  //         {
+  //             "criteria": "Reaction to two people",
+  //             "max_points": 10
+  //         }
+  //     ]
+  // }
 
+  // useEffect(() => {
+  //   const scoringPart = allParticipants.map((part) => {
+  //     return {
+  //       username: part.username,
+  //     };
+  //   });
+  // }, [allParticipants]);
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     console.log(accessToken);
@@ -170,6 +198,7 @@ const ViewDiscussion = () => {
       setAllParticipants(singleDiscData?.participants);
       setAllTags(singleDiscData?.tags);
       setTopSixTags(singleDiscData?.tags?.slice(0, 5));
+
       if (
         singleDiscData?.settings?.scores !== null &&
         singleDiscData?.settings?.scores?.type === "auto"
@@ -196,6 +225,9 @@ const ViewDiscussion = () => {
         let isNotClosed = moment(closeDate).isAfter(today);
         if (!isNotClosed) {
           setHideComments(true);
+        }
+        if (singleDiscData?.settings?.calendar === null) {
+          setHideComments(false);
         }
       }
     }
@@ -1242,7 +1274,7 @@ const ViewDiscussion = () => {
                               <span>
                                 User
                                 <span className=" text-gray-faintGray">
-                                  {/* ({automaticScoring?.length}) */}
+                                  {allParticipants.length}
                                 </span>
                               </span>
                             </div>
@@ -1263,17 +1295,17 @@ const ViewDiscussion = () => {
                             <span className=" text-xs">Total score</span>
                           </div>
                         </div>
-                        {participants.length ? (
+                        {allParticipants.length ? (
                           <div
                             className={`${styles.hiddenScrollbar} h-full flex-grow`}
                           >
-                            {/* {automaticScoring.map((user, index) => (
-                            <AutomaticScoringTemp
-                              user={user}
-                              key={index}
-                              scores={scores}
-                            />
-                          ))} */}
+                            {allParticipants?.map((user, index) => (
+                              <AutomaticScoringTemp
+                                user={user}
+                                key={index}
+                                scores={scores}
+                              />
+                            ))}
                           </div>
                         ) : (
                           <div
@@ -1314,7 +1346,7 @@ const ViewDiscussion = () => {
                               <span>
                                 User
                                 <span className=" text-gray-faintGray">
-                                  ({automaticScoring.length})
+                                  ({allParticipants?.length})
                                 </span>
                               </span>
                             </div>
@@ -1338,18 +1370,21 @@ const ViewDiscussion = () => {
                             <span className=" text-xs">Total score</span>
                           </div>
                         </div>
-                        {participants.length ? (
+                        {allParticipants.length ? (
                           <div className=" h-full">
                             <div className=" h-1/2">
                               <div
                                 className={`${styles.hiddenScrollbar} h-full flex-grow`}
                               >
-                                {rubricScoring.map((user, index) => (
-                                  <RubricScoringTemp
-                                    user={user}
-                                    key={index}
-                                    scores={scores}
-                                  />
+                                {allParticipants?.map((user, index) => (
+                                  <div key={index}>
+                                    <RubricScoringTemp
+                                      user={user}
+                                      key={index}
+                                      scores={scores}
+                                      setCurrentUserInfo={setCurrentUserInfo}
+                                    />
+                                  </div>
                                 ))}
                               </div>
                             </div>
@@ -1361,11 +1396,11 @@ const ViewDiscussion = () => {
                                   <span className=" text-xs">
                                     Criteria
                                     <span className=" text-gray-faintGray">
-                                      (5)
+                                      {/* (5) */}
                                     </span>
                                   </span>
                                 </div>
-                                <div className="col-span-4 grid grid-cols-6 justify-between items-center">
+                                {/* <div className="col-span-4 grid grid-cols-6 justify-between items-center">
                                   <span
                                     className=" text-gray-analyticsGray cursor-pointer"
                                     title={rubricCriteria.totalScore * 0}
@@ -1402,7 +1437,7 @@ const ViewDiscussion = () => {
                                   >
                                     5
                                   </span>
-                                </div>
+                                </div> */}
                                 <div className="col-span-2">
                                   <span className=" text-xs">Points</span>
                                 </div>
@@ -1413,6 +1448,8 @@ const ViewDiscussion = () => {
                                   <RubricCriteriaTemp
                                     item={item}
                                     key={index}
+                                    currentUserInfo={currentUserInfo}
+                                    setCurrentUserInfo={setCurrentUserInfo}
                                     // total={rubricCriteria.totalScore}
                                   />
                                 ))}

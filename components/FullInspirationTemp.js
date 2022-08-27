@@ -16,7 +16,7 @@ const FullInspirationTemp = ({
               {insp.category}
             </p>
           </div>
-          <div className="grid grid-cols-4 vp-980:grid-cols-2 vp-600:grid-cols-1 gap-6 ">
+          <div className="grid grid-cols-4 vp-1024:grid-cols-3 vp-980:grid-cols-2 vp-600:grid-cols-1 gap-6 ">
             {insp.inspirations.map((inspiration, index) => (
               <div
                 className=" h-236 border border-gray-analyticsGray rounded-lg flex flex-col overflow-hidden cursor-pointer"

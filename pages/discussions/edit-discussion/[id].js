@@ -24,6 +24,7 @@ import SettingsSuccess from "@/components/SettingsSuccess";
 import LargeSpinner from "@/components/LargeSpinner";
 import arrow_back_blue from "../../../public/static/icons/arrow_back_blue.svg";
 import checkbox from "../../../public/static/new_icons/blue_checkbox.svg";
+import { updateScores } from "@/context/actions/discussion/updateScores";
 
 const DiscussionSettings = () => {
   const router = useRouter();
@@ -211,6 +212,7 @@ const DiscussionSettings = () => {
     const body = {
       starter_prompt: starterPromptValue,
     };
+
     console.log(body);
     updateStarterPrompt(API_URL, token, body, discId)(discussionDispatch);
   };
@@ -225,7 +227,12 @@ const DiscussionSettings = () => {
   };
   const handleCreateScoring = (body) => {
     console.log(body);
+    // if (singleDiscData?.settings?.scores === null) {
     createScores(API_URL, token, body, userId)(discussionDispatch);
+    // } else {
+    //   const scoreId = singleDiscData?.settings?.scores?._id;
+    //   updateScores(API_URL, token, body, userId, scoreId)(discussionDispatch);
+    // }
   };
   const handleCreateDisc = () => {
     const body = {

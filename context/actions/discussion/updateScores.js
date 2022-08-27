@@ -1,35 +1,34 @@
 import axios from "axios";
 import {
-  UPDATE_CALENDAR_LOADING,
-  UPDATE_CALENDAR_SUCCESS,
-  UPDATE_CALENDAR_ERROR,
+  UPDATE_SCORES_LOADING,
+  UPDATE_SCORES_SUCCESS,
+  UPDATE_SCORES_ERROR,
 } from "@/constants/actionTypes";
 
 export const updateScores =
-  (INV_API_URL, body, token, id) => async (dispatch) => {
+  (API_URL, token, body, userId, scoreId) => async (dispatch) => {
     try {
       dispatch({
-        type: UPDATE_CALENDAR_LOADING,
+        type: UPDATE_SCORES_LOADING,
       });
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.patch(
-        `${INV_API_URL}/api/invservice/category/put/${id}`,
+      const response = await axios.post(
+        `${API_URL}/users/${userId}/score/${scoreId}`,
         body,
         config
       );
-      if (response.data.status === true) {
-        dispatch({
-          type: UPDATE_CALENDAR_SUCCESS,
-          payload: response.data.data,
-        });
-      }
+      console.log(response);
+      dispatch({
+        type: UPDATE_SCORES_SUCCESS,
+        payload: response.data,
+      });
     } catch (error) {
       dispatch({
-        type: UPDATE_CALENDAR_ERROR,
+        type: UPDATE_SCORES_ERROR,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

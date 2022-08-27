@@ -107,29 +107,7 @@ const DiscussionBox = ({
                         </span>
                       </div>
                     </Link>
-                    <div
-                      className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
-                      onClick={() => {
-                        handleJoinDiscussion(insoCode);
-                      }}
-                    >
-                      <div
-                        className=" mr-10
-                               flex justify-center items-center"
-                      >
-                        <Image
-                          src={archive_grey.src}
-                          alt="archived"
-                          layout="fixed"
-                          width="20"
-                          height="20"
-                        />
-                      </div>
-                      <span className=" text-xs text-black-postInsp ">
-                        JOIN DISCU
-                      </span>
-                    </div>
+
                     <div
                       className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"

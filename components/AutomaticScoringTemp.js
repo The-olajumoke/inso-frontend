@@ -2,8 +2,7 @@ import React from "react";
 import styles from "@/styles/discussion.module.css";
 
 const AutomaticScoringTemp = ({ user }) => {
-
-  const { status, name, instruction, interaction, impact, total } = user;
+  const { l_name, f_name, grade } = user;
 
   return (
     <div className={`${styles.tableRow} grid-cols-8 mb-14`}>
@@ -20,58 +19,67 @@ const AutomaticScoringTemp = ({ user }) => {
                 : " text-primary-darkGreen font-medium"
             }`}
           >
-            {status}
+            {/* {status} */}
           </span>
         </div>
-        <div className="flex-grow">
-          <p className="font-medium text-black-analText">{name}</p>
+        <div className="flex-grow flex items-center gap-2">
+          <p className="font-medium text-xs text-black-analText capitalize">
+            {f_name}
+          </p>
+          <p className="font-medium text-xs text-black-analText capitalize">
+            {""}
+            {l_name}
+          </p>
         </div>
       </div>
       <div className="flex items-center justify-center">
         <div
           className={` ${
-            instruction !== ""
+            grade?.rubric[0]?.earned !== 0
               ? " text-black-analText"
               : "text-other-disabledText"
           } w-52 border border-other-disabledText rounded h-24 bg-other-disabled flex justify-center items-center`}
         >
-          {instruction === "" ? "-" : instruction}
+          {grade?.rubric[0]?.earned === 0 ? "-" : grade?.rubric[0]?.earned}
         </div>
       </div>
       <div className="flex items-center justify-center">
         <div
           className={`  ${
-            interaction !== ""
+            grade?.rubric[1]?.earned !== 0
               ? " text-black-analText"
               : "text-other-disabledText"
           } w-52 rounded h-24 bg-other-disabled flex justify-center items-center`}
         >
-          {" "}
-          {interaction === "" ? "-" : interaction}
+          {grade?.rubric[1]?.earned === 0 ? "-" : grade?.rubric[1]?.earned}
         </div>
       </div>
       <div className="flex items-center justify-center">
         <div
           className={`  ${
-            impact !== "" ? " text-black-analText" : "text-other-disabledText"
+            grade?.rubric[2]?.earned !== 0
+              ? " text-black-analText"
+              : "text-other-disabledText"
           } w-52 rounded h-24 bg-other-disabled  flex justify-center items-center`}
         >
-          {impact === "" ? "-" : impact}
+          {grade?.rubric[2]?.earned === 0 ? "-" : grade?.rubric[2]?.earned}
         </div>
       </div>
       <div className="flex items-center justify-center">
         <div
           className={`  ${
-            impact !== "" ? " text-black-analText" : "text-other-disabledText"
+            grade?.rubric[3]?.earned !== 0
+              ? " text-black-analText"
+              : "text-other-disabledText"
           } w-52 rounded h-24 bg-other-disabled  flex justify-center items-center`}
         >
-          {impact === "" ? "-" : impact}
+          {grade?.rubric[3]?.earned === 0 ? "-" : grade?.rubric[3]?.earned}
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <p className="font-medium text-primary-darkGreen">
+        <p className="font-bold text-primary-darkGreen ">
           {" "}
-          {total === "" ? "-" : total}
+          {grade?.grade === "" ? "-" : grade?.grade}
         </p>
       </div>
     </div>

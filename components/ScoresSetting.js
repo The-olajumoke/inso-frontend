@@ -444,7 +444,9 @@ const ScoresSetting = ({
                   className="btn px-17 h-32 text-md"
                   disabled={!addScoresToSettings || rubricTotalScore === ""}
                   onClick={handleSubmitScores}
-                ></button>
+                >
+                  Next
+                </button>
               )}
             </div>
           )}

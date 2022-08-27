@@ -227,7 +227,7 @@ body{
   .btn:disabled {
     @apply bg-other-disabled text-gray-faintGray font-normal rounded cursor-not-allowed font-poppins;
   }
-#F5F6F8
+
   .btnPostInspNonActive {
     @apply bg-blue-postInsp text-black-postInsp font-normal rounded text-center flex items-center justify-center outline-none font-poppins;
   }
@@ -257,7 +257,7 @@ font-weight: 400;
 line-height: normal
 }
 .notif_subHeader p,.notif_subHeader span{
-font-size: 14px !important;
+font-size: 12px !important;
 color: #686868;
 }
 .username,a{

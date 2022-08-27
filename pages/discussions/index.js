@@ -20,12 +20,14 @@ import sort from "../../public/static/new_icons/sort.svg";
 import archive from "../../public/static/new_icons/archive.svg";
 import { getDiscCreated } from "@/context/actions/discussion/getDiscussionCreated";
 import { getDiscJoined } from "@/context/actions/discussion/getDiscussionJoined";
+import { getDiscSearch } from "@/context/actions/discussion/getDiscussionSearch";
 const Index = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
   const [filter, setFilter] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
   const [allDiscussions, setAllDiscussions] = useState([]);
+  const [searchItem, setSearchItem] = useState("");
 
   const {
     discussionDispatch,
@@ -85,11 +87,18 @@ const Index = () => {
   const handleJoinDiscussion = (code) => {
     joinDiscussion(API_URL, token, userId, code)(discussionDispatch);
   };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    getDiscSearch(API_URL, token, userId, searchItem)(discussionDispatch);
+  };
   return (
     <Layout
       title="Inso | Discussions"
       searchBar={true}
       bgColor="bg-gray-background"
+      searchItem={searchItem}
+      setSearchItem={setSearchItem}
+      handleSearch={handleSearch}
     >
       <div
         className={`${styles.hiddenScrollbar} relative h-full p-35 vp-600:p-23 vp-980:p-46 w-full`}

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styles from "@/styles/discussion.module.css";
+import Radio from "./Radio";
 
-const RubricCriteriaTemp = ({ item, total }) => {
+const RubricCriteriaTemp = ({ item, currentUserInfo, setCurrentUserInfo }) => {
   const { max_points, criteria } = item;
-
+  const { grade } = currentUserInfo;
+  console.log(currentUserInfo);
   const [chosenScore, setChosenScore] = useState("");
   return (
     <div className={`${styles.tableRow} py-6 grid-cols-11  gap-4`}>
-      <div className="col-span-5 flex  items-center  justify-start">
-        <span className=" text-xs h-28 bg-blue-inputBlue rounded w-full flex items-center pl-16 text-black-postInsp">
+      <div className="col-span-5 flex justify-start overflow-hidden h-24">
+        <span className=" text-xs  h-full bg-blue-inputBlue rounded w-full  overflow-hidden  pl-8 text-black-postInsp">
           {criteria}
         </span>
       </div>
@@ -19,7 +21,8 @@ const RubricCriteriaTemp = ({ item, total }) => {
           id=""
           className=""
           value={max_points * 0}
-          title={0}
+          title={max_points * 0}
+          checked={chosenScore == max_points * 0 ? true : false}
           onChange={(e) => setChosenScore(e.target.value)}
         />
         <input
@@ -28,7 +31,8 @@ const RubricCriteriaTemp = ({ item, total }) => {
           id=""
           className=""
           value={max_points * 0.5}
-          title="50%"
+          title={max_points * 0.5}
+          checked={chosenScore == max_points * 0.5 ? true : false}
           onChange={(e) => setChosenScore(e.target.value)}
         />
         <input
@@ -37,16 +41,20 @@ const RubricCriteriaTemp = ({ item, total }) => {
           id=""
           className=""
           value={max_points * 0.7}
-          title="70%"
+          title={max_points * 0.7}
+          checked={chosenScore == max_points * 0.7 ? true : false}
           onChange={(e) => setChosenScore(e.target.value)}
         />
+
         <input
           type="radio"
           name="what"
           id=""
           className=""
           value={max_points * 0.8}
-          title="80%"
+          title={max_points * 0.8}
+          // checked={chosenScore == max_points * 0.8 ? true : false}
+
           onChange={(e) => setChosenScore(e.target.value)}
         />
         <input
@@ -55,7 +63,8 @@ const RubricCriteriaTemp = ({ item, total }) => {
           id=""
           className=""
           value={max_points * 0.9}
-          title="90%"
+          title={max_points * 0.9}
+          checked={chosenScore == max_points * 0.9 ? true : false}
           onChange={(e) => setChosenScore(e.target.value)}
         />
         <input
@@ -64,7 +73,7 @@ const RubricCriteriaTemp = ({ item, total }) => {
           id=""
           className=""
           value={max_points * 1}
-          title="100%"
+          title={max_points * 1}
           onChange={(e) => setChosenScore(e.target.value)}
         />
       </div>

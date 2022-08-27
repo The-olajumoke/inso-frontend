@@ -80,19 +80,11 @@ const LoginPageWithCode = () => {
         console.log(userId);
         joinDiscussion(API_URL, access_token, userId, id)(discussionDispatch);
       }
-      // location.replace(`/discussions/view-discussion/${id}`);
-      // location.replace(`/discussions`);
     }
     setEmail("");
     setPassword("");
   }, [loginError, loginSuccess, loginData, profileData]);
   console.log(joinData);
-
-  // useEffect(() => {
-  //   if (joinData !== null) {
-  //     location.replace(`/discussions/view-discussion/${joinData}`);
-  //   }
-  // }, [joinData]);
 
   useEffect(() => {
     if (validateEmail(email) && password.length >= 8) {
