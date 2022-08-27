@@ -81,7 +81,7 @@ const ViewDiscussion = () => {
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
   const [scoreType, setScoreType] = useState("");
 
-  const [showScoresSheet, setShowScoresSheet] = useState(true);
+  const [showScoresSheet, setShowScoresSheet] = useState(false);
   const [viewFullPostInsp, setViewFullPostInsp] = useState(false);
   const [showParticipants, setShowParticipants] = useState(false);
   const [discTitle, setDiscTitle] = useState("");

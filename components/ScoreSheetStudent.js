@@ -55,52 +55,58 @@ const ScoreSheetStudent = ({
           </p>
           <p className=" text-black-postInsp font-medium mb-8">
             Criteria
-            <span className="ml-4 text-gray-text">({userScores.length})</span>
+            <span className="ml-4 text-gray-text">({userScores?.length})</span>
           </p>
           <div className="w-full mb-70 ">
-            {userScores.map((crit, index) => (
-              <div
-                key={index}
-                className=" flex justify-between items-center w-full gap-10 mb-9"
-              >
-                <div className=" w-9/12">
-                  <p className=" text-gray-text text-xs mb-4  capitalize">
-                    {crit.criteria}
-                  </p>
-                  <progress
-                    className={`${styles.progressBarBlue} w-full`}
-                    value={crit.earned}
-                    max={crit.max_points}
-                  />
-                </div>
-                <p className=" text-black-postInsp font-medium">
-                  {crit.earned}/{crit.max_points}
-                </p>
-
-                {crit.earned == 0 ? (
-                  <button className="w-90 h-30 bg-other-disabled  rounded-xs text-other-disabledText font-medium flex justify-center items-center text-xs">
-                    Undone
-                  </button>
-                ) : (
-                  <div>
-                    {crit.max_points === crit.earned ? (
-                      <button className="w-90 h-30 bg-green-doneBg  rounded-xs text-green-boldGreen flex justify-center items-center text-xs">
-                        Done
-                      </button>
-                    ) : (
-                      <button className="w-90 h-30 bg-other-disabled  rounded-xs text-primary-blue flex justify-center items-center text-xs">
-                        In progress
-                      </button>
-                    )}
+            {userScores?.length ? (
+              userScores?.map((crit, index) => (
+                <div
+                  key={index}
+                  className=" flex justify-between items-center w-full gap-10 mb-9"
+                >
+                  <div className=" w-9/12">
+                    <p className=" text-gray-text text-xs mb-4  capitalize">
+                      {crit.criteria}
+                    </p>
+                    <progress
+                      className={`${styles.progressBarBlue} w-full`}
+                      value={crit.earned}
+                      max={crit.max_points}
+                    />
                   </div>
-                )}
-              </div>
-            ))}
+                  <p className=" text-black-postInsp font-medium">
+                    {crit.earned}/{crit.max_points}
+                  </p>
+
+                  {crit.earned == 0 ? (
+                    <button className="w-90 h-30 bg-other-disabled  rounded-xs text-other-disabledText font-medium flex justify-center items-center text-xs">
+                      Undone
+                    </button>
+                  ) : (
+                    <div>
+                      {crit.max_points === crit.earned ? (
+                        <button className="w-90 h-30 bg-green-doneBg  rounded-xs text-green-boldGreen flex justify-center items-center text-xs">
+                          Done
+                        </button>
+                      ) : (
+                        <button className="w-90 h-30 bg-other-disabled  rounded-xs text-primary-blue flex justify-center items-center text-xs">
+                          In progress
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div>no available score </div>
+            )}
           </div>
-          <div className="flex justify-between w-full">
-            <p className=" text-black-postInsp font-medium">Total score</p>
-            <h6 className=" text-primary-darkGreen font-medium">{total}</h6>
-          </div>
+          {userScores?.length && (
+            <div className="flex justify-between w-full">
+              <p className=" text-black-postInsp font-medium">Total score</p>
+              <h6 className=" text-primary-darkGreen font-medium">{total}</h6>
+            </div>
+          )}
         </div>
       )}
 

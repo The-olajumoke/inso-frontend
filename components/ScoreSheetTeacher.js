@@ -10,6 +10,7 @@ const ScoreSheetTeacher = ({
   scoreType,
   setShowScoresSheet,
   allParticipants,
+  scores
 }) => {
   return (
     <div className=" w-1/2 py-8 px-20">
