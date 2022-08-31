@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/discussion.module.css";
 import cancel from "../public/static/icons/cancel.svg";
@@ -10,10 +10,18 @@ const ScoreSheetTeacher = ({
   scoreType,
   setShowScoresSheet,
   allParticipants,
-  scores
+  scores,
+  setScores,
+  showScoresSheet,
+  setCurrentUserInfo,
+  currentUserInfo,
+  feedback,
+  setFeedback,
+  handleRubricScoring,
+  updatedScores,
 }) => {
   return (
-    <div className=" w-1/2 py-8 px-20">
+    <div className={`w-1/2 vp-980:w-full py-8 px-20`}>
       {scoreType === "automatic" && (
         <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
           <div className=" flex justify-between items-center">
@@ -133,7 +141,12 @@ const ScoreSheetTeacher = ({
                         user={user}
                         key={index}
                         scores={scores}
+                        currentUserInfo={currentUserInfo}
                         setCurrentUserInfo={setCurrentUserInfo}
+                        feedback={feedback}
+                        setFeedback={setFeedback}
+                        setScores={setScores}
+                        updatedScores={updatedScores}
                       />
                     </div>
                   ))}
@@ -149,59 +162,77 @@ const ScoreSheetTeacher = ({
                       <span className=" text-gray-faintGray">{/* (5) */}</span>
                     </span>
                   </div>
-                  {/* <div className="col-span-4 grid grid-cols-6 justify-between items-center">
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0}
-                                  >
-                                    0
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.5}
-                                  >
-                                    1
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.7}
-                                  >
-                                    2
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.8}
-                                  >
-                                    3
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 0.9}
-                                  >
-                                    4
-                                  </span>
-                                  <span
-                                    className=" text-gray-analyticsGray cursor-pointer"
-                                    title={rubricCriteria.totalScore * 1}
-                                  >
-                                    5
-                                  </span>
-                                </div> */}
+                  <div className="col-span-4 grid grid-cols-6 justify-between items-center">
+                    <span
+                      className=" text-gray-analyticsGray cursor-pointer"
+                      title={0}
+                    >
+                      0
+                    </span>
+                    <span
+                      className=" text-gray-analyticsGray cursor-pointer"
+                      title="50%"
+                    >
+                      1
+                    </span>
+                    <span
+                      className=" text-gray-analyticsGray cursor-pointer"
+                      title="70%"
+                    >
+                      2
+                    </span>
+                    <span
+                      className=" text-gray-analyticsGray cursor-pointer"
+                      title="80%"
+                    >
+                      3
+                    </span>
+                    <span
+                      className=" text-gray-analyticsGray cursor-pointer"
+                      title="90%"
+                    >
+                      4
+                    </span>
+                    <span
+                      className=" text-gray-analyticsGray cursor-pointer"
+                      title="100%"
+                    >
+                      5
+                    </span>
+                  </div>
                   <div className="col-span-2">
                     <span className=" text-xs">Points</span>
                   </div>
                 </div>
-                <div className={`${styles.hiddenScrollbar} `}>
-                  {scores?.map((item, index) => (
-                    <RubricCriteriaTemp
-                      item={item}
-                      key={index}
-                      currentUserInfo={currentUserInfo}
-                      setCurrentUserInfo={setCurrentUserInfo}
-                      // total={rubricCriteria.totalScore}
-                    />
-                  ))}
-                </div>
+                {currentUserInfo !== null && (
+                  <div className={`${styles.hiddenScrollbar} `}>
+                    {scores?.map((item, index) => (
+                      <RubricCriteriaTemp
+                        item={item}
+                        key={index}
+                        currentUserInfo={currentUserInfo}
+                        setCurrentUserInfo={setCurrentUserInfo}
+                        // total={rubricCriteria.totalScore}
+                        scores={scores}
+                      />
+                    ))}
+                    <div className="mt-16 flex items-center justify-between gap-4">
+                      <input
+                        type="text"
+                        className="h-40 px-16 w-full border border-other-disabled outline-none"
+                        placeholder="Give your feedback (optional)"
+                        value={feedback}
+                        onChange={(e) => setFeedback(e.target.value)}
+                      />
+                      <button
+                        className="h-40 w-auto px-24 bg-primary-blue text-sm text-white-white rounded-xs"
+                        onClick={handleRubricScoring}
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ) : (

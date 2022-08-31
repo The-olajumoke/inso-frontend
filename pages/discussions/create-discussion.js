@@ -97,7 +97,7 @@ const CreateDiscussion = () => {
           <Link href="/discussions" passHref>
             <div className="flex items-center justify-center">
               <Image
-                src={ arrow_back_blue.src}
+                src={arrow_back_blue.src}
                 alt="back"
                 layout="fixed"
                 width="30"
@@ -145,7 +145,7 @@ const CreateDiscussion = () => {
                     </button>
                   )}
                   {showSettingsbuttons && (
-                    <div className="flex items-center gap-5 justify-end">
+                    <div className="flex items-center gap-5 justify-end w-full">
                       <Link href="/discussions" passHref>
                         <button className="border border-primary-darkGreen w-101 h-32 text-sm rounded text-primary-darkGreen ">
                           Proceed
@@ -155,12 +155,20 @@ const CreateDiscussion = () => {
                         passHref
                         href={`/discussions/edit-discussion/${discId}`}
                       >
-                        <button
-                          className="btn w-auto h-32 text-sm px-8"
-                          //   onClick={() => setActive("settings")}
-                        >
-                          Add discussion settings
-                        </button>
+                        <div>
+                          <button
+                            className=" vp-600:hidden btn w-auto h-32 text-sm px-8"
+                            //   onClick={() => setActive("settings")}
+                          >
+                            Add discussion settings
+                          </button>
+                          <button
+                            className=" vp-600:flex hidden btn w-auto h-32 text-sm px-8"
+                            //   onClick={() => setActive("settings")}
+                          >
+                            Add settings
+                          </button>
+                        </div>
                       </Link>
                     </div>
                   )}

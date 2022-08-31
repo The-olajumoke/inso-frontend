@@ -31,7 +31,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
   return (
     <>
       {!post_inspiration ? (
-        <div className={` py-10 bg-white-white  mb-6 pl-16`}>
+        <div className={` py-10 bg-white-white  mb-6 pl-16 vp-600:pl-0 `}>
           <div className=" flex items-start">
             <div className="w-full flex items-start">
               <div className="flex items-center justify-center mr-12">
@@ -167,9 +167,11 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
           </div>
         </div>
       ) : (
-        <div className={` py-10 bg-white-white  mb-6 pl-16 w-full`}>
+        <div
+          className={` py-10 bg-white-white  mb-6 pl-16 vp-600:pl-0  w-full`}
+        >
           <div className="w-full flex items-start">
-            <div className="flex  justify-center mr-12">
+            <div className="flex  justify-center mr-12 vp-980:mr-6">
               <Image
                 src={avatar.src}
                 alt="user"
@@ -179,7 +181,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
               />
             </div>
 
-            <div className=" flex flex-col w-full pr-20">
+            <div className=" flex flex-col w-full pr-20 vp-980:pr-0">
               <div className="flex  items-center">
                 <div className="">
                   <p className=" font-medium capitalize text-black-postInsp">
@@ -197,7 +199,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 passHref
                 href={`/discussions/view-discussion/${discId}/post/${_id}/`}
               > */}
-              <div className="grid grid-cols-5 vp-600:grid-cols-3  my-16 w-full  ">
+              <div className="grid grid-cols-5 vp-600:grid-cols-3  my-16 w-full vp-600:gap-3  ">
                 <button
                   className={`${
                     activeOutline === "first"
@@ -233,19 +235,19 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 </button>
               </div>
               {activeOutline === "first" && (
-                <div className="">
+                <div className="post_content">
                   {outlineArray.length &&
                     parse(post?.outline?.[outlineArray[0]])}
                 </div>
               )}
               {activeOutline === "second" && (
-                <div className="">
+                <div className="post_content">
                   {outlineArray.length &&
                     parse(post?.outline?.[outlineArray[1]])}
                 </div>
               )}
               {activeOutline === "third" && (
-                <div className="">
+                <div className="post_content">
                   {outlineArray.length &&
                     parse(post?.outline?.[outlineArray[2]])}
                 </div>

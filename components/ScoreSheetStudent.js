@@ -15,7 +15,7 @@ const ScoreSheetStudent = ({
 }) => {
   const [userScores, setUserScores] = useState([]);
   const [total, setTotal] = useState("");
-  const [rubricUserScores, setRubricUserScores] = useState([]);
+  const [rubricUserScores, setRubricUserScores] = useState(null);
   useEffect(() => {
     if (scoreType === "automatic") {
       const yourScores = allParticipants?.filter((part) => part._id == userId);
@@ -26,13 +26,14 @@ const ScoreSheetStudent = ({
       }
     } else {
       const yourScores = allParticipants?.filter((part) => part._id == userId);
-      if (yourScores[0]?.grade == null) {
-        console.log(yourScores);
+      console.log(yourScores);
+      if (yourScores[0]?.grade !== null) {
+        setRubricUserScores(yourScores[0]?.grade);
       }
     }
   }, [allParticipants, userId]);
   return (
-    <div className=" w-1/2 py-8 px-20">
+    <div className=" w-1/2 vp-980:w-full py-8 px-20">
       {scoreType === "automatic" && (
         <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
           <div className=" flex justify-between items-center">
@@ -79,17 +80,19 @@ const ScoreSheetStudent = ({
                   </p>
 
                   {crit.earned == 0 ? (
-                    <button className="w-90 h-30 bg-other-disabled  rounded-xs text-other-disabledText font-medium flex justify-center items-center text-xs">
-                      Undone
-                    </button>
+                    <div>
+                      <button className="w-90 h-30 bg-other-disabled  rounded-xs text-other-disabledText font-medium flex justify-center items-center text-xs">
+                        Undone
+                      </button>
+                    </div>
                   ) : (
                     <div>
                       {crit.max_points === crit.earned ? (
-                        <button className="w-90 h-30 bg-green-doneBg  rounded-xs text-green-boldGreen flex justify-center items-center text-xs">
+                        <button className="w-90 h-30 bg-green-doneBg  rounded-xs text-green-boldGreen  font-medium flex justify-center items-center text-xs">
                           Done
                         </button>
                       ) : (
-                        <button className="w-90 h-30 bg-other-disabled  rounded-xs text-primary-blue flex justify-center items-center text-xs">
+                        <button className="w-90 h-30 bg-other-progressBg  rounded-xs text-other-progress flex justify-center items-center text-xs">
                           In progress
                         </button>
                       )}
@@ -132,40 +135,52 @@ const ScoreSheetStudent = ({
             Criteria
             <span className="ml-4 text-gray-text"></span>
           </p>
-          {rubricUserScores.length ? (
-            rubricUserScores.map((crit, index) => (
-              <div
-                key={index}
-                className=" flex justify-between items-center w-full gap-10 mb-9"
-              >
-                <div className=" w-9/12">
-                  <p className=" text-gray-text text-xs mb-4  capitalize">
-                    {crit.criteria}
-                  </p>
-                </div>
-                <p className=" text-black-postInsp font-medium">
-                  {crit.earned}/{crit.max_points}
-                </p>
-
-                {crit.earned == 0 ? (
-                  <button className="w-90 h-30 bg-other-disabled  rounded-xs text-other-disabledText font-medium flex justify-center items-center text-xs">
-                    Undone
-                  </button>
-                ) : (
-                  <div>
-                    {crit.max_points === crit.earned ? (
-                      <button className="w-90 h-30 bg-green-doneBg  rounded-xs text-green-boldGreen flex justify-center items-center text-xs">
-                        Done
-                      </button>
-                    ) : (
-                      <button className="w-90 h-30 bg-other-disabled  rounded-xs text-primary-blue flex justify-center items-center text-xs">
-                        In progress
-                      </button>
-                    )}
+          {rubricUserScores !== null ? (
+            <div className="">
+              {rubricUserScores?.rubric.map((crit, index) => (
+                <div
+                  key={index}
+                  className=" flex justify-between items-center w-full gap-10 mb-9"
+                >
+                  <div className=" w-9/12 bg-blue-inputBlue h-30 rounded pl-20 flex items-center ">
+                    <p className=" text-black-postInsp text-xs mb-4  capitalize">
+                      {crit.criteria}fdfdf
+                    </p>
                   </div>
-                )}
+                  <p className=" text-black-postInsp font-medium">
+                    {crit.earned}/{crit.max_points}
+                  </p>
+
+                  {crit.earned == 0 ? (
+                    <button className="w-90 h-30 bg-other-disabled  rounded-xs text-other-disabledText font-medium flex justify-center items-center text-xs">
+                      Undone
+                    </button>
+                  ) : (
+                    <div>
+                      {crit.max_points === crit.earned ? (
+                        <button className="w-90 h-30 bg-green-doneBg  rounded-xs text-green-boldGreen flex justify-center items-center text-xs">
+                          Done
+                        </button>
+                      ) : (
+                        <button className="w-90 h-30 bg-other-progressBg  rounded-xs text-other-progress flex justify-center items-center text-xs">
+                          In progress
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="mt-60 flex justify-between w-full">
+                <p className=" text-black-postInsp font-medium">Total score</p>
+                <h6 className=" text-primary-darkGreen font-medium">
+                  {rubricUserScores?.grade}
+                </h6>
               </div>
-            ))
+              <div className="mt-20 flex flex-col justify-between w-full">
+                <p className=" text-black-postInsp font-medium">Feedback:</p>
+                <p className="">{rubricUserScores?.comment}</p>
+              </div>
+            </div>
           ) : (
             <div>
               {scores.map((crit, index) => (

@@ -34,7 +34,7 @@ const CommentBox = ({
   const [btnIsActive, setBtnIsActive] = useState(false);
   const [textValue, setTextValue] = useState("");
   const [mentionsArray, setMentionsArray] = useState([]);
-  // console.log(convertToRaw(editorState.getCurrentContent()));
+
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     const text = draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -87,19 +87,6 @@ const CommentBox = ({
     }
   }, [editorState]);
 
-  //   {
-  //   "draft": true,
-  //   "comment_for": "507f1f77bcf86cd799439011",
-  //   "post": {
-  //     "post": "I like cream cheese on my bagel",
-  //     "outline": {
-  //       "inspirationOutline1": "Do you like bagels?",
-  //       "inspirationOutline2": " I want to find out who likes cream cheese on their bagel",
-  //       "inspirationOutline3": "I suspect people like regular cream cheese rather than strawberry"
-  //     }
-  //   },
-  //   "post_inspiration": "507f1f77bcf86cd799439011"
-  // }
   const handlePost = () => {
     if (replyingId.id !== "") {
       const body = {
@@ -124,7 +111,7 @@ const CommentBox = ({
     }
   };
 
-  const toolbarStyle = ` absolute bottom-1  left-40 !bg-transparent z-9999`;
+  const toolbarStyle = `absolute bottom-1  left-40 !bg-transparent z-9999 border-4`;
   const editorStyle = `!w-full !h-full !text-md`;
   return (
     <div className="h-130 relative">

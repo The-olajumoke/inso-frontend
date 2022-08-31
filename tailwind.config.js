@@ -52,7 +52,7 @@ module.exports = {
         lightGreen: "#F3FAFA",
         lighterGreen: "rgba(243, 250, 250, 1)",
         doneBg: "#EDFBED",
-        boldGreen: "#00CECB",
+        boldGreen: "#04BE00",
       },
       gray: {
         text: "#686868",
@@ -84,6 +84,8 @@ module.exports = {
         orange: "#FFF2DC",
         boldOrange: "#FCD27B",
         boldRed: "#FF5E5B",
+        progress: "#CFC309",
+        progressBg: "#FFFAE0",
       },
       border: {
         green: "rgba(144, 215, 255, 0.1)",

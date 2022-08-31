@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import CommentBox from "@/components/CommentBox";
 import { GlobalContext } from "@/context/Provider";
-
 import AskQuestionsComment from "@/components/CommentBoxesPostInsp/AskQuestionsComment";
 import AskForClarityComment from "@/components/CommentBoxesPostInsp/AskForClarityComment";
 import FullPostInspirations from "@/components/FullPostInspirations";
@@ -46,8 +45,6 @@ import LargeSpinner from "@/components/LargeSpinner";
 import withAuth from "@/HOC/withAuth";
 import { getPostInspirations } from "@/context/actions/discussion/getPostInsp";
 import Posts from "@/components/Posts";
-
-import SunburstChart from "chart/SunBurstChart";
 import arrow_back_blue from "../../../../public/static/icons/arrow_back_blue.svg";
 import more_icon_grey from "../../../../public/static/icons/more_icon_grey.svg";
 import drafts from "../../../../public/static/icons/drafts.svg";
@@ -68,6 +65,8 @@ import ScoreSheetTeacher from "@/components/ScoreSheetTeacher";
 import ScoreSheetStudent from "@/components/ScoreSheetStudent";
 import ShowParticipants from "@/components/ShowParticipants";
 import ShowAllTags from "@/components/ShowAllTags";
+import ShowCharts from "@/components/ShowCharts";
+import { api } from "@/components/api";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -95,18 +94,20 @@ const ViewDiscussion = () => {
   const [topSixTags, setTopSixTags] = useState([]);
   const [allParticipants, setAllParticipants] = useState([]);
   const [openChartModal, setOpenChartModal] = useState(false);
-  const [activeChart, setActiveChart] = useState("burst");
+
   const [hideComments, setHideComments] = useState(false);
   const [activePostInspId, setActivePostInspId] = useState("");
   const [PostingInspirations, setPostingInspirations] = useState([]);
   const [RespondingInspirations, setRespondingInspirations] = useState([]);
   const [SynthesizingInspirations, setSynthesizingInspirations] = useState([]);
-  const [currentUserInfo, setCurrentUserInfo] = useState({});
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+  const [updatedScores, setUpdatedScores] = useState(null);
   const [replyingId, setReplyingId] = useState({
     user: "",
     id: "",
   });
   const [role, setRole] = useState("facilitator");
+  const [feedback, setFeedback] = useState("");
   const {
     discussionDispatch,
     discussionState: {
@@ -125,34 +126,7 @@ const ViewDiscussion = () => {
       user: { profileData },
     },
   } = useContext(GlobalContext);
-  // f_name: "Jummy";
-  // grade: null;
-  // l_name: "Principal";
-  // muted: false;
-  // username: "JummyPrincipal";
-  // _id: "63073b68d47b3dd7b75a0ab6";
-  //   {
-  //     type: "rubric",
-  //     total: 20,
-  //     criteria: [
-  //         {
-  //             "criteria": "Make at least 4 posts",
-  //             "max_points": 10
-  //         },
-  //         {
-  //             "criteria": "Reaction to two people",
-  //             "max_points": 10
-  //         }
-  //     ]
-  // }
 
-  // useEffect(() => {
-  //   const scoringPart = allParticipants.map((part) => {
-  //     return {
-  //       username: part.username,
-  //     };
-  //   });
-  // }, [allParticipants]);
   useEffect(() => {
     if (userId == singleDiscData?.poster?._id) {
       setRole("facilitator");
@@ -207,7 +181,7 @@ const ViewDiscussion = () => {
         singleDiscData?.settings?.scores?.type === "auto"
       ) {
         setScoreType("automatic");
-        // setScores(singleDiscData?.settings?.scores?.criteria);
+
         gradeParticipants(
           API_URL,
           token,
@@ -220,7 +194,13 @@ const ViewDiscussion = () => {
         singleDiscData?.settings?.scores?.type === "rubric"
       ) {
         setScoreType("rubric");
-        setScores(singleDiscData?.settings?.scores?.criteria);
+        const allScores = singleDiscData?.settings?.scores?.criteria;
+        const updatedAllScores = allScores.map((sco) => ({
+          ...sco,
+          earned: 0,
+        }));
+        setUpdatedScores(updatedAllScores);
+        setScores(updatedAllScores);
       }
       let closeDate = new Date(singleDiscData?.settings?.calendar?.close);
       if (closeDate) {
@@ -246,6 +226,23 @@ const ViewDiscussion = () => {
       setPostFalse()(discussionDispatch);
     }, [3000]);
   }
+
+  const handleRubricScoring = () => {
+    const newTotal = currentUserInfo?.criteria.reduce((a, b) => {
+      return a + b.earned;
+    }, 0);
+
+    const body = {
+      total: newTotal,
+      criteria: currentUserInfo.criteria,
+      comments: feedback,
+    };
+    const participantId = currentUserInfo.partId;
+    const url = `${API_URL}/discussions/${discId}/participants/${participantId}/grade`;
+    console.log(body);
+    api("PATCH", url, body, null, null);
+    // setCurrentUserInfo(null);
+  };
   return (
     <Layout
       title={`Inso | Discussion`}
@@ -278,7 +275,11 @@ const ViewDiscussion = () => {
                       />
                     </div>
                   </Link>
-                  <h5 className="ml-13 capitalize">{discTitle}</h5>
+                  <div className="vp-600:h-30 overflow-hidden">
+                    <h5 className="ml-13 capitalize vp-600:text-md">
+                      {discTitle}
+                    </h5>
+                  </div>
                 </div>
                 {/* ACTIONS */}
                 <div className=" hidden vp-980:flex items-center justify-center relative">
@@ -325,7 +326,8 @@ const ViewDiscussion = () => {
                           </div>
                           <div
                             className=" text-black-analText
-                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray  cursor-pointer flex justify-start"
+                  :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none border-gray-analyticsGray  cursor-pointer flex justify-start relative"
+                            onClick={() => setOpenChartModal(true)}
                           >
                             <div
                               className=" mr-12
@@ -340,6 +342,12 @@ const ViewDiscussion = () => {
                               />
                             </div>
                             <p className=" text-black-analText">Charts</p>
+                            {/* {openChartModal && (
+                              <ShowCharts
+                                setOpenChartModal={setOpenChartModal}
+                                allTags={allTags}
+                              />
+                            )} */}
                           </div>
                           <div
                             className=" text-black-analText
@@ -429,7 +437,10 @@ const ViewDiscussion = () => {
                     <div
                       className="flex items-center justify-center "
                       title="Charts"
-                      onClick={() => setOpenChartModal(true)}
+                      onClick={() => {
+                        setOpenChartModal(true);
+                        setOpenDropdown(false);
+                      }}
                     >
                       <Image
                         src={charts.src}
@@ -440,67 +451,12 @@ const ViewDiscussion = () => {
                       />
                     </div>
 
-                    {openChartModal && (
-                      <>
-                        <div
-                          className={`fixed h-screen w-screen top-0 left-0 bg-other-overlay animate-fade-in z-50`}
-                          onClick={() => setOpenChartModal(false)}
-                        ></div>
-                        <div
-                          className={` w-736  h-660 top-6 right-6 bg-white-white absolute  z-60  rounded-xl overflow-hidden  shadow-createDiscussion `}
-                        >
-                          <div className="h-14 bg-primary-blue"></div>
-
-                          <div className="grid grid-cols-3 px-20 pt-25">
-                            <div
-                              className={`${
-                                activeChart === "burst"
-                                  ? "activeChart"
-                                  : "inactiveChart"
-                              }`}
-                              onClick={() => setActiveChart("burst")}
-                            >
-                              Burst chart
-                            </div>
-                            <div
-                              className={`${
-                                activeChart === "dependency"
-                                  ? "activeChart"
-                                  : "inactiveChart"
-                              }`}
-                              onClick={() => setActiveChart("dependency")}
-                            >
-                              Dependency chart
-                            </div>
-                            <div
-                              className={`${
-                                activeChart === "directed"
-                                  ? "activeChart"
-                                  : "inactiveChart"
-                              }`}
-                              onClick={() => setActiveChart("directed")}
-                            >
-                              Directed graph
-                            </div>
-                          </div>
-                          {activeChart === "burst" && (
-                            <div className="border-4 px-40">
-                              <SunburstChart />
-                            </div>
-                          )}
-                          {activeChart === "dependency" && (
-                            <div className="border-4 px-40">
-                              <h2>CHORD CHART WILL BE HERE</h2>
-                            </div>
-                          )}
-                          {activeChart === "directed" && (
-                            <div className="border-4 px-40">
-                              <h2>TREND BAR CHART WILL BE HERE</h2>
-                            </div>
-                          )}
-                        </div>
-                      </>
-                    )}
+                    {/* {openChartModal && (
+                      <ShowCharts
+                        setOpenChartModal={setOpenChartModal}
+                        allTags={allTags}
+                      />
+                    )} */}
                   </div>
                   <div
                     className="flex items-center justify-center "
@@ -561,7 +517,9 @@ const ViewDiscussion = () => {
               </div>
               <div className="flex  h-full  overflow-hidden">
                 <div
-                  className={`h-full relative flex flex-col flex-grow  w-1/2 justify-between `}
+                  className={` ${
+                    (showScoresSheet || showParticipants) && "vp-980:hidden"
+                  } h-full relative flex flex-col flex-grow  w-1/2 justify-between `}
                 >
                   <div>
                     <div
@@ -604,7 +562,7 @@ const ViewDiscussion = () => {
                         )}
 
                         {!showScoresSheet && role === "facilitator" && (
-                          <div className="flex items-center justify-center relative">
+                          <div className="flex items-center justify-center relative  ">
                             <div
                               className="flex items-center justify-center "
                               onClick={() => setOpenEditDropdown(true)}
@@ -699,7 +657,7 @@ const ViewDiscussion = () => {
                       <div
                         className={` ${
                           viewAllTags ? "hidden" : "flex"
-                        } px-16 vp-min-601:px-42 mt-7 justify-between vp-600:overflow-x-scroll `}
+                        } vp-600:hidden px-16 vp-min-601:px-42 mt-7 justify-between vp-600:overflow-x-scroll `}
                       >
                         <div className="flex items-center gap-2  w-full ">
                           {topSixTags?.map((tag, index) => (
@@ -1202,6 +1160,14 @@ const ViewDiscussion = () => {
                     allParticipants={allParticipants}
                     role={role}
                     scores={scores}
+                    setScores={setScores}
+                    showScoresSheet={showScoresSheet}
+                    currentUserInfo={currentUserInfo}
+                    setCurrentUserInfo={setCurrentUserInfo}
+                    feedback={feedback}
+                    setFeedback={setFeedback}
+                    handleRubricScoring={handleRubricScoring}
+                    updatedScores={updatedScores}
                   />
                 )}
                 {showScoresSheet && role == "participant" && (
@@ -1212,6 +1178,13 @@ const ViewDiscussion = () => {
                     scores={scores}
                     userId={userId}
                     rubricCriteria={scores}
+                    showScoresSheet={showScoresSheet}
+                  />
+                )}
+                {openChartModal && (
+                  <ShowCharts
+                    setOpenChartModal={setOpenChartModal}
+                    allTags={allTags}
                   />
                 )}
               </div>

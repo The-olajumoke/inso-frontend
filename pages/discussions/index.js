@@ -152,13 +152,32 @@ const Index = () => {
             </Link>
           </div>
         </div>
-        <div className=" hidden vp-980:flex mb-20">
-          <input
-            type="text"
-            className={`${styles.searchInput} border-none flex-grow `}
-            placeholder="Search"
-          />
-          <div className="flex items-center justify-center ml-20">
+        <div className=" hidden vp-980:flex mb-20 w-full items-center">
+          {/* <div className="flex items-center vp-600:flex-col"> */}
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              className={`${styles.searchInput} border-none flex-grow `}
+              placeholder="Search"
+              value={searchItem}
+              onChange={(e) => setSearchItem(e.target.value)}
+            />
+          </form>
+          <div className=" vp-980:flex hidden h-54 w-full justify-end">
+            <Link passHref href="/discussions/create-discussion">
+              <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
+                <Image
+                  src={add_icon_white.src}
+                  alt="no discussion"
+                  layout="fixed"
+                  width="14"
+                  height="14"
+                />
+              </div>
+            </Link>
+          </div>
+          {/* </div> */}
+          {/* <div className="flex items-center justify-center ml-20">
             <Image
               src="/static/icons/more_icon.svg"
               alt="more"
@@ -166,7 +185,7 @@ const Index = () => {
               width="20"
               height="20"
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="relative">
@@ -201,7 +220,7 @@ const Index = () => {
           )}
         </div>
 
-        <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">
+        {/* <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">
           <Link passHref href="/discussions/create-discussion">
             <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
               <Image
@@ -213,7 +232,7 @@ const Index = () => {
               />
             </div>
           </Link>
-        </div>
+        </div> */}
       </div>
     </Layout>
   );

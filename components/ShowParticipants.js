@@ -4,7 +4,7 @@ import cancel from "../public/static/icons/cancel.svg";
 import ParticipantsRow from "./ParticipantsRow";
 const ShowParticipants = ({ allParticipants, role, setShowParticipants }) => {
   return (
-    <div className="border-l-2 w-350 border-primary-darkGreen">
+    <div className="border-l-2 w-350 vp-980:w-full border-primary-darkGreen">
       <div className=" mb-22 border-b-2 border-other-disabled p-24  flex justify-between items-center">
         <p className="text-primary-darkGreen">
           Participants ({allParticipants.length})
