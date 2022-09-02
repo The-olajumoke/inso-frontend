@@ -6,7 +6,7 @@ import Link from "next/link";
 import { GlobalContext } from "@/context/Provider";
 import { API_URL } from "@/utils/url";
 import { getSingleDiscussion } from "@/context/actions/discussion/getSingleDiscussion";
-
+import moment from "moment";
 import avatar from "../../../../../public/static/images/avatar.svg";
 import arrow_back_blue from "../../../../../public/static/icons/arrow_back_blue.svg";
 import CommentThread from "@/components/CommentThread";
@@ -22,6 +22,7 @@ const Post = () => {
   const [postTitle, setPostTitle] = useState("");
   const [discTitle, setDiscTitle] = useState("");
   const [comments, setComments] = useState([]);
+  const [datePosted, setDatePosted] = useState("");
   const {
     discussionDispatch,
     discussionState: {
@@ -52,6 +53,7 @@ const Post = () => {
         setUserName(foundPost[0]?.user?.username);
         setPostTitle(foundPost[0]?.post?.post);
         setComments(foundPost[0]?.comments);
+        setDatePosted(foundPost?.date);
       }
     }
   }, [singleDiscData]);
@@ -102,7 +104,7 @@ const Post = () => {
                   </span>
                 </h6>
                 <span className="text-xs text-gray-faintGray">
-                  posted 6 mins ago
+                  {moment(datePosted).fromNow()}
                 </span>
               </div>
             </div>

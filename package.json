@@ -30,6 +30,7 @@
     "html-to-draftjs": "^1.5.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.37",
     "next": "latest",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",

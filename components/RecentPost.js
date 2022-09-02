@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import disc_inactive from "../public/static/new_icons/disc_inactive.svg";
+import moment from "moment";
 const parse = require("html-react-parser");
 
 const RecentPost = ({ notification }) => {
-  const { notificationHeader, notificationText } = notification;
+  const { notificationHeader, notificationText, date } = notification;
   console.log(notificationText);
   return (
     <div className=" flex pt-10 items-start w-full first:pt-0">
@@ -22,7 +23,10 @@ const RecentPost = ({ notification }) => {
       <div className="border-b border-gray-analyticsGray w-full pb-10 ">
         <div className="notif_header "> {parse(notificationHeader)}</div>
         <div className="notif_subHeader"> {parse(notificationText)}</div>
-        <p className=" text-xs text-gray-analyticsGray">3 mins ago</p>
+        <p className=" text-xs text-gray-analyticsGray">
+          {" "}
+          {moment(date).fromNow()}
+        </p>
       </div>
     </div>
   );

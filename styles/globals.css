@@ -237,13 +237,13 @@ line-height: normal
 }
 .notif_subHeader p,.notif_subHeader span{
 font-size: 12px !important;
-color: #686868;
+color: #161925;
 }
 .username,a{
   color: #525AF2;
 }
 .discussion-link{
-  color: #F2B544;
+  color: #525AF2;
   cursor: pointer;
   font-weight: 400;
   text-decoration: underline;

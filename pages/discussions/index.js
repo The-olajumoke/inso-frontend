@@ -100,127 +100,116 @@ const Index = () => {
       setSearchItem={setSearchItem}
       handleSearch={handleSearch}
     >
-      <div
-        className={`${styles.hiddenScrollbar} relative h-full p-35 vp-600:p-23 vp-980:p-46 w-full`}
-      >
-        <div className="flex justify-between w-full mb-33 vp-980:hidden">
-          <Link passHref href="/discussions/create-discussion">
-            <button
-              className="btn text-sm w-259 px-25 flex justify-start items-center h-48 font-medium "
-              // onClick={() => setCreateDiscussion(true)}
-            >
-              <div className="flex justify-center items-center mr-15">
-                <Image
-                  src={add_icon_white.src}
-                  alt="create discussion"
-                  layout="fixed"
-                  width="14"
-                  height="14"
-                />
-              </div>
-              Create new discussion
-            </button>
-          </Link>
-
-          <div className="flex items-center">
-            <button className="flex items-center mr-43">
-              <Dropdown
-                value={filter}
-                setValue={setFilter}
-                icon={sort}
-                title="Filter by..."
-                items={filterOptions}
-                openDropdown={openDropdown}
-                setOpenDropdown={setOpenDropdown}
-                showTitle={true}
-              />
-            </button>
-
-            <Link passHref href="/discussions/archives">
-              <button className="flex items-center">
-                <div className="mr-14 flex justify-center items-center">
+      <>
+        <div
+          className={`${styles.hiddenScrollbar} relative h-full p-35 vp-600:p-23 vp-980:p-46 w-full`}
+        >
+          <div className="flex justify-between w-full mb-33 vp-980:hidden">
+            <Link passHref href="/discussions/create-discussion">
+              <button
+                className="btn text-sm w-259 px-25 flex justify-start items-center h-48 font-medium "
+                // onClick={() => setCreateDiscussion(true)}
+              >
+                <div className="flex justify-center items-center mr-15">
                   <Image
-                    src={archive.src}
+                    src={add_icon_white.src}
                     alt="create discussion"
                     layout="fixed"
-                    width="24"
-                    height="24"
+                    width="14"
+                    height="14"
                   />
                 </div>
-                <span className="text-xs">Archives</span>
+                Create new discussion
               </button>
             </Link>
+
+            <div className="flex items-center">
+              <button className="flex items-center mr-43">
+                <Dropdown
+                  value={filter}
+                  setValue={setFilter}
+                  icon={sort}
+                  title="Filter by..."
+                  items={filterOptions}
+                  openDropdown={openDropdown}
+                  setOpenDropdown={setOpenDropdown}
+                  showTitle={true}
+                />
+              </button>
+
+              <Link passHref href="/discussions/archives">
+                <button className="flex items-center">
+                  <div className="mr-14 flex justify-center items-center">
+                    <Image
+                      src={archive.src}
+                      alt="create discussion"
+                      layout="fixed"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span className="text-xs">Archives</span>
+                </button>
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className=" hidden vp-980:flex mb-20 w-full items-center">
-          {/* <div className="flex items-center vp-600:flex-col"> */}
-          <form onSubmit={handleSearch}>
-            <input
-              type="text"
-              className={`${styles.searchInput} border-none flex-grow `}
-              placeholder="Search"
-              value={searchItem}
-              onChange={(e) => setSearchItem(e.target.value)}
-            />
-          </form>
-          <div className=" vp-980:flex hidden h-54 w-full justify-end">
-            <Link passHref href="/discussions/create-discussion">
-              <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
+          <div className=" hidden vp-980:flex mb-20 w-full items-center justify-between">
+            {/* <div className="flex items-center vp-600:flex-col"> */}
+            <form onSubmit={handleSearch}>
+              <input
+                type="text"
+                className={`${styles.searchInput} border-none flex-grow `}
+                placeholder="Search"
+                value={searchItem}
+                onChange={(e) => setSearchItem(e.target.value)}
+              />
+            </form>
+
+            {/* </div> */}
+            <div className="flex items-center justify-center ml-16">
+              <Image
+                src="/static/icons/more_icon.svg"
+                alt="more"
+                layout="fixed"
+                width="20"
+                height="20"
+              />
+            </div>
+          </div>
+
+          <div className="relative">
+            {loading ? (
+              <div className="flex items-center justify-center h-[40vh]">
+                <LargeSpinner />
+              </div>
+            ) : allDiscussions.length ? (
+              <div className="flex justify-start flex-wrap gap-8 gap-y-10 ">
+                {allDiscussions.map((disc, index) => (
+                  <DiscussionBox
+                    discussion={disc}
+                    key={index}
+                    createArchived={createArchived}
+                    userId={userId}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className=" flex flex-col items-center justify-end h-400 ">
                 <Image
-                  src={add_icon_white.src}
+                  src="/static/illustrations/no_discussion.svg"
                   alt="no discussion"
                   layout="fixed"
-                  width="14"
-                  height="14"
+                  width="128"
+                  height="128"
                 />
+                <h6 className=" text-gray-illustrationText">
+                  It’s lonely in here. Create a new discussion
+                </h6>
               </div>
-            </Link>
+            )}
           </div>
-          {/* </div> */}
-          {/* <div className="flex items-center justify-center ml-20">
-            <Image
-              src="/static/icons/more_icon.svg"
-              alt="more"
-              layout="fixed"
-              width="20"
-              height="20"
-            />
-          </div> */}
         </div>
-
-        <div className="relative">
-          {loading ? (
-            <div className="flex items-center justify-center h-[40vh]">
-              <LargeSpinner />
-            </div>
-          ) : allDiscussions.length ? (
-            <div className="flex justify-start flex-wrap gap-8 gap-y-10 ">
-              {allDiscussions.map((disc, index) => (
-                <DiscussionBox
-                  discussion={disc}
-                  key={index}
-                  createArchived={createArchived}
-                  userId={userId}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className=" flex flex-col items-center justify-end h-400 ">
-              <Image
-                src="/static/illustrations/no_discussion.svg"
-                alt="no discussion"
-                layout="fixed"
-                width="128"
-                height="128"
-              />
-              <h6 className=" text-gray-illustrationText">
-                It’s lonely in here. Create a new discussion
-              </h6>
-            </div>
-          )}
-        </div>
-
-        {/* <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">
+        <div className=" vp-980:flex hidden mt-20 h-54 w-full absolute bottom-0  right-9 left-0 justify-end">
           <Link passHref href="/discussions/create-discussion">
             <div className="h-54 w-54 rounded-full bg-primary-darkGreen flex justify-center items-center">
               <Image
@@ -232,8 +221,8 @@ const Index = () => {
               />
             </div>
           </Link>
-        </div> */}
-      </div>
+        </div>
+      </>
     </Layout>
   );
 };

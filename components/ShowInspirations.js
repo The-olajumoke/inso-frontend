@@ -137,10 +137,38 @@ const ShowInspirations = ({
           </div>
           {openPostInspirationsDropDown && (
             <div
-              className={`${styles.dropdown} absolute bg-white-white shadow-lg z-99999 `}
+              className={`${styles.dropdown} absolute bg-white-white shadow-lg z-99999 overflow-hidden `}
             >
+              <div
+                className={`h-9 mb-16  ${
+                  (currentDetailedInsp === "Ask Something" ||
+                    currentDetailedInsp === "Add") &&
+                  "bg-gray-bold"
+                }
+      ${
+        (currentDetailedInsp === "Connect Something" ||
+          currentDetailedInsp === "Answer") &&
+        " bg-green-boldGreen"
+      }
+      ${
+        (currentDetailedInsp === "Create Something" ||
+          currentDetailedInsp === "Ask") &&
+        "  bg-other-boldOrange"
+      }
+      ${
+        (currentDetailedInsp === "Share Something" ||
+          currentDetailedInsp === "Evaluate") &&
+        " bg-other-boldRed"
+      }
+      ${
+        (currentDetailedInsp === "Start Something" ||
+          currentDetailedInsp === "React") &&
+        " bg-primary-darkGreen"
+      }
+      `}
+              ></div>
               {viewInspirations ? (
-                <div className="">
+                <div className="px-25">
                   {currentDetailedInsp === "Ask Something" && (
                     <ViewPostInspCategory
                       inspiration={askSomethingInsp[0]}
@@ -263,7 +291,7 @@ const ShowInspirations = ({
                 </div>
               ) : (
                 <div className="relative ">
-                  <div className="flex justify-between items-center mb-18  gap-4 ">
+                  <div className="flex justify-between items-center mb-18  gap-4 px-25 ">
                     <div className="grid  grid-cols-3 text-sm  gap-4 vp-600:gap-2 flex-grow ">
                       <button
                         style={{ fontSize: "10px" }}
@@ -315,7 +343,7 @@ const ShowInspirations = ({
                   </div>
 
                   {activeInspiration === "posting" && (
-                    <div className="">
+                    <div className="px-25">
                       <div className="overflow-auto flex flex-col">
                         {PostingInspirations.map((insp, index) => (
                           <ViewInspirations

@@ -13,6 +13,7 @@ export async function api(apiConnectType, url, data, callback, feedBack) {
         },
       };
       response = await axios.patch(url, data, config);
+      console.log(response);
     }
 
     if (apiConnectType === "GET") {
@@ -26,7 +27,7 @@ export async function api(apiConnectType, url, data, callback, feedBack) {
     }
     console.log(response);
 
-    if (response.data.status === true) {
+    if (response) {
       if (callback !== null && callback !== undefined) {
         callback(response.data);
       }

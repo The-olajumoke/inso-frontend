@@ -82,7 +82,7 @@ const Layout = ({
           />
         )}
         <div
-          className={` ${styles.hiddenScrollbar}   justify-between flex h-full`}
+          className={` ${styles.hiddenScrollbar}   justify-between flex h-full `}
         >
           {/* <div
             style={{ minHeight: "109px" }}
@@ -98,8 +98,8 @@ const Layout = ({
         </div>
       </div>
 
-      <div className="bg-gray-background py-10 hidden vp-980:flex  flex-col  h-screen ">
-        <div className="flex h-55 w-full bg-white-white justify-between items-center  vp-600:px-23 vp-980:px-46 shadow-sm fixed left-0 right-0 top-3 z-99999 ">
+      <div className="bg-gray-background py-10 hidden vp-980:flex  flex-col  h-screen  ">
+        <div className="flex h-50 w-full bg-white-white justify-between items-center  vp-600:px-23 vp-980:px-46 shadow-sm fixed left-0 right-0 top-0 z-99999 ">
           <div
             className="flex justify-center items-center"
             onClick={() => setOpenSideBar(!openSideBar)}
@@ -138,7 +138,7 @@ const Layout = ({
         </div>
         {openSideBar && <Sidebar navSize={navSize} user={userProfile} />}
         <div
-          className={`${bgColor} vp-980:pt-50 flex-grow overflow-y-auto relative`}
+          className={`${bgColor} vp-980:pt-43 flex-grow overflow-y-auto relative`}
         >
           {children}
         </div>

@@ -67,6 +67,7 @@ import ShowParticipants from "@/components/ShowParticipants";
 import ShowAllTags from "@/components/ShowAllTags";
 import ShowCharts from "@/components/ShowCharts";
 import { api } from "@/components/api";
+import { getDiscNoLoad } from "@/context/actions/discussion/getDiscNoLoad";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -90,6 +91,7 @@ const ViewDiscussion = () => {
   const [userName, setUserName] = useState("");
   const [scores, setScores] = useState(null);
   const [allPosts, setAllPosts] = useState([]);
+  const [datePosted, setDatePosted] = useState("");
   const [allTags, setAllTags] = useState([]);
   const [topSixTags, setTopSixTags] = useState([]);
   const [allParticipants, setAllParticipants] = useState([]);
@@ -108,6 +110,7 @@ const ViewDiscussion = () => {
   });
   const [role, setRole] = useState("facilitator");
   const [feedback, setFeedback] = useState("");
+  const [rubricScoringLoading, setRubricScoringLoading] = useState(false);
   const {
     discussionDispatch,
     discussionState: {
@@ -149,7 +152,10 @@ const ViewDiscussion = () => {
     if (token !== "" && id) {
       getSingleDiscussion(API_URL, token, id)(discussionDispatch);
     }
-  }, [id, token, postSuccess]);
+  }, [id, token]);
+  useEffect(() => {
+    getDiscNoLoad(API_URL, token, id)(discussionDispatch);
+  }, [postSuccess]);
   useEffect(() => {
     if (token !== "") {
       getPostInspirations(API_URL, token)(discussionDispatch);
@@ -175,6 +181,7 @@ const ViewDiscussion = () => {
       setAllParticipants(singleDiscData?.participants);
       setAllTags(singleDiscData?.tags);
       setTopSixTags(singleDiscData?.tags?.slice(0, 5));
+      setDatePosted(singleDiscData?.created);
 
       if (
         singleDiscData?.settings?.scores !== null &&
@@ -226,7 +233,12 @@ const ViewDiscussion = () => {
       setPostFalse()(discussionDispatch);
     }, [3000]);
   }
-
+  const handleScoringSuccess = (res) => {
+    setCurrentUserInfo(null);
+    setRubricScoringLoading(false);
+    console.log(res);
+    getDiscNoLoad(API_URL, token, id)(discussionDispatch);
+  };
   const handleRubricScoring = () => {
     const newTotal = currentUserInfo?.criteria.reduce((a, b) => {
       return a + b.earned;
@@ -240,7 +252,8 @@ const ViewDiscussion = () => {
     const participantId = currentUserInfo.partId;
     const url = `${API_URL}/discussions/${discId}/participants/${participantId}/grade`;
     console.log(body);
-    api("PATCH", url, body, null, null);
+    setRubricScoringLoading(true);
+    api("PATCH", url, body, handleScoringSuccess, null);
     // setCurrentUserInfo(null);
   };
   return (
@@ -257,11 +270,11 @@ const ViewDiscussion = () => {
       ) : (
         <div className="h-full">
           {!viewFullPostInsp ? (
-            <div className={` h-full flex flex-col relative w-full `}>
+            <div className={` h-full flex flex-col relative w-full`}>
               <div
                 className={` h-65 vp-980:h-auto bg-gray-background ${
                   viewAllTags ? "mb-0" : "mb-5"
-                }  vp-980:mt-16 px-16 vp-min-601:px-42 flex  items-center justify-between `}
+                }  vp-980:mt-16 vp-600:mt-0 px-16 vp-min-601:px-42 flex  items-center justify-between py-8 `}
               >
                 <div className=" flex items-center">
                   <Link href="/discussions" passHref>
@@ -275,7 +288,7 @@ const ViewDiscussion = () => {
                       />
                     </div>
                   </Link>
-                  <div className="vp-600:h-30 overflow-hidden">
+                  <div className="vp-600:h-28 overflow-hidden ">
                     <h5 className="ml-13 capitalize vp-600:text-md">
                       {discTitle}
                     </h5>
@@ -546,7 +559,7 @@ const ViewDiscussion = () => {
                               </span>
                             </h6>
                             <span className="text-xs text-gray-faintGray">
-                              posted 6 mins ago
+                              {moment(datePosted).fromNow()}
                             </span>
                           </div>
                         </div>
@@ -1168,6 +1181,8 @@ const ViewDiscussion = () => {
                     setFeedback={setFeedback}
                     handleRubricScoring={handleRubricScoring}
                     updatedScores={updatedScores}
+                    rubricScoringLoading={rubricScoringLoading}
+                    setRubricScoringLoading={setRubricScoringLoading}
                   />
                 )}
                 {showScoresSheet && role == "participant" && (

@@ -45,7 +45,33 @@ const ViewPostInspCategory = ({
         </div>
       </div>
       <div className=" flex-grow">
-        <h6 className=" text-primary-darkGreen mb-14">
+        <h6
+          className={` mb-14 ${
+            (inspiration.category === "Ask Something" ||
+              inspiration.category === "Add") &&
+            "text-gray-bold"
+          }
+      ${
+        (inspiration.category === "Connect Something" ||
+          inspiration.category === "Answer") &&
+        " text-green-boldGreen"
+      }
+      ${
+        (inspiration.category === "Create Something" ||
+          inspiration.category === "Ask") &&
+        "  text-other-boldOrange"
+      }
+      ${
+        (inspiration.category === "Share Something" ||
+          inspiration.category === "Evaluate") &&
+        " text-other-boldRed"
+      }
+      ${
+        (inspiration.category === "Start Something" ||
+          inspiration.category === "React") &&
+        " text-primary-darkGreen"
+      }`}
+        >
           {inspiration.category}:
         </h6>
         {inspiration.inspirations.map((insp, index) => (

@@ -8,7 +8,7 @@ const ViewInspTemp = ({
 }) => {
   return (
     <div
-      className="mb-7 flex items-center justify-between h-40 w-full px-20 bg-blue-postInsp rounded-lg text-lg  text-black-postInsp outline-none cursor-pointer"
+      className="mb-7 flex items-center justify-between h-40 w-full px-20 bg-gray-background   rounded-lg text-lg  text-black-postInsp outline-none cursor-pointer"
       onClick={() => {
         setActiveCommentBox(`${title}`);
       }}
@@ -18,8 +18,6 @@ const ViewInspTemp = ({
           className="text-black-analText"
           onClick={() => {
             setActiveCommentBox(`${title}`);
-            // setViewInspirations(true);
-            // setActiveViewInspiration(`${title}`);
             setActivePostInspId(inspId);
           }}
         >

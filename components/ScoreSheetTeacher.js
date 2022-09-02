@@ -5,6 +5,7 @@ import cancel from "../public/static/icons/cancel.svg";
 import AutomaticScoringTemp from "./AutomaticScoringTemp";
 import RubricScoringTemp from "./RubricScoringTemp";
 import RubricCriteriaTemp from "./RubricCriteriaTemp";
+import WhiteLoader from "./whiteLoader";
 
 const ScoreSheetTeacher = ({
   scoreType,
@@ -19,11 +20,12 @@ const ScoreSheetTeacher = ({
   setFeedback,
   handleRubricScoring,
   updatedScores,
+  rubricScoringLoading,
 }) => {
   return (
-    <div className={`w-1/2 vp-980:w-full py-8 px-20`}>
+    <div className={`w-1/2 vp-980:w-full py-8 px-20 `}>
       {scoreType === "automatic" && (
-        <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
+        <div className=" rounded-lg h-full shadow-lg p-20 vp-600:px-0 vp-600:w-full  flex flex-col">
           <div className=" flex justify-between items-center">
             <h6 className=" text-primary-darkGreen ">Automatic scoring</h6>
             <div
@@ -40,32 +42,35 @@ const ScoreSheetTeacher = ({
             </div>
           </div>
 
-          <div className={`${styles.tableHeader} grid-cols-8`}>
+          <div className={`${styles.tableHeader} grid-cols-8 vp-600:flex`}>
             <div className="col-span-3 flex  items-center justify-start">
-              <div className="w-20 opacity-0 mr-10">S</div>
               <div className="flex  items-center  justify-center">
                 <span>
                   User
                   <span className=" text-gray-faintGray">
-                    {allParticipants.length}
+                    ({allParticipants.length})
                   </span>
                 </span>
               </div>
             </div>
-            <div className=" flex  items-center  justify-center">
-              <span className=" text-xs">Posts</span>
-            </div>
-            <div className=" flex  items-center  justify-center">
-              <span className=" text-xs">Days</span>
-            </div>
-            <div className=" flex  items-center  justify-center">
-              <span className=" text-xs">Comments</span>
-            </div>
-            <div className=" flex  items-center  justify-center">
-              <span className=" text-xs">P. insp</span>
-            </div>
-            <div className=" flex  items-center  justify-center">
-              <span className=" text-xs">Total score</span>
+            <div className="grid grid-cols-5 col-span-5 vp-600:w-full">
+              <div className=" flex  items-center  justify-center">
+                <span className=" text-xs">Posts</span>
+              </div>
+              <div className=" flex  items-center  justify-center">
+                <span className=" text-xs">Days</span>
+              </div>
+              <div className=" flex  items-center  justify-center">
+                <span className=" text-xs vp-600:hidden">Comments</span>
+                <span className=" text-xs vp-600:flex hidden">Comm</span>
+              </div>
+              <div className=" flex  items-center  justify-center">
+                <span className=" text-xs ">P. insp</span>
+              </div>
+              <div className=" flex  items-center  justify-center">
+                <span className=" text-xs vp-1024:hidden">Total score</span>
+                <span className=" text-xs vp-1024:flex hidden">Total</span>
+              </div>
             </div>
           </div>
           {allParticipants.length ? (
@@ -86,7 +91,7 @@ const ScoreSheetTeacher = ({
       )}
 
       {scoreType === "rubric" && (
-        <div className=" rounded-lg  h-full shadow-lg p-20  flex flex-col">
+        <div className=" rounded-lg  h-full shadow-lg p-20 vp-600:px-0  flex flex-col">
           <div className="flex justify-between items-center">
             <h6 className=" text-primary-darkGreen ">Rubric scoring</h6>
             <div
@@ -102,9 +107,8 @@ const ScoreSheetTeacher = ({
               />
             </div>
           </div>
-          <div className={`${styles.tableHeader} grid-cols-10 gap-4`}>
+          <div className={`grid grid-cols-10 vp-600:grid-cols-9  gap-4`}>
             <div className="col-span-4 flex  items-center justify-start ">
-              <div className="w-20 opacity-0 mr-10">S</div>
               <div className="flex  items-center  justify-center">
                 <span>
                   User
@@ -115,20 +119,15 @@ const ScoreSheetTeacher = ({
               </div>
             </div>
             <div className=" col-span-2   flex  items-center  justify-center">
-              <span className=" text-xs">
-                Graded
-                <span className=" text-gray-faintGray">(2)</span>{" "}
-              </span>
+              <span className=" text-xs">Graded</span>
             </div>
             <div className="col-span-2  flex  items-center  justify-center">
-              <span className=" text-xs">
-                Feedback
-                <span className=" text-gray-faintGray">(28)</span>
-              </span>
+              <span className=" text-xs">Feedback</span>
             </div>
 
-            <div className="col-span-2  flex  items-center  justify-center">
-              <span className=" text-xs">Total score</span>
+            <div className="col-span-2 vp-600:col-span-1  flex  items-center  justify-center">
+              <span className=" text-xs vp-1024:hidden">Total score</span>
+              <span className=" text-xs vp-1024:flex hidden">Total</span>
             </div>
           </div>
           {allParticipants.length ? (
@@ -228,7 +227,7 @@ const ScoreSheetTeacher = ({
                         className="h-40 w-auto px-24 bg-primary-blue text-sm text-white-white rounded-xs"
                         onClick={handleRubricScoring}
                       >
-                        Save
+                        {rubricScoringLoading ? <WhiteLoader /> : "Save"}
                       </button>
                     </div>
                   </div>

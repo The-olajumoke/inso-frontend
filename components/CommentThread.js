@@ -8,9 +8,11 @@ import edit_green from "../public/static/icons/edit_green.svg";
 import upvote_emoji from "../public/static/icons/upvote_emoji.svg";
 import comment_emoji from "../public/static/icons/comment_emoji.svg";
 import love_emoji from "../public/static/icons/love_emoji.svg";
+import moment from "moment";
 const CommentThread = ({ posts, setReplyingId, discId }) => {
   const { _id, date, post, user, comments } = posts;
   const [openEditDropdown, setOpenEditDropdown] = useState(false);
+  const updatedDate = new Date(date);
   return (
     <div className={` py-10 bg-white-white  mb-6`}>
       <div className=" flex justify-between items-center">
@@ -32,7 +34,7 @@ const CommentThread = ({ posts, setReplyingId, discId }) => {
               </span>
             </p>
             <span className="text-xs text-gray-faintGray">
-              posted 6 mins ago
+              {moment(updatedDate).fromNow()}
             </span>
           </div>
         </div>
