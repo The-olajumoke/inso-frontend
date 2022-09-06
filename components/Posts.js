@@ -16,7 +16,6 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
   const [activeOutline, setActiveOutline] = useState("first");
   const [outlineArray, setOutlineArray] = useState([]);
   const [poster, setPoster] = useState(true);
-  console.log(posts);
   useEffect(() => {
     if (post_inspiration) {
       setOutlineArray(Object.keys(post?.outline));
@@ -32,7 +31,6 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
   }, [userId, user]);
 
   const updatedDate = new Date(date);
-  console.log(updatedDate);
   return (
     <>
       {!post_inspiration ? (
@@ -118,7 +116,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
               passHref
               href={`/discussions/view-discussion/${discId}/post/${_id}/`}
             >
-              <a className="text-black-postInsp cursor-pointer">
+              <a className="current_post text-black-postInsp cursor-pointer">
                 {parse(post?.post)}
               </a>
             </Link>
@@ -240,7 +238,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 </button>
               </div>
               {activeOutline === "first" && (
-                <div className="post_content">
+                <div className="post_content ">
                   {outlineArray.length &&
                     parse(post?.outline?.[outlineArray[0]])}
                 </div>

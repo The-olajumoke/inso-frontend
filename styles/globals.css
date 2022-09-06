@@ -3,6 +3,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ .ql-editor img,.ql-video{
+  max-width: 100px !important;
+  max-height: 75px !important;
+}
+
+.ql-editor{
+  /* border: #F2B544 2px solid; */
+  height:100%;
+}
+.ql-editor p{
+  color: #161925 !important;
+}
+.ql-container.ql-snow{
+  border: none !important;
+}
+.ql-tooltip {
+  position: absolute ;
+  transform:none !important;
+  left: 0px !important;
+  top: 0;
+  right: 0px !important;
+  width: 400px;
+}
+.ql-toolbar {
+  position: fixed;
+  bottom: 20px;
+  /* left: 70px; */
+  z-index: 99999;
+  order: 1;
+  padding: 0px !important;
+ border: none !important;
+} 
+.quillCont>.quill>.ql-toolbar:first-child {
+display: none;
+background-color: white;
+/* border: 2px solid purple; */
+}
+
+.quillCont,.quillShow {
+  /* border: rebeccapurple 2px solid; */
+  /* height: 150px; */
+  position: relative !important;
+  overflow-y: auto;
+}
+#tab-panel{
+position: absolute;
+top: 0;
+left: 50%;
+max-width: 300px;
+/* border:2px solid purple; */
+background-color: white ;
+padding: 20px;
+}
+.ql-formats{
+  margin-right: 0px !important;
+}
+ 
 .rdw-editor-toolbar,
 .rdw-option-wrapper {
   border: none !important;
@@ -25,10 +83,9 @@
 
 .rdw-suggestion-dropdown{
   z-index: 99999 !important;
-
   top: 0 !important;
   max-height: 200px !important;
-  border: 2px solid;
+  /* border: 2px solid; */
 
 }
 
@@ -221,7 +278,7 @@ body{
     @apply  text-other-disabledText text-md flex justify-center items-center border-b-2 border-other-disabled outline-none vp-600:text-xs;
   }
   .activeChart{
-    @apply text-primary-blue  font-medium border-b-2 cursor-pointer border-primary-blue text-sm pb-10 mb-24 text-center
+    @apply  text-primary-darkGreen  font-medium border-b-2 cursor-pointer border-primary-darkGreen text-sm pb-10 mb-24 text-center
   }
   .inactiveChart{
     @apply text-gray-faintGray font-normal border-b cursor-pointer border-gray-faintGray text-sm pb-10 mb-24 text-center
@@ -254,6 +311,10 @@ color: #161925;
 .post_content p,.post_content span {
 color: #161925;
 font-size: 16px !important;
+}
+.current_post p ,.current_post span{
+  color: #161925;
+      font-size: 16px !important;
 }
 /* ///////////////////////////////////////////////// */
 
@@ -367,6 +428,8 @@ abbr {
 }
 
 @media (max-width: 600px) {
+  .ql-toolbar {
+      bottom: 30px;}
   .react-calendar {
     padding: 20px 16px !important;
   }
@@ -394,4 +457,44 @@ abbr {
 
 
 
+/* 
+ //   const { EmojiBlot, ShortNameEmoji, ToolbarEmoji, TextAreaEmoji } = quillEmoji;
 
+ //   useEffect(() => {
+ //     // Quill.register(
+ //     //   {
+ //     //     "formats/emoji": EmojiBlot,
+ //     //     "modules/emoji-shortname": ShortNameEmoji,
+ //     //     "modules/emoji-toolbar": ToolbarEmoji,
+ //     //     "modules/emoji-textarea": TextAreaEmoji,
+ //     //   },
+ //     //   true
+ //     // );
+ //     console.log(Quill);
+ //   }, [Quill]);
+
+ 
+    //   const modules = {
+    //     toolbar: [
+    //       ["bold", "italic", "underline", "strike"],
+    //       [{ list: "ordered" }, { list: "bullet" }],
+    //       ["emoji"],
+    //       ["link", "image"],
+    //     ],
+    //     "emoji-toolbar": true,
+    //     "emoji-textarea": true,
+    //     "emoji-shortname": true,
+    //   };
+  
+    //   const formats = [
+    //     "bold",
+    //     "italic",
+    //     "underline",
+    //     "strike",
+    //     "blockquote",
+    //     "list",
+    //     "indent",
+    //     "link",
+    //     "image",
+    //     "emoji",
+    //   ]; */

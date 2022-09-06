@@ -350,7 +350,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
         </div>
       </div>
       <div
-        className={`pt-80 py-25  w-300 absolute left-0 top-0 bottom-0 vp-980:flex flex-col justify-start vp-600:justify-between hidden  bg-white-white  z-9999`}
+        className={`pt-80 py-25  w-300 absolute left-0 top-0 bottom-0 vp-980:flex flex-col justify-start vp-600:justify-between hidden  bg-white-white  z-99999`}
       >
         <div className=" flex  pl-25 my-16 vp-600:my-2">
           {userPicture ? (

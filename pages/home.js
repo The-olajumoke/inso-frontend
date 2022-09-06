@@ -262,9 +262,9 @@ const Home = () => {
                 <p className=" text-primary-darkGreen mb-15  font-medium">
                   Badge progress
                 </p>
-                <div className="">
-                  <div className=" flex items-center mb-7">
-                    <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
+                <div className=" w-full">
+                  <div className=" flex items-center mb-7 vp-600:justify-between w-full">
+                    <div className=" bg-other-orange w-250 vp-980:w-auto h-30 rounded px-14  text-xs flex items-center mr-18">
                       Make 10 posts
                     </div>
                     <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
@@ -278,8 +278,8 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className=" flex items-center mb-7">
-                    <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
+                  <div className=" flex items-center mb-7 vp-600:justify-between w-full">
+                    <div className=" bg-other-orange w-250 vp-980:w-auto h-30 rounded px-14  text-xs flex items-center mr-18">
                       Make 10 posts
                     </div>
                     <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">
@@ -293,8 +293,8 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className=" flex items-center mb-7">
-                    <div className=" bg-other-orange w-250 h-30 rounded px-14  text-xs flex items-center mr-18">
+                  <div className=" flex items-center mb-7 vp-600:justify-between w-full">
+                    <div className=" bg-other-orange w-250 vp-980:w-auto h-30 rounded px-14  text-xs flex items-center mr-18">
                       Make 10 posts
                     </div>
                     <div className="w-122  bg-other-orange h-30 pb-5 text-other-disabledText flex flex-col justify-center items-center text-md  rounded-xs overflow-hidden">

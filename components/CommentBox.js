@@ -4,21 +4,11 @@ import styles from "@/styles/viewDiscussion.module.css";
 import { GlobalContext } from "@/context/Provider";
 
 import ShowInspirations from "./ShowInspirations";
-import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
-import draftToHtml from "draftjs-to-html";
-// import { mention } from "@/utils/mentions";
-import { toolbar } from "@/utils/toolbar";
 import { createPost } from "@/context/actions/discussion/post";
 import { API_URL } from "@/utils/url";
-
-const Editor = dynamic(
-  import("react-draft-wysiwyg").then((mod) => mod.Editor),
-  {
-    ssr: false,
-  }
-);
+import QuillEditor from "./QuillEditor";
 
 const CommentBox = ({
   setActiveCommentBox,
@@ -34,12 +24,8 @@ const CommentBox = ({
   const [btnIsActive, setBtnIsActive] = useState(false);
   const [textValue, setTextValue] = useState("");
   const [mentionsArray, setMentionsArray] = useState([]);
+  const [toolbarOpen, setToolbarOpen] = useState(false);
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-    const text = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-    setTextValue(text);
-  };
   useEffect(() => {
     if (participants.length) {
       const menti = participants.map((part) => {
@@ -54,11 +40,11 @@ const CommentBox = ({
     }
   }, [participants]);
 
-  const mention = {
-    seperator: "",
-    trigger: "@",
-    suggestions: mentionsArray,
-  };
+  // const mention = {
+  //   seperator: "",
+  //   trigger: "@",
+  //   suggestions: mentionsArray,
+  // };
   const {
     discussionDispatch,
     discussionState: {
@@ -73,20 +59,26 @@ const CommentBox = ({
   }, []);
   useEffect(() => {
     if (postSuccess == true) {
-      setEditorState(EditorState.createEmpty());
+      setTextValue("");
     }
   }, [postSuccess]);
 
+  // useEffect(() => {
+  //   const textLength = convertToRaw(editorState.getCurrentContent());
+  //   console.log(textLength);
+  //   // console.log(textLength?.blocks[0]);
+  //   // if (textLength?.blocks[0].text === "") {
+  //   //   setBtnIsActive(false);
+  //   // } else {
+  //   //   setBtnIsActive(true);
+  //   // }
+  // }, [editorState]);
+
   useEffect(() => {
-    const textLength = convertToRaw(editorState.getCurrentContent());
-    console.log(textLength?.blocks[0]);
-    if (textLength?.blocks[0].text === "") {
-      setBtnIsActive(false);
-    } else {
+    if (textValue !== "") {
       setBtnIsActive(true);
     }
-  }, [editorState]);
-
+  }, [textValue]);
   const handlePost = () => {
     if (replyingId.id !== "") {
       const body = {
@@ -101,23 +93,30 @@ const CommentBox = ({
     } else {
       const body = {
         draft: false,
-        // comment_for: `${discId}`,
         post: {
           post: `${textValue}`,
         },
-        // post_inspiration: "",
       };
       createPost(API_URL, token, discId, body)(discussionDispatch);
     }
   };
-
+  const toggleToolBar = () => {
+    setToolbarOpen(!toolbarOpen);
+  };
   const toolbarStyle = `absolute bottom-1  left-40 !bg-transparent z-9999 border-4`;
   const editorStyle = `!w-full !h-full !text-md`;
   return (
-    <div className="h-130 relative">
-      <div className="h-full border rounded-lg border-primary-darkGreen py-12 px-20 flex  items-end">
-        <div className="h-100  w-full bg-white-white">
-          <Editor
+    <div
+      className={`h-130 ${
+        btnIsActive ? "vp-600:h-120" : "vp-600:h-60"
+      } relative`}
+    >
+      <div className="h-full border rounded-lg border-primary-darkGreen p-1 flex items-start   !relative ">
+        <div
+          className={`h-72%
+           w-full`}
+        >
+          {/* <Editor
             editorState={editorState}
             onEditorStateChange={onEditorStateChange}
             toolbarClassName={toolbarStyle}
@@ -125,15 +124,27 @@ const CommentBox = ({
             mention={mention}
             toolbar={toolbar}
             placeholder="Say something different"
+          /> */}
+          <QuillEditor
+            value={textValue}
+            setValue={setTextValue}
+            toolbarOpen={toolbarOpen}
+            toggleToolBar={toggleToolBar}
+            onButtonClick={handlePost}
           />
         </div>
-        <ShowInspirations
-          setActiveCommentBox={setActiveCommentBox}
-          togglePostInsp={togglePostInsp}
-          btnIsActive={btnIsActive}
-          onButtonClick={handlePost}
-          setActivePostInspId={setActivePostInspId}
-        />
+        {!toolbarOpen && (
+          <div className={`${!btnIsActive ? "vp-600:hidden" : "flex"}`}>
+            <ShowInspirations
+              setActiveCommentBox={setActiveCommentBox}
+              togglePostInsp={togglePostInsp}
+              btnIsActive={btnIsActive}
+              onButtonClick={handlePost}
+              setActivePostInspId={setActivePostInspId}
+              toggleToolBar={toggleToolBar}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

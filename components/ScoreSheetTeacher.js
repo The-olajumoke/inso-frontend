@@ -21,6 +21,8 @@ const ScoreSheetTeacher = ({
   handleRubricScoring,
   updatedScores,
   rubricScoringLoading,
+  getPostForParticularUser,
+  handleCloseRubric,
 }) => {
   return (
     <div className={`w-1/2 vp-980:w-full py-8 px-20 `}>
@@ -96,7 +98,10 @@ const ScoreSheetTeacher = ({
             <h6 className=" text-primary-darkGreen ">Rubric scoring</h6>
             <div
               className="flex justify-center items-center"
-              onClick={() => setShowScoresSheet(false)}
+              onClick={() => {
+                setShowScoresSheet(false);
+                handleCloseRubric();
+              }}
             >
               <Image
                 src={cancel.src}
@@ -146,6 +151,7 @@ const ScoreSheetTeacher = ({
                         setFeedback={setFeedback}
                         setScores={setScores}
                         updatedScores={updatedScores}
+                        getPostForParticularUser={getPostForParticularUser}
                       />
                     </div>
                   ))}

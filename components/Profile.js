@@ -9,9 +9,15 @@ import { API_URL } from "@/utils/url";
 import avatar from "../public/static/images/avatar.svg";
 import edit_blue from "../public/static/icons/edit_blue.svg";
 import logout from "../public/static/icons/logout.svg";
-
+import camera from "../public/static/new_icons/camera.svg";
+import styles from "@/styles/settings.module.css";
+import { api } from "./api";
+import { imageProcessor } from "@/utils/imageProcessor";
 const Profile = ({ editProfile, setEditProfile }) => {
-  const [userPicture, setUserPicture] = useState(true);
+  const [userPicture, setUserPicture] = useState("");
+  const [userPictureFile, setUserPictureFile] = useState("");
+  const [fileError, setFileError] = useState(false);
+  const [agent64, setAgent64] = useState("");
   const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -103,6 +109,28 @@ const Profile = ({ editProfile, setEditProfile }) => {
     localStorage.removeItem("accessToken");
     window.location.replace("/auth/login");
   };
+  const handleImageChange = (evt) => {
+    const file = evt.target.files[0];
+    setUserPictureFile(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (reader.readyState === 2) {
+        const b64 = reader.result.replace(/^data:image.+;base64,/, "");
+        setUserPicture(reader.result);
+      }
+    };
+    if (file && file.type.match("image.*")) {
+      reader.readAsDataURL(file);
+    } else {
+      return;
+    }
+
+    const url = `${API_URL}/upload/?type=profile&id=${userId}`;
+    const formData = new FormData();
+    formData.append("file", evt.target.files[0]);
+    console.log(evt.target.files[0]);
+    api("POST", url, formData, null, null);
+  };
   return (
     <div className="mt-34">
       <h4 className=" vp-600:hidden text-primary-darkGreen font-medium mb-36">
@@ -110,7 +138,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
       </h4>
       <div className="flex items-center mb-51">
         <div className=" flex mr-255 vp-600:mr-0 items-center">
-          {userPicture ? (
+          {/* {userPicture !== "" ? (
             <div className=" rounded-full">
               <Image
                 src={avatar.src}
@@ -125,7 +153,45 @@ const Profile = ({ editProfile, setEditProfile }) => {
             <div className="  h-60 w-60 text-primary-blue bg-other-faintBlue rounded-full text-md flex justify-center items-center font-semibold mr-15">
               PD
             </div>
+          )} */}
+          {userPicture === "" ? (
+            <div className="w-100 h-100 bg-gray-background rounded-md flex flex-col justify-center items-center">
+              <div className="flex items-center justify-center">
+                <Image
+                  src={camera}
+                  alt="add image"
+                  width="32"
+                  height="32"
+                  layout="fixed"
+                  draggable="false"
+                />
+              </div>
+              <div className="mt-16">
+                <input
+                  type="file"
+                  className={styles.customFileInput}
+                  accept=".jpg,.png,.jpeg"
+                  name=""
+                  id=""
+                  onChange={handleImageChange}
+                />
+                <label className={styles.fileInputLabel}>
+                  Upload picture{" "}
+                  {/* {fileError && (
+                    <span className="text-primary-pureOrange">(Required)</span>
+                  )} */}
+                </label>
+                <div className="w-full flex justify-center">
+                  {/* <span className="  text-secondary-orange"> {imageError}</span> */}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="w-60 rounded-full overflow-hidden h-60">
+              <Image src={userPicture} alt="user" height={175} width={175} />
+            </div>
           )}
+
           <div className="pl-25 ">
             <h6 className="text-gray-text">
               {firstName} {lastName}

@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/discussion.module.css";
 import cancel from "../public/static/icons/cancel.svg";
-import AutomaticScoringTemp from "./AutomaticScoringTemp";
-import RubricScoringTemp from "./RubricScoringTemp";
-import RubricCriteriaTemp from "./RubricCriteriaTemp";
 
 const ScoreSheetStudent = ({
   scoreType,
@@ -144,7 +141,7 @@ const ScoreSheetStudent = ({
                 >
                   <div className=" w-9/12 bg-blue-inputBlue h-30 rounded pl-20 flex items-center ">
                     <p className=" text-black-postInsp text-xs mb-4  capitalize">
-                      {crit.criteria}fdfdf
+                      {crit.criteria}
                     </p>
                   </div>
                   <p className=" text-black-postInsp font-medium">

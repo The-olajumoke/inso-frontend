@@ -32,7 +32,6 @@ const InsoCreates = () => {
               alt="host"
               draggable="false"
               layout="intrinsic"
-              priority
               className=""
             />
           </div>
@@ -46,7 +45,6 @@ const InsoCreates = () => {
               alt="host"
               draggable="false"
               layout="intrinsic"
-              priority
             />
           </div>
         </div>
@@ -59,7 +57,6 @@ const InsoCreates = () => {
               alt="host"
               draggable="false"
               layout="intrinsic"
-              priority
             />
           </div>
         </div>

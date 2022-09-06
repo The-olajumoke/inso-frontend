@@ -68,6 +68,7 @@ import ShowAllTags from "@/components/ShowAllTags";
 import ShowCharts from "@/components/ShowCharts";
 import { api } from "@/components/api";
 import { getDiscNoLoad } from "@/context/actions/discussion/getDiscNoLoad";
+import ShowScoresHover from "@/components/ShowScoresHover";
 const parse = require("html-react-parser");
 const ViewDiscussion = () => {
   const router = useRouter();
@@ -111,6 +112,8 @@ const ViewDiscussion = () => {
   const [role, setRole] = useState("facilitator");
   const [feedback, setFeedback] = useState("");
   const [rubricScoringLoading, setRubricScoringLoading] = useState(false);
+  const [hoverScores, setHoverScores] = useState(false);
+  // const []
   const {
     discussionDispatch,
     discussionState: {
@@ -256,6 +259,17 @@ const ViewDiscussion = () => {
     api("PATCH", url, body, handleScoringSuccess, null);
     // setCurrentUserInfo(null);
   };
+  const getPostCallback = (res) => {
+    console.log(res);
+    setAllPosts(res);
+  };
+  const getPostForParticularUser = (id) => {
+    const url = `${API_URL}/discussion/${discId}/participant/${id}/posts`;
+    api("GET", url, null, getPostCallback, null);
+  };
+  const handleCloseRubric = () => {
+    getDiscNoLoad(API_URL, token, id)(discussionDispatch);
+  };
   return (
     <Layout
       title={`Inso | Discussion`}
@@ -350,8 +364,8 @@ const ViewDiscussion = () => {
                                 src={charts.src}
                                 alt="more"
                                 layout="fixed"
-                                width="21"
-                                height="21"
+                                width="26"
+                                height="26"
                               />
                             </div>
                             <p className=" text-black-analText">Charts</p>
@@ -459,8 +473,8 @@ const ViewDiscussion = () => {
                         src={charts.src}
                         alt="more"
                         layout="fixed"
-                        width="21"
-                        height="21"
+                        width="26"
+                        height="26"
                       />
                     </div>
 
@@ -472,25 +486,45 @@ const ViewDiscussion = () => {
                     )} */}
                   </div>
                   <div
-                    className="flex items-center justify-center "
-                    title="Scoresheet"
-                    onClick={() => {
-                      setShowScoresSheet(true);
-                      setShowParticipants(false);
-                      setOpenDropdown(false);
-                    }}
+                    className="relative"
+                    onMouseOver={() => setHoverScores(true)}
+                    // onMouseLeave={() => setHoverScores(false)}
                   >
-                    {" "}
-                    <Image
-                      src={scoreSheet.src}
-                      alt="more"
-                      layout="fixed"
-                      width="21"
-                      height="21"
-                    />
+                    <div
+                      className="flex items-center justify-center"
+                      title="Scoresheet"
+                      onClick={() => {
+                        if (role == "facilitator") {
+                          setShowScoresSheet(true);
+                        }
+                        setShowParticipants(false);
+                        setOpenDropdown(false);
+                      }}
+                    >
+                      {" "}
+                      <Image
+                        src={scoreSheet.src}
+                        alt="more"
+                        layout="fixed"
+                        width="21"
+                        height="21"
+                      />
+                    </div>
                   </div>
+                  {hoverScores && role == "participant" && (
+                    <ShowScoresHover
+                      setHoverScores={setHoverScores}
+                      scoreType={scoreType}
+                      setShowScoresSheet={setShowScoresSheet}
+                      allParticipants={allParticipants}
+                      scores={scores}
+                      userId={userId}
+                      rubricCriteria={scores}
+                      showScoresSheet={showScoresSheet}
+                    />
+                  )}
                   <div
-                    className="flex items-center justify-center "
+                    className="flex items-center justify-center"
                     title="Participants"
                     onClick={() => {
                       setShowParticipants(true);
@@ -700,25 +734,31 @@ const ViewDiscussion = () => {
                   <div
                     className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar}  `}
                   >
-                    <div
-                      className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
-                    >
-                      {allPosts?.map((post, index) => (
-                        <Posts
-                          posts={post}
-                          key={index}
-                          discId={discId}
-                          setReplyingId={setReplyingId}
-                          userId={userId}
-                        />
-                      ))}
-                    </div>
+                    {allPosts.length ? (
+                      <div
+                        className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
+                      >
+                        {allPosts.map((post, index) => (
+                          <Posts
+                            posts={post}
+                            key={index}
+                            discId={discId}
+                            setReplyingId={setReplyingId}
+                            userId={userId}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="h-full flex justify-center items-center">
+                        No available post
+                      </div>
+                    )}
                   </div>
 
                   {/* COMMENT BOX */}
                   {showScoresSheet !== true && (
                     <div
-                      className={`px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0  z-9999 bg-white-white ${
+                      className={`px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 border-4 z-999 bg-white-white ${
                         hideComments && "hidden"
                       }`}
                     >
@@ -1183,6 +1223,8 @@ const ViewDiscussion = () => {
                     updatedScores={updatedScores}
                     rubricScoringLoading={rubricScoringLoading}
                     setRubricScoringLoading={setRubricScoringLoading}
+                    getPostForParticularUser={getPostForParticularUser}
+                    handleCloseRubric={handleCloseRubric}
                   />
                 )}
                 {showScoresSheet && role == "participant" && (

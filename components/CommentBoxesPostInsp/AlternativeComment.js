@@ -6,6 +6,8 @@ import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { toolbar } from "@/utils/toolbar";
 import CommentBoxHeader from "../CommentBoxHeader";
+import Image from "next/image";
+import checkbox from "../../public/static/new_icons/blue_checkbox.svg";
 const Editor = dynamic(
   import("react-draft-wysiwyg").then((mod) => mod.Editor),
   {
@@ -139,6 +141,14 @@ const AlternativeComment = ({
             }`}
             onClick={() => setCurrentSection("Perspectives")}
           >
+            <Image
+              src={checkbox}
+              alt="checkbox"
+              layout="fixed"
+              width="12"
+              height="12"
+              className=" cursor-pointer mr-16"
+            />
             Perspectives
           </button>
           <button className="border-b-2 border-other-disabled"></button>

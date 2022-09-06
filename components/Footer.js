@@ -13,7 +13,7 @@ const Footer = () => {
             alt="footer"
             draggable="false"
             layout="intrinsic"
-            priority
+            
           />
         </div>
         <div className=" w-1/2  vp-768:w-full flex flex-col justify-center">

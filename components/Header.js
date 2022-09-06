@@ -20,7 +20,6 @@ const Header = ({
           layout="fixed"
           width="98"
           height="46"
-          priority
         />
       </div>
       {searchBar && (

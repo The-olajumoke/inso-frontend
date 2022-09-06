@@ -15,7 +15,7 @@ import WhiteLoader from "./whiteLoader";
 import postInspIcon from "../public/static/icons/postInspIcon.svg";
 import dropdown_white from "../public/static/icons/dropdown_white.svg";
 import divider from "../public/static/icons/divider.svg";
-
+import AforToolbar from "../public/static/new_icons/bold.svg";
 const ShowInspirations = ({
   setActiveCommentBox,
   title,
@@ -23,6 +23,7 @@ const ShowInspirations = ({
   btnIsActive,
   onButtonClick,
   setActivePostInspId,
+  toggleToolBar,
 }) => {
   const [openPostInspirationsDropDown, setOpenPostInspirationsDropDown] =
     useState(false);
@@ -65,7 +66,6 @@ const ShowInspirations = ({
   const connectSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Connect Something"
   );
-  console.log(connectSomethingInsp);
   const createSomethingInsp = PostingInspirations.filter(
     (insp) => insp.category === "Create Something"
   );
@@ -104,7 +104,7 @@ const ShowInspirations = ({
   );
 
   return (
-    <div className="flex  items-center absolute bottom-1 justify-between  right-1 left-1  pb-5 px-20 vp-600:px-10 bg-white-white z-999">
+    <div className="flex  items-center absolute bottom-1 justify-between  right-1 left-1  pb-5 px-20 vp-600:px-10 bg-white-white z-999 ">
       <div className="flex items-center">
         <div className="relative ">
           <div
@@ -358,7 +358,7 @@ const ShowInspirations = ({
                     </div>
                   )}
                   {activeInspiration === "responding" && (
-                    <div className="">
+                    <div className="px-25">
                       <div className="overflow-auto flex flex-col">
                         {RespondingInspirations.map((insp, index) => (
                           <ViewInspirations
@@ -373,16 +373,18 @@ const ShowInspirations = ({
                     </div>
                   )}
                   {activeInspiration === "synthesizing" && (
-                    <div className="overflow-auto flex flex-col gap-3">
-                      {SynthesizingInspirations.map((insp, index) => (
-                        <ViewInspirations
-                          key={index}
-                          insp={insp}
-                          setViewInspirations={setViewInspirations}
-                          setCurrentDetailedInsp={setCurrentDetailedInsp}
-                          togglePostInsp={togglePostInsp}
-                        />
-                      ))}
+                    <div className="px-25">
+                      <div className="overflow-auto flex flex-col gap-3">
+                        {SynthesizingInspirations.map((insp, index) => (
+                          <ViewInspirations
+                            key={index}
+                            insp={insp}
+                            setViewInspirations={setViewInspirations}
+                            setCurrentDetailedInsp={setCurrentDetailedInsp}
+                            togglePostInsp={togglePostInsp}
+                          />
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -400,8 +402,17 @@ const ShowInspirations = ({
             className=" cursor-pointer"
           />
         </div>
+        <div className="" onClick={toggleToolBar}>
+          <Image
+            src={AforToolbar}
+            alt="toolbar"
+            layout="fixed"
+            width="20"
+            height="20"
+            className=" cursor-pointer"
+          />
+        </div>
       </div>
-
       <button
         // disabled={btnIsActive}
         onClick={onButtonClick}

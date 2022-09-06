@@ -29,10 +29,26 @@ export const toolbar = {
   },
   image: {
     icon: "/static/new_icons/photo.svg",
-    uploadCallback: uploadFile,
-    urlEnabled: true,
-    alt: { present: true, mandatory: false },
+    // uploadCallback: uploadFile,
+    // urlEnabled: true,
+    // alt: { present: true, mandatory: false },
     previewImage: true,
     inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
   },
 };
+
+
+
+
+
+// toolbar={{
+            //   inline: { inDropdown: true },
+            //   list: { inDropdown: true },
+            //   textAlign: { inDropdown: true },
+            //   link: { inDropdown: true },
+            //   history: { inDropdown: true },
+            //   image: {
+            //     // uploadCallback: uploadImageCallBack,
+            //     alt: { present: true, mandatory: true },
+            //   },
+            // }}

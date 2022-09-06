@@ -86,6 +86,7 @@ module.exports = {
         boldRed: "#FF5E5B",
         progress: "#CFC309",
         progressBg: "#FFFAE0",
+        yellow: "#FFFAF0",
       },
       border: {
         green: "rgba(144, 215, 255, 0.1)",
@@ -1046,6 +1047,7 @@ module.exports = {
         850: "85rem",
         900: "90rem",
         full: "100%",
+        "72%": "72%",
       },
     },
   },

@@ -33,7 +33,6 @@ const PostWithEase = () => {
           alt="host"
           draggable="false"
           layout="intrinsic"
-          priority
         />
       </div>
     </div>

@@ -15,7 +15,6 @@ const About = () => {
             layout="intrinsic"
             width="103"
             height="103"
-            priority
           />
         </div>
         <h5 className={`${styles.subHeading} mt-48 vp-768:mt-0 mb-16`}>
@@ -32,9 +31,6 @@ const About = () => {
           alt="host"
           draggable="false"
           layout="intrinsic"
-          // width="437"
-          // height="538"
-          priority
         />
       </div>
     </div>

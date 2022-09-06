@@ -9,14 +9,14 @@ const RubricScoringTemp = ({
   setFeedback,
   setScores,
   updatedScores,
+  getPostForParticularUser,
 }) => {
   const { l_name, f_name, grade, _id } = user;
 
   const handleCurrentUser = () => {
+    getPostForParticularUser(_id);
     if (grade == null) {
       setCurrentUserInfo(null);
-      console.log("there's no grade");
-      console.log(updatedScores);
       const body = {
         partId: _id,
         total: 0,
@@ -27,7 +27,6 @@ const RubricScoringTemp = ({
       setCurrentUserInfo(body);
     } else {
       setCurrentUserInfo(null);
-      console.log("there's grade");
       setFeedback(grade?.comment);
       setScores(grade?.rubric);
       const body = {

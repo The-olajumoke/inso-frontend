@@ -2,6 +2,7 @@ import axios from "axios";
 
 export async function api(apiConnectType, url, data, callback, feedBack) {
   // alert("Yes");
+  console.log(data);
   console.log(apiConnectType);
   try {
     let response;
@@ -24,6 +25,15 @@ export async function api(apiConnectType, url, data, callback, feedBack) {
         },
       };
       response = await axios.get(url, config);
+    }
+    if (apiConnectType === "POST") {
+      const config = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      };
+      response = await axios.post(url, data, config);
     }
     console.log(response);
 
