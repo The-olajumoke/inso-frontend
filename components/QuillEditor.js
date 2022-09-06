@@ -24,6 +24,8 @@ export default function QuillEditor({
   toolbarOpen,
   toggleToolBar,
   onButtonClick,
+  postLoading,
+  postSuccess,
 }) {
   const { EmojiBlot, ShortNameEmoji, ToolbarEmoji, TextAreaEmoji } = quillEmoji;
   const reactQuillRef = React.useRef();
@@ -72,36 +74,22 @@ export default function QuillEditor({
     "image",
     "video",
   ];
-  // const handleBody = (e) => {
-  //   setValue(e);
-  // };
-
-  console.log(value);
-
-  const handleChange = (value) => setValue(value);
-
-  const checkCharacterCount = (event) => {
-    console.log(reactQuillRef);
-    // const unprivilegedEditor = reactQuillRef.current.unprivilegedEditor;
-    // if (unprivilegedEditor.getLength() > 280 && event.key !== "Backspace")
-    //   event.preventDefault();
+  const handleBody = (e) => {
+    setValue(e);
   };
+
   return (
     <div className={`${toolbarOpen ? "quillShow" : "quillCont"} h-full `}>
       <ReactQuill
         id="editor"
-        onKeyDown={checkCharacterCount}
         ref={reactQuillRef}
-        // value={this.state.text}
-        onChange={handleChange}
         theme="snow"
         modules={modules}
         formats={formats}
-        // value={value}
-        // onChange={handleBody}
+        onChange={handleBody}
         placeholder={"Say something different"}
       />
-      {toolbarOpen == null && (
+      {toolbarOpen && (
         <div className="fixed  w-8/12   right-24 bottom-4 flex items-end justify-between mb-8">
           <button
             className="h-27 w-27 bg-other-yellow rounded-full"
@@ -122,8 +110,7 @@ export default function QuillEditor({
             onClick={onButtonClick}
             className="w-93 h-34 text-sm  btn bg-primary-blue"
           >
-            {/* {postLoading ? <WhiteLoader /> : "Send"} */}
-            Send
+            {postLoading ? <WhiteLoader /> : "Send"}
           </button>
         </div>
       )}

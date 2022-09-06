@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export async function api(apiConnectType, url, data, callback, feedBack) {
-  // alert("Yes");
   console.log(data);
   console.log(apiConnectType);
   try {

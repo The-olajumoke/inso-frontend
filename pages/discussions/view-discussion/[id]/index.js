@@ -121,6 +121,7 @@ const ViewDiscussion = () => {
         loading,
         singleDiscData,
         postInspData,
+        postLoading,
         postSuccess,
         autoScoringData,
       },
@@ -758,7 +759,7 @@ const ViewDiscussion = () => {
                   {/* COMMENT BOX */}
                   {showScoresSheet !== true && (
                     <div
-                      className={`px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0 border-4 z-999 bg-white-white ${
+                      className={`px-16 vp-min-601:px-42  w-full  py-10 absolute bottom-0  z-999 bg-white-white ${
                         hideComments && "hidden"
                       }`}
                     >
@@ -776,6 +777,7 @@ const ViewDiscussion = () => {
                           setActiveCommentBox={setActiveCommentBox}
                           discId={discId}
                           replyingId={replyingId}
+                          postLoading={postLoading}
                           postSuccess={postSuccess}
                           participants={allParticipants}
                           activePostInspId={activePostInspId}

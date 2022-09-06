@@ -15,6 +15,7 @@ const CommentBox = ({
   togglePostInsp,
   discId,
   replyingId,
+  postLoading,
   postSuccess,
   participants,
   setActivePostInspId,
@@ -59,7 +60,7 @@ const CommentBox = ({
   }, []);
   useEffect(() => {
     if (postSuccess == true) {
-      setTextValue("");
+      setTextValue("<p></p>");
     }
   }, [postSuccess]);
 
@@ -131,6 +132,8 @@ const CommentBox = ({
             toolbarOpen={toolbarOpen}
             toggleToolBar={toggleToolBar}
             onButtonClick={handlePost}
+            postLoading={postLoading}
+            postSuccess={postSuccess}
           />
         </div>
         {!toolbarOpen && (
