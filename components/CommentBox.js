@@ -5,10 +5,12 @@ import { GlobalContext } from "@/context/Provider";
 
 import ShowInspirations from "./ShowInspirations";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import CloseToolbar from "../public/static/new_icons/cancel_blue.svg";
 import { EditorState, convertToRaw } from "draft-js";
 import { createPost } from "@/context/actions/discussion/post";
 import { API_URL } from "@/utils/url";
 import QuillEditor from "./QuillEditor";
+import WhiteLoader from "./whiteLoader";
 
 const CommentBox = ({
   setActiveCommentBox,
@@ -64,22 +66,6 @@ const CommentBox = ({
     }
   }, [postSuccess]);
 
-  // useEffect(() => {
-  //   const textLength = convertToRaw(editorState.getCurrentContent());
-  //   console.log(textLength);
-  //   // console.log(textLength?.blocks[0]);
-  //   // if (textLength?.blocks[0].text === "") {
-  //   //   setBtnIsActive(false);
-  //   // } else {
-  //   //   setBtnIsActive(true);
-  //   // }
-  // }, [editorState]);
-
-  useEffect(() => {
-    if (textValue !== "") {
-      setBtnIsActive(true);
-    }
-  }, [textValue]);
   const handlePost = () => {
     if (replyingId.id !== "") {
       const body = {
@@ -134,8 +120,34 @@ const CommentBox = ({
             onButtonClick={handlePost}
             postLoading={postLoading}
             postSuccess={postSuccess}
+            setBtnIsActive={setBtnIsActive}
+            btnIsActive={btnIsActive}
           />
         </div>
+        {toolbarOpen && (
+          <div className="absolute w-full   right-0 left-0 bottom-0 flex items-end justify-between mb-8 px-14 ">
+            <button
+              className="h-27 w-27 bg-other-yellow rounded-full"
+              onClick={toggleToolBar}
+            >
+              <Image
+                src={CloseToolbar}
+                alt="toolbar"
+                layout="fixed"
+                width="12"
+                height="12"
+                className=" cursor-pointer"
+              />
+            </button>
+            <button
+              disabled={!btnIsActive}
+              onClick={handlePost}
+              className="w-93 h-34 text-sm  btn bg-primary-blue disabled:bg-gray-background disabled:cursor-not-allowed disabled:text-other-disabledText"
+            >
+              {postLoading ? <WhiteLoader /> : "Send"}
+            </button>
+          </div>
+        )}
         {!toolbarOpen && (
           <div className={`${!btnIsActive ? "vp-600:hidden" : "flex"}`}>
             <ShowInspirations

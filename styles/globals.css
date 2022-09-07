@@ -30,14 +30,15 @@
 .ql-toolbar {
   position: fixed;
   bottom: 20px;
-  /* left: 70px; */
+  width: 50%;
+  left: 190px;
   z-index: 99999;
   order: 1;
   padding: 0px !important;
  border: none !important;
 } 
 .quillCont>.quill>.ql-toolbar:first-child {
-/* display: none; */
+display: none;
 background-color: white;
 /* border: 2px solid purple; */
 }
@@ -45,8 +46,8 @@ background-color: white;
 .quillCont,.quillShow {
   /* border: rebeccapurple 2px solid; */
   /* height: 150px; */
-  /* position: relative !important; */
-  /* overflow-y: auto; */
+  position: relative !important;
+  overflow-y: auto;
 }
 #tab-panel{
 position: absolute;
@@ -325,6 +326,10 @@ font-size: 16px !important;
           list-style-type: disc;
               padding-left: 16px;
         } 
+  .current_post img,.current_post .ql-video {
+  max-width: 150px !important;
+ max-height: 100px !important;
+  }
 /* ///////////////////////////////////////////////// */
 
 .react-calendar {

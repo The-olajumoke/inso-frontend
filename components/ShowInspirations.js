@@ -414,9 +414,9 @@ const ShowInspirations = ({
         </div>
       </div>
       <button
-        // disabled={btnIsActive}
+        disabled={!btnIsActive}
         onClick={onButtonClick}
-        className="w-93 h-34 text-sm  btn bg-primary-blue"
+        className="w-93 h-34 text-sm  btn bg-primary-blue disabled:bg-gray-background disabled:cursor-not-allowed disabled:text-other-disabledText"
       >
         {postLoading ? <WhiteLoader /> : "Send"}
       </button>

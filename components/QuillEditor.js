@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import WhiteLoader from "./whiteLoader";
-import Image from "next/image";
 // import "quill-mention";
 // import { ReactQuillProps, UnprivilegedEditor } from "react-quill";
 // import { DeltaStatic, Sources } from "quill";
 
-import CloseToolbar from "../public/static/new_icons/cancel_blue.svg";
 const ReactQuill = dynamic(import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
@@ -26,6 +23,8 @@ export default function QuillEditor({
   onButtonClick,
   postLoading,
   postSuccess,
+  setBtnIsActive,
+  btnIsActive,
 }) {
   const { EmojiBlot, ShortNameEmoji, ToolbarEmoji, TextAreaEmoji } = quillEmoji;
   const reactQuillRef = React.useRef();
@@ -74,48 +73,35 @@ export default function QuillEditor({
     "image",
     "video",
   ];
-  const handleBody = (e) => {
-    setValue(e);
+  // const handleBody = (e) => {
+  //   setValue(e);
+  // };
+
+  const handleBody = (content, delta, source, editor) => {
+    console.log(editor.getHTML()); // rich text
+    console.log(editor.getText()); // plain text
+    console.log(editor.getLength()); // number of characters
+    setValue(editor.getHTML());
+    if (editor.getLength() > 1) {
+      setBtnIsActive(true);
+    } else {
+      setBtnIsActive(false);
+    }
   };
+  console.log(value);
 
   return (
     <div className={`${toolbarOpen ? "quillShow" : "quillCont"} h-full `}>
       <ReactQuill
         id="editor"
-        ref={reactQuillRef}
+        // ref={reactQuillRef}
         theme="snow"
         modules={modules}
+        value={value}
         formats={formats}
         onChange={handleBody}
         placeholder={"Say something different"}
       />
-      {toolbarOpen && (
-        <div className="fixed  w-8/12   right-24 bottom-4 flex items-end justify-between mb-8">
-          <button
-            className="h-27 w-27 bg-other-yellow rounded-full"
-            onClick={toggleToolBar}
-          >
-            <Image
-              src={CloseToolbar}
-              alt="toolbar"
-              layout="fixed"
-              width="12"
-              height="12"
-              className=" cursor-pointer"
-            />
-          </button>
-
-          <button
-            // disabled={btnIsActive}
-            onClick={onButtonClick}
-            className="w-93 h-34 text-sm  btn bg-primary-blue"
-          >
-            {postLoading ? <WhiteLoader /> : "Send"}
-          </button>
-        </div>
-      )}
-      {/* <button onClick={() => setShowToolbar(!showToolbar)}>Show</button> */}
-      {/* <button onClick={imageHandler}>Image</button> */}
     </div>
   );
 }
