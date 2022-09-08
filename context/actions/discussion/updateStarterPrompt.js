@@ -24,7 +24,7 @@ export const updateStarterPrompt =
       console.log(response);
       dispatch({
         type: UPDATE_STARTERPROMPT_SUCCESS,
-        payload: response.data.data,
+        payload: response.data,
       });
     } catch (error) {
       dispatch({

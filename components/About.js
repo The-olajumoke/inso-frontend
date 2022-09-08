@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
-import new_level_image from "../public/static/images/new_level_image.svg";
+// import new_level_image from "../public/static/images/new_level_image.svg";
 
 const About = () => {
   return (
@@ -27,10 +27,12 @@ const About = () => {
       </div>
       <div className="">
         <Image
-          src={new_level_image}
+          src="/static/images/new_level_image.svg"
           alt="host"
           draggable="false"
           layout="intrinsic"
+          width={400}
+          height={492}
         />
       </div>
     </div>

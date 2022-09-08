@@ -6,7 +6,7 @@ import {
 } from "@/constants/actionTypes";
 
 export const createCalendar =
-  (API_URL, token, body, userId) => async (dispatch) => {
+  (API_URL, token, body, userId, discId) => async (dispatch) => {
     try {
       dispatch({
         type: UPDATE_CALENDAR_LOADING,
@@ -22,6 +22,16 @@ export const createCalendar =
         config
       );
       console.log(response);
+
+      const data = {
+        calendar: response.data,
+      };
+      const addedSetting = await axios.patch(
+        `${API_URL}/discussion/${discId}/settings`,
+        data,
+        config
+      );
+
       dispatch({
         type: UPDATE_CALENDAR_SUCCESS,
         payload: response.data,

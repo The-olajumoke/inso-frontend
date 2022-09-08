@@ -6,7 +6,7 @@ import DiscussionBox from "@/components/DiscussionBox";
 import { getDiscussions } from "@/context/actions/discussion/getDiscussions";
 import { API_URL } from "@/utils/url";
 import Image from "next/image";
-import DasbboardDiscBox from "@/components/DashboardDiscBox";
+import DashboardDiscBox from "@/components/DashboardDiscBox";
 import BarchartDash from "chart/BarchartDash";
 import withAuth from "@/HOC/withAuth";
 import dashboard_img from "../public/static/illustrations/dashboard_img.svg";
@@ -59,18 +59,22 @@ const Home = () => {
     }
   }, [userId, token]);
 
-  // useEffect(() => {
-  //   if (discussionData !== null && discussionData.length) {
-  //     const discArry = [
-  //       discussionData[0],
-  //       discussionData[1],
-  //       discussionData[2],
-  //       discussionData[3],
-  //     ];
-  //     console.log(discArry);
-  //     // setAllDiscussions(discArry);
-  //   }
-  // }, [error, loading, discussionData]);
+  useEffect(() => {
+    if (discussionData !== null && discussionData.length) {
+      let discArry = [];
+      if ([discussionData[0]]) {
+        discArry = [...discArry, discussionData[0]];
+      }
+      if ([discussionData[1]]) {
+        discArry = [...discArry, discussionData[1]];
+      }
+      if ([discussionData[2]]) {
+        discArry = [...discArry, discussionData[2]];
+      }
+      console.log(discArry);
+      setAllDiscussions(discArry);
+    }
+  }, [error, loading, discussionData]);
 
   return (
     <Layout title="Inso | Home" searchBar={false} bgColor="bg-gray-background">
@@ -136,16 +140,21 @@ const Home = () => {
               {allDiscussions.length ? (
                 <div className="flex flex-wrap gap-6">
                   {allDiscussions.map((disc, index) => (
-                    <DasbboardDiscBox discussion={disc} key={index} />
+                    <DashboardDiscBox discussion={disc} key={index} />
                   ))}
                 </div>
               ) : (
-                <div>
+                <div className=" mt-150  flex flex-col justify-center items-center">
                   {" "}
+                  <p className=" text-gray-text mb-16">
+                    No available discussion
+                  </p>
                   <Link href="/discussions/create-discussion" passHref>
-                    <div className=" cursor-pointer h-full flex justify-center items-center mt-150">
-                      <p className=" font-medium">Create a discussion</p>
-                    </div>
+                    <a className=" cursor-pointer h-full flex justify-center items-center px-16 py-8 bg-primary-darkGreen w-auto rounded-xs">
+                      <p className=" font-medium  text-white-white">
+                        Create a discussion
+                      </p>
+                    </a>
                   </Link>{" "}
                 </div>
               )}

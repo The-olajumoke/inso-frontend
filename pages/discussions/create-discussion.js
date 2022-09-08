@@ -8,6 +8,7 @@ import { GlobalContext } from "@/context/Provider";
 import WhiteLoader from "@/components/whiteLoader";
 import { updateStarterPrompt } from "@/context/actions/discussion/updateStarterPrompt";
 import arrow_back_blue from "../../public/static/icons/arrow_back_blue.svg";
+import created from "../../public/static/new_icons/created_icon.svg";
 import withAuth from "@/HOC/withAuth";
 
 const CreateDiscussion = () => {
@@ -15,7 +16,7 @@ const CreateDiscussion = () => {
   const [userId, setUserId] = useState(null);
   const [isDisabledTitle, setIsDisabledTitle] = useState(true);
   const [title, setTitle] = useState("");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(true);
   const [showSettingsbuttons, setShowSettingsbuttons] = useState(false);
 
   const [discId, setDiscId] = useState("");
@@ -131,9 +132,9 @@ const CreateDiscussion = () => {
               ) : createData !== null ? (
                 <div className="animate-fade-in-left absolute ">
                   {showSuccessMessage && (
-                    <button className="bg-blue-inputBlue rounded-md h-33 w-200 flex items-center justify-between gap-4 text-primary-darkGreen px-12  ">
+                    <button className=" bg-other-pink rounded-md h-33 flex items-center justify-between gap-4 text-primary-darkGreen px-12">
                       <Image
-                        src="/static/icons/check_blue.svg"
+                        src={created.src}
                         alt="success"
                         layout="fixed"
                         width="18"
@@ -147,28 +148,21 @@ const CreateDiscussion = () => {
                   {showSettingsbuttons && (
                     <div className="flex items-center gap-5 justify-end w-full">
                       <Link href="/discussions" passHref>
-                        <button className="border border-primary-darkGreen w-101 h-32 text-sm rounded text-primary-darkGreen ">
-                          Proceed
-                        </button>
+                        <a>
+                          <button className="border  bg-gray-background border-primary-darkGreen w-101 h-32 text-sm rounded text-primary-darkGreen ">
+                            Done
+                          </button>
+                        </a>
                       </Link>
                       <Link
                         passHref
                         href={`/discussions/edit-discussion/${discId}`}
                       >
-                        <div>
-                          <button
-                            className=" vp-600:hidden btn w-auto h-32 text-sm px-8"
-                            //   onClick={() => setActive("settings")}
-                          >
-                            Add discussion settings
-                          </button>
-                          <button
-                            className=" vp-600:flex hidden btn w-auto h-32 text-sm px-8"
-                            //   onClick={() => setActive("settings")}
-                          >
+                        <a>
+                          <button className=" btn w-auto h-32 text-sm px-32">
                             Add settings
                           </button>
-                        </div>
+                        </a>
                       </Link>
                     </div>
                   )}

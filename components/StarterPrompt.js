@@ -30,7 +30,6 @@ const StarterPrompt = ({
   starterPromptLoading,
   starterPromptData,
 }) => {
-  console.log(starterPrompt);
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(
       ContentState.createFromBlockArray(convertFromHTML(`${starterPrompt}`))
@@ -43,7 +42,6 @@ const StarterPrompt = ({
     setStarterPromptValue(value);
     setTextValue(value);
   };
-  console.log(textValue);
   useEffect(() => {}, [editorState]);
   return (
     <div className=" w-450 bg-gray-background shadow-lg">

@@ -32,12 +32,8 @@ const ScoresSetting = ({
   setRubricTotalScore,
   diffInDays,
 }) => {
-  console.log(diffInDays);
   const [allActiveScoringOption, setAllActiveScoringOption] = useState([]);
 
-  const handleScoringOption = (id) => {
-    setSelectedScoringOption(id);
-  };
   const [dividedScore, setDividedScore] = useState(0);
   const [dividedScoreRubric, setDividedScoreRubric] = useState(0);
   const [openPostDropdown, setOpenPostDropdown] = useState(false);
@@ -57,18 +53,17 @@ const ScoresSetting = ({
     if (usePostInsp === "Yes") {
       currentArry = [...currentArry, usePostInsp];
     }
-    console.log(currentArry);
+
     setAllActiveScoringOption(currentArry);
     if (postMade !== "" || activeDays !== "" || comments !== "") {
       const div = Math.round(maxScore / currentArry.length);
-      console.log(div);
+
       setDividedScore(div);
     }
   }, [maxScore, postMade, activeDays, comments, usePostInsp]);
 
   useEffect(() => {
     const div = Math.round(rubricTotalScore / allCriteriaRubric.length);
-    console.log(div);
     setDividedScoreRubric(div);
   }, [rubricTotalScore, allCriteriaRubric]);
   const handleSubmitScores = () => {
@@ -107,13 +102,16 @@ const ScoresSetting = ({
       handleCreateScoring(bodyRubric);
     }
   };
-  console.log(allCriteriaRubric);
+
   const addToCriteria = (e) => {
     e.preventDefault();
 
     setAllCriteriaRubric([...allCriteriaRubric, currentCriteria]);
     setCurrentCriteria("");
     setShowInput(false);
+  };
+  const handleScoringOption = (e) => {
+    setSelectedScoringOption(e.target.id);
   };
   return (
     <div className="w-450 h-450 flex flex-col shadow-createDiscussion">
@@ -164,15 +162,16 @@ const ScoresSetting = ({
         </div>
         {activeScoring === "automatic" && (
           <div className="flex-grow flex flex-col ">
-            <div className="flex  gap-4 mb-16">
-              <Radio
+            <div className="flex items-center  gap-4 mb-16">
+              <input
+                type="checkbox"
+                name="automatic"
                 id="automatic"
-                name="scoreType"
                 value="automatic"
-                checked={selectedScoringOption === "automatic" ? true : false}
-                handleChange={handleScoringOption}
+                checked={selectedScoringOption === "automatic"}
+                onChange={handleScoringOption}
               />
-              <p className="ml-20">Use this scoring option</p>
+              <p className="ml-8">Use this scoring option</p>
             </div>
             <div className="flex  justify-between items-center w-full mb-20">
               <span className="text-xs text-primary-darkGreen">
@@ -311,15 +310,16 @@ const ScoresSetting = ({
         )}
         {activeScoring === "rubric" && (
           <div className="flex-grow flex flex-col ">
-            <div className="flex  gap-4 mb-16">
-              <Radio
+            <div className="flex  gap-4 mb-16 items-center">
+              <input
+                type="checkbox"
+                name=""
                 id="rubric"
-                name="scoreType"
                 value="rubric"
-                checked={selectedScoringOption === "rubric" ? true : false}
-                handleChange={handleScoringOption}
+                checked={selectedScoringOption === "rubric"}
+                onChange={handleScoringOption}
               />
-              <p className="ml-20">Use this scoring option</p>
+              <p className="ml-8">Use this scoring option</p>
             </div>
             <div className="flex  justify-between items-center w-full mb-20">
               <span className="text-xs text-primary-darkGreen">
@@ -437,7 +437,7 @@ const ScoresSetting = ({
                   disabled={!addScoresToSettings || maxScore === ""}
                   onClick={handleSubmitScores}
                 >
-                  Next
+                  Done
                 </button>
               ) : (
                 <button
@@ -445,7 +445,7 @@ const ScoresSetting = ({
                   disabled={!addScoresToSettings || rubricTotalScore === ""}
                   onClick={handleSubmitScores}
                 >
-                  Next
+                  Done
                 </button>
               )}
             </div>

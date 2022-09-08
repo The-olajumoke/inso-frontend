@@ -10,57 +10,20 @@ import { getUserProfile } from "@/context/actions/user/getUserProfile";
 import WhiteLoader from "./whiteLoader";
 
 const HeroPage = () => {
+  const router = useRouter();
   const [insoCode, setInsoCode] = useState("");
   const [userId, setUserId] = useState(null);
   const [token, setToken] = useState("");
   const [isCodeUpToFive, setIsCodeUpToFive] = useState(false);
-  const {
-    userDispatch,
-    userState: {
-      user: { profileData },
-    },
-  } = useContext(GlobalContext);
-  const {
-    discussionDispatch,
-    discussionState: {
-      discussion: {
-        loading,
-        error,
-        discussionData,
-        joinLoading,
-        joinSuccess,
-        joinError,
-      },
-    },
-  } = useContext(GlobalContext);
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken);
-    setToken(accessToken);
-  }, []);
-  useEffect(() => {
-    if (token !== "") {
-      getUserProfile(API_URL, token)(userDispatch);
-    }
-  }, [token]);
 
   useEffect(() => {
     if (insoCode.length > 4) {
       setIsCodeUpToFive(true);
     }
   }, [insoCode]);
-  useEffect(() => {
-    if (profileData !== null) {
-      const { _id } = profileData;
-      setUserId(_id);
-    }
-  }, [profileData]);
+
   const handleJoinDiscussion = () => {
-    if (!token) {
-      location.replace(`/auth/sign-in/${insoCode}`);
-    } else {
-      joinDiscussion(API_URL, token, userId, insoCode)(discussionDispatch);
-    }
+    router.replace(`/auth/sign-in/${insoCode}`);
   };
   return (
     <div className="bg-primary-darkGreen  relative overflow-hidden">
@@ -79,14 +42,18 @@ const HeroPage = () => {
           </div>
           <div className="flex items-center  gap-8 vp-600:gap-4">
             <Link passHref href="/auth/login">
-              <button className=" cursor-pointer w-133 vp-600:w-77 vp-600:h-33 h-44 text-md text-white-white">
-                Log in
-              </button>
+              <a>
+                <button className=" cursor-pointer w-133 vp-600:w-77 vp-600:h-33 h-44 text-md text-white-white">
+                  Log in
+                </button>
+              </a>
             </Link>
             <Link passHref href="/auth/signup">
-              <button className=" bg-primary-blue w-133 vp-600:w-119 vp-600:h-33 h-44 text-md rounded">
-                Get started
-              </button>
+              <a>
+                <button className=" bg-primary-blue w-133 vp-600:w-119 vp-600:h-33 h-44 text-md rounded text-black-postInsp">
+                  Get started
+                </button>
+              </a>
             </Link>
           </div>
         </div>
@@ -119,11 +86,11 @@ const HeroPage = () => {
                   onChange={(e) => setInsoCode(e.target.value)}
                 />
                 <button
-                  // disabled={isCodeUpToFive}
+                  disabled={!isCodeUpToFive}
                   className={` disabled:text-primary-darkGreen text-lg text-primary-blue`}
                   onClick={handleJoinDiscussion}
                 >
-                  {joinLoading ? <WhiteLoader /> : "Join"}
+                  Join
                 </button>
               </div>
             </div>
@@ -142,31 +109,6 @@ const HeroPage = () => {
               />
             </div>
           </div>
-          {/* <div className=" w-660 vp-768:w-full h-600 vp-600:h-450 relative border">
-            <div className=" w-full absolute top-0 bottom-0  flex justify-center items-center vp-600:hidden  mt-60">
-              <div className="w-800 h-700 ">
-                <Image
-                  src="1175"
-                  alt="Inso Logo"
-                  draggable="false"
-                  layout="fill"
-                  // width="800"
-                  // height="700"
-                  priority
-                />
-              </div>
-            </div>
-            <div className="  hidden vp-600:flex mt-60 absolute -right-10">
-              <Image
-                src="/images/hero_image_resp.svg"
-                alt="Inso Logo"
-                draggable="false"
-                layout="intrinsic"
-                width="800"
-                height="800"
-              />
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

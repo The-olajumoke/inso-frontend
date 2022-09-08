@@ -87,6 +87,7 @@ module.exports = {
         progress: "#CFC309",
         progressBg: "#FFFAE0",
         yellow: "#FFFAF0",
+        pink: "#FFF7E9",
       },
       border: {
         green: "rgba(144, 215, 255, 0.1)",

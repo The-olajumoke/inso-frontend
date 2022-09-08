@@ -57,7 +57,6 @@ const CommentBox = ({
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken);
     setToken(accessToken);
   }, []);
   useEffect(() => {

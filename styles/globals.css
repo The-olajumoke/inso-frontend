@@ -40,21 +40,20 @@
 .quillCont>.quill>.ql-toolbar:first-child {
 display: none;
 background-color: white;
-/* border: 2px solid purple; */
 }
 
 .quillCont,.quillShow {
-  /* border: rebeccapurple 2px solid; */
-  /* height: 150px; */
   position: relative !important;
   overflow-y: auto;
+}
+.quillCont::-webkit-scrollbar,.quillShow::-webkit-scrollbar {
+    display: none;
 }
 #tab-panel{
 position: absolute;
 top: 0;
 left: 50%;
 max-width: 300px;
-/* border:2px solid purple; */
 background-color: white ;
 padding: 20px;
 }
@@ -70,7 +69,6 @@ padding: 20px;
   overflow: hidden !important;
 }
 .bordered-option-classname img{
-  /* border: 2px solid red; */
   width: 19.2px;
   height: 19.2px;
 }
@@ -86,7 +84,6 @@ padding: 20px;
   z-index: 99999 !important;
   top: 0 !important;
   max-height: 200px !important;
-  /* border: 2px solid; */
 
 }
 
@@ -102,7 +99,6 @@ padding: 20px;
 body{
   color: #161925;
 }
-/* input,button, */
 @layer base {
   html {
     font-size: 62.5%;
@@ -234,7 +230,7 @@ body{
     position: absolute;
     display: flex;
     align-items: center;
-    justify-container: center;
+    justify-content: center;
     pointer-events: none;
     transition: all 0.3s;
   }
@@ -248,10 +244,12 @@ body{
     position: absolute;
     display: flex;
     align-items: center;
-    justify-container: center;
+    justify-content: center;
     pointer-events: none;
     transition: all 0.3s;
   }
+
+
 
   /* ////////// */
   .btn {
@@ -326,10 +324,12 @@ font-size: 16px !important;
           list-style-type: disc;
               padding-left: 16px;
         } 
-  .current_post img,.current_post .ql-video {
+  .current_post img,.current_post .ql-video, .notif_subHeader p img, .notif_subHeader .ql-video {
   max-width: 150px !important;
  max-height: 100px !important;
   }
+
+   
 /* ///////////////////////////////////////////////// */
 
 .react-calendar {
@@ -410,14 +410,6 @@ font-size: 16px !important;
   font-size: 14px !important;
   margin-bottom: 8px !important;
 }
-/* .react-calendar__tile--now{
-  background:rgba(14, 180, 246,0.3) !important ;
-  border-radius: 100% ;
-height:100%;
-border: #525AF2 solid 2px;} */
-
-
-
 .react-calendar__month-view__weekdays {
   color: #2e2e2e !important;
   font-size: 14px !important;

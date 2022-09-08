@@ -56,6 +56,7 @@ import help from "../../../../public/static/icons/help.svg";
 import edit_grey from "../../../../public/static/icons/edit_grey.svg";
 import close_green from "../../../../public/static/icons/close_green.svg";
 import cancel from "../../../../public/static/icons/cancel.svg";
+import cancel_white from "../../../../public/static/icons/cancel_white.svg";
 import avatar from "../../../../public/static/images/avatar.svg";
 import moment from "moment";
 import { gradeParticipants } from "@/context/actions/discussion/autoGradeParticipants";
@@ -594,7 +595,8 @@ const ViewDiscussion = () => {
                               </span>
                             </h6>
                             <span className="text-xs text-gray-faintGray">
-                              {moment(datePosted).fromNow()}
+                              {datePosted !== "" &&
+                                moment(datePosted).fromNow()}
                             </span>
                           </div>
                         </div>
@@ -736,9 +738,7 @@ const ViewDiscussion = () => {
                     className={`flex flex-col justify-between  h-full ${styles.hiddenScrollbar}  `}
                   >
                     {allPosts.length ? (
-                      <div
-                        className={` py-20 px-16 vp-min-601:px-42  flex flex-col  pb-150`}
-                      >
+                      <div className={` py-20 flex flex-col  pb-150`}>
                         {allPosts.map((post, index) => (
                           <Posts
                             posts={post}
@@ -750,7 +750,7 @@ const ViewDiscussion = () => {
                         ))}
                       </div>
                     ) : (
-                      <div className="h-full flex justify-center items-center">
+                      <div className="h-full  flex justify-center items-center text-sm text-other-disabled">
                         No available post
                       </div>
                     )}
@@ -764,12 +764,31 @@ const ViewDiscussion = () => {
                       }`}
                     >
                       {replyingId.id !== "" && (
-                        <p className="mb-2 text-gray-text">
-                          replying to{" "}
-                          <span className=" text-primary-darkGreen">
-                            @{replyingId.user}
-                          </span>
-                        </p>
+                        <div className=" flex items-center gap-4">
+                          <p className="mb-2 text-gray-text">
+                            replying to{" "}
+                            <span className=" text-primary-darkGreen">
+                              @{replyingId.user}
+                            </span>
+                          </p>
+                          <button
+                            className=" bg-primary-darkGreen h-16 w-16 rounded-full flex justify-center items-center"
+                            onClick={() =>
+                              setReplyingId({
+                                user: "",
+                                id: "",
+                              })
+                            }
+                          >
+                            <Image
+                              src={cancel_white.src}
+                              alt="user"
+                              layout="fixed"
+                              width="8"
+                              height="8"
+                            />
+                          </button>
+                        </div>
                       )}
                       {activeCommentBox === "noInspiration" && (
                         <CommentBox

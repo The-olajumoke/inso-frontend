@@ -21,6 +21,7 @@ import archive from "../../public/static/new_icons/archive.svg";
 import { getDiscCreated } from "@/context/actions/discussion/getDiscussionCreated";
 import { getDiscJoined } from "@/context/actions/discussion/getDiscussionJoined";
 import { getDiscSearch } from "@/context/actions/discussion/getDiscussionSearch";
+import SuccessModal from "@/components/SuccessModal";
 const Index = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(null);
@@ -28,7 +29,7 @@ const Index = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [allDiscussions, setAllDiscussions] = useState([]);
   const [searchItem, setSearchItem] = useState("");
-
+  const [sharedSuccess, setSharedSuccess] = useState(false);
   const {
     discussionDispatch,
     discussionState: {
@@ -90,6 +91,13 @@ const Index = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     getDiscSearch(API_URL, token, userId, searchItem)(discussionDispatch);
+  };
+  const copiedToClipboard = (insoCode) => {
+    navigator.clipboard.writeText(insoCode);
+    setSharedSuccess(true);
+    setTimeout(() => {
+      setSharedSuccess(false);
+    }, [2000]);
   };
   return (
     <Layout
@@ -190,6 +198,7 @@ const Index = () => {
                     key={index}
                     createArchived={createArchived}
                     userId={userId}
+                    copiedToClipboard={copiedToClipboard}
                   />
                 ))}
               </div>
@@ -222,6 +231,9 @@ const Index = () => {
             </div>
           </Link>
         </div>
+        {sharedSuccess && (
+          <SuccessModal title="Inso code copied successfully" subTitle="" />
+        )}
       </>
     </Layout>
   );

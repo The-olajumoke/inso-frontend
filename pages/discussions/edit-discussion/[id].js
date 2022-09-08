@@ -15,7 +15,7 @@ import styles from "@/styles/discussion.module.css";
 import { getSingleDiscussion } from "@/context/actions/discussion/getSingleDiscussion";
 import { createCalendar } from "@/context/actions/discussion/createCalendar";
 import { createScores } from "@/context/actions/discussion/createScores";
-import { addCalendarToDiscSettings } from "@/context/actions/discussion/addCalendarToSettings";
+
 import moment from "moment";
 import { addAvailScoresToSettings } from "@/context/actions/discussion/addScoresToSettings";
 import { createDiscussion } from "@/context/actions/discussion/createDiscussion";
@@ -25,6 +25,7 @@ import LargeSpinner from "@/components/LargeSpinner";
 import arrow_back_blue from "../../../public/static/icons/arrow_back_blue.svg";
 import checkbox from "../../../public/static/new_icons/blue_checkbox.svg";
 import { updateScores } from "@/context/actions/discussion/updateScores";
+import { getDiscNoLoad } from "@/context/actions/discussion/getDiscNoLoad";
 
 const DiscussionSettings = () => {
   const router = useRouter();
@@ -85,10 +86,41 @@ const DiscussionSettings = () => {
       user: { profileData },
     },
   } = useContext(GlobalContext);
-
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    setToken(accessToken);
+  }, []);
+  useEffect(() => {
+    if (profileData !== null) {
+      const { _id } = profileData;
+      setUserId(_id);
+    }
+  }, [profileData]);
   useEffect(() => {
     setActiveSettings("updateDisc");
   }, []);
+
+  useEffect(() => {
+    const Difference_In_Time = date[1].getTime() - date[0].getTime();
+    const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    setDiffInDays(Math.round(Difference_In_Days));
+  }, [date]);
+
+  useEffect(() => {
+    if (id !== null && id !== "") {
+      setDiscId(id);
+    }
+  }, [id]);
+  useEffect(() => {
+    if (token !== "" && discId !== "") {
+      getSingleDiscussion(API_URL, token, discId)(discussionDispatch);
+    }
+  }, [discId, token, id]);
+
+  useEffect(() => {
+    getDiscNoLoad(API_URL, token, discId)(discussionDispatch);
+  }, [createData, starterPromptData, calendarData, scoreData]);
+
   useEffect(() => {
     if (singleDiscData !== null) {
       console.log(singleDiscData);
@@ -96,12 +128,25 @@ const DiscussionSettings = () => {
       if (singleDiscData?.settings?.starter_prompt !== "") {
         setStarterPrompt(singleDiscData?.settings?.starter_prompt);
       } else {
+        setStarterPrompt(
+          "<p>For this discussion, we are going to explore ___</p>"
+        );
       }
+
       if (singleDiscData?.settings?.calendar !== null) {
         setDate([
           new Date(singleDiscData?.settings?.calendar?.open),
           new Date(singleDiscData?.settings?.calendar?.close),
         ]);
+      }
+      if (singleDiscData?.settings?.scores == null) {
+        setMaxScore("");
+        setPostMade("");
+        setActiveDays("");
+        setComments("");
+        setRubricTotalScore("");
+        setAllCriteriaRubric([]);
+        setUsePostInsp("No");
       }
       if (
         singleDiscData?.settings?.scores !== null &&
@@ -145,68 +190,6 @@ const DiscussionSettings = () => {
       setDiscInsoCode(singleDiscData?.insoCode);
     }
   }, [singleDiscData]);
-  useEffect(() => {
-    const Difference_In_Time = date[1].getTime() - date[0].getTime();
-    const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-    setDiffInDays(Math.round(Difference_In_Days));
-  }, [date]);
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken);
-    setToken(accessToken);
-  }, []);
-  useEffect(() => {
-    if (profileData !== null) {
-      const { _id } = profileData;
-      setUserId(_id);
-    }
-  }, [profileData]);
-
-  useEffect(() => {
-    if (id !== null && id !== "") {
-      console.log(id);
-      setDiscId(id);
-    }
-  }, [id]);
-  useEffect(() => {
-    if (token !== "" && discId !== "") {
-      getSingleDiscussion(API_URL, token, discId)(discussionDispatch);
-    }
-  }, [discId, token, id, createData, calendarData, scoreData]);
-
-  useEffect(() => {
-    console.log(calendarData);
-
-    if (calendarData !== null) {
-      const body = {
-        calendar: calendarData,
-      };
-
-      addCalendarToDiscSettings(
-        API_URL,
-        token,
-        body,
-        discId
-      )(discussionDispatch);
-    }
-  }, [calendarData]);
-
-  useEffect(() => {
-    console.log(scoreData);
-
-    if (scoreData !== null) {
-      const body = {
-        score: scoreData,
-      };
-
-      addAvailScoresToSettings(
-        API_URL,
-        token,
-        body,
-        discId
-      )(discussionDispatch);
-    }
-  }, [scoreData]);
 
   const handleStarterPrompt = () => {
     const body = {
@@ -223,16 +206,17 @@ const DiscussionSettings = () => {
       close: `${date[1]}`,
     };
     console.log(body);
-    createCalendar(API_URL, token, body, userId)(discussionDispatch);
+    createCalendar(API_URL, token, body, userId, discId)(discussionDispatch);
   };
   const handleCreateScoring = (body) => {
-    console.log(body);
-    // if (singleDiscData?.settings?.scores === null) {
-    createScores(API_URL, token, body, userId)(discussionDispatch);
-    // } else {
-    //   const scoreId = singleDiscData?.settings?.scores?._id;
-    //   updateScores(API_URL, token, body, userId, scoreId)(discussionDispatch);
-    // }
+    createScores(
+      API_URL,
+      token,
+      body,
+      userId,
+      discId,
+      setActiveSettings
+    )(discussionDispatch);
   };
   const handleCreateDisc = () => {
     const body = {

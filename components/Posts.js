@@ -5,7 +5,7 @@ import Link from "next/link";
 import avatar from "../public/static/images/avatar_user.svg";
 import more_icon_grey from "../public/static/icons/more_icon_grey.svg";
 import edit_green from "../public/static/icons/edit_green.svg";
-import upvote_emoji_active from "../public/static/icons/upvote_emoji.svg";
+import upvote_emoji_active from "../public/static/icons/upvote_grey.svg";
 import upvote_emoji from "../public/static/icons/upvote_emoji.svg";
 import comment_emoji from "../public/static/icons/comment_emoji.svg";
 import more_icons from "../public/static/new_icons/more_icons.svg";
@@ -32,11 +32,13 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
 
   const updatedDate = new Date(date);
   return (
-    <>
+    <div className="w-full">
       {!post_inspiration ? (
-        <div className={` py-10 bg-white-white  mb-6 pl-16 vp-600:pl-0 `}>
+        <div
+          className={` py-10 bg-white-white  mb-6   px-16 vp-min-601:px-42 hover:bg-gray-background`}
+        >
           <div className=" flex flex-col items-start ">
-            <div className=" flex w-full">
+            <div className=" flex w-full mb-10">
               <div className=" w-full flex items-start">
                 <div className="flex items-center justify-center mr-12">
                   <Image
@@ -62,7 +64,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 </div>
               </div>
               {poster && (
-                <div className="flex items-center justify-center relative">
+                <div className="flex items-center justify-center relative ">
                   <div
                     className="flex items-center justify-center "
                     onClick={() => setOpenEditDropdown(true)}
@@ -116,14 +118,14 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
               passHref
               href={`/discussions/view-discussion/${discId}/post/${_id}/`}
             >
-              <a className="current_post text-black-postInsp cursor-pointer">
+              <a className="current_post text-black-postInsp cursor-pointer  w-full">
                 {parse(post?.post)}
               </a>
             </Link>
             <div className=" mt-16 flex items-center gap-8">
               <div className="flex items-center gap-2">
                 <Image
-                  src={upvote_emoji.src}
+                  src={upvote_emoji_active.src}
                   alt="back"
                   layout="fixed"
                   width="24"
@@ -170,7 +172,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
         </div>
       ) : (
         <div
-          className={` py-10 bg-white-white  mb-6 pl-16 vp-600:pl-0  w-full`}
+          className={` py-10 bg-white-white  mb-6  px-16 vp-min-601:px-42  w-full`}
         >
           <div className="w-full flex flex-col items-start">
             <div className="flex items-start">
@@ -202,6 +204,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 passHref
                 href={`/discussions/view-discussion/${discId}/post/${_id}/`}
               > */}
+
               <div className="grid grid-cols-5 vp-600:grid-cols-3  my-16 w-full vp-600:gap-3   ">
                 <button
                   className={`${
@@ -237,23 +240,45 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                   {outlineArray[2]}
                 </button>
               </div>
+
               {activeOutline === "first" && (
-                <div className="post_content ">
-                  {outlineArray.length &&
-                    parse(post?.outline?.[outlineArray[0]])}
-                </div>
+                <Link
+                  passHref
+                  href={`/discussions/view-discussion/${discId}/post/${_id}/`}
+                >
+                  <a>
+                    <div className="post_content ">
+                      {outlineArray.length &&
+                        parse(post?.outline?.[outlineArray[0]])}
+                    </div>
+                  </a>
+                </Link>
               )}
               {activeOutline === "second" && (
-                <div className="post_content">
-                  {outlineArray.length &&
-                    parse(post?.outline?.[outlineArray[1]])}
-                </div>
+                <Link
+                  passHref
+                  href={`/discussions/view-discussion/${discId}/post/${_id}/`}
+                >
+                  <a>
+                    <div className="post_content">
+                      {outlineArray.length &&
+                        parse(post?.outline?.[outlineArray[1]])}
+                    </div>
+                  </a>
+                </Link>
               )}
               {activeOutline === "third" && (
-                <div className="post_content">
-                  {outlineArray.length &&
-                    parse(post?.outline?.[outlineArray[2]])}
-                </div>
+                <Link
+                  passHref
+                  href={`/discussions/view-discussion/${discId}/post/${_id}/`}
+                >
+                  <a>
+                    <div className="post_content">
+                      {outlineArray.length &&
+                        parse(post?.outline?.[outlineArray[2]])}
+                    </div>
+                  </a>
+                </Link>
               )}
               <div className=" mt-16 flex items-center gap-8">
                 <div className="flex items-center gap-2">
@@ -305,7 +330,8 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
           </div>
         </div>
       )}
-    </>
+      
+    </div>
   );
 };
 

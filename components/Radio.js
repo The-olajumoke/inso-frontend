@@ -2,7 +2,7 @@ import React from "react";
 
 const Radio = ({ id, checked, name, handleChange, disabled, value, title }) => {
   return (
-    <div className="checkbox-container">
+    <div className={`${name}`}>
       <input
         type="radio"
         id={id}
@@ -13,9 +13,10 @@ const Radio = ({ id, checked, name, handleChange, disabled, value, title }) => {
         title={title}
         onChange={() => handleChange(id)}
       />
-      <label className="flex items-center justify-center" htmlFor={id}>
+
+      {/* <label className="flex items-center justify-center" htmlFor={id}>
         <span></span>
-      </label>
+      </label> */}
     </div>
   );
 };

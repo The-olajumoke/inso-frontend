@@ -9,7 +9,13 @@ import archive_grey from "../public/static/icons/archive_grey.svg";
 import copy_grey from "../public/static/icons/copy_grey.svg";
 import users_icon from "../public/static/icons/users_icon.svg";
 import moment from "moment";
-const DiscussionBox = ({ discussion, createArchived, userId }) => {
+
+const DiscussionBox = ({
+  discussion,
+  createArchived,
+  copiedToClipboard,
+  userId,
+}) => {
   const { _id, poster, participants, name, date, insoCode, settings } =
     discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -33,9 +39,9 @@ const DiscussionBox = ({ discussion, createArchived, userId }) => {
     >
       <div className=" flex items-start justify-between mb-15 h-85">
         <Link passHref href={`/discussions/view-discussion/${_id}`}>
-          <div className=" w-210 cursor-pointer h-full overflow-hidden">
+          <a className=" w-210 cursor-pointer h-full overflow-hidden text-gray-text">
             <h5 className="  font-medium p-0 m-0 break-words">{name}</h5>
-          </div>
+          </a>
         </Link>
 
         <div className="flex items-center  gap-4">
@@ -138,9 +144,10 @@ const DiscussionBox = ({ discussion, createArchived, userId }) => {
                     <div
                       className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
-                      // onClick={() => {
-                      //   setOpenDropdown(false);
-                      // }}
+                      onClick={() => {
+                        copiedToClipboard(insoCode)
+                        setOpenDropdown(false);
+                      }}
                     >
                       <div className=" mr-10 flex justify-center items-center">
                         <Image

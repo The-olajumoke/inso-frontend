@@ -6,7 +6,8 @@ import {
 } from "@/constants/actionTypes";
 
 export const createScores =
-  (API_URL, token, body, userId) => async (dispatch) => {
+  (API_URL, token, body, userId, discId, setActiveSettings) =>
+  async (dispatch) => {
     try {
       dispatch({
         type: UPDATE_SCORES_LOADING,
@@ -21,7 +22,15 @@ export const createScores =
         body,
         config
       );
-      console.log(response);
+      const data = {
+        score: response.data,
+      };
+      const addedSetting = await axios.patch(
+        `${API_URL}/discussion/${discId}/settings`,
+        data,
+        config
+      );
+      setActiveSettings("success");
       dispatch({
         type: UPDATE_SCORES_SUCCESS,
         payload: response.data,

@@ -9,7 +9,7 @@ import edit_grey from "../public/static/icons/edit_grey.svg";
 import archive_grey from "../public/static/icons/archive_grey.svg";
 import copy_grey from "../public/static/icons/copy_grey.svg";
 import users_icon from "../public/static/icons/users_icon.svg";
-const DasbboardDiscBox = ({ discussion, createArchived }) => {
+const DashboardDiscBox = ({ discussion, createArchived }) => {
   const { _id, poster, participants, name, date, insoCode } = discussion;
   const [openDropdown, setOpenDropdown] = useState(false);
   return (
@@ -19,9 +19,9 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
     >
       <div className=" flex items-start justify-between mb-15 h-50">
         <Link passHref href={`/discussions/view-discussion/${_id}`}>
-          <div className=" w-210 cursor-pointer h-full overflow-hidden">
+          <a className=" w-210 cursor-pointer h-full overflow-hidden">
             <h6 className=" text-gray-text font-medium p-0 m-0">{name}</h6>
-          </div>
+          </a>
         </Link>
 
         <div className="flex items-center  gap-4">
@@ -162,4 +162,4 @@ const DasbboardDiscBox = ({ discussion, createArchived }) => {
   );
 };
 
-export default DasbboardDiscBox;
+export default DashboardDiscBox;

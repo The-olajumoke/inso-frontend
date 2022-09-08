@@ -379,7 +379,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 className={`${
                   router.pathname.startsWith("/home") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-texth h-73 vp-600:h-53`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text h-73 vp-600:h-53`}
               >
                 <Image
                   src={
@@ -401,7 +401,7 @@ const Sidebar = ({ navSize, userPicture, user, showHeader }) => {
                 className={`${
                   router.pathname.startsWith("/discussions") &&
                   "bg-primary-darkGreen  justify-start text-white-white "
-                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-texth h-73 vp-600:h-53`}
+                } ' flex items-center gap-x-7  cursor-pointer pl-25  text-gray-text  h-73 vp-600:h-53`}
               >
                 <Image
                   src={

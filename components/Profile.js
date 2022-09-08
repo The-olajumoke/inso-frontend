@@ -13,6 +13,7 @@ import camera from "../public/static/new_icons/camera.svg";
 import styles from "@/styles/settings.module.css";
 import { api } from "./api";
 import { imageProcessor } from "@/utils/imageProcessor";
+import { useRouter } from "next/router";
 const Profile = ({ editProfile, setEditProfile }) => {
   const [userPicture, setUserPicture] = useState("");
   const [userPictureFile, setUserPictureFile] = useState("");
@@ -42,7 +43,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
     "Other",
   ];
   const [token, setToken] = useState("");
-
+  const router = useRouter();
   const {
     userDispatch,
     userState: {
@@ -107,7 +108,7 @@ const Profile = ({ editProfile, setEditProfile }) => {
   };
   const handleLogOut = () => {
     localStorage.removeItem("accessToken");
-    window.location.replace("/auth/login");
+    router.replace("/auth/login");
   };
   const handleImageChange = (evt) => {
     const file = evt.target.files[0];
