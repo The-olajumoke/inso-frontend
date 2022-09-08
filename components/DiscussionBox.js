@@ -38,7 +38,7 @@ const DiscussionBox = ({
       }`}
     >
       <div className=" flex items-start justify-between mb-15 h-85">
-        <Link passHref href={`/discussions/view-discussion/${_id}`}>
+        <Link passHref href={`/view-discussion/${_id}`}>
           <a className=" w-210 cursor-pointer h-full overflow-hidden text-gray-text">
             <h5 className="  font-medium p-0 m-0 break-words">{name}</h5>
           </a>
@@ -145,7 +145,7 @@ const DiscussionBox = ({
                       className=" text-black-analText
                   :hover:bg-blue-lightBlue py-8 border-b-2  last:border-none  border-gray-background   cursor-pointer flex justify-start"
                       onClick={() => {
-                        copiedToClipboard(insoCode)
+                        copiedToClipboard(insoCode);
                         setOpenDropdown(false);
                       }}
                     >

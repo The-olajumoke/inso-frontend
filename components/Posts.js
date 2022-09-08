@@ -114,10 +114,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 </div>
               )}
             </div>
-            <Link
-              passHref
-              href={`/discussions/view-discussion/${discId}/post/${_id}/`}
-            >
+            <Link passHref href={`/view-discussion/${discId}/post/${_id}/`}>
               <a className="current_post text-black-postInsp cursor-pointer  w-full">
                 {parse(post?.post)}
               </a>
@@ -200,11 +197,6 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
               </div>
             </div>
             <div className=" flex flex-col w-full pr-20 vp-980:pr-0">
-              {/* <Link
-                passHref
-                href={`/discussions/view-discussion/${discId}/post/${_id}/`}
-              > */}
-
               <div className="grid grid-cols-5 vp-600:grid-cols-3  my-16 w-full vp-600:gap-3   ">
                 <button
                   className={`${
@@ -242,10 +234,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
               </div>
 
               {activeOutline === "first" && (
-                <Link
-                  passHref
-                  href={`/discussions/view-discussion/${discId}/post/${_id}/`}
-                >
+                <Link passHref href={`/view-discussion/${discId}/post/${_id}/`}>
                   <a>
                     <div className="post_content ">
                       {outlineArray.length &&
@@ -255,10 +244,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 </Link>
               )}
               {activeOutline === "second" && (
-                <Link
-                  passHref
-                  href={`/discussions/view-discussion/${discId}/post/${_id}/`}
-                >
+                <Link passHref href={`/view-discussion/${discId}/post/${_id}/`}>
                   <a>
                     <div className="post_content">
                       {outlineArray.length &&
@@ -268,10 +254,7 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
                 </Link>
               )}
               {activeOutline === "third" && (
-                <Link
-                  passHref
-                  href={`/discussions/view-discussion/${discId}/post/${_id}/`}
-                >
+                <Link passHref href={`/view-discussion/${discId}/post/${_id}/`}>
                   <a>
                     <div className="post_content">
                       {outlineArray.length &&
@@ -330,7 +313,6 @@ const Posts = ({ posts, setReplyingId, discId, userId }) => {
           </div>
         </div>
       )}
-      
     </div>
   );
 };

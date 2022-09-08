@@ -7,8 +7,8 @@ import { GlobalContext } from "@/context/Provider";
 import { API_URL } from "@/utils/url";
 import { getSingleDiscussion } from "@/context/actions/discussion/getSingleDiscussion";
 import moment from "moment";
-import avatar from "../../../../../public/static/images/avatar.svg";
-import arrow_back_blue from "../../../../../public/static/icons/arrow_back_blue.svg";
+import avatar from "../../../../public/static/images/avatar.svg";
+import arrow_back_blue from "../../../../public/static/icons/arrow_back_blue.svg";
 import CommentThread from "@/components/CommentThread";
 import CommentBox from "@/components/CommentBox";
 
@@ -78,7 +78,7 @@ const Post = () => {
           className={` h-65 vp-980:h-auto bg-gray-background mb-5  vp-980:mt-16 px-16 vp-min-601:px-42 flex  items-center justify-between `}
         >
           <div className=" flex items-center">
-            <Link passHref href={`/discussions/view-discussion/${id}`}>
+            <Link passHref href={`/view-discussion/${id}`}>
               <div className="flex items-center justify-center">
                 <Image
                   src={arrow_back_blue.src}
