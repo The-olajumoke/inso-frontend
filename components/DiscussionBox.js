@@ -38,7 +38,11 @@ const DiscussionBox = ({
       }`}
     >
       <div className=" flex items-start justify-between mb-15 h-85">
-        <Link passHref href={`/view-discussion/${_id}`}>
+        <Link
+          passHref
+          href="/view-discussion/[id]"
+          as={`/view-discussion/${_id}`}
+        >
           <a className=" w-210 cursor-pointer h-full overflow-hidden text-gray-text">
             <h5 className="  font-medium p-0 m-0 break-words">{name}</h5>
           </a>
