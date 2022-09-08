@@ -44,7 +44,7 @@ const DiscussionBox = ({
           as={`/view-discussion/${_id}`}
         >
           <a className=" w-210 cursor-pointer h-full overflow-hidden text-gray-text">
-            <h5 className="  font-medium p-0 m-0 break-words">{name}</h5>
+            <h5 className="  font-medium p-0 m-0 break-words border">{name}</h5>
           </a>
         </Link>
 
