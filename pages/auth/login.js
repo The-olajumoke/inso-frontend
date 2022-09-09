@@ -12,7 +12,6 @@ import ErrorModal from "@/components/ErrorModal";
 import SpinnerLoader from "@/components/SpinnerLoader";
 import SuccessModal from "@/components/SuccessModal";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
-import GoogleLogin from "react-google-login";
 import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 import { API_URL } from "@/utils/url";
 import cancel_white from "../../public/static/icons/cancel_white.svg";

@@ -12,7 +12,6 @@ import ErrorModal from "@/components/ErrorModal";
 import SpinnerLoader from "@/components/SpinnerLoader";
 import SuccessModal from "@/components/SuccessModal";
 import { getUserProfile } from "@/context/actions/user/getUserProfile";
-import GoogleLogin from "react-google-login";
 import { signInWithGoogle } from "@/context/actions/auth/signInWithGoogle";
 import { useRouter } from "next/router";
 import { API_URL } from "@/utils/url";
